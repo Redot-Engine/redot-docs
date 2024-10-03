@@ -40,10 +40,10 @@ If you are building the ``master`` branch:
 
               sudo port install scons
 
-.. seealso:: To get the Godot source code for compiling, see
+.. seealso:: To get the redot source code for compiling, see
              :ref:`doc_getting_source`.
 
-             For a general overview of SCons usage for Godot, see
+             For a general overview of SCons usage for redot, see
              :ref:`doc_introduction_to_the_buildsystem`.
 
 Compiling
@@ -75,17 +75,17 @@ for a Simulator libraries.
 
 To create an Xcode project like in the official builds, you need to use the
 template located in ``misc/dist/ios_xcode``. The release and debug libraries
-should be placed in ``libgodot.ios.debug.xcframework`` and ``libgodot.ios.release.xcframework`` respectively.
+should be placed in ``libredot.ios.debug.xcframework`` and ``libredot.ios.release.xcframework`` respectively.
 
 ::
 
     cp -r misc/dist/ios_xcode .
 
-    cp libgodot.ios.template_debug.arm64.a ios_xcode/libgodot.ios.debug.xcframework/ios-arm64/libgodot.a
-    lipo -create libgodot.ios.template_debug.arm64.simulator.a libgodot.ios.template_debug.x86_64.simulator.a -output ios_xcode/libgodot.ios.debug.xcframework/ios-arm64_x86_64-simulator/libgodot.a
+    cp libredot.ios.template_debug.arm64.a ios_xcode/libredot.ios.debug.xcframework/ios-arm64/libredot.a
+    lipo -create libredot.ios.template_debug.arm64.simulator.a libredot.ios.template_debug.x86_64.simulator.a -output ios_xcode/libredot.ios.debug.xcframework/ios-arm64_x86_64-simulator/libredot.a
 
-    cp libgodot.ios.template_release.arm64.a ios_xcode/libgodot.ios.release.xcframework/ios-arm64/libgodot.a
-    lipo -create libgodot.ios.template_release.arm64.simulator.a libgodot.ios.template_release.x86_64.simulator.a -output ios_xcode/libgodot.ios.release.xcframework/ios-arm64_x86_64-simulator/libgodot.a
+    cp libredot.ios.template_release.arm64.a ios_xcode/libredot.ios.release.xcframework/ios-arm64/libredot.a
+    lipo -create libredot.ios.template_release.arm64.simulator.a libredot.ios.template_release.x86_64.simulator.a -output ios_xcode/libredot.ios.release.xcframework/ios-arm64_x86_64-simulator/libredot.a
 
 The MoltenVK static ``.xcframework`` folder must also be placed in the ``ios_xcode``
 folder once it has been created.

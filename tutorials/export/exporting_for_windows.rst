@@ -5,15 +5,15 @@ Exporting for Windows
 
 .. seealso::
 
-    This page describes how to export a Godot project to Windows.
+    This page describes how to export a redot project to Windows.
     If you're looking to compile editor or export template binaries from source instead,
     read :ref:`doc_compiling_for_windows`.
 
 The simplest way to distribute a game for PC is to copy the executable
-(``godot.exe``), compress the folder and send it to someone else. However, this
+(``redot.exe``), compress the folder and send it to someone else. However, this
 is often not desired.
 
-Godot offers a more elegant approach for PC distribution when using the export
+redot offers a more elegant approach for PC distribution when using the export
 system. When exporting for Windows, the exporter takes all the project files and
 creates a ``data.pck`` file. This file is bundled with a specially optimized
 binary that is smaller, faster and does not contain the editor and debugger.
@@ -21,7 +21,7 @@ binary that is smaller, faster and does not contain the editor and debugger.
 Code signing
 ------------
 
-Godot is capable of automatic code signing on export. To do this you must have the
+redot is capable of automatic code signing on export. To do this you must have the
 ``Windows SDK`` (on Windows) or `osslsigncode <https://github.com/mtrojnar/osslsigncode>`__
 (on any other OS) installed. You will also need a package signing certificate,
 information on creating one can be found `here <https://docs.microsoft.com/en-us/windows/win32/appxpkg/how-to-create-a-package-signing-certificate?redirectedfrom=MSDN>`__.
@@ -54,7 +54,7 @@ Under options there is a code signing category.
 
 ``Enabled`` must be set to true, and ``Identity`` must be set to the signing
 certificate. The other settings can be adjusted as needed. Once this is Done
-Godot will sign your project on export.
+redot will sign your project on export.
 
 Environment variables
 ---------------------
@@ -69,10 +69,10 @@ the export menu.
    * - Export option
      - Environment variable
    * - Encryption / Encryption Key
-     - ``GODOT_SCRIPT_ENCRYPTION_KEY``
+     - ``redot_SCRIPT_ENCRYPTION_KEY``
    * - Options / Codesign / Identity Type
-     - ``GODOT_WINDOWS_CODESIGN_IDENTITY_TYPE``
+     - ``redot_WINDOWS_CODESIGN_IDENTITY_TYPE``
    * - Options / Codesign / Identity
-     - ``GODOT_WINDOWS_CODESIGN_IDENTITY``
+     - ``redot_WINDOWS_CODESIGN_IDENTITY``
    * - Options / Codesign / Password
-     - ``GODOT_WINDOWS_CODESIGN_PASSWORD``
+     - ``redot_WINDOWS_CODESIGN_PASSWORD``

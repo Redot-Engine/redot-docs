@@ -59,7 +59,7 @@ First, we will start a request to load the resource and connect the button:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyButton : Button
     {

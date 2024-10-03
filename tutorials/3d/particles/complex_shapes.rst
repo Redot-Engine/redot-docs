@@ -7,7 +7,7 @@ Complex emission shapes
    :alt: Complex emission shapes
 
 When it is not enough to emit particles from one of the simple shapes available
-in the :ref:`process material <doc_process_material_properties_shapes>`, Godot provides
+in the :ref:`process material <doc_process_material_properties_shapes>`, redot provides
 a way to emit particles from arbitrary, complex shapes. The shapes are generated from
 meshes in the scene and stored as textures in the particle process material. This is a
 very versatile workflow that has allowed users to use particle systems for things that

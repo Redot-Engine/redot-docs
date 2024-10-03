@@ -3,7 +3,7 @@
 Animation
 =========
 
-This section of the tutorial covers using the two animation nodes in Godot
+This section of the tutorial covers using the two animation nodes in redot
 and the animation editor.
 
 .. toctree::

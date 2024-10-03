@@ -6,12 +6,12 @@ Custom performance monitors
 Introduction
 ------------
 
-As explained in the :ref:`doc_debugger_panel` documentation, Godot features a
+As explained in the :ref:`doc_debugger_panel` documentation, redot features a
 **Debugger > Monitors** bottom panel that allows tracking various values with
 graphs showing their evolution over time. The data for those graphs is sourced
 from the engine's :ref:`class_Performance` singleton.
 
-Since Godot 4.0, you can declare custom values to be displayed in the Monitors
+Since redot 4.0, you can declare custom values to be displayed in the Monitors
 tab. Example use cases for custom performance monitors include:
 
 - Displaying performance metrics that are specific to your project. For

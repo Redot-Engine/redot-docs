@@ -9,13 +9,13 @@ hidden geometry removal.
 On this page, you'll learn:
 
 - What are the advantages and pitfalls of occlusion culling.
-- How to set up occlusion culling in Godot.
+- How to set up occlusion culling in redot.
 - Troubleshooting common issues with occlusion culling.
 
 .. seealso::
 
     You can see how occlusion culling works in action using the
-    `Occlusion Culling and Mesh LOD demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/occlusion_culling_mesh_lod>`__.
+    `Occlusion Culling and Mesh LOD demo project <https://github.com/redotengine/redot-demo-projects/tree/master/3d/occlusion_culling_mesh_lod>`__.
 
 Why use occlusion culling
 -------------------------
@@ -74,14 +74,14 @@ performance gains.
     few occlusion culling opportunities, occlusion culling may not be worth the
     added setup and CPU usage.
 
-How occlusion culling works in Godot
+How occlusion culling works in redot
 ------------------------------------
 
 .. note::
 
     *"occluder" refers to the shape blocking the view, while "occludee" refers to the object being hidden.*
 
-In Godot, occlusion culling works by rasterizing the scene's occluder geometry
+In redot, occlusion culling works by rasterizing the scene's occluder geometry
 to a low-resolution buffer on the CPU. This is done using
 the software raytracing library `Embree <https://github.com/embree/embree>`__.
 

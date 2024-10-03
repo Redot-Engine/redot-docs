@@ -13,14 +13,14 @@ GD0003: Found multiple classes with the same name in the same script file
 Cause
 -----
 
-A script file contains multiple types that derives from ``GodotObject`` with
+A script file contains multiple types that derives from ``redotObject`` with
 a name that matches the script file. Only one type in the script file should
 match the file name.
 
 Rule description
 ----------------
 
-Godot requires scripts to have a unique path so every type must be defined on its
+redot requires scripts to have a unique path so every type must be defined on its
 own file and the type name must match the file name.
 
 .. code-block:: csharp
@@ -44,6 +44,6 @@ To fix a violation of this rule, move each type declaration to a different file.
 When to suppress warnings
 -------------------------
 
-Do not suppress a warning from this rule. Types that derive from ``GodotObject``
+Do not suppress a warning from this rule. Types that derive from ``redotObject``
 must have a unique path otherwise the engine can't load the script by path,
 resulting in unexpected runtime errors.

@@ -3,7 +3,7 @@
 Spatial shaders
 ===============
 
-Spatial shaders are used for shading 3D objects. They are the most complex type of shader Godot offers.
+Spatial shaders are used for shading 3D objects. They are the most complex type of shader redot offers.
 Spatial shaders are highly configurable with different render modes and different rendering options
 (e.g. Subsurface Scattering, Transmission, Ambient Occlusion, Rim lighting etc). Users can optionally
 write vertex, fragment, and light processor functions to affect how objects are drawn.
@@ -77,9 +77,9 @@ For visual examples of these render modes, see :ref:`Standard Material 3D and OR
 +-------------------------------+------------------------------------------------------------------------------------------------------+
 | **particle_trails**           | Enables the trails when used on particles geometry.                                                  |
 +-------------------------------+------------------------------------------------------------------------------------------------------+
-| **alpha_to_coverage**         | Alpha antialiasing mode, see `here <https://github.com/godotengine/godot/pull/40364>`_ for more.     |
+| **alpha_to_coverage**         | Alpha antialiasing mode, see `here <https://github.com/redotengine/redot/pull/40364>`_ for more.     |
 +-------------------------------+------------------------------------------------------------------------------------------------------+
-| **alpha_to_coverage_and_one** | Alpha antialiasing mode, see `here <https://github.com/godotengine/godot/pull/40364>`_ for more.     |
+| **alpha_to_coverage_and_one** | Alpha antialiasing mode, see `here <https://github.com/redotengine/redot/pull/40364>`_ for more.     |
 +-------------------------------+------------------------------------------------------------------------------------------------------+
 | **fog_disabled**              | Disable receiving depth-based or volumetric fog. Useful for blend_add materials like particles.      |
 +-------------------------------+------------------------------------------------------------------------------------------------------+
@@ -260,9 +260,9 @@ shader, this value can be used as desired.
 Fragment built-ins
 ^^^^^^^^^^^^^^^^^^
 
-The default use of a Godot fragment processor function is to set up the material properties of your object
+The default use of a redot fragment processor function is to set up the material properties of your object
 and to let the built-in renderer handle the final shading. However, you are not required to use all
-these properties, and if you don't write to them, Godot will optimize away the corresponding functionality.
+these properties, and if you don't write to them, redot will optimize away the corresponding functionality.
 
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | Built-in                               | Description                                                                                      |
@@ -325,11 +325,11 @@ these properties, and if you don't write to them, Godot will optimize away the c
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | in vec3 **EYE_OFFSET**                 | Position offset for the eye being rendered. Only applicable for multiview rendering.             |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
-| sampler2D **SCREEN_TEXTURE**           | Removed in Godot 4. Use a ``sampler2D`` with ``hint_screen_texture`` instead.                    |
+| sampler2D **SCREEN_TEXTURE**           | Removed in redot 4. Use a ``sampler2D`` with ``hint_screen_texture`` instead.                    |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | in vec2 **SCREEN_UV**                  | Screen UV coordinate for current pixel.                                                          |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
-| sampler2D **DEPTH_TEXTURE**            | Removed in Godot 4. Use a ``sampler2D`` with ``hint_depth_texture`` instead.                     |
+| sampler2D **DEPTH_TEXTURE**            | Removed in redot 4. Use a ``sampler2D`` with ``hint_depth_texture`` instead.                     |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | out float **DEPTH**                    | Custom depth value (range of ``[0.0, 1.0]``). If ``DEPTH`` is being written to in any shader     |
 |                                        | branch, then you are responsible for setting the ``DEPTH`` for **all** other branches.           |
@@ -364,13 +364,13 @@ these properties, and if you don't write to them, Godot will optimize away the c
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | out float **ROUGHNESS**                | Roughness (range of ``[0.0, 1.0]``).                                                             |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
-| out float **RIM**                      | Rim (range of ``[0.0, 1.0]``). If used, Godot calculates rim lighting.                           |
+| out float **RIM**                      | Rim (range of ``[0.0, 1.0]``). If used, redot calculates rim lighting.                           |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
-| out float **RIM_TINT**                 | Rim Tint, range of ``0.0`` (white) to ``1.0`` (albedo). If used, Godot calculates rim lighting.  |
+| out float **RIM_TINT**                 | Rim Tint, range of ``0.0`` (white) to ``1.0`` (albedo). If used, redot calculates rim lighting.  |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
-| out float **CLEARCOAT**                | Small added specular blob. If used, Godot calculates Clearcoat.                                  |
+| out float **CLEARCOAT**                | Small added specular blob. If used, redot calculates Clearcoat.                                  |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
-| out float **CLEARCOAT_GLOSS**          | Gloss of Clearcoat. If used, Godot calculates Clearcoat.                                         |
+| out float **CLEARCOAT_GLOSS**          | Gloss of Clearcoat. If used, redot calculates Clearcoat.                                         |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
 | out float **ANISOTROPY**               | For distorting the specular blob according to tangent space.                                     |
 +----------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -411,7 +411,7 @@ Light built-ins
 ^^^^^^^^^^^^^^^
 
 Writing light processor functions is completely optional. You can skip the ``light()`` function by using
-the ``unshaded`` render mode. If no light function is written, Godot will use the material properties 
+the ``unshaded`` render mode. If no light function is written, redot will use the material properties 
 written to in the ``fragment()`` function to calculate the lighting for you (subject to the render mode).
 
 The ``light()`` function is called for every light in every pixel. It is called within a loop for each light type.

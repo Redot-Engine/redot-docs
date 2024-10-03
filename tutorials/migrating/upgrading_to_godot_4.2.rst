@@ -1,6 +1,6 @@
-.. _doc_upgrading_to_godot_4.2:
+.. _doc_upgrading_to_redot_4.2:
 
-Upgrading from Godot 4.1 to Godot 4.2
+Upgrading from redot 4.1 to redot 4.2
 =====================================
 
 For most games and apps made with 4.1 it should be relatively safe to migrate to 4.2.
@@ -16,21 +16,21 @@ affect you. Changes are grouped by areas/systems.
 .. warning::
 
     The :ref:`class_Mesh` resource format has changed in 4.2 to allow for
-    `vertex and attribute compression <https://github.com/godotengine/godot/pull/81138>`__.
+    `vertex and attribute compression <https://github.com/redotengine/redot/pull/81138>`__.
     This allows for improved rendering performance, especially on platforms
     constrained by memory bandwidth such as mobile.
 
-    It is still possible to load the Godot 4.0-4.1 Mesh formats, but it is
-    **not** possible to load the Godot 4.2 Mesh format in prior Godot versions.
-    When opening a Godot project made with a version prior to 4.2, you may
+    It is still possible to load the redot 4.0-4.1 Mesh formats, but it is
+    **not** possible to load the redot 4.2 Mesh format in prior redot versions.
+    When opening a redot project made with a version prior to 4.2, you may
     be presented with an upgrade dialog that offers two options:
 
     - **Restart & Upgrade:** Upgrades the mesh format for all meshes in the
       project and saves the result to disk. Once chosen, this option prevents
-      downgrading the project to a Godot version prior to 4.2. Set up a
+      downgrading the project to a redot version prior to 4.2. Set up a
       version control system and push your changes *before* choosing this option!
     - **Upgrade Only:** Upgrades the mesh format in-memory without writing it
-      to disk. This allows downgrading the project to a Godot version older than 4.2
+      to disk. This allows downgrading the project to a redot version older than 4.2
       if you need to do so in the future. The downside is that loading the project
       will be slower every time as the mesh format needs to be upgraded every time
       the project is loaded. These increased loading times will also affect the
@@ -46,7 +46,7 @@ the C# breaking change is *binary compatible* or *source compatible*:
 - **Binary compatible** - Existing binaries will load and execute successfully without
   recompilation, and the run-time behavior won't change.
 - **Source compatible** - Source code will compile successfully without changes when
-  upgrading Godot.
+  upgrading redot.
 
 Core
 ^^^^
@@ -232,19 +232,19 @@ Property ``environment_blend_mode`` added                                       
 .. |✔️| replace:: :abbr:`✔️ (This API does not break compatibility.)`
 .. |✔️ with compat| replace:: :abbr:`✔️ (This API does not break compatibility. A compatibility method was added.)`
 
-.. _GH-36493: https://github.com/godotengine/godot/pull/36493
-.. _GH-78266: https://github.com/godotengine/godot/pull/78266
-.. _GH-79307: https://github.com/godotengine/godot/pull/79307
-.. _GH-79308: https://github.com/godotengine/godot/pull/79308
-.. _GH-79311: https://github.com/godotengine/godot/pull/79311
-.. _GH-79606: https://github.com/godotengine/godot/pull/79606
-.. _GH-79911: https://github.com/godotengine/godot/pull/79911
-.. _GH-79965: https://github.com/godotengine/godot/pull/79965
-.. _GH-80410: https://github.com/godotengine/godot/pull/80410
-.. _GH-80813: https://github.com/godotengine/godot/pull/80813
-.. _GH-80954: https://github.com/godotengine/godot/pull/80954
-.. _GH-81070: https://github.com/godotengine/godot/pull/81070
-.. _GH-81138: https://github.com/godotengine/godot/pull/81138
-.. _GH-81561: https://github.com/godotengine/godot/pull/81561
-.. _GH-81582: https://github.com/godotengine/godot/pull/81582
-.. _GH-84419: https://github.com/godotengine/godot/pull/84419
+.. _GH-36493: https://github.com/redotengine/redot/pull/36493
+.. _GH-78266: https://github.com/redotengine/redot/pull/78266
+.. _GH-79307: https://github.com/redotengine/redot/pull/79307
+.. _GH-79308: https://github.com/redotengine/redot/pull/79308
+.. _GH-79311: https://github.com/redotengine/redot/pull/79311
+.. _GH-79606: https://github.com/redotengine/redot/pull/79606
+.. _GH-79911: https://github.com/redotengine/redot/pull/79911
+.. _GH-79965: https://github.com/redotengine/redot/pull/79965
+.. _GH-80410: https://github.com/redotengine/redot/pull/80410
+.. _GH-80813: https://github.com/redotengine/redot/pull/80813
+.. _GH-80954: https://github.com/redotengine/redot/pull/80954
+.. _GH-81070: https://github.com/redotengine/redot/pull/81070
+.. _GH-81138: https://github.com/redotengine/redot/pull/81138
+.. _GH-81561: https://github.com/redotengine/redot/pull/81561
+.. _GH-81582: https://github.com/redotengine/redot/pull/81582
+.. _GH-84419: https://github.com/redotengine/redot/pull/84419

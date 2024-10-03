@@ -3,16 +3,16 @@
 Internal rendering architecture
 ===============================
 
-This page is a high-level overview of Godot 4's internal renderer design.
-It does not apply to previous Godot versions.
+This page is a high-level overview of redot 4's internal renderer design.
+It does not apply to previous redot versions.
 
 The goal of this page is to document design decisions taken to best suit
-:ref:`Godot's design philosophy <doc_best_practices_for_engine_contributors>`,
+:ref:`redot's design philosophy <doc_best_practices_for_engine_contributors>`,
 while providing a starting point for new rendering contributors.
 
 If you have questions about rendering internals not answered here, feel free to
 ask in the ``#rendering`` channel of the
-`Godot Contributors Chat <https://chat.godotengine.org/channel/rendering>`__.
+`redot Contributors Chat <https://chat.redotengine.org/channel/rendering>`__.
 
 .. note::
 
@@ -23,7 +23,7 @@ ask in the ``#rendering`` channel of the
     Modern low-level APIs (Vulkan/Direct3D 12) require intermediate
     knowledge of higher-level APIs (OpenGL/Direct3D 11) to be used
     effectively. Thankfully, contributors rarely need to work directly with
-    low-level APIs. Godot's renderers are built entirely on OpenGL and
+    low-level APIs. redot's renderers are built entirely on OpenGL and
     RenderingDevice, which is our abstraction over Vulkan/Direct3D 12.
 
 .. _doc_internal_rendering_architecture_methods:
@@ -145,7 +145,7 @@ flexibility, especially when a clustered approach to lighting is used. While
 deferred rendering can be faster in some cases, it's also less flexible and
 requires using hacks to be able to use MSAA. Since games with a less realistic
 art style can benefit a lot from MSAA, we chose to go with forward rendering for
-Godot 4 (like Godot 3).
+redot 4 (like redot 3).
 
 That said, parts of the forward renderer *are* performed with a deferred approach
 to allow for some optimizations when possible. This applies to VoxelGI and SDFGI
@@ -157,12 +157,12 @@ could be used in situations where performance is favored over flexibility.
 Rendering drivers
 -----------------
 
-Godot 4 supports the following graphics APIs:
+redot 4 supports the following graphics APIs:
 
 Vulkan
 ^^^^^^
 
-This is the main driver in Godot 4, with most of the development focus going
+This is the main driver in redot 4, with most of the development focus going
 towards this driver.
 
 Vulkan 1.0 is required as a baseline, with optional Vulkan 1.1 and 1.2 features
@@ -177,11 +177,11 @@ Vulkan driver.
 
 **Vulkan context creation:**
 
-- `drivers/vulkan/vulkan_context.cpp <https://github.com/godotengine/godot/blob/4.2/drivers/vulkan/vulkan_context.cpp>`__
+- `drivers/vulkan/vulkan_context.cpp <https://github.com/redotengine/redot/blob/4.2/drivers/vulkan/vulkan_context.cpp>`__
 
 **Direct3D 12 context creation:**
 
-- `drivers/d3d12/d3d12_context.cpp <https://github.com/godotengine/godot/blob/master/drivers/d3d12/d3d12_context.cpp>`__
+- `drivers/d3d12/d3d12_context.cpp <https://github.com/redotengine/redot/blob/master/drivers/d3d12/d3d12_context.cpp>`__
 
 Direct3D 12
 ^^^^^^^^^^^
@@ -196,18 +196,18 @@ used with Direct3D 12.
 Vulkan renderer. Shaders are transpiled from
 :abbr:`SPIR-V (Standard Portable Intermediate Representation)` to
 :abbr:`DXIL (DirectX Intermediate Language)` using
-Mesa NIR (`more information <https://godotengine.org/article/d3d12-adventures-in-shaderland/>`__).
+Mesa NIR (`more information <https://redotengine.org/article/d3d12-adventures-in-shaderland/>`__).
 
-**This driver is still experimental and only available in Godot 4.3 and later.**
+**This driver is still experimental and only available in redot 4.3 and later.**
 While Direct3D 12 allows supporting Direct3D-exclusive features on Windows 11 such
 as windowed optimizations and Auto HDR, Vulkan is still recommended for most projects.
-See the `pull request that introduced Direct3D 12 support <https://github.com/godotengine/godot/pull/70315>`__
+See the `pull request that introduced Direct3D 12 support <https://github.com/redotengine/redot/pull/70315>`__
 for more information.
 
 Metal
 ^^^^^
 
-Godot supports Metal rendering via `MoltenVK <https://github.com/KhronosGroup/MoltenVK>`__,
+redot supports Metal rendering via `MoltenVK <https://github.com/KhronosGroup/MoltenVK>`__,
 as macOS and iOS do not support Vulkan natively.
 This is done automatically when specifying the Vulkan driver in the Project Settings.
 
@@ -267,7 +267,7 @@ RenderingDevice abstraction
     The OpenGL driver does not use the RenderingDevice abstraction.
 
 To make the complexity of modern low-level graphics APIs more manageable,
-Godot uses its own abstraction called RenderingDevice.
+redot uses its own abstraction called RenderingDevice.
 
 This means that when writing code for modern rendering methods, you don't
 actually use the Vulkan or Direct3D 12 APIs directly. While this is still
@@ -277,27 +277,27 @@ RenderingDevice presents a similar level of abstraction as Metal or WebGPU.
 
 **Vulkan RenderingDevice implementation:**
 
-- `drivers/vulkan/rendering_device_driver_vulkan.cpp <https://github.com/godotengine/godot/blob/master/drivers/vulkan/rendering_device_driver_vulkan.cpp>`__
+- `drivers/vulkan/rendering_device_driver_vulkan.cpp <https://github.com/redotengine/redot/blob/master/drivers/vulkan/rendering_device_driver_vulkan.cpp>`__
 
 **Direct3D 12 RenderingDevice implementation:**
 
-- `drivers/d3d12/rendering_device_driver_d3d12.cpp <https://github.com/godotengine/godot/blob/master/drivers/d3d12/rendering_device_driver_d3d12.cpp>`__
+- `drivers/d3d12/rendering_device_driver_d3d12.cpp <https://github.com/redotengine/redot/blob/master/drivers/d3d12/rendering_device_driver_d3d12.cpp>`__
 
 Core rendering classes architecture
 -----------------------------------
 
-This diagram represents the structure of rendering classes in Godot, including the RenderingDevice abstraction:
+This diagram represents the structure of rendering classes in redot, including the RenderingDevice abstraction:
 
 .. image:: img/rendering_architecture_diagram.webp
 
-`View at full size <https://raw.githubusercontent.com/godotengine/godot-docs/master/contributing/development/core_and_modules/img/rendering_architecture_diagram.webp>`__
+`View at full size <https://raw.githubusercontent.com/redotengine/redot-docs/master/contributing/development/core_and_modules/img/rendering_architecture_diagram.webp>`__
 
 .. _doc_internal_rendering_architecture_core_shaders:
 
 Core shaders
 ------------
 
-While shaders in Godot projects are written using a
+While shaders in redot projects are written using a
 :ref:`custom language inspired by GLSL <doc_shading_language>`, core shaders are
 written directly in GLSL.
 
@@ -307,7 +307,7 @@ recompile the editor or export template binary.
 
 Some material features such as height mapping, refraction and proximity fade are
 not part of core shaders, and are performed in the default BaseMaterial3D using
-the Godot shader language instead (not GLSL). This is done by procedurally
+the redot shader language instead (not GLSL). This is done by procedurally
 generating the required shader code depending on the features enabled in the
 material.
 
@@ -335,7 +335,7 @@ this.
     alternative.
 
     This means there is a high barrier to adding new built-in material features
-    in Godot, both in the core shaders and BaseMaterial3D. While BaseMaterial3D
+    in redot, both in the core shaders and BaseMaterial3D. While BaseMaterial3D
     can make use of dynamic code generation to only include the shader code if
     the feature is enabled, it'll still require generating more shader versions
     when these features are used in a project. This can make shader compilation
@@ -349,22 +349,22 @@ this.
 
 **Core GLSL material shaders:**
 
-- Forward+: `servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl>`__
-- Forward Mobile: `servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl>`__
-- Compatibility: `drivers/gles3/shaders/scene.glsl <https://github.com/godotengine/godot/blob/4.2/drivers/gles3/shaders/scene.glsl>`__
+- Forward+: `servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl>`__
+- Forward Mobile: `servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl>`__
+- Compatibility: `drivers/gles3/shaders/scene.glsl <https://github.com/redotengine/redot/blob/4.2/drivers/gles3/shaders/scene.glsl>`__
 
 **Material shader generation:**
 
-- `scene/resources/material.cpp <https://github.com/godotengine/godot/blob/4.2/scene/resources/material.cpp>`__
+- `scene/resources/material.cpp <https://github.com/redotengine/redot/blob/4.2/scene/resources/material.cpp>`__
 
 **Other GLSL shaders for Forward+ and Forward Mobile rendering methods:**
 
-- `servers/rendering/renderer_rd/shaders/ <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/>`__
-- `modules/lightmapper_rd/ <https://github.com/godotengine/godot/blob/4.2/modules/lightmapper_rd>`__
+- `servers/rendering/renderer_rd/shaders/ <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/>`__
+- `modules/lightmapper_rd/ <https://github.com/redotengine/redot/blob/4.2/modules/lightmapper_rd>`__
 
 **Other GLSL shaders for the Compatibility rendering method:**
 
-- `drivers/gles3/shaders/ <https://github.com/godotengine/godot/blob/4.2/drivers/gles3/shaders/>`__
+- `drivers/gles3/shaders/ <https://github.com/redotengine/redot/blob/4.2/drivers/gles3/shaders/>`__
 
 2D and 3D rendering separation
 ------------------------------
@@ -376,7 +376,7 @@ this.
     emulate this when using the Compatibility backend, or to perform 2D
     resolution scaling.
 
-2D and 3D are rendered to separate buffers, as 2D rendering in Godot is performed
+2D and 3D are rendered to separate buffers, as 2D rendering in redot is performed
 in :abbr:`LDR (Low Dynamic Range)` sRGB-space while 3D rendering uses
 :abbr:`HDR (High Dynamic Range)` linear space.
 
@@ -395,17 +395,17 @@ allows maximizing the performance of bilinear 3D scaling.
 The ``configure()`` function in RenderSceneBuffersRD reallocates the 2D/3D
 buffers when the resolution or scaling changes.
 
-Dynamic resolution scaling isn't supported yet, but is planned in a future Godot
+Dynamic resolution scaling isn't supported yet, but is planned in a future redot
 release.
 
 **2D and 3D rendering buffer configuration C++ code:**
 
-- `servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp>`__
+- `servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp>`__
 
 **FSR 1.0:**
 
-- `servers/rendering/renderer_rd/effects/fsr.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/effects/fsr.cpp>`__
-- `thirdparty/amd-fsr/ <https://github.com/godotengine/godot/tree/master/thirdparty/amd-fsr>`__
+- `servers/rendering/renderer_rd/effects/fsr.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/effects/fsr.cpp>`__
+- `thirdparty/amd-fsr/ <https://github.com/redotengine/redot/tree/master/thirdparty/amd-fsr>`__
 
 2D rendering techniques
 -----------------------
@@ -421,7 +421,7 @@ especially noticeable with lots of text on screen.
 
 MSAA can be enabled in 2D to provide "automatic" line and polygon antialiasing,
 but FXAA does not affect 2D rendering as it's calculated before 2D rendering
-begins. Godot's 2D drawing methods such as the Line2D node or some CanvasItem
+begins. redot's 2D drawing methods such as the Line2D node or some CanvasItem
 ``draw_*()`` methods provide their own way of antialiasing based on triangle
 strips and vertex colors, which don't require MSAA to work.
 
@@ -432,7 +432,7 @@ used to calculate particle collisions in 2D.
 
 **2D SDF generation GLSL shader:**
 
-- `servers/rendering/renderer_rd/shaders/canvas_sdf.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/canvas_sdf.glsl>`__
+- `servers/rendering/renderer_rd/shaders/canvas_sdf.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/canvas_sdf.glsl>`__
 
 3D rendering techniques
 -----------------------
@@ -478,7 +478,7 @@ settings.
 
 In all 3 methods, lights without shadows are much cheaper than lights with
 shadows. To improve performance, lights are only updated when the light is
-modified or when objects in its radius are modified. Godot currently doesn't
+modified or when objects in its radius are modified. redot currently doesn't
 separate static shadow rendering from dynamic shadow rendering, but this is
 planned in a future release.
 
@@ -494,7 +494,7 @@ soft penumbra. Instead of using a fixed PCF pattern, these methods use a vogel
 disk pattern which allows for changing the number of samples and smoothly
 changing the quality.
 
-Godot also supports percentage-closer soft shadows (PCSS) for more realistic
+redot also supports percentage-closer soft shadows (PCSS) for more realistic
 shadow penumbra rendering. PCSS shadows are limited to the Forward+
 backend as they're too demanding to be usable in the Forward Mobile backend.
 PCSS also uses a vogel-disk shaped kernel.
@@ -512,7 +512,7 @@ Temporal antialiasing
     Only available in the Forward+ backend, not the Forward Mobile or
     Compatibility methods.
 
-Godot uses a custom TAA implementation based on the old TAA implementation from
+redot uses a custom TAA implementation based on the old TAA implementation from
 `Spartan Engine <https://github.com/PanosK92/SpartanEngine>`__.
 
 Temporal antialiasing requires motion vectors to work. If motion vectors
@@ -529,13 +529,13 @@ RenderingDevice abstraction as opposed to using AMD's reference code directly.
 
 **TAA resolve:**
 
-- `servers/rendering/renderer_rd/shaders/effects/taa_resolve.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/taa_resolve.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/taa_resolve.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/taa_resolve.glsl>`__
 
 **FSR 2.2:**
 
-- `servers/rendering/renderer_rd/effects/fsr2.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/effects/fsr2.cpp>`__
-- `servers/rendering/renderer_rd/shaders/effects/fsr2/ <https://github.com/godotengine/godot/tree/master/servers/rendering/renderer_rd/shaders/effects/fsr2>`__
-- `thirdparty/amd-fsr2/ <https://github.com/godotengine/godot/tree/master/thirdparty/amd-fsr2>`__
+- `servers/rendering/renderer_rd/effects/fsr2.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/effects/fsr2.cpp>`__
+- `servers/rendering/renderer_rd/shaders/effects/fsr2/ <https://github.com/redotengine/redot/tree/master/servers/rendering/renderer_rd/shaders/effects/fsr2>`__
+- `thirdparty/amd-fsr2/ <https://github.com/redotengine/redot/tree/master/thirdparty/amd-fsr2>`__
 
 Global illumination
 ^^^^^^^^^^^^^^^^^^^
@@ -550,44 +550,44 @@ Global illumination
     project). LightmapGI *rendering* will eventually be supported by the
     Compatibility backend.
 
-Godot supports voxel-based GI (VoxelGI), signed distance field GI (SDFGI) and
+redot supports voxel-based GI (VoxelGI), signed distance field GI (SDFGI) and
 lightmap baking and rendering (LightmapGI). These techniques can be used
 simultaneously if desired.
 
 Lightmap baking happens on the GPU using Vulkan compute shaders. The GPU-based
 lightmapper is implemented in the LightmapperRD class, which inherits from the
 Lightmapper class. This allows for implementing additional lightmappers, paving
-the way for a future port of the CPU-based lightmapper present in Godot 3.x.
+the way for a future port of the CPU-based lightmapper present in redot 3.x.
 This would allow baking lightmaps while using the Compatibility backend.
 
 **Core GI C++ code:**
 
-- `servers/rendering/renderer_rd/environment/gi.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/environment/gi.cpp>`__
-- `scene/3d/voxel_gi.cpp <https://github.com/godotengine/godot/blob/4.2/scene/3d/voxel_gi.cpp>`__ - VoxelGI node
-- `editor/plugins/voxel_gi_editor_plugin.cpp <https://github.com/godotengine/godot/blob/4.2/editor/plugins/voxel_gi_editor_plugin.cpp>`__ - Editor UI for the VoxelGI node
+- `servers/rendering/renderer_rd/environment/gi.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/environment/gi.cpp>`__
+- `scene/3d/voxel_gi.cpp <https://github.com/redotengine/redot/blob/4.2/scene/3d/voxel_gi.cpp>`__ - VoxelGI node
+- `editor/plugins/voxel_gi_editor_plugin.cpp <https://github.com/redotengine/redot/blob/4.2/editor/plugins/voxel_gi_editor_plugin.cpp>`__ - Editor UI for the VoxelGI node
 
 **Core GI GLSL shaders:**
 
-- `servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl>`__
-- `servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl>`__ - VoxelGI debug draw mode
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl>`__ - SDFGI Cascades debug draw mode
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl>`__ - SDFGI Probes debug draw mode
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_integrate.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_integrate.glsl>`__
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl>`__
-- `servers/rendering/renderer_rd/shaders/environment/sdfgi_direct_light.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_direct_light.glsl>`__
+- `servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl>`__
+- `servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/voxel_gi_debug.glsl>`__ - VoxelGI debug draw mode
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug.glsl>`__ - SDFGI Cascades debug draw mode
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_debug_probes.glsl>`__ - SDFGI Probes debug draw mode
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_integrate.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_integrate.glsl>`__
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl>`__
+- `servers/rendering/renderer_rd/shaders/environment/sdfgi_direct_light.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/sdfgi_direct_light.glsl>`__
 
 **Lightmapper C++ code:**
 
-- `scene/3d/lightmap_gi.cpp <https://github.com/godotengine/godot/blob/4.2/scene/3d/lightmap_gi.cpp>`__ - LightmapGI node
-- `editor/plugins/lightmap_gi_editor_plugin.cpp <https://github.com/godotengine/godot/blob/4.2/editor/plugins/lightmap_gi_editor_plugin.cpp>`__ - Editor UI for the LightmapGI node
-- `scene/3d/lightmapper.cpp <https://github.com/godotengine/godot/blob/4.2/scene/3d/lightmapper.cpp>`__ - Abstract class
-- `modules/lightmapper_rd/lightmapper_rd.cpp <https://github.com/godotengine/godot/blob/4.2/modules/lightmapper_rd/lightmapper_rd.cpp>`__ - GPU-based lightmapper implementation
+- `scene/3d/lightmap_gi.cpp <https://github.com/redotengine/redot/blob/4.2/scene/3d/lightmap_gi.cpp>`__ - LightmapGI node
+- `editor/plugins/lightmap_gi_editor_plugin.cpp <https://github.com/redotengine/redot/blob/4.2/editor/plugins/lightmap_gi_editor_plugin.cpp>`__ - Editor UI for the LightmapGI node
+- `scene/3d/lightmapper.cpp <https://github.com/redotengine/redot/blob/4.2/scene/3d/lightmapper.cpp>`__ - Abstract class
+- `modules/lightmapper_rd/lightmapper_rd.cpp <https://github.com/redotengine/redot/blob/4.2/modules/lightmapper_rd/lightmapper_rd.cpp>`__ - GPU-based lightmapper implementation
 
 **Lightmapper GLSL shaders:**
 
-- `modules/lightmapper_rd/lm_raster.glsl <https://github.com/godotengine/godot/blob/4.2/modules/lightmapper_rd/lm_raster.glsl>`__
-- `modules/lightmapper_rd/lm_compute.glsl <https://github.com/godotengine/godot/blob/4.2/modules/lightmapper_rd/lm_compute.glsl>`__
-- `modules/lightmapper_rd/lm_blendseams.glsl <https://github.com/godotengine/godot/blob/4.2/modules/lightmapper_rd/lm_blendseams.glsl>`__
+- `modules/lightmapper_rd/lm_raster.glsl <https://github.com/redotengine/redot/blob/4.2/modules/lightmapper_rd/lm_raster.glsl>`__
+- `modules/lightmapper_rd/lm_compute.glsl <https://github.com/redotengine/redot/blob/4.2/modules/lightmapper_rd/lm_compute.glsl>`__
+- `modules/lightmapper_rd/lm_blendseams.glsl <https://github.com/redotengine/redot/blob/4.2/modules/lightmapper_rd/lm_blendseams.glsl>`__
 
 Depth of field
 ^^^^^^^^^^^^^^
@@ -609,15 +609,15 @@ when temporal antialiasing is enabled.
 
 **Depth of field C++ code:**
 
-- `servers/rendering/renderer_rd/effects/bokeh_dof.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/effects/bokeh_dof.cpp>`__
+- `servers/rendering/renderer_rd/effects/bokeh_dof.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/effects/bokeh_dof.cpp>`__
 
 **Depth of field GLSL shader (compute - used for Forward+):**
 
-- `servers/rendering/renderer_rd/shaders/effects/bokeh_dof.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/bokeh_dof.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/bokeh_dof.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/bokeh_dof.glsl>`__
 
 **Depth of field GLSL shader (raster - used for Forward Mobile):**
 
-- `servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl>`__
 
 Screen-space effects (SSAO, SSIL, SSR, SSS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -643,31 +643,31 @@ SSR is always performed at half resolution to improve performance.
 
 **Screen-space effects C++ code:**
 
-- `servers/rendering/renderer_rd/effects/ss_effects.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/effects/ss_effects.cpp>`__
+- `servers/rendering/renderer_rd/effects/ss_effects.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/effects/ss_effects.cpp>`__
 
 **Screen-space ambient occlusion GLSL shader:**
 
-- `servers/rendering/renderer_rd/shaders/effects/ssao.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/ssao_blur.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao_blur.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssao.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssao_blur.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao_blur.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl>`__
 
 **Screen-space indirect lighting GLSL shader:**
 
-- `servers/rendering/renderer_rd/shaders/effects/ssil.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/ssil_blur.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil_blur.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/ssil_interleave.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil_interleave.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/ssil_importance_map.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil_importance_map.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssil.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssil_blur.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil_blur.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssil_interleave.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil_interleave.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/ssil_importance_map.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/ssil_importance_map.glsl>`__
 
 **Screen-space reflections GLSL shader:**
 
-- `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_scale.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_scale.glsl>`__
-- `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_filter.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_filter.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_scale.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_scale.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_filter.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/screen_space_reflection_filter.glsl>`__
 
 **Subsurface scattering GLSL:**
 
-- `servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl>`__
+- `servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl>`__
 
 Sky rendering
 ^^^^^^^^^^^^^
@@ -676,7 +676,7 @@ Sky rendering
 
     :ref:`doc_sky_shader`
 
-Godot supports using shaders to render the sky background. The radiance map
+redot supports using shaders to render the sky background. The radiance map
 (which is used to provide ambient light and reflections for PBR materials) is
 automatically updated based on the sky shader.
 
@@ -685,14 +685,14 @@ PanoramaSkyMaterial generate a built-in shader for sky rendering. This is
 similar to what BaseMaterial3D provides for 3D scene materials.
 
 A detailed technical implementation can be found in the
-`Custom sky shaders in Godot 4.0 <https://godotengine.org/article/custom-sky-shaders-godot-4-0>`__
+`Custom sky shaders in redot 4.0 <https://redotengine.org/article/custom-sky-shaders-redot-4-0>`__
 article.
 
 **Sky rendering C++ code:**
 
-- `servers/rendering/renderer_rd/environment/sky.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/environment/sky.cpp>`__ - Sky rendering
-- `scene/resources/sky.cpp <https://github.com/godotengine/godot/blob/4.2/scene/resources/sky.cpp>`__ - Sky resource (not to be confused with sky rendering)
-- `scene/resources/sky_material.cpp <https://github.com/godotengine/godot/blob/4.2/scene/resources/sky_material.cpp>`__ SkyMaterial resources (used in the Sky resource)
+- `servers/rendering/renderer_rd/environment/sky.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/environment/sky.cpp>`__ - Sky rendering
+- `scene/resources/sky.cpp <https://github.com/redotengine/redot/blob/4.2/scene/resources/sky.cpp>`__ - Sky resource (not to be confused with sky rendering)
+- `scene/resources/sky_material.cpp <https://github.com/redotengine/redot/blob/4.2/scene/resources/sky_material.cpp>`__ SkyMaterial resources (used in the Sky resource)
 
 **Sky rendering GLSL shader:**
 
@@ -708,7 +708,7 @@ Volumetric fog
 
     :ref:`doc_fog_shader`
 
-Godot supports a frustum-aligned voxel (froxel) approach to volumetric fog
+redot supports a frustum-aligned voxel (froxel) approach to volumetric fog
 rendering. As opposed to a post-processing filter, this approach is more
 general-purpose as it can work with any light type. Fog can also use shaders for
 custom behavior, which allows animating the fog or using a 3D texture to
@@ -718,19 +718,19 @@ The FogMaterial resource generates a built-in shader for FogVolume nodes. This i
 similar to what BaseMaterial3D provides for 3D scene materials.
 
 A detailed technical explanation can be found in the
-`Fog Volumes arrive in Godot 4.0 <https://godotengine.org/article/fog-volumes-arrive-in-godot-4>`__
+`Fog Volumes arrive in redot 4.0 <https://redotengine.org/article/fog-volumes-arrive-in-redot-4>`__
 article.
 
 **Volumetric fog C++ code:**
 
-- `servers/rendering/renderer_rd/environment/fog.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/environment/fog.cpp>`__ - General volumetric fog
-- `scene/3d/fog_volume.cpp <https://github.com/godotengine/godot/blob/4.2/scene/3d/fog_volume.cpp>`__ - FogVolume node
-- `scene/resources/fog_material.cpp <https://github.com/godotengine/godot/blob/4.2/scene/resources/fog_material.cpp>`__ - FogMaterial resource (used by FogVolume)
+- `servers/rendering/renderer_rd/environment/fog.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/environment/fog.cpp>`__ - General volumetric fog
+- `scene/3d/fog_volume.cpp <https://github.com/redotengine/redot/blob/4.2/scene/3d/fog_volume.cpp>`__ - FogVolume node
+- `scene/resources/fog_material.cpp <https://github.com/redotengine/redot/blob/4.2/scene/resources/fog_material.cpp>`__ - FogMaterial resource (used by FogVolume)
 
 **Volumetric fog GLSL shaders:**
 
-- `servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl>`__
-- `servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl>`__
+- `servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl>`__
+- `servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl>`__
 
 Occlusion culling
 ^^^^^^^^^^^^^^^^^
@@ -738,7 +738,7 @@ Occlusion culling
 While modern GPUs can handle drawing a lot of triangles, the number of draw
 calls in complex scenes can still be a bottleneck (even with Vulkan and Direct3D 12).
 
-Godot 4 supports occlusion culling to reduce overdraw (when the depth prepass
+redot 4 supports occlusion culling to reduce overdraw (when the depth prepass
 is disabled) and reduce vertex throughput.
 This is done by rasterizing a low-resolution buffer on the CPU using
 `Embree <https://github.com/embree/embree>`__. The buffer's resolution depends
@@ -749,7 +749,7 @@ run-time.
 As complex occluders can introduce a lot of strain on the CPU, baked occluders
 can be simplified automatically when generated in the editor.
 
-Godot's occlusion culling doesn't support dynamic occluders yet, but
+redot's occlusion culling doesn't support dynamic occluders yet, but
 OccluderInstance3D nodes can still have their visibility toggled or be moved.
 However, this will be slow when updating complex occluders this way. Therefore,
 updating occluders at run-time is best done only on simple occluder shapes such
@@ -771,13 +771,13 @@ RendererSceneOcclusionCull.
 
 **Occlusion culling C++ code:**
 
-- `scene/3d/occluder_instance_3d.cpp <https://github.com/godotengine/godot/blob/4.2/scene/3d/occluder_instance_3d.cpp>`__
-- `servers/rendering/renderer_scene_occlusion_cull.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_scene_occlusion_cull.cpp>`__
+- `scene/3d/occluder_instance_3d.cpp <https://github.com/redotengine/redot/blob/4.2/scene/3d/occluder_instance_3d.cpp>`__
+- `servers/rendering/renderer_scene_occlusion_cull.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_scene_occlusion_cull.cpp>`__
 
 Visibility range (LOD)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Godot supports manually authored hierarchical level of detail (HLOD), with
+redot supports manually authored hierarchical level of detail (HLOD), with
 distances specified by the user in the inspector.
 
 In RenderingSceneCull, the ``_scene_cull()`` and ``_render_scene()`` functions
@@ -786,7 +786,7 @@ same mesh with different LODs (to allow for split screen rendering to look corre
 
 **Visibility range C++ code:**
 
-- `servers/rendering/renderer_scene_cull.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_scene_cull.cpp>`__
+- `servers/rendering/renderer_scene_cull.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_scene_cull.cpp>`__
 
 Automatic mesh LOD
 ^^^^^^^^^^^^^^^^^^
@@ -813,8 +813,8 @@ their own mesh LOD thresholds (which can be different from the main scene render
 
 **Mesh LOD generation on import C++ code:**
 
-- `scene/resources/importer_mesh.cpp <https://github.com/godotengine/godot/blob/4.2/scene/resources/importer_mesh.cpp>`__
+- `scene/resources/importer_mesh.cpp <https://github.com/redotengine/redot/blob/4.2/scene/resources/importer_mesh.cpp>`__
 
 **Mesh LOD determination C++ code:**
 
-- `servers/rendering/renderer_scene_cull.cpp <https://github.com/godotengine/godot/blob/4.2/servers/rendering/renderer_scene_cull.cpp>`__
+- `servers/rendering/renderer_scene_cull.cpp <https://github.com/redotengine/redot/blob/4.2/servers/rendering/renderer_scene_cull.cpp>`__

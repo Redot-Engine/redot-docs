@@ -74,7 +74,7 @@ efficient for millions of objects, but for a few thousands, GDScript should be f
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MyMultiMeshInstance3D : MultiMeshInstance3D
     {

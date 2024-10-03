@@ -5,12 +5,12 @@ Model export considerations
 
 Before exporting a 3D model from a 3D modeling application, such as Blender,
 there are some considerations that should be taken into account to ensure that
-the model follows the conventions and best practices for Godot.
+the model follows the conventions and best practices for redot.
 
 3D asset direction conventions
 ------------------------------
 
-Godot uses a right-handed, Y-is-up coordinate system, with the -Z axis as
+redot uses a right-handed, Y-is-up coordinate system, with the -Z axis as
 the camera's forward direction. This is the same as OpenGL. This implies
 that +Z is back, +X is right, and -X is left for a camera.
 
@@ -23,14 +23,14 @@ the +Z axis is the direction of the front, so -Z is the rear,
 +X is the left side, and -X is the right side for a 3D asset.
 In Blender, this means that +Y is rear and -Y is front for an asset.
 
-When rotating an oriented 3D asset in Godot, use the ``use_model_front``
+When rotating an oriented 3D asset in redot, use the ``use_model_front``
 option on the ``look_at`` functions, and use the ``Vector3.MODEL_*``
 constants to perform calculations in the oriented asset's local space.
 
 For assets without an intrinsic front side or forward direction, such as
 a game map or terrain, take note of the cardinal directions instead.
-The convention in Godot and the vast majority of other applications is
-that +X is east and -X is west. Due to Godot's right-handed Y-is-up
+The convention in redot and the vast majority of other applications is
+that +X is east and -X is west. Due to redot's right-handed Y-is-up
 coordinate system, this implies that +Z is south and -Z is north.
 In Blender, this means that +Y is north and -Y is south.
 
@@ -38,25 +38,25 @@ Exporting textures separately
 -----------------------------
 
 While textures can be exported with a model in certain file formats, such as glTF 2.0, you can also export them
-separately. Godot uses PBR (physically based rendering) for its materials, so if a texturing program can export PBR
-textures, they can work in Godot. This includes the `Substance suite <https://www.adobe.com/creativecloud/3d-ar.html>`__,
+separately. redot uses PBR (physically based rendering) for its materials, so if a texturing program can export PBR
+textures, they can work in redot. This includes the `Substance suite <https://www.adobe.com/creativecloud/3d-ar.html>`__,
 `ArmorPaint (open source) <https://armorpaint.org/>`__, and `Material Maker (open source) <https://github.com/RodZill4/material-maker>`__.
 
 .. seealso::
 
-    For more information on Godot's materials, see :ref:`doc_standard_material_3d`.
+    For more information on redot's materials, see :ref:`doc_standard_material_3d`.
 
 Exporting considerations
 ------------------------
 
 Since GPUs can only render triangles, meshes that contain quads or N-gons have
-to be *triangulated* before they can be rendered. Godot can triangulate meshes
+to be *triangulated* before they can be rendered. redot can triangulate meshes
 on import, but results may be unpredictable or incorrect, especially with
 N-gons. Regardless of the target application, triangulating *before* exporting
 the scene will lead to more consistent results and should be done whenever
 possible.
 
-To avoid issues with incorrect triangulation after importing in Godot, it is
+To avoid issues with incorrect triangulation after importing in redot, it is
 recommended to make the 3D modeling software triangulate objects on its own. In
 Blender, this can be done by adding a Triangulate modifier to your objects and
 making sure **Apply Modifiers** is checked in the export dialog. Alternatively,
@@ -77,7 +77,7 @@ Lighting considerations
 
 While it's possible to import lights from a 3D scene using the glTF, ``.blend``
 or Collada formats, it's generally advised to design the scene's lighting in the
-Godot editor after importing the scene.
+redot editor after importing the scene.
 
 This allows you to get a more accurate feel for the final result, as different
 engines will render lights in a different manner. This also avoids any issues

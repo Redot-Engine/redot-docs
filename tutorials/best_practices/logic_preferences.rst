@@ -83,7 +83,7 @@ either? Let's see an example:
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     // C# and other languages have no concept of "preloading".
     public partial class MyBuildings : Node

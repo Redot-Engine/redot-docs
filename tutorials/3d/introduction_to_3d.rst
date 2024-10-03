@@ -6,17 +6,17 @@ Introduction to 3D
 Creating a 3D game can be challenging. That extra Z coordinate makes
 many of the common techniques that helped to make 2D games simpler no
 longer work. To aid in this transition, it is worth mentioning that
-Godot uses similar APIs for 2D and 3D. Most nodes are the same and
+redot uses similar APIs for 2D and 3D. Most nodes are the same and
 are present in both 2D and 3D versions. In fact, it is worth checking
 the 3D platformer tutorial, or the 3D kinematic character tutorials,
 which are almost identical to their 2D counterparts.
 
-.. figure:: img/godot-tps-demo.webp
+.. figure:: img/redot-tps-demo.webp
    :align: center
-   :alt: An example 3D game demo created using Godot
+   :alt: An example 3D game demo created using redot
 
-   Godot Third Person Shooter (TPS) Demo, available on the 
-   `Github repository <https://github.com/godotengine/tps-demo>`__ or the 
+   redot Third Person Shooter (TPS) Demo, available on the 
+   `Github repository <https://github.com/redotengine/tps-demo>`__ or the 
    :ref:`Asset Library <doc_project_manager_downloading_demos>`.
 
 In 3D, math is a little more complex than in 2D, so also checking the
@@ -144,19 +144,19 @@ nodes within the viewport.
 Coordinate system
 -----------------
 
-Godot uses the `metric <https://en.wikipedia.org/wiki/Metric_system>`__
+redot uses the `metric <https://en.wikipedia.org/wiki/Metric_system>`__
 system for everything in 3D, with 1 unit being equal to 1 meter.
 Physics and other areas are tuned for this scale. Therefore, attempting to use a
 different scale is usually a bad idea (unless you know what you are doing).
 
 When working with 3D assets, it's always best to work in the correct scale (set
-the unit to metric in your 3D modeling software). Godot allows scaling
+the unit to metric in your 3D modeling software). redot allows scaling
 post-import and, while this works in most cases, in rare situations it may
 introduce floating-point precision issues (and thus, glitches or artifacts) in
 delicate areas such as rendering or physics. Make sure your artists always work
 in the right scale!
 
-The Y coordinate is used for "up". As for the horizontal X/Z axes, Godot uses a
+The Y coordinate is used for "up". As for the horizontal X/Z axes, redot uses a
 **right-handed** coordinate system. This means that for most objects that need
 alignment (such as lights or cameras), the Z axis is used as a "pointing
 towards" direction. This convention roughly means that:
@@ -207,7 +207,7 @@ Navigating the 3D environment
 
 In 3D environments, it is often important to adjust the viewpoint or angle
 from which you are viewing the scene.
-In Godot, navigating the 3D environment in the viewport (or spatial editor)
+In redot, navigating the 3D environment in the viewport (or spatial editor)
 can be done in multiple ways.
 
 The default 3D scene navigation controls are similar to Blender (aiming to
@@ -254,7 +254,7 @@ Use :kbd:`Keypad 5` to toggle between perspective and orthogonal view.
 Using Blender-style transform shortcuts
 ---------------------------------------
 
-Since Godot 4.2, you can enable Blender-style shortcuts for translating,
+Since redot 4.2, you can enable Blender-style shortcuts for translating,
 rotating and scaling nodes. In Blender, these shortcuts are:
 
 - :kbd:`G` for translating
@@ -268,11 +268,11 @@ axis by specifying the axis as a letter, then the distance (if entering a
 value with the keyboard).
 
 For instance, to move the selection upwards by 2.5 units, enter the
-following sequence in order (Y+ is upwards in Godot):
+following sequence in order (Y+ is upwards in redot):
 
 :kbd:`G`-:kbd:`Y`-:kbd:`2`-:kbd:`.`-:kbd:`5`-:kbd:`Enter`
 
-To use Blender-style transform shortcuts in Godot, go to the Editor Settings'
+To use Blender-style transform shortcuts in redot, go to the Editor Settings'
 **Shortcuts** tab, then in the Spatial Editor section:
 
 - Bind **Begin Translate Transformation** to :kbd:`G`.
@@ -309,16 +309,16 @@ scale.
 Unlike 2D, where loading image content and drawing is straightforward, 3D is a
 little more difficult. The content needs to be created with special 3D tools
 (also called Digital Content Creation tools, or DCCs) and exported to an
-exchange file format to be imported in Godot. This is required since 3D formats
+exchange file format to be imported in redot. This is required since 3D formats
 are not as standardized as images.
 
 Manually authored models (using 3D modeling software)
 -----------------------------------------------------
 
-.. FIXME: Needs update to properly description Godot 3.x workflow
+.. FIXME: Needs update to properly description redot 3.x workflow
    (used to reference a non existing doc_importing_3d_meshes importer).
 
-It is possible to import 3D models in Godot created in external tools.
+It is possible to import 3D models in redot created in external tools.
 Depending on the format, you can import entire scenes (exactly as they look in 
 the 3D modeling software), including animation, skeletal rigs, blend shapes, or
 as simple resources.
@@ -339,7 +339,7 @@ In any case, this method is meant for generating static geometry (models
 that will not be updated often), as creating vertex arrays and
 submitting them to the 3D API has a significant performance cost.
 
-.. note:: To learn about prototyping inside Godot or using external tools, see
+.. note:: To learn about prototyping inside redot or using external tools, see
    :ref:`doc_csg_tools`.
 
 
@@ -347,7 +347,7 @@ Immediate geometry
 ------------------
 
 If, instead, you need to generate simple geometry that will be updated often,
-Godot provides a special :ref:`ImmediateMesh <class_ImmediateMesh>` resource
+redot provides a special :ref:`ImmediateMesh <class_ImmediateMesh>` resource
 that can be used in a :ref:`MeshInstance3D <class_MeshInstance3D>` node.
 This provides an OpenGL 1.x-style immediate-mode API to create points, lines,
 triangles, etc.
@@ -355,7 +355,7 @@ triangles, etc.
 2D in 3D
 --------
 
-While Godot packs a powerful 2D engine, many types of games use 2D in a
+While redot packs a powerful 2D engine, many types of games use 2D in a
 3D environment. By using a fixed camera (either orthogonal or
 perspective) that does not rotate, nodes such as
 :ref:`Sprite3D <class_Sprite3D>` and
@@ -371,7 +371,7 @@ Environment
 ~~~~~~~~~~~
 
 Besides editing a scene, it is often common to edit the environment.
-Godot provides a :ref:`WorldEnvironment <class_WorldEnvironment>`
+redot provides a :ref:`WorldEnvironment <class_WorldEnvironment>`
 node that allows changing the background color, mode (as in, put a
 skybox), and applying several types of built-in post-processing effects.
 Environments can also be overridden in the Camera.
@@ -444,4 +444,4 @@ quite dark unless the background environment is very bright.
 
 Most outdoor scenes have a directional light (the sun or moon), while indoor
 scenes typically have several positional lights (lamps, torches, …).
-See :ref:`doc_lights_and_shadows` for more information on setting up lights in Godot.
+See :ref:`doc_lights_and_shadows` for more information on setting up lights in redot.

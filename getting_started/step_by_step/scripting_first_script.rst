@@ -4,7 +4,7 @@
     - Giving a *short* and sweet hands-on intro to GDScript. The page should
       focus on working in the code editor.
     - We assume the reader has programming foundations. If you don't, consider
-      taking the course we recommend in the :ref:`introduction to Godot page <doc_learning_programming>`.
+      taking the course we recommend in the :ref:`introduction to redot page <doc_learning_programming>`.
 
     Techniques:
 
@@ -18,12 +18,12 @@
 Creating your first script
 ==========================
 
-In this lesson, you will code your first script to make the Godot icon turn in
+In this lesson, you will code your first script to make the redot icon turn in
 circles using GDScript. As we mentioned :ref:`in the introduction
 <toc-learn-introduction>`, we assume you have programming foundations.
 The equivalent C# code has been included in another tab for convenience.
 
-.. image:: img/scripting_first_script_rotating_godot.gif
+.. image:: img/scripting_first_script_rotating_redot.gif
 
 .. seealso:: To learn more about GDScript, its keywords, and its syntax, head to
              the :ref:`GDScript reference<doc_gdscript>`.
@@ -34,10 +34,10 @@ Project setup
 -------------
 
 Please :ref:`create a new project <doc_creating_and_importing_projects>` to
-start with a clean slate. Your project should contain one picture: the Godot
+start with a clean slate. Your project should contain one picture: the redot
 icon, which we often use for prototyping in the community.
 
-.. Godot icon
+.. redot icon
 
 We need to create a Sprite2D node to display it in the game. In the Scene dock,
 click the Other Node button.
@@ -54,7 +54,7 @@ Your Scene tab should now only have a Sprite2D node.
 .. image:: img/scripting_first_script_scene_tree.webp
 
 A Sprite2D node needs a texture to display. In the Inspector on the right, you
-can see that the Texture property says "[empty]". To display the Godot icon,
+can see that the Texture property says "[empty]". To display the redot icon,
 click and drag the file ``icon.svg`` from the FileSystem dock onto the Texture
 slot.
 
@@ -100,7 +100,7 @@ the following line of code:
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
     using System;
     
     public partial class MySprite2D : Sprite2D
@@ -115,7 +115,7 @@ node, including classes it extends, like ``Node2D``, ``CanvasItem``, and
 
 .. note:: In GDScript, if you omit the line with the ``extends`` keyword, your
           class will implicitly extend :ref:`RefCounted <class_RefCounted>`, which
-          Godot uses to manage your application's memory.
+          redot uses to manage your application's memory.
 
 Inherited properties include the ones you can see in the Inspector dock, like
 our node's ``texture``.
@@ -193,13 +193,13 @@ but before functions. Every node
 instance with this script attached to it will have its own copy of the ``speed``
 and ``angular_speed`` properties.
 
-.. note:: Angles in Godot work in radians by default,
+.. note:: Angles in redot work in radians by default,
           but you have built-in functions and properties available if you prefer
           to calculate angles in degrees instead.
 
 To move our icon, we need to update its position and rotation every frame in the
 game loop. We can use the ``_process()`` virtual function of the ``Node`` class.
-If you define it in any class that extends the Node class, like Sprite2D, Godot
+If you define it in any class that extends the Node class, like Sprite2D, redot
 will call the function every frame and pass it an argument named ``delta``, the
 time elapsed since the last frame.
 
@@ -237,7 +237,7 @@ definition, and the indented blocks that follow are the function's content or
 instructions.
 
 .. note:: Notice how ``_process()``, like ``_init()``, starts with a leading
-          underscore. By convention, Godot's virtual functions, that is to say,
+          underscore. By convention, redot's virtual functions, that is to say,
           built-in functions you can override to communicate with the engine,
           start with an underscore.
 
@@ -250,9 +250,9 @@ of our node and works with radians.
          function like ``position``, ``rotation``, or ``_process`` to open the
          corresponding documentation in a new tab.
 
-Run the scene to see the Godot icon turn in-place.
+Run the scene to see the redot icon turn in-place.
 
-.. image:: img/scripting_first_script_godot_turning_in_place.gif
+.. image:: img/scripting_first_script_redot_turning_in_place.gif
 
 .. note:: In C#, notice how the ``delta`` argument taken by ``_Process()`` is a
           ``double``. We therefore need to convert it to ``float`` when we apply
@@ -290,12 +290,12 @@ is a vector pointing forward relative to our icon. Multiplied by our ``speed``
 property, it gives us a velocity we can use to move the node forward.
 
 We add ``velocity * delta`` to the node's ``position`` to move it. The position
-itself is of type :ref:`Vector2 <class_Vector2>`, a built-in type in Godot
+itself is of type :ref:`Vector2 <class_Vector2>`, a built-in type in redot
 representing a 2D vector.
 
-Run the scene to see the Godot head run in circles.
+Run the scene to see the redot head run in circles.
 
-.. image:: img/scripting_first_script_rotating_godot.gif
+.. image:: img/scripting_first_script_rotating_redot.gif
 
 .. note:: Moving a node like that does not take into account colliding with
           walls or the floor. In :ref:`doc_your_first_2d_game`, you will learn
@@ -327,7 +327,7 @@ Here is the complete ``sprite_2d.gd`` file for reference.
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
     using System;
     
     public partial class MySprite2D : Sprite2D

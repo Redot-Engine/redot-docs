@@ -69,7 +69,7 @@ We use this to determine where our body center is.
 Processing our character movement is now done in three steps.
 
 .. note::
-  The `Origin centric movement demo <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_origin_centric_movement>`__ contains a more elaborate example of the technique described below.
+  The `Origin centric movement demo <https://github.com/redotengine/redot-demo-projects/tree/master/xr/openxr_origin_centric_movement>`__ contains a more elaborate example of the technique described below.
 
 Step 1
 ------
@@ -220,7 +220,7 @@ We also have our neck helper node.
 Processing our character movement is done in the same three steps but implemented slightly differently.
 
 .. note::
-  The `Character centric movement demo <https://github.com/godotengine/godot-demo-projects/tree/master/xr/openxr_character_centric_movement>`__ contains a more elaborate example of the technique described below.
+  The `Character centric movement demo <https://github.com/redotengine/redot-demo-projects/tree/master/xr/openxr_character_centric_movement>`__ contains a more elaborate example of the technique described below.
 
 Step 1
 ------

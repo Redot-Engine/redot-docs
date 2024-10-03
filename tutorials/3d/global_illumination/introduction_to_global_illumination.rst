@@ -109,7 +109,7 @@ there are several criteria to keep in mind:
   require careful planning and manual work on the user's side. Depending on your
   time budget, some GI techniques may be preferable to others.
 
-Here's a comparison of all the global illumination techniques available in Godot:
+Here's a comparison of all the global illumination techniques available in redot:
 
 Performance
 ^^^^^^^^^^^
@@ -166,7 +166,7 @@ For comparison, here's a 3D scene with no global illumination options used:
 
    A 3D scene without any form of global illumination (only constant environment lighting). The box and sphere near the camera are both dynamic objects.
 
-Here's how Godot's various global illumination techniques compare:
+Here's how redot's various global illumination techniques compare:
 
 - **VoxelGI:** |average| Good reflections and indirect lighting, but beware of leaks.
 
@@ -343,7 +343,7 @@ If you are unsure about which GI technique to use:
 .. seealso::
 
     You can compare global illumination techniques in action using the
-    `Global Illumination demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/global_illumination>`__.
+    `Global Illumination demo project <https://github.com/redotengine/redot-demo-projects/tree/master/3d/global_illumination>`__.
 
 .. _doc_introduction_to_global_illumination_gi_mode_recommendations:
 

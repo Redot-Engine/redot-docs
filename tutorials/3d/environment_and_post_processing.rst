@@ -3,12 +3,12 @@
 Environment and post-processing
 ===============================
 
-Godot 4 provides a redesigned Environment resource, as well as a new
+redot 4 provides a redesigned Environment resource, as well as a new
 post-processing system with many available effects right out of the box.
 
 .. note::
 
-    As of Godot 4, Environment *performance/quality* settings are defined in the
+    As of redot 4, Environment *performance/quality* settings are defined in the
     project settings instead of in the Environment resource. This makes global
     adjustments easier, as you no longer have to tweak Environment resources
     individually to suit various hardware configurations.
@@ -53,8 +53,8 @@ Preview environment and sun (low priority)
 
 .. note::
 
-    Since Godot 4, the preview environment and sun system replace the
-    ``default_env.tres`` file that was used in Godot 3 projects.
+    Since redot 4, the preview environment and sun system replace the
+    ``default_env.tres`` file that was used in redot 3 projects.
 
 If no WorldEnvironment node or DirectionalLight3D node is present in the current
 scene, the editor will display a preview environment and sun instead. This can
@@ -83,7 +83,7 @@ Camera attributes
 
 .. note::
 
-    In Godot 4, exposure and depth of field information was split from the
+    In redot 4, exposure and depth of field information was split from the
     Environment resource into a separate CameraAttributes resource. This allows
     adjusting those properties independently of other Environment settings more
     easily.
@@ -280,7 +280,7 @@ Fog
     at the same time.
 
 Fog, as in real life, makes distant objects fade away into a uniform color.
-There are two kinds of fog in Godot:
+There are two kinds of fog in redot:
 
 - **Depth Fog:** This one is applied based on the distance from the camera.
 - **Height Fog:** This one is applied to any objects below (or above) a certain
@@ -342,7 +342,7 @@ The tone mapping options are:
     bright lighting in a more realistic fashion by desaturating it as it becomes brighter.
     ACES typically has a more contrasted output compared to Reinhardt and Filmic.
     ACES is the recommended option when aiming for photorealistic visuals.
-    This tonemapping mode was called "ACES Fitted" in Godot 3.x.
+    This tonemapping mode was called "ACES Fitted" in redot 3.x.
 
 - **Exposure:** Tone mapping exposure which simulates amount of light received
   over time (default: ``1.0``). Higher values result in an overall brighter appearance.
@@ -374,7 +374,7 @@ Screen-Space Reflections (SSR)
 *This feature is only available when using the Forward+ backend, not
 Mobile or Compatibility.*
 
-While Godot supports several sources of reflection data such as
+While redot supports several sources of reflection data such as
 :ref:`doc_reflection_probes`, they may not provide enough detail for all
 situations. Scenarios where screen-space reflections make the most sense are
 when objects are in contact with each other (object over floor, over a table,
@@ -418,7 +418,7 @@ Mobile or Compatibility.*
 
 As mentioned in the **Ambient** section, areas where light from light nodes
 does not reach (either because it's outside the radius or shadowed) are lit
-with ambient light. Godot can simulate this using VoxelGI, ReflectionProbe,
+with ambient light. redot can simulate this using VoxelGI, ReflectionProbe,
 the Sky, or a constant ambient color. The problem, however, is that all the
 methods proposed previously act more on a larger scale (large regions) than at the
 smaller geometry level.
@@ -564,7 +564,7 @@ Glow
 
 In photography and film, when light amount exceeds the maximum *luminance*
 (brightness) supported by the media, it generally bleeds outwards to darker
-regions of the image. This is simulated in Godot with the **Glow** effect.
+regions of the image. This is simulated in redot with the **Glow** effect.
 
 .. image:: img/environment_glow1.webp
 
@@ -613,7 +613,7 @@ The **Blend Mode** of the effect can also be changed:
   High mix factor values will appear to darken the image unless **Bloom** is
   increased.
 
-To change the glow effect size and shape, Godot provides **Levels**. Smaller
+To change the glow effect size and shape, redot provides **Levels**. Smaller
 levels are strong glows that appear around objects, while large levels are hazy
 glows covering the whole screen:
 
@@ -645,7 +645,7 @@ Using glow in 2D
 
 There are 2 ways to use glow in 2D:
 
-- Since Godot 4.2, you can enable HDR for 2D rendering when using the Forward+
+- Since redot 4.2, you can enable HDR for 2D rendering when using the Forward+
   and Mobile rendering methods. This has a performance cost, but it allows for a
   greater dynamic range. This also allows you to control which objects glow
   using their individual **Modulate** or **Self Modulate** properties (use the
@@ -716,7 +716,7 @@ To use glow as a blurring solution:
 Adjustments
 ^^^^^^^^^^^
 
-At the end of processing, Godot offers the possibility to do some standard
+At the end of processing, redot offers the possibility to do some standard
 image adjustments.
 
 .. image:: img/environment_adjustments.webp
@@ -845,7 +845,7 @@ Auto Exposure
 Mobile or Compatibility.*
 
 Even though, in most cases, lighting and texturing are heavily artist controlled,
-Godot supports a basic high dynamic range implementation with the auto exposure
+redot supports a basic high dynamic range implementation with the auto exposure
 mechanism. This is generally used to add realism when combining interior areas
 with low light and bright outdoor areas. Auto exposure simulates the camera
 (or eye) in an effort to adapt between light and dark locations and their

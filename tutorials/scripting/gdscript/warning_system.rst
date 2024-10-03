@@ -25,7 +25,7 @@ script editor's status bar. The example below has 2 warnings:
 
 To ignore specific warnings in one file, insert an annotation of the
 form ``@warning_ignore("warning-id")``, or click on the ignore link to the
-left of the warning's description. Godot will add an annotation above the
+left of the warning's description. redot will add an annotation above the
 corresponding line and the code won't trigger the corresponding warning
 anymore:
 

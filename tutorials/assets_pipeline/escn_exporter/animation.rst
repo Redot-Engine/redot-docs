@@ -47,7 +47,7 @@ Make sure the ``Export Stashed Actions`` option has been turned on.
 Then all the stashed actions, as well as the active action, are exported
 to an AnimationPlayer.
 
-.. image:: img/in_godot.jpg
+.. image:: img/in_redot.jpg
 
 
 Constraints
@@ -60,8 +60,8 @@ actions and then exported along with the object.
 
 Animation Mode
 ---------------------------
-Godot and Blender have different structure to store animation data.
-In Godot animation data is stored in an AnimationPlayer node, instead
+redot and Blender have different structure to store animation data.
+In redot animation data is stored in an AnimationPlayer node, instead
 of in each animated node. In order to fix this inconsistency and still
 make the animation play versatile, this add-on has three animation exporting
 modes.

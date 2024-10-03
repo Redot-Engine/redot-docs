@@ -8,13 +8,13 @@ Best practices
    :name: toc-best-practices
 
    introduction_best_practices
-   what_are_godot_classes
+   what_are_redot_classes
    scene_organization
    scenes_versus_scripts
    autoloads_versus_internal_nodes
    node_alternatives
-   godot_interfaces
-   godot_notifications
+   redot_interfaces
+   redot_notifications
    data_preferences
    logic_preferences
    project_organization

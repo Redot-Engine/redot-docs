@@ -52,7 +52,7 @@ Here is a custom ``look_at()`` method called ``look_follow()`` that will work wi
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyRigidBody3D : RigidBody3D
     {

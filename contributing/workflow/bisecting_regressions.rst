@@ -6,7 +6,7 @@ Bisecting regressions
 .. highlight:: shell
 
 Bisecting is a way to find regressions in software. After reporting a bug on the
-`Godot repository on GitHub <https://github.com/godotengine/godot>`__, you may
+`redot repository on GitHub <https://github.com/redotengine/redot>`__, you may
 be asked by a contributor to *bisect* the issue. Bisecting makes it possible for
 contributors to fix bugs faster, as they can know in advance which commit caused
 the regression. Your effort will be widely appreciated :)
@@ -16,7 +16,7 @@ The guide below explains how to find a regression by bisecting.
 What is bisecting?
 ------------------
 
-Godot developers use the `Git <https://git-scm.com/>`__ version control system.
+redot developers use the `Git <https://git-scm.com/>`__ version control system.
 In the context of Git, bisecting is the process of performing a manual
 `binary search <https://en.wikipedia.org/wiki/Binary_search_algorithm>`__
 to determine when a regression appeared. While it's typically used for bugs,
@@ -30,10 +30,10 @@ Before using Git's ``bisect`` command, we strongly recommend trying to reproduce
 the bug with an older (or newer) official release. This greatly reduces the
 range of commits that potentially need to be built from source and tested.
 You can find binaries of official releases, as well as alphas, betas,
-and release candidates `here <https://downloads.tuxfamily.org/godotengine/>`__.
+and release candidates `here <https://downloads.tuxfamily.org/redotengine/>`__.
 
-If you have experience with Godot 3.x and can reproduce an issue with Godot 4.0,
-we recommend trying to reproduce the issue in the latest Godot 3.x version (if
+If you have experience with redot 3.x and can reproduce an issue with redot 4.0,
+we recommend trying to reproduce the issue in the latest redot 3.x version (if
 the feature exhibiting the bug is present in 3.x). This can be used to check
 whether the issue is a regression in 4.0 or not.
 
@@ -44,7 +44,7 @@ whether the issue is a regression in 4.0 or not.
 
 .. warning::
 
-    Project files may be incompatible between Godot versions.
+    Project files may be incompatible between redot versions.
     **Make a backup of your project** before starting the bisection process.
 
     Going from the oldest to the newest build generally reduces the risk of the
@@ -66,11 +66,11 @@ reproduce the bug.
 .. note::
 
     Before bisecting a regression, you need to set up a build environment to
-    compile Godot from source. To do so, read the
+    compile redot from source. To do so, read the
     :ref:`Compiling <toc-devel-compiling>` page for your target platform.
-    (Compiling Godot from source doesn't require C++ programming knowledge.)
+    (Compiling redot from source doesn't require C++ programming knowledge.)
 
-    Note that compiling Godot can take a while on slow hardware (up an hour for
+    Note that compiling redot can take a while on slow hardware (up an hour for
     each full rebuild on a slow dual-core CPU). This means the full process can
     take up to several hours. If your hardware is too slow, you may want to stop
     there and report the results of your "pre-bisecting" on the GitHub issue so
@@ -83,7 +83,7 @@ To start bisecting, you must first determine the commit hashes (identifiers) of
 the "bad" and "good" build. "bad" refers to the build that exhibits the bug,
 whereas "good" refers to the version that doesn't exhibit the bug. If you're
 using a pre-release build as the "good" or "bad" build, browse the `download
-mirror <https://downloads.tuxfamily.org/godotengine/>`__, go to the folder that
+mirror <https://downloads.tuxfamily.org/redotengine/>`__, go to the folder that
 contains the pre-release you downloaded and look for the ``README.txt`` file.
 The commit hash is written inside that file.
 
@@ -122,7 +122,7 @@ pre-release build (add it to your ``$HOME/.bashrc`` or similar):
 ::
 
     gd_snapshot_commit() {
-        curl -s https://downloads.tuxfamily.org/godotengine/$1/$2/README.txt \
+        curl -s https://downloads.tuxfamily.org/redotengine/$1/$2/README.txt \
             | grep 'from commit' \
             | sed 's/^Built from commit \(.*\)\.$/\1/'
     }
@@ -140,8 +140,8 @@ hashes, ``master`` is a perpetually moving target.
 Build the engine
 ^^^^^^^^^^^^^^^^
 
-:ref:`Get Godot's source code using Git <doc_getting_source>`. Once this
-is done, in the terminal window, use ``cd`` to reach the Godot repository
+:ref:`Get redot's source code using Git <doc_getting_source>`. Once this
+is done, in the terminal window, use ``cd`` to reach the redot repository
 folder and enter the following command:
 
 .. code-block:: shell
@@ -152,7 +152,7 @@ folder and enter the following command:
     git bisect good <good commit hash>
     git bisect bad <bad commit hash>
 
-Compile Godot. This assumes you've set up a build environment:
+Compile redot. This assumes you've set up a build environment:
 
 .. code-block:: shell
 
@@ -167,7 +167,7 @@ Run the binary located in the ``bin/`` folder and try to reproduce the bug.
 
     :ref:`Double-check the output file name <doc_introduction_to_the_buildsystem_resulting_binary>`
     in ``bin/`` to make sure you're actually running the binary you've just compiled.
-    Different Godot versions will output binaries with different names.
+    Different redot versions will output binaries with different names.
 
 If the build **still** exhibits the bug, run the following command:
 
@@ -182,7 +182,7 @@ If the build **does not** exhibit the bug, run the following command:
     git bisect good
 
 After entering one of the commands above, Git will switch to a different commit.
-You should now build Godot again, try to reproduce the bug, then enter ``git
+You should now build redot again, try to reproduce the bug, then enter ``git
 bisect good`` or ``git bisect bad`` depending on the result. You'll have to
 repeat this several times. The longer the commit range, the more steps will be
 required. 5 to 10 steps are usually sufficient to find most regressions; Git
@@ -191,7 +191,7 @@ will remind you of the number of steps remaining (in the worst case scenario).
 Once you've completed enough steps, Git will display the commit hash where the
 regression appeared. Write this commit hash as a comment to the GitHub issue
 you've bisected. This will help in solving the issue. Thanks again for
-contributing to Godot :)
+contributing to redot :)
 
 .. note::
 

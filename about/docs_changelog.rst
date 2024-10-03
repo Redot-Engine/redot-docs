@@ -29,7 +29,7 @@ Development
 Migrating
 ^^^^^^^^^
 
-- :ref:`doc_upgrading_to_godot_4.2`
+- :ref:`doc_upgrading_to_redot_4.2`
 
 I/O
 ^^^
@@ -53,7 +53,7 @@ Development
 Migrating
 ^^^^^^^^^
 
-- :ref:`doc_upgrading_to_godot_4.1`
+- :ref:`doc_upgrading_to_redot_4.1`
 
 Physics
 ^^^^^^^
@@ -101,7 +101,7 @@ Development
 Migrating
 ^^^^^^^^^
 
-- :ref:`doc_upgrading_to_godot_4`
+- :ref:`doc_upgrading_to_redot_4`
 
 Physics
 ^^^^^^^
@@ -362,13 +362,13 @@ Project workflow
 Best Practices:
 
 - :ref:`doc_introduction_best_practices`
-- :ref:`doc_what_are_godot_classes`
+- :ref:`doc_what_are_redot_classes`
 - :ref:`doc_scene_organization`
 - :ref:`doc_scenes_versus_scripts`
 - :ref:`doc_autoloads_versus_internal_nodes`
 - :ref:`doc_node_alternatives`
-- :ref:`doc_godot_interfaces`
-- :ref:`doc_godot_notifications`
+- :ref:`doc_redot_interfaces`
+- :ref:`doc_redot_notifications`
 - :ref:`doc_data_preferences`
 - :ref:`doc_logic_preferences`
 
@@ -411,7 +411,7 @@ Viewports
 Shading
 ^^^^^^^
 
-- :ref:`doc_converting_glsl_to_godot_shaders`
+- :ref:`doc_converting_glsl_to_redot_shaders`
 - :ref:`doc_advanced_postprocessing`
 
 Shading Reference:

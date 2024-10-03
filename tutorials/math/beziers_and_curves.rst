@@ -186,7 +186,7 @@ this might look familiar:
 .. image:: img/bezier_cubic_handles.png
 
 This is how graphics software presents Bezier curves to the users, and how they
-work and look in Godot.
+work and look in redot.
 
 Curve2D, Curve3D, Path and Path2D
 ---------------------------------

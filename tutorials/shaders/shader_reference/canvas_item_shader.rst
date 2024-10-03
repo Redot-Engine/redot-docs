@@ -3,7 +3,7 @@
 CanvasItem shaders
 ==================
 
-CanvasItem shaders are used to draw all 2D elements in Godot. These include
+CanvasItem shaders are used to draw all 2D elements in redot. These include
 all nodes that inherit from CanvasItems, and all GUI elements.
 
 CanvasItem shaders contain fewer built-in variables and functionality than 
@@ -146,7 +146,7 @@ Fragment built-ins
 
 Certain Nodes (for example, :ref:`Sprite2Ds <class_Sprite2D>`) display a texture
 by default. However, when a custom ``fragment()`` function is attached to these nodes,
-the texture lookup needs to be done manually. Godot provides the texture color
+the texture lookup needs to be done manually. redot provides the texture color
 in the ``COLOR`` built-in variable multiplied by the node's color. To read the
 texture color by itself, you can use:
 
@@ -154,10 +154,10 @@ texture color by itself, you can use:
 
   COLOR = texture(TEXTURE, UV);
 
-Similarly, if a normal map is used in the :ref:`CanvasTexture <class_CanvasTexture>`, Godot uses
+Similarly, if a normal map is used in the :ref:`CanvasTexture <class_CanvasTexture>`, redot uses
 it by default and assigns its value to the built-in ``NORMAL`` variable. If you are using a normal
 map meant for use in 3D, it will appear inverted. In order to use it in your shader, you must assign
-it to the ``NORMAL_MAP`` property. Godot will handle converting it for use in 2D and overwriting ``NORMAL``.
+it to the ``NORMAL_MAP`` property. redot will handle converting it for use in 2D and overwriting ``NORMAL``.
 
 .. code-block:: glsl
 
@@ -190,7 +190,7 @@ it to the ``NORMAL_MAP`` property. Godot will handle converting it for use in 2D
 +---------------------------------------------+---------------------------------------------------------------+
 | in vec2 **SCREEN_UV**                       | Screen UV coordinate for current pixel.                       |
 +---------------------------------------------+---------------------------------------------------------------+
-| sampler2D **SCREEN_TEXTURE**                | Removed in Godot 4. Use a ``sampler2D`` with                  |
+| sampler2D **SCREEN_TEXTURE**                | Removed in redot 4. Use a ``sampler2D`` with                  |
 |                                             | ``hint_screen_texture`` instead.                              |
 +---------------------------------------------+---------------------------------------------------------------+
 | inout vec3 **NORMAL**                       | Normal read from ``NORMAL_TEXTURE``. Writable.                |
@@ -216,9 +216,9 @@ it to the ``NORMAL_MAP`` property. Godot will handle converting it for use in 2D
 Light built-ins
 ^^^^^^^^^^^^^^^
 
-Light processor functions work differently in Godot 4.x than they did in Godot
-3.x. In Godot 4.x all lighting is done during the regular draw pass. In other
-words, Godot no longer draws the object again for each light.
+Light processor functions work differently in redot 4.x than they did in redot
+3.x. In redot 4.x all lighting is done during the regular draw pass. In other
+words, redot no longer draws the object again for each light.
 
 Use the ``unshaded`` render mode if you do not want the ``light()`` function to
 run. Use the ``light_only`` render mode if you only want to see the impact of

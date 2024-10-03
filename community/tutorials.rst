@@ -3,16 +3,16 @@
 Tutorials and resources
 =======================
 
-This is a list of third-party tutorials and resources created by the Godot community. For resources, remember that there is the official `Godot Asset Library <https://godotengine.org/asset-library/asset>`_ full of official and community resources too! Also, have a look at this `huge list over at Reddit <https://www.reddit.com/r/godot/comments/an0iq5/godot_tutorials_list_of_video_and_written/>`_.
+This is a list of third-party tutorials and resources created by the redot community. For resources, remember that there is the official `redot Asset Library <https://redotengine.org/asset-library/asset>`_ full of official and community resources too! Also, have a look at this `huge list over at Reddit <https://www.reddit.com/r/redot/comments/an0iq5/redot_tutorials_list_of_video_and_written/>`_.
 
-Think there is something missing here? Feel free to submit a `Pull Request <https://github.com/godotengine/godot-docs/blob/master/community/tutorials.rst>`_ as always.
+Think there is something missing here? Feel free to submit a `Pull Request <https://github.com/redotengine/redot-docs/blob/master/community/tutorials.rst>`_ as always.
 
 Where to start
 --------------
 
-The Godot video tutorials by `GDQuest <https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ/playlists>`_ are well-regarded in the community and often recommended as a gentle introduction to beginners.
+The redot video tutorials by `GDQuest <https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ/playlists>`_ are well-regarded in the community and often recommended as a gentle introduction to beginners.
 
-GDQuest's *Learn GDScript From Zero* is a free and open source interactive tutorial for absolute beginners to learn to program with Godot's GDScript language. It is available as a `desktop application <https://gdquest.itch.io/learn-godot-gdscript>`_  or `in the browser <https://gdquest.github.io/learn-gdscript>`_.
+GDQuest's *Learn GDScript From Zero* is a free and open source interactive tutorial for absolute beginners to learn to program with redot's GDScript language. It is available as a `desktop application <https://gdquest.itch.io/learn-redot-gdscript>`_  or `in the browser <https://gdquest.github.io/learn-gdscript>`_.
 
 Some tutorials mentioned below provide more advanced tutorials, e.g. on 3D or shaders.
 
@@ -29,7 +29,7 @@ Video tutorials
 - `Game Development Center <https://www.youtube.com/c/GameDevelopmentCenter>`_ (2D, networked multiplayer, GDScript)
 - `Game Endeavor <https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg/videos>`_ (2D, GDScript)
 - `Gwizz <https://www.youtube.com/@Gwizz1027>`_ (2D, GDScript)
-- `Godotneers <https://www.youtube.com/@godotneers>`_ (2D, Shaders, GDScript)
+- `redotneers <https://www.youtube.com/@redotneers>`_ (2D, Shaders, GDScript)
 - `HeartBeast <https://www.youtube.com/@uheartbeast>`_ (2D, GDScript)
 - `Malcolm Nixon <https://youtube.com/@MalcolmAnixon>`_ (AR and VR, GDScript)
 - `Muddy Wolf <https://www.youtube.com/@MuddyWolf>`_ (2D, 3D and VR, GDSCript)
@@ -45,8 +45,8 @@ Text tutorials
 
 - `FinePointCGI website by Mitch <https://finepointcgi.io/>`__
 - `GDScript website by Andrew Wilkes <https://gdscript.com>`__
-- `Godot Recipes by KidsCanCode <https://kidscancode.org/godot_recipes/4.x/>`__
-- `Godot Tutorials by SomethingLikeGames <https://www.somethinglikegames.de/en/tags/godot-engine/>`__
+- `redot Recipes by KidsCanCode <https://kidscancode.org/redot_recipes/4.x/>`__
+- `redot Tutorials by SomethingLikeGames <https://www.somethinglikegames.de/en/tags/redot-engine/>`__
 - `Game Dev Artisan website <https://gamedevartisan.com/>`__
 - `Night Quest Games Blog <https://www.nightquestgames.com/blog-articles/>`__
 
@@ -59,6 +59,6 @@ Devlogs
 Resources
 ---------
 
-- `awesome-godot: A curated list of free/libre plugins, scripts and add-ons <https://github.com/godotengine/awesome-godot>`_
-- `Godot Asset Library <https://godotengine.org/asset-library/asset>`_
-- `Godot Shaders: A community-driven shader library <https://godotshaders.com/>`_
+- `awesome-redot: A curated list of free/libre plugins, scripts and add-ons <https://github.com/redotengine/awesome-redot>`_
+- `redot Asset Library <https://redotengine.org/asset-library/asset>`_
+- `redot Shaders: A community-driven shader library <https://redotshaders.com/>`_

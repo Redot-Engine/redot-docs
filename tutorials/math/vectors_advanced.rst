@@ -70,7 +70,7 @@ by N and D. For example:
 
 .. image:: img/tutovec12.png
 
-For 3D math, Godot provides a :ref:`Plane <class_Plane>`
+For 3D math, redot provides a :ref:`Plane <class_Plane>`
 built-in type that handles this.
 
 Basically, N and D can represent any plane in space, be it for 2D or 3D
@@ -130,7 +130,7 @@ inverted negative and positive half spaces:
     N = -N;
     D = -D;
 
-Godot also implements this operator in :ref:`Plane <class_Plane>`.
+redot also implements this operator in :ref:`Plane <class_Plane>`.
 So, using the format below will work as expected:
 
 .. tabs::
@@ -373,7 +373,7 @@ Collision detection in 3D
 
 This is another bonus bit, a reward for being patient and keeping up
 with this long tutorial. Here is another piece of wisdom. This might
-not be something with a direct use case (Godot already does collision
+not be something with a direct use case (redot already does collision
 detection pretty well) but it's used by almost all physics engines and collision
 detection libraries :)
 
@@ -585,7 +585,7 @@ So the final algorithm is something like:
 More information
 ~~~~~~~~~~~~~~~~
 
-For more information on using vector math in Godot, see the following article:
+For more information on using vector math in redot, see the following article:
 
 - :ref:`doc_matrices_and_transforms`
 

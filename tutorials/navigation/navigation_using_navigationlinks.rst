@@ -90,7 +90,7 @@ The following script uses the NavigationServer to create a new navigation link.
 
  .. code-tab:: csharp 2D C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -157,7 +157,7 @@ The following script uses the NavigationServer to create a new navigation link.
 
  .. code-tab:: csharp 3D C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode3D : Node3D
     {

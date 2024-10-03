@@ -14,13 +14,13 @@ problems. As a result, not even the most modern hardware supports this
 properly.
 
 The workaround is to make a copy of the screen, or a part of the screen,
-to a back-buffer and then read from it while drawing. Godot provides a
+to a back-buffer and then read from it while drawing. redot provides a
 few tools that make this process easy.
 
 Screen texture
 ~~~~~~~~~~~~~~
 
-Godot :ref:`doc_shading_language` has a special texture to access the already
+redot :ref:`doc_shading_language` has a special texture to access the already
 rendered contents of the screen. It is used by specifying a hint when declaring
 a ``sampler2D`` uniform: ``hint_screen_texture``. A special built-in varying
 ``SCREEN_UV`` can be used to obtain the UV relative to the screen for the current
@@ -41,7 +41,7 @@ object, because it only shows what lies behind:
 you want to read from a blurred version of the texture instead, you can increase
 the third argument to ``textureLod`` and change the hint ``filter_nearest`` to
 ``filter_nearest_mipmap`` (or any other filter with mipmaps enabled). If using a
-filter with mipmaps, Godot will automatically calculate the blurred texture for
+filter with mipmaps, redot will automatically calculate the blurred texture for
 you.
 
 .. warning::
@@ -82,7 +82,7 @@ Behind the scenes
 ~~~~~~~~~~~~~~~~~
 
 While this seems magical, it's not. In 2D, when ``hint_screen_texture`` is first
-found in a node that is about to be drawn, Godot does a full-screen copy to a
+found in a node that is about to be drawn, redot does a full-screen copy to a
 back-buffer. Subsequent nodes that use it in shaders will not have the screen
 copied for them, because this ends up being inefficient. In 3D, the screen is
 copied after the opaque geometry pass, but before the transparent geometry pass,
@@ -128,7 +128,7 @@ Back-buffer logic
 ~~~~~~~~~~~~~~~~~
 
 So, to make it clearer, here's how the backbuffer copying logic works in 2D in
-Godot:
+redot:
 
 -  If a node uses ``hint_screen_texture``, the entire screen is copied to the
    back buffer before drawing that node. This only happens the first

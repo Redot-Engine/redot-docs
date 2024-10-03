@@ -182,7 +182,7 @@ Starting with ``main.gd``.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Main : Node
     {
@@ -257,7 +257,7 @@ Next is ``mob.gd``.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Mob : CharacterBody3D
     {
@@ -398,7 +398,7 @@ Finally, the longest script, ``player.gd``:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Player : CharacterBody3D
     {

@@ -9,7 +9,7 @@ Introduction
 ------------
 
 In 3D, meshes are used to display the world. In 2D, they are rare as images are used more often.
-Godot's 2D engine is a pure two-dimensional engine, so it can't really display 3D meshes directly (although it can be done
+redot's 2D engine is a pure two-dimensional engine, so it can't really display 3D meshes directly (although it can be done
 via ``Viewport`` and ``ViewportTexture``).
 
 .. seealso:: If you are interested in displaying 3D meshes on a 2D viewport, see the :ref:`doc_viewport_as_texture` tutorial.
@@ -22,7 +22,7 @@ Currently, the only way to generate a 2D mesh within the editor is by either imp
 Optimizing pixels drawn
 -----------------------
 
-This workflow is useful for optimizing 2D drawing in some situations. When drawing large images with transparency, Godot will draw the whole quad to the screen. The large transparent areas will still be drawn.
+This workflow is useful for optimizing 2D drawing in some situations. When drawing large images with transparency, redot will draw the whole quad to the screen. The large transparent areas will still be drawn.
 
 This can affect performance, especially on mobile devices, when drawing very large images (generally screen sized),
 or layering multiple images on top of each other with large transparent areas (for example, when using ``ParallaxBackground``).

@@ -3,7 +3,7 @@
 Customizing the interface
 =========================
 
-Godot's interface lives in a single window by default. Since Godot 4.0, you can
+redot's interface lives in a single window by default. Since redot 4.0, you can
 split several elements to separate windows to better make use of multi-monitor
 setups.
 
@@ -52,7 +52,7 @@ Splitting the script or shader editor to its own window
     This feature is also not available if **Single Window Mode** is enabled in
     the Editor Settings.
 
-Since Godot 4.1, you can split the script or shader editor to its own window.
+Since redot 4.1, you can split the script or shader editor to its own window.
 
 To split the script editor to its own window, click the corresponding button in
 the top-right corner of the script editor:
@@ -85,7 +85,7 @@ you're working on. For instance, when working on animating a character, it may
 be more convenient to have docks laid out in a different fashion compared to
 when you're designing a level.
 
-For this purpose, Godot provides a way to save and restore editor layouts.
+For this purpose, redot provides a way to save and restore editor layouts.
 Before saving a layout, make changes to the docks you'd like to save. The
 following changes are persisted to the saved layout:
 
@@ -109,7 +109,7 @@ an existing layout using the list.
 After making changes, open the **Editor** menu at the top of the editor then
 choose **Editor Layouts**. In the dropdown list, you will see a list of saved
 editor layouts, plus **Default** which is a hardcoded editor layout that can't
-be removed. The default layout matches a fresh Godot installation with no
+be removed. The default layout matches a fresh redot installation with no
 changes made to the docks' position and size, and no floating docks.
 
 You can remove a layout using the **Delete** option in the **Editor Layouts**

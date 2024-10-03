@@ -15,7 +15,7 @@ To bind to an external library, set up a module directory similar to the Summato
 
 .. code-block:: none
 
-    godot/modules/tts/
+    redot/modules/tts/
 
 Next, you will create a header file with a TTS class:
 
@@ -23,8 +23,8 @@ Next, you will create a header file with a TTS class:
 
     /* tts.h */
 
-    #ifndef GODOT_TTS_H
-    #define GODOT_TTS_H
+    #ifndef redot_TTS_H
+    #define redot_TTS_H
 
     #include "core/object/ref_counted.h"
 
@@ -40,7 +40,7 @@ Next, you will create a header file with a TTS class:
         TTS();
     };
 
-    #endif // GODOT_TTS_H
+    #endif // redot_TTS_H
 
 And then you'll add the cpp file.
 
@@ -54,7 +54,7 @@ And then you'll add the cpp file.
 
     bool TTS::say_text(String p_txt) {
 
-        //convert Godot String to Godot CharString to C string
+        //convert redot String to redot CharString to C string
         return festival_say_text(p_txt.ascii().get_data());
     }
 
@@ -134,7 +134,7 @@ installation commands for Linux below, for reference.
 .. important::
     The voices that Festival uses (and any other potential external/3rd-party
     resource) all have varying licenses and terms of use; some (if not most) of them may be
-    be problematic with Godot, even if the Festival Library itself is MIT License compatible.
+    be problematic with redot, even if the Festival Library itself is MIT License compatible.
     Please be sure to check the licenses and terms of use.
 
 The external library will also need to be installed inside your module to make the source
@@ -156,8 +156,8 @@ can link to them instead by adding them as submodules (from within the modules/t
     git submodule add https://github.com/festvox/speech_tools
 
 .. important::
-    Please note that Git submodules are not used in the Godot repository. If
-    you are developing a module to be merged into the main Godot repository, you should not
+    Please note that Git submodules are not used in the redot repository. If
+    you are developing a module to be merged into the main redot repository, you should not
     use submodules. If your module doesn't get merged in, you can always try to implement
     the external library as a GDExtension.
 
@@ -170,10 +170,10 @@ environment's paths:
     env_tts.Append(CPPPATH=["speech_tools/include", "festival/src/include"])
 
     # LIBPATH and LIBS need to be set on the real "env" (not the clone)
-    # to link the specified libraries to the Godot executable.
+    # to link the specified libraries to the redot executable.
 
     # This is a path relative to /modules/tts/ where your .a libraries reside.
-    # If you are compiling the module externally (not in the godot source tree),
+    # If you are compiling the module externally (not in the redot source tree),
     # these will need to be full paths.
     env.Append(LIBPATH=['libpath'])
 
@@ -182,7 +182,7 @@ environment's paths:
     env.Append(LIBS=['Festival', 'estools', 'estbase', 'eststring'])
 
 If you want to add custom compiler flags when building your module, you need to clone
-`env` first, so it won't add those flags to whole Godot build (which can cause errors).
+`env` first, so it won't add those flags to whole redot build (which can cause errors).
 Example `SCsub` with custom flags:
 
 .. code-block:: python
@@ -203,18 +203,18 @@ The final module should look like this:
 
 .. code-block:: none
 
-    godot/modules/tts/festival/
-    godot/modules/tts/libpath/libestbase.a
-    godot/modules/tts/libpath/libestools.a
-    godot/modules/tts/libpath/libeststring.a
-    godot/modules/tts/libpath/libFestival.a
-    godot/modules/tts/speech_tools/
-    godot/modules/tts/config.py
-    godot/modules/tts/tts.h
-    godot/modules/tts/tts.cpp
-    godot/modules/tts/register_types.h
-    godot/modules/tts/register_types.cpp
-    godot/modules/tts/SCsub
+    redot/modules/tts/festival/
+    redot/modules/tts/libpath/libestbase.a
+    redot/modules/tts/libpath/libestools.a
+    redot/modules/tts/libpath/libeststring.a
+    redot/modules/tts/libpath/libFestival.a
+    redot/modules/tts/speech_tools/
+    redot/modules/tts/config.py
+    redot/modules/tts/tts.h
+    redot/modules/tts/tts.cpp
+    redot/modules/tts/register_types.h
+    redot/modules/tts/register_types.cpp
+    redot/modules/tts/SCsub
 
 Using the module
 ----------------

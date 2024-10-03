@@ -10,13 +10,13 @@ functionalities unique to the web platform.
 Interacting with JavaScript
 ---------------------------
 
-Sometimes, when exporting Godot for the Web, it might be necessary to interface
+Sometimes, when exporting redot for the Web, it might be necessary to interface
 with external JavaScript code like third-party SDKs, libraries, or
-simply to access browser features that are not directly exposed by Godot.
+simply to access browser features that are not directly exposed by redot.
 
 The ``JavaScriptBridge`` singleton provides methods to wrap a native JavaScript object into
-a Godot :ref:`JavaScriptObject <class_JavaScriptObject>` that tries to feel
-natural in the context of Godot scripting (e.g. GDScript and C#).
+a redot :ref:`JavaScriptObject <class_JavaScriptObject>` that tries to feel
+natural in the context of redot scripting (e.g. GDScript and C#).
 
 The :ref:`JavaScriptBridge.get_interface() <class_JavaScriptBridge_method_get_interface>`
 method retrieves an object in the global scope.
@@ -51,25 +51,25 @@ creates a new object via the JavaScript ``new`` constructor.
         print(arr.length)
 
 As you can see, by wrapping JavaScript objects into ``JavaScriptObject`` you can
-interact with them like they were native Godot objects, calling their methods,
+interact with them like they were native redot objects, calling their methods,
 and retrieving (or even setting) their properties.
 
 Base types (int, floats, strings, booleans) are automatically converted (floats
-might lose precision when converted from Godot to JavaScript). Anything else
+might lose precision when converted from redot to JavaScript). Anything else
 (i.e. objects, arrays, functions) are seen as ``JavaScriptObjects`` themselves.
 
 Callbacks
 ---------
 
-Calling JavaScript code from Godot is nice, but sometimes you need to call a
-Godot function from JavaScript instead.
+Calling JavaScript code from redot is nice, but sometimes you need to call a
+redot function from JavaScript instead.
 
 This case is a bit more complicated. JavaScript relies on garbage collection,
-while Godot uses reference counting for memory management. This means you have
+while redot uses reference counting for memory management. This means you have
 to explicitly create callbacks (which are returned as ``JavaScriptObjects``
 themselves) and you have to keep their reference.
 
-Arguments passed by JavaScript to the callback will be passed as a single Godot
+Arguments passed by JavaScript to the callback will be passed as a single redot
 ``Array``.
 
 .. code-block:: gdscript
@@ -149,7 +149,7 @@ second ``<script>`` tag to define our own custom function:
     }
     </script>
 
-We can then access both the library and the function from Godot, like we did in
+We can then access both the library and the function from redot, like we did in
 previous examples:
 
 .. code-block:: gdscript
@@ -180,7 +180,7 @@ The eval interface
 The ``eval`` method works similarly to the JavaScript function of the same
 name. It takes a string as an argument and executes it as JavaScript code.
 This allows interacting with the browser in ways not possible with script
-languages integrated into Godot.
+languages integrated into redot.
 
 .. tabs::
  .. code-tab:: gdscript
@@ -281,8 +281,8 @@ defaulting to ``false`` to prevent polluting the global namespace:
 Downloading files
 -----------------
 
-Downloading files (e.g. a save game) from the Godot Web export to the user's computer can be done by directly interacting with JavaScript, but given it is a
-very common use case, Godot exposes this functionality to scripting via
+Downloading files (e.g. a save game) from the redot Web export to the user's computer can be done by directly interacting with JavaScript, but given it is a
+very common use case, redot exposes this functionality to scripting via
 a dedicated :ref:`JavaScriptBridge.download_buffer() <class_JavaScriptBridge_method_download_buffer>`
 function which lets you download any generated buffer.
 

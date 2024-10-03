@@ -4,27 +4,27 @@ Going further
 =============
 
 You can pat yourself on the back for having completed your first 3D game with
-Godot.
+redot.
 
 In this series, we went over a wide range of techniques and editor features.
-Hopefully, you've witnessed how intuitive Godot's scene system can be and
+Hopefully, you've witnessed how intuitive redot's scene system can be and
 learned a few tricks you can apply in your projects.
 
-But we just scratched the surface: Godot has a lot more in store for you to save
+But we just scratched the surface: redot has a lot more in store for you to save
 time creating games. And you can learn all that by browsing the documentation.
 
 Where should you begin? Below, you'll find a few pages to start exploring and
 build upon what you've learned so far.
 
 But before that, here's a link to download a completed version of the project:
-`<https://github.com/godotengine/godot-demo-projects/releases>`_.
+`<https://github.com/redotengine/redot-demo-projects/releases>`_.
 
 Exploring the manual
 --------------------
 
 The manual is your ally whenever you have a doubt or you're curious about a
 feature. It does not contain tutorials about specific game genres or mechanics.
-Instead, it explains how Godot works in general. In it, you will find
+Instead, it explains how redot works in general. In it, you will find
 information about 2D, 3D, physics, rendering and performance, and much more.
 
 Here are the sections we recommend you to explore next:
@@ -39,4 +39,4 @@ You can start with these or, if you prefer, look at the sidebar menu on the left
 and pick your options.
 
 We hope you enjoyed this tutorial series, and we're looking forward to seeing
-what you achieve using Godot.
+what you achieve using redot.

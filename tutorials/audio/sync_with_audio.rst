@@ -21,9 +21,9 @@ Achieving very low playback timing precision is difficult. This is because many 
 
 The most common way to reduce latency is to shrink the audio buffers (again, by editing the latency setting in the project settings). The problem is that when latency is too small, sound mixing will require considerably more CPU. This increases the risk of skipping (a crack in sound because a mix callback was lost).
 
-This is a common tradeoff, so Godot ships with sensible defaults that should not need to be altered.
+This is a common tradeoff, so redot ships with sensible defaults that should not need to be altered.
 
-The problem, in the end, is not this slight delay but synchronizing graphics and audio for games that require it. Beginning with Godot 3.2, some helpers were added to obtain more precise playback timing.
+The problem, in the end, is not this slight delay but synchronizing graphics and audio for games that require it. Beginning with redot 3.2, some helpers were added to obtain more precise playback timing.
 
 Using the system clock to sync
 ------------------------------

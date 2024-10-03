@@ -5,7 +5,7 @@ Command line tutorial
 
 .. highlight:: shell
 
-Some developers like using the command line extensively. Godot is
+Some developers like using the command line extensively. redot is
 designed to be friendly to them, so here are the steps for working
 entirely from the command line. Given the engine relies on almost no
 external libraries, initialization times are pretty fast, making it
@@ -13,15 +13,15 @@ suitable for this workflow.
 
 .. note::
 
-    On Windows and Linux, you can run a Godot binary in a terminal by specifying
+    On Windows and Linux, you can run a redot binary in a terminal by specifying
     its relative or absolute path.
 
-    On macOS, the process is different due to Godot being contained within an
-    ``.app`` bundle (which is a *folder*, not a file). To run a Godot binary
-    from a terminal on macOS, you have to ``cd`` to the folder where the Godot
-    application bundle is located, then run ``Godot.app/Contents/MacOS/Godot``
+    On macOS, the process is different due to redot being contained within an
+    ``.app`` bundle (which is a *folder*, not a file). To run a redot binary
+    from a terminal on macOS, you have to ``cd`` to the folder where the redot
+    application bundle is located, then run ``redot.app/Contents/MacOS/redot``
     followed by any command line arguments. If you've renamed the application
-    bundle from ``Godot`` to another name, make sure to edit this command line
+    bundle from ``redot`` to another name, make sure to edit this command line
     accordingly.
 
 Command line reference
@@ -75,9 +75,9 @@ given build type.
 | ``-l``, ``--language <locale>``          | |release| Use a specific locale. ``<locale>`` follows the format ``language_Script_COUNTRY_VARIANT`` where language is a 2 or 3-letter language code in      |
 |                                          | lowercase and the rest is optional. See :ref:`doc_locales` for more details.                                                                                 |
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``--path <directory>``                   | |release| Path to a project (``<directory>`` must contain a 'project.godot' file).                                                                           |
+| ``--path <directory>``                   | |release| Path to a project (``<directory>`` must contain a 'project.redot' file).                                                                           |
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``-u``, ``--upwards``                    | |release| Scan folders upwards for 'project.godot' file.                                                                                                     |
+| ``-u``, ``--upwards``                    | |release| Scan folders upwards for 'project.redot' file.                                                                                                     |
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``--main-pack <file>``                   | |release| Path to a pack (.pck) file to load.                                                                                                                |
 +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -203,9 +203,9 @@ given build type.
 | ``--export-pack <preset> <path>``                                | |editor| Like ``--export-release``, but only export the game pack for the given preset. The ``<path>`` extension determines whether it will be in PCK   |
 |                                                                  | or ZIP format. Implies ``--import``.                                                                                                                    |
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``--convert-3to4 [<max_file_kb>] [<max_line_size>]``             | |editor| Convert project from Godot 3.x to Godot 4.x.                                                                                                   |
+| ``--convert-3to4 [<max_file_kb>] [<max_line_size>]``             | |editor| Convert project from redot 3.x to redot 4.x.                                                                                                   |
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``--validate-conversion-3to4 [<max_file_kb>] [<max_line_size>]`` | |editor| Show what elements will be renamed when converting project from Godot 3.x to Godot 4.x.                                                        |
+| ``--validate-conversion-3to4 [<max_file_kb>] [<max_line_size>]`` | |editor| Show what elements will be renamed when converting project from redot 3.x to redot 4.x.                                                        |
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``--doctool [<path>]``                                           | |editor| Dump the engine API reference to the given ``<path>`` in XML format, merging if existing files are found.                                      |
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -218,7 +218,7 @@ given build type.
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``--dump-gdextension-interface``                                 | |editor| Generate GDExtension header file 'gdnative_interface.h' in the current folder. This file is the base file required to implement a GDExtension. |
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``--dump-extension-api``                                         | |editor| Generate JSON dump of the Godot API for GDExtension bindings named 'extension_api.json' in the current folder.                                 |
+| ``--dump-extension-api``                                         | |editor| Generate JSON dump of the redot API for GDExtension bindings named 'extension_api.json' in the current folder.                                 |
 +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``--validate-extension-api <path>``                              | |editor| Validate an extension API file dumped (with the option above) from a previous version of the engine to ensure API compatibility.               |
 |                                                                  | If incompatibilities or errors are detected, the return code will be non-zero.                                                                          |
@@ -231,14 +231,14 @@ given build type.
 Path
 ----
 
-It is recommended to place your Godot editor binary in your ``PATH`` environment
-variable, so it can be executed easily from any place by typing ``godot``.
-You can do so on Linux by placing the Godot binary in ``/usr/local/bin`` and
-making sure it is called ``godot`` (case-sensitive).
+It is recommended to place your redot editor binary in your ``PATH`` environment
+variable, so it can be executed easily from any place by typing ``redot``.
+You can do so on Linux by placing the redot binary in ``/usr/local/bin`` and
+making sure it is called ``redot`` (case-sensitive).
 
-To achieve this on Windows or macOS easily, you can install Godot using
+To achieve this on Windows or macOS easily, you can install redot using
 `Scoop <https://scoop.sh>`__ (on Windows) or `Homebrew <https://brew.sh>`__
-(on macOS). This will automatically make the copy of Godot installed
+(on macOS). This will automatically make the copy of redot installed
 available in the ``PATH``:
 
 .. tabs::
@@ -249,54 +249,54 @@ available in the ``PATH``:
     scoop bucket add extras
 
     # Standard editor:
-    scoop install godot
+    scoop install redot
 
-    # Editor with C# support (will be available as `godot-mono` in `PATH`):
-    scoop install godot-mono
+    # Editor with C# support (will be available as `redot-mono` in `PATH`):
+    scoop install redot-mono
 
  .. code-tab:: sh macOS
 
     # Standard editor:
-    brew install godot
+    brew install redot
 
-    # Editor with C# support (will be available as `godot-mono` in `PATH`):
-    brew install godot-mono
+    # Editor with C# support (will be available as `redot-mono` in `PATH`):
+    brew install redot-mono
 
 Setting the project path
 ------------------------
 
-Depending on where your Godot binary is located and what your current
+Depending on where your redot binary is located and what your current
 working directory is, you may need to set the path to your project
 for any of the following commands to work correctly.
 
-When running the editor, this can be done by giving the path to the ``project.godot`` file
+When running the editor, this can be done by giving the path to the ``project.redot`` file
 of your project as either the first argument, like this:
 
 ::
 
-    godot path_to_your_project/project.godot [other] [commands] [and] [args]
+    redot path_to_your_project/project.redot [other] [commands] [and] [args]
 
 For all commands, this can be done by using the ``--path`` argument:
 
 ::
 
-    godot --path path_to_your_project [other] [commands] [and] [args]
+    redot --path path_to_your_project [other] [commands] [and] [args]
 
 For example, the full command for exporting your game (as explained below) might look like this:
 
 ::
 
-    godot --headless --path path_to_your_project --export-release my_export_preset_name game.exe
+    redot --headless --path path_to_your_project --export-release my_export_preset_name game.exe
 
-When starting from a subdirectory of your project, use the ``--upwards`` argument for Godot to 
-automatically find the ``project.godot`` file by recursively searching the parent directories.
+When starting from a subdirectory of your project, use the ``--upwards`` argument for redot to 
+automatically find the ``project.redot`` file by recursively searching the parent directories.
 
 For example, running a scene (as explained below) nested in a subdirectory might look like this 
 when your working directory is in the same path:
 
 ::
 
-    godot --upwards nested_scene.tscn 
+    redot --upwards nested_scene.tscn 
 
 
 ..
@@ -306,43 +306,43 @@ Creating a project
 
 
 Creating a project from the command line can be done by navigating the
-shell to the desired place and making a ``project.godot`` file.
+shell to the desired place and making a ``project.redot`` file.
 
 
 ::
 
     mkdir newgame
     cd newgame
-    touch project.godot
+    touch project.redot
 
 
-The project can now be opened with Godot.
+The project can now be opened with redot.
 
 
 Running the editor
 ------------------
 
-Running the editor is done by executing Godot with the ``-e`` flag. This
+Running the editor is done by executing redot with the ``-e`` flag. This
 must be done from within the project directory or by setting the project path as explained above,
 otherwise the command is ignored and the Project Manager appears.
 
 ::
 
-    godot -e
+    redot -e
 
-When passing in the full path to the ``project.godot`` file, the ``-e`` flag may be omitted.
+When passing in the full path to the ``project.redot`` file, the ``-e`` flag may be omitted.
 
 If a scene has been created and saved, it can be edited later by running
 the same code with that scene as argument.
 
 ::
 
-    godot -e scene.tscn
+    redot -e scene.tscn
 
 Erasing a scene
 ---------------
 
-Godot is friends with your filesystem and will not create extra metadata files.
+redot is friends with your filesystem and will not create extra metadata files.
 Use ``rm`` to erase a scene file. Make sure nothing references that scene.
 Otherwise, an error will be thrown upon opening the project.
 
@@ -353,19 +353,19 @@ Otherwise, an error will be thrown upon opening the project.
 Running the game
 ----------------
 
-To run the game, execute Godot within the project directory or with the project path as explained above.  
+To run the game, execute redot within the project directory or with the project path as explained above.  
 
 ::
 
-    godot
+    redot
 
-Note that passing in the ``project.godot`` file will always run the editor instead of running the game.
+Note that passing in the ``project.redot`` file will always run the editor instead of running the game.
 
 When a specific scene needs to be tested, pass that scene to the command line.
 
 ::
 
-    godot scene.tscn
+    redot scene.tscn
 
 Debugging
 ---------
@@ -376,11 +376,11 @@ scroll quickly. For this, a command line debugger is provided by adding
 
 ::
 
-    godot -d
+    redot -d
 
 ::
 
-    godot -d scene.tscn
+    redot -d scene.tscn
 
 .. _doc_command_line_tutorial_exporting:
 
@@ -399,11 +399,11 @@ especially useful for continuous integration setups.
 
 ::
 
-    # `godot` must be a Godot editor binary, not an export template.
+    # `redot` must be a redot editor binary, not an export template.
     # Also, export templates must be installed for the editor
     # (or a valid custom export template must be defined in the export preset).
-    godot --headless --export-release "Linux/X11" /var/builds/project
-    godot --headless --export-release Android /var/builds/project.apk
+    redot --headless --export-release "Linux/X11" /var/builds/project
+    redot --headless --export-release Android /var/builds/project.apk
 
 The preset name must match the name of an export preset defined in the
 project's ``export_presets.cfg`` file. If the preset name contains spaces or
@@ -421,7 +421,7 @@ the package's format, either PCK or ZIP.
 
     When specifying a relative path as the path for ``--export-release``, ``--export-debug``
     or ``--export-pack``, the path will be relative to the directory containing
-    the ``project.godot`` file, **not** relative to the current working directory.
+    the ``project.redot`` file, **not** relative to the current working directory.
 
 Running a script
 ----------------
@@ -436,7 +436,7 @@ Here is an example ``sayhello.gd``, showing how it works:
 
 .. code-block:: python
 
-    #!/usr/bin/env -S godot -s
+    #!/usr/bin/env -S redot -s
     extends SceneTree
 
     func _init():
@@ -448,13 +448,13 @@ And how to run it:
 ::
 
     # Prints "Hello!" to standard output.
-    godot -s sayhello.gd
+    redot -s sayhello.gd
 
-If no ``project.godot`` exists at the path, current path is assumed to be the
+If no ``project.redot`` exists at the path, current path is assumed to be the
 current working directory (unless ``--path`` is specified).
 
 The first line of ``sayhello.gd`` above is commonly referred to as
-a *shebang*. If the Godot binary is in your ``PATH`` as ``godot``,
+a *shebang*. If the redot binary is in your ``PATH`` as ``redot``,
 it allows you to run the script as follows in modern Linux
 distributions, as well as macOS:
 
@@ -466,8 +466,8 @@ distributions, as well as macOS:
     ./sayhello.gd
 
 If the above doesn't work in your current version of Linux or macOS, you can
-always have the shebang run Godot straight from where it is located as follows:
+always have the shebang run redot straight from where it is located as follows:
 
 ::
 
-    #!/usr/bin/godot -s
+    #!/usr/bin/redot -s

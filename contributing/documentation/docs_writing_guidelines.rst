@@ -3,7 +3,7 @@
 Writing guidelines
 ==================
 
-The Godot community is rich and international. Users come from all
+The redot community is rich and international. Users come from all
 around the world. Some of them are young, and many aren't native English
 speakers. That's why we must all write using a clear and a common
 language. For the class reference, the goal is to make it easy to read
@@ -448,12 +448,12 @@ Use ``[code]`` around arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the class reference, always surround arguments with ``[code][/code]``. In the
-documentation and in Godot, it will display like ``this``. When you edit XML
-files in the Godot repository, replace existing arguments written like 'this' or
+documentation and in redot, it will display like ``this``. When you edit XML
+files in the redot repository, replace existing arguments written like 'this' or
 \`this\` with ``[code]this[/code]``.
 
 
-Common vocabulary to use in Godot's documentation
+Common vocabulary to use in redot's documentation
 -------------------------------------------------
 
 The developers chose some specific words to refer to areas of the

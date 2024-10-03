@@ -6,7 +6,7 @@ Moving the player with code
 It's time to code! We're going to use the input actions we created in the last
 part to move the character.
 
-.. note:: For this project, we will be following the Godot naming conventions.
+.. note:: For this project, we will be following the redot naming conventions.
 
           - **GDScript**: Classes (nodes) use PascalCase, variables and
             functions use snake_case, and constants use ALL_CAPS (See
@@ -42,7 +42,7 @@ character.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Player : CharacterBody3D
     {
@@ -291,7 +291,7 @@ Here is the complete ``player.gd`` code for reference.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Player : CharacterBody3D
     {
@@ -429,7 +429,7 @@ the ground should fill the background.
 
 .. note::
 
-    When using an orthogonal camera in Godot 4, directional shadow quality is
+    When using an orthogonal camera in redot 4, directional shadow quality is
     dependent on the camera's *Far* value. The higher the *Far* value, the
     further away the camera will be able to see. However, higher *Far* values
     also decrease shadow quality as the shadow rendering has to cover a greater

@@ -18,7 +18,7 @@ An indexer is annotated with the ``[Export]`` attribute. Indexers can't be expor
 Rule description
 ----------------
 
-Godot doesn't allow exporting indexer properties.
+redot doesn't allow exporting indexer properties.
 
 .. code-block:: csharp
 
@@ -41,4 +41,4 @@ When to suppress warnings
 -------------------------
 
 Do not suppress a warning from this rule. Indexers can't be exported so
-they will be ignored by Godot, resulting in runtime errors.
+they will be ignored by redot, resulting in runtime errors.

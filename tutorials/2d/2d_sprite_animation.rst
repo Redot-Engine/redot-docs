@@ -11,7 +11,7 @@ characters with the AnimatedSprite2D class and the AnimationPlayer.
 Typically, when you create or download an animated character,
 it will come in one of two ways: as individual images or as a single sprite sheet
 containing all the animation's frames.
-Both can be animated in Godot with the AnimatedSprite2D class.
+Both can be animated in redot with the AnimatedSprite2D class.
 
 First, we'll use :ref:`AnimatedSprite2D <class_AnimatedSprite2D>` to
 animate a collection of individual images.
@@ -32,7 +32,7 @@ animation:
 .. image:: img/2d_animation_run_preview.gif
 
 You can download the images here:
-`2d_sprite_animation_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/2d_sprite_animation_assets.zip>`_
+`2d_sprite_animation_assets.zip <https://github.com/redotengine/redot-docs-project-starters/releases/download/latest-4.x/2d_sprite_animation_assets.zip>`_
 
 Unzip the images and place them in your project folder. Set up your scene tree
 with the following nodes:
@@ -93,7 +93,7 @@ released.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Character : CharacterBody2D
     {
@@ -241,7 +241,7 @@ released.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Character : CharacterBody2D
     {
@@ -278,7 +278,7 @@ released.
 Summary
 -------
 
-These examples illustrate the two classes you can use in Godot for 2D animation.
+These examples illustrate the two classes you can use in redot for 2D animation.
 ``AnimationPlayer`` is a bit more complex than ``AnimatedSprite2D``,
 but it provides additional functionality, since you can also
 animate other properties like position or scale.

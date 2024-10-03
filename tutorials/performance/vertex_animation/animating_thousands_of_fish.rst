@@ -9,7 +9,7 @@ This tutorial explores a technique used in the game `ABZU <https://www.gdcvault.
 for rendering and animating thousands of fish using vertex animation and
 static mesh instancing.
 
-In Godot, this can be accomplished with a custom :ref:`Shader <class_Shader>` and
+In redot, this can be accomplished with a custom :ref:`Shader <class_Shader>` and
 a :ref:`MultiMeshInstance3D <class_MultiMeshInstance3D>`. Using the following technique you
 can render thousands of animated objects, even on low end hardware.
 
@@ -183,7 +183,7 @@ find that you can create a wide variety of swim styles using these four motions.
 Making a school of fish
 -----------------------
 
-Godot makes it easy to render thousands of the same object using a MultiMeshInstance3D node.
+redot makes it easy to render thousands of the same object using a MultiMeshInstance3D node.
 
 A MultiMeshInstance3D node is created and used the same way you would make a MeshInstance3D node.
 For this tutorial, we will name the MultiMeshInstance3D node ``School``, because it will contain

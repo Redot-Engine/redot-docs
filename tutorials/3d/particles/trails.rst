@@ -12,7 +12,7 @@
 
    Setting up particle trails
 
-Godot provides several types of trails you can add to a particle system. Before you can
+redot provides several types of trails you can add to a particle system. Before you can
 work with trails, you need to set up a couple of parameters first. Create a new particle
 system and assign a process material :ref:`as described before <doc_creating_3d_particle_system>`.
 In the ``Trails`` group of the particle system, check the box next to ``Enabled`` and

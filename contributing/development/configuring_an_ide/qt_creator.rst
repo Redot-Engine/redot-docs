@@ -14,7 +14,7 @@ Importing the project
    :figclass: figure-w480
    :align: center
 
-- Under **Location** select the Godot root folder.
+- Under **Location** select the redot root folder.
 
 .. figure:: img/qtcreator-set-project-path.png
    :figclass: figure-w480
@@ -74,10 +74,10 @@ Debugging the project
 
 - From the left-side menu select **Projects** and open the **Run** tab.
 - Under **Executable** specify the path to your executable located in
-  the ``<Godot root directory>/bin`` folder. The name depends on your build configuration,
-  e.g. ``godot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
+  the ``<redot root directory>/bin`` folder. The name depends on your build configuration,
+  e.g. ``redot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
   ``platform=editor`` and ``dev_build=yes``.
-  You can use ``%{buildDir}`` to reference the project root, e.g: ``%{buildDir}/bin/godot.linuxbsd.editor.dev.x86_64``.
+  You can use ``%{buildDir}`` to reference the project root, e.g: ``%{buildDir}/bin/redot.linuxbsd.editor.dev.x86_64``.
 - If you want to run a specific project, specify its root folder under **Working directory**.
 - If you want to run the editor, add ``-e`` to the **Command line arguments** field.
 
@@ -93,7 +93,7 @@ Code style configuration
 
 Developers must follow the project's :ref:`code style <doc_code_style_guidelines>`
 and the IDE should help them follow it. By default, Qt Creator uses spaces
-for indentation which doesn't match the Godot code style guidelines. You can
+for indentation which doesn't match the redot code style guidelines. You can
 change this behavior by changing the **Code Style** in **Tools > Options > C++**.
 
 .. figure:: img/qtcreator-options-cpp.png
@@ -102,11 +102,11 @@ change this behavior by changing the **Code Style** in **Tools > Options > C++**
 
 Click on **Edit** to change the current settings, then click on
 **Copy Built-in Code Style** button to set a new code style. Set a name for it
-(e.g. Godot) and change the Tab policy to be **Tabs Only**.
+(e.g. redot) and change the Tab policy to be **Tabs Only**.
 
 .. figure:: img/qtcreator-edit-codestyle.png
    :figclass: figure-w480
    :align: center
 
 If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+`redot's community channels <https://redotengine.org/community>`__.

@@ -13,10 +13,10 @@ Importing the project
          Rider and Visual Studio use the same solution format, so you can switch between the two IDEs without rebuilding the solution file.
          Debug configurations need to be changed when going from one IDE to another.
 
-Rider requires a solution file to work on a project. While Godot does not come
+Rider requires a solution file to work on a project. While redot does not come
 with the solution file, it can be generated using SCons.
 
-- Navigate to the Godot root folder and open a Command Prompt or PowerShell window.
+- Navigate to the redot root folder and open a Command Prompt or PowerShell window.
 - Copy, paste and run the next command to generate the solution.
 
 ::
@@ -26,7 +26,7 @@ with the solution file, it can be generated using SCons.
 The ``vsproj`` parameter signals that you want Visual Studio solution generated.
 The ``dev_build`` parameter makes sure the debug symbols are included, allowing to e.g. step through code using breakpoints.
 
-- If you have Rider setup as your main IDE for .sln, you can now open the project by double-clicking on the ``godot.sln`` in the project root
+- If you have Rider setup as your main IDE for .sln, you can now open the project by double-clicking on the ``redot.sln`` in the project root
   or by using the **Open** option inside of Rider.
 
 .. note:: Rider could fail to build the first time you open the project.
@@ -35,14 +35,14 @@ The ``dev_build`` parameter makes sure the debug symbols are included, allowing 
 
 Compiling and debugging the project
 -----------------------------------
-Rider comes with a built-in debugger that can be used to debug the Godot project. You can launch the debugger
+Rider comes with a built-in debugger that can be used to debug the redot project. You can launch the debugger
 by pressing the **Debug** icon at the top of the screen, this only works for the Project manager,
 if you want to debug the editor, you need to configure the debugger first.
 
 .. figure:: img/rider_run_debug.webp
    :align: center
 
-- Click on the **Godot > Edit Configurations** option at the top of the screen.
+- Click on the **redot > Edit Configurations** option at the top of the screen.
 
 .. figure:: img/rider_configurations.webp
    :align: center
@@ -51,10 +51,10 @@ if you want to debug the editor, you need to configure the debugger first.
 
 ::
 
-  -e --path <path to the Godot project>
+  -e --path <path to the redot project>
 
 This will tell the executable to debug the specified project without using the project manager.
-Use the root path to the project folder, not ``project.godot`` file path.
+Use the root path to the project folder, not ``project.redot`` file path.
 
 .. figure:: img/rider_configurations_changed.webp
    :align: center
@@ -63,7 +63,7 @@ Use the root path to the project folder, not ``project.godot`` file path.
 
 - You can now launch the debugger by pressing the **Debug** icon at the top of the screen and it will open the project to debug.
 
-Alternatively you can use **Run > Attach to Process** to attach the debugger to a running Godot instance.
+Alternatively you can use **Run > Attach to Process** to attach the debugger to a running redot instance.
 
 .. figure:: img/rider_attach_to_process.webp
    :align: center

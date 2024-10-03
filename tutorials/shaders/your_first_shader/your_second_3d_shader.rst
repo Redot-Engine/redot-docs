@@ -3,13 +3,13 @@
 Your second 3D shader
 =====================
 
-From a high-level, what Godot does is give the user a bunch of parameters that
+From a high-level, what redot does is give the user a bunch of parameters that
 can be optionally set (``AO``, ``SSS_Strength``, ``RIM``, etc.). These
 parameters correspond to different complex effects (Ambient Occlusion,
 SubSurface Scattering, Rim Lighting, etc.). When not written to, the code is
 thrown out before it is compiled and so the shader does not incur the cost of
 the extra feature. This makes it easy for users to have complex PBR-correct
-shading, without writing complex shaders. Of course, Godot also allows you to
+shading, without writing complex shaders. Of course, redot also allows you to
 ignore all these parameters and write a fully customized shader.
 
 For a full list of these parameters see the :ref:`spatial shader
@@ -24,8 +24,8 @@ Your first spatial fragment function
 ------------------------------------
 
 As mentioned in the previous part of this tutorial. The standard use of the
-fragment function in Godot is to set up different material properties and let
-Godot handle the rest. In order to provide even more flexibility, Godot also
+fragment function in redot is to set up different material properties and let
+redot handle the rest. In order to provide even more flexibility, redot also
 provides things called render modes. Render modes are set at the top of the
 shader, directly below ``shader_type``, and they specify what sort of
 functionality you want the built-in aspects of the shader to have.
@@ -71,7 +71,7 @@ Let's set it to a nice shade of blue.
 We set it to a very dark shade of blue because most of the blueness of the water
 will come from reflections from the sky.
 
-The PBR model that Godot uses relies on two main parameters: ``METALLIC`` and
+The PBR model that redot uses relies on two main parameters: ``METALLIC`` and
 ``ROUGHNESS``.
 
 ``ROUGHNESS`` specifies how smooth/rough the surface of a material is. A low
