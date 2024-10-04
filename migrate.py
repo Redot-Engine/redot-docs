@@ -119,8 +119,7 @@ mappings_unimplemented = [
     ('/godot>', '/redot>'),
     ('repos/godotengine/godot', 'repos/redot-engine/redot'),
     ('godot demo', 'redot demo'),
-    ('', ''),
-    ('', ''),
+    ('godotsharp', 'redotsharp'),
 ]
 
 # Mappings that should work on first migration
@@ -177,12 +176,6 @@ mappings = [
     ('to_godot', 'to_redot'),
     ('godot.html', 'redot.html'),
     ('by-godot', 'by-redot'),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
 ]
 
 filename_mappings = [
@@ -209,9 +202,6 @@ alphanumeric = [
     'html',
     'csv',
     'rst',
-    '',
-    '',
-    '',
 ]
 
 # force stdout encoding so it won't fail on print statements
