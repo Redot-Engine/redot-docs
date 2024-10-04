@@ -2,10 +2,15 @@ name: Sync Class Reference
 
 on:
   workflow_dispatch:
+  # Scheduled updates only run on the default/master branch.
+  schedule:
+    # Run it at night (European time) every Saturday.
+    # The offset is there to try and avoid the high load times.
+    - cron: '15 3 * * 6'
 
 # Make sure jobs cannot overlap.
 concurrency:
-  group: classref-sync-ci-4.3
+  group: classref-sync-ci-master
   cancel-in-progress: true
 
 jobs:
@@ -13,7 +18,7 @@ jobs:
     name: Update class reference files based on the engine revision
     runs-on: ubuntu-latest
     env:
-      engine_rev: '4.3'
+      engine_rev: 'master'
 
     steps:
       - name: Checkout the documentation repository
@@ -22,7 +27,7 @@ jobs:
       - name: Checkout the engine repository
         uses: actions/checkout@v4
         with:
-          repository: 'godotengine/godot'
+          repository: 'redot-engine/redot'
           # Use the appropriate branch for the documentation version.
           ref: ${{ env.engine_rev }}
           path: './.engine-src'
@@ -33,7 +38,7 @@ jobs:
           cd ./.engine-src
           hash=$(git rev-parse HEAD)
           hash_short=$(git rev-parse --short HEAD)
-          echo "Checked out godotengine/godot at $hash"
+          echo "Checked out redot-engine/redot at $hash"
           echo "rev_hash=$hash" >> $GITHUB_OUTPUT
           echo "rev_hash_short=$hash_short" >> $GITHUB_OUTPUT
 
@@ -46,7 +51,7 @@ jobs:
           ./.engine-src/doc/tools/make_rst.py --color -o ./classes -l en ./.engine-src/doc/classes ./.engine-src/modules ./.engine-src/platform
 
       - name: Submit a pull-request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: 'classref: Sync with current ${{ env.engine_rev }} branch (${{ steps.engine.outputs.rev_hash_short }})'
           branch: 'classref/sync-${{ steps.engine.outputs.rev_hash_short }}'
@@ -54,10 +59,10 @@ jobs:
           delete-branch: true
 
           # Configure the commit author.
-          author: 'Godot Organization <noreply@godotengine.org>'
-          committer: 'Godot Organization <noreply@godotengine.org>'
+          author: 'Redot Organization <noreply@redot-url.org>'
+          committer: 'Redot Organization <noreply@redot-url.org>'
 
           # Configure the pull-request.
           title: 'classref: Sync with current ${{ env.engine_rev }} branch (${{ steps.engine.outputs.rev_hash_short }})'
-          body: 'Update Godot API online class reference to match the engine at https://github.com/godotengine/godot/commit/${{ steps.engine.outputs.rev_hash }} (`${{ env.engine_rev }}`).'
+          body: 'Update Redot API online class reference to match the engine at https://github.com/redot-engine/redot/commit/${{ steps.engine.outputs.rev_hash }} (`${{ env.engine_rev }}`).'
           labels: 'area:class reference,bug,enhancement'
