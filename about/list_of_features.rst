@@ -5,51 +5,44 @@
 List of features
 ================
 
-This page aims to list **all** features currently supported by Godot.
-
 .. note::
 
-    This page lists features supported by the current stable version of
-    Godot. Some of these features may not be available in the
-    `LTS release series (3.x) <https://docs.godotengine.org/en/3.5/about/list_of_features.html>`__.
+    Since Redot is a fork of Godot, unless otherwise noted, all of Godot's features are available
+    in Redot. 
+
+This page aims to list the features the Redot Engine supports. This can't always be an up-to-date
+list, but it'll be as close to up-to-date as possible.
 
 Platforms
 ---------
 
-.. seealso::
-
-    See :ref:`doc_system_requirements` for hardware and software version requirements.
-
-**Can run both the editor and exported projects:**
-
 - Windows (x86 and ARM, 64-bit and 32-bit).
 - macOS (x86 and ARM, 64-bit only).
 - Linux (x86 and ARM, 64-bit and 32-bit).
-
+  
    - Binaries are statically linked and can run on any distribution if compiled
      on an old enough base distribution.
-   - Official binaries are compiled using the
-     `Godot Engine buildroot <https://github.com/godotengine/buildroot>`__,
-     allowing for binaries that work across common Linux distributions
-     (including LTS variants).
+
+.. seealso::
+
+    See :ref:`doc_system_requirements` for hardware and software version requirements.
+  
 
 - Android (editor support is experimental).
-- :ref:`Web browsers <doc_using_the_web_editor>`. Experimental in 4.0,
-  using Godot 3.x is recommended instead when targeting HTML5.
+- :ref:`Web browsers <doc_using_the_web_editor>`. (Still experimental, it's better to use Godot 3.5+
+  for HTML5 until the bugs are squashed.)
 
-**Runs exported projects:**
+- iOS. (**No Editor, Export only**)
+- :ref:`Consoles <doc_consoles>`. (**No Editor, Export only**)
 
-- iOS.
-- :ref:`Consoles <doc_consoles>`.
-
-Godot aims to be as platform-independent as possible and can be
+Redot aims to be as platform-independent as possible and can be
 :ref:`ported to new platforms <doc_custom_platform_ports>` with relative ease.
 
 .. note::
 
-    Projects written in C# using Godot 4 currently cannot be exported to the
-    web platform. To use C# on that platform, consider Godot 3 instead.
-    Android and iOS platform support is available as of Godot 4.2, but is
+    Projects written in C# using Redot currently cannot be exported to the
+    web platform. To use C# on that platform, consider Godot 3.5+ instead.
+    Android and iOS platform support is available, but is
     experimental and :ref:`some limitations apply <doc_c_sharp_platforms>`.
 
 Editor
@@ -63,7 +56,7 @@ Editor
   Visual Studio Code or Vim.
 - GDScript :ref:`debugger <doc_debugger_panel>`.
 
-   - Support for debugging in threads is available since 4.2.
+   - Support for debugging in threads is available since Godot 4.2.
 - Visual profiler with CPU and GPU time indications for each step of the
   rendering pipeline.
 - Performance monitoring tools, including
@@ -389,7 +382,7 @@ Rendering
 
 Most effects listed above can be adjusted for better performance or to further
 improve quality. This can be helpful when
-:ref:`using Godot for offline rendering <doc_creating_movies>`.
+:ref:`using Redot for offline rendering <doc_creating_movies>`.
 
 3D tools
 --------
@@ -478,17 +471,23 @@ Scripting
 
 - When you need it, link to native libraries for higher performance and third-party integrations.
 
-   - For scripting game logic, GDScript or C# are recommended if their
-     performance is suitable.
+- Official GDExtension bindings:
+  
+  You can use any build system and language features you wish with these languages.
 
-- Official GDExtension bindings for `C <https://github.com/godotengine/godot-headers>`__
-  and `C++ <https://github.com/godotengine/godot-cpp>`__.
+    - `C <https://github.com/godotengine/godot-headers>`_
+    - `C++ <https://github.com/godotengine/godot-cpp>`_
 
-   - Use any build system and language features you wish.
-
-- Actively developed GDExtension bindings for `D <https://github.com/godot-dlang/godot-dlang>`__,
-  `Haxe <https://hxgodot.github.io/>`__, `Swift <https://github.com/migueldeicaza/SwiftGodot>`__, and `Rust <https://github.com/godot-rust/gdextension>`__
-  bindings provided by the community. (Some of these bindings may be experimental and not production-ready).
+- Community GDExtension bindings:
+  
+  These bindings might be experimental and not production ready.
+  
+  - `D <https://github.com/godot-dlang/godot-dlang>`_
+  - `Haxe <https://hxgodot.github.io/>`_
+  - `Swift <https://github.com/migueldeicaza/SwiftGodot>`_
+  - `Rust <https://github.com/godot-rust/gdextension>`_
+  - `Python <https://github.com/touilleMan/godot-python>`_
+  - `Nim <https://github.com/pragmagic/godot-nim>`_
 
 Audio
 -----
@@ -632,7 +631,7 @@ Windowing and OS integration
   multiple instances of the same project).
 - Open file paths and URLs using default or custom protocol handlers (if registered on the system).
 - Parse custom command line arguments.
-- Any Godot binary (editor or exported project) can be
+- Any Godot/Redot binary (editor or exported project) can be
   :ref:`used as a headless server <doc_exporting_for_dedicated_servers>`
   by starting it with the ``--headless`` command line argument.
   This allows running the engine without a GPU or display server.
@@ -661,7 +660,7 @@ XR support (AR and VR)
 GUI system
 ----------
 
-Godot's GUI is built using the same Control nodes used to make games in Godot.
+Redot's GUI is built using the same Control nodes used to make games in Redot.
 The editor UI can easily be extended in many ways using add-ons.
 
 **Nodes:**
@@ -708,7 +707,7 @@ The editor UI can easily be extended in many ways using add-ons.
 
 - Texture-based theming using :ref:`class_StyleBoxTexture`.
 
-Godot's small distribution size can make it a suitable alternative to frameworks
+Redot's small distribution size can make it a suitable alternative to frameworks
 like Electron or Qt.
 
 Animation
@@ -735,11 +734,11 @@ File formats
 - Read and write :ref:`class_JSON` files.
 - Read and write INI-style configuration files using :ref:`class_ConfigFile`.
 
-   - Can (de)serialize any Godot datatype, including Vector2/3, Color, ...
+   - Can (de)serialize any Godot/Redot datatype, including Vector2/3, Color, ...
 
 - Read XML files using :ref:`class_XMLParser`.
 - :ref:`Load and save images, audio/video, fonts and ZIP archives <doc_runtime_loading_and_saving>`
-  in an exported project without having to go through Godot's import system.
+  in an exported project without having to go through Redot's import system.
 - Pack game data into a PCK file (custom format optimized for fast seeking),
   into a ZIP archive, or directly into the executable for single-file distribution.
 - :ref:`Export additional PCK files<doc_exporting_pcks>` that can be read
@@ -768,15 +767,9 @@ Miscellaneous
    - Can be :ref:`compiled <doc_introduction_to_the_buildsystem>` using GCC,
      Clang and MSVC. MinGW is also supported.
    - Friendly towards packagers. In most cases, system libraries can be used
-     instead of the ones provided by Godot. The build system doesn't download anything.
+     instead of the ones provided by Redot. The build system doesn't download anything.
      Builds can be fully reproducible.
 
 - Licensed under the permissive MIT license.
 
    - Open development process with :ref:`contributions welcome <doc_ways_to_contribute>`.
-
-.. seealso::
-
-    The `Godot proposals repository <https://github.com/godotengine/godot-proposals>`__
-    lists features that have been requested by the community and may be implemented
-    in future Godot releases.

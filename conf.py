@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Godot Engine documentation build configuration file
+# Redot Engine documentation build configuration file
 
 import sphinx
 import sphinx_rtd_theme
@@ -62,7 +62,7 @@ if not on_rtd:
     notfound_urls_prefix = ''
 
 # Specify the site name for the Open Graph extension.
-ogp_site_name = "Godot Engine documentation"
+ogp_site_name = "Redot Engine Documentation"
 
 if not os.getenv("SPHINX_NO_GDSCRIPT"):
     extensions.append("gdscript")
@@ -80,11 +80,11 @@ source_encoding = "utf-8-sig"
 master_doc = "index"
 
 # General information about the project
-project = "Godot Engine"
+project = "Redot Engine"
 copyright = (
-    "2014-present Juan Linietsky, Ariel Manzur and the Godot community (CC BY 3.0)"
+    "2014-present Juan Linietsky, Ariel Manzur, and the Godot and Redot communities (CC BY 3.0)"
 )
-author = "Juan Linietsky, Ariel Manzur and the Godot community"
+author = "Juan Linietsky, Ariel Manzur, and the Godot and Redot communities"
 
 # Version info for the project, acts as replacement for |version| and |release|
 # The short X.Y version
@@ -102,20 +102,20 @@ if env_tags is not None:
 # Language / i18n
 
 supported_languages = {
-    "en": "Godot Engine %s documentation in English",
-    "de": "Godot Engine %s Dokumentation auf Deutsch",
-    "es": "Documentación de Godot Engine %s en español",
-    "fr": "Documentation de Godot Engine %s en français",
-    "fi": "Godot Engine %s dokumentaatio suomeksi",
-    "it": "Godot Engine %s documentazione in italiano",
-    "ja": "Godot Engine %sの日本語のドキュメント",
-    "ko": "Godot Engine %s 문서 (한국어)",
-    "pl": "Dokumentacja Godot Engine %s w języku polskim",
-    "pt_BR": "Documentação da Godot Engine %s em Português Brasileiro",
-    "ru": "Документация Godot Engine %s на русском языке",
-    "uk": "Документація до Godot Engine %s українською мовою",
-    "zh_CN": "Godot Engine %s 简体中文文档",
-    "zh_TW": "Godot Engine %s 正體中文 (台灣) 文件",
+    "en": "Redot Engine %s documentation in English",
+    "de": "Redot Engine %s Dokumentation auf Deutsch",
+    "es": "Documentación de Redot Engine %s en español",
+    "fr": "Documentation de Redot Engine %s en français",
+    "fi": "Redot Engine %s dokumentaatio suomeksi",
+    "it": "Redot Engine %s documentazione in italiano",
+    "ja": "Redot Engine %sの日本語のドキュメント",
+    "ko": "Redot Engine %s 문서 (한국어)",
+    "pl": "Dokumentacja Redot Engine %s w języku polskim",
+    "pt_BR": "Documentação da Redot Engine %s em Português Brasileiro",
+    "ru": "Документация Redot Engine %s на русском языке",
+    "uk": "Документація до Redot Engine %s українською мовою",
+    "zh_CN": "Redot Engine %s 简体中文文档",
+    "zh_TW": "Redot Engine %s 正體中文 (台灣) 文件",
 }
 
 # RTD normalized their language codes to ll-cc (e.g. zh-cn),
@@ -177,28 +177,28 @@ html_title = supported_languages[language] % ( "(" + version + ")" )
 # VCS options: https://docs.readthedocs.io/en/latest/vcs.html#github
 html_context = {
     "display_github": not is_i18n,  # Integrate GitHub
-    "github_user": "godotengine",  # Username
-    "github_repo": "godot-docs",  # Repo name
+    "github_user": "Redot-Engine",  # Username
+    "github_repo": "redot-docs",  # Repo name
     "github_version": "master",  # Version
     "conf_py_path": "/",  # Path in the checkout to the docs root
-    "godot_inject_language_links": True,
-    "godot_docs_supported_languages": list(supported_languages.keys()),
-    "godot_docs_title": supported_languages[language],
-    "godot_docs_basepath": "https://docs.godotengine.org/",
-    "godot_docs_suffix": ".html",
-    "godot_default_lang": "en",
-    "godot_canonical_version": "stable",
+    "docs_inject_language_links": True,
+    "engine_docs_supported_languages": list(supported_languages.keys()),
+    "engine_docs_title": supported_languages[language],
+    "engine_docs_basepath": "https://docs.redotengine.org/",
+    "engine_docs_suffix": ".html",
+    "docs_default_lang": "en",
+    "engine_canonical_version": "stable",
     # Distinguish local development website from production website.
     # This prevents people from looking for changes on the production website after making local changes :)
-    "godot_title_prefix": "" if on_rtd else "(DEV) ",
+    "engine_title_prefix": "" if on_rtd else "(INDEV) ",
     # Set this to `True` when in the `latest` branch to clearly indicate to the reader
     # that they are not reading the `stable` documentation.
-    "godot_is_latest": True,
-    "godot_version": "4.4",
+    "engine_is_latest": True,
+    "engine_version": "4.4",
     # Enables a banner that displays the up-to-date status of each article.
-    "godot_show_article_status": True,
+    "docs_show_article_status": True,
     # Display user-contributed notes at the bottom of pages that don't have `:allow_comments: False` at the top.
-    "godot_show_article_comments": on_rtd and not is_i18n,
+    "docs_show_article_comments": on_rtd and not is_i18n,
 }
 
 html_logo = "img/docs_logo.svg"
@@ -213,18 +213,18 @@ html_extra_path = ["robots.txt"]
 html_css_files = [
     'css/algolia.css',
     'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css',
-    "css/custom.css?10", # Increment the number at the end when the file changes to bust the cache.
+    "css/custom-v10.css", # Old cache busting technique no longer works, gotta do this
 ]
 
 if not on_rtd:
     html_css_files.append("css/dev.css")
 
 html_js_files = [
-    "js/custom.js?7", # Increment the number at the end when the file changes to bust the cache.
+    "js/custom-v7.js", # Old cache busting technique no longer works, gotta do this
 ]
 
 # Output file base name for HTML help builder
-htmlhelp_basename = "GodotEnginedoc"
+htmlhelp_basename = "RedotEngine_doc"
 
 # -- Options for reStructuredText parser ----------------------------------
 
@@ -239,9 +239,9 @@ file_insertion_enabled = False
 latex_documents = [
     (
         master_doc,
-        "GodotEngine.tex",
-        "Godot Engine Documentation",
-        "Juan Linietsky, Ariel Manzur and the Godot community",
+        "RedotEngine.tex",
+        "Redot Engine Documentation",
+        "Juan Linietsky, Ariel Manzur, and the Godot and Redot communities",
         "manual",
     ),
 ]
@@ -255,19 +255,19 @@ linkcheck_timeout = 10
 
 # -- I18n settings --------------------------------------------------------
 
-# Godot localization is handled via https://github.com/godotengine/godot-docs-l10n
+# Redot localization is handled via https://github.com/Redot-Engine/redot-docs-l10n
 # where the main docs repo is a submodule. Therefore the translated material is
 # actually in the parent folder of this conf.py, hence the "../".
 
 locale_dirs = ["../sphinx/po/"]
 gettext_compact = False
 
-# We want to host the localized images in godot-docs-l10n, but Sphinx does not provide
+# We want to host the localized images in Redot-docs-l10n, but Sphinx does not provide
 # the necessary feature to do so. `figure_language_filename` has `{root}` and `{path}`,
 # but they resolve to (host) absolute paths, so we can't use them as is to access "../".
 # However, Python is glorious and lets us redefine Sphinx's internal method that handles
 # `figure_language_filename`, so we do our own post-processing to fix the absolute path
-# and point to the parallel folder structure in godot-docs-l10n.
+# and point to the parallel folder structure in Redot-docs-l10n.
 # Note: Sphinx's handling of `figure_language_filename` may change in the future, monitor
 # https://github.com/sphinx-doc/sphinx/issues/7768 to see what would be relevant for us.
 figure_language_filename = "{root}.{language}{ext}"
@@ -277,10 +277,10 @@ cwd = os.getcwd()
 sphinx_original_get_image_filename_for_language = sphinx.util.i18n.get_image_filename_for_language
 
 
-def godot_get_image_filename_for_language(filename, env):
+def Redot_get_image_filename_for_language(filename, env):
     """
     Hack the absolute path returned by Sphinx based on `figure_language_filename`
-    to insert our `../images` relative path to godot-docs-l10n's images folder,
+    to insert our `../images` relative path to Redot-docs-l10n's images folder,
     which mirrors the folder structure of the docs repository.
     The returned string should also be absolute so that `os.path.exists` can properly
     resolve it when trying to concatenate with the original doc folder.
@@ -289,7 +289,7 @@ def godot_get_image_filename_for_language(filename, env):
     path = os.path.abspath(os.path.join("../images/", os.path.relpath(path, cwd)))
     return path
 
-sphinx.util.i18n.get_image_filename_for_language = godot_get_image_filename_for_language
+sphinx.util.i18n.get_image_filename_for_language = Redot_get_image_filename_for_language
 
 # Similar story for the localized class reference, it's out of tree and there doesn't
 # seem to be an easy way for us to tweak the toctree to take this into account.
