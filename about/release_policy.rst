@@ -2,7 +2,7 @@
 
 .. _doc_release_policy:
 
-Godot release policy
+Redot release policy
 ====================
 
 Godot's release policy is in constant evolution. The description below

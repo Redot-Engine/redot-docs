@@ -46,8 +46,8 @@ jobs:
           parallel --will-cite sed -i "s/\\.webp$/\\.png/g" ::: {about,community,contributing,getting_started,tutorials}/**/*.rst
 
           # Remove banners at the top of each page when building `latest`.
-          sed -i 's/"godot_is_latest": True/"godot_is_latest": False/' conf.py
-          sed -i 's/"godot_show_article_status": True/"godot_show_article_status": False/' conf.py
+          sed -i 's/"engine_is_latest": True/"engine_is_latest": False/' conf.py
+          sed -i 's/"docs_show_article_status": True/"docs_show_article_status": False/' conf.py
 
           make SPHINXOPTS='--color' epub
 

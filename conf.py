@@ -177,28 +177,28 @@ html_title = supported_languages[language] % ( "(" + version + ")" )
 # VCS options: https://docs.readthedocs.io/en/latest/vcs.html#github
 html_context = {
     "display_github": not is_i18n,  # Integrate GitHub
-    "github_user": "godotengine",  # Username
-    "github_repo": "godot-docs",  # Repo name
+    "github_user": "Redot-Engine",  # Username
+    "github_repo": "redot-docs",  # Repo name
     "github_version": "master",  # Version
     "conf_py_path": "/",  # Path in the checkout to the docs root
-    "godot_inject_language_links": True,
-    "godot_docs_supported_languages": list(supported_languages.keys()),
-    "godot_docs_title": supported_languages[language],
-    "godot_docs_basepath": "https://docs.godotengine.org/",
-    "godot_docs_suffix": ".html",
-    "godot_default_lang": "en",
-    "godot_canonical_version": "stable",
+    "docs_inject_language_links": True,
+    "engine_docs_supported_languages": list(supported_languages.keys()),
+    "engine_docs_title": supported_languages[language],
+    "engine_docs_basepath": "https://docs.redotengine.org/",
+    "engine_docs_suffix": ".html",
+    "docs_default_lang": "en",
+    "engine_canonical_version": "stable",
     # Distinguish local development website from production website.
     # This prevents people from looking for changes on the production website after making local changes :)
-    "godot_title_prefix": "" if on_rtd else "(DEV) ",
+    "engine_title_prefix": "" if on_rtd else "(INDEV) ",
     # Set this to `True` when in the `latest` branch to clearly indicate to the reader
     # that they are not reading the `stable` documentation.
-    "godot_is_latest": True,
-    "godot_version": "4.4",
+    "engine_is_latest": True,
+    "engine_version": "4.4",
     # Enables a banner that displays the up-to-date status of each article.
-    "godot_show_article_status": True,
+    "docs_show_article_status": True,
     # Display user-contributed notes at the bottom of pages that don't have `:allow_comments: False` at the top.
-    "godot_show_article_comments": on_rtd and not is_i18n,
+    "docs_show_article_comments": on_rtd and not is_i18n,
 }
 
 html_logo = "img/docs_logo.svg"
@@ -224,7 +224,7 @@ html_js_files = [
 ]
 
 # Output file base name for HTML help builder
-htmlhelp_basename = "RedotEnginedoc"
+htmlhelp_basename = "RedotEngine_doc"
 
 # -- Options for reStructuredText parser ----------------------------------
 
