@@ -475,17 +475,19 @@ Scripting
   
   You can use any build system and language features you wish with these languages.
 
-    - `C <https://github.com/godotengine/godot-headers>`__
-    - `C++ <https://github.com/godotengine/godot-cpp>`__
+    - `C <https://github.com/godotengine/godot-headers>`_
+    - `C++ <https://github.com/godotengine/godot-cpp>`_
 
 - Community GDExtension bindings:
   
   These bindings might be experimental and not production ready.
   
-  - `D <https://github.com/godot-dlang/godot-dlang>`__
-  - `Haxe <https://hxgodot.github.io/>`__
-  - `Swift <https://github.com/migueldeicaza/SwiftGodot>`__
-  - `Rust <https://github.com/godot-rust/gdextension>`__
+  - `D <https://github.com/godot-dlang/godot-dlang>`_
+  - `Haxe <https://hxgodot.github.io/>`_
+  - `Swift <https://github.com/migueldeicaza/SwiftGodot>`_
+  - `Rust <https://github.com/godot-rust/gdextension>`_
+  - `Python <https://github.com/touilleMan/godot-python>`_
+  - `Nim <https://github.com/pragmagic/godot-nim>`_
 
 Audio
 -----
