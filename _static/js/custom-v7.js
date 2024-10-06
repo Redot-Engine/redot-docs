@@ -378,7 +378,7 @@ $(document).ready(() => {
     codeBlock.innerHTML = html;
   }
 
-  // See `godot_is_latest` in conf.py
+  // See `engine_is_latest` in conf.py
   const isLatest = document.querySelector('meta[name=doc_is_latest]').content.toLowerCase() === 'true';
   if (isLatest) {
     // Add a compatibility notice using JavaScript so it doesn't end up in the

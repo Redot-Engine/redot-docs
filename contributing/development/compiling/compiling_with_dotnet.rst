@@ -71,7 +71,7 @@ libraries, should have been created in the ``bin`` directory.
 
 .. note:: By default, all development builds share a version number, which can
           cause some issues with caching of the NuGet packages. To solve this
-          issue either use ``GODOT_VERSION_STATUS`` to give every build a unique
+          issue either use ``engine_version_STATUS`` to give every build a unique
           version or delete ``GodotNuGetFallbackFolder`` after every build to
           clear the package cache.
 

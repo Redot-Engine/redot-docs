@@ -50,3 +50,4 @@ godot-docs-venv/
 
 # Jetbrains IDE files
 /.idea/
+/.venv

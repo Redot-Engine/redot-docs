@@ -13,7 +13,7 @@ Complying with licenses
 What are licenses?
 ------------------
 
-Godot is created and distributed under the `MIT License <https://opensource.org/licenses/MIT>`_.
+Redot is created and distributed under the `MIT License <https://opensource.org/licenses/MIT>`_.
 It doesn't have a sole owner, as every contributor that submits code to
 the project does it under this same license and keeps ownership of their
 contribution.
@@ -31,7 +31,7 @@ with the original one.
 
 .. tip::
 
-    Alongside the Godot license text, remember to also list third-party notices
+    Alongside the Redot license text, remember to also list third-party notices
     for assets you're using, such as textures, models, sounds, music and fonts.
     This includes free assets, which often come with licenses that require
     attribution.
@@ -44,9 +44,9 @@ text somewhere in your game or derivative project.
 
 This text reads as follows::
 
-    This game uses Godot Engine, available under the following license:
+    This game uses Redot Engine, available under the following license:
 
-    Copyright (c) 2014-present Godot Engine contributors.
+    Copyright (c) 2014-present Godot and Redot Engine contributors.
     Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,13 +67,13 @@ This text reads as follows::
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-Beside its own MIT license, Godot includes code from a number of third-party
+Beside its own MIT license, Redot includes code from a number of third-party
 libraries. See :ref:`doc_complying_with_licenses_thirdparty` for details.
 
 .. note::
 
     Your games do not need to be under the same license. You are free to release
-    your Godot projects under any license and to create commercial games with
+    your Redot projects under any license and to create commercial games with
     the engine.
 
 Inclusion
@@ -118,13 +118,13 @@ If the game includes a printed manual, the license text can be included there.
 Link to the license
 ^^^^^^^^^^^^^^^^^^^
 
-The Godot Engine developers consider that a link to ``godotengine.org/license``
+The Redot Engine developers consider that a link to ``redotengine.org/license``
 in your game documentation or credits would be an acceptable way to satisfy
 the license terms.
 
 .. tip::
 
-    Godot provides several methods to get license information in the
+    Redot provides several methods to get license information in the
     :ref:`Engine <class_Engine>` singleton. This allows you to source the
     license information directly from the engine binary, which prevents the
     information from becoming outdated if you update engine versions.
@@ -143,19 +143,19 @@ the license terms.
 Third-party licenses
 --------------------
 
-Godot itself contains software written by
-`third parties <https://github.com/godotengine/godot/blob/master/thirdparty/README.md>`_,
-which is compatible with, but not covered by Godot's MIT license.
+Redot itself contains software written by
+`third parties <https://github.com/Redot-Engine/redot-engine/blob/master/thirdparty/README.md>`_,
+which is compatible with, but not covered by Redot's MIT license.
 
 Many of these dependencies are distributed under permissive open source licenses
 which require attribution by explicitly citing their copyright statement and
 license text in the final product's documentation.
 
-Given the scope of the Godot project, this is fairly difficult to do thoroughly.
-For the Godot editor, the full documentation of third-party copyrights and
-licenses is provided in the `COPYRIGHT.txt <https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt>`_
+Given the scope of the Redot project, this is fairly difficult to do thoroughly.
+For the Redot editor, the full documentation of third-party copyrights and
+licenses is provided in the `COPYRIGHT.txt <https://github.com/Redot-Engine/redot-engine/blob/master/COPYRIGHT.txt>`_
 file.
 
 A good option for end users to document third-party licenses is to include this
 file in your project's distribution, which you can e.g. rename to
-``GODOT_COPYRIGHT.txt`` to prevent any confusion with your own code and assets.
+``Redot_COPYRIGHT.txt`` to prevent any confusion with your own code and assets.
