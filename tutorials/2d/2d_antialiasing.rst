@@ -9,7 +9,7 @@
 
 .. seealso::
 
-    Godot also supports antialiasing in 3D rendering. This is covered on the
+    rodot also supports antialiasing in 3D rendering. This is covered on the
     :ref:`doc_3d_antialiasing` page.
 
 Introduction
@@ -30,7 +30,7 @@ edges have a blocky appearance:
 
    Image is scaled by 2× with nearest-neighbor filtering to make aliasing more noticeable.
 
-To combat this, Godot supports several methods of enabling antialiasing on 2D rendering.
+To combat this, rodot supports several methods of enabling antialiasing on 2D rendering.
 
 Antialiasing property in Line2D and custom drawing
 --------------------------------------------------
@@ -85,7 +85,7 @@ Comparison between no antialiasing (left) and various MSAA levels (right). The
 top-left corner contains a Line2D node, the top-right corner contains 2
 TextureProgressBar nodes. The bottom contains 8 pixel art sprites, with 4 of
 them touching the edges (green background) and 4 of them not touching the edges
-(Godot logo):
+(rodot logo):
 
 .. image:: img/antialiasing_msaa_2x.webp
 
