@@ -16,7 +16,7 @@ Example use cases for runtime file loading and saving include:
 
 - Loading texture packs designed for the game.
 - Loading user-provided audio tracks and playing them back in an in-game radio station.
-- Loading custom levels or 3D models that can be designed with any 3D DCC that
+- Loading custom levels or 3D models that can be designed with any 3D DCC (Digital Content Creation) that
   can export to glTF (including glTF scenes saved by Godot at runtime).
 - Using user-provided fonts for menus and HUD.
 - Saving/loading a file format that can contain multiple files but can still
@@ -167,9 +167,10 @@ Example of loading an image and displaying it in a :ref:`class_TextureRect` node
 
 Audio/video files
 -----------------
+.. note::
+Not *all* files with an ``.ogg`` extension may be Ogg Vorbis files.
 
-Godot supports loading Ogg Vorbis audio at runtime. Note that not *all* files
-with an ``.ogg`` extension may be Ogg Vorbis files. Some may be Ogg Theora
+Godot supports loading Ogg Vorbis audio at runtime. Some may be Ogg Theora
 videos, or contain Opus audio within an Ogg container. These files will **not**
 load correctly as audio files in Godot.
 
