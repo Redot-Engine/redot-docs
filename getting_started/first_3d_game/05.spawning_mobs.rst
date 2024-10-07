@@ -169,7 +169,7 @@ or any other monster to it.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Main : Node
     {
@@ -311,7 +311,7 @@ Here is the complete ``main.gd`` script so far, for reference.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Main : Node
     {

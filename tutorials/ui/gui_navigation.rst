@@ -12,7 +12,7 @@ to game with a controller on PC).
 
 Navigating between UI elements with keyboard or controller is done by
 changing which node is actively selected. This is also called changing UI focus.
-Every :ref:`Control <class_Control>` node in Godot is capable of having focus.
+Every :ref:`Control <class_Control>` node in redot is capable of having focus.
 By default, some control nodes have the ability to automatically grab focus
 reacting to built-in UI actions such as ``ui_up``, ``ui_down``, ``ui_focus_next``, etc.
 These actions can be seen in the project settings in the input map and can be modified.

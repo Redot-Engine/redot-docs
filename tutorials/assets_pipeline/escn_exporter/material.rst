@@ -1,15 +1,15 @@
 Materials
 =========
 
-Using existing Godot materials
+Using existing redot materials
 ------------------------------
 
 One way in which the exporter can handle materials is to attempt to match
-the Blender material with an existing Godot material. This has the advantage of
-being able to use all of the features of Godot's material system, but it means
+the Blender material with an existing redot material. This has the advantage of
+being able to use all of the features of redot's material system, but it means
 that you cannot see your model with the material applied inside Blender.
 
-To do this, the exporter attempts to find Godot materials with names that match
+To do this, the exporter attempts to find redot materials with names that match
 those of the material name in Blender. So if you export an object in Blender
 with the material name ``PurpleDots`` then the exporter will search for the
 file ``PurpleDots.tres`` and assign it to the object. If this file is not a
@@ -23,8 +23,8 @@ Search Paths" option:
 .. image:: img/material_search.jpg
 
 This can take the value of:
- - Project Directory - Attempts to find the ``project.Godot`` and recursively
-   searches through subdirectories. If ``project.Godot`` cannot be found it
+ - Project Directory - Attempts to find the ``project.redot`` and recursively
+   searches through subdirectories. If ``project.redot`` cannot be found it
    will throw an error. This is useful for most projects where naming conflicts
    are unlikely.
  - Export Directory - Look for materials in subdirectories of the export
@@ -37,7 +37,7 @@ Export of Cycles/EEVEE materials
 --------------------------------
 
 The exporter has a primitive support for converting Cycles/EEVEE material node tree
-to Godot Shader Material. Note that some of the Shader Node are not supported yet due to
+to redot Shader Material. Note that some of the Shader Node are not supported yet due to
 difficulties in implementation, which are:
 
 - all the ``noisy textures``
@@ -60,7 +60,7 @@ Generate external materials
 
 The default configuration of material exporting would keep all the materials internal to
 the ``escn`` file. There is an option which could enable generating external ``.material``
-file when the ``escn`` file opens in Godot.
+file when the ``escn`` file opens in redot.
 
 .. image:: img/external_mat_option.jpg
 

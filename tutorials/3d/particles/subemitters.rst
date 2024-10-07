@@ -47,7 +47,7 @@ even one coming from a different instanced scene.
 .. warning::
 
    Even though the parent particle system can be selected from the list of available particle
-   systems, a particle system which is its own sub-emitter does not work in Godot. It will
+   systems, a particle system which is its own sub-emitter does not work in redot. It will
    simply not spawn. The same is true for any other kind of recursive or self-referential
    sub-emitter setup.
 

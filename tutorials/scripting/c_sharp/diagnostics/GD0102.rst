@@ -29,7 +29,7 @@ the engine.
 
     class SomeType { }
 
-    // SomeType is not a valid member type because it doesn't derive from GodotObject,
+    // SomeType is not a valid member type because it doesn't derive from redotObject,
     // so it's not compatible with Variant.
     [Export]
     public SomeType InvalidProperty { get; set; }

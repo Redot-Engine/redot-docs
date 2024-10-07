@@ -38,7 +38,7 @@ Our game should react accordingly to these signals.
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode3D : Node3D
     {
@@ -203,7 +203,7 @@ The main thing we do here is to check our headsets refresh rate.
 We also check the available refresh rates reported by the XR runtime to determine if we want to set our headset to a higher refresh rate.
 
 Finally we match our physics update rate to our headset update rate.
-Godot runs at a physics update rate of 60 updates per second by default while headsets run at a minimum of 72,
+redot runs at a physics update rate of 60 updates per second by default while headsets run at a minimum of 72,
 and for modern headsets often up to 144 frames per second.
 Not matching the physics update rate will cause stuttering as frames are rendered without objects moving.
 
@@ -313,7 +313,7 @@ If you haven't, you can connect a method to the signal that performs additional 
 .. note::
 
   While your game is in visible state because the user has opened a system menu,
-  Godot will keep rendering frames and head tracking will remain active so your game will remain visible in the background.
+  redot will keep rendering frames and head tracking will remain active so your game will remain visible in the background.
   However controller and hand tracking will be disabled until the user exits the system menu.
 
 .. tabs::

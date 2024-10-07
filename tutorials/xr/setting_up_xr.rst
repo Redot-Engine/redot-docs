@@ -3,10 +3,10 @@
 Setting up XR
 =============
 
-Introduction to the XR system in Godot
+Introduction to the XR system in redot
 --------------------------------------
 
-Godot provides a modular XR system that abstracts many of the different XR platform specifics away from the user.
+redot provides a modular XR system that abstracts many of the different XR platform specifics away from the user.
 At the core sits the :ref:`XRServer <class_xrserver>` which acts as a central interface to the XR system that allows users to discover interfaces and interact with the components of the XR system.
 
 Each supported XR platform is implemented as an :ref:`XRInterface <class_xrinterface>`. Supported interfaces register themselves with the :ref:`XRServer <class_xrserver>` and can be queried with the ``find_interface`` method on the :ref:`XRServer <class_xrserver>`. When the desired interface is found it can be initialized by calling ``initialize`` on the interface.
@@ -14,10 +14,10 @@ Each supported XR platform is implemented as an :ref:`XRInterface <class_xrinter
 .. warning::
     A registered interface means nothing more than that the interface is available, if the interface is not supported by the host system, initialization may fail and return ``false``. This can have many reasons and sadly the reasons differ from platform to platform. It can be because the user hasn't installed the required software, or that the user simply hasn't plugged in their headset. You as a developer must thus react properly on an interface failing to initialize.
 
-Due to the special requirements for output in XR, especially for head mounted devices that supply different images to each eye, the :ref:`XRServer <class_xrserver>` in Godot will override various features in the rendering system. For stand-alone devices this means the final output is handled by the :ref:`XRInterface <class_xrinterface>` and Godot's usual output system is disabled. For desktop XR devices that work as a second screen it is possible to dedicate a separate :ref:`Viewport <class_viewport>` to handle the XR output, leaving the main Godot window available for displaying alternative content.
+Due to the special requirements for output in XR, especially for head mounted devices that supply different images to each eye, the :ref:`XRServer <class_xrserver>` in redot will override various features in the rendering system. For stand-alone devices this means the final output is handled by the :ref:`XRInterface <class_xrinterface>` and redot's usual output system is disabled. For desktop XR devices that work as a second screen it is possible to dedicate a separate :ref:`Viewport <class_viewport>` to handle the XR output, leaving the main redot window available for displaying alternative content.
 
 .. note::
-    Note that only one interface can be responsible for handling the output to an XR device, this is known as the primary interface and by default will be the first interface that is initialized. Godot currently thus only supports implementations with a single headset.
+    Note that only one interface can be responsible for handling the output to an XR device, this is known as the primary interface and by default will be the first interface that is initialized. redot currently thus only supports implementations with a single headset.
     It is possible, but increasingly uncommon, to have a secondary interface, for example to add tracking to an otherwise 3DOF only device.
 
 There are three XR specific node types that you will find in nearly all XR applications:
@@ -28,28 +28,28 @@ There are three XR specific node types that you will find in nearly all XR appli
 
 There are other XR related nodes and there is much more to say about these three nodes, but we'll get into that later on.
 
-Prerequisites for XR in Godot 4
+Prerequisites for XR in redot 4
 -------------------------------
 
-While in Godot 3 most things worked out of the box, Godot 4 needs a little more setup. This is mainly due to the more advanced nature of the Vulkan renderer. There are many rendering features in Vulkan the XR system uses that aren't enabled by default. They are very easy to turn on, simply open up your project settings and tick the XR shaders tickbox in the XR section:
+While in redot 3 most things worked out of the box, redot 4 needs a little more setup. This is mainly due to the more advanced nature of the Vulkan renderer. There are many rendering features in Vulkan the XR system uses that aren't enabled by default. They are very easy to turn on, simply open up your project settings and tick the XR shaders tickbox in the XR section:
 
 .. image:: img/xr_shaders.png
 
 .. warning::
-    As Godot 4 is still in development, many post process effects have not yet been updated to support stereoscopic rendering. Using these will have adverse effects.
+    As redot 4 is still in development, many post process effects have not yet been updated to support stereoscopic rendering. Using these will have adverse effects.
 
 .. note::
-    Godot 4 has 3 renderer options, Compatibility, Mobile, and Forward+. In the future XR desktop projects should use Forward+, and projects for stand-alone headsets
+    redot 4 has 3 renderer options, Compatibility, Mobile, and Forward+. In the future XR desktop projects should use Forward+, and projects for stand-alone headsets
     should use Mobile. However Compatibility is the recommended renderer for now due to it having the best XR performance.
 
 OpenXR
 ------
 
-OpenXR is a new industry standard that allows different XR platforms to present themselves through a standardised API to XR applications. This standard is an open standard maintained by the Khronos Group and thus aligns very well with Godot's interests.
+OpenXR is a new industry standard that allows different XR platforms to present themselves through a standardised API to XR applications. This standard is an open standard maintained by the Khronos Group and thus aligns very well with redot's interests.
 
 The Vulkan implementation of OpenXR is closely integrated with Vulkan, taking over part of the Vulkan system. This requires tight integration of certain core graphics features in the Vulkan renderer which are needed before the XR system is setup. This was one of the main deciding factors to include OpenXR as a core interface.
 
-This also means OpenXR needs to be enabled when Godot starts in order to set things up correctly. The required setting can be found in your project settings:
+This also means OpenXR needs to be enabled when redot starts in order to set things up correctly. The required setting can be found in your project settings:
 
 .. image:: img/openxr_settings.png
 
@@ -97,7 +97,7 @@ Next we need to add a script to our root node. Add the following code into this 
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode3D : Node3D
     {

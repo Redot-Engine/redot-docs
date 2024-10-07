@@ -19,7 +19,7 @@ Rule description
 ----------------
 
 The ``MustBeVariantAnalyzer`` has found an unhandled case in the user source
-code. Please, open an `issue <https://github.com/godotengine/godot/issues>`_
+code. Please, open an `issue <https://github.com/redotengine/redot/issues>`_
 and attach a minimal reproduction project so it can be fixed.
 
 

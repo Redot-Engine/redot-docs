@@ -157,7 +157,7 @@ three vertical dots menu button at the top of the TileSet editor and choose
 Using a collection of scenes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since Godot 4.0, you can place actual *scenes* as tiles. This allows you to use
+Since redot 4.0, you can place actual *scenes* as tiles. This allows you to use
 any collection of nodes as a tile. For example, you could use scene tiles to
 place gameplay elements, such as shops the player may be able to interact with.
 You could also use scene tiles to place AudioStreamPlayer2Ds (for ambient
@@ -211,7 +211,7 @@ Merging several atlases into a single atlas
 
 Using multiple atlases within a single TileSet resource can sometimes be useful,
 but it can also be cumbersome in certain situations (especially if you're using
-one image per tile). Godot allows you to merge several atlases into a single
+one image per tile). redot allows you to merge several atlases into a single
 atlas for easier organization.
 
 To do so, you must have more than one atlas created in the TileSet resource.
@@ -420,7 +420,7 @@ Creating terrain sets (autotiling)
 
 .. note::
 
-    This functionality was implemented in a different form as *autotiling* in Godot 3.x.
+    This functionality was implemented in a different form as *autotiling* in redot 3.x.
     Terrains are essentially a more powerful replacement of autotiles. Unlike
     autotiles, terrains can support transitions from one terrain to another, as
     a tile may define several terrains at once.
@@ -436,7 +436,7 @@ corners or edges of platforms, floors, etc. While these can be placed manually,
 this quickly becomes tedious. Handling this situation with procedurally
 generated levels can also be difficult and require a lot of code.
 
-Godot offers *terrains* to perform this kind of tile connections automatically.
+redot offers *terrains* to perform this kind of tile connections automatically.
 This allows you to have the "correct" tile variants automatically used.
 
 Terrains are grouped into terrain sets. Each terrain set is assigned a mode from
@@ -446,7 +446,7 @@ terrains are matched to each other in a terrain set.
 .. note::
 
     The above modes correspond to the previous bitmask modes autotiles used in
-    Godot 3.x: 2×2, 3×3 or 3×3 minimal. This is also similar to what
+    redot 3.x: 2×2, 3×3 or 3×3 minimal. This is also similar to what
     the `Tiled <https://www.mapeditor.org/>`__ editor features.
 
 Select the TileMapLayer node, go to the inspector and create a new terrain set within the TileSet *resource*:
@@ -586,7 +586,7 @@ can be done using *alternative tiles*.
 
 .. tip::
 
-      Since Godot 4.2, you don't have to create alternative tiles to rotate or
+      Since redot 4.2, you don't have to create alternative tiles to rotate or
       flip tiles anymore. You can rotate any tile while placing it in the
       TileMap editor by using the rotation/flip buttons in the TileMap editor
       toolbar.

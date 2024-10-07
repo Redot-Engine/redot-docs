@@ -56,7 +56,7 @@ In scripts the following helper functions can be used to work with the ``navigat
 
  .. code-tab:: csharp 2D C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -139,7 +139,7 @@ In scripts the following helper functions can be used to work with the ``navigat
 
  .. code-tab:: csharp 3D C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode3D : Node3D
     {

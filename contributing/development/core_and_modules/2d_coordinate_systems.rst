@@ -11,13 +11,13 @@ built in. The basic concepts are covered in :ref:`doc_viewport_and_canvas_transf
 
 :ref:`Transform2D <class_Transform2D>` are matrices that convert coordinates from one coordinate
 system to an other. In order to use them, it is beneficial to know which coordinate systems are
-available in Godot. For a deeper understanding, the :ref:`doc_matrices_and_transforms` tutorial
+available in redot. For a deeper understanding, the :ref:`doc_matrices_and_transforms` tutorial
 offers insights to the underlying functionality.
 
-Godot 2D coordinate systems
+redot 2D coordinate systems
 ---------------------------
 
-The following graphic gives an overview of Godot 2D coordinate systems and the available
+The following graphic gives an overview of redot 2D coordinate systems and the available
 node-transforms, transform-functions and coordinate-system related functions. At the left
 is the OS Window Manager screen, at the right are the :ref:`CanvasItems <class_CanvasItem>`. For
 simplicity reasons this graphic doesn't include :ref:`SubViewport <class_SubViewport>`,
@@ -115,7 +115,7 @@ effects of each of them.
 - **Viewport global canvas transform**
     *Viewports* also have a :ref:`global canvas transform <class_Viewport_property_global_canvas_transform>`.
     This is the master transform and affects all individual *Canvas Layer* and embedded *Window*
-    transforms. This is primarily used in Godot's CanvasItem Editor.
+    transforms. This is primarily used in redot's CanvasItem Editor.
 
 - **Viewport stretch transform**
     Finally, *Viewports* have a *stretch transform*, which is used when resizing or stretching the

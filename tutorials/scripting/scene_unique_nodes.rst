@@ -93,6 +93,6 @@ when some data or functionality is shared globally.
 without knowing its full path. This seems similar to a scene unique node, but
 this method is able to find nodes in nested scenes, and doesn't require marking
 the node in the scene editor in any way. However, this method is slow. Scene
-unique nodes are cached by Godot and are fast to retrieve, but each time the
+unique nodes are cached by redot and are fast to retrieve, but each time the
 method is called, ``find_child()`` needs to check every descendant (every child,
 grandchild, and so on).

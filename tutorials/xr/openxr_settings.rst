@@ -4,15 +4,15 @@ OpenXR Settings
 ===============
 
 OpenXR has its own set of settings that are applied when OpenXR starts.
-While it is possible for OpenXR extensions implemented through Godot plugins to add additional settings,
-we will only discuss the settings in the core of Godot here.
+While it is possible for OpenXR extensions implemented through redot plugins to add additional settings,
+we will only discuss the settings in the core of redot here.
 
 .. image:: img/openxr_settings.png
 
 Enabled
 -------
 
-This setting enables the OpenXR module when Godot starts.
+This setting enables the OpenXR module when redot starts.
 This is required when the Vulkan backend is used.
 For other backends you can enable OpenXR at any time by calling ``initialize`` on the :ref:`OpenXRInterface <class_openxrinterface>`.
 
@@ -46,7 +46,7 @@ This specifies the view configuration your game is designed for:
 If the device on which you run your game does not match the selection here, OpenXR will fail to initialise.
 
 .. note::
-  OpenXR has additional view configurations for very specific devices that Godot doesn't support yet.
+  OpenXR has additional view configurations for very specific devices that redot doesn't support yet.
   For instance, Varjo headsets have a quad view configuration that outputs two sets of stereo images.
   These may be supported in the near future. 
 
@@ -100,7 +100,7 @@ The :ref:`OpenXRInterface <class_openxrinterface>` will emit the ``pose_recenter
 and it is up to the game to react appropriately.
 Not doing so will prevent your game from being accepted on various stores.
 
-In Godot you can do this by calling the ``center_on_hmd`` function on the :ref:`XRServer <class_xrserver>`:
+In redot you can do this by calling the ``center_on_hmd`` function on the :ref:`XRServer <class_xrserver>`:
 
 - Calling ``XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)`` will move the :ref:`XRCamera3D <class_xrcamera3d>` node
   to the :ref:`XROrigin3D <class_xrorigin3d>` node similar to the ``Local`` reference space.
@@ -160,7 +160,7 @@ If a mode is selected that is not supported by the headset, the first available 
 
 .. Note::
   Some OpenXR devices have separate systems for enabling/disabling passthrough.
-  From Godot 4.3 onwards selecting the alpha blend mode will also perform these extra steps.
+  From redot 4.3 onwards selecting the alpha blend mode will also perform these extra steps.
   This does require the latest vendor plugin to be installed.
 
 Foveation Level

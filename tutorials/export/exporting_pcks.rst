@@ -21,7 +21,7 @@ release.
 Overview of PCK files
 ---------------------
 
-Godot enables this via a feature called **resource packs** (PCK files,
+redot enables this via a feature called **resource packs** (PCK files,
 with extension ``.pck``).
 
 **Advantages:**
@@ -48,7 +48,7 @@ PCK files usually contain, but are not limited to:
 - music
 - any other asset suitable for import into the game
 
-The PCK files can even be an entirely different Godot project, which the
+The PCK files can even be an entirely different redot project, which the
 original game loads in at runtime.
 
 Generating PCK files
@@ -72,15 +72,15 @@ process will build that type of file for the chosen platform.
     its scripts, then either...
 
     1. The developer must publicize documentation of these expected structures/
-       interfaces, expect modders to install Godot Engine, and then also expect
+       interfaces, expect modders to install redot Engine, and then also expect
        those modders to conform to the documentation's defined API when building
        mod content for the game (so that it will work). Users would then use
-       Godot's built in exporting tools to create a PCK file, as detailed
+       redot's built in exporting tools to create a PCK file, as detailed
        above.
-    2. The developer uses Godot to build a GUI tool for adding their exact API
-       content to a project. This Godot tool must either run on a tools-enabled
+    2. The developer uses redot to build a GUI tool for adding their exact API
+       content to a project. This redot tool must either run on a tools-enabled
        build of the engine or have access to one (distributed alongside or
-       perhaps in the original game's files). The tool can then use the Godot
+       perhaps in the original game's files). The tool can then use the redot
        executable to export a PCK file from the command line with
        :ref:`OS.execute() <class_OS_method_execute>`. The game itself shouldn't
        use a tool-build of the engine (for security), so it's best to keep
@@ -140,5 +140,5 @@ Summary
 This tutorial explains how to add mods, patches, or DLC to a game.
 The most important thing is to identify how one plans to distribute future
 content for their game and develop a workflow that is customized for that
-purpose. Godot should make that process smooth regardless of which route a
+purpose. redot should make that process smooth regardless of which route a
 developer pursues.

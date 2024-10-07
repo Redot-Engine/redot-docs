@@ -46,12 +46,12 @@ As an example, Steam shows that the most common *primary display resolution* is
 1920×1080, so a sensible approach is to develop a game for this resolution, then
 handle scaling for different sizes and aspect ratios.
 
-Godot provides several useful tools to do this easily.
+redot provides several useful tools to do this easily.
 
 .. seealso::
 
-    You can see how Godot's support for multiple resolutions works in action using the
-    `Multiple Resolutions and Aspect Ratios demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/multiple_resolutions>`__.
+    You can see how redot's support for multiple resolutions works in action using the
+    `Multiple Resolutions and Aspect Ratios demo project <https://github.com/redotengine/redot-demo-projects/tree/master/gui/multiple_resolutions>`__.
 
 Base size
 ---------
@@ -68,7 +68,7 @@ with in the editor. This setting corresponds directly to the size of the
 blue rectangle in the 2D editor.
 
 There is often a need to support devices with screen and window sizes
-that are different from this base size. Godot offers many ways to
+that are different from this base size. redot offers many ways to
 control how the viewport will be resized and stretched to different
 screen sizes.
 
@@ -90,7 +90,7 @@ adjust.
 
 .. note::
 
-   Godot follows a modern approach to multiple resolutions. The engine will
+   redot follows a modern approach to multiple resolutions. The engine will
    never change the monitor's resolution on its own. While changing the
    monitor's resolution is the most efficient approach, it's also the least
    reliable approach as it can leave the monitor stuck on a low resolution if
@@ -110,7 +110,7 @@ Resizing
 
 There are several types of devices, with several types of screens, which
 in turn have different pixel density and resolutions. Handling all of
-them can be a lot of work, so Godot tries to make the developer's life a
+them can be a lot of work, so redot tries to make the developer's life a
 little easier. The :ref:`Viewport <class_Viewport>`
 node has several functions to handle resizing, and the root node of the
 scene tree is always a viewport (scenes loaded are instanced as a child
@@ -119,7 +119,7 @@ of it, and it can always be accessed by calling
 
 In any case, while changing the root Viewport params is probably the
 most flexible way to deal with the problem, it can be a lot of work,
-code and guessing, so Godot provides a set of parameters in the
+code and guessing, so redot provides a set of parameters in the
 project settings to handle multiple resolutions.
 
 Stretch settings
@@ -141,7 +141,7 @@ and a diagonal :ref:`Line2D <class_Line2D>` is added on top of it:
 .. image:: img/stretch_demo_scene.png
 
 .. Animated GIFs are generated from:
-.. https://github.com/ttencate/godot_scaling_mode
+.. https://github.com/ttencate/redot_scaling_mode
 
 -  **Stretch Mode = Disabled** (default): No stretching happens. One
    unit in the scene corresponds to one pixel on the screen. In this
@@ -286,7 +286,7 @@ To configure the stretch scale at runtime from a script, use the
 Stretch Scale Mode
 ^^^^^^^^^^^^^^^^^^
 
-Since Godot 4.2, the **Stretch Scale Mode** setting allows you to constrain the
+Since redot 4.2, the **Stretch Scale Mode** setting allows you to constrain the
 automatically determined scale factor (as well as the manually specified
 **Stretch Scale** setting) to integer values. By default, this setting is set to
 ``fractional``, which allows any scale factor to be applied (including fractional
@@ -402,7 +402,7 @@ Desktop game
 Mobile game in landscape mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Godot is configured to use landscape mode by default. This means you don't need
+redot is configured to use landscape mode by default. This means you don't need
 to change the display orientation project setting.
 
 - Set the base window width to ``1280`` and window height to ``720``.
@@ -469,7 +469,7 @@ Non-game application
 
 .. note::
 
-    Godot doesn't support manually overriding the 2D scale factor yet, so it is
+    redot doesn't support manually overriding the 2D scale factor yet, so it is
     not possible to have hiDPI support in non-game applications. Due to this, it
     is recommended to leave **Allow Hidpi** disabled in non-game applications to
     allow for the OS to use its low-DPI fallback.
@@ -477,12 +477,12 @@ Non-game application
 hiDPI support
 -------------
 
-By default, Godot projects are considered DPI-aware by the operating system.
+By default, redot projects are considered DPI-aware by the operating system.
 This is controlled by the **Display > Window > Dpi > Allow Hidpi** project setting,
 which should be left enabled whenever possible. Disabling DPI awareness can break
 fullscreen behavior on Windows.
 
-Since Godot projects are DPI-aware, they may appear at a very small window size
+Since redot projects are DPI-aware, they may appear at a very small window size
 when launching on an hiDPI display (proportionally to the screen resolution).
 For a game, the most common way to work around this issue is to make them
 fullscreen by default. Alternatively, you could set the window size in an
@@ -501,14 +501,14 @@ To ensure 2D elements don't appear too small on hiDPI displays:
   method is currently only implemented on macOS. On other operating systems, you
   will need to implement a method to guess the display scale factor based on the
   screen resolution (with a setting to let the user override this if needed). This
-  is the approach currently used by the Godot editor.
+  is the approach currently used by the redot editor.
 
 The **Allow Hidpi** setting is only effective on Windows and macOS. It's ignored
 on all other platforms.
 
 .. note::
 
-    The Godot editor itself is always marked as DPI-aware. Running the project
+    The redot editor itself is always marked as DPI-aware. Running the project
     from the editor will only be DPI-aware if **Allow Hidpi** is enabled in the
     Project Settings.
 
@@ -561,5 +561,5 @@ that it allows enable linear filtering. This makes scaled 3D viewports look
 better in many cases.
 
 See the
-`3D viewport scaling demo <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/3d_scaling>`__
+`3D viewport scaling demo <https://github.com/redotengine/redot-demo-projects/tree/master/viewport/3d_scaling>`__
 for examples.

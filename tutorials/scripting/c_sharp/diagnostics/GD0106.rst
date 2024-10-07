@@ -19,7 +19,7 @@ attribute. Properties that implement an interface explicitly can't be exported.
 Rule description
 ----------------
 
-Godot doesn't allow exporting explicit interface property implementations.
+redot doesn't allow exporting explicit interface property implementations.
 When an interface member is implemented explicitly, the member is hidden and
 consumers can't access them unless the type is converted to the interface first.
 Explicitly implemented members can also share the same name of other members in
@@ -56,4 +56,4 @@ When to suppress warnings
 -------------------------
 
 Do not suppress a warning from this rule. Explicit interface property implementations
-can't be exported so they will be ignored by Godot, resulting in runtime errors.
+can't be exported so they will be ignored by redot, resulting in runtime errors.

@@ -5,7 +5,7 @@
 C# diagnostics
 ==============
 
-Godot includes analyzers that inspect your C# source code to check for invalid
+redot includes analyzers that inspect your C# source code to check for invalid
 or unsupported code and let you know that something is wrong during build time.
 
 Rules

@@ -3,7 +3,7 @@
 Autoloads versus regular nodes
 ==============================
 
-Godot offers a feature to automatically load nodes at the root of your project,
+redot offers a feature to automatically load nodes at the root of your project,
 allowing you to access them globally, that can fulfill the role of a Singleton:
 :ref:`doc_singletons_autoload`. These autoloaded nodes are not freed when you
 change the scene from code with :ref:`SceneTree.change_scene_to_file <class_SceneTree_method_change_scene_to_file>`.
@@ -15,7 +15,7 @@ The cutting audio issue
 -----------------------
 
 Other engines can encourage the use of creating manager classes, singletons that
-organize a lot of functionality into a globally accessible object. Godot offers
+organize a lot of functionality into a globally accessible object. redot offers
 many ways to avoid global state thanks to the node tree and signals.
 
 For example, let's say we are building a platformer and want to collect coins
@@ -86,7 +86,7 @@ helper functions without having to create an instance to call them. The
 limitation of static functions is that they can't reference member variables,
 non-static functions or ``self``.
 
-Since Godot 4.1, GDScript also supports ``static`` variables using ``static var``.
+Since redot 4.1, GDScript also supports ``static`` variables using ``static var``.
 This means you can now share variables across instances of a class without
 having to create a separate autoload.
 

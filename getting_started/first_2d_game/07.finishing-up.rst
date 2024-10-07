@@ -108,7 +108,7 @@ Create a new :ref:`InputEventAction <class_InputEventAction>` and name it ``star
 Now when the start button appears, you can either click it or press :kbd:`Enter`
 to start the game.
 
-And with that, you completed your first 2D game in Godot.
+And with that, you completed your first 2D game in redot.
 
 .. image:: img/dodge_preview.gif
 
@@ -120,12 +120,12 @@ There's still much to learn, but you can take a moment to appreciate what you
 achieved.
 
 And when you're ready, you can move on to :ref:`doc_your_first_3d_game` to learn
-to create a complete 3D game from scratch, in Godot.
+to create a complete 3D game from scratch, in redot.
 
 Sharing the finished game with others
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want people to try out your game without having to install Godot, you'll
+If you want people to try out your game without having to install redot, you'll
 need to export the project for each operating system you want the game to be
 playable on. See :ref:`doc_exporting_projects` for instructions.
 

@@ -86,7 +86,7 @@ the ``score`` variable.
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class ScoreLabel : Label
     {
@@ -152,7 +152,7 @@ There, we increment the score and update the displayed text.
     }
 
 The second line uses the value of the ``score`` variable to replace the
-placeholder ``%s``. When using this feature, Godot automatically converts values
+placeholder ``%s``. When using this feature, redot automatically converts values
 to string text, which is convenient when outputting text in labels or
 when using the ``print()`` function.
 
@@ -293,14 +293,14 @@ Adding music
 ------------
 
 To add music that plays continuously in the background, we're going to use
-another feature in Godot: :ref:`autoloads <doc_singletons_autoload>`.
+another feature in redot: :ref:`autoloads <doc_singletons_autoload>`.
 
 To play audio, all you need to do is add an :ref:`AudioStreamPlayer <class_AudioStreamPlayer>` node to your
 scene and attach an audio file to it. When you start the scene, it can play
 automatically. However, when you reload the scene, like we do to play again, the
 audio nodes are also reset, and the music starts back from the beginning.
 
-You can use the autoload feature to have Godot load a node or a scene
+You can use the autoload feature to have redot load a node or a scene
 automatically at the start of the game, outside the current scene. You can also
 use it to create globally accessible objects.
 
@@ -396,7 +396,7 @@ Here is the complete ``main.gd`` script for reference.
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Main : Node
     {

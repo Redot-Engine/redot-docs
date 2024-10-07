@@ -5,8 +5,8 @@ Building from source
 
 .. highlight:: shell
 
-Godot prides itself on being very easy to build, by C++ projects' standards.
-:ref:`Godot uses the SCons build system <doc_faq_why_scons>`, and after the initial
+redot prides itself on being very easy to build, by C++ projects' standards.
+:ref:`redot uses the SCons build system <doc_faq_why_scons>`, and after the initial
 setup compiling the engine for your current platform should be as easy as running::
 
     scons
@@ -16,11 +16,11 @@ the build to match your specific needs, be it a custom engine fork, a lightweigh
 stripped of extra modules, or an executable targeting engine development.
 
 The articles below should help you navigate configuration options available, as well as
-prerequisites required to compile Godot exactly the way you need.
+prerequisites required to compile redot exactly the way you need.
 
-.. rubric:: Basics of building Godot
+.. rubric:: Basics of building redot
 
-Let's start with basics, and learn how to get Godot's source code, and then which options
+Let's start with basics, and learn how to get redot's source code, and then which options
 to use to compile it regardless of your target platform.
 
 .. toctree::
@@ -33,7 +33,7 @@ to use to compile it regardless of your target platform.
 .. rubric:: Building for target platforms
 
 Below you can find instructions for compiling the engine for your specific target platform.
-Note that Godot supports cross-compilation, which means you can compile it for a target platform
+Note that redot supports cross-compilation, which means you can compile it for a target platform
 that doesn't match your current platform (say, target Linux while being on Windows). The guides
 will try their best to cover all possible situations.
 
@@ -51,7 +51,7 @@ will try their best to cover all possible situations.
 
 .. rubric:: Other compilation targets and options
 
-Some additional universal compilation options require further setup. Namely, while Godot
+Some additional universal compilation options require further setup. Namely, while redot
 does have C#/.NET support as a part of its main codebase, it does not get compiled by
 default to reduce the executable size for users who don't need C# for their projects.
 

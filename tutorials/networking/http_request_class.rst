@@ -7,9 +7,9 @@ Why use HTTP?
 -------------
 
 `HTTP requests <https://developer.mozilla.org/en-US/docs/Web/HTTP>`_ are useful
-to communicate with web servers and other non-Godot programs.
+to communicate with web servers and other non-redot programs.
 
-Compared to Godot's other networking features (like
+Compared to redot's other networking features (like
 :ref:`High-level multiplayer <doc_high_level_multiplayer>`),
 HTTP requests have more overhead and take more time to get going,
 so they aren't suited for real-time communication, and aren't great to send
@@ -24,21 +24,21 @@ be loaded using
 So HTTP may be useful for your game's login system, lobby browser,
 to retrieve some information from the web or to download game assets.
 
-This tutorial assumes some familiarity with Godot and the Godot Editor.
+This tutorial assumes some familiarity with redot and the redot Editor.
 Refer to the :ref:`Introduction <toc-learn-introduction>` and the
 :ref:`Step by step <toc-learn-step_by_step>` tutorial, especially its
 :ref:`Nodes and Scenes <doc_nodes_and_scenes>` and
 :ref:`Creating your first script <doc_scripting_first_script>` pages if needed.
 
-HTTP requests in Godot
+HTTP requests in redot
 ----------------------
 
-The :ref:`HTTPRequest <class_HTTPRequest>` node is the easiest way to make HTTP requests in Godot.
+The :ref:`HTTPRequest <class_HTTPRequest>` node is the easiest way to make HTTP requests in redot.
 It is backed by the more low-level :ref:`HTTPClient <class_HTTPClient>`,
 for which a tutorial is available :ref:`here <doc_http_client_class>`.
 
 For this example, we will make an HTTP request to GitHub to retrieve the name
-of the latest Godot release.
+of the latest redot release.
 
 .. warning::
 
@@ -71,7 +71,7 @@ look for the ``name`` field and print that to console.
 
         func _ready():
             $HTTPRequest.request_completed.connect(_on_request_completed)
-            $HTTPRequest.request("https://api.github.com/repos/godotengine/godot/releases/latest")
+            $HTTPRequest.request("https://api.github.com/repos/redotengine/redot/releases/latest")
 
         func _on_request_completed(result, response_code, headers, body):
             var json = JSON.parse_string(body.get_string_from_utf8())
@@ -79,7 +79,7 @@ look for the ``name`` field and print that to console.
 
     .. code-tab:: csharp
 
-        using Godot;
+        using redot;
         using System.Text;
 
         public partial class MyNode : Node
@@ -88,18 +88,18 @@ look for the ``name`` field and print that to console.
             {
                 HttpRequest httpRequest = GetNode<HttpRequest>("HTTPRequest");
                 httpRequest.RequestCompleted += OnRequestCompleted;
-                httpRequest.Request("https://api.github.com/repos/godotengine/godot/releases/latest");
+                httpRequest.Request("https://api.github.com/repos/redotengine/redot/releases/latest");
             }
 
             private void OnRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
             {
-                Godot.Collections.Dictionary json = Json.ParseString(Encoding.UTF8.GetString(body)).AsGodotDictionary();
+                redot.Collections.Dictionary json = Json.ParseString(Encoding.UTF8.GetString(body)).AsredotDictionary();
                 GD.Print(json["name"]);
             }
         }
 
 Save the script and the scene, and run the project.
-The name of the most recent Godot release on Github should be printed to the output log.
+The name of the most recent redot release on Github should be printed to the output log.
 For more information on parsing JSON, see the class references for :ref:`JSON <class_JSON>`.
 
 Note that you may want to check whether the ``result`` equals ``RESULT_SUCCESS``
@@ -142,12 +142,12 @@ For example, to set a custom user agent (the HTTP ``User-Agent`` header) you cou
 
     .. code-tab:: gdscript GDScript
 
-        $HTTPRequest.request("https://api.github.com/repos/godotengine/godot/releases/latest", ["User-Agent: YourCustomUserAgent"])
+        $HTTPRequest.request("https://api.github.com/repos/redotengine/redot/releases/latest", ["User-Agent: YourCustomUserAgent"])
 
     .. code-tab:: csharp
 
         HttpRequest httpRequest = GetNode<HttpRequest>("HTTPRequest");
-        httpRequest.Request("https://api.github.com/repos/godotengine/godot/releases/latest", new string[] { "User-Agent: YourCustomUserAgent" });
+        httpRequest.Request("https://api.github.com/repos/redotengine/redot/releases/latest", new string[] { "User-Agent: YourCustomUserAgent" });
 
 .. warning::
 

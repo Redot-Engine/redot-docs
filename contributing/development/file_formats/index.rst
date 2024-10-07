@@ -1,6 +1,6 @@
 :allow_comments: False
 
-Godot file formats
+redot file formats
 ==================
 
 .. toctree::

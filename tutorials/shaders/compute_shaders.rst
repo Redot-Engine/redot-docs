@@ -5,7 +5,7 @@ Using compute shaders
 
 This tutorial will walk you through the process of creating a minimal compute
 shader. But first, a bit of background on compute shaders and how they work with
-Godot.
+redot.
 
 .. note::
 
@@ -25,8 +25,8 @@ Now let's get started by creating a short compute shader.
 
 First, in the **external** text editor of your choice, create a new file called
 ``compute_example.glsl`` in your project folder. When you write compute shaders
-in Godot, you write them in GLSL directly. The Godot shader language is based on
-GLSL. If you are familiar with normal shaders in Godot, the syntax below will
+in redot, you write them in GLSL directly. The redot shader language is based on
+GLSL. If you are familiar with normal shaders in redot, the syntax below will
 look somewhat familiar.
 
 .. note::
@@ -71,7 +71,7 @@ results back in the buffer array. Now let's look at it line-by-line.
 
 These two lines communicate two things:
 
- 1. The following code is a compute shader. This is a Godot-specific hint that is needed for the editor to properly import the shader file.
+ 1. The following code is a compute shader. This is a redot-specific hint that is needed for the editor to properly import the shader file.
  2. The code is using GLSL version 450.
 
 You should never have to change these two lines for your custom compute shaders.
@@ -372,7 +372,7 @@ shaders.
 .. seealso::
 
    The demo projects repository contains a
-   `Compute Shader Heightmap demo <https://github.com/godotengine/godot-demo-projects/tree/master/misc/compute_shader_heightmap>`__
+   `Compute Shader Heightmap demo <https://github.com/redotengine/redot-demo-projects/tree/master/misc/compute_shader_heightmap>`__
    This project performs heightmap image generation on the CPU and
    GPU separately, which lets you compare how a similar algorithm can be
    implemented in two different ways (with the GPU implementation being faster

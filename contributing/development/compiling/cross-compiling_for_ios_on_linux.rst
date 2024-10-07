@@ -7,7 +7,7 @@ Cross-compiling for iOS on Linux
 
 The procedure for this is somewhat complex and requires a lot of steps,
 but once you have the environment properly configured you can
-compile Godot for iOS anytime you want.
+compile redot for iOS anytime you want.
 
 Disclaimer
 ----------
@@ -104,7 +104,7 @@ to the following commands:
 Now you should have the iOS toolchain binaries in
 ``$HOME/iostoolchain/usr/bin``.
 
-Compiling Godot for iPhone
+Compiling redot for iPhone
 --------------------------
 
 Once you've done the above steps, you should keep two things in your
@@ -119,7 +119,7 @@ environment variable defined to anything.
 
     export OSXCROSS_IOS="anything"
 
-Now you can compile for iPhone using SCons like the standard Godot
+Now you can compile for iPhone using SCons like the standard redot
 way, with some additional arguments to provide the correct paths:
 
 ::

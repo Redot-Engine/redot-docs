@@ -63,7 +63,7 @@ you should remove the instance you have added by calling
 
     // Plugin.cs
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class Plugin : EditorPlugin
@@ -139,17 +139,17 @@ specifically add :ref:`class_EditorProperty`-based controls.
 
     // MyInspectorPlugin.cs
     #if TOOLS
-    using Godot;
+    using redot;
 
     public partial class MyInspectorPlugin : EditorInspectorPlugin
     {
-        public override bool _CanHandle(GodotObject @object)
+        public override bool _CanHandle(redotObject @object)
         {
             // We support all objects in this example.
             return true;
         }
 
-        public override bool _ParseProperty(GodotObject @object, Variant.Type type,
+        public override bool _ParseProperty(redotObject @object, Variant.Type type,
             string name, PropertyHint hintType, string hintString,
             PropertyUsageFlags usageFlags, bool wide)
         {
@@ -249,7 +249,7 @@ followed by ``set_bottom_editor()`` to position it below the name.
 
     // RandomIntEditor.cs
     #if TOOLS
-    using Godot;
+    using redot;
 
     public partial class RandomIntEditor : EditorProperty
     {

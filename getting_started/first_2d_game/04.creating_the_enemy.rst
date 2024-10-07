@@ -71,7 +71,7 @@ Add a script to the ``Mob`` like this:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Mob : RigidBody2D
     {

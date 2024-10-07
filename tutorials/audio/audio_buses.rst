@@ -8,10 +8,10 @@ Audio buses
 Introduction
 ------------
 
-Godot's audio processing code has been written with games in mind, with the aim
+redot's audio processing code has been written with games in mind, with the aim
 of achieving an optimal balance between performance and sound quality.
 
-Godot's audio engine allows any number of audio buses to be created and any
+redot's audio engine allows any number of audio buses to be created and any
 number of effect processors can be added to each bus. Only the hardware of the
 device running your game will limit the number of buses and effects that can be
 used before performance starts to suffer.
@@ -19,7 +19,7 @@ used before performance starts to suffer.
 Decibel scale
 -------------
 
-Godot's sound interface is designed to meet the expectations of sound design
+redot's sound interface is designed to meet the expectations of sound design
 professionals. To this end, it primarily uses the decibel scale.
 
 For those unfamiliar with it, it can be explained with a few facts:
@@ -49,7 +49,7 @@ and will allow you to communicate better with audio professionals.
 Audio buses
 -----------
 
-Audio buses can be found in the bottom panel of the Godot editor:
+Audio buses can be found in the bottom panel of the redot editor:
 
 .. image:: img/audio_buses1.png
 
@@ -98,7 +98,7 @@ For information on what each effect does, see :ref:`doc_audio_effects`.
 Automatic bus disabling
 -----------------------
 
-There is no need to disable buses manually when not in use. Godot detects
+There is no need to disable buses manually when not in use. redot detects
 that the bus has been silent for a few seconds and disables it (including
 all effects).
 

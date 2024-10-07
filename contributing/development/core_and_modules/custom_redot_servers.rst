@@ -1,24 +1,24 @@
-.. _doc_custom_godot_servers:
+.. _doc_custom_redot_servers:
 
-Custom Godot servers
+Custom redot servers
 ====================
 
 Introduction
 ------------
 
-Godot implements multi-threading as servers. Servers are daemons which
+redot implements multi-threading as servers. Servers are daemons which
 manage data, process it, and push the result. Servers implement the
 mediator pattern which interprets resource ID and process data for the
 engine and other modules. In addition, the server claims ownership for
 its RID allocations.
 
-This guide assumes the reader knows how to create C++ modules and Godot
+This guide assumes the reader knows how to create C++ modules and redot
 data types. If not, refer to :ref:`doc_custom_modules_in_cpp`.
 
 References
 ~~~~~~~~~~~
 
-- `Why does Godot use servers and RIDs? <https://godotengine.org/article/why-does-godot-use-servers-and-rids>`__
+- `Why does redot use servers and RIDs? <https://redotengine.org/article/why-does-redot-use-servers-and-rids>`__
 - `Singleton pattern <https://en.wikipedia.org/wiki/Singleton_pattern>`__
 - `Mediator pattern <https://en.wikipedia.org/wiki/Mediator_pattern>`__
 
@@ -32,7 +32,7 @@ What for?
 - Adding a custom VoIP protocol.
 - And more...
 
-Creating a Godot server
+Creating a redot server
 -----------------------
 
 At minimum, a server must have a static instance, a sleep timer, a thread loop,
@@ -76,7 +76,7 @@ an initialization state and a cleanup procedure.
     private:
         uint64_t counter;
         RID_Owner<InfiniteBus> bus_owner;
-        // https://github.com/godotengine/godot/blob/master/core/templates/rid.h
+        // https://github.com/redotengine/redot/blob/master/core/templates/rid.h
         Set<RID> buses;
         void _emit_occupy_room(uint64_t room, RID rid);
 
@@ -202,7 +202,7 @@ an initialization state and a cleanup procedure.
         return ret;
     }
 
-    // https://github.com/godotengine/godot/blob/master/core/templates/rid.h
+    // https://github.com/redotengine/redot/blob/master/core/templates/rid.h
     bool HilbertHotel::delete_bus(RID id) {
         if (bus_owner.owns(id)) {
             lock();
@@ -269,7 +269,7 @@ an initialization state and a cleanup procedure.
 Custom managed resource data
 ----------------------------
 
-Godot servers implement a mediator pattern. All data types inherit ``RID_Data``.
+redot servers implement a mediator pattern. All data types inherit ``RID_Data``.
 ``RID_Owner<MyRID_Data>`` owns the object when ``make_rid`` is called. During debug mode only,
 RID_Owner maintains a list of RIDs. In practice, RIDs are similar to writing
 object-oriented C code.
@@ -312,7 +312,7 @@ References
 ~~~~~~~~~~~
 
 - :ref:`RID<class_rid>`
-- `core/templates/rid.h <https://github.com/godotengine/godot/blob/master/core/templates/rid.h>`__
+- `core/templates/rid.h <https://github.com/redotengine/redot/blob/master/core/templates/rid.h>`__
 
 Registering the class in GDScript
 ---------------------------------
@@ -321,9 +321,9 @@ Servers are allocated in ``register_types.cpp``. The constructor sets the static
 instance and ``init()`` creates the managed thread; ``unregister_types.cpp``
 cleans up the server.
 
-Since a Godot server class creates an instance and binds it to a static singleton,
+Since a redot server class creates an instance and binds it to a static singleton,
 binding the class might not reference the correct instance. Therefore, a dummy
-class must be created to reference the proper Godot server.
+class must be created to reference the proper redot server.
 
 In ``register_server_types()``, ``Engine::get_singleton()->add_singleton``
 is used to register the dummy class in GDScript.
@@ -369,7 +369,7 @@ is used to register the dummy class in GDScript.
     void register_hilbert_hotel_types();
     void unregister_hilbert_hotel_types();
 
-- `servers/register_server_types.cpp <https://github.com/godotengine/godot/blob/master/servers/register_server_types.cpp>`__
+- `servers/register_server_types.cpp <https://github.com/redotengine/redot/blob/master/servers/register_server_types.cpp>`__
 
 Bind methods
 ~~~~~~~~~~~~
@@ -470,7 +470,7 @@ to execute the desired behavior. The queue will be flushed whenever either
 References:
 ~~~~~~~~~~~
 
-- `core/object/message_queue.cpp <https://github.com/godotengine/godot/blob/master/core/object/message_queue.cpp>`__
+- `core/object/message_queue.cpp <https://github.com/redotengine/redot/blob/master/core/object/message_queue.cpp>`__
 
 Summing it up
 -------------

@@ -47,12 +47,12 @@ with the export preset for unreal engine, which also uses ORM textures.
 Transparency
 ------------
 
-By default, materials in Godot are opaque. This is fast to render, but it means
+By default, materials in redot are opaque. This is fast to render, but it means
 the material can't be seen through even if you use a transparent texture in the
 **Albedo > Texture** property (or set **Albedo > Color** to a transparent color).
 
 To be able to see through a material, the material needs to be made *transparent*.
-Godot offers several transparency modes:
+redot offers several transparency modes:
 
 - **Disabled:** Material is opaque. This is the fastest to render, with all
   rendering features supported.
@@ -90,7 +90,7 @@ Godot offers several transparency modes:
 
 .. note::
 
-    Godot will automatically force the material to be transparent with alpha
+    redot will automatically force the material to be transparent with alpha
     blending if *any* of these conditions is met:
 
     - Setting the transparency mode to **Alpha** (as described here).
@@ -205,7 +205,7 @@ Determines which side of the object is not drawn when backfaces are rendered:
 
   By default, Blender has backface culling disabled on materials and will
   export materials to match how they render in Blender. This means that
-  materials in Godot will have their cull mode set to **Disabled**. This can
+  materials in redot will have their cull mode set to **Disabled**. This can
   decrease performance since backfaces will be rendered, even when they are
   being culled by other faces. To resolve this, enable **Backface Culling** in
   Blender's Materials tab, then export the scene to glTF again.
@@ -244,7 +244,7 @@ Shading
 Shading mode
 ~~~~~~~~~~~~
 
-Godot has a more or less uniform cost per pixel thanks to the depth pre-pass.
+redot has a more or less uniform cost per pixel thanks to the depth pre-pass.
 All lighting calculations are made by running the lighting shader on every
 pixel.
 
@@ -268,7 +268,7 @@ material at all.
     identical to per-pixel shading.
 
     Support for per-vertex shading is planned to be reimplemented in a future
-    Godot release.
+    redot release.
 
 Diffuse Mode
 ~~~~~~~~~~~~
@@ -338,7 +338,7 @@ Albedo
 
 *Albedo* is the base color for the material, on which all the other settings
 operate. When set to *Unshaded*, this is the only color that is visible. In
-previous versions of Godot, this channel was named *Diffuse*. The change
+previous versions of redot, this channel was named *Diffuse*. The change
 of name mainly happened because, in PBR (Physically Based Rendering), this color affects many
 more calculations than just the diffuse lighting path.
 
@@ -351,7 +351,7 @@ make sure to either enable transparency or *alpha scissoring* for it to work.
 Metallic
 --------
 
-Godot uses a metallic model over competing models due to its simplicity.
+redot uses a metallic model over competing models due to its simplicity.
 This parameter defines how reflective the material is. The more reflective, the
 less diffuse/ambient light affects the material and the more light is reflected.
 This model is called "energy-conserving".
@@ -389,7 +389,7 @@ Normal map
 ----------
 
 Normal mapping allows you to set a texture that represents finer shape detail.
-This does not modify geometry, only the incident angle for light. In Godot,
+This does not modify geometry, only the incident angle for light. In redot,
 only the red and green channels of normal maps are used for better compression
 and wider compatibility.
 
@@ -397,7 +397,7 @@ and wider compatibility.
 
 .. note::
 
-  Godot requires the normal map to use the X+, Y+ and Z+ coordinates, this is
+  redot requires the normal map to use the X+, Y+ and Z+ coordinates, this is
   known as OpenGL style. If you've imported a material made to be used with
   another engine it may be DirectX style, in which case the normal map needs to
   be converted so its Y axis is flipped.
@@ -409,7 +409,7 @@ and wider compatibility.
 Rim
 ---
 
-Some fabrics have small micro-fur that causes light to scatter around it. Godot
+Some fabrics have small micro-fur that causes light to scatter around it. redot
 emulates this with the *Rim* parameter. Unlike other rim lighting implementations,
 which just use the emission channel, this one actually takes light into account
 (no light means no rim). This makes the effect considerably more believable.
@@ -485,7 +485,7 @@ such as plant leaves, grass, human ears, etc.
 Refraction
 ----------
 
-When refraction is enabled, Godot attempts to fetch information from behind the
+When refraction is enabled, redot attempts to fetch information from behind the
 object being rendered. This allows distorting the transparency in a way similar
 to refraction in real life.
 
@@ -523,7 +523,7 @@ to allow distorting the refraction's direction on a per-pixel basis.
 Detail
 ------
 
-Godot allows using secondary albedo and normal maps to generate a detail
+redot allows using secondary albedo and normal maps to generate a detail
 texture, which can be blended in many ways. By combining this with secondary
 UV or triplanar modes, many interesting textures can be achieved.
 
@@ -564,7 +564,7 @@ even if the material does not have normal map enabled.
 UV1 and UV2
 -----------
 
-Godot supports two UV channels per material. Secondary UV is often useful for
+redot supports two UV channels per material. Secondary UV is often useful for
 ambient occlusion or emission (baked light). UVs can be scaled and offset,
 which is useful when using repeating textures.
 
@@ -692,7 +692,7 @@ such as plant leaves, grass, human ears, etc.
 Proximity and Distance Fade
 ---------------------------
 
-Godot allows materials to fade by proximity to each other as well as depending
+redot allows materials to fade by proximity to each other as well as depending
 on the distance from the viewer. Proximity fade is useful for effects such as
 soft particles or a mass of water with a smooth blending to the shores.
 

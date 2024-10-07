@@ -3,15 +3,15 @@
 Installing plugins
 ==================
 
-Godot features an editor plugin system with numerous plugins developed by the
+redot features an editor plugin system with numerous plugins developed by the
 community. Plugins can extend the editor's functionality with new nodes,
 additional docks, convenience features, and more.
 
 Finding plugins
 ~~~~~~~~~~~~~~~
 
-The preferred way to find Godot plugins is to use the
-`Asset Library <https://godotengine.org/asset-library/>`_. While it can be
+The preferred way to find redot plugins is to use the
+`Asset Library <https://redotengine.org/asset-library/>`_. While it can be
 browsed online, it's more convenient to use it directly from the editor.
 To do so, click the **AssetLib** tab at the top of the editor:
 

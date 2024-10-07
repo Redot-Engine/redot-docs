@@ -13,14 +13,14 @@ To add this, we need to modify our ``sprite_2d.gd`` code.
 
 .. image:: img/scripting_first_script_moving_with_input.gif
 
-You have two main tools to process the player's input in Godot:
+You have two main tools to process the player's input in redot:
 
 1. The built-in input callbacks, mainly ``_unhandled_input()``. Like
-   ``_process()``, it's a built-in virtual function that Godot calls every time
+   ``_process()``, it's a built-in virtual function that redot calls every time
    the player presses a key. It's the tool you want to use to react to events
    that don't happen every frame, like pressing :kbd:`Space` to jump. To learn
    more about input callbacks, see :ref:`doc_inputevent`.
-2. The ``Input`` singleton. A singleton is a globally accessible object. Godot
+2. The ``Input`` singleton. A singleton is a globally accessible object. redot
    provides access to several in scripts. It's the right tool to check for input
    every frame.
 
@@ -70,7 +70,7 @@ The method takes a text string representing an input action and returns ``true``
 if the action is pressed, ``false`` otherwise.
 
 The two actions we use above, "ui_left" and "ui_right", are predefined in every
-Godot project. They respectively trigger when the player presses the left and
+redot project. They respectively trigger when the player presses the left and
 right arrows on the keyboard or left and right on a gamepad's D-pad.
 
 .. note:: You can see and edit input actions in your project by going to Project
@@ -158,7 +158,7 @@ Here is the complete ``sprite_2d.gd`` file for reference.
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MySprite2D : Sprite2D
     {
@@ -197,7 +197,7 @@ arrow keys and move forward by pressing :kbd:`Up`.
 Summary
 -------
 
-In summary, every script in Godot represents a class and extends one of the
+In summary, every script in redot represents a class and extends one of the
 engine's built-in classes. The node types your classes inherit from give you
 access to properties, such as ``rotation`` and ``position`` in our sprite's case.
 You also inherit many functions, which we didn't get to use in this example.
@@ -206,7 +206,7 @@ In GDScript, the variables you put at the top of the file are your class's
 properties, also called member variables. Besides variables, you can define
 functions, which, for the most part, will be your classes' methods.
 
-Godot provides several virtual functions you can define to connect your class
+redot provides several virtual functions you can define to connect your class
 with the engine. These include ``_process()``, to apply changes to the node
 every frame, and ``_unhandled_input()``, to receive input events like key and
 button presses from the users. There are quite a few more.

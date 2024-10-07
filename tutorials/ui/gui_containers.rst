@@ -19,9 +19,9 @@ For that, :ref:`Containers <class_container>` are more useful.
 Container layout
 ----------------
 
-Containers provide a huge amount of layout power (as an example, the Godot editor user interface is entirely done using them):
+Containers provide a huge amount of layout power (as an example, the redot editor user interface is entirely done using them):
 
-   .. image:: img/godot_containers.png
+   .. image:: img/redot_containers.png
 
 When a :ref:`Container <class_Container>`-derived node is used, all children :ref:`Control <class_Control>` nodes give up their
 own positioning ability. This means the *Container* will control their positioning and any attempt to manually alter these
@@ -67,7 +67,7 @@ Experimenting with these flags and different containers is recommended to get a 
 Container types
 ---------------
 
-Godot provides several container types out of the box as they serve different purposes:
+redot provides several container types out of the box as they serve different purposes:
 
 Box Containers
 ^^^^^^^^^^^^^^
@@ -230,7 +230,7 @@ Here is an example of a container that fits children to its rect size:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class CustomContainer : Container
     {

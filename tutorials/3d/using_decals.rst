@@ -28,8 +28,8 @@ On this page, you'll learn:
 
 .. seealso::
 
-    The Godot demo projects repository contains a
-    `3D decals demo <https://github.com/godotengine/godot-demo-projects/tree/master/3d/decals>`__.
+    The redot demo projects repository contains a
+    `3D decals demo <https://github.com/redotengine/redot-demo-projects/tree/master/3d/decals>`__.
 
     If you're looking to write arbitrary 3D text on top of a surface, use
     :ref:`doc_3d_text` placed close to a surface instead of a Decal node.
@@ -257,7 +257,7 @@ decals cannot use custom shaders. However, custom shaders on the projected
 surfaces are able to read the information that is overridden by decals on top of
 them, such as roughness and metallic.
 
-When using the Forward+ renderer, Godot uses a *clustering* approach for
+When using the Forward+ renderer, redot uses a *clustering* approach for
 decal rendering. As many decals as desired can be added (as long as
 performance allows). However, there's still a default limit of 512 *clustered
 elements* that can be present in the current camera view. A clustered element is

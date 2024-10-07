@@ -11,8 +11,8 @@ after exporting:
 - Deleting nodes that are not used in the game engine (like specific lights used
   for modeling).
 
-To simplify this workflow, Godot offers several suffixes that can be added to
-the names of the objects in your 3D modeling software. When imported, Godot
+To simplify this workflow, redot offers several suffixes that can be added to
+the names of the objects in your 3D modeling software. When imported, redot
 will detect suffixes in object names and will perform actions automatically.
 
 .. warning::
@@ -127,7 +127,7 @@ Animation loop (-loop, -cycle)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Animation clips in the source 3D file that start or end with the token ``loop`` or ``cycle``
-will be imported as a Godot :ref:`class_Animation` with the loop flag set.
+will be imported as a redot :ref:`class_Animation` with the loop flag set.
 **Unlike the other suffixes described above, this does not require a hyphen.**
 
 In Blender, this requires using the NLA Editor and naming the Action with the ``loop`` or

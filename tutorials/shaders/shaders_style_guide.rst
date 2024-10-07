@@ -8,10 +8,10 @@ encourage writing clean, readable code and promote consistency across projects,
 discussions, and tutorials. Hopefully, this will also support the development of
 auto-formatting tools.
 
-Since the Godot shader language is close to C-style languages and GLSL, this
-guide is inspired by Godot's own GLSL formatting. You can view examples of
-GLSL files in Godot's source code
-`here <https://github.com/godotengine/godot/blob/master/drivers/gles3/shaders/>`__.
+Since the redot shader language is close to C-style languages and GLSL, this
+guide is inspired by redot's own GLSL formatting. You can view examples of
+GLSL files in redot's source code
+`here <https://github.com/redotengine/redot/blob/master/drivers/gles3/shaders/>`__.
 
 Style guides aren't meant as hard rulebooks. At times, you may not be able to
 apply some of the guidelines below. When that happens, use your best judgment,
@@ -20,7 +20,7 @@ and ask fellow developers for insights.
 In general, keeping your code consistent in your projects and within your team is
 more important than following this guide to a tee.
 
-.. note:: Godot's built-in shader editor uses a lot of these conventions
+.. note:: redot's built-in shader editor uses a lot of these conventions
           by default. Let it help you.
 
 Here is a complete shader example based on these guidelines:
@@ -30,7 +30,7 @@ Here is a complete shader example based on these guidelines:
     shader_type canvas_item;
     // Screen-space shader to adjust a 2D scene's brightness, contrast
     // and saturation. Taken from
-    // https://github.com/godotengine/godot-demo-projects/blob/master/2d/screen_space_shaders/shaders/BCS.gdshader
+    // https://github.com/redotengine/redot-demo-projects/blob/master/2d/screen_space_shaders/shaders/BCS.gdshader
 
     uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
     uniform float brightness = 0.8;
@@ -313,7 +313,7 @@ understand what the underlying data represents.
 Naming conventions
 ------------------
 
-These naming conventions follow the Godot Engine style. Breaking these will make
+These naming conventions follow the redot Engine style. Breaking these will make
 your code clash with the built-in naming conventions, leading to inconsistent
 code.
 

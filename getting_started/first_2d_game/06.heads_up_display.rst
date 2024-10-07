@@ -95,7 +95,7 @@ Now add this script to ``HUD``:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class HUD : CanvasLayer
     {
@@ -307,8 +307,8 @@ We can then add the following line to the ``new_game()`` function in ``Main``:
 
  .. code-tab:: csharp
 
-        // Note that for calling Godot-provided methods with strings,
-        // we have to use the original Godot snake_case name.
+        // Note that for calling redot-provided methods with strings,
+        // we have to use the original redot snake_case name.
         GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 
 The ``call_group()`` function calls the named function on every node in a

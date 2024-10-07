@@ -44,8 +44,8 @@ Class reference guides
 
 The pages below focus on the class reference.
 
-As the reference is included in the Godot editor, its source files are part of
-the `godot repository <https://github.com/godotengine/godot>`_. We use XML files
+As the reference is included in the redot editor, its source files are part of
+the `redot repository <https://github.com/redotengine/redot>`_. We use XML files
 to write it, so the process to contribute to the class reference differs from
 writing the online manual.
 
@@ -59,7 +59,7 @@ writing the online manual.
 Translating the documentation
 -----------------------------
 
-The community is always working hard on making Godot and its documentation
+The community is always working hard on making redot and its documentation
 available to more people. Localizing the documentation is a colossal and ongoing
 effort you can be part of.
 

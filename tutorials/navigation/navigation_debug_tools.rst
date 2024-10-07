@@ -5,7 +5,7 @@ Navigation debug tools
 
 .. note::
 
-    The debug tools, properties and functions are only available in Godot debug builds.
+    The debug tools, properties and functions are only available in redot debug builds.
     Do not use any of them in code that will be part of a release build.
 
 Enabling navigation debug
@@ -16,7 +16,7 @@ To visualize navigation meshes and connections at runtime too, enable the option
 
 .. image:: img/navigation_debug_toggle.png
 
-In Godot debug builds the navigation debug can also be toggled through the NavigationServer singletons from scripts.
+In redot debug builds the navigation debug can also be toggled through the NavigationServer singletons from scripts.
 
 .. tabs::
  .. code-tab:: gdscript GDScript

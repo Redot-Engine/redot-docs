@@ -3,7 +3,7 @@
 Building the manual with Sphinx
 ===============================
 
-This page explains how to build a local copy of the Godot manual using the
+This page explains how to build a local copy of the redot manual using the
 Sphinx docs engine. This allows you to have local HTML files and build the
 documentation as a PDF, EPUB, or LaTeX file, for example.
 
@@ -30,13 +30,13 @@ Before you get started, make sure that you have:
 
                 .. code:: pwsh
 
-                    py -m venv godot-docs-venv
+                    py -m venv redot-docs-venv
 
             .. group-tab:: Other platforms
 
                 .. code:: sh
 
-                    python3 -m venv godot-docs-venv
+                    python3 -m venv redot-docs-venv
 
     b.  Activate the virtual environment:
 
@@ -46,13 +46,13 @@ Before you get started, make sure that you have:
 
                 .. code:: pwsh
 
-                    godot-docs-venv\Scripts\activate.bat
+                    redot-docs-venv\Scripts\activate.bat
 
             .. group-tab:: Other platforms
 
                 .. code:: sh
 
-                    source godot-docs-venv/bin/activate
+                    source redot-docs-venv/bin/activate
 
     c.  *(Optional)* Update pre-installed packages:
 
@@ -74,13 +74,13 @@ Before you get started, make sure that you have:
 
     .. code:: sh
 
-        git clone https://github.com/godotengine/godot-docs.git
+        git clone https://github.com/redotengine/redot-docs.git
 
 3.  Change directory into the docs repo:
 
     .. code:: sh
 
-        cd godot-docs
+        cd redot-docs
 
 4.  Install the required packages:
 
@@ -126,7 +126,7 @@ rest intact.
 .. important::
     If you delete the ``classes/`` folder, do not use ``git add .`` when working on a pull
     request or the whole ``classes/`` folder will be removed when you commit.
-    See `#3157 <https://github.com/godotengine/godot-docs/issues/3157>`__ for more detail.
+    See `#3157 <https://github.com/redotengine/redot-docs/issues/3157>`__ for more detail.
 
 .. _doc_building_the_manual:performance:
 

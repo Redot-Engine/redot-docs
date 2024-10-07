@@ -6,13 +6,13 @@ Using Area2D
 Introduction
 ------------
 
-Godot offers a number of collision objects to provide both collision detection
+redot offers a number of collision objects to provide both collision detection
 and response. Trying to decide which one to use for your project can be confusing.
 You can avoid problems and simplify development if you understand how each of them
 works and what their pros and cons are. In this tutorial, we'll look at the
 :ref:`Area2D <class_Area2D>` node and show some examples of how it can be used.
 
-.. note:: This document assumes you're familiar with Godot's various physics
+.. note:: This document assumes you're familiar with redot's various physics
           bodies. Please read :ref:`doc_physics_introduction` first.
 
 What is an area?
@@ -78,7 +78,7 @@ use ``area_entered``. However, let's assume our player is a ``CharacterBody2D``
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Coin : Area2D
     {
@@ -138,4 +138,4 @@ override.
 .. image:: img/area2d_override.gif
 
 You can download this project here:
-`area_2d_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/area_2d_starter.zip>`_
+`area_2d_starter.zip <https://github.com/redotengine/redot-docs-project-starters/releases/download/latest-4.x/area_2d_starter.zip>`_

@@ -3,19 +3,19 @@
 Import process
 ==============
 
-Importing assets in Godot
+Importing assets in redot
 -------------------------
 
-To import assets in Godot, place your assets (image files, scenes, audio
+To import assets in redot, place your assets (image files, scenes, audio
 files, fonts, etc) directly in the project folder. There are 2 ways to achieve this:
 
 - **For any file type:** Copy files manually with your operating system's file manager.
-- **For file types that can be imported by Godot:**
+- **For file types that can be imported by redot:**
   Drag-and-drop files from the operating system's file manager to the editor's FileSystem dock.
-  This only works with *resource* file types (i.e. file types that Godot can import).
+  This only works with *resource* file types (i.e. file types that redot can import).
 
-Godot will automatically import these files internally and keep the imported
-resources hidden in a ``res://.godot/imported/`` folder.
+redot will automatically import these files internally and keep the imported
+resources hidden in a ``res://.redot/imported/`` folder.
 
 This means that when trying to access imported assets through code, you
 need to use the :ref:`Resource Loader<class_ResourceLoader>` as it will
@@ -31,12 +31,12 @@ Changing import parameters
 
 .. note::
 
-    Import parameters are only present in *non-native* Godot resource types.
-    This means Godot's own scene and resource file formats (``.tscn``, ``.scn``,
+    Import parameters are only present in *non-native* redot resource types.
+    This means redot's own scene and resource file formats (``.tscn``, ``.scn``,
     ``.tres``, ``.res``) don't have import options you can select in the Import
     dock.
 
-To change the import parameters of an asset in Godot, select the relevant
+To change the import parameters of an asset in redot, select the relevant
 resource in the FileSystem dock:
 
 .. image:: img/import_process_example.webp
@@ -69,7 +69,7 @@ parameters changed.
 Automatic reimport
 ------------------
 
-When the MD5 checksum of the source asset changes, Godot will perform an
+When the MD5 checksum of the source asset changes, redot will perform an
 automatic reimport of it, applying the preset configured for that specific
 asset.
 
@@ -87,25 +87,25 @@ files contain important metadata.
     ls
     example.png
     example.png.import
-    project.godot
+    project.redot
 
 Additionally, extra assets will be present in the hidden
-``res://.godot/imported/`` folder:
+``res://.redot/imported/`` folder:
 
 ::
 
-    ls .godot/imported
+    ls .redot/imported
     example.png-218a8f2b3041327d8a5756f3a245f83b.ctex
     example.png-218a8f2b3041327d8a5756f3a245f83b.md5
 
 If any of the files present in this folder is erased (or the whole folder), the
 asset or assets will be reimported automatically. As such, committing the
-``.godot/`` folder to the version control system is not recommended. While
+``.redot/`` folder to the version control system is not recommended. While
 committing this folder can shorten reimporting time when checking out on another
 computer, it requires considerably more space and bandwidth.
 
 The default version control metadata that can be generated on project creation
-will automatically ignore the ``.godot/`` folder.
+will automatically ignore the ``.redot/`` folder.
 
 Changing import resource type
 -----------------------------

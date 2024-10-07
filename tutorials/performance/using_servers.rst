@@ -5,7 +5,7 @@
 Optimization using Servers
 ==========================
 
-Engines like Godot provide increased ease of use thanks to their high level constructs and features.
+Engines like redot provide increased ease of use thanks to their high level constructs and features.
 Most of them are accessed and used via the :ref:`Scene System<doc_scene_tree>`. Using nodes and
 resources simplifies project organization and asset management in complex games.
 
@@ -16,27 +16,27 @@ There are, of course, always drawbacks:
 * It is not possible to use multiple threads to control them.
 * More memory is needed.
 
-In many cases, this is not really a problem (Godot is very optimized, and most operations are handled
+In many cases, this is not really a problem (redot is very optimized, and most operations are handled
 with signals, so no polling is required). Still, sometimes it can be. For example, dealing with
 tens of thousands of instances for something that needs to be processed every frame can be a bottleneck.
 
 This type of situation makes programmers regret they are using a game engine and wish they could go
 back to a more handcrafted, low level implementation of game code.
 
-Still, Godot is designed to work around this problem.
+Still, redot is designed to work around this problem.
 
 .. seealso::
 
     You can see how using low-level servers works in action using the
-    `Bullet Shower demo project <https://github.com/godotengine/godot-demo-projects/tree/master/2d/bullet_shower>`__
+    `Bullet Shower demo project <https://github.com/redotengine/redot-demo-projects/tree/master/2d/bullet_shower>`__
 
 Servers
 -------
 
-One of the most interesting design decisions for Godot is the fact that the whole scene system is
+One of the most interesting design decisions for redot is the fact that the whole scene system is
 *optional*. While it is not currently possible to compile it out, it can be completely bypassed.
 
-At the core, Godot uses the concept of Servers. They are very low-level APIs to control
+At the core, redot uses the concept of Servers. They are very low-level APIs to control
 rendering, physics, sound, etc. The scene system is built on top of them and uses them directly.
 The most common servers are:
 
@@ -46,7 +46,7 @@ The most common servers are:
 * :ref:`AudioServer <class_AudioServer>`: handles everything related to audio.
 
 Explore their APIs and you will realize that all the functions provided are low-level
-implementations of everything Godot allows you to do.
+implementations of everything redot allows you to do.
 
 RIDs
 ----
@@ -55,7 +55,7 @@ The key to using servers is understanding Resource ID (:ref:`RID <class_RID>`) o
 handles to the server implementation. They are allocated and freed manually. Almost every
 function in the servers requires RIDs to access the actual resource.
 
-Most Godot nodes and resources contain these RIDs from the servers internally, and they can
+Most redot nodes and resources contain these RIDs from the servers internally, and they can
 be obtained with different functions. In fact, anything that inherits :ref:`Resource <class_Resource>`
 can be directly casted to an RID. Not all resources contain an RID, though: in such cases, the RID will be empty. The resource can then be passed to server APIs as an RID.
 
@@ -254,7 +254,7 @@ and moves a :ref:`CanvasItem <class_CanvasItem>` when the body moves.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {

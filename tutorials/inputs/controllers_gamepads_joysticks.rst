@@ -3,7 +3,7 @@
 Controllers, gamepads, and joysticks
 ====================================
 
-Godot supports hundreds of controller models thanks to the community-sourced
+redot supports hundreds of controller models thanks to the community-sourced
 `SDL game controller database <https://github.com/gabomdq/SDL_GameControllerDB>`__.
 
 Controllers are supported on Windows, macOS, Linux, Android, iOS, and HTML5.
@@ -13,18 +13,18 @@ Note that more specialized devices such as steering wheels, rudder pedals and
 always work as expected. Overriding force feedback for those devices is also not
 implemented yet. If you have access to one of those devices, don't hesitate to
 `report bugs on GitHub
-<https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md#reporting-bugs>`__.
+<https://github.com/redotengine/redot/blob/master/CONTRIBUTING.md#reporting-bugs>`__.
 
 In this guide, you will learn:
 
 - **How to write your input logic to support both keyboard and controller inputs.**
 - **How controllers can behave differently from keyboard/mouse input.**
-- **Troubleshooting issues with controllers in Godot.**
+- **Troubleshooting issues with controllers in redot.**
 
 Supporting universal input
 --------------------------
 
-Thanks to Godot's input action system, Godot makes it possible to support both
+Thanks to redot's input action system, redot makes it possible to support both
 keyboard and controller input without having to write separate code paths.
 Instead of hardcoding keys or controller buttons in your scripts, you should
 create *input actions* in the Project Settings which will then refer to
@@ -136,9 +136,9 @@ use ``Input.is_action_pressed()``:
     held, ``Input.is_action_just_pressed()`` will only return ``true`` for one
     frame after the button has been pressed.
 
-In Godot versions before 3.4, such as 3.3, ``Input.get_vector()`` and
+In redot versions before 3.4, such as 3.3, ``Input.get_vector()`` and
 ``Input.get_axis()`` aren't available. Only ``Input.get_action_strength()``
-and ``Input.is_action_pressed()`` are available in Godot 3.3.
+and ``Input.is_action_pressed()`` are available in redot 3.3.
 
 Vibration
 ---------
@@ -192,7 +192,7 @@ all input whose strength is lower than ``0.2``. An ideal dead zone value is high
 enough to ignore the input caused by joystick drifting, but is low enough to not
 ignore actual input from the player.
 
-Godot features a built-in deadzone system to tackle this problem. The default
+redot features a built-in deadzone system to tackle this problem. The default
 value is ``0.5``, but you can adjust it on a per-action basis in the Project
 Settings' Input Map tab. For ``Input.get_vector()``, the deadzone can be
 specified as an optional 5th parameter. If not specified, it will calculate the
@@ -268,7 +268,7 @@ Unlike keyboard and mouse input, controller inputs do **not** inhibit sleep and
 power saving measures (such as turning off the screen after a certain amount of
 time has passed).
 
-To combat this, Godot enables power saving prevention by default when a project
+To combat this, redot enables power saving prevention by default when a project
 is running. If you notice the system is turning off its display when playing
 with a gamepad, check the value of **Display > Window > Energy Saving > Keep Screen On**
 in the Project Settings.
@@ -283,19 +283,19 @@ Troubleshooting
 .. seealso::
 
     You can view a list of
-    `known issues with controller support <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Ainput+gamepad>`__
+    `known issues with controller support <https://github.com/redotengine/redot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Ainput+gamepad>`__
     on GitHub.
 
-My controller isn't recognized by Godot.
+My controller isn't recognized by redot.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 First, check that your controller is recognized by other applications. You can
 use the `Gamepad Tester <https://gamepad-tester.com/>`__ website to confirm that
 your controller is recognized.
 
-On Windows Godot only supports up to 4 controllers at a time. This is
-because Godot uses the XInput API, which is limited to supporting 4 controllers
-at once. Additional controllers above this limit are ignored by Godot.
+On Windows redot only supports up to 4 controllers at a time. This is
+because redot uses the XInput API, which is limited to supporting 4 controllers
+at once. Additional controllers above this limit are ignored by redot.
 
 My controller has incorrectly mapped buttons or axes.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -311,29 +311,29 @@ with your PC if you are using the controller in wireless mode.
 
 If buttons are incorrectly mapped, this may be due to an erroneous mapping from
 the `SDL game controller database <https://github.com/gabomdq/SDL_GameControllerDB>`__.
-You can contribute an updated mapping to be included in the next Godot version
+You can contribute an updated mapping to be included in the next redot version
 by opening a pull request on the linked repository.
 
 There are many ways to create mappings. One option is to use the mapping wizard
-in the `official Joypads demo <https://godotengine.org/asset-library/asset/2785>`__.
+in the `official Joypads demo <https://redotengine.org/asset-library/asset/2785>`__.
 Once you have a working mapping for your controller, you can test it by defining
-the ``SDL_GAMECONTROLLERCONFIG`` environment variable before running Godot:
+the ``SDL_GAMECONTROLLERCONFIG`` environment variable before running redot:
 
 .. tabs::
  .. code-tab:: bash Linux/macOS
 
     export SDL_GAMECONTROLLERCONFIG="your:mapping:here"
-    ./path/to/godot.x86_64
+    ./path/to/redot.x86_64
 
  .. code-tab:: bat Windows (cmd)
 
     set SDL_GAMECONTROLLERCONFIG=your:mapping:here
-    path\to\godot.exe
+    path\to\redot.exe
 
  .. code-tab:: powershell Windows (PowerShell)
 
     $env:SDL_GAMECONTROLLERCONFIG="your:mapping:here"
-    path\to\godot.exe
+    path\to\redot.exe
 
 To test mappings on non-desktop platforms or to distribute your project with
 additional controller mappings, you can add them by calling

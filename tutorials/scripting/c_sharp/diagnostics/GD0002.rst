@@ -1,4 +1,4 @@
-GD0002: Missing partial modifier on declaration of type which contains nested classes that derive from GodotObject
+GD0002: Missing partial modifier on declaration of type which contains nested classes that derive from redotObject
 ==================================================================================================================
 
 ====================================  ======================================
@@ -13,12 +13,12 @@ GD0002: Missing partial modifier on declaration of type which contains nested cl
 Cause
 -----
 
-A type that derives from ``GodotObject`` is contained in a non-partial type declaration.
+A type that derives from ``redotObject`` is contained in a non-partial type declaration.
 
 Rule description
 ----------------
 
-Godot source generators add generated code to user-defined types to implement
+redot source generators add generated code to user-defined types to implement
 the integration with the engine. Source generators can't add generated code to
 types that aren't declared partial.
 
@@ -27,14 +27,14 @@ types that aren't declared partial.
     public class InvalidParentType
     {
         // MyNode is contained in a non-partial type so the source generators
-        // can't enhance this type to work with Godot.
+        // can't enhance this type to work with redot.
         public partial class MyNode : Node { }
     }
 
     public partial class ValidParentType
     {
         // MyNode is contained in a partial type so the source generators
-        // can enhance this type to work with Godot.
+        // can enhance this type to work with redot.
         public partial class MyNode : Node { }
     }
 
@@ -47,6 +47,6 @@ declaration.
 When to suppress warnings
 -------------------------
 
-Do not suppress a warning from this rule. Types that derive from ``GodotObject``
+Do not suppress a warning from this rule. Types that derive from ``redotObject``
 but aren't partial can't be enhanced by the source generators, resulting in
 unexpected runtime errors.
