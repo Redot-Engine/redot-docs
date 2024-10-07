@@ -4,64 +4,64 @@ C# collections
 ==============
 
 The .NET base class library contains multiple collection types that can be
-used to store and manipulate data. Godot also provide some collection types
+used to store and manipulate data. redot also provide some collection types
 that are tightly integrated with the rest of the engine.
 
 Choose a collection
 -------------------
 
 The main difference between the `.NET collections <https://learn.microsoft.com/en-us/dotnet/standard/collections/>`_
-and the Godot collections is that the .NET collections are implemented in C# while
-the Godot collections are implemented in C++ and the Godot C# API is a wrapper over it,
-this is an important distinction since it means every operation on a Godot collection
+and the redot collections is that the .NET collections are implemented in C# while
+the redot collections are implemented in C++ and the redot C# API is a wrapper over it,
+this is an important distinction since it means every operation on a redot collection
 requires marshaling which can be expensive especially inside a loop.
 
-Due to the performance implications, using Godot collections is only recommended
-when absolutely necessary (such as interacting with the Godot API). Godot only
+Due to the performance implications, using redot collections is only recommended
+when absolutely necessary (such as interacting with the redot API). redot only
 understands its own collection types, so it's required to use them when talking
 to the engine.
 
-If you have a collection of elements that don't need to be passed to a Godot API,
+If you have a collection of elements that don't need to be passed to a redot API,
 using a .NET collection would be more performant.
 
 .. tip::
 
-    It's also possible to convert between .NET collections and Godot collections.
-    The Godot collections contain constructors from generic .NET collection interfaces
-    that copy their elements, and the Godot collections can be used with the
+    It's also possible to convert between .NET collections and redot collections.
+    The redot collections contain constructors from generic .NET collection interfaces
+    that copy their elements, and the redot collections can be used with the
     `LINQ <https://learn.microsoft.com/en-us/dotnet/standard/linq>`_
     ``ToList``, ``ToArray`` and ``ToDictionary`` methods. But keep in mind this conversion
     requires marshaling every element in the collection and copies it to a new collection
     so it can be expensive.
 
-Despite this, the Godot collections are optimized to try and avoid unnecessary
+Despite this, the redot collections are optimized to try and avoid unnecessary
 marshaling, so methods like ``Sort`` or ``Reverse`` are implemented with a single
 interop call and don't need to marshal every element. Keep an eye out for generic APIs
 that take collection interfaces like `LINQ <https://learn.microsoft.com/en-us/dotnet/standard/linq>`_
 because every method requires iterating the collection and, therefore, marshaling
-every element. Prefer using the instance methods of the Godot collections when possible.
+every element. Prefer using the instance methods of the redot collections when possible.
 
 To choose which collection type to use for each situation, consider the following questions:
 
-* Does your collection need to interact with the Godot engine?
-  (e.g.: the type of an exported property, calling a Godot method).
+* Does your collection need to interact with the redot engine?
+  (e.g.: the type of an exported property, calling a redot method).
 
-   * If yes, since Godot only supports :ref:`c_sharp_variant_compatible_types`,
-     use a Godot collection.
+   * If yes, since redot only supports :ref:`c_sharp_variant_compatible_types`,
+     use a redot collection.
    * If not, consider `choosing an appropriate .NET collection <https://learn.microsoft.com/en-us/dotnet/standard/collections/selecting-a-collection-class>`_.
 
-* Do you need a Godot collection that represents a list or sequential set of data?
+* Do you need a redot collection that represents a list or sequential set of data?
 
-   * Godot :ref:`arrays <doc_c_sharp_collections_array>` are similar to the C# collection ``List<T>``.
-   * Godot :ref:`packed arrays <doc_c_sharp_collections_packedarray>` are more memory-efficient arrays,
+   * redot :ref:`arrays <doc_c_sharp_collections_array>` are similar to the C# collection ``List<T>``.
+   * redot :ref:`packed arrays <doc_c_sharp_collections_packedarray>` are more memory-efficient arrays,
      in C# use one of the supported ``System.Array`` types.
 
-* Do you need a Godot collection that maps a set of keys to a set of values?
+* Do you need a redot collection that maps a set of keys to a set of values?
 
-   * Godot :ref:`dictionaries <doc_c_sharp_collections_dictionary>` store pairs of keys and values
+   * redot :ref:`dictionaries <doc_c_sharp_collections_dictionary>` store pairs of keys and values
      and allow easy access to the values by their associated key.
 
-Godot collections
+redot collections
 -----------------
 
 .. _doc_c_sharp_collections_packedarray:
@@ -69,7 +69,7 @@ Godot collections
 PackedArray
 ^^^^^^^^^^^
 
-Godot packed arrays are implemented as an array of a specific type, allowing it to be
+redot packed arrays are implemented as an array of a specific type, allowing it to be
 more tightly packed as each element has the size of the specific type, not ``Variant``.
 
 In C#, packed arrays are replaced by ``System.Array``:
@@ -89,7 +89,7 @@ GDScript                C#
 ``PackedColorArray``    ``Color[]``
 ======================  ==============================================================
 
-Other C# arrays are not supported by the Godot C# API since a packed array equivalent
+Other C# arrays are not supported by the redot C# API since a packed array equivalent
 does not exist. See the list of :ref:`c_sharp_variant_compatible_types`.
 
 .. _doc_c_sharp_collections_array:
@@ -97,22 +97,22 @@ does not exist. See the list of :ref:`c_sharp_variant_compatible_types`.
 Array
 ^^^^^
 
-Godot arrays are implemented as an array of ``Variant`` and can contain several elements
-of any type. In C#, the equivalent type is ``Godot.Collections.Array``.
+redot arrays are implemented as an array of ``Variant`` and can contain several elements
+of any type. In C#, the equivalent type is ``redot.Collections.Array``.
 
-The generic ``Godot.Collections.Array<T>`` type allows restricting the element type to
+The generic ``redot.Collections.Array<T>`` type allows restricting the element type to
 a :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
 
-An untyped ``Godot.Collections.Array`` can be converted to a typed array using the
-``Godot.Collections.Array<T>(Godot.Collections.Array)`` constructor.
+An untyped ``redot.Collections.Array`` can be converted to a typed array using the
+``redot.Collections.Array<T>(redot.Collections.Array)`` constructor.
 
 .. note::
 
-    Despite the name, Godot arrays are more similar to the C# collection
+    Despite the name, redot arrays are more similar to the C# collection
     ``List<T>`` than ``System.Array``. Their size is not fixed and can grow
     or shrink as elements are added/removed from the collection.
 
-List of Godot's Array methods and their equivalent in C#:
+List of redot's Array methods and their equivalent in C#:
 
 =======================  ==============================================================
 GDScript                 C#
@@ -191,14 +191,14 @@ operator []              Array[int] indexer
 Dictionary
 ^^^^^^^^^^
 
-Godot dictionaries are implemented as a dictionary with ``Variant`` keys and values.
-In C#, the equivalent type is ``Godot.Collections.Dictionary``.
+redot dictionaries are implemented as a dictionary with ``Variant`` keys and values.
+In C#, the equivalent type is ``redot.Collections.Dictionary``.
 
-The generic ``Godot.Collections.Dictionary<TKey, TValue>`` type allows restricting the key
+The generic ``redot.Collections.Dictionary<TKey, TValue>`` type allows restricting the key
 and value types to a :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
 
-An untyped ``Godot.Collections.Dictionary`` can be converted to a typed dictionary using the
-``Godot.Collections.Dictionary<TKey, TValue>(Godot.Collections.Dictionary)`` constructor.
+An untyped ``redot.Collections.Dictionary`` can be converted to a typed dictionary using the
+``redot.Collections.Dictionary<TKey, TValue>(redot.Collections.Dictionary)`` constructor.
 
 .. tip::
 
@@ -208,9 +208,9 @@ An untyped ``Godot.Collections.Dictionary`` can be converted to a typed dictiona
     .. code-block:: csharp
 
         // The keys must be string, but the values can be any Variant-compatible type.
-        var dictionary = new Godot.Collections.Dictionary<string, Variant>();
+        var dictionary = new redot.Collections.Dictionary<string, Variant>();
 
-List of Godot's Dictionary methods and their equivalent in C#:
+List of redot's Dictionary methods and their equivalent in C#:
 
 =======================  ==============================================================
 GDScript                 C#

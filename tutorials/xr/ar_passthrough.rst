@@ -17,12 +17,12 @@ result is used.
 
     Passthrough is implemented very differently across platforms.
 
-    In Godot 4.3 we have implemented a unified approach that is explained on this help page
+    In redot 4.3 we have implemented a unified approach that is explained on this help page
     so you don't need to worry about these differences, the :ref:`XRInterface <class_xrinterface>`
     implementation is now responsible for applying the correct platform dependent method [#]_.
 
     For headsets such as the Meta Quest and HTC Elite you will need to use the
-    `OpenXR vendors plugin v3.0.0 <https://github.com/GodotVR/godot_openxr_vendors/releases>`__
+    `OpenXR vendors plugin v3.0.0 <https://github.com/redotVR/redot_openxr_vendors/releases>`__
     or later to enable video passthrough.
 
     For backwards compatibility the old API for passthrough is still available but it is recommended
@@ -77,15 +77,15 @@ there is adequate ambient light set to illuminate your scene.
 
     Some AR SDKs do provide ambient lighting information or even provide a full radiance
     map to allow for real world reflections in your virtual objects.
-    The core Godot XR functionality doesn't currently have support for this, however this
+    The core redot XR functionality doesn't currently have support for this, however this
     functionality can be exposed through plugins.
 
 OpenXR specific
 ---------------
 
 In OpenXR you can configure the default blend mode you want to use.
-Godot will select this blend mode at startup if available.
-If not available Godot will default to the first supported blend mode provided
+redot will select this blend mode at startup if available.
+If not available redot will default to the first supported blend mode provided
 by the XR runtime.
 
 .. image:: img/openxr_default_blend_mode.webp
@@ -147,8 +147,8 @@ Putting the above together we can use the following code as a base:
 Shadow to opacity
 -----------------
 
-Shadow to opacity is a render mode for Godot spatial shaders
-that was introduced in Godot 3 specifically for AR.
+Shadow to opacity is a render mode for redot spatial shaders
+that was introduced in redot 3 specifically for AR.
 It is a special render mode where the more a surface is in shadow,
 the more opaque the surface becomes. When a surface is fully lit,
 the surface becomes fully transparent and thus shows the real world.

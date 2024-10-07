@@ -17,7 +17,7 @@ A practical example
 
 .. TODO: Add example that showcases more details like original default arguments etc.
 
-These changes are taken from `pull request #88047 <https://github.com/godotengine/godot/pull/88047>`_, which added
+These changes are taken from `pull request #88047 <https://github.com/redotengine/redot/pull/88047>`_, which added
 new pathing options to ``AStarGrid2D`` and other AStar classes.
 Among other changes, these methods were modified in ``core/math/a_star_grid_2d.h``:
 
@@ -54,10 +54,10 @@ like ``core/math/a_star_grid_2d.compat.inc`` in this case:
     /*  a_star_grid_2d.compat.inc                                             */
     /**************************************************************************/
     /*                         This file is part of:                          */
-    /*                             GODOT ENGINE                               */
-    /*                        https://godotengine.org                         */
+    /*                             redot ENGINE                               */
+    /*                        https://redotengine.org                         */
     /**************************************************************************/
-    /* Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md). */
+    /* Copyright (c) 2014-present redot Engine contributors (see AUTHORS.md). */
     /* Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.                  */
     /*                                                                        */
     /* Permission is hereby granted, free of charge, to any person obtaining  */
@@ -138,4 +138,4 @@ Such lines shouldn't be added to the ``.expected`` file, but fixed by binding th
 And that's it! You might run into a bit more complicated cases, like rearranging arguments,
 changing return types, etc., but this covers the basic on how to use this system.
 
-For more information, see `pull request #76446 <https://github.com/godotengine/godot/pull/76446>`_.
+For more information, see `pull request #76446 <https://github.com/redotengine/redot/pull/76446>`_.

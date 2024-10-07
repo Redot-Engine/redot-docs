@@ -12,7 +12,7 @@ The first parameter is the ``PrimitiveType``, an OpenGL concept that instructs t
 how to arrange the primitive based on the vertices given, i.e. whether they represent triangles,
 lines, points, etc. See :ref:`Mesh.PrimitiveType <enum_Mesh_PrimitiveType>` for the options available.
 
-The second parameter, ``arrays``, is the actual Array that stores the mesh information. The array is a normal Godot array that
+The second parameter, ``arrays``, is the actual Array that stores the mesh information. The array is a normal redot array that
 is constructed with empty brackets ``[]``. It stores a ``Packed**Array`` (e.g. PackedVector3Array,
 PackedInt32Array, etc.) for each type of information that will be used to build the surface.
 
@@ -94,10 +94,10 @@ Under ``_ready()``, create a new Array.
   
   .. code-tab:: csharp C#
 
-    var surfaceArray = new Godot.Collections.Array();
+    var surfaceArray = new redot.Collections.Array();
 
 This will be the array that we keep our surface information in - it will hold
-all the arrays of data that the surface needs. Godot will expect it to be of
+all the arrays of data that the surface needs. redot will expect it to be of
 size ``Mesh.ARRAY_MAX``, so resize it accordingly.
 
 .. tabs::
@@ -108,7 +108,7 @@ size ``Mesh.ARRAY_MAX``, so resize it accordingly.
   
  .. code-tab:: csharp C#
 
-    var surfaceArray = new Godot.Collections.Array();
+    var surfaceArray = new redot.Collections.Array();
     surfaceArray.Resize((int)Mesh.ArrayType.Max);
 
 Next create the arrays for each data type you will use.
@@ -196,7 +196,7 @@ Put together, the full code looks like:
     {
         public override void _Ready()
         {
-            var surfaceArray = new Godot.Collections.Array();
+            var surfaceArray = new redot.Collections.Array();
             surfaceArray.Resize((int)Mesh.ArrayType.Max);
 
             // C# arrays cannot be resized or expanded, so use Lists to create geometry.
@@ -233,7 +233,7 @@ Generating geometry
 -------------------
 
 Here is sample code for generating a sphere. Although the code is presented in
-GDScript, there is nothing Godot specific about the approach to generating it.
+GDScript, there is nothing redot specific about the approach to generating it.
 This implementation has nothing in particular to do with ArrayMeshes and is just a
 generic approach to generating a sphere. If you are having trouble understanding it
 or want to learn more about procedural geometry in general, you can use any tutorial

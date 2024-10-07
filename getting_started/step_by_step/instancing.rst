@@ -38,19 +38,19 @@ scene.
 In practice
 -----------
 
-Let's use instancing in practice to see how it works in Godot. We invite
+Let's use instancing in practice to see how it works in redot. We invite
 you to download the ball's sample project we prepared for you:
-`instancing_starter.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/instancing_starter.zip>`_.
+`instancing_starter.zip <https://github.com/redotengine/redot-docs-project-starters/releases/download/latest-4.x/instancing_starter.zip>`_.
 
 Extract the archive on your computer. To import it, you need the Project Manager.
-The Project Manager is accessed by opening Godot, or if you already have Godot opened, click on *Project -> Quit to Project List* (:kbd:`Ctrl + Shift + Q`, :kbd:`Ctrl + Option + Cmd + Q` on macOS)
+The Project Manager is accessed by opening redot, or if you already have redot opened, click on *Project -> Quit to Project List* (:kbd:`Ctrl + Shift + Q`, :kbd:`Ctrl + Option + Cmd + Q` on macOS)
 
 In the Project Manager, click the *Import* button to import the project.
 
 .. image:: img/instancing_import_button.webp
 
 In the pop-up that appears navigate to the folder you extracted.
-Double-click the ``project.godot`` file to open it.
+Double-click the ``project.redot`` file to open it.
 
 .. image:: img/instancing_import_project_file.webp
 
@@ -58,7 +58,7 @@ Finally, click the Import & Edit button.
 
 .. image:: img/instancing_import_and_edit_button.webp
 
-A window notifying you that the project was last opened in an older Godot version
+A window notifying you that the project was last opened in an older redot version
 may appear, that's not an issue. Click *Ok* to open the project.
 
 The project contains two packed scenes: ``main.tscn``, containing walls against
@@ -162,18 +162,18 @@ Rerun the game and notice how this ball now falls much faster than the others.
           original scene. To make a resource unique for one instance, right-click on
           it in the Inspector and click Make Unique in the contextual menu.
 
-          Resources are another essential building block of Godot games we will
+          Resources are another essential building block of redot games we will
           cover in a later lesson.
 
 Scene instances as a design language
 ------------------------------------
 
-Instances and scenes in Godot offer an excellent design language, setting the
-engine apart from others out there. We designed Godot around this concept from
+Instances and scenes in redot offer an excellent design language, setting the
+engine apart from others out there. We designed redot around this concept from
 the ground up.
 
 We recommend dismissing architectural code patterns when making games with
-Godot, such as Model-View-Controller (MVC) or Entity-Relationship diagrams.
+redot, such as Model-View-Controller (MVC) or Entity-Relationship diagrams.
 Instead, you can start by imagining the elements players will see in your game
 and structure your code around them.
 
@@ -209,11 +209,11 @@ would place the citadel. Each of these would be a scene instancing one or more s
 Later, we could create scenes representing guards and add them to the citadel.
 They would be indirectly added to the overall game world.
 
-With Godot, it's easy to iterate on your game like this, as all you need to do
+With redot, it's easy to iterate on your game like this, as all you need to do
 is create and instantiate more scenes. We designed the editor to be accessible
 to programmers, designers, and artists alike. A typical team development process
 can involve 2D or 3D artists, level designers, game designers, and animators,
-all working with the Godot editor.
+all working with the redot editor.
 
 Summary
 -------

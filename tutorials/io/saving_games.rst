@@ -20,7 +20,7 @@ scale as the game grows more complex.
 .. seealso::
 
     You can see how saving and loading works in action using the
-    `Saving and Loading (Serialization) demo project <https://github.com/godotengine/godot-demo-projects/blob/master/loading/serialization>`__.
+    `Saving and Loading (Serialization) demo project <https://github.com/redotengine/redot-demo-projects/blob/master/loading/serialization>`__.
 
 Identify persistent objects
 ---------------------------
@@ -93,9 +93,9 @@ The save function will look like this:
 
  .. code-tab:: csharp
 
-    public Godot.Collections.Dictionary<string, Variant> Save()
+    public redot.Collections.Dictionary<string, Variant> Save()
     {
-        return new Godot.Collections.Dictionary<string, Variant>()
+        return new redot.Collections.Dictionary<string, Variant>()
         {
             { "Filename", SceneFilePath },
             { "Parent", GetParent().GetPath() },
@@ -294,7 +294,7 @@ load function:
             }
 
             // Get the data from the JSON object.
-            var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)json.Data);
+            var nodeData = new redot.Collections.Dictionary<string, Variant>((redot.Collections.Dictionary)json.Data);
 
             // Firstly, we need to create the object and add it to the tree and set its position.
             var newObjectScene = GD.Load<PackedScene>(nodeData["Filename"].ToString());

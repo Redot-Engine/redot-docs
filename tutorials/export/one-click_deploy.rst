@@ -12,7 +12,7 @@ go wrong at many levels (platform may not be configured correctly, SDK may be
 incorrectly installed, device may be improperly configured, etc.), it's good to
 let the user know that it exists.
 
-After adding an Android export preset marked as Runnable, Godot can detect when
+After adding an Android export preset marked as Runnable, redot can detect when
 a USB device is connected to the computer and offer the user to automatically
 export, install and run the project (in debug mode) on the device. This feature
 is called *one-click deploy*.
@@ -34,7 +34,7 @@ Supported platforms
    - Make sure to follow the steps described in :ref:`doc_exporting_for_android`.
      Otherwise, the one-click deploy button won't appear.
 
-   - If you have more than one device connected, Godot will ask you which device
+   - If you have more than one device connected, redot will ask you which device
      the project should be exported to.
 
 - **iOS:** Exports the project with debugging enabled and runs it on the
@@ -47,7 +47,7 @@ Supported platforms
      Xcode, and build at least once to create new provisioning profile or
      create a provisioning profile in the Apple Developer account dashboard.
 
-   - If you have more than one device connected, Godot will ask you which device
+   - If you have more than one device connected, redot will ask you which device
      the project should be exported to.
 
 - **Desktop platforms:** Exports the project with debugging enabled and runs it
@@ -105,7 +105,7 @@ Android
 ^^^^^^^
 
 If you can't see the device in the list of devices when running the
-``adb devices`` command in a terminal, it will not be visible by Godot either.
+``adb devices`` command in a terminal, it will not be visible by redot either.
 To resolve this:
 
 - Check if USB debugging is enabled *and authorized on the device*.
@@ -151,7 +151,7 @@ Web > Use TLS**.
 .. note::
 
     When **Use TLS** is enabled, you will get a warning from your web browser as
-    Godot will use a temporary self-signed certificate. You can safely ignore it
+    redot will use a temporary self-signed certificate. You can safely ignore it
     and bypass the warning by clicking **Advanced** and then **Proceed to
     (address)**.
 

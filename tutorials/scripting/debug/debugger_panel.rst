@@ -3,7 +3,7 @@
 Debugger panel
 ==============
 
-Many of Godot's debugging tools, including the debugger, can be found in the
+Many of redot's debugging tools, including the debugger, can be found in the
 debugger panel at the bottom of the screen. Click on **Debugger** to open it.
 
 .. image:: img/overview_debugger.webp

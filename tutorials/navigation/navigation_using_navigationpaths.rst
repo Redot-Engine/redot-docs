@@ -54,7 +54,7 @@ Outside of grids due to polygons often covering large open areas with a single, 
 
  .. code-tab:: csharp 2D C#
 
-    using Godot;
+    using redot;
     using System;
 
     public partial class MyNode2D : Node2D
@@ -100,7 +100,7 @@ Outside of grids due to polygons often covering large open areas with a single, 
 
  .. code-tab:: csharp 3D C#
 
-    using Godot;
+    using redot;
     using System;
 
     public partial class MyNode3D : Node3D
@@ -191,7 +191,7 @@ the default navigation map by setting the target position with ``set_movement_ta
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode3D : Node3D
     {

@@ -137,7 +137,7 @@ methods has to be used:
 GUI events also travel up the scene tree but, since these events target
 specific Controls, only direct ancestors of the targeted Control node receive the event.
 
-In accordance with Godot's node-based design, this enables
+In accordance with redot's node-based design, this enables
 specialized child nodes to handle and consume particular events, while
 their ancestors, and ultimately the scene root, can provide more
 generalized behavior if needed.
@@ -246,5 +246,5 @@ Customizing and re-mapping input from code is often desired. If your
 whole workflow depends on actions, the :ref:`InputMap <class_InputMap>` singleton is
 ideal for reassigning or creating different actions at run-time. This
 singleton is not saved (must be modified manually) and its state is run
-from the project settings (project.godot). So any dynamic system of this
+from the project settings (project.redot). So any dynamic system of this
 type needs to store settings in the way the programmer best sees fit.

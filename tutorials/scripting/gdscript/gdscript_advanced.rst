@@ -40,7 +40,7 @@ While the main disadvantages are:
 -  Less flexibility for code-completion (some variable types are only
    known at run-time).
 
-This, translated to reality, means that Godot used with GDScript is a combination
+This, translated to reality, means that redot used with GDScript is a combination
 designed to create games quickly and efficiently. For games that are very
 computationally intensive and can't benefit from the engine built-in
 tools (such as the Vector types, Physics Engine, Math library, etc), the

@@ -13,7 +13,7 @@ Images
 Capturing an image
 ^^^^^^^^^^^^^^^^^^
 
-To take a picture of something in Godot, a screen capture tool can be used.
+To take a picture of something in redot, a screen capture tool can be used.
 
 On Windows 10 and 11 that would be the Snip & Sketch program.
 Pressing :kbd:`Windows + Shift + S` lets you take a screenshot
@@ -39,7 +39,7 @@ on how to do this later on this page.
 Format conversion
 ^^^^^^^^^^^^^^^^^
 
-The current format for images in Godot's documentation is WebP (``.webp``).
+The current format for images in redot's documentation is WebP (``.webp``).
 While some Linux programs will support saving screenshots in this format, macOS
 and the Snip & Sketch program on Windows do not. For images that don't need
 editing, such as precise cropping or adding outlines, Squoosh can be used.
@@ -160,7 +160,7 @@ Videos
 Capturing a video
 ^^^^^^^^^^^^^^^^^
 
-To record a video of something in Godot, a screen capture tool can be used.
+To record a video of something in redot, a screen capture tool can be used.
 Operating systems generally don't come with tools that are flexible enough
 for this, so you'll need to install a third-party utility.
 
@@ -176,7 +176,7 @@ use a resolution of 1280×720.
 
 .. note::
 
-    Godot's :ref:`Movie Maker mode <doc_creating_movies>` can be used to record
+    redot's :ref:`Movie Maker mode <doc_creating_movies>` can be used to record
     the output of a running project, including its audio. This doesn't require
     installing any third-party software and avoids any frame drops (even when
     recording on a slow device), but it's less flexible.

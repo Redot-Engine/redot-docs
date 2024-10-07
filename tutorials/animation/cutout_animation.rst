@@ -25,10 +25,10 @@ In video games, this technique has also become popular. Examples of
 this are `Paper Mario <https://en.wikipedia.org/wiki/Super_Paper_Mario>`__ or
 `Rayman Origins <https://en.wikipedia.org/wiki/Rayman_Origins>`__ .
 
-Cutout animation in Godot
+Cutout animation in redot
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Godot provides tools for working with cutout rigs, and is ideal for the workflow:
+redot provides tools for working with cutout rigs, and is ideal for the workflow:
 
 -  **The animation system is fully integrated with the engine**: This
    means animations can control much more than just motion of objects. Textures,
@@ -62,7 +62,7 @@ character, created by Andreas Esau.
 .. image:: img/tuto_cutout_walk.gif
 
 Get your assets:
-`cutout_animation_assets.zip <https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/cutout_animation_assets.zip>`_.
+`cutout_animation_assets.zip <https://github.com/redotengine/redot-docs-project-starters/releases/download/latest-4.x/cutout_animation_assets.zip>`_.
 
 Setting up the rig
 ~~~~~~~~~~~~~~~~~~
@@ -170,12 +170,12 @@ For simple objects and rigs this is fine, but there are limitations:
 -  Inverse Kinematics (IK) is useful for animating extremities like hands and
    feet, and can't be used with our rig in its current state.
 
-To solve these problems we'll use Godot's skeletons.
+To solve these problems we'll use redot's skeletons.
 
 Skeletons
 ~~~~~~~~~
 
-In Godot there is a helper to create "bones" between nodes. The bone-linked
+In redot there is a helper to create "bones" between nodes. The bone-linked
 nodes are called skeletons.
 
 As an example, let's turn the right arm into a skeleton. To create
@@ -191,7 +191,7 @@ This will add bones covering the arm, but the result may be surprising.
 
 .. image:: img/tuto_cutout13.png
 
-Why does the hand lack a bone? In Godot, a bone connects a
+Why does the hand lack a bone? In redot, a bone connects a
 node with its parent. And there's currently no child of the hand node.
 With this knowledge let's try again.
 
@@ -215,7 +215,7 @@ articulable parts of the cutout, with the hip as the ultimate connection
 between all of them.
 
 You may notice that an extra bone is created when connecting the hip and torso.
-Godot has connected the hip node to the scene root with a bone, and we don't
+redot has connected the hip node to the scene root with a bone, and we don't
 want that. To fix this, select the root and hip node, open the Skeleton menu,
 click ``clear bones``.
 
@@ -244,7 +244,7 @@ while the shin and thigh self-adjust.
 
 .. note::
 
-    **IK chains in Godot currently work in the editor only**, not
+    **IK chains in redot currently work in the editor only**, not
     at runtime. They are intended to ease the process of setting keyframes, and are
     not currently useful for techniques like procedural animation.
 
@@ -272,7 +272,7 @@ Animation tips
 ~~~~~~~~~~~~~~
 
 The following section will be a collection of tips for creating animation for
-your cutout rigs. For more information on how the animation system in Godot
+your cutout rigs. For more information on how the animation system in redot
 works, see :ref:`doc_introduction_animation`.
 
 Setting keyframes and excluding properties

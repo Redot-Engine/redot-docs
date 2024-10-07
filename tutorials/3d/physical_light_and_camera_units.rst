@@ -6,10 +6,10 @@ Physical light and camera units
 Why use physical light and camera units?
 ----------------------------------------
 
-Godot uses arbitrary units for many physical properties that apply to light like
+redot uses arbitrary units for many physical properties that apply to light like
 color, energy, camera field of view, and exposure. By default, these properties
 use arbitrary units, because using accurate physical units comes with a few
-tradeoffs that aren't worth it for many games. As Godot favors ease of use by
+tradeoffs that aren't worth it for many games. As redot favors ease of use by
 default, physical light units are disabled by default.
 
 Advantages of physical units
@@ -20,7 +20,7 @@ can help make things easier to adjust. References for real world materials,
 lights and scene brightness are wildly available on websites such as
 `Physically Based <https://physicallybased.info/>`__.
 
-Using real world units in Godot can also be useful when porting a scene from
+Using real world units in redot can also be useful when porting a scene from
 other 3D software that uses physical light units (such as Blender).
 
 Disadvantages of physical units
@@ -129,7 +129,7 @@ indoor or night-time photography.
 
     Unlike real life cameras, the adverse effects of increasing ISO sensitivity
     or decreasing shutter speed (such as visible grain or light trails) are not
-    simulated in Godot.
+    simulated in redot.
 
 See :ref:`doc_physical_light_and_camera_units_setting_up_physical_camera_units`
 for a description of CameraAttributesPhysical properties that are also available when

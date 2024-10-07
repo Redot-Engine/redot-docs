@@ -3,7 +3,7 @@
 Animation Track types
 =====================
 
-This page gives an overview of the track types available for Godot's animation
+This page gives an overview of the track types available for redot's animation
 player node on top of the default property tracks.
 
 .. seealso::
@@ -112,10 +112,10 @@ their expected values are as follows:
         var jumpVelocity = -400.0;
         var multiplier = GD.RandRange(.8, 1.2);
         // Get or create a dictionary with the target method's name and arguments.
-        var methodDictionary = new Godot.Collections.Dictionary
+        var methodDictionary = new redot.Collections.Dictionary
         {
             { "method", MethodName.Jump },
-            { "args", new Godot.Collections.Array { jumpVelocity, multiplier } }
+            { "args", new redot.Collections.Array { jumpVelocity, multiplier } }
         };
 
         // Set scene-tree path to node with target method.

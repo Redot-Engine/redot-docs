@@ -4,7 +4,7 @@ Resolution scaling
 ==================
 
 .. Images on this page were generated using the project below:
-.. https://github.com/Calinou/godot-antialiasing-comparison
+.. https://github.com/Calinou/redot-antialiasing-comparison
 
 Why use resolution scaling?
 ---------------------------
@@ -26,7 +26,7 @@ settings in your in-game menus.
 .. seealso::
 
     You can compare resolution scaling modes and factors in action using the
-    `3D Antialiasing demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/antialiasing>`__.
+    `3D Antialiasing demo project <https://github.com/redotengine/redot-demo-projects/tree/master/3d/antialiasing>`__.
 
 .. note::
 
@@ -48,7 +48,7 @@ Scaling mode
   Slower, but higher quality compared to bilinear scaling. On very slow GPUs,
   the cost of FSR1 may be too expensive to be worth using it over bilinear
   scaling.
-- **FSR 2.2:** AMD FidelityFX Super Resolution 2.2 (since Godot 4.2). Slowest,
+- **FSR 2.2:** AMD FidelityFX Super Resolution 2.2 (since redot 4.2). Slowest,
   but even higher quality compared to FSR1 and bilinear scaling. On slow GPUs,
   the cost of FSR2 may be too expensive to be worth using it over bilinear
   scaling or FSR1. To match FSR2 performance with FSR1, you need to use a lower
@@ -195,7 +195,7 @@ to oversharpening.
 
 .. note::
 
-    If you wish to use sharpening when rendering at native resolution, Godot
+    If you wish to use sharpening when rendering at native resolution, redot
     currently doesn't allow using the sharpening component of FSR1 (RCAS)
     independently from the upscaling component (EASU).
 
@@ -213,7 +213,7 @@ to oversharpening.
 Mipmap bias
 ^^^^^^^^^^^
 
-Godot automatically uses a negative texture mipmap bias when the 3D resolution
+redot automatically uses a negative texture mipmap bias when the 3D resolution
 scale is set below ``1.0``. This allows for better preservation of texture
 detail at the cost of a grainy appearance on detailed textures.
 
@@ -226,7 +226,7 @@ dock.
 The formula used to determine the texture mipmap bias is:
 ``log2f(min(scaling_3d_scale, 1.0)) + custom_texture_mipmap_bias``
 
-To counteract the blurriness added by some antialiasing methods, Godot also adds
+To counteract the blurriness added by some antialiasing methods, redot also adds
 a ``-0.25`` offset when FXAA is enabled, and a ``-0.5`` offset when TAA is
 enabled. If both are enabled at the same time, a ``-0.75`` offset is used. This
 mipmap bias offset is applied *before* the resolution scaling offset, so it does

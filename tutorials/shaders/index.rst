@@ -14,7 +14,7 @@ Shaders
    visual_shaders
    compute_shaders
    screen-reading_shaders
-   converting_glsl_to_godot_shaders
+   converting_glsl_to_redot_shaders
    shaders_style_guide
    using_viewport_as_texture
    custom_postprocessing

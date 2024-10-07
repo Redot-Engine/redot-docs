@@ -5,11 +5,11 @@ Exporting for the Web
 
 .. seealso::
 
-    This page describes how to export a Godot project to HTML5.
+    This page describes how to export a redot project to HTML5.
     If you're looking to compile editor or export template binaries from source instead,
     read :ref:`doc_compiling_for_web`.
 
-HTML5 export allows publishing games made in Godot Engine to the browser.
+HTML5 export allows publishing games made in redot Engine to the browser.
 This requires support for `WebAssembly
 <https://webassembly.org/>`__, `WebGL <https://www.khronos.org/webgl/>`__ and
 `SharedArrayBuffer <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer>`_
@@ -17,8 +17,8 @@ in the user's browser.
 
 .. attention::
 
-    Projects written in C# using Godot 4 currently cannot be exported to the
-    web. To use C# on web platforms, use Godot 3 instead.
+    Projects written in C# using redot 4 currently cannot be exported to the
+    web. To use C# on web platforms, use redot 3 instead.
 
 .. tip::
 
@@ -28,19 +28,19 @@ in the user's browser.
 
 .. attention::
 
-    Godot 4's HTML5 exports currently cannot run on macOS and iOS due to upstream bugs
+    redot 4's HTML5 exports currently cannot run on macOS and iOS due to upstream bugs
     with SharedArrayBuffer and WebGL 2.0. We recommend using
     :ref:`macOS <doc_exporting_for_macos>` and :ref:`iOS <doc_exporting_for_ios>`
     native export functionality instead, as it will also result in better performance.
 
-    Godot 3's HTML5 exports are more compatible with various browsers in
+    redot 3's HTML5 exports are more compatible with various browsers in
     general, especially when using the GLES2 rendering backend (which only
     requires WebGL 1.0).
 
 WebGL version
 -------------
 
-Godot 4.0 and later can only target WebGL 2.0 (using the Compatibility rendering
+redot 4.0 and later can only target WebGL 2.0 (using the Compatibility rendering
 method). There is no stable way to run Vulkan applications on the web yet.
 
 See `Can I use WebGL 2.0 <https://caniuse.com/webgl2>`__ for a list of browser
@@ -83,7 +83,7 @@ Limitations
 
 For security and privacy reasons, many features that work effortlessly on
 native platforms are more complicated on the web platform. Following is a list
-of limitations you should be aware of when porting a Godot game to the web.
+of limitations you should be aware of when porting a redot game to the web.
 
 .. _doc_javascript_secure_contexts:
 
@@ -123,7 +123,7 @@ Full screen and mouse capture
 
 Browsers do not allow arbitrarily **entering full screen**. The same goes for
 **capturing the cursor**. Instead, these actions have to occur as a response to
-a JavaScript input event. In Godot, this means entering full screen from within
+a JavaScript input event. In redot, this means entering full screen from within
 a pressed input event callback such as ``_input`` or ``_unhandled_input``.
 Querying the :ref:`class_Input` singleton is not sufficient, the relevant
 input event must currently be active.
@@ -206,7 +206,7 @@ used, see :ref:`doc_customizing_html5_shell`.
 .. warning::
 
     To ensure low audio latency and the ability to use :ref:`class_Thread` in web exports,
-    Godot 4 web exports always use
+    redot 4 web exports always use
     `SharedArrayBuffer <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer>`__.
     This requires a :ref:`secure context <doc_javascript_secure_contexts>`,
     while also requiring the following CORS headers to be set when serving the files:
@@ -233,7 +233,7 @@ common on most web game hosting sites.
 
 The other exported files are served as they are, next to the ``.html`` file,
 names unchanged. The ``.wasm`` file is a binary WebAssembly module implementing
-the engine. The ``.pck`` file is the Godot main pack containing your game. The
+the engine. The ``.pck`` file is the redot main pack containing your game. The
 ``.js`` file contains start-up code and is used by the ``.html`` file to access
 the engine. The ``.png`` file contains the boot splash image. It is not used in
 the default HTML page, but is included for
@@ -262,8 +262,8 @@ supported on your web server for further file size savings.
 
 .. tip::
 
-    The Godot repository includes a
-    `Python script to host a local web server <https://raw.githubusercontent.com/godotengine/godot/master/platform/web/serve.py>`__.
+    The redot repository includes a
+    `Python script to host a local web server <https://raw.githubusercontent.com/redotengine/redot/master/platform/web/serve.py>`__.
     This script is intended for testing the web editor, but it can also be used to test exported projects.
 
     Save the linked script to a file called ``serve.py``, move this file to the
@@ -304,4 +304,4 @@ the export menu.
    * - Export option
      - Environment variable
    * - Encryption / Encryption Key
-     - ``GODOT_SCRIPT_ENCRYPTION_KEY``
+     - ``redot_SCRIPT_ENCRYPTION_KEY``

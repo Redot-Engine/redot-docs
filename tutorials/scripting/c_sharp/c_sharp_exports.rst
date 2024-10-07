@@ -3,14 +3,14 @@
 C# exported properties
 ======================
 
-In Godot, class members can be exported. This means their value gets saved along
+In redot, class members can be exported. This means their value gets saved along
 with the resource (such as the :ref:`scene <class_PackedScene>`) they're
 attached to. They will also be available for editing in the property editor.
 Exporting is done by using the ``[Export]`` attribute.
 
 .. code-block:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class ExportExample : Node3D
     {
@@ -85,7 +85,7 @@ Properties with a backing field use the default value of the backing field.
 .. note::
 
     A property's ``get`` is not actually executed to determine the default
-    value. Instead, Godot analyzes the C# source code. This works fine for most
+    value. Instead, redot analyzes the C# source code. This works fine for most
     cases, such as the examples on this page. However, some properties are too
     complex for the analyzer to understand.
 
@@ -289,7 +289,7 @@ Color given as red-green-blue value (alpha will always be 1).
 Nodes
 -----
 
-Since Godot 4.0, nodes can be directly exported without having to use NodePaths.
+Since redot 4.0, nodes can be directly exported without having to use NodePaths.
 
 .. code-block:: csharp
 
@@ -309,7 +309,7 @@ Custom node classes can also be exported directly. The filtering behavior
 depends on whether the custom class is a
 :ref:`global class <doc_c_sharp_global_classes>`.
 
-Exporting NodePaths like in Godot 3.x is still possible, in case you need it:
+Exporting NodePaths like in redot 3.x is still possible, in case you need it:
 
 .. code-block:: csharp
 
@@ -477,32 +477,32 @@ Exporting collections
 ---------------------
 
 As explained in the :ref:`C# Variant <doc_c_sharp_variant>` documentation, only
-certain C# arrays and the collection types defined in the ``Godot.Collections``
+certain C# arrays and the collection types defined in the ``redot.Collections``
 namespace are Variant-compatible, therefore, only those types can be exported.
 
-Exporting Godot arrays
+Exporting redot arrays
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Array Array { get; set; }
+    public redot.Collections.Array Array { get; set; }
 
-Using the generic ``Godot.Collections.Array<T>`` allows specifying the type of the
+Using the generic ``redot.Collections.Array<T>`` allows specifying the type of the
 array elements, which will be used as a hint for the editor. The Inspector will
 restrict the elements to the specified type.
 
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Array<string> Array { get; set; }
+    public redot.Collections.Array<string> Array { get; set; }
 
-The default value of Godot arrays is null. A different default can be specified:
+The default value of redot arrays is null. A different default can be specified:
 
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Array<string> CharacterNames { get; set; } = new Godot.Collections.Array<string>
+    public redot.Collections.Array<string> CharacterNames { get; set; } = new redot.Collections.Array<string>
     {
         "Rebecca",
         "Mary",
@@ -515,39 +515,39 @@ drag-and-dropping multiple files from the FileSystem dock.
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Array<Texture> Textures { get; set; }
+    public redot.Collections.Array<Texture> Textures { get; set; }
 
     [Export]
-    public Godot.Collections.Array<PackedScene> Scenes { get; set; }
+    public redot.Collections.Array<PackedScene> Scenes { get; set; }
 
-Exporting Godot dictionaries
+Exporting redot dictionaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Dictionary Dictionary { get; set; }
+    public redot.Collections.Dictionary Dictionary { get; set; }
 
-Using the generic ``Godot.Collections.Dictionary<TKey, TValue>`` allows specifying
+Using the generic ``redot.Collections.Dictionary<TKey, TValue>`` allows specifying
 the types of the key and value elements of the dictionary.
 
 .. note::
 
-    Typed dictionaries are currently unsupported in the Godot editor, so
+    Typed dictionaries are currently unsupported in the redot editor, so
     the Inspector will not restrict the types that can be assigned, potentially
     resulting in runtime exceptions.
 
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Dictionary<string, int> Dictionary { get; set; }
+    public redot.Collections.Dictionary<string, int> Dictionary { get; set; }
 
-The default value of Godot dictionaries is null. A different default can be specified:
+The default value of redot dictionaries is null. A different default can be specified:
 
 .. code-block:: csharp
 
     [Export]
-    public Godot.Collections.Dictionary<string, int> CharacterLives { get; set; } = new Godot.Collections.Dictionary<string, int>
+    public redot.Collections.Dictionary<string, int> CharacterLives { get; set; } = new redot.Collections.Dictionary<string, int>
     {
         ["Rebecca"] = 10,
         ["Mary"] = 42,

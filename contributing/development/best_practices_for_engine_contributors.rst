@@ -6,7 +6,7 @@ Best practices for engine contributors
 Introduction
 ------------
 
-Godot has a large amount of users who have the ability to contribute because the
+redot has a large amount of users who have the ability to contribute because the
 project itself is aimed mainly at users who can code. That being said, not all
 of them have the same level of experience working in large projects or in
 software engineering, which can lead to common misunderstandings and bad
@@ -74,7 +74,7 @@ than it needs to be.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Software is designed to solve problems, but we can't expect it to solve *every
-problem that exists under the sun*. As a game engine, Godot will help you make
+problem that exists under the sun*. As a game engine, redot will help you make
 games better and faster, but it won't make an *entire game* for you. A line must
 be drawn somewhere.
 
@@ -123,7 +123,7 @@ The only exception is when an area of code has a clear agreed upon owner, who
 talks to users directly and has the most knowledge to implement a solution
 directly.
 
-Also, Godot's philosophy is to favor ease of use and maintenance over absolute
+Also, redot's philosophy is to favor ease of use and maintenance over absolute
 performance. Performance optimizations will be considered, but they may not
 be accepted if they make something too difficult to use or if they add too much
 complexity to the codebase.
@@ -221,7 +221,7 @@ is always the advised one.
 Not every problem has a simple solution and, many times, the right choice is to
 use a third party library to solve the problem.
 
-As Godot requires to be shipped in a large amount of platforms, we can't
+As redot requires to be shipped in a large amount of platforms, we can't
 link libraries dynamically. Instead, we bundle them in our source tree.
 
 .. image:: img/best_practices8.png
@@ -232,11 +232,11 @@ larger if there is no other choice.
 
 .. _doc_best_practices_for_engine_contributors_license_compliance:
 
-Libraries must use a permissive enough license to be included into Godot.
+Libraries must use a permissive enough license to be included into redot.
 Some examples of acceptable licenses are Apache 2.0, BSD, MIT, ISC, and MPL 2.0.
 In particular, we cannot accept libraries licensed under the GPL or LGPL since
 these licenses effectively disallow static linking in proprietary software
-(which Godot is distributed as in most exported projects). This requirement also
+(which redot is distributed as in most exported projects). This requirement also
 applies to the editor, since we may want to run it on iOS in the long term.
 Since iOS doesn't support dynamic linking, static linking is the only option on
 that platform.

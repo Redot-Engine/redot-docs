@@ -6,13 +6,13 @@ Shading language
 Introduction
 ------------
 
-Godot uses a shading language similar to GLSL ES 3.0. Most datatypes and
+redot uses a shading language similar to GLSL ES 3.0. Most datatypes and
 functions are supported, and the few remaining ones will likely be added over
 time.
 
-If you are already familiar with GLSL, the :ref:`Godot Shader Migration
-Guide<doc_converting_glsl_to_godot_shaders>` is a resource that will help you
-transition from regular GLSL to Godot's shading language.
+If you are already familiar with GLSL, the :ref:`redot Shader Migration
+Guide<doc_converting_glsl_to_redot_shaders>` is a resource that will help you
+transition from regular GLSL to redot's shading language.
 
 Data types
 ----------
@@ -467,7 +467,7 @@ You can also pass them to functions:
 Operators
 ---------
 
-Godot shading language supports the same set of operators as GLSL ES 3.0. Below
+redot shading language supports the same set of operators as GLSL ES 3.0. Below
 is the list of them in precedence order:
 
 +-------------+------------------------+------------------+
@@ -501,7 +501,7 @@ is the list of them in precedence order:
 Flow control
 ------------
 
-Godot Shading language supports the most common types of flow control:
+redot Shading language supports the most common types of flow control:
 
 .. code-block:: glsl
 
@@ -551,7 +551,7 @@ Godot Shading language supports the most common types of flow control:
     } while (cond);
 
 Keep in mind that in modern GPUs, an infinite loop can exist and can freeze
-your application (including editor). Godot can't protect you from this, so be
+your application (including editor). redot can't protect you from this, so be
 careful not to make this mistake!
 
 Also, when comparing floating-point values against a number, make sure to
@@ -601,7 +601,7 @@ render compared to not rendering any object in the first place.
 Functions
 ---------
 
-It is possible to define functions in a Godot shader. They use the following
+It is possible to define functions in a redot shader. They use the following
 syntax:
 
 .. code-block:: glsl
@@ -639,7 +639,7 @@ Example below:
 
 .. note::
 
-    Unlike GLSL, Godot's shader language does **not** support function
+    Unlike GLSL, redot's shader language does **not** support function
     overloading. This means that a function cannot be defined several times with
     different argument types or numbers of arguments. As a workaround, use
     different names for functions that accept a different number of arguments or
@@ -785,7 +785,7 @@ GDScript:
           in the shader. It must match *exactly* to the name of the uniform in
           the shader or else it will not be recognized.
 
-Any GLSL type except for *void* can be a uniform. Additionally, Godot provides
+Any GLSL type except for *void* can be a uniform. Additionally, redot provides
 optional shader hints to make the compiler understand for what the uniform is
 used, and how the editor should allow users to modify it.
 
@@ -799,7 +799,7 @@ used, and how the editor should allow users to modify it.
     uniform sampler2D image : source_color;
 
 It's important to understand that textures *that are supplied as color* require
-hints for proper sRGB -> linear conversion (i.e. ``source_color``), as Godot's
+hints for proper sRGB -> linear conversion (i.e. ``source_color``), as redot's
 3D engine renders in linear color space. If this is not done, the texture will
 appear washed out.
 
@@ -848,7 +848,7 @@ Full list of hints below:
 +----------------------+--------------------------------------------------+-----------------------------------------------------------------------------+
 
 GDScript uses different variable types than GLSL does, so when passing variables
-from GDScript to shaders, Godot converts the type automatically. Below is a
+from GDScript to shaders, redot converts the type automatically. Below is a
 table of the corresponding types:
 
 +----------------------+-------------------------+------------------------------------------------------------+
@@ -929,7 +929,7 @@ table of the corresponding types:
 | **usampler3D**       | **Texture3D**           |                                                            |
 +----------------------+-------------------------+------------------------------------------------------------+
 | **samplerCube**      | **Cubemap**             | See :ref:`doc_importing_images_changing_import_type` for   |
-|                      |                         | instructions on importing cubemaps for use in Godot.       |
+|                      |                         | instructions on importing cubemaps for use in redot.       |
 +----------------------+-------------------------+------------------------------------------------------------+
 | **samplerCubeArray** | **CubemapArray**        | Only supported in Forward+ and Mobile, not Compatibility.  |
 +----------------------+-------------------------+------------------------------------------------------------+
@@ -1314,7 +1314,7 @@ is used, it can be scalar or vector.
 +-----------------------------------------------------------------------------+---------------------------------------------------------------------+
 | int **textureQueryLevels** (gsampler2D s)                                   | Get the number of accessible mipmap levels of a texture.            |
 |                                                                             |                                                                     |
-| int **textureQueryLevels** (gsampler2DArray s)                              | If the texture is unassigned to a sampler, ``1`` is returned (Godot |
+| int **textureQueryLevels** (gsampler2DArray s)                              | If the texture is unassigned to a sampler, ``1`` is returned (redot |
 |                                                                             | always internally assigns a texture even to an empty sampler).      |
 | int **textureQueryLevels** (gsampler3D s)                                   |                                                                     |
 |                                                                             |                                                                     |

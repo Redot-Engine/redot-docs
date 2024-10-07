@@ -16,7 +16,7 @@ Importing the project
 
    KDevelop's main screen.
 
-- Navigate to the Godot root folder and select it.
+- Navigate to the redot root folder and select it.
 - On the next screen, choose **Custom Build System** for the **Project Manager**.
 
 .. figure:: img/kdevelop_custombuild.png
@@ -34,7 +34,7 @@ Importing the project
 
   .. code-block:: none
 
-     .  // A dot, to indicate the root of the Godot project
+     .  // A dot, to indicate the root of the redot project
      core/
      core/os/
      core/math/
@@ -76,8 +76,8 @@ Debugging the project
 
 - Click **Add** to create a new launch configuration.
 - Select **Executable** option and specify the path to your executable located in
-  the ``<Godot root directory>/bin`` folder. The name depends on your build configuration,
-  e.g. ``godot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
+  the ``<redot root directory>/bin`` folder. The name depends on your build configuration,
+  e.g. ``redot.linuxbsd.editor.dev.x86_64`` for 64-bit LinuxBSD platform with
   ``platform=editor`` and ``dev_build=yes``.
 
 .. figure:: img/kdevelop_configlaunches2.png
@@ -85,4 +85,4 @@ Debugging the project
    :align: center
 
 If you run into any issues, ask for help in one of
-`Godot's community channels <https://godotengine.org/community>`__.
+`redot's community channels <https://redotengine.org/community>`__.

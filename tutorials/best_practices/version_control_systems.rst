@@ -6,12 +6,12 @@ Version control systems
 Introduction
 ------------
 
-Godot aims to be VCS-friendly and generate mostly readable and mergeable files.
+redot aims to be VCS-friendly and generate mostly readable and mergeable files.
 
 Version control plugins
 -----------------------
 
-Godot also supports the use of version control systems in the editor itself.
+redot also supports the use of version control systems in the editor itself.
 However, version control in the editor requires a plugin for the specific VCS
 you're using.
 
@@ -23,10 +23,10 @@ Official Git plugin
 
 Using Git from inside the editor is supported with an official plugin.
 You can find the latest releases on
-`GitHub <https://github.com/godotengine/godot-git-plugin/releases>`__.
+`GitHub <https://github.com/redotengine/redot-git-plugin/releases>`__.
 
 Documentation on how to use the Git plugin can be found on its
-`wiki <https://github.com/godotengine/godot-git-plugin/wiki>`__.
+`wiki <https://github.com/redotengine/redot-git-plugin/wiki>`__.
 
 Files to exclude from VCS
 -------------------------
@@ -34,25 +34,25 @@ Files to exclude from VCS
 .. note::
 
     This lists files and folders that should be ignored from version control in
-    Godot 4.1 and later.
+    redot 4.1 and later.
 
     The list of files of folders that should be ignored from version control in
-    Godot 3.x and Godot 4.0 is **entirely** different. This is important, as Godot
-    3.x and 4.0 may store sensitive credentials in ``export_presets.cfg`` (unlike Godot
+    redot 3.x and redot 4.0 is **entirely** different. This is important, as redot
+    3.x and 4.0 may store sensitive credentials in ``export_presets.cfg`` (unlike redot
     4.1 and later).
 
-    If you are using Godot 3, check the ``3.5`` version of this documentation page
+    If you are using redot 3, check the ``3.5`` version of this documentation page
     instead.
 
-There are some files and folders Godot automatically creates when opening a
+There are some files and folders redot automatically creates when opening a
 project in the editor for the first time. To avoid bloating your version control
 repository with generated data, you should add them to your VCS ignore:
 
-- ``.godot/``: This folder stores various project cache data.
+- ``.redot/``: This folder stores various project cache data.
 - ``*.translation``: These files are binary imported
   :ref:`translations <doc_internationalizing_games>` generated from CSV files.
 
-You can make the Godot project manager generate version control metadata for you
+You can make the redot project manager generate version control metadata for you
 automatically when creating a project. When choosing the **Git** option, this
 creates ``.gitignore`` and ``.gitattributes`` files in the project root:
 

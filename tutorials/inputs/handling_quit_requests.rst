@@ -35,7 +35,7 @@ Handling the notification is done as follows (on any node):
             GetTree().Quit(); // default behavior
     }
 
-It is important to note that by default, Godot apps have the built-in
+It is important to note that by default, redot apps have the built-in
 behavior to quit when quit is requested from the window manager. This
 can be changed, so that the user can take care of the complete quitting
 procedure:

@@ -3,7 +3,7 @@
 Using Fonts
 ===========
 
-Godot allows you to set specific fonts for different UI nodes.
+redot allows you to set specific fonts for different UI nodes.
 
 There are three different places where you can setup font usage.
 The first is the theme editor. Choose the node you want to set the
@@ -17,7 +17,7 @@ is used as the default project font.
 
 .. note::
 
-    Since Godot 4.0, font sizes are no longer defined in the font itself but are
+    Since redot 4.0, font sizes are no longer defined in the font itself but are
     instead defined in the node that uses the font. This is done in the
     **Theme Overrides > Font Sizes** section of the inspector.
 
@@ -44,17 +44,17 @@ as *ligatures* (several characters transforming into a single different design).
 .. seealso::
 
     You can see how fonts work in action using the
-    `BiDI and Font Features demo project <https://github.com/godotengine/godot-demo-projects/tree/master/gui/bidi_and_font_features>`__.
+    `BiDI and Font Features demo project <https://github.com/redotengine/redot-demo-projects/tree/master/gui/bidi_and_font_features>`__.
 
 Dynamic fonts
 -------------
 
-Godot supports the following dynamic font formats:
+redot supports the following dynamic font formats:
 
 - TrueType Font or Collection (``.ttf``, ``.ttc``)
 - OpenType Font or Collection (``.otf``, ``.otc``)
 - Web Open Font Format 1 (``.woff``)
-- Web Open Font Format 2 (``.woff2``, since Godot 3.5)
+- Web Open Font Format 2 (``.woff2``, since redot 3.5)
 
 While ``.woff`` and especially ``.woff2`` tend to result in smaller file sizes,
 there is no universally "better" font format. In most situations, it's
@@ -64,7 +64,7 @@ website.
 Bitmap fonts
 ------------
 
-Godot supports the BMFont (``.fnt``) bitmap font format. This is a format created
+redot supports the BMFont (``.fnt``) bitmap font format. This is a format created
 by the `BMFont <https://www.angelcode.com/products/bmfont/>`__ program. Many
 BMFont-compatible programs also exist, like `BMGlyph <https://www.bmglyph.com/>`__ or web-based `fontcutter <https://github.com/fabienbk/fontcutter>`__.
 
@@ -139,7 +139,7 @@ property that accepts a Font resource.
 
 .. warning::
 
-   In Godot 4.0 and later, texture filter and repeat properties are defined in
+   In redot 4.0 and later, texture filter and repeat properties are defined in
    the location where the texture is used, rather than on the texture itself.
    This also applies to fonts (both dynamic fonts and bitmap fonts).
 
@@ -150,7 +150,7 @@ property that accepts a Font resource.
    The font size must also be an integer multiple of the design size (which
    varies on a per-font basis), and the Control node using the font must be
    scaled by an integer multiple as well. Otherwise, the font may look blurry.
-   Font sizes in Godot are specified in pixels (px), not points (pt). Keep this
+   Font sizes in redot are specified in pixels (px), not points (pt). Keep this
    in mind when comparing font sizes across different software.
 
    The texture filter mode can also be set on individual nodes that inherit from CanvasItem
@@ -330,7 +330,7 @@ Multi-channel signed distance field (MSDF) font rendering allows rendering fonts
 at any size, without having to re-rasterize them when their size changes.
 
 MSDF font rendering has 2 upsides over traditional font rasterization, which
-Godot uses by default:
+redot uses by default:
 
 - The font will always look crisp, even at huge sizes.
 - There is less stuttering when rendering characters *at large font sizes* for
@@ -373,7 +373,7 @@ to the Import dock, enable **Multichannel Signed Distance Field**, then click
 Using emoji
 ^^^^^^^^^^^
 
-Godot has limited support for emoji fonts:
+redot has limited support for emoji fonts:
 
 - CBDT/CBLC (embedded PNGs) and SVG emoji fonts are supported.
 - COLR/CPAL emoji fonts (custom vector format) are **not** supported.
@@ -381,7 +381,7 @@ Godot has limited support for emoji fonts:
   This means that to support emoji on iOS, you must use a custom font that
   uses SVG or PNG bitmap compression instead.
 
-For Godot to be able to display emoji, the font used (or one of its
+For redot to be able to display emoji, the font used (or one of its
 :ref:`fallbacks <doc_using_fonts_font_fallbacks>`) needs to include them.
 Otherwise, emoji won't be displayed and placeholder "tofu" characters will
 appear instead:
@@ -430,16 +430,16 @@ with :ref:`doc_3d_text` and TextMesh.
 
 .. note::
 
-    Fontello currently does not support creating multicolored fonts (which Godot
+    Fontello currently does not support creating multicolored fonts (which redot
     can render). As of November 2022, support for multicolored fonts in icon
     font generation tools remains scarce.
 
 Depending on your use cases, this may lead to better results compared to using
 the ``img`` tag in :ref:`RichTextLabel <doc_bbcode_in_richtextlabel>`. Unlike
-bitmap images (including SVGs which are rasterized on import by Godot),
+bitmap images (including SVGs which are rasterized on import by redot),
 true vector data can be resized to any size without losing quality.
 
-After downloading the generated font file, load it in your Godot project then
+After downloading the generated font file, load it in your redot project then
 specify it as a custom font for a Label, RichTextLabel or Label3D node. Switch
 over to the Fontello web interface, then copy the character by selecting it then
 pressing :kbd:`Ctrl + C` (:kbd:`Cmd + C` on macOS). Paste the character in the
@@ -467,7 +467,7 @@ reserved for use by custom fonts and doesn't contain standard glyphs by design.
 Font fallbacks
 ^^^^^^^^^^^^^^
 
-Godot supports defining one or more fallbacks when the main font lacks a glyph
+redot supports defining one or more fallbacks when the main font lacks a glyph
 to be displayed. There are 2 main use cases for defining font fallbacks:
 
 - Use a font that only supports Latin character sets, but use another font to
@@ -515,7 +515,7 @@ fallbacks.
 Variable fonts
 ^^^^^^^^^^^^^^
 
-Godot has full support for `variable fonts <https://variablefonts.io/>`__, which
+redot has full support for `variable fonts <https://variablefonts.io/>`__, which
 allow you to use a single font file to represent various font weights and styles
 (regular, bold, italic, …). This must be supported by the font file you're using.
 
@@ -606,7 +606,7 @@ While file size is usually not an issue for desktop projects, it can be a concer
 for mobile/web projects that strive to keep distribution size as low as possible.
 
 To allow bold and italic fonts to be displayed without having to ship additional
-fonts (or use a variable font that is larger in size), Godot supports *faux*
+fonts (or use a variable font that is larger in size), redot supports *faux*
 bold and italic.
 
 .. figure:: img/using_fonts_faux_bold_italic_vs_real_bold_italic.webp
@@ -633,7 +633,7 @@ Adjusting font spacing
 ^^^^^^^^^^^^^^^^^^^^^^
 
 For stylistic purposes or for better readability, you may want to adjust how a
-font is presented in Godot.
+font is presented in redot.
 
 Create a FontVariation resource in a property where a Font resource is expected.
 There are 4 properties available in the **Variation > Extra Spacing** section,
@@ -661,7 +661,7 @@ displayed with stretching.
 OpenType font features
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Godot supports enabling OpenType font features, which are a standardized way to
+redot supports enabling OpenType font features, which are a standardized way to
 define alternate characters that can be toggled without having to swap font
 files entirely. Despite being named OpenType font features, these are also
 supported in TrueType (``.ttf``) and WOFF/WOFF2 font files.
@@ -745,7 +745,7 @@ System fonts
     Loading system fonts is only supported on Windows, macOS, Linux, Android and iOS.
 
     However, loading system fonts on Android is unreliable as there is no
-    official API for doing so. Godot has to rely on parsing system configuration
+    official API for doing so. redot has to rely on parsing system configuration
     files, which can be modified by third-party Android vendors. This may result
     in non-functional system font loading.
 
@@ -829,7 +829,7 @@ for details.
 Font prerendering
 ^^^^^^^^^^^^^^^^^
 
-When using traditional rasterized fonts, Godot caches glyphs on a per-font and
+When using traditional rasterized fonts, redot caches glyphs on a per-font and
 per-size basis. This reduces stuttering, but it can still occur the first time a
 glyph is displayed when running the project. This can be especially noticeable
 at higher font sizes or on mobile devices.

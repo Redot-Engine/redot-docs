@@ -1,19 +1,19 @@
 :allow_comments: False
 
-Godot Docs – *master* branch
+redot Docs – *master* branch
 ============================
 
 .. only:: not i18n
 
-  .. note:: Godot's documentation is available in various languages and versions.
+  .. note:: redot's documentation is available in various languages and versions.
             Expand the "Read the Docs" panel at the bottom of the sidebar to see
             the list.
 
 .. only:: i18n
 
   .. note:: This documentation is translated from the `original English one
-            <https://docs.godotengine.org/en/stable>`_ by community members
-            on `Weblate <https://hosted.weblate.org/projects/godot-engine/godot-docs>`_.
+            <https://docs.redotengine.org/en/stable>`_ by community members
+            on `Weblate <https://hosted.weblate.org/projects/redot-engine/redot-docs>`_.
 
             Depending on the translation effort's completion level, you may
             find paragraphs or whole pages which are still in English. You can
@@ -25,7 +25,7 @@ Godot Docs – *master* branch
             other engine versions using the "Read the Docs" panel at the bottom
             of the sidebar.
 
-Welcome to the official documentation of `Godot Engine <https://godotengine.org>`__,
+Welcome to the official documentation of `redot Engine <https://redotengine.org>`__,
 the free and open source community-driven 2D and 3D game engine! If you are new
 to this documentation, we recommend that you read the
 :ref:`introduction page <doc_about_intro>` to get an overview of what this
@@ -37,27 +37,27 @@ for your topic of interest. You can also use the search function in the top-left
 Get involved
 ------------
 
-Godot Engine is an open source project developed by a community of volunteers.
+redot Engine is an open source project developed by a community of volunteers.
 The documentation team can always use your feedback and help to improve the
 tutorials and class reference. If you don't understand something, or cannot find
 what you are looking for in the docs, help us make the documentation better
 by letting us know!
 
-Submit an issue or pull request on the `GitHub repository <https://github.com/godotengine/godot-docs/issues>`_,
-help us `translate the documentation <https://hosted.weblate.org/engage/godot-engine/>`_
+Submit an issue or pull request on the `GitHub repository <https://github.com/redotengine/redot-docs/issues>`_,
+help us `translate the documentation <https://hosted.weblate.org/engage/redot-engine/>`_
 into your language, or talk to us on the ``#documentation`` channel on the
-`Godot Contributors Chat <https://chat.godotengine.org/>`_!
+`redot Contributors Chat <https://chat.redotengine.org/>`_!
 
 .. centered:: |weblate_widget|
 
 Offline documentation
 ---------------------
 
-To browse the documentation offline, you can download an HTML copy (updated every Monday): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-3.6.zip>`__. Extract the ZIP archive then open
+To browse the documentation offline, you can download an HTML copy (updated every Monday): `stable <https://nightly.link/redotengine/redot-docs/workflows/build_offline_docs/master/redot-docs-html-stable.zip>`__, `latest <https://nightly.link/redotengine/redot-docs/workflows/build_offline_docs/master/redot-docs-html-master.zip>`__, `3.6 <https://nightly.link/redotengine/redot-docs/workflows/build_offline_docs/master/redot-docs-html-3.6.zip>`__. Extract the ZIP archive then open
 the top-level ``index.html`` in a web browser.
 
-For mobile devices or e-readers, you can also download an ePub copy (updated every Monday): `stable <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-stable.zip>`__, `latest <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-master.zip>`__, `3.6 <https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-3.6.zip>`__. Extract the ZIP archive then open
-the ``GodotEngine.epub`` file in an e-book reader application.
+For mobile devices or e-readers, you can also download an ePub copy (updated every Monday): `stable <https://nightly.link/redotengine/redot-docs/workflows/build_offline_docs/master/redot-docs-epub-stable.zip>`__, `latest <https://nightly.link/redotengine/redot-docs/workflows/build_offline_docs/master/redot-docs-epub-master.zip>`__, `3.6 <https://nightly.link/redotengine/redot-docs/workflows/build_offline_docs/master/redot-docs-epub-3.6.zip>`__. Extract the ZIP archive then open
+the ``redotEngine.epub`` file in an e-book reader application.
 
 .. Below is the main table-of-content tree of the documentation website.
    It is hidden on the page itself, but it makes up the sidebar for navigation.

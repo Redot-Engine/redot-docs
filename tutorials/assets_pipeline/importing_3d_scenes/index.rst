@@ -5,7 +5,7 @@
 Importing 3D scenes
 ===================
 
-Godot supports importing 3D scenes from various file formats.
+redot supports importing 3D scenes from various file formats.
 This documentation section describes what those formats are, and how to use
 them, including exporting with the correct conventions and best practices,
 and how to customize the node type using a suffix in the node name.

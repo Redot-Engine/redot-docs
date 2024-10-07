@@ -1,9 +1,9 @@
-.. _doc_godot_architecture_diagram:
+.. _doc_redot_architecture_diagram:
 
-Godot's architecture diagram
+redot's architecture diagram
 ============================
 
-The following diagram describes the architecture used by Godot, from the
+The following diagram describes the architecture used by redot, from the
 core components down to the abstracted drivers, via the scene
 structure and the servers.
 

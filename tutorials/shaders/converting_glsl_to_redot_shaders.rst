@@ -1,31 +1,31 @@
-.. _doc_converting_glsl_to_godot_shaders:
+.. _doc_converting_glsl_to_redot_shaders:
 
-Converting GLSL to Godot shaders
+Converting GLSL to redot shaders
 ================================
 
-This document explains the differences between Godot's shading language and GLSL
+This document explains the differences between redot's shading language and GLSL
 and gives practical advice on how to migrate shaders from other sources, such as
-Shadertoy and The Book of Shaders, into Godot shaders.
+Shadertoy and The Book of Shaders, into redot shaders.
 
-For detailed information on Godot's shading language, please refer to the
+For detailed information on redot's shading language, please refer to the
 :ref:`Shading Language <doc_shading_language>` reference.
 
 GLSL
 ----
 
-Godot uses a shading language based on GLSL with the addition of a few
+redot uses a shading language based on GLSL with the addition of a few
 quality-of-life features. Accordingly, most features available in GLSL are
-available in Godot's shading language.
+available in redot's shading language.
 
 Shader programs
 ^^^^^^^^^^^^^^^
 
 In GLSL, each shader uses a separate program. You have one program for the
-vertex shader and one for the fragment shader. In Godot, you have a single
+vertex shader and one for the fragment shader. In redot, you have a single
 shader that contains a ``vertex`` and/or a ``fragment`` function. If you only
-choose to write one, Godot will supply the other.
+choose to write one, redot will supply the other.
 
-Godot allows uniform variables and functions to be shared by defining the
+redot allows uniform variables and functions to be shared by defining the
 fragment and vertex shaders in one file. In GLSL, the vertex and fragment
 programs cannot share variables except when varyings are used.
 
@@ -33,7 +33,7 @@ Vertex attributes
 ^^^^^^^^^^^^^^^^^
 
 In GLSL, you can pass in per-vertex information using attributes and have the
-flexibility to pass in as much or as little as you want. In Godot, you have a
+flexibility to pass in as much or as little as you want. In redot, you have a
 set number of input attributes, including ``VERTEX`` (position), ``COLOR``,
 ``UV``, ``UV2``, ``NORMAL``. Each shaders' page in the shader reference section
 of the documentation comes with a complete list of its vertex attributes.
@@ -46,8 +46,8 @@ shader. It is specified by the user in clip space. Typically, in GLSL, the model
 space vertex position is passed in using a vertex attribute called ``position``
 and you handle the conversion from model space to clip space manually.
 
-In Godot, ``VERTEX`` specifies the vertex position in model space at the
-beginning of the ``vertex`` function. Godot also handles the final conversion to
+In redot, ``VERTEX`` specifies the vertex position in model space at the
+beginning of the ``vertex`` function. redot also handles the final conversion to
 clip space after the user-defined ``vertex`` function is run. If you want to
 skip the conversion from model to view space, you can set the ``render_mode`` to
 ``skip_vertex_transform``. If you want to skip all transforms, set
@@ -74,7 +74,7 @@ rename ``main`` to ``fragment``.
 Macros
 ^^^^^^
 
-The :ref:`Godot shader preprocessor<doc_shader_preprocessor>` supports the following macros:
+The :ref:`redot shader preprocessor<doc_shader_preprocessor>` supports the following macros:
 
 * ``#define`` / ``#undef``
 * ``#if``, ``#elif``, ``#else``, ``#endif``, ``defined()``, ``#ifdef``, ``#ifndef``
@@ -108,15 +108,15 @@ uniforms, so they are not editable from the main program.
 Coordinates
 ^^^^^^^^^^^
 
-``gl_FragCoord`` in GLSL and ``FRAGCOORD`` in the Godot shading language use the
-same coordinate system. If using UV in Godot, the y-coordinate will be flipped
+``gl_FragCoord`` in GLSL and ``FRAGCOORD`` in the redot shading language use the
+same coordinate system. If using UV in redot, the y-coordinate will be flipped
 upside down.
 
 Precision
 ^^^^^^^^^
 
 In GLSL, you can define the precision of a given type (float or int) at the top
-of the shader with the ``precision`` keyword. In Godot, you can set the
+of the shader with the ``precision`` keyword. In redot, you can set the
 precision of individual variables as you need by placing precision qualifiers
 ``lowp``, ``mediump``, and ``highp`` before the type when defining the variable.
 For more information, see the :ref:`Shading Language <doc_shading_language>`
@@ -143,19 +143,19 @@ mainImage
 
 The main point of entry to a Shadertoy shader is the ``mainImage`` function.
 ``mainImage`` has two parameters, ``fragColor`` and ``fragCoord``, which
-correspond to ``COLOR`` and ``FRAGCOORD`` in Godot, respectively. These
-parameters are handled automatically in Godot, so you do not need to include
+correspond to ``COLOR`` and ``FRAGCOORD`` in redot, respectively. These
+parameters are handled automatically in redot, so you do not need to include
 them as parameters yourself. Anything in the ``mainImage`` function should be
-copied into the ``fragment`` function when porting to Godot.
+copied into the ``fragment`` function when porting to redot.
 
 Variables
 ^^^^^^^^^
 
 In order to make writing fragment shaders straightforward and easy, Shadertoy
 handles passing a lot of helpful information from the main program into the
-fragment shader for you. A few of these have no equivalents in Godot because
-Godot has chosen not to make them available by default. This is okay because
-Godot gives you the ability to make your own uniforms. For variables whose
+fragment shader for you. A few of these have no equivalents in redot because
+redot has chosen not to make them available by default. This is okay because
+redot gives you the ability to make your own uniforms. For variables whose
 equivalents are listed as "Provide with Uniform", users are responsible for
 creating that uniform themselves. The description gives the reader a hint about
 what they can pass in as a substitute.
@@ -183,14 +183,14 @@ what they can pass in as a substitute.
 +---------------------+---------+------------------------+-----------------------------------------------------+
 |iChannelResolution[4]|vec3     |1.0 / TEXTURE_PIXEL_SIZE|Resolution of particular texture.                    |
 +---------------------+---------+------------------------+-----------------------------------------------------+
-|iChanneli            |Sampler2D|TEXTURE                 |Godot provides only one built-in; user can make more.|
+|iChanneli            |Sampler2D|TEXTURE                 |redot provides only one built-in; user can make more.|
 +---------------------+---------+------------------------+-----------------------------------------------------+
 
 Coordinates
 ^^^^^^^^^^^
 
 ``fragCoord`` behaves the same as ``gl_FragCoord`` in :ref:`GLSL
-<glsl_coordinates>` and ``FRAGCOORD`` in Godot.
+<glsl_coordinates>` and ``FRAGCOORD`` in redot.
 
 
 The Book of Shaders
@@ -217,7 +217,7 @@ Main
 
 The entry point for a Book of Shaders fragment shader is ``main``, just like in
 GLSL. Everything written in a Book of Shaders ``main`` function should be copied
-into Godot's ``fragment`` function.
+into redot's ``fragment`` function.
 
 Variables
 ^^^^^^^^^

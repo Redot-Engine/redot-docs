@@ -1,22 +1,22 @@
 .. _doc_consoles:
 
-Console support in Godot
+Console support in redot
 ========================
 
 Console porting process
 -----------------------
 
-In order to develop for consoles in Godot, you need access to the console SDK and
+In order to develop for consoles in redot, you need access to the console SDK and
 export templates for it. These export templates need to be developed either by
 yourself or someone hired to do it, or provided by a third party company.
 
-Currently, the only console Godot officially supports is Steam Deck (through the
+Currently, the only console redot officially supports is Steam Deck (through the
 official Linux export templates).
 
 The reason other consoles are not officially supported are:
 
 - To develop for consoles, one must be licensed as a company.
-  As an open source project, Godot has no legal structure to provide console ports.
+  As an open source project, redot has no legal structure to provide console ports.
 - Console SDKs are secret and covered by non-disclosure agreements.
   Even if we could get access to them, we could not publish the platform-specific
   code under an open source license.
@@ -56,34 +56,34 @@ Due to the complexity of the process, many studios and developers prefer to
 outsource console porting.
 
 You can read more about the console publishing process in this article:
-`Godot and consoles, all you need to know <https://godotengine.org/article/godot-consoles-all-you-need-know/>`__
+`redot and consoles, all you need to know <https://redotengine.org/article/redot-consoles-all-you-need-know/>`__
 
 Third-party support
 -------------------
 
-Console ports of Godot are offered by third-party companies (which have
-ported Godot on their own). These companies also offer publishing of
+Console ports of redot are offered by third-party companies (which have
+ported redot on their own). These companies also offer publishing of
 your games to various consoles.
 
 Following is the list of providers:
 
 - `Lone Wolf Technology <https://www.lonewolftechnology.com/>`_ offers
-  Switch and Playstation 4 porting and publishing of Godot games.
+  Switch and Playstation 4 porting and publishing of redot games.
 - `Pineapple Works <https://pineapple.works/>`_ offers
-  Switch, Xbox One & Xbox Series X/S (GDK) porting and publishing of Godot games (GDScript/C#).
+  Switch, Xbox One & Xbox Series X/S (GDK) porting and publishing of redot games (GDScript/C#).
 - `RAWRLAB games <https://www.rawrlab.com/>`_ offers
-  Switch porting of Godot games.
+  Switch porting of redot games.
 - `mazette! games <https://mazette.games/>`_ offers
-  Switch, Xbox One and Xbox Series X/S porting and publishing of Godot games.
+  Switch, Xbox One and Xbox Series X/S porting and publishing of redot games.
 - `Olde Sküül <https://oldeskuul.com/>`_ offers
-  Switch, Xbox One, Playstation 4 & Playstation 5 porting and publishing of Godot games.
+  Switch, Xbox One, Playstation 4 & Playstation 5 porting and publishing of redot games.
 - `Tuanisapps <https://www.tuanisapps.com/>`_ offers
-  Switch porting and publishing of Godot games.
+  Switch porting and publishing of redot games.
 - `Seaven Studio <https://www.seaven-studio.com/>`_ offers
-  Switch, Xbox One, Xbox Series, PlayStation 4 & PlayStation 5 porting of Godot games.
-- `Sickhead Games <https://www.sickhead.com>`_ offers console porting to Nintendo Switch, PlayStation 4, PlayStation 5, Xbox One, and Xbox Series X/S for Godot games.
+  Switch, Xbox One, Xbox Series, PlayStation 4 & PlayStation 5 porting of redot games.
+- `Sickhead Games <https://www.sickhead.com>`_ offers console porting to Nintendo Switch, PlayStation 4, PlayStation 5, Xbox One, and Xbox Series X/S for redot games.
 
-If your company offers porting, or porting *and* publishing services for Godot games,
+If your company offers porting, or porting *and* publishing services for redot games,
 feel free to
-`contact the Godot Foundation <https://godot.foundation/#contact>`_
+`contact the redot Foundation <https://redot.foundation/#contact>`_
 to add your company to the list above.

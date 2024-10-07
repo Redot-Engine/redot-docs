@@ -6,7 +6,7 @@ Overview of debugging tools
 This guide will give you an overview of the available debugging tools in the
 engine.
 
-Godot comes with a powerful debugger and profilers to track down bugs, inspect
+redot comes with a powerful debugger and profilers to track down bugs, inspect
 your game at runtime, monitor essential metrics, and measure performances.
 It also offers options to visualize collision boxes and navigation polygons
 in the running game.
@@ -17,7 +17,7 @@ and to reload changes to your scenes or your code while the game is running.
 Debugger Panel
 --------------
 
-Many of Godot's debugging tools are part of the Debugger panel, which you can
+Many of redot's debugging tools are part of the Debugger panel, which you can
 find information about in :ref:`doc_debugger_panel`.
 
 Debug menu options
@@ -108,7 +108,7 @@ for new sessions started outside of the editor itself.
 Customize Run Instances...
 ++++++++++++++++++++++++++
 
-This opens a dialog allowing you to tell Godot to run multiple instances of the
+This opens a dialog allowing you to tell redot to run multiple instances of the
 game at once, and to specify the command line arguments for each instance. This
 is especially useful when building and debugging multiplayer games.
 

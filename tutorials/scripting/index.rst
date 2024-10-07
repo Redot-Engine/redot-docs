@@ -4,7 +4,7 @@ Scripting
 =========
 
 This section covers programming languages and core features to code your games
-in Godot.
+in redot.
 
 Here, you will find information that is not already covered in more specific
 sections. For instance, to learn about inputs, we recommend you to read
@@ -27,7 +27,7 @@ Core features
 
 Some features are specific to the engine and are available in all supported
 languages. Whether you code in GDScript, C#, or another language, the pages
-below will help you make the most of Godot.
+below will help you make the most of redot.
 
 .. To split and organize better, into some related toctrees?
 
@@ -35,7 +35,7 @@ below will help you make the most of Godot.
    :maxdepth: 1
    :name: toc-scripting-core-features
 
-   how_to_read_the_godot_api
+   how_to_read_the_redot_api
    debug/index
    idle_and_physics_processing
    groups

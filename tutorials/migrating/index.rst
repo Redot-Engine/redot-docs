@@ -3,7 +3,7 @@
 Migrating to a new version
 ==========================
 
-Godot :ref:`loosely follows <doc_release_policy>` a semantic versioning system,
+redot :ref:`loosely follows <doc_release_policy>` a semantic versioning system,
 where compatibility is assumed between minor and patch releases, while major
 releases can break it. As such, it is generally not recommended to move projects
 between major versions during their development, especially if you've been
@@ -19,7 +19,7 @@ path.
    :maxdepth: 1
    :name: toc-migrating
 
-   upgrading_to_godot_4
-   upgrading_to_godot_4.1
-   upgrading_to_godot_4.2
-   upgrading_to_godot_4.3
+   upgrading_to_redot_4
+   upgrading_to_redot_4.1
+   upgrading_to_redot_4.2
+   upgrading_to_redot_4.3

@@ -7,8 +7,8 @@ Introduction
 ------------
 
 This tutorial aims to serve as a guide on how you can submit your own assets
-to the `Godot Asset Library <https://godotengine.org/asset-library/asset>`_
-and share them with the Godot community.
+to the `redot Asset Library <https://redotengine.org/asset-library/asset>`_
+and share them with the redot community.
 
 As mentioned in the :ref:`doc_using_assetlib` document, in order to be able to
 submit assets to the AssetLib, you need to have a registered account, and be
@@ -28,11 +28,11 @@ are accepted. However, in order for your asset to be accepted, there
 are a few requirements your asset needs to meet to be approved.
 
 * The asset must **work**. If the asset doesn't run or otherwise doesn't
-  work in the specified Godot version, then it will be rejected.
+  work in the specified redot version, then it will be rejected.
 
 * The asset must have a proper **.gitignore** file. It's important to
   keep redundant data out of the repository.
-  `Here's a template. <https://raw.githubusercontent.com/aaronfranke/gitignore/godot/Godot.gitignore>`_
+  `Here's a template. <https://raw.githubusercontent.com/aaronfranke/gitignore/redot/redot.gitignore>`_
 
 * No **submodules**, or any submodules must be non-essential. GitHub
   does not include submodules in the downloaded ZIP file, so if the
@@ -75,7 +75,7 @@ library a better place for all users.
 
 * If you have screenshots in your repo, place them in their own subfolder
   and add an empty **.gdignore** file in the same folder (note: **gd**, not **git**).
-  This prevents Godot from importing your screenshots.
+  This prevents redot from importing your screenshots.
   On Windows, open a command prompt in the project folder and run
   ``type nul > .gdignore`` to create a file whose name starts with a period.
 
@@ -140,12 +140,12 @@ is required in the submission form here as well.
     In-editor, assets of the Project type (Templates, Demos, Projects) only show
     up when viewing the AssetLib from the Project Manager, while assets of the
     Addon type will only be visible from inside a project.
-* **Godot version**:
+* **redot version**:
     The version of the engine that the asset works with.
     Currently, it's not possible to have a single asset entry contain downloads for
     multiple engine versions, so you may need to re-submit the asset multiple times,
-    with an entry for each Godot version it supports. This is particularly important
-    when dealing with major versions of the engine, such as Godot 2.x and Godot 3.x.
+    with an entry for each redot version it supports. This is particularly important
+    when dealing with major versions of the engine, such as redot 2.x and redot 3.x.
 * **Version**:
     The version number of the asset. While you are free to choose
     and use any versioning scheme that you like, you may want to look into
@@ -207,14 +207,14 @@ submission boxes to enable them.
     computed instead.
 
 Once you are done, press "Submit". Your asset will be entered into the review queue.
-You can check all assets currently pending a review `here <https://godotengine.org/asset-library/asset/edit?&asset=-1>`_ .
+You can check all assets currently pending a review `here <https://redotengine.org/asset-library/asset/edit?&asset=-1>`_ .
 The approval process is manual and may take up to a few days for your asset to be accepted (or rejected), so please
 be patient!
 
 .. note::
 
     You may have some luck accelerating the approval process by messaging the
-    moderators and AssetLib reviewers on the `Godot Contributors Chat <https://chat.godotengine.org/>`_,
+    moderators and AssetLib reviewers on the `redot Contributors Chat <https://chat.redotengine.org/>`_,
     or the official Discord server.
 
 You will be informed when your asset is reviewed. If it was rejected,

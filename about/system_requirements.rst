@@ -7,12 +7,12 @@ System requirements
 
 This page contains system requirements for the editor and exported projects.
 These specifications are given for informative purposes only, but they can be
-referred to if you're looking to build or upgrade a system to use Godot on.
+referred to if you're looking to build or upgrade a system to use redot on.
 
-Godot editor
+redot editor
 ------------
 
-These are the **minimum** specifications required to run the Godot editor and work
+These are the **minimum** specifications required to run the redot editor and work
 on a simple 2D or 3D project:
 
 Desktop or laptop PC - Minimum
@@ -65,11 +65,11 @@ Desktop or laptop PC - Minimum
     regularly tested and some features may be missing (such as colored
     :ref:`print_rich <class_@GlobalScope_method_print_rich>` console output).
     Support for Windows 7/8/8.1 may be removed in a
-    :ref:`future Godot 4.x release <doc_release_policy>`.
+    :ref:`future redot 4.x release <doc_release_policy>`.
 
     Vulkan drivers for these Windows versions are known to have issues with
     memory leaks. As a result, it's recommended to stick to the Compatibility
-    rendering method when running Godot on a Windows version older than 10.
+    rendering method when running redot on a Windows version older than 10.
 
 Mobile device (smartphone/tablet) - Minimum
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,7 +106,7 @@ Mobile device (smartphone/tablet) - Minimum
 +----------------------+-----------------------------------------------------------------------------------------+
 
 These are the **recommended** specifications to get a smooth experience with the
-Godot editor on a simple 2D or 3D project:
+redot editor on a simple 2D or 3D project:
 
 Desktop or laptop PC - Recommended
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,7 +178,7 @@ Mobile device (smartphone/tablet) - Recommended
 |                      |   Samsung Internet                                                                      |
 +----------------------+-----------------------------------------------------------------------------------------+
 
-Exported Godot project
+Exported redot project
 ----------------------
 
 .. warning::
@@ -193,11 +193,11 @@ Exported Godot project
     It is strongly recommended to do your own testing on low-end hardware to
     make sure your project runs at the desired speed. To provide scalability for
     low-end hardware, you will also need to introduce a
-    `graphics options menu <https://github.com/godotengine/godot-demo-projects/tree/master/3d/graphics_settings>`__
+    `graphics options menu <https://github.com/redotengine/redot-demo-projects/tree/master/3d/graphics_settings>`__
     to your project.
 
 These are the **minimum** specifications required to run a simple 2D or 3D
-project exported with Godot:
+project exported with redot:
 
 Desktop or laptop PC - Minimum
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -247,11 +247,11 @@ Desktop or laptop PC - Minimum
     regularly tested and some features may be missing (such as colored
     :ref:`print_rich <class_@GlobalScope_method_print_rich>` console output).
     Support for Windows 7/8/8.1 may be removed in a
-    :ref:`future Godot 4.x release <doc_release_policy>`.
+    :ref:`future redot 4.x release <doc_release_policy>`.
 
     Vulkan drivers for these Windows versions are known to have issues with
     memory leaks. As a result, it's recommended to stick to the Compatibility
-    rendering method when running Godot on a Windows version older than 10.
+    rendering method when running redot on a Windows version older than 10.
 
 Mobile device (smartphone/tablet) - Minimum
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -289,7 +289,7 @@ Mobile device (smartphone/tablet) - Minimum
 +----------------------+-----------------------------------------------------------------------------------------+
 
 These are the **recommended** specifications to get a smooth experience with a
-simple 2D or 3D project exported with Godot:
+simple 2D or 3D project exported with redot:
 
 Desktop or laptop PC - Recommended
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -365,6 +365,6 @@ Mobile device (smartphone/tablet) - Recommended
 
 .. note::
 
-    Godot doesn't use OpenGL/OpenGL ES extensions introduced after OpenGL
+    redot doesn't use OpenGL/OpenGL ES extensions introduced after OpenGL
     3.3/OpenGL ES 3.0, but GPUs supporting newer OpenGL/OpenGL ES versions
     generally have fewer driver issues.

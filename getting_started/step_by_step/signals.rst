@@ -15,7 +15,7 @@ In this lesson, we will look at signals. They are messages that nodes emit when
 something specific happens to them, like a button being pressed. Other nodes can
 connect to that signal and call a function when the event occurs.
 
-Signals are a delegation mechanism built into Godot that allows one game object to
+Signals are a delegation mechanism built into redot that allows one game object to
 react to a change in another without them referencing one another. Using signals
 limits `coupling
 <https://en.wikipedia.org/wiki/Coupling_(computer_programming)>`_ and keeps your
@@ -23,9 +23,9 @@ code flexible.
 
 For example, you might have a life bar on the screen that represents the
 player's health. When the player takes damage or uses a healing potion, you want
-the bar to reflect the change. To do so, in Godot, you would use signals.
+the bar to reflect the change. To do so, in redot, you would use signals.
 
-Like methods (:ref:`class_callable`), signals are a first-class type since Godot
+Like methods (:ref:`class_callable`), signals are a first-class type since redot
 4.0. This means you can pass them around as method arguments directly without
 having to pass them as strings, which allows for better autocompletion and is
 less error-prone. See the :ref:`class_signal` class reference for a list of
@@ -33,14 +33,14 @@ what you can do with the Signal type directly.
 
 .. seealso::
 
-    As mentioned in the introduction, signals are Godot's version of the
+    As mentioned in the introduction, signals are redot's version of the
     observer pattern. You can learn more about it in
     `Game Programming Patterns <https://gameprogrammingpatterns.com/observer.html>`__.
 
-We will now use a signal to make our Godot icon from the previous lesson
+We will now use a signal to make our redot icon from the previous lesson
 (:ref:`doc_scripting_player_input`) move and stop by pressing a button.
 
-.. note:: For this project, we will be following the Godot naming conventions.
+.. note:: For this project, we will be following the redot naming conventions.
 
           - **GDScript**: Classes (nodes) use PascalCase, variables and
             functions use snake_case, and constants use ALL_CAPS (See
@@ -128,7 +128,7 @@ Double-click the "pressed" signal to open the node connection window.
 .. image:: img/signals_12_node_connection.webp
 
 There, you can connect the signal to the Sprite2D node. The node needs a
-receiver method, a function that Godot will call when the Button emits the
+receiver method, a function that redot will call when the Button emits the
 signal. The editor generates one for you. By convention, we name these callback
 methods "_on_node_name_signal_name". Here, it'll be "_on_button_pressed".
 
@@ -165,7 +165,7 @@ connection. This feature is only available when connecting nodes in the editor.
 Let's replace the line with the ``pass`` keyword with code that'll toggle the
 node's motion.
 
-Our Sprite2D moves thanks to code in the ``_process()`` function. Godot provides
+Our Sprite2D moves thanks to code in the ``_process()`` function. redot provides
 a method to toggle processing on and off: :ref:`Node.set_process()
 <class_Node_method_set_process>`. Another method of the Node class,
 ``is_processing()``, returns ``true`` if idle processing is active. We can use
@@ -231,7 +231,7 @@ Your complete ``sprite_2d.gd`` code should look like the following.
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MySprite2D : Sprite2D
     {
@@ -260,7 +260,7 @@ Connecting a signal via code
 You can connect signals via code instead of using the editor. This is necessary
 when you create nodes or instantiate scenes inside of a script.
 
-Let's use a different node here. Godot has a :ref:`Timer <class_Timer>` node
+Let's use a different node here. redot has a :ref:`Timer <class_Timer>` node
 that's useful to implement skill cooldown times, weapon reloading, and more.
 
 Head back to the 2D workspace. You can either click the "2D" text at the top of
@@ -366,7 +366,7 @@ second intervals.
 Complete script
 ---------------
 
-That's it for our little moving and blinking Godot icon demo!
+That's it for our little moving and blinking redot icon demo!
 Here is the complete ``sprite_2d.gd`` file for reference.
 
 .. tabs::
@@ -398,7 +398,7 @@ Here is the complete ``sprite_2d.gd`` file for reference.
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MySprite2D : Sprite2D
     {
@@ -452,7 +452,7 @@ reaches 0.
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -506,7 +506,7 @@ names between parentheses:
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode : Node
     {
@@ -518,7 +518,7 @@ names between parentheses:
 
 .. note::
 
-    The signal arguments show up in the editor's node dock, and Godot can use
+    The signal arguments show up in the editor's node dock, and redot can use
     them to generate callback functions for you. However, you can still emit any
     number of arguments when you emit signals. So it's up to you to emit the
     correct values.
@@ -546,7 +546,7 @@ To emit values along with the signal, add them as extra arguments to the
 Summary
 -------
 
-Any node in Godot emits signals when something specific happens to them, like a
+Any node in redot emits signals when something specific happens to them, like a
 button being pressed. Other nodes can connect to individual signals and react to
 selected events.
 

@@ -73,7 +73,7 @@ as well and both 2D and 3D avoidance agents can exist on the same map.
     Actors with avoidance enabled will avoid both 2D and 3D avoidance agents when placed on the same map.
 
 .. warning::
-    It is not possible to use NavigationServer2D while disabling 3D on a Godot custom build.
+    It is not possible to use NavigationServer2D while disabling 3D on a redot custom build.
 
 Waiting for synchronization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -143,7 +143,7 @@ Afterwards the function waits for the next physics frame before continuing with 
 
  .. code-tab:: csharp C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNode3D : Node3D
     {

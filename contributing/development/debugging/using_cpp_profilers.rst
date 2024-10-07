@@ -3,7 +3,7 @@
 Using C++ profilers
 ===================
 
-To optimize Godot's performance, you need to know what to optimize first.
+To optimize redot's performance, you need to know what to optimize first.
 To this end, profilers are useful tools.
 
 .. note::
@@ -22,10 +22,10 @@ Recommended profilers
 These profilers may not be the most powerful or flexible options, but their
 standalone operation and limited feature set tends to make them easier to use.
 
-Setting up Godot
+Setting up redot
 ----------------
 
-To get useful profiling information, it is **absolutely required** to use a Godot
+To get useful profiling information, it is **absolutely required** to use a redot
 build that includes debugging symbols. Official binaries do not include debugging
 symbols, since these would make the download size significantly larger.
 
@@ -44,16 +44,16 @@ but results will naturally be less representative of real world conditions.
 Benchmarking startup/shutdown times
 -----------------------------------
 
-If you're looking into optimizing Godot's startup/shutdown performance,
-you can tell the profiler to use the ``--quit`` command line option on the Godot binary.
-This will exit Godot just after it finished starting.
+If you're looking into optimizing redot's startup/shutdown performance,
+you can tell the profiler to use the ``--quit`` command line option on the redot binary.
+This will exit redot just after it finished starting.
 The ``--quit`` option works with ``--editor``, ``--project-manager`` or
 ``--path <path to project directory>`` (which runs a project directly).
 
 .. seealso::
 
     See :ref:`doc_command_line_tutorial` for more command line arguments
-    supported by Godot.
+    supported by redot.
 
 Profiler-specific instructions
 ------------------------------
@@ -61,11 +61,11 @@ Profiler-specific instructions
 VerySleepy
 ^^^^^^^^^^
 
-- Start the Godot editor or your project first.
+- Start the redot editor or your project first.
   If you start the Project Manager, make sure to edit or run a project first.
   Otherwise, the profiler will not track the child process since the Project Manager
   will spawn a child process for every project edited or run.
-- Open VerySleepy and select the Godot executable in the list of processes on the left:
+- Open VerySleepy and select the redot executable in the list of processes on the left:
 
 .. image:: img/cpp_profiler_verysleepy_select_process.png
 
@@ -73,9 +73,9 @@ VerySleepy
 - Perform the actions you wish to profile in the editor or project. When you're done, click **Stop** (*not* Abort).
 - Wait for the results window to appear.
 - Once the results window appears, filter the view to remove external modules (such as the graphics driver).
-  You can filter by module by finding a line whose **Module** matches the Godot
+  You can filter by module by finding a line whose **Module** matches the redot
   executable name, right-clicking that line then choosing
-  **Filter Module to <Godot executable name>** in the dropdown that appears.
+  **Filter Module to <redot executable name>** in the dropdown that appears.
 - Your results window should now look something like this:
 
 .. image:: img/cpp_profiler_verysleepy_results_filtered.png
@@ -87,13 +87,13 @@ HotSpot
 
 .. image:: img/cpp_profiler_hotspot_welcome.png
 
-- In the next window, specify the path to the Godot binary that includes debug symbols.
+- In the next window, specify the path to the redot binary that includes debug symbols.
 - Specify command line arguments to run a specific project, with or without the editor.
 - The path to the working directory can be anything if an absolute path is used
   for the ``--path`` command line argument. Otherwise, it must be set to that
   the relative path to the project is valid.
 - Make sure **Elevate Privileges** is checked if you have administrative privileges.
-  While not essential for profiling Godot, this will ensure all events can be captured.
+  While not essential for profiling redot, this will ensure all events can be captured.
   Otherwise, some events may be missing in the capture.
   Your settings should now look something like this:
 
@@ -136,7 +136,7 @@ Xcode Instruments
 .. image:: img/cpp_profiler_xcode_menu.png
 
 - In the Time Profiler window, click on the **Target** menu, select **Choose target...**
-  and specify the path to the Godot binary, command line arguments and environment variables
+  and specify the path to the redot binary, command line arguments and environment variables
   in the next window.
 
 .. image:: img/cpp_profiler_time_profiler.png

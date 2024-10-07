@@ -5,7 +5,7 @@
 Procedural geometry
 ===================
 
-There are many ways to procedurally generate geometry in Godot. In this tutorial series,
+There are many ways to procedurally generate geometry in redot. In this tutorial series,
 we will explore a few of them. Each technique has its own benefits and drawbacks, so
 it is best to understand each one and how it can be useful in a given situation.
 
@@ -21,18 +21,18 @@ it is best to understand each one and how it can be useful in a given situation.
 .. note::
 
       All the procedural geometry generation methods described here run on the
-      CPU. Godot doesn't support generating geometry on the GPU yet.
+      CPU. redot doesn't support generating geometry on the GPU yet.
 
 What is geometry?
 -----------------
 
 Geometry is a fancy way of saying shape. In computer graphics, geometry is typically represented
-by an array of positions called "vertices". In Godot, geometry is represented by Meshes.
+by an array of positions called "vertices". In redot, geometry is represented by Meshes.
 
 What is a Mesh?
 ---------------
 
-Many things in Godot have mesh in their name: the :ref:`Mesh <class_Mesh>`, the
+Many things in redot have mesh in their name: the :ref:`Mesh <class_Mesh>`, the
 :ref:`ArrayMesh <class_ArrayMesh>`, the :ref:`ImmediateMesh
 <class_ImmediateMesh>`, the :ref:`MeshInstance3D <class_MeshInstance3D>`, the
 :ref:`MultiMesh <class_MultiMesh>`, and the :ref:`MultiMeshInstance3D
@@ -85,7 +85,7 @@ array is faster, but it means you have to share vertex data between triangles, w
 Tools
 -----
 
-Godot provides different ways of accessing and working with geometry. More information on each will
+redot provides different ways of accessing and working with geometry. More information on each will
 be provided in the following tutorials.
 
 ArrayMesh

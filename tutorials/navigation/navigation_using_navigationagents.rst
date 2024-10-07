@@ -160,7 +160,7 @@ toggle avoidance on agents, create or delete avoidance callbacks or switch avoid
 
  .. code-tab:: csharp 2D C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNavigationAgent2D : NavigationAgent2D
     {
@@ -203,7 +203,7 @@ toggle avoidance on agents, create or delete avoidance callbacks or switch avoid
 
  .. code-tab:: csharp 3D C#
 
-    using Godot;
+    using redot;
 
     public partial class MyNavigationAgent3D : NavigationAgent3D
     {
@@ -338,7 +338,7 @@ The following sections provides script templates for nodes commonly used with Na
 
          .. code-tab:: csharp Node2D
 
-            using Godot;
+            using redot;
 
             public partial class MyNode2D : Node2D
             {
@@ -392,7 +392,7 @@ The following sections provides script templates for nodes commonly used with Na
 
          .. code-tab:: csharp CharacterBody2D
 
-            using Godot;
+            using redot;
 
             public partial class MyCharacterBody2D : CharacterBody2D
             {
@@ -445,7 +445,7 @@ The following sections provides script templates for nodes commonly used with Na
 
          .. code-tab:: csharp RigidBody2D
 
-            using Godot;
+            using redot;
 
             public partial class MyRigidBody2D : RigidBody2D
             {
@@ -598,7 +598,7 @@ The following sections provides script templates for nodes commonly used with Na
 
          .. code-tab:: csharp Node3D
 
-            using Godot;
+            using redot;
 
             public partial class MyNode3D : Node3D
             {
@@ -652,7 +652,7 @@ The following sections provides script templates for nodes commonly used with Na
 
          .. code-tab:: csharp CharacterBody3D
 
-            using Godot;
+            using redot;
 
             public partial class MyCharacterBody3D : CharacterBody3D
             {
@@ -705,7 +705,7 @@ The following sections provides script templates for nodes commonly used with Na
 
          .. code-tab:: csharp RigidBody3D
 
-            using Godot;
+            using redot;
 
             public partial class MyRigidBody3D : RigidBody3D
             {

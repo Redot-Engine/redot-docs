@@ -6,7 +6,7 @@ C++ usage guidelines
 Rationale
 ---------
 
-Since Godot 4.0, the C++ standard used throughout the codebase is a subset of
+Since redot 4.0, the C++ standard used throughout the codebase is a subset of
 **C++17**. While modern C++ brings a lot of opportunities to write faster, more
 readable code, we chose to restrict our usage of C++ to a subset for a few
 reasons:
@@ -15,7 +15,7 @@ reasons:
   contributors don't always have access to a full-featured IDE while reviewing
   code.
 - It makes the code easier to grasp for beginner contributors (who may not be
-  professional C++ programmers). Godot's codebase is known to be easy to learn
+  professional C++ programmers). redot's codebase is known to be easy to learn
   from, and we'd like to keep it that way.
 
 To get your pull request merged, it needs to follow the C++ usage guidelines
@@ -24,7 +24,7 @@ modules or GDExtensions.
 
 .. note::
 
-    Prior to Godot 4.0, the C++ standard used throughout the codebase was C++03,
+    Prior to redot 4.0, the C++ standard used throughout the codebase was C++03,
     with a handful of C++14 extensions. If you are contributing a pull request
     to the `3.x` branch rather than `master`, your code can't use C++17 features.
     Instead, your code must be able to be built with a C++14 compiler.
@@ -49,11 +49,11 @@ Standard Template Library
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We don't allow using the `STL <https://en.wikipedia.org/wiki/Standard_Template_Library>`__
-as Godot provides its own data types (among other things).
+as redot provides its own data types (among other things).
 See :ref:`doc_faq_why_not_stl` for more information.
 
 This means that pull requests should **not** use ``std::string``,
-``std::vector`` and the like. Instead, use Godot's datatypes as described below:
+``std::vector`` and the like. Instead, use redot's datatypes as described below:
 
 - Use ``String`` instead of ``std::string``.
 - Use ``Vector`` instead of ``std::vector``. In some cases, ``LocalVector``
@@ -62,7 +62,7 @@ This means that pull requests should **not** use ``std::string``,
 
 .. note::
 
-    Godot also has a List datatype (which is a linked list). While List is already used
+    redot also has a List datatype (which is a linked list). While List is already used
     in the codebase, it typically performs worse than other datatypes like Vector
     and Array. Therefore, List should be avoided in new code unless necessary.
 

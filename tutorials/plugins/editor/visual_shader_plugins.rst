@@ -13,7 +13,7 @@ file and it will be ready to use, provided the custom node is registered with
 
 This short tutorial will explain how to make a Perlin-3D noise node (original
 code from this `GPU noise shaders plugin
-<https://github.com/curly-brace/Godot-3.0-Noise-Shaders/blob/master/assets/gpu_noise_shaders/classic_perlin3d.tres>`_.
+<https://github.com/curly-brace/redot-3.0-Noise-Shaders/blob/master/assets/gpu_noise_shaders/classic_perlin3d.tres>`_.
 
 Create a Sprite2D and assign a :ref:`class_ShaderMaterial` to its material slot:
 

@@ -7,50 +7,50 @@ Introduction
 ------------
 
 The C++ bindings for GDExtension are built on top of the C GDExtension API
-and provide a nicer way to "extend" nodes and other built-in classes in Godot using C++.
-This new system allows the extension of Godot to nearly the same
+and provide a nicer way to "extend" nodes and other built-in classes in redot using C++.
+This new system allows the extension of redot to nearly the same
 level as statically linked C++ modules.
 
-You can download the included example in the test folder of the godot-cpp
-repository `on GitHub <https://github.com/godotengine/godot-cpp>`__.
+You can download the included example in the test folder of the redot-cpp
+repository `on GitHub <https://github.com/redotengine/redot-cpp>`__.
 
 Setting up the project
 ----------------------
 
 There are a few prerequisites you'll need:
 
-- a Godot 4 executable,
+- a redot 4 executable,
 - a C++ compiler,
 - SCons as a build tool,
-- a copy of the `godot-cpp
-  repository <https://github.com/godotengine/godot-cpp>`__.
+- a copy of the `redot-cpp
+  repository <https://github.com/redotengine/redot-cpp>`__.
 
 See also :ref:`Compiling <toc-devel-compiling>` as the build tools are identical
-to the ones you need to compile Godot from source.
+to the ones you need to compile redot from source.
 
-You can download the `godot-cpp repository <https://github.com/godotengine/godot-cpp>`__ from GitHub or let Git do the work for you.
+You can download the `redot-cpp repository <https://github.com/redotengine/redot-cpp>`__ from GitHub or let Git do the work for you.
 Note that this repository has different branches for different versions
-of Godot. GDExtensions will not work in older versions of Godot (only Godot 4 and up) and vice versa, so make sure you download the correct branch.
+of redot. GDExtensions will not work in older versions of redot (only redot 4 and up) and vice versa, so make sure you download the correct branch.
 
 .. note::
-    To use `GDExtension <https://godotengine.org/article/introducing-gd-extensions>`__
-    you need to use the godot-cpp branch that matches the version of Godot that you are
-    targeting. For example, if you're targeting Godot 4.1, use the ``4.1`` branch. Throughout
-    this tutorial we use ``4.x``, which will need to be replaced with the version of Godot you
+    To use `GDExtension <https://redotengine.org/article/introducing-gd-extensions>`__
+    you need to use the redot-cpp branch that matches the version of redot that you are
+    targeting. For example, if you're targeting redot 4.1, use the ``4.1`` branch. Throughout
+    this tutorial we use ``4.x``, which will need to be replaced with the version of redot you
     are targeting.
 
     The ``master`` branch is the development branch which is updated regularly
-    to work with Godot's ``master`` branch.
+    to work with redot's ``master`` branch.
 
 .. warning::
-    Our long-term goal is that GDExtensions targeting an earlier version of Godot will work
-    in later minor versions, but not vice-versa. For example, a GDExtension targeting Godot 4.1
-    should work just fine in Godot 4.2, but one targeting Godot 4.2 won't work in Godot 4.1.
+    Our long-term goal is that GDExtensions targeting an earlier version of redot will work
+    in later minor versions, but not vice-versa. For example, a GDExtension targeting redot 4.1
+    should work just fine in redot 4.2, but one targeting redot 4.2 won't work in redot 4.1.
 
     However, GDExtension is currently *experimental*, which means that we may break compatibility
     in order to fix major bugs or include critical features. For example, GDExtensions created
-    for Godot 4.0 aren't compatible with Godot 4.1
-    (see :ref:`updating_your_gdextension_for_godot_4_1`).
+    for redot 4.0 aren't compatible with redot 4.1
+    (see :ref:`updating_your_gdextension_for_redot_4_1`).
 
 If you are versioning your project using Git, it is recommended to add it as
 a Git submodule:
@@ -60,8 +60,8 @@ a Git submodule:
     mkdir gdextension_cpp_example
     cd gdextension_cpp_example
     git init
-    git submodule add -b 4.x https://github.com/godotengine/godot-cpp
-    cd godot-cpp
+    git submodule add -b 4.x https://github.com/redotengine/redot-cpp
+    cd redot-cpp
     git submodule update --init
 
 Alternatively, you can also clone it to the project folder:
@@ -70,7 +70,7 @@ Alternatively, you can also clone it to the project folder:
 
     mkdir gdextension_cpp_example
     cd gdextension_cpp_example
-    git clone -b 4.x https://github.com/godotengine/godot-cpp
+    git clone -b 4.x https://github.com/redotengine/redot-cpp
 
 .. note::
 
@@ -95,13 +95,13 @@ Building the C++ bindings
 Now that we've downloaded our prerequisites, it is time to build the C++
 bindings.
 
-The repository contains a copy of the metadata for the current Godot release,
-but if you need to build these bindings for a newer version of Godot, simply
-call the Godot executable:
+The repository contains a copy of the metadata for the current redot release,
+but if you need to build these bindings for a newer version of redot, simply
+call the redot executable:
 
 .. code-block:: none
 
-    godot --dump-extension-api
+    redot --dump-extension-api
 
 The resulting ``extension_api.json`` file will be created in the executable's
 directory. Copy it to the project folder and add ``custom_api_file=<PATH_TO_FILE>``
@@ -116,12 +116,12 @@ end of the SCons command line where ``N`` is the number of CPU threads to use.
 
 .. code-block:: none
 
-    cd godot-cpp
+    cd redot-cpp
     scons platform=<platform> custom_api_file=<PATH_TO_FILE>
     cd ..
 
 This step will take a while. When it is completed, you should have static
-libraries that can be compiled into your project stored in ``godot-cpp/bin/``.
+libraries that can be compiled into your project stored in ``redot-cpp/bin/``.
 
 .. note::
 
@@ -130,10 +130,10 @@ libraries that can be compiled into your project stored in ``godot-cpp/bin/``.
 Creating a simple plugin
 ------------------------
 
-Now it's time to build an actual plugin. We'll start by creating an empty Godot
+Now it's time to build an actual plugin. We'll start by creating an empty redot
 project in which we'll place a few files.
 
-Open Godot and create a new project. For this example, we will place it in a
+Open redot and create a new project. For this example, we will place it in a
 folder called ``demo`` inside our GDExtension's folder structure.
 
 In our demo project, we'll create a scene containing a Node called "Main" and
@@ -142,7 +142,7 @@ we'll save it as ``main.tscn``. We'll come back to that later.
 Back in the top-level GDExtension module folder, we're also going to create a
 subfolder called ``src`` in which we'll place our source files.
 
-You should now have ``demo``, ``godot-cpp``, and ``src``
+You should now have ``demo``, ``redot-cpp``, and ``src``
 directories in your GDExtension module.
 
 Your folder structure should now look like this:
@@ -153,7 +153,7 @@ Your folder structure should now look like this:
     |
     +--demo/                  # game example/demo to test the extension
     |
-    +--godot-cpp/             # C++ bindings
+    +--redot-cpp/             # C++ bindings
     |
     +--src/                   # source code of the extension we are building
 
@@ -165,9 +165,9 @@ GDExtension node we'll be creating. We will name it ``gdexample.h``:
     #ifndef GDEXAMPLE_H
     #define GDEXAMPLE_H
 
-    #include <godot_cpp/classes/sprite2d.hpp>
+    #include <redot_cpp/classes/sprite2d.hpp>
 
-    namespace godot {
+    namespace redot {
 
     class GDExample : public Sprite2D {
         GDCLASS(GDExample, Sprite2D)
@@ -193,7 +193,7 @@ There are a few things of note to the above. We include ``sprite2d.hpp`` which
 contains bindings to the Sprite2D class. We'll be extending this class in our
 module.
 
-We're using the namespace ``godot``, since everything in GDExtension is defined
+We're using the namespace ``redot``, since everything in GDExtension is defined
 within this namespace.
 
 Then we have our class definition, which inherits from our Sprite2D through a
@@ -206,7 +206,7 @@ In the next block we're defining our methods, we have our constructor
 and destructor defined, but there are two other functions that will likely look
 familiar to some, and one new method.
 
-The first is ``_bind_methods``, which is a static function that Godot will
+The first is ``_bind_methods``, which is a static function that redot will
 call to find out which methods can be called and which properties it exposes.
 The second is our ``_process`` function, which will work exactly the same
 as the ``_process`` function you're used to in GDScript.
@@ -216,9 +216,9 @@ Let's implement our functions by creating our ``gdexample.cpp`` file:
 .. code-block:: cpp
 
     #include "gdexample.h"
-    #include <godot_cpp/core/class_db.hpp>
+    #include <redot_cpp/core/class_db.hpp>
 
-    using namespace godot;
+    using namespace redot;
 
     void GDExample::_bind_methods() {
     }
@@ -249,7 +249,7 @@ and calculates a new position for our sprite using a sine and cosine function.
 There is one more C++ file we need; we'll name it ``register_types.cpp``. Our
 GDExtension plugin can contain multiple classes, each with their own header
 and source file like we've implemented ``GDExample`` up above. What we need now
-is a small bit of code that tells Godot about all the classes in our
+is a small bit of code that tells redot about all the classes in our
 GDExtension plugin.
 
 .. code-block:: cpp
@@ -259,10 +259,10 @@ GDExtension plugin.
     #include "gdexample.h"
 
     #include <gdextension_interface.h>
-    #include <godot_cpp/core/defs.hpp>
-    #include <godot_cpp/godot.hpp>
+    #include <redot_cpp/core/defs.hpp>
+    #include <redot_cpp/redot.hpp>
 
-    using namespace godot;
+    using namespace redot;
 
     void initialize_example_module(ModuleInitializationLevel p_level) {
         if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
@@ -281,7 +281,7 @@ GDExtension plugin.
     extern "C" {
     // Initialization.
     GDExtensionBool GDE_EXPORT example_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
-        godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
+        redot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
 
         init_obj.register_initializer(initialize_example_module);
         init_obj.register_terminator(uninitialize_example_module);
@@ -292,7 +292,7 @@ GDExtension plugin.
     }
 
 The ``initialize_example_module`` and ``uninitialize_example_module`` functions get
-called respectively when Godot loads our plugin and when it unloads it. All
+called respectively when redot loads our plugin and when it unloads it. All
 we're doing here is parse through the functions in our bindings module to
 initialize them, but you might have to set up more things depending on your
 needs. We call the ``GDREGISTER_CLASS`` macro for each of our classes in our library.
@@ -310,9 +310,9 @@ At last, we need the header file for the ``register_types.cpp`` named
     #ifndef GDEXAMPLE_REGISTER_TYPES_H
     #define GDEXAMPLE_REGISTER_TYPES_H
 
-    #include <godot_cpp/core/class_db.hpp>
+    #include <redot_cpp/core/class_db.hpp>
 
-    using namespace godot;
+    using namespace redot;
 
     void initialize_example_module(ModuleInitializationLevel p_level);
     void uninitialize_example_module(ModuleInitializationLevel p_level);
@@ -331,12 +331,12 @@ build files in a subsequent tutorial.
 
 .. note::
 
-    This ``SConstruct`` file was written to be used with the latest ``godot-cpp``
+    This ``SConstruct`` file was written to be used with the latest ``redot-cpp``
     master, you may need to make small changes using it with older versions or
-    refer to the ``SConstruct`` file in the Godot 4.x documentation.
+    refer to the ``SConstruct`` file in the redot 4.x documentation.
 
 Once you've downloaded the ``SConstruct`` file, place it in your GDExtension folder
-structure alongside ``godot-cpp``, ``src`` and ``demo``, then run:
+structure alongside ``redot-cpp``, ``src`` and ``demo``, then run:
 
 .. code-block:: bash
 
@@ -355,21 +355,21 @@ following commands to do so:
 
     # assemble xcframeworks
     xcodebuild -create-xcframework -library demo/bin/libgdexample.ios.<target>.a -library demo/bin/libgdexample.ios.<target>.simulator.a -output demo/bin/libgdexample.ios.<target>.xcframework
-    xcodebuild -create-xcframework -library godot-cpp/bin/libgodot-cpp.ios.<target>.arm64.a -library godot-cpp/bin/libgodot-cpp.ios.<target>.universal.simulator.a  -output demo/bin/libgodot-cpp.ios.<target>.xcframework
+    xcodebuild -create-xcframework -library redot-cpp/bin/libredot-cpp.ios.<target>.arm64.a -library redot-cpp/bin/libredot-cpp.ios.<target>.universal.simulator.a  -output demo/bin/libredot-cpp.ios.<target>.xcframework
 
 .. note::
 
-    Here, we've compiled both godot-cpp and our gdexample library as debug
+    Here, we've compiled both redot-cpp and our gdexample library as debug
     builds. For optimized builds, you should compile them using the
     ``target=template_release`` switch.
 
 Using the GDExtension module
 ----------------------------
 
-Before we jump back into Godot, we need to create one more file in
+Before we jump back into redot, we need to create one more file in
 ``demo/bin/``.
 
-This file lets Godot know what dynamic libraries should be
+This file lets redot know what dynamic libraries should be
 loaded for each platform and the entry function for the module. It is called ``gdexample.gdextension``.
 
 .. code-block:: none
@@ -403,19 +403,19 @@ loaded for each platform and the entry function for the module. It is called ``g
 
     [dependencies]
     ios.debug = {
-        "res://bin/libgodot-cpp.ios.template_debug.xcframework": ""
+        "res://bin/libredot-cpp.ios.template_debug.xcframework": ""
     }
     ios.release = {
-        "res://bin/libgodot-cpp.ios.template_release.xcframework": ""
+        "res://bin/libredot-cpp.ios.template_release.xcframework": ""
     }
 
 This file contains a ``configuration`` section that controls the entry function of the module.
-You should also set the minimum compatible Godot version with ``compatability_minimum``,
-which prevents older version of Godot from trying to load your extension.
+You should also set the minimum compatible redot version with ``compatability_minimum``,
+which prevents older version of redot from trying to load your extension.
 The ``reloadable`` flag enables automatic reloading of your extension by the editor every time you recompile it,
 without needing to restart the editor. This only works if you compile your extension in debug mode (default).
 
-The ``libraries`` section is the important bit: it tells Godot the location of the
+The ``libraries`` section is the important bit: it tells redot the location of the
 dynamic library in the project's filesystem for each supported platform. It will
 also result in *just* that file being exported when you export the project,
 which means the data pack won't contain libraries that are incompatible with the
@@ -440,7 +440,7 @@ Here is another overview to check the correct file structure:
     |       |
     |       +--gdexample.gdextension
     |
-    +--godot-cpp/             # C++ bindings
+    +--redot-cpp/             # C++ bindings
     |
     +--src/                   # source code of the extension we are building
     |   |
@@ -449,12 +449,12 @@ Here is another overview to check the correct file structure:
     |   +--gdexample.cpp
     |   +--gdexample.h
 
-Time to jump back into Godot. We load up the main scene we created way back in
+Time to jump back into redot. We load up the main scene we created way back in
 the beginning and now add a newly available GDExample node to the scene:
 
 .. image:: img/gdextension_cpp_nodes.webp
 
-We're going to assign the Godot logo to this node as our texture, disable the
+We're going to assign the redot logo to this node as our texture, disable the
 ``centered`` property:
 
 .. image:: img/gdextension_cpp_sprite.webp
@@ -528,7 +528,7 @@ show the methods we end up changing, don't remove the lines we're omitting:
 
 Once you compile the module with these changes in place, you will see that a
 property has been added to our interface. You can now change this property and
-when you run your project, you will see that our Godot icon travels along a
+when you run your project, you will see that our redot icon travels along a
 larger figure.
 
 Let's do the same but for the speed of our animation and use a setter and getter
@@ -595,14 +595,14 @@ The first two arguments are the minimum and maximum value and the third is the s
 
     For simplicity, we've only used the hint_range of the property method.
     There are a lot more options to choose from. These can be used to
-    further configure how properties are displayed and set on the Godot side.
+    further configure how properties are displayed and set on the redot side.
 
 Signals
 -------
 
 Last but not least, signals fully work in GDExtension as well. Having your extension
 react to a signal given out by another object requires you to call ``connect``
-on that object. We can't think of a good example for our wobbling Godot icon, we
+on that object. We can't think of a good example for our wobbling redot icon, we
 would need to showcase a far more complete example.
 
 This is the required syntax:
@@ -616,17 +616,17 @@ To connect our signal ``the_signal`` from some other node with our method
 and a ``Callable``. The ``Callable`` holds information about an object on which a method
 can be called. In our case, it associates our current object instance ``this`` with the
 method ``my_method`` of the object. Then the ``connect`` method will add this to the
-observers of ``the_signal``. Whenever ``the_signal`` is now emitted, Godot knows which
+observers of ``the_signal``. Whenever ``the_signal`` is now emitted, redot knows which
 method of which object it needs to call.
 
 Note that you can only call ``my_method`` if you've previously registered it in
-your ``_bind_methods`` method. Otherwise Godot will not know about the existence
+your ``_bind_methods`` method. Otherwise redot will not know about the existence
 of ``my_method``.
 
 To learn more about ``Callable``, check out the class reference here: :ref:`Callable <class_Callable>`.
 
 Having your object sending out signals is more common. For our wobbling
-Godot icon, we'll do something silly just to show how it works. We're going to
+redot icon, we'll do something silly just to show how it works. We're going to
 emit a signal every time a second has passed and pass the new location along.
 
 In our ``gdexample.h`` header file, we need to define a new member ``time_emit``:
@@ -690,7 +690,7 @@ Next, we'll need to change our ``_process`` method:
 After a second has passed, we emit our signal and reset our counter. We can add
 our parameter values directly to ``emit_signal``.
 
-Once the GDExtension library is compiled, we can go into Godot and select our sprite
+Once the GDExtension library is compiled, we can go into redot and select our sprite
 node. In the **Node** dock, we can find our new signal and link it up by pressing
 the **Connect** button or double-clicking the signal. We've added a script on
 our main node and implemented our signal like this:
@@ -708,5 +708,5 @@ Next steps
 ----------
 
 We hope the above example showed you the basics. You can
-build upon this example to create full-fledged scripts to control nodes in Godot
+build upon this example to create full-fledged scripts to control nodes in redot
 using C++.

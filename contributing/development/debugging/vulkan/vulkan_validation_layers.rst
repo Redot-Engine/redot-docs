@@ -21,9 +21,9 @@ optional features in the installer; installing the core Vulkan SDK suffices. You
 don't need to reboot after installing the SDK, but you may need to close and
 reopen your current terminal.
 
-After installing the Vulkan SDK, run Godot with the ``--gpu-validation``
+After installing the Vulkan SDK, run redot with the ``--gpu-validation``
 :ref:`command line argument <doc_command_line_tutorial>`. You can also specify
-``--gpu-abort`` which will make Godot quit as soon as a validation error happens.
+``--gpu-abort`` which will make redot quit as soon as a validation error happens.
 This can prevent your system from freezing if a validation error occurs.
 
 macOS
@@ -31,12 +31,12 @@ macOS
 
 .. warning::
 
-    Official Godot macOS builds do **not** support validation layers, as these
+    Official redot macOS builds do **not** support validation layers, as these
     are statically linked against the Vulkan SDK. Dynamic linking must be used
     instead.
 
     In practice, this means that using validation layers on macOS **requires**
-    you to use a Godot build compiled with the ``use_volk=yes`` SCons option.
+    you to use a redot build compiled with the ``use_volk=yes`` SCons option.
     :ref:`doc_compiling_for_macos`. If testing validation layers on an exported
     project, you must recompile the export template and specify it as a custom
     export template in your project's macOS export preset.
@@ -47,10 +47,10 @@ optional features in the installer; installing the core Vulkan SDK suffices. You
 don't need to reboot after installing the SDK, but you may need to close and
 reopen your current terminal.
 
-After installing the Vulkan SDK, run a Godot binary that was compiled with
+After installing the Vulkan SDK, run a redot binary that was compiled with
 ``use_volk=yes`` SCons option. Specify the ``--gpu-validation``
 :ref:`command line argument <doc_command_line_tutorial>`.
-You can also specify ``--gpu-abort`` which will make Godot quit as soon
+You can also specify ``--gpu-abort`` which will make redot quit as soon
 as a validation error happens. This can prevent your system from freezing
 if a validation error occurs.
 
@@ -124,9 +124,9 @@ Install Vulkan validation layers from your distribution's repositories:
 You don't need to reboot after installing the validation layers, but you may
 need to close and reopen your current terminal.
 
-After installing the package, run Godot with the ``--gpu-validation``
+After installing the package, run redot with the ``--gpu-validation``
 :ref:`command line argument <doc_command_line_tutorial>`. You can also specify
-``--gpu-abort`` which will make Godot quit as soon as a validation error happens.
+``--gpu-abort`` which will make redot quit as soon as a validation error happens.
 This can prevent your system from freezing if a validation error occurs.
 
 .. _doc_vulkan_validation_layers_android:
@@ -162,11 +162,11 @@ Copy libraries
 ^^^^^^^^^^^^^^
 
 Copy libraries from ``Vulkan-ValidationLayers/build-android/libs`` to
-``godot/platform/android/java/app/libs/debug/vulkan_validation_layers``.
+``redot/platform/android/java/app/libs/debug/vulkan_validation_layers``.
 
-Your Godot source directory tree should look like on the example below::
+Your redot source directory tree should look like on the example below::
 
-    godot
+    redot
     |-- platform
         |-- android
             |-- java
@@ -185,4 +185,4 @@ Compile and run the Android app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Linked validation layers are automatically loaded and enabled in Android debug builds.
-You can use Godot's :ref:`doc_one-click_deploy` feature to quickly test your project with the validation layers enabled.
+You can use redot's :ref:`doc_one-click_deploy` feature to quickly test your project with the validation layers enabled.

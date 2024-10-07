@@ -10,7 +10,7 @@ complex 3D scenes.
 On this page, you'll learn:
 
 - What visibility ranges can do and which scenarios they are useful in.
-- How to set up visibility ranges (manual LOD) in Godot.
+- How to set up visibility ranges (manual LOD) in redot.
 - How to tune visibility ranges for best performance and quality.
 
 .. seealso::
@@ -225,7 +225,7 @@ expensive material features such as:
 Use dithering for LOD transitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Godot currently only supports alpha-based fading for visibility ranges. You can
+redot currently only supports alpha-based fading for visibility ranges. You can
 however use dithering instead by using several different materials for different
 LOD levels.
 

@@ -36,10 +36,10 @@ For compiling under macOS, the following is required:
 
               sudo port install scons
 
-.. seealso:: To get the Godot source code for compiling, see
+.. seealso:: To get the redot source code for compiling, see
              :ref:`doc_getting_source`.
 
-             For a general overview of SCons usage for Godot, see
+             For a general overview of SCons usage for redot, see
              :ref:`doc_introduction_to_the_buildsystem`.
 
 Compiling
@@ -57,14 +57,14 @@ To compile for Apple Silicon (ARM64) powered Macs, use::
 
 To support both architectures in a single "Universal 2" binary, run the above two commands and then use ``lipo`` to bundle them together::
 
-    lipo -create bin/godot.macos.editor.x86_64 bin/godot.macos.editor.arm64 -output bin/godot.macos.editor.universal
+    lipo -create bin/redot.macos.editor.x86_64 bin/redot.macos.editor.arm64 -output bin/redot.macos.editor.universal
 
 If all goes well, the resulting binary executable will be placed in the
 ``bin/`` subdirectory. This executable file contains the whole engine and
 runs without any dependencies. Executing it will bring up the Project
 Manager.
 
-.. note:: If you want to use separate editor settings for your own Godot builds
+.. note:: If you want to use separate editor settings for your own redot builds
           and official releases, you can enable
           :ref:`doc_data_paths_self_contained_mode` by creating a file called
           ``._sc_`` or ``_sc_`` in the ``bin/`` folder.
@@ -73,11 +73,11 @@ To create an ``.app`` bundle like in the official builds, you need to use the
 template located in ``misc/dist/macos_tools.app``. Typically, for an optimized
 editor binary built with ``dev_build=yes``::
 
-    cp -r misc/dist/macos_tools.app ./Godot.app
-    mkdir -p Godot.app/Contents/MacOS
-    cp bin/godot.macos.editor.universal Godot.app/Contents/MacOS/Godot
-    chmod +x Godot.app/Contents/MacOS/Godot
-    codesign --force --timestamp --options=runtime --entitlements misc/dist/macos/editor.entitlements -s - Godot.app
+    cp -r misc/dist/macos_tools.app ./redot.app
+    mkdir -p redot.app/Contents/MacOS
+    cp bin/redot.macos.editor.universal redot.app/Contents/MacOS/redot
+    chmod +x redot.app/Contents/MacOS/redot
+    codesign --force --timestamp --options=runtime --entitlements misc/dist/macos/editor.entitlements -s - redot.app
 
 .. note::
 
@@ -87,8 +87,8 @@ editor binary built with ``dev_build=yes``::
     You can also choose to link it dynamically by passing ``use_volk=yes`` and
     including the dynamic library in your ``.app`` bundle::
 
-        mkdir -p Godot.app/Contents/Frameworks
-        cp <Vulkan SDK path>/macOS/lib/libMoltenVK.dylib Godot.app/Contents/Frameworks/libMoltenVK.dylib
+        mkdir -p redot.app/Contents/Frameworks
+        cp <Vulkan SDK path>/macOS/lib/libMoltenVK.dylib redot.app/Contents/Frameworks/libMoltenVK.dylib
 
 Running a headless/server build
 -------------------------------
@@ -100,7 +100,7 @@ projects in an automated manner, use the normal build::
 
 And then use the ``--headless`` command line argument::
 
-    ./bin/godot.macos.editor.x86_64 --headless
+    ./bin/redot.macos.editor.x86_64 --headless
 
 To compile a debug *server* build which can be used with
 :ref:`remote debugging tools <doc_command_line_tutorial>`, use::
@@ -136,21 +136,21 @@ of those two architectures by leaving out the ``lipo`` step below.
 To support both architectures in a single "Universal 2" binary, run the above
 two commands blocks and then use ``lipo`` to bundle them together::
 
-    lipo -create bin/godot.macos.template_release.x86_64 bin/godot.macos.template_release.arm64 -output bin/godot.macos.template_release.universal
-    lipo -create bin/godot.macos.template_debug.x86_64 bin/godot.macos.template_debug.arm64 -output bin/godot.macos.template_debug.universal
+    lipo -create bin/redot.macos.template_release.x86_64 bin/redot.macos.template_release.arm64 -output bin/redot.macos.template_release.universal
+    lipo -create bin/redot.macos.template_debug.x86_64 bin/redot.macos.template_debug.arm64 -output bin/redot.macos.template_debug.universal
 
 To create an ``.app`` bundle like in the official builds, you need to use the
 template located in ``misc/dist/macos_template.app``. The release and debug
 builds should be placed in ``macos_template.app/Contents/MacOS`` with the names
-``godot_macos_release.universal`` and ``godot_macos_debug.universal`` respectively. You can do so
+``redot_macos_release.universal`` and ``redot_macos_debug.universal`` respectively. You can do so
 with the following commands (assuming a universal build, otherwise replace the
 ``.universal`` extension with the one of your arch-specific binaries)::
 
     cp -r misc/dist/macos_template.app .
     mkdir -p macos_template.app/Contents/MacOS
-    cp bin/godot.macos.template_release.universal macos_template.app/Contents/MacOS/godot_macos_release.universal
-    cp bin/godot.macos.template_debug.universal macos_template.app/Contents/MacOS/godot_macos_debug.universal
-    chmod +x macos_template.app/Contents/MacOS/godot_macos*
+    cp bin/redot.macos.template_release.universal macos_template.app/Contents/MacOS/redot_macos_release.universal
+    cp bin/redot.macos.template_debug.universal macos_template.app/Contents/MacOS/redot_macos_debug.universal
+    chmod +x macos_template.app/Contents/MacOS/redot_macos*
 
 .. note::
 
@@ -164,7 +164,7 @@ with the following commands (assuming a universal build, otherwise replace the
         cp <Vulkan SDK path>/macOS/libs/libMoltenVK.dylib macos_template.app/Contents/Frameworks/libMoltenVK.dylib
 
 You can then zip the ``macos_template.app`` folder to reproduce the ``macos.zip``
-template from the official Godot distribution::
+template from the official redot distribution::
 
     zip -q -9 -r macos.zip macos_template.app
 

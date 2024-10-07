@@ -5,11 +5,11 @@ Collision shapes (2D)
 
 This guide explains:
 
-- The types of collision shapes available in 2D in Godot.
+- The types of collision shapes available in 2D in redot.
 - Using an image converted to a polygon as a collision shape.
 - Performance considerations regarding 2D collisions.
 
-Godot provides many kinds of collision shapes, with different performance and
+redot provides many kinds of collision shapes, with different performance and
 accuracy tradeoffs.
 
 You can define the shape of a :ref:`class_PhysicsBody2D` by adding one or more
@@ -26,7 +26,7 @@ nodes in the Inspector dock.
 Primitive collision shapes
 --------------------------
 
-Godot provides the following primitive collision shape types:
+redot provides the following primitive collision shape types:
 
 - :ref:`class_RectangleShape2D`
 - :ref:`class_CircleShape2D`
@@ -48,7 +48,7 @@ Convex collision shapes
 
 .. warning::
 
-    Godot currently doesn't offer a built-in way to create 2D convex collision
+    redot currently doesn't offer a built-in way to create 2D convex collision
     shapes. This section is mainly here for reference purposes.
 
 :ref:`Convex collision shapes <class_ConvexPolygonShape2D>` are a compromise
@@ -59,7 +59,7 @@ a pyramid is *convex*, but a hollow box is *concave*. To define a concave object
 with a single collision shape, you need to use a concave collision shape.
 
 Depending on the object's complexity, you may get better performance by using
-multiple convex shapes instead of a concave collision shape. Godot lets you use
+multiple convex shapes instead of a concave collision shape. redot lets you use
 *convex decomposition* to generate convex shapes that roughly match a hollow
 object. Note this performance advantage no longer applies after a certain amount
 of convex shapes. For large and complex objects such as a whole level, we
@@ -71,7 +71,7 @@ Concave or trimesh collision shapes
 :ref:`Concave collision shapes <class_ConcavePolygonShape2D>`, also called trimesh
 collision shapes, can take any form, from a few triangles to thousands of
 triangles. Concave shapes are the slowest option but are also the most accurate
-in Godot. **You can only use concave shapes within StaticBodies.** They will not
+in redot. **You can only use concave shapes within StaticBodies.** They will not
 work with CharacterBodies or RigidBodies unless the RigidBody's mode is Static.
 
 .. note::

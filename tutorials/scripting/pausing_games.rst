@@ -10,7 +10,7 @@ In most games it is desirable to, at some point, interrupt the
 game to do something else, such as taking a break or changing options.
 Implementing a fine-grained control for what can be paused (and what cannot)
 is a lot of work, so a simple framework for pausing is provided in
-Godot.
+redot.
 
 How pausing works
 -----------------
@@ -37,7 +37,7 @@ depending on their process mode.
 Process Modes
 -------------
 
-Each node in Godot has a "Process Mode" that defines when it processes. It can
+Each node in redot has a "Process Mode" that defines when it processes. It can
 be found and changed under a node's :ref:`Node <class_Node>` properties in the inspector.
 
 .. image:: img/pausemode.webp

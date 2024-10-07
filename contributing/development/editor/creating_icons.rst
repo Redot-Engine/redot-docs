@@ -14,11 +14,11 @@ Creating icons
 To create new icons, you first need a vector graphics editor installed.
 For instance, you can use the open source `Inkscape <https://inkscape.org/>`_ editor.
 
-Clone the ``godot`` repository containing all the editor icons:
+Clone the ``redot`` repository containing all the editor icons:
 
 .. code-block:: bash
 
-    git clone https://github.com/godotengine/godot.git
+    git clone https://github.com/redotengine/redot.git
 
 The icons must be created in a vector graphics editor in SVG format. There are
 two main requirements to follow:
@@ -36,9 +36,9 @@ CPUParticles2D, name the file ``CPUParticles2D.svg``.
 Color conversion for light editor themes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the user has configured their editor to use a light theme, Godot will
+If the user has configured their editor to use a light theme, redot will
 convert the icon's colors based on a
-`set of predefined color mappings <https://github.com/godotengine/godot/blob/4.0.2-stable/editor/editor_themes.cpp#L60-L160>`__.
+`set of predefined color mappings <https://github.com/redotengine/redot/blob/4.0.2-stable/editor/editor_themes.cpp#L60-L160>`__.
 This is to ensure the icon always displays with a sufficient contrast rate.
 Try to restrict your icon's color palette to colors found in the list above.
 Otherwise, your icon may become difficult to read on a light background.
@@ -81,7 +81,7 @@ add optimized icons to ``editor/icons`` in the main repository. Recompile the
 engine to make it pick up new icons for classes.
 
 It's also possible to create custom icons within a module. If you're creating
-your own module and don't plan to integrate it with Godot, you don't need to
+your own module and don't plan to integrate it with redot, you don't need to
 make a separate pull request for your icons to be available within the editor
 as they can be self-contained.
 
@@ -101,4 +101,4 @@ If icons don't appear in the editor, make sure that:
 References
 ~~~~~~~~~~
 
--  `editor/icons <https://github.com/godotengine/godot/tree/master/editor/icons>`__
+-  `editor/icons <https://github.com/redotengine/redot/tree/master/editor/icons>`__

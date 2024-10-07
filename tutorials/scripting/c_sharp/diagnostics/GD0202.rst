@@ -29,7 +29,7 @@ emitting the signal and invoking the callbacks.
 
     class SomeType { }
 
-    // SomeType is not a valid parameter type because it doesn't derive from GodotObject,
+    // SomeType is not a valid parameter type because it doesn't derive from redotObject,
     // so it's not compatible with Variant.
     public void InvalidSignalEventHandler(SomeType someType);
 
@@ -48,7 +48,7 @@ attribute will mean the signal is not registered.
 
 .. tip::
 
-    If the signal doesn't need to interact with Godot, consider using
+    If the signal doesn't need to interact with redot, consider using
     `C# events <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/>`_
     directly. Pure C# events allow you to use any C# type for its parameters.
 

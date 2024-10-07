@@ -6,7 +6,7 @@ Faking global illumination
 Why fake global illumination?
 -----------------------------
 
-Godot provides several global illumination (GI) techniques, all with their advantages
+redot provides several global illumination (GI) techniques, all with their advantages
 and drawbacks. Nonetheless, it remains possible to avoid using any GI technique
 and use a handmade approach instead. There are a few reasons for using a
 "handmade" approach to global illumination instead of VoxelGI, SDFGI or
@@ -27,7 +27,7 @@ are usually cheap enough to be used in conjunction with this fake GI approach.
 
     Not sure if faking global illumination with lights is suited to your needs?
     See :ref:`doc_introduction_to_global_illumination_comparison` for a
-    comparison of GI techniques available in Godot 4.
+    comparison of GI techniques available in redot 4.
 
 Faking DirectionalLight3D global illumination
 ---------------------------------------------

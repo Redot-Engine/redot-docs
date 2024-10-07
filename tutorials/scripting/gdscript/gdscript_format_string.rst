@@ -27,10 +27,10 @@ Examine this concrete GDScript example:
     var format_string = "We're waiting for %s."
 
     # Using the '%' operator, the placeholder is replaced with the desired value
-    var actual_string = format_string % "Godot"
+    var actual_string = format_string % "redot"
 
     print(actual_string)
-    # Output: "We're waiting for Godot."
+    # Output: "We're waiting for redot."
 
 Placeholders always start with a ``%``, but the next character or characters,
 the *format specifier*, determines how the given value is converted to a
@@ -58,10 +58,10 @@ A quick example in GDScript:
     var format_string = "We're waiting for {str}"
 
     # Using the 'format' method, replace the 'str' placeholder
-    var actual_string = format_string.format({"str": "Godot"})
+    var actual_string = format_string.format({"str": "redot"})
 
     print(actual_string)
-    # Output: "We're waiting for Godot"
+    # Output: "We're waiting for redot"
 
 There are other `format specifiers`_, but they are only applicable when using
 the ``%`` operator.

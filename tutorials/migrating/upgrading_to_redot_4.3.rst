@@ -1,6 +1,6 @@
-.. _doc_upgrading_to_godot_4.3:
+.. _doc_upgrading_to_redot_4.3:
 
-Upgrading from Godot 4.2 to Godot 4.3
+Upgrading from redot 4.2 to redot 4.3
 =====================================
 
 For most games and apps made with 4.2 it should be relatively safe to migrate to 4.3.
@@ -19,7 +19,7 @@ the C# breaking change is *binary compatible* or *source compatible*:
 - **Binary compatible** - Existing binaries will load and execute successfully without
   recompilation, and the run-time behavior won't change.
 - **Source compatible** - Source code will compile successfully without changes when
-  upgrading Godot.
+  upgrading redot.
 
 GDExtension
 ^^^^^^^^^^^
@@ -237,11 +237,11 @@ Core
 .. note::
 
     ``PackedByteArray`` is now able to use a more compact base64 encoding for storage. But the trade-off is that it breaks
-    compatibility, meaning that older versions of Godot may not be able to open resources saved by 4.3 (`GH-89186`_).
+    compatibility, meaning that older versions of redot may not be able to open resources saved by 4.3 (`GH-89186`_).
 
     To maximize compatibility, this new storage format will only be enabled for resources and scenes that contain large
-    PackedByteArrays for now. Support for this new format will also be added in patch updates for older versions of Godot.
-    Once all supported Godot versions are able to read the new format, we will gradually retire the compatibility measures
+    PackedByteArrays for now. Support for this new format will also be added in patch updates for older versions of redot.
+    Once all supported redot versions are able to read the new format, we will gradually retire the compatibility measures
     and have all resources and scenes use the new storage format.
 
 .. note::
@@ -273,7 +273,7 @@ Animation
     should also note that this method is now deprecated and will be replaced by a new one in the future (`GH-87171`_).
 
 More information about the changes to Animation can be found in the
-`Migrating Animations from Godot 4.0 to 4.3 <https://godotengine.org/article/migrating-animations-from-godot-4-0-to-4-3>`__
+`Migrating Animations from redot 4.0 to 4.3 <https://redotengine.org/article/migrating-animations-from-redot-4-0-to-4-3>`__
 article.
 
 GUI nodes
@@ -297,10 +297,10 @@ Multiplayer
 
     The ``SceneMultiplayer`` caching protocol was changed to send the received ID instead of the Node path when sending a node removal confirmation packet (`GH-90027`_).
 
-    This is a breaking change for the high-level multiplayer protocol making it incompatible with previous Godot versions.
-    Upgrade both your server and client versions to Godot 4.3 to handle this change gracefully.
+    This is a breaking change for the high-level multiplayer protocol making it incompatible with previous redot versions.
+    Upgrade both your server and client versions to redot 4.3 to handle this change gracefully.
     
-    Note that high-level multiplayer facilities are only ever meant to be compatible with server and client using the same Godot version. It is recommended to implement some kind of version checking.
+    Note that high-level multiplayer facilities are only ever meant to be compatible with server and client using the same redot version. It is recommended to implement some kind of version checking.
 
 Rendering
 ^^^^^^^^^
@@ -314,7 +314,7 @@ Rendering
 .. note::
 
     The reverse Z depth buffer technique is now implemented. This may break compatibility for some shaders.
-    Read the `Introducing Reverse Z (AKA I'm sorry for breaking your shader) <https://godotengine.org/article/introducing-reverse-z/>`__
+    Read the `Introducing Reverse Z (AKA I'm sorry for breaking your shader) <https://redotengine.org/article/introducing-reverse-z/>`__
     article for more information and guidance on how to fix common scenarios.
 
 TileMap
@@ -337,43 +337,43 @@ Android
 .. |✔️| replace:: :abbr:`✔️ (This API does not break compatibility.)`
 .. |✔️ with compat| replace:: :abbr:`✔️ (This API does not break compatibility. A compatibility method was added.)`
 
-.. _GH-54641: https://github.com/godotengine/godot/pull/54641
-.. _GH-78219: https://github.com/godotengine/godot/pull/78219
-.. _GH-80214: https://github.com/godotengine/godot/pull/80214
-.. _GH-81746: https://github.com/godotengine/godot/pull/81746
-.. _GH-83452: https://github.com/godotengine/godot/pull/83452
-.. _GH-84660: https://github.com/godotengine/godot/pull/84660
-.. _GH-84792: https://github.com/godotengine/godot/pull/84792
-.. _GH-84976: https://github.com/godotengine/godot/pull/84976
-.. _GH-85393: https://github.com/godotengine/godot/pull/85393
-.. _GH-86629: https://github.com/godotengine/godot/pull/86629
-.. _GH-86661: https://github.com/godotengine/godot/pull/86661
-.. _GH-86687: https://github.com/godotengine/godot/pull/86687
-.. _GH-86715: https://github.com/godotengine/godot/pull/86715
-.. _GH-87080: https://github.com/godotengine/godot/pull/87080
-.. _GH-87171: https://github.com/godotengine/godot/pull/87171
-.. _GH-87379: https://github.com/godotengine/godot/pull/87379
-.. _GH-87530: https://github.com/godotengine/godot/pull/87530
-.. _GH-87668: https://github.com/godotengine/godot/pull/87668
-.. _GH-87888: https://github.com/godotengine/godot/pull/87888
-.. _GH-88047: https://github.com/godotengine/godot/pull/88047
-.. _GH-88081: https://github.com/godotengine/godot/pull/88081
-.. _GH-88418: https://github.com/godotengine/godot/pull/88418
-.. _GH-88791: https://github.com/godotengine/godot/pull/88791
-.. _GH-88919: https://github.com/godotengine/godot/pull/88919
-.. _GH-89024: https://github.com/godotengine/godot/pull/89024
-.. _GH-89179: https://github.com/godotengine/godot/pull/89179
-.. _GH-89186: https://github.com/godotengine/godot/pull/89186
-.. _GH-89419: https://github.com/godotengine/godot/pull/89419
-.. _GH-89547: https://github.com/godotengine/godot/pull/89547
-.. _GH-89843: https://github.com/godotengine/godot/pull/89843
-.. _GH-89849: https://github.com/godotengine/godot/pull/89849
-.. _GH-89851: https://github.com/godotengine/godot/pull/89851
-.. _GH-90027: https://github.com/godotengine/godot/pull/90027
-.. _GH-90575: https://github.com/godotengine/godot/pull/90575
-.. _GH-90645: https://github.com/godotengine/godot/pull/90645
-.. _GH-90732: https://github.com/godotengine/godot/pull/90732
-.. _GH-90747: https://github.com/godotengine/godot/pull/90747
-.. _GH-91382: https://github.com/godotengine/godot/pull/91382
-.. _GH-92322: https://github.com/godotengine/godot/pull/92322
-.. _GH-92861: https://github.com/godotengine/godot/pull/92861
+.. _GH-54641: https://github.com/redotengine/redot/pull/54641
+.. _GH-78219: https://github.com/redotengine/redot/pull/78219
+.. _GH-80214: https://github.com/redotengine/redot/pull/80214
+.. _GH-81746: https://github.com/redotengine/redot/pull/81746
+.. _GH-83452: https://github.com/redotengine/redot/pull/83452
+.. _GH-84660: https://github.com/redotengine/redot/pull/84660
+.. _GH-84792: https://github.com/redotengine/redot/pull/84792
+.. _GH-84976: https://github.com/redotengine/redot/pull/84976
+.. _GH-85393: https://github.com/redotengine/redot/pull/85393
+.. _GH-86629: https://github.com/redotengine/redot/pull/86629
+.. _GH-86661: https://github.com/redotengine/redot/pull/86661
+.. _GH-86687: https://github.com/redotengine/redot/pull/86687
+.. _GH-86715: https://github.com/redotengine/redot/pull/86715
+.. _GH-87080: https://github.com/redotengine/redot/pull/87080
+.. _GH-87171: https://github.com/redotengine/redot/pull/87171
+.. _GH-87379: https://github.com/redotengine/redot/pull/87379
+.. _GH-87530: https://github.com/redotengine/redot/pull/87530
+.. _GH-87668: https://github.com/redotengine/redot/pull/87668
+.. _GH-87888: https://github.com/redotengine/redot/pull/87888
+.. _GH-88047: https://github.com/redotengine/redot/pull/88047
+.. _GH-88081: https://github.com/redotengine/redot/pull/88081
+.. _GH-88418: https://github.com/redotengine/redot/pull/88418
+.. _GH-88791: https://github.com/redotengine/redot/pull/88791
+.. _GH-88919: https://github.com/redotengine/redot/pull/88919
+.. _GH-89024: https://github.com/redotengine/redot/pull/89024
+.. _GH-89179: https://github.com/redotengine/redot/pull/89179
+.. _GH-89186: https://github.com/redotengine/redot/pull/89186
+.. _GH-89419: https://github.com/redotengine/redot/pull/89419
+.. _GH-89547: https://github.com/redotengine/redot/pull/89547
+.. _GH-89843: https://github.com/redotengine/redot/pull/89843
+.. _GH-89849: https://github.com/redotengine/redot/pull/89849
+.. _GH-89851: https://github.com/redotengine/redot/pull/89851
+.. _GH-90027: https://github.com/redotengine/redot/pull/90027
+.. _GH-90575: https://github.com/redotengine/redot/pull/90575
+.. _GH-90645: https://github.com/redotengine/redot/pull/90645
+.. _GH-90732: https://github.com/redotengine/redot/pull/90732
+.. _GH-90747: https://github.com/redotengine/redot/pull/90747
+.. _GH-91382: https://github.com/redotengine/redot/pull/91382
+.. _GH-92322: https://github.com/redotengine/redot/pull/92322
+.. _GH-92861: https://github.com/redotengine/redot/pull/92861

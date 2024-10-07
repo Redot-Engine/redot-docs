@@ -7,7 +7,7 @@
 
 Default editor shortcuts
 ========================
-Many of Godot Editor functions can be executed with keyboard shortcuts. This page
+Many of redot Editor functions can be executed with keyboard shortcuts. This page
 lists functions which have associated shortcuts by default, but many others are
 available for customization in editor settings as well. To change keys associated
 with these and other actions navigate to ``Editor -> Editor Settings -> Shortcuts``.
@@ -20,7 +20,7 @@ context.
 .. note:: While Windows and Linux builds of the editor share most of the default settings,
           some shortcuts may differ for macOS version. This is done for better integration
           of the editor into macOS ecosystem. Users fluent with standard shortcuts on that
-          OS should find Godot Editor's default key mapping intuitive.
+          OS should find redot Editor's default key mapping intuitive.
 
 General Editor Actions
 ----------------------

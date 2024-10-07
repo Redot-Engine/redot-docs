@@ -3,7 +3,7 @@
 GDScript exported properties
 ============================
 
-In Godot, class members can be exported. This means their value gets saved along
+In redot, class members can be exported. This means their value gets saved along
 with the resource (such as the :ref:`scene <class_PackedScene>`) they're
 attached to. They will also be available for editing in the property editor.
 Exporting is done by using the ``@export`` annotation.
@@ -196,7 +196,7 @@ Color given as red-green-blue value (alpha will always be 1).
 Nodes
 -----
 
-Since Godot 4.0, nodes can be directly exported as properties in a script
+Since redot 4.0, nodes can be directly exported as properties in a script
 without having to use NodePaths:
 
 ::
@@ -208,7 +208,7 @@ without having to use NodePaths:
     # Custom classes declared with `class_name` can also be used.
     @export var some_button: BaseButton
 
-Exporting NodePaths like in Godot 3.x is still possible, in case you need it:
+Exporting NodePaths like in redot 3.x is still possible, in case you need it:
 
 ::
 

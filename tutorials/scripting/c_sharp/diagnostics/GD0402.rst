@@ -18,7 +18,7 @@ A generic type is annotated with the ``[GlobalClass]`` attribute.
 Rule description
 ----------------
 
-The Godot editor assumes every :ref:`global class <doc_c_sharp_global_classes>`
+The redot editor assumes every :ref:`global class <doc_c_sharp_global_classes>`
 is instantiable, but generic types can't be instantiated because the type
 parameters are unbound.
 

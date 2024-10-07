@@ -53,7 +53,7 @@ You can rename it to ``Character``.
 
     The ``.glb`` files contain 3D scene data based on the open source glTF 2.0
     specification. They're a modern and powerful alternative to a proprietary format
-    like FBX, which Godot also supports. To produce these files, we designed the
+    like FBX, which redot also supports. To produce these files, we designed the
     model in `Blender 3D <https://www.blender.org/>`__ and exported it to glTF.
 
 As with all kinds of physics nodes, we need a collision shape for our character
@@ -88,7 +88,7 @@ Creating input actions
 ----------------------
 
 To move the character, we will listen to the player's input, like pressing the
-arrow keys. In Godot, while we could write all the key bindings in code, there's
+arrow keys. In redot, while we could write all the key bindings in code, there's
 a powerful system that allows you to assign a label to a set of keys and
 buttons. This simplifies our scripts and makes them more readable.
 
@@ -103,7 +103,7 @@ can bind keys to these actions.
 
 |image7|
 
-Godot projects come with some predefined actions designed for user interface
+redot projects come with some predefined actions designed for user interface
 design (see above screenshot). These will become visible if you enable the
 *Show Built-in Actions* toggle. We could use these here, but instead we're
 defining our own to support gamepads. Leave *Show Built-in Actions* disabled.

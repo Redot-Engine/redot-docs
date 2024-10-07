@@ -9,7 +9,7 @@ Threads
 Threads allow simultaneous execution of code. It allows off-loading work
 from the main thread.
 
-Godot supports threads and provides many handy functions to use them.
+redot supports threads and provides many handy functions to use them.
 
 .. note:: If using other languages (C#, C++), it may be easier to use the
           threading classes they support.

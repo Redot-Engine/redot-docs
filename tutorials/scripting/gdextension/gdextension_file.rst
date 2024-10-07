@@ -18,17 +18,17 @@ Configuration section
 | Property                      | Type       | Description                                                                                          |
 +===============================+============+======================================================================================================+
 | **entry_symbol**              | String     | Name of the entry function for initializing the GDExtension. This function should be defined in      |
-|                               |            | the ``register_types.cpp`` file when using godot-cpp. Adding this is necessary for the extension to  |
+|                               |            | the ``register_types.cpp`` file when using redot-cpp. Adding this is necessary for the extension to  |
 |                               |            | work.                                                                                                |
 +-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **compatibility_minimum**     | String     | Minimum compatible version. This prevents older versions of Godot from loading extensions that       |
-|                               |            | depend on features from newer versions of Godot. **Only supported in Godot 4.1 or later**            |
+| **compatibility_minimum**     | String     | Minimum compatible version. This prevents older versions of redot from loading extensions that       |
+|                               |            | depend on features from newer versions of redot. **Only supported in redot 4.1 or later**            |
 +-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **compatibility_maximum**     | String     | Maximum compatible version. This prevents newer versions of Godot from loading the extension.        |
-|                               |            | **Only supported in Godot 4.3 or later**                                                             |
+| **compatibility_maximum**     | String     | Maximum compatible version. This prevents newer versions of redot from loading the extension.        |
+|                               |            | **Only supported in redot 4.3 or later**                                                             |
 +-------------------------------+------------+------------------------------------------------------------------------------------------------------+
-| **reloadable**                | Boolean    | Reloads the extension upon recompilation. Reloading is supported for the godot-cpp binding in        |
-|                               |            | Godot 4.2 or later. Other language bindings may or may not support it as well. This flag should be   |
+| **reloadable**                | Boolean    | Reloads the extension upon recompilation. Reloading is supported for the redot-cpp binding in        |
+|                               |            | redot 4.2 or later. Other language bindings may or may not support it as well. This flag should be   |
 |                               |            | mainly used for developing or debugging an extension.                                                |
 +-------------------------------+------------+------------------------------------------------------------------------------------------------------+
 | **android_aar_plugin**        | Boolean    | The GDExtension is part of a :ref:`v2 Android plugin <doc_android_plugin>`. During export this flag  |
@@ -41,9 +41,9 @@ Libraries section
 
 In this section you can set the paths to the compiled binaries of your GDExtension libraries.
 By specifying feature flags you can filter which version should be loaded and exported with your
-game depending on which feature flags are active. Every feature flag must match to Godot's
+game depending on which feature flags are active. Every feature flag must match to redot's
 feature flags or your custom export flags to be loaded in an exported game. For instance ``macos.debug``
-means that it will be loaded if Godot has both the ``macos`` and ``debug`` flag active. Each
+means that it will be loaded if redot has both the ``macos`` and ``debug`` flag active. Each
 line of the section is evaluated from top to bottom.
 
 Here is an example of what that can look like:
@@ -128,7 +128,7 @@ Architecture
 Icons section
 -------------
 
-By default, Godot uses the Node icon in the scene dock for GDExtension nodes. A custom icon can be
+By default, redot uses the Node icon in the scene dock for GDExtension nodes. A custom icon can be
 set by reference to its name and resource path of an SVG file.
 
 For example:
@@ -148,7 +148,7 @@ Dependencies section
 In this section you set the paths of the GDExtension dependencies. This is used internally to export the dependencies
 when exporting your game executable. You are able to set which dependency is loaded depending on the feature flags
 of the exported executable. In addition, you are able to set an optional subdirectory to move your dependencies into.
-If no path is supplied Godot will move the libraries into the same directory as your game executable.
+If no path is supplied redot will move the libraries into the same directory as your game executable.
 
 .. warning::
     In MacOS it is necessary to have shared libraries inside a folder called ``Frameworks`` with a directory structure

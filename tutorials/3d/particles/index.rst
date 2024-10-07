@@ -20,7 +20,7 @@ its lifetime, every particle will have the same base behavior. What makes each p
 from the others and creates the organic look is the randomness that you can add to most of its
 parameters and behaviors.
 
-Every particle system you create in Godot consists of two main parts: particles and emitters.
+Every particle system you create in redot consists of two main parts: particles and emitters.
 
 Particles
 ~~~~~~~~~
@@ -47,9 +47,9 @@ Node overview
    :alt: A list of nodes related to 3D particles
    :align: right
 
-   All 3D particle nodes available in Godot
+   All 3D particle nodes available in redot
 
-There are two types of 3D particle systems in Godot: :ref:`class_GPUParticles3D`, which are processed on the GPU,
+There are two types of 3D particle systems in redot: :ref:`class_GPUParticles3D`, which are processed on the GPU,
 and :ref:`class_CPUParticles3D`, which are processed on the CPU.
 
 CPU particle systems are less flexible than their GPU counterpart, but they work on a wider range of hardware and

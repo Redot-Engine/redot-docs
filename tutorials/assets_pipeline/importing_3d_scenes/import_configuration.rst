@@ -3,7 +3,7 @@
 Import configuration
 ====================
 
-Godot provides several ways to customize the imported data, such as the
+redot provides several ways to customize the imported data, such as the
 import dock, the advanced import setting dialog, and inherited scenes.
 This can be used to make further changes to the imported scene, such
 as adjusting meshes, adding physics information, and adding new nodes.
@@ -20,12 +20,12 @@ for more information.
 Import workflows
 ----------------
 
-Since Godot can only save its own scene format (``.tscn``/``.scn``), Godot
+Since redot can only save its own scene format (``.tscn``/``.scn``), redot
 cannot save over the original 3D scene file (which uses a different format).
 This is also a safer approach as it avoids making accidental changes to the
 source file.
 
-To allow customizing the scene and its materials, Godot's scene importer allows
+To allow customizing the scene and its materials, redot's scene importer allows
 for different workflows regarding how data is imported.
 
 .. figure:: img/importing_3d_scenes_import_dock.webp
@@ -40,7 +40,7 @@ This import process is customizable using 3 separate interfaces, depending on yo
   FileSystem dock.
 - The **Advanced Import Settings** dialog, which can be accessed by double-clicking
   the 3D scene in the FileSystem dock or by clicking the **Advanced…** button in
-  the Import dock. This allows you to customize per-object options in Godot.
+  the Import dock. This allows you to customize per-object options in redot.
 - :ref:`Import hints <doc_importing_3d_scenes_node_type_customization>`, which are special
   suffixes added to object names in the 3D modeling software. This allows you to
   customize per-object options in the 3D modeling software.
@@ -117,7 +117,7 @@ scene in the FileSystem dock:
     Secondly, the Skin contains each bone's name (if **Use Named Skins** is enabled),
     or the bone's index within the Skeleton3D list (if **Use Named Skins** is disabled).
 
-Together, this information is enough to tell Godot how to use the bone poses in
+Together, this information is enough to tell redot how to use the bone poses in
 the Skeleton3D node to render the mesh from each MeshInstance3D. Note that each
 MeshInstance3D may share binds, as is common in models exported from Blender, or
 each MeshInstance3D may use a separate Skin object, as is common in models
@@ -151,7 +151,7 @@ exported from other tools such as Maya.
 
 - **Embedded Texture Handling:** Controls how textures embedded within glTF
   scenes should be handled. **Discard All Textures** will not import any
-  textures, which is useful if you wish to manually set up materials in Godot
+  textures, which is useful if you wish to manually set up materials in redot
   instead. **Extract Textures** extracts textures to external images, resulting
   in smaller file sizes and more control over import options. **Embed as Basis
   Universal** and **Embed as Uncompressed** keeps the textures embedded in the
@@ -166,7 +166,7 @@ exported from other tools such as Maya.
 - **Allow Geometry Helper Nodes** enables or disables geometry helper nodes
 - **Embedded Texture Handling:** Controls how textures embedded within fbx
   scenes should be handled. **Discard All Textures** will not import any
-  textures, which is useful if you wish to manually set up materials in Godot
+  textures, which is useful if you wish to manually set up materials in redot
   instead. **Extract Textures** extracts textures to external images, resulting
   in smaller file sizes and more control over import options. **Embed as Basis
   Universal** and **Embed as Uncompressed** keeps the textures embedded in the
@@ -318,16 +318,16 @@ original 3D scene file; see the section below.
 Extracting materials to separate files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While Godot can import materials authored in 3D modeling software, the default
+While redot can import materials authored in 3D modeling software, the default
 configuration may not be suitable for your needs. For example:
 
 - You want to configure material features not supported by your 3D application.
 - You want to use a different texture filtering mode, as this option is
-  configured in the material since Godot 4.0 (and not in the image).
+  configured in the material since redot 4.0 (and not in the image).
 - You want to replace one of the materials with an entirely different material,
   such as a custom shader.
 
-To be able to modify the 3D scene's materials in the Godot editor, you need to
+To be able to modify the 3D scene's materials in the redot editor, you need to
 use *external* material resources.
 
 In the top-left corner of the Advanced Import Settings dialog, choose
@@ -361,7 +361,7 @@ the 3D modeling software). This means your customizations to the materials won't
 be visible within this dialog. To preview your modified materials, you need to
 place the imported 3D scene in another scene using the editor.
 
-Godot will not overwrite changes made to extracted materials when the source 3D
+redot will not overwrite changes made to extracted materials when the source 3D
 scene is reimported. However, if the material name is changed in the source 3D
 file, the link between the original material and the extracted material will be
 lost. As a result, you'll need to use the Advanced Import Settings dialog to
@@ -415,7 +415,7 @@ To use your script, locate the script in the import tab's "Path" option under th
 Using animation libraries
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As of Godot 4.0, you can choose to import **only** animations from a glTF file and
+As of redot 4.0, you can choose to import **only** animations from a glTF file and
 nothing else. This is used in some asset pipelines to distribute animations
 separately from models. For example, this allows you to use one set of
 animations for several characters, without having to duplicate animation data in
@@ -519,7 +519,7 @@ Scene inheritance
 
 In many cases, it may be desired to make manual modifications to the imported
 scene. By default, this is not possible because if the source 3D asset changes,
-Godot will re-import the *whole* scene.
+redot will re-import the *whole* scene.
 
 However, it is possible to make local modifications by using *scene
 inheritance*. If you try to open the imported scene using **Scene > Open

@@ -26,9 +26,9 @@ Click Next, to pass the welcome to the new empty project wizard.
    :figclass: figure-w480
    :align: center
 
-The project file should be created in the root of the cloned project folder. To achieve this, first, ensure that the **Project title** is the same as the folder name that Godot was cloned into. Unless you cloned the project into a folder with a different name, this will be ``godot``.
+The project file should be created in the root of the cloned project folder. To achieve this, first, ensure that the **Project title** is the same as the folder name that redot was cloned into. Unless you cloned the project into a folder with a different name, this will be ``redot``.
 
-Second, ensure that the **Folder to create project in** is the folder you ran the Git clone command from, not the ``godot`` project folder. Confirm that the **Resulting filename** field will create the project file in the root of the cloned project folder.
+Second, ensure that the **Folder to create project in** is the folder you ran the Git clone command from, not the ``redot`` project folder. Confirm that the **Resulting filename** field will create the project file in the root of the cloned project folder.
 
 .. figure:: img/code_blocks_project_title_and_location.png
    :figclass: figure-w480
@@ -79,7 +79,7 @@ Windows example:
    :figclass: figure-w480
    :align: center
 
-Code::Blocks should now be configured to build Godot; so either select **Build > Build**, click the gear button, or press :kbd:`Ctrl + F9`.
+Code::Blocks should now be configured to build redot; so either select **Build > Build**, click the gear button, or press :kbd:`Ctrl + F9`.
 
 Configuring the run
 -------------------
@@ -92,14 +92,14 @@ Deselect the **Auto-generate filename prefix** and **Auto-generate filename exte
    :figclass: figure-w480
    :align: center
 
-Code::Blocks should now be configured to run your compiled Godot executable; so either select **Build > Run**, click the green arrow button, or press :kbd:`Ctrl + F10`.
+Code::Blocks should now be configured to run your compiled redot executable; so either select **Build > Run**, click the green arrow button, or press :kbd:`Ctrl + F10`.
 
-There are two additional points worth noting. First, if required, the **Execution working dir** field can be used to test specific projects, by setting it to the folder containing the ``project.godot`` file. Second, the **Build targets** tab can be used to add and remove build targets for working with and creating different builds.
+There are two additional points worth noting. First, if required, the **Execution working dir** field can be used to test specific projects, by setting it to the folder containing the ``project.redot`` file. Second, the **Build targets** tab can be used to add and remove build targets for working with and creating different builds.
 
 Adding files to the project
 ---------------------------
 
-To add all the Godot code files to the project, right-click on the new project and select **Add files recursively...**.
+To add all the redot code files to the project, right-click on the new project and select **Add files recursively...**.
 
 .. figure:: img/code_blocks_add_files_recursively.png
    :figclass: figure-w480
@@ -114,7 +114,7 @@ It should automatically select the project folder; so simply click **Open**. By 
 Code style configuration
 ------------------------
 
-Before editing any files, remember that all code needs to comply with the :ref:`doc_code_style_guidelines`. One important difference with Godot is the use of tabs for indents. Therefore, the key default editor setting that needs to be changed in Code::Blocks is to enable tabs for indents. This setting can be found by selecting **Settings > Editor**.
+Before editing any files, remember that all code needs to comply with the :ref:`doc_code_style_guidelines`. One important difference with redot is the use of tabs for indents. Therefore, the key default editor setting that needs to be changed in Code::Blocks is to enable tabs for indents. This setting can be found by selecting **Settings > Editor**.
 
 .. figure:: img/code_blocks_update_editor_settings.png
    :figclass: figure-w480
@@ -126,4 +126,4 @@ Under **General Settings**, on the **Editor Settings** tab, under **Tab Options*
    :figclass: figure-w480
    :align: center
 
-That's it. You're ready to start contributing to Godot using the Code::Blocks IDE. Remember to save the project file and the **Workspace**. If you run into any issues, ask for help in one of `Godot's community channels <https://godotengine.org/community>`__.
+That's it. You're ready to start contributing to redot using the Code::Blocks IDE. Remember to save the project file and the **Workspace**. If you run into any issues, ask for help in one of `redot's community channels <https://redotengine.org/community>`__.

@@ -33,12 +33,12 @@ Advanced topics
    openxr_hand_tracking
    openxr_body_tracking
 
-Godot XR Tools
+redot XR Tools
 --------------
 
 .. toctree::
    :maxdepth: 1
-   :name: godot-xr-tools
+   :name: redot-xr-tools
 
    introducing_xr_tools
    basic_xr_locomotion

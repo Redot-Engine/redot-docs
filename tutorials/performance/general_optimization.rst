@@ -55,7 +55,7 @@ our attempts to speed them up.
 There are several methods of measuring performance, including:
 
 - Putting a start/stop timer around code of interest.
-- Using the :ref:`Godot profiler <doc_the_profiler>`.
+- Using the :ref:`redot profiler <doc_the_profiler>`.
 - Using :ref:`external CPU profilers <doc_using_cpp_profilers>`.
 - Using external GPU profilers/debuggers such as
   `NVIDIA Nsight Graphics <https://developer.nvidia.com/nsight-graphics>`__,
@@ -66,7 +66,7 @@ There are several methods of measuring performance, including:
   `RivaTuner Statistics Server <https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html>`__
   (Windows) or `MangoHud <https://github.com/flightlessmango/MangoHud>`__
   (Linux) can also be useful here.
-- Using an unofficial `debug menu add-on <https://github.com/godot-extended-libraries/godot-debug-menu>`__.
+- Using an unofficial `debug menu add-on <https://github.com/redot-extended-libraries/redot-debug-menu>`__.
 
 Be very aware that the relative performance of different areas can vary on
 different hardware. It's often a good idea to measure timings on more than one
@@ -80,8 +80,8 @@ they don't always tell the whole story.
 
 - Bottlenecks are often on the GPU, "as a result" of instructions given by the
   CPU.
-- Spikes can occur in the operating system processes (outside of Godot) "as a
-  result" of instructions used in Godot (for example, dynamic memory allocation).
+- Spikes can occur in the operating system processes (outside of redot) "as a
+  result" of instructions used in redot (for example, dynamic memory allocation).
 - You may not always be able to profile specific devices like a mobile phone
   due to the initial setup required.
 - You may have to solve performance problems that occur on hardware you don't
@@ -134,7 +134,7 @@ of your improvements. Sometimes, attempts to improve performance can backfire
 and lead to slower performance.
 **Always use profiling and timing to guide your efforts.**
 
-For more info about using Godot's built-in profiler, see :ref:`doc_the_profiler`.
+For more info about using redot's built-in profiler, see :ref:`doc_the_profiler`.
 
 Principles
 ----------

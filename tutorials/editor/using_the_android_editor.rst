@@ -3,8 +3,8 @@
 Using the Android editor
 ========================
 
-In 2023, `we added <https://godotengine.org/article/android_godot_editor_play_store_beta_release/>`__
-an `Android port of the editor <https://godotengine.org/download/android/>`__
+In 2023, `we added <https://redotengine.org/article/android_redot_editor_play_store_beta_release/>`__
+an `Android port of the editor <https://redotengine.org/download/android/>`__
 that can be used to work on new or existing projects on Android devices.
 
 .. note::
@@ -39,7 +39,7 @@ Here are the known limitations and issues of the Android editor:
 - No support for external script editors
 - While available, the *Vulkan Forward+* renderer is not recommended due to severe performance issues
 - No support for building and exporting an Android APK binary.
-  As a workaround, you can generate and export a `Godot PCK or ZIP file <https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html#pck-versus-zip-pack-file-formats>`__
+  As a workaround, you can generate and export a `redot PCK or ZIP file <https://docs.redotengine.org/en/stable/tutorials/export/exporting_projects.html#pck-versus-zip-pack-file-formats>`__
 - No support for building and exporting binaries for other platforms
 - UX not optimized for Android phones form-factor
 - `Android Go devices <https://developer.android.com/guide/topics/androidgo>`__ lacks
@@ -50,4 +50,4 @@ Here are the known limitations and issues of the Android editor:
 .. seealso::
 
     See the
-    `list of open issues on GitHub related to the Android editor <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform%3Aandroid+label%3Atopic%3Aeditor>`__ for a list of known bugs.
+    `list of open issues on GitHub related to the Android editor <https://github.com/redotengine/redot/issues?q=is%3Aopen+is%3Aissue+label%3Aplatform%3Aandroid+label%3Atopic%3Aeditor>`__ for a list of known bugs.

@@ -19,7 +19,7 @@ end with 'EventHandler'.
 Rule description
 ----------------
 
-Godot source generators will generate C# events using the name of the delegate
+redot source generators will generate C# events using the name of the delegate
 with the 'EventHandler' suffix removed. Adding the 'EventHandler' suffix to the
 name of delegates used in events is a `.NET naming convention <https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types>`_.
 

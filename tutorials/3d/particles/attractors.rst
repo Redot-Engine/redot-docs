@@ -19,7 +19,7 @@ attraction effects.
 
 The first thing you have to do if you want to use attractors is enable the ``Attractor Interaction``
 property on the ParticleProcessMaterial. Do this for every particle system that needs to react to attractors.
-Like most properties in Godot, you can also change this at runtime.
+Like most properties in redot, you can also change this at runtime.
 
 Common properties
 ~~~~~~~~~~~~~~~~~
@@ -72,8 +72,8 @@ attractor's cull mask.
 
 .. warning::
 
-   There is a `known issue <https://github.com/godotengine/godot/issues/61014>`_ with
-   GPU particle attractors that prevent the cull mask from working properly in Godot 4.0. We will
+   There is a `known issue <https://github.com/redotengine/redot/issues/61014>`_ with
+   GPU particle attractors that prevent the cull mask from working properly in redot 4.0. We will
    update the documentation as soon as it is fixed.
 
 Box attractors
@@ -151,7 +151,7 @@ where every pixel represents a vector with the pixel's color interpreted as the 
    1. The texture coordinates map to the attractor bounds. The image below shows which part of the texture
       corresponds to which part of the vector field volume. For example, the bottom half of the texture
       affects the top half of the vector field attractor because ``+Y`` points down in the texture UV space,
-      but up in Godot's world space.
+      but up in redot's world space.
    2. The pixel color values map to direction vectors in space. The image below provides an overview. Since
       particles can move in two directions along each axis, the lower half of the color range represents
       negative direction values while the upper half represents positive direction values. So a yellow pixel

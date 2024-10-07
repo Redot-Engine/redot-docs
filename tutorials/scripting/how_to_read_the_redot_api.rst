@@ -1,11 +1,11 @@
-.. _doc_how_to_read_the_godot_api:
+.. _doc_how_to_read_the_redot_api:
 
-How to read the Godot API
+How to read the redot API
 =========================
 
-On this page, you'll learn how to read the class reference for the Godot API.
+On this page, you'll learn how to read the class reference for the redot API.
 
-The API, or Application Programming Interface, is an index of what Godot offers
+The API, or Application Programming Interface, is an index of what redot offers
 users. It provides a brief summary of which classes exist, how they are
 related to each other, what features they have, and how to use them.
 
@@ -27,7 +27,7 @@ Brief Description
 
 .. image:: img/class_api_brief_description.webp
 
-Next a brief description of the class. This text appears in Godot Editor
+Next a brief description of the class. This text appears in redot Editor
 popups for creating Nodes, Resources, and other types.
 
 Description
@@ -47,7 +47,7 @@ Things you may find here:
 
 4. Warnings about required dependencies or configuration.
 
-5. Links to other related parts of the Godot API.
+5. Links to other related parts of the redot API.
 
 Tutorials
 ---------
@@ -66,7 +66,7 @@ The Properties table lists the variables which belong to each instance of the
 class, also known as the "properties."
 
 The left column contains the data type of the property. The text is also a
-link to that data type's Godot API page.
+link to that data type's redot API page.
 
 The center column contains the name of the property. The text is also a link
 to that property's full description on the page. Use this name to get the
@@ -147,12 +147,12 @@ The Property Descriptions list details everything about each property.
 
 It restates the data type and name of the property.
 
-Every property in the Godot API is bound to a pair of setter and getter
+Every property in the redot API is bound to a pair of setter and getter
 functions. Using either is equivalent. They are listed here.
 
 Below that is a detailed summary of what the property's data represents, its
 use case(s) and/or the affects of changing it. It may include code samples
-and/or links to relevant parts of the Godot API.
+and/or links to relevant parts of the redot API.
 
 .. note:: Knowing the setter and getter names is useful when one must bind a
           method name or :ref:`Callable<class_Callable>` to something.
@@ -168,4 +168,4 @@ It restates the method's return data type, parameter names/types/defaults, and
 qualifiers.
 
 Below that is a detailed summary of what the method does and its use case(s).
-It may include code samples and/or links to relevant parts of the Godot API.
+It may include code samples and/or links to relevant parts of the redot API.

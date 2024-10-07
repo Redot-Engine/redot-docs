@@ -22,7 +22,7 @@ you might be missing a signal disconnection. See
 Signals as C# events
 --------------------
 
-To provide more type-safety, Godot signals are also all available through `events <https://learn.microsoft.com/en-us/dotnet/csharp/events-overview>`_.
+To provide more type-safety, redot signals are also all available through `events <https://learn.microsoft.com/en-us/dotnet/csharp/events-overview>`_.
 You can handle these events, as any other event, with the ``+=`` and ``-=`` operators.
 
 .. code-block:: csharp
@@ -51,8 +51,8 @@ Note that the name of this delegate needs to end with ``EventHandler``.
     [Signal]
     public delegate void MySignalWithArgumentEventHandler(string myString);
 
-Once this is done, Godot will create the appropriate events automatically behind the scenes. You
-can then use said events as you'd do for any other Godot signal. Note that events are named using
+Once this is done, redot will create the appropriate events automatically behind the scenes. You
+can then use said events as you'd do for any other redot signal. Note that events are named using
 your delegate's name minus the final ``EventHandler`` part.
 
 .. code-block:: csharp
@@ -89,18 +89,18 @@ your custom signal names are listed under the nested ``SignalName`` class.
         EmitSignal(SignalName.MySignalWithArgument, "World");
     }
 
-In contrast with other C# events, you cannot use ``Invoke`` to raise events tied to Godot signals.
+In contrast with other C# events, you cannot use ``Invoke`` to raise events tied to redot signals.
 
 Signals support arguments of any :ref:`Variant-compatible type <c_sharp_variant_compatible_types>`.
 
 Consequently, any ``Node`` or ``RefCounted`` will be compatible automatically, but custom data objects will need
-to inherit from ``GodotObject`` or one of its subclasses.
+to inherit from ``redotObject`` or one of its subclasses.
 
 .. code-block:: csharp
 
-    using Godot;
+    using redot;
 
-    public partial class DataObject : GodotObject
+    public partial class DataObject : redotObject
     {
         public string MyFirstString { get; set; }
         public string MySecondString { get; set; }
@@ -172,7 +172,7 @@ does nothing.
     public override void _Ready()
     {
         Button button = GetNode<Button>("GreetButton");
-        button.Connect(Button.SignalName.Pressed, Callable.From(OnButtonPressed), (uint)GodotObject.ConnectFlags.OneShot);
+        button.Connect(Button.SignalName.Pressed, Callable.From(OnButtonPressed), (uint)redotObject.ConnectFlags.OneShot);
     }
 
     public void OnButtonPressed()
@@ -185,7 +185,7 @@ does nothing.
 Disconnecting automatically when the receiver is freed
 ------------------------------------------------------
 
-Normally, when any ``GodotObject`` is freed (such as any ``Node``), Godot
+Normally, when any ``redotObject`` is freed (such as any ``Node``), redot
 automatically disconnects all connections associated with that object. This
 happens for both signal emitters and signal receivers.
 
@@ -225,7 +225,7 @@ suggestions for how to disconnect manually.
 No automatic disconnection: a lambda expression that captures a variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you connect to a lambda expression that captures variables, Godot can't tell
+If you connect to a lambda expression that captures variables, redot can't tell
 that the lambda is associated with the instance that created it. This causes
 this example to have potentially unexpected behavior:
 
@@ -296,7 +296,7 @@ connect to signals in ``_Ready`` and disconnect in ``Dispose``.
 
 .. note::
 
-    Godot uses `Delegate.Target <https://learn.microsoft.com/en-us/dotnet/api/system.delegate.target>`_
+    redot uses `Delegate.Target <https://learn.microsoft.com/en-us/dotnet/api/system.delegate.target>`_
     to determine what instance a delegate is associated with. When a lambda
     expression doesn't capture a variable, the generated delegate's ``Target``
     is the instance that created the delegate. When a variable is captured, the

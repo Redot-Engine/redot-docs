@@ -21,7 +21,7 @@ parameters and then adding randomness to them.
 Particle nodes
 ~~~~~~~~~~~~~~
 
-Godot provides two different nodes for 2D particles, :ref:`class_GPUParticles2D`
+redot provides two different nodes for 2D particles, :ref:`class_GPUParticles2D`
 and :ref:`class_CPUParticles2D`. GPUParticles2D is more advanced and uses the
 GPU to process particle effects. CPUParticles2D is a CPU-driven option with
 near-feature parity with GPUParticles2D, but lower performance when using large
@@ -201,7 +201,7 @@ at 2 frames per second. Note this does not slow down the particle system itself.
 
 .. note::
 
-    Godot 4.3 does not currently support physics interpolation for 2D particles.
+    redot 4.3 does not currently support physics interpolation for 2D particles.
     As a workaround, disable physics interpolation for the particles node by setting
     **Node > Physics Interpolation > Mode** at the bottom of the inspector.
 
@@ -223,7 +223,7 @@ The rectangle's ``W`` and ``H`` properties respectively control its Width and it
 The ``X`` and ``Y`` properties control the position of the upper-left
 corner of the rectangle, relative to the particle emitter.
 
-You can have Godot generate a Visibility Rect automatically using the toolbar above the 2d view. To do so, select the GPUParticles2D node and Click ``Particles > Generate Visibility Rect``. Godot will simulate the Particles2D node emitting particles for a few seconds and set the rectangle to fit the surface the particles take.
+You can have redot generate a Visibility Rect automatically using the toolbar above the 2d view. To do so, select the GPUParticles2D node and Click ``Particles > Generate Visibility Rect``. redot will simulate the Particles2D node emitting particles for a few seconds and set the rectangle to fit the surface the particles take.
 
 You can control the emit duration with the ``Generation Time (sec)`` option. The maximum value is 25 seconds. If you need more time for your particles to move around, you can temporarily change the ``preprocess`` duration on the Particles2D node.
 

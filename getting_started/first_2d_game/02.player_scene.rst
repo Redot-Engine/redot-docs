@@ -20,7 +20,7 @@ what the object *is*. Click the "Other Node" button and add an :ref:`Area2D
 
 .. image:: img/add_node.webp
 
-Godot will display a warning icon next to the node in the scene tree. You can
+redot will display a warning icon next to the node in the scene tree. You can
 ignore it for now. We will address it later.
 
 With ``Area2D`` we can detect objects that overlap or run into the player.
@@ -39,7 +39,7 @@ node is clicked in 2D and 3D view."
 Save the scene. Click Scene -> Save, or press :kbd:`Ctrl + S` on Windows/Linux
 or :kbd:`Cmd + S` on macOS.
 
-.. note:: For this project, we will be following the Godot naming conventions.
+.. note:: For this project, we will be following the redot naming conventions.
 
           - **GDScript**: Classes (nodes) use PascalCase, variables and
             functions use snake_case, and constants use ALL_CAPS (See

@@ -6,10 +6,10 @@ High-level multiplayer
 High-level vs low-level API
 ---------------------------
 
-The following explains the differences of high- and low-level networking in Godot as well as some fundamentals. If you want to jump in head-first and add networking to your first nodes, skip to `Initializing the network`_ below. But make sure to read the rest later on!
+The following explains the differences of high- and low-level networking in redot as well as some fundamentals. If you want to jump in head-first and add networking to your first nodes, skip to `Initializing the network`_ below. But make sure to read the rest later on!
 
-Godot always supported standard low-level networking via :abbr:`UDP (User Datagram Protocol)`, :abbr:`TCP (Transmission Control Protocol)` and some higher-level protocols such as :abbr:`HTTP (Hypertext Transfer Protocol)` and :abbr:`SSL (Secure Sockets Layer)`.
-These protocols are flexible and can be used for almost anything. However, using them to synchronize game state manually can be a large amount of work. Sometimes that work can't be avoided or is worth it, for example when working with a custom server implementation on the backend. But in most cases, it's worthwhile to consider Godot's high-level networking API, which sacrifices some of the fine-grained control of low-level networking for greater ease of use.
+redot always supported standard low-level networking via :abbr:`UDP (User Datagram Protocol)`, :abbr:`TCP (Transmission Control Protocol)` and some higher-level protocols such as :abbr:`HTTP (Hypertext Transfer Protocol)` and :abbr:`SSL (Secure Sockets Layer)`.
+These protocols are flexible and can be used for almost anything. However, using them to synchronize game state manually can be a large amount of work. Sometimes that work can't be avoided or is worth it, for example when working with a custom server implementation on the backend. But in most cases, it's worthwhile to consider redot's high-level networking API, which sacrifices some of the fine-grained control of low-level networking for greater ease of use.
 
 This is due to the inherent limitations of the low-level protocols:
 
@@ -21,11 +21,11 @@ This is due to the inherent limitations of the low-level protocols:
   larger packets means splitting them, reorganizing them and retrying if a part fails.
 
 In general, TCP can be thought of as reliable, ordered, and slow; UDP as unreliable, unordered and fast.
-Because of the large difference in performance, it often makes sense to re-build the parts of TCP wanted for games (optional reliability and packet order), while avoiding the unwanted parts (congestion/traffic control features, Nagle's algorithm, etc). Due to this, most game engines come with such an implementation, and Godot is no exception.
+Because of the large difference in performance, it often makes sense to re-build the parts of TCP wanted for games (optional reliability and packet order), while avoiding the unwanted parts (congestion/traffic control features, Nagle's algorithm, etc). Due to this, most game engines come with such an implementation, and redot is no exception.
 
 In summary, you can use the low-level networking API for maximum control and implement everything on top of bare network protocols or use the high-level API based on :ref:`SceneTree <class_SceneTree>` that does most of the heavy lifting behind the scenes in a generally optimized way.
 
-.. note:: Most of Godot's supported platforms offer all or most of the mentioned high- and low-level networking
+.. note:: Most of redot's supported platforms offer all or most of the mentioned high- and low-level networking
           features. As networking is always largely hardware and operating system dependent, however,
           some features may change or not be available on some target platforms. Most notably,
           the HTML5 platform currently offers WebSockets and WebRTC support but lacks some of the higher-level features, as
@@ -43,7 +43,7 @@ In summary, you can use the low-level networking API for maximum control and imp
              It may even allow an attacker to compromise the machines your application runs on
              and use your servers to send spam, attack others or steal your users' data if they play your game.
 
-             This is always the case when networking is involved and has nothing to do with Godot.
+             This is always the case when networking is involved and has nothing to do with redot.
              You can of course experiment, but when you release a networked application,
              always take care of any possible security concerns.
 
@@ -52,18 +52,18 @@ Mid-level abstraction
 
 Before going into how we would like to synchronize a game across the network, it can be helpful to understand how the base network API for synchronization works.
 
-Godot uses a mid-level object :ref:`MultiplayerPeer <class_MultiplayerPeer>`.
+redot uses a mid-level object :ref:`MultiplayerPeer <class_MultiplayerPeer>`.
 This object is not meant to be created directly, but is designed so that several C++ implementations can provide it.
 
 This object extends from :ref:`PacketPeer <class_PacketPeer>`, so it inherits all the useful methods for serializing, sending and receiving data. On top of that, it adds methods to set a peer, transfer mode, etc. It also includes signals that will let you know when peers connect or disconnect.
 
-This class interface can abstract most types of network layers, topologies and libraries. By default, Godot
+This class interface can abstract most types of network layers, topologies and libraries. By default, redot
 provides an implementation based on ENet (:ref:`ENetMultiplayerPeer <class_ENetMultiplayerPeer>`),
 one based on WebRTC (:ref:`WebRTCMultiplayerPeer <class_WebRTCMultiplayerPeer>`), and one based on WebSocket
 (:ref:`WebSocketPeer <class_WebSocketPeer>`), but this could be used to implement
 mobile APIs (for ad hoc WiFi, Bluetooth) or custom device/console-specific networking APIs.
 
-For most common cases, using this object directly is discouraged, as Godot provides even higher level networking facilities.
+For most common cases, using this object directly is discouraged, as redot provides even higher level networking facilities.
 This object is still made available in case a game has specific needs for a lower-level API.
 
 Hosting considerations
@@ -82,7 +82,7 @@ If you're hosting a server on your own machine and want non-LAN clients to
 connect to it, you'll probably have to *forward* the server port on your router.
 This is required to make your server reachable from the Internet since most
 residential connections use a `NAT
-<https://en.wikipedia.org/wiki/Network_address_translation>`__. Godot's
+<https://en.wikipedia.org/wiki/Network_address_translation>`__. redot's
 high-level multiplayer API only uses UDP, so you must forward the port in UDP,
 not just TCP.
 
@@ -91,13 +91,13 @@ use `this website <https://icanhazip.com/>`__ to find your public IP address.
 Then give this public IP address to any Internet clients that wish to connect to
 your server.
 
-Godot's high-level multiplayer API uses a modified version of ENet which allows
+redot's high-level multiplayer API uses a modified version of ENet which allows
 for full IPv6 support.
 
 Initializing the network
 ------------------------
 
-High level networking in Godot is managed by the :ref:`SceneTree <class_SceneTree>`.
+High level networking in redot is managed by the :ref:`SceneTree <class_SceneTree>`.
 
 Each node has a ``multiplayer`` property, which is a reference to the ``MultiplayerAPI`` instance configured for it
 by the scene tree. Initially, every node is configured with the same default ``MultiplayerAPI`` object.
@@ -105,7 +105,7 @@ by the scene tree. Initially, every node is configured with the same default ``M
 It is possible to create a new ``MultiplayerAPI`` object and assign it to a ``NodePath`` in the the scene tree,
 which will override ``multiplayer`` for the node at that path and all of its descendants.
 This allows sibling nodes to be configured with different peers, which makes it possible to run a server
-and a client simultaneously in one instance of Godot.
+and a client simultaneously in one instance of redot.
 
 .. tabs::
  .. code-tab:: gdscript GDScript
@@ -265,7 +265,7 @@ must have the same name. When using ``add_child()`` for nodes which are expected
     error or cause unwanted behavior. The error message may be unrelated to the RPC function you are
     currently building and testing.
 
-    See further explanation and troubleshooting on `this post <https://github.com/godotengine/godot/issues/57869#issuecomment-1034215138>`__.
+    See further explanation and troubleshooting on `this post <https://github.com/redotengine/redot/issues/57869#issuecomment-1034215138>`__.
 
 The annotation can take a number of arguments, which have default values. ``@rpc`` is equivalent to:
 
@@ -467,7 +467,7 @@ have loaded the game scene.
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Lobby : Node
     {
@@ -475,7 +475,7 @@ have loaded the game scene.
 
         // These signals can be connected to by a UI lobby scene or the game scene.
         [Signal]
-        public delegate void PlayerConnectedEventHandler(int peerId, Godot.Collections.Dictionary<string, string> playerInfo);
+        public delegate void PlayerConnectedEventHandler(int peerId, redot.Collections.Dictionary<string, string> playerInfo);
         [Signal]
         public delegate void PlayerDisconnectedEventHandler(int peerId);
         [Signal]
@@ -487,13 +487,13 @@ have loaded the game scene.
 
         // This will contain player info for every player,
         // with the keys being each player's unique IDs.
-        private Godot.Collections.Dictionary<long, Godot.Collections.Dictionary<string, string>> _players = new Godot.Collections.Dictionary<long, Godot.Collections.Dictionary<string, string>>();
+        private redot.Collections.Dictionary<long, redot.Collections.Dictionary<string, string>> _players = new redot.Collections.Dictionary<long, redot.Collections.Dictionary<string, string>>();
 
         // This is the local player info. This should be modified locally
         // before the connection is made. It will be passed to every other peer.
         // For example, the value of "name" can be set to something the player
         // entered in a UI scene.
-        private Godot.Collections.Dictionary<string, string> _playerInfo = new Godot.Collections.Dictionary<string, string>()
+        private redot.Collections.Dictionary<string, string> _playerInfo = new redot.Collections.Dictionary<string, string>()
         {
             { "Name", "PlayerName" },
         };
@@ -581,7 +581,7 @@ have loaded the game scene.
         }
 
         [Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-        private void RegisterPlayer(Godot.Collections.Dictionary<string, string> newPlayerInfo)
+        private void RegisterPlayer(redot.Collections.Dictionary<string, string> newPlayerInfo)
         {
             int newPlayerId = Multiplayer.GetRemoteSenderId();
             _players[newPlayerId] = newPlayerInfo;
@@ -635,7 +635,7 @@ The game scene's root node should be named Game. In the script attached to it:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Game : Node3D // Or Node2D.
     {

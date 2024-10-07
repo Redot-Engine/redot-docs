@@ -126,7 +126,7 @@ existing color code in the shader with the following:
 .. image:: img/planet_sincos.webp
 
 Not too bad. If you look around, you can see that the seam has now disappeared, but in its place, we
-have pinching at the poles. This pinching is due to the way Godot maps textures to spheres in its
+have pinching at the poles. This pinching is due to the way redot maps textures to spheres in its
 :ref:`StandardMaterial3D <class_StandardMaterial3D>`. It uses a projection technique called equirectangular
 projection, which translates a spherical map onto a 2D plane.
 

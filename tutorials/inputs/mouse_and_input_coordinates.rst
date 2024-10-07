@@ -20,7 +20,7 @@ not make as much sense outside of that scope.
 Viewport display coordinates
 ----------------------------
 
-Godot uses viewports to display content, and viewports can be scaled by
+redot uses viewports to display content, and viewports can be scaled by
 several options (see :ref:`doc_multiple_resolutions` tutorial). Use, then, the
 functions in nodes to obtain the mouse coordinates and viewport size,
 for example:

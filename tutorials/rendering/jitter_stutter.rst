@@ -43,12 +43,12 @@ monitor refresh rate. Check whether your monitor refresh rate is different from
 60 Hz.
 
 This is generally not a problem, given that most monitors are 60 Hz, and
-starting with Godot 3.1, a frame timer was introduced that tries to synchronize
+starting with redot 3.1, a frame timer was introduced that tries to synchronize
 with refresh as well as possible.
 
 Sometimes only some objects appear to jitter (character or background). This
 happens when they are processed in different time sources (one is processed in
-the physics step while another is processed in the idle step). Godot 3.1 does
+the physics step while another is processed in the idle step). redot 3.1 does
 some improvements to this, from allowing kinematic bodies to be animated in the
 regular ``_process()`` loop, to further fixes in the frame timer.
 
@@ -79,7 +79,7 @@ Windows
 Windows is known to cause stutter in windowed games. This mostly depends on the
 hardware installed, drivers version and processes running in parallel (e.g.
 having many browser tabs open may cause stutter in a running game). To avoid
-this, starting with 3.1, Godot raises the game priority to "Above Normal". This
+this, starting with 3.1, redot raises the game priority to "Above Normal". This
 helps considerably but may not completely eliminate stutter.
 
 Eliminating this completely requires giving your game full privileges to become
@@ -160,7 +160,7 @@ to make V-Sync available as an option for players to toggle.
 
 When using the Forward+ or Mobile rendering methods, another way to reduce
 visual latency when V-Sync is enabled is to use double-buffered V-Sync instead
-of the default triple-buffered V-Sync. Since Godot 4.3, this can be achieved by
+of the default triple-buffered V-Sync. Since redot 4.3, this can be achieved by
 reducing the **Display > Window > V-Sync > Swapchain Image Count** project
 setting to ``2``.  The downside of using double buffering is that framerate will
 be less stable if the display refresh rate can't be reached due to a CPU or GPU
@@ -200,9 +200,9 @@ done with caution.
 
 .. tip::
 
-    On any Godot project, you can use the ``--disable-vsync``
+    On any redot project, you can use the ``--disable-vsync``
     :ref:`command line argument <doc_command_line_tutorial>` to forcibly disable V-Sync.
-    Since Godot 4.2, ``--max-fps <fps>`` can also be used to set a FPS limit
+    Since redot 4.2, ``--max-fps <fps>`` can also be used to set a FPS limit
     (``0`` is unlimited). These arguments can be used at the same time.
 
 Hardware/OS-specific

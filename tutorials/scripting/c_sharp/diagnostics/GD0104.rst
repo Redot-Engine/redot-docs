@@ -19,7 +19,7 @@ can't be exported.
 Rule description
 ----------------
 
-Godot doesn't allow exporting write-only properties.
+redot doesn't allow exporting write-only properties.
 
 .. code-block:: csharp
 
@@ -43,4 +43,4 @@ When to suppress warnings
 -------------------------
 
 Do not suppress a warning from this rule. Write-only members can't be exported so
-they will be ignored by Godot, resulting in runtime errors.
+they will be ignored by redot, resulting in runtime errors.

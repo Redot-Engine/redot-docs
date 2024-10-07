@@ -8,9 +8,9 @@ When working with a physics engine, you may encounter unexpected results.
 While many of these issues can be resolved through configuration, some of them
 are the result of engine bugs. For known issues related to the physics engine,
 see
-`open physics-related issues on GitHub <https://github.com/godotengine/godot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Aphysics>`__.
+`open physics-related issues on GitHub <https://github.com/redotengine/redot/issues?q=is%3Aopen+is%3Aissue+label%3Atopic%3Aphysics>`__.
 Looking through `closed issues
-<https://github.com/godotengine/godot/issues?q=+is%3Aclosed+is%3Aissue+label%3Atopic%3Aphysics>`__
+<https://github.com/redotengine/redot/issues?q=+is%3Aclosed+is%3Aissue+label%3Atopic%3Aphysics>`__
 can also help answer questions related to physics engine behavior.
 
 Objects are passing through each other at high speeds
@@ -52,7 +52,7 @@ should be preferred for a smooth appearance on most displays.
 Scaled physics bodies or collision shapes do not collide correctly
 ------------------------------------------------------------------
 
-Godot does not currently support scaling of physics bodies or collision shapes.
+redot does not currently support scaling of physics bodies or collision shapes.
 As a workaround, change the collision shape's extents instead of changing its
 scale. If you want the visual representation's scale to change as well, change
 the scale of the underlying visual representation (Sprite2D, MeshInstance3D, …)
@@ -92,7 +92,7 @@ displays.
 Cylinder collision shapes are unstable
 --------------------------------------
 
-During the transition from Bullet to GodotPhysics in Godot 4, cylinder collision
+During the transition from Bullet to redotPhysics in redot 4, cylinder collision
 shapes had to be reimplemented from scratch. However, cylinder collision shapes
 are one of the most difficult shapes to support, which is why many other physics
 engines don't provide any support for them. There are several known bugs with
@@ -143,7 +143,7 @@ Framerate drops when an object touches another object
 
 This is likely due to one of the objects using a collision shape that is too
 complex. Convex collision shapes should use a number of shapes as low as
-possible for performance reasons. When relying on Godot's automatic generation,
+possible for performance reasons. When relying on redot's automatic generation,
 it's possible that you ended up with dozens if not hundreds of shapes created
 for a single convex shape collision resource.
 

@@ -1,6 +1,6 @@
-.. _doc_upgrading_to_godot_4.1:
+.. _doc_upgrading_to_redot_4.1:
 
-Upgrading from Godot 4.0 to Godot 4.1
+Upgrading from redot 4.0 to redot 4.1
 =====================================
 
 For most games and apps made with 4.0, it should be relatively safe to migrate to 4.1.
@@ -16,7 +16,7 @@ affect you. Changes are grouped by areas/systems.
 .. warning::
 
     The GDExtension API completely breaks compatibility in 4.1, so it's not included
-    in the table below. See the :ref:`updating_your_gdextension_for_godot_4_1` section
+    in the table below. See the :ref:`updating_your_gdextension_for_redot_4_1` section
     for more information.
 
 This article indicates whether each breaking change affects GDScript and whether
@@ -25,7 +25,7 @@ the C# breaking change is *binary compatible* or *source compatible*:
 - **Binary compatible** - Existing binaries will load and execute successfully without
   recompilation, and the run-time behavior won't change.
 - **Source compatible** - Source code will compile successfully without changes when
-  upgrading Godot.
+  upgrading redot.
 
 Core
 ^^^^
@@ -212,51 +212,51 @@ Multiple layered ``SubViewportContainer`` nodes, that should all receive mouse i
 .. |✔️| replace:: :abbr:`✔️ (This API does not break compatibility.)`
 .. |✔️ with compat| replace:: :abbr:`✔️ (This API does not break compatibility. A compatibility method was added.)`
 
-.. _GH-57894: https://github.com/godotengine/godot/pull/57894
-.. _GH-64628: https://github.com/godotengine/godot/pull/64628
-.. _GH-69988: https://github.com/godotengine/godot/pull/69988
-.. _GH-72152: https://github.com/godotengine/godot/pull/72152
-.. _GH-72749: https://github.com/godotengine/godot/pull/72749
-.. _GH-72842: https://github.com/godotengine/godot/pull/72842
-.. _GH-75017: https://github.com/godotengine/godot/pull/75017
-.. _GH-75250: https://github.com/godotengine/godot/pull/75250
-.. _GH-75260: https://github.com/godotengine/godot/pull/75260
-.. _GH-75746: https://github.com/godotengine/godot/pull/75746
-.. _GH-75759: https://github.com/godotengine/godot/pull/75759
-.. _GH-76082: https://github.com/godotengine/godot/pull/76082
-.. _GH-76176: https://github.com/godotengine/godot/pull/76176
-.. _GH-76401: https://github.com/godotengine/godot/pull/76401
-.. _GH-76413: https://github.com/godotengine/godot/pull/76413
-.. _GH-76418: https://github.com/godotengine/godot/pull/76418
-.. _GH-76688: https://github.com/godotengine/godot/pull/76688
-.. _GH-76794: https://github.com/godotengine/godot/pull/76794
-.. _GH-77143: https://github.com/godotengine/godot/pull/77143
-.. _GH-77595: https://github.com/godotengine/godot/pull/77595
-.. _GH-78237: https://github.com/godotengine/godot/pull/78237
-.. _GH-79128: https://github.com/godotengine/godot/issues/79128
-.. _GH-79271: https://github.com/godotengine/godot/issues/79271
-.. _GH-79897: https://github.com/godotengine/godot/issues/79897
+.. _GH-57894: https://github.com/redotengine/redot/pull/57894
+.. _GH-64628: https://github.com/redotengine/redot/pull/64628
+.. _GH-69988: https://github.com/redotengine/redot/pull/69988
+.. _GH-72152: https://github.com/redotengine/redot/pull/72152
+.. _GH-72749: https://github.com/redotengine/redot/pull/72749
+.. _GH-72842: https://github.com/redotengine/redot/pull/72842
+.. _GH-75017: https://github.com/redotengine/redot/pull/75017
+.. _GH-75250: https://github.com/redotengine/redot/pull/75250
+.. _GH-75260: https://github.com/redotengine/redot/pull/75260
+.. _GH-75746: https://github.com/redotengine/redot/pull/75746
+.. _GH-75759: https://github.com/redotengine/redot/pull/75759
+.. _GH-76082: https://github.com/redotengine/redot/pull/76082
+.. _GH-76176: https://github.com/redotengine/redot/pull/76176
+.. _GH-76401: https://github.com/redotengine/redot/pull/76401
+.. _GH-76413: https://github.com/redotengine/redot/pull/76413
+.. _GH-76418: https://github.com/redotengine/redot/pull/76418
+.. _GH-76688: https://github.com/redotengine/redot/pull/76688
+.. _GH-76794: https://github.com/redotengine/redot/pull/76794
+.. _GH-77143: https://github.com/redotengine/redot/pull/77143
+.. _GH-77595: https://github.com/redotengine/redot/pull/77595
+.. _GH-78237: https://github.com/redotengine/redot/pull/78237
+.. _GH-79128: https://github.com/redotengine/redot/issues/79128
+.. _GH-79271: https://github.com/redotengine/redot/issues/79271
+.. _GH-79897: https://github.com/redotengine/redot/issues/79897
 
-.. _updating_your_gdextension_for_godot_4_1:
+.. _updating_your_gdextension_for_redot_4_1:
 
 Updating your GDExtension for 4.1
 ---------------------------------
 
 GDExtension is still in beta. Until it's marked as stable, compatibility may break when
-upgrading to a new minor version of Godot.
+upgrading to a new minor version of redot.
 
-In order to fix a serious bug, in Godot 4.1 we had to break binary compatibility in a big
+In order to fix a serious bug, in redot 4.1 we had to break binary compatibility in a big
 way and source compatibility in a small way.
 
-This means that GDExtensions made for Godot 4.0 will need to be recompiled for Godot 4.1
-(using the  ``4.1`` branch of godot-cpp), with a small change to their source code.
+This means that GDExtensions made for redot 4.0 will need to be recompiled for redot 4.1
+(using the  ``4.1`` branch of redot-cpp), with a small change to their source code.
 
-In Godot 4.0, your "entry_symbol" function looks something like this:
+In redot 4.0, your "entry_symbol" function looks something like this:
 
 .. code-block:: cpp
 
   GDExtensionBool GDE_EXPORT example_library_init(const GDExtensionInterface *p_interface, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
-      godot::GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
+      redot::GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
 
       init_obj.register_initializer(initialize_example_module);
       init_obj.register_terminator(uninitialize_example_module);
@@ -265,12 +265,12 @@ In Godot 4.0, your "entry_symbol" function looks something like this:
       return init_obj.init();
   }
 
-However, for Godot 4.1, it should look like:
+However, for redot 4.1, it should look like:
 
 .. code-block:: cpp
 
   GDExtensionBool GDE_EXPORT example_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
-      godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
+      redot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
 
       init_obj.register_initializer(initialize_example_module);
       init_obj.register_terminator(uninitialize_example_module);
@@ -291,4 +291,4 @@ You also need to add an extra ``compatibility_minimum`` line to your ``.gdextens
   entry_symbol = "example_library_init"
   compatibility_minimum = 4.1
 
-This lets Godot know that your GDExtension has been updated and is safe to load in Godot 4.1.
+This lets redot know that your GDExtension has been updated and is safe to load in redot 4.1.

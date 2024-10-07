@@ -6,12 +6,12 @@ Custom post-processing
 Introduction
 ------------
 
-Godot provides many post-processing effects out of the box, including Bloom,
+redot provides many post-processing effects out of the box, including Bloom,
 DOF, and SSAO, which are described in :ref:`doc_environment_and_post_processing`.
 However, advanced use cases may require custom effects. This article explains how
 to write your own custom effects.
 
-The easiest way to implement a custom post-processing shader is to use Godot's
+The easiest way to implement a custom post-processing shader is to use redot's
 built-in ability to read from the screen texture. If you're not familiar with
 this, you should read the
 :ref:`Screen Reading Shaders Tutorial <doc_screen-reading_shaders>` first.
@@ -19,7 +19,7 @@ this, you should read the
 Single pass post-processing
 ---------------------------
 
-Post-processing effects are shaders applied to a frame after Godot has rendered
+Post-processing effects are shaders applied to a frame after redot has rendered
 it. To apply a shader to a frame, create a :ref:`CanvasLayer
 <class_CanvasLayer>`, and give it a :ref:`ColorRect <class_ColorRect>`. Assign a
 new :ref:`ShaderMaterial <class_ShaderMaterial>` to the newly created
@@ -38,11 +38,11 @@ Your scene tree will look something like this:
 
 .. note::
 
-    As of the time of writing, Godot does not support rendering to multiple
+    As of the time of writing, redot does not support rendering to multiple
     buffers at the same time. Your post-processing shader will not have access
-    to other render passes and buffers not exposed by Godot (such as depth or
+    to other render passes and buffers not exposed by redot (such as depth or
     normal/roughness). You only have access to the rendered frame and buffers
-    exposed by Godot as samplers.
+    exposed by redot as samplers.
 
 For this demo, we will use this :ref:`Sprite <class_Sprite2D>` of a sheep.
 

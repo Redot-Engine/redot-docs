@@ -19,5 +19,5 @@ it takes a relatively long time.
     incorrect shape keys exported, try to disable :code:`Apply Modifiers`
     and do the exporting again. Besides, it is worthwhile to report the
     incompatible modifier to the `issue list
-    <https://github.com/godotengine/godot-blender-exporter/issues>`__,
+    <https://github.com/redotengine/redot-blender-exporter/issues>`__,
     which helps to develop the exporter to have a more precise check of modifiers.

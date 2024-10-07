@@ -6,10 +6,10 @@ GDScript reference
 :ref:`GDScript<doc_gdscript>` is a high-level, `object-oriented
 <https://en.wikipedia.org/wiki/Object-oriented_programming>`_, `imperative
 <https://en.wikipedia.org/wiki/Imperative_programming>`_, and `gradually typed
-<https://en.wikipedia.org/wiki/Gradual_typing>`_ programming language built for Godot.
+<https://en.wikipedia.org/wiki/Gradual_typing>`_ programming language built for redot.
 It uses an indentation-based syntax similar to languages like
 `Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_.
-Its goal is to be optimized for and tightly integrated with Godot Engine,
+Its goal is to be optimized for and tightly integrated with redot Engine,
 allowing great flexibility for content creation and integration.
 
 GDScript is entirely independent from Python and is not based on it.
@@ -147,7 +147,7 @@ keywords are reserved words (tokens), they can't be used as identifiers.
 Operators (like ``in``, ``not``, ``and`` or ``or``) and names of built-in types
 as listed in the following sections are also reserved.
 
-Keywords are defined in the `GDScript tokenizer <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_
+Keywords are defined in the `GDScript tokenizer <https://github.com/redotengine/redot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_
 in case you want to take a look under the hood.
 
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -455,7 +455,7 @@ Annotations
 ~~~~~~~~~~~
 
 Annotations are special tokens in GDScript that act as modifiers to a script or
-its code and may affect how the script is treated by the Godot engine or
+its code and may affect how the script is treated by the redot engine or
 editor.
 
 Every annotation starts with the ``@`` character and is specified by a name. A
@@ -549,7 +549,7 @@ considered a comment.
 
 .. tip::
 
-    In the Godot script editor, special keywords are highlighted within comments
+    In the redot script editor, special keywords are highlighted within comments
     to bring the user's attention to specific comments:
 
     - **Critical** *(appears in red)*: ``ALERT``, ``ATTENTION``, ``CAUTION``,
@@ -834,7 +834,7 @@ Negative indices count from the end.
 Typed arrays
 ^^^^^^^^^^^^
 
-Godot 4.0 added support for typed arrays. On write operations, Godot checks that
+redot 4.0 added support for typed arrays. On write operations, redot checks that
 element values match the specified type, so the array cannot contain invalid values.
 The GDScript static analyzer takes typed arrays into account, however array methods like
 ``front()`` and ``back()`` still have the ``Variant`` return type.
@@ -934,7 +934,7 @@ assign to it::
     var d = {} # Create an empty Dictionary.
     d.waiting = 14 # Add String "waiting" as a key and assign the value 14 to it.
     d[4] = "hello" # Add integer 4 as a key and assign the String "hello" as its value.
-    d["Godot"] = 3.01 # Add String "Godot" as a key and assign the value 3.01 to it.
+    d["redot"] = 3.01 # Add String "redot" as a key and assign the value 3.01 to it.
 
     var test = 4
     # Prints "hello" by indexing the dictionary with a dynamic key.
@@ -1683,7 +1683,7 @@ If a pattern matches, the first corresponding block will be executed. After that
 
 .. note::
 
-    The special ``continue`` behavior in ``match`` supported in 3.x was removed in Godot 4.0.
+    The special ``continue`` behavior in ``match`` supported in 3.x was removed in redot 4.0.
 
 The following pattern types are available:
 
@@ -1779,7 +1779,7 @@ The following pattern types are available:
                 print("Dennis is ", age, " years old.")
             {"name", "age"}:
                 print("Has a name and an age, but it's not Dennis :(")
-            {"key": "godotisawesome", ..}:
+            {"key": "redotisawesome", ..}:
                 print("I only checked for one entry and ignored the rest")
 
 - Multiple patterns
@@ -1846,7 +1846,7 @@ path. For example, if you name a script file ``character.gd``::
 Registering named classes
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can give your class a name to register it as a new type in Godot's
+You can give your class a name to register it as a new type in redot's
 editor. For that, you use the ``class_name`` keyword. You can optionally use
 the ``@icon`` annotation with a path to an image, to use it as an icon. Your
 class will then appear with its new icon in the editor::
@@ -1865,7 +1865,7 @@ class will then appear with its new icon in the editor::
     **Editor > Scale With Editor Scale** and **Editor > Convert Icons With Editor Theme**
     :ref:`import options <doc_importing_images_editor_import_options>` enabled. This allows
     icons to follow the editor's scale and theming settings if the icons are designed with
-    the same color palette as Godot's own icons.
+    the same color palette as redot's own icons.
 
 Here's a class file example:
 
@@ -1894,17 +1894,17 @@ If you want to use ``extends`` too, you can keep both on the same line::
 
 .. note::
 
-    Godot initializes non-static variables every time you create an instance,
+    redot initializes non-static variables every time you create an instance,
     and this includes arrays and dictionaries. This is in the spirit of thread safety,
     since scripts can be initialized in separate threads without the user knowing.
 
 .. warning::
 
-    The Godot editor will hide these custom classes with names that begin with the prefix
+    The redot editor will hide these custom classes with names that begin with the prefix
     "Editor" in the 'Create New Node' or 'Create New Scene' dialog windows. The classes
     are available for instantiation at runtime via their class names, but are
     automatically hidden by the editor windows along with the built-in editor nodes used
-    by the Godot editor.
+    by the redot editor.
 
 Inheritance
 ^^^^^^^^^^^
@@ -1971,10 +1971,10 @@ the function name with the attribute operator::
     One of the common misconceptions is trying to override *non-virtual* engine methods
     such as ``get_class()``, ``queue_free()``, etc. This is not supported for technical reasons.
 
-    In Godot 3, you can *shadow* engine methods in GDScript, and it will work if you call this method in GDScript.
+    In redot 3, you can *shadow* engine methods in GDScript, and it will work if you call this method in GDScript.
     However, the engine will **not** execute your code if the method is called inside the engine on some event.
 
-    In Godot 4, even shadowing may not always work, as GDScript optimizes native method calls.
+    In redot 4, even shadowing may not always work, as GDScript optimizes native method calls.
     Therefore, we added the ``NATIVE_METHOD_OVERRIDE`` warning, which is treated as an error by default.
     We strongly advise against disabling or ignoring the warning.
 
@@ -2129,7 +2129,7 @@ Example::
 
 .. note::
 
-    Unlike ``setget`` in previous Godot versions, ``set`` and ``get`` methods are **always** called (except as noted below),
+    Unlike ``setget`` in previous redot versions, ``set`` and ``get`` methods are **always** called (except as noted below),
     even when accessed inside the same class (with or without prefixing with ``self.``). This makes the behavior
     consistent. If you need direct access to the value, use another variable for direct access and make the property
     code use that name.
@@ -2221,7 +2221,7 @@ See :ref:`doc_running_code_in_the_editor` for more information.
 Memory management
 ~~~~~~~~~~~~~~~~~
 
-Godot implements reference counting to free certain instances that are no longer
+redot implements reference counting to free certain instances that are no longer
 used, instead of a garbage collector, or requiring purely manual management.
 Any instance of the :ref:`class_RefCounted` class (or any class that inherits
 it, such as :ref:`class_Resource`) will be freed automatically when no longer
@@ -2374,7 +2374,7 @@ definition::
     # Defining a signal that forwards two arguments.
     signal health_changed(old_value, new_value)
 
-These arguments show up in the editor's node dock, and Godot can use them to
+These arguments show up in the editor's node dock, and redot can use them to
 generate callback functions for you. However, you can still emit any number of
 arguments when you emit signals; it's up to you to emit the correct values.
 
@@ -2472,7 +2472,7 @@ This also means that returning a signal from a function that isn't a coroutine w
         await get_signal()
         print("Button was pressed")
 
-.. note:: Unlike ``yield`` in previous Godot versions, you cannot obtain the function state object.
+.. note:: Unlike ``yield`` in previous redot versions, you cannot obtain the function state object.
           This is done to ensure type safety.
           With this type safety in place, a function cannot say that it returns an ``int`` while it actually returns a function state object
           during runtime.

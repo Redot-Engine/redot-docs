@@ -10,7 +10,7 @@ Exporting projects
 Why export?
 -----------
 
-Originally, Godot did not have any means to export projects. The
+Originally, redot did not have any means to export projects. The
 developers would compile the proper binaries and build the packages for
 each platform manually.
 
@@ -21,8 +21,8 @@ became evident that this was a bottleneck.
 On PC
 ~~~~~
 
-Distributing a game project on PC with Godot is rather easy. Drop
-the Godot binary in the same directory as the ``project.godot`` file,
+Distributing a game project on PC with redot is rather easy. Drop
+the redot binary in the same directory as the ``project.redot`` file,
 then compress the project directory and you are done.
 
 It sounds simple, but there are probably a few reasons why the developer
@@ -33,7 +33,7 @@ Another reason is that the developer might prefer a specially-compiled
 binary, which is smaller in size, more optimized and does not include
 tools like the editor and debugger.
 
-Finally, Godot has a simple but efficient system for
+Finally, redot has a simple but efficient system for
 :ref:`creating DLCs as extra package files <doc_exporting_pcks>`.
 
 On mobile
@@ -79,7 +79,7 @@ to choose from for an export preset.
 
 The default options are often enough to export, so tweaking them is
 usually not necessary. However, many platforms require additional
-tools (SDKs) to be installed to be able to export. Additionally, Godot
+tools (SDKs) to be installed to be able to export. Additionally, redot
 needs export templates installed to create packages. The export menu
 will complain when something is missing and will not allow the user to
 export for that platform until they resolve it:
@@ -92,13 +92,13 @@ instructions on how to properly set up that platform.
 The buttons at the bottom of the menu allow you to export the project in a few
 different ways:
 
-- Export All: Export the project as a playable build (Godot executable and project data)
+- Export All: Export the project as a playable build (redot executable and project data)
   for all the presets defined. All presets must have an **Export Path** defined for this
   to work.
 - Export Project: Export the project as a playable build
-  (Godot executable and project data) for the selected preset.
+  (redot executable and project data) for the selected preset.
 - Export PCK/ZIP: Export the project resources as a PCK or ZIP package.
-  This is not a playable build, it only exports the project data without a Godot executable.
+  This is not a playable build, it only exports the project data without a redot executable.
 
 Export templates
 ~~~~~~~~~~~~~~~~
@@ -106,7 +106,7 @@ Export templates
 Apart from setting up the platform, the export templates must be
 installed to be able to export projects. They can be obtained as a
 TPZ file (which is a renamed ZIP archive) from the
-`download page of the website <https://www.godotengine.org/download>`_.
+`download page of the website <https://www.redotengine.org/download>`_.
 
 Once downloaded, they can be installed using the **Install Export Templates**
 option in the editor:
@@ -118,7 +118,7 @@ option in the editor:
 Resource options
 ~~~~~~~~~~~~~~~~
 
-When exporting, Godot makes a list of all the files to export and then
+When exporting, redot makes a list of all the files to export and then
 creates the package. There are 3 different modes for exporting:
 
 -  Export all resources in the project
@@ -154,7 +154,7 @@ directory:
 - ``export_presets.cfg``: This file contains the vast majority of the export
   configuration and can be safely committed to version control. There is nothing
   in here that you would normally have to keep secret.
-- ``.godot/export_credentials.cfg``: This file contains export options that are
+- ``.redot/export_credentials.cfg``: This file contains export options that are
   considered confidential, like passwords and encryption keys. It should generally
   **not** be committed to version control or shared with others unless you know
   exactly what you are doing.
@@ -166,14 +166,14 @@ way to deal with this is to copy the file manually from the old location to the 
 Exporting from the command line
 -------------------------------
 
-In production, it is useful to automate builds, and Godot supports this
+In production, it is useful to automate builds, and redot supports this
 with the ``--export-release`` and ``--export-debug`` command line parameters.
 Exporting from the command line still requires an export preset to define
 the export parameters. A basic invocation of the command would be:
 
 .. code-block:: shell
 
-    godot --export-release "Windows Desktop" some_name.exe
+    redot --export-release "Windows Desktop" some_name.exe
 
 This will export to ``some_name.exe``, assuming there is a preset
 called "Windows Desktop" and the template can be found. (The export preset name
@@ -181,7 +181,7 @@ must be written within quotes if it contains spaces or special characters.)
 The output path is *relative to the project path* or *absolute*;
 **it does not respect the directory the command was invoked from**.
 
-The output file extension should match the one used by the Godot export process:
+The output file extension should match the one used by the redot export process:
 
 - Windows: ``.exe``
 - macOS: ``.zip`` (from all platforms) or ``.dmg`` (only when exporting *from* macOS).
@@ -192,12 +192,12 @@ The output file extension should match the one used by the Godot export process:
 - iOS: ``.zip``
 
 You can also configure it to export *only* the PCK or ZIP file, allowing
-a single exported main pack file to be used with multiple Godot executables.
+a single exported main pack file to be used with multiple redot executables.
 When doing so, the export preset name must still be specified on the command line:
 
 .. code-block:: shell
 
-    godot --export-pack "Windows Desktop" some_name.pck
+    redot --export-pack "Windows Desktop" some_name.pck
 
 It is often useful to combine the ``--export-release`` flag with the ``--path``
 flag, so that you do not need to ``cd`` to the project folder before running
@@ -205,11 +205,11 @@ the command:
 
 .. code-block:: shell
 
-    godot --path /path/to/project --export-release "Windows Desktop" some_name.exe
+    redot --path /path/to/project --export-release "Windows Desktop" some_name.exe
 
 .. seealso::
 
-    See :ref:`doc_command_line_tutorial` for more information about using Godot
+    See :ref:`doc_command_line_tutorial` for more information about using redot
     from the command line.
 
 PCK versus ZIP pack file formats
@@ -224,7 +224,7 @@ depending on your needs.
 - Uncompressed format. Larger file size, but faster to read/write.
 - Not readable and writable using tools normally present on the user's
   operating system, even though there are
-  `third-party tools <https://github.com/hhyyrylainen/GodotPckTool>`__
+  `third-party tools <https://github.com/hhyyrylainen/redotPckTool>`__
   to extract and create PCK files.
 
 **ZIP format:**
@@ -235,7 +235,7 @@ depending on your needs.
 
 .. warning::
 
-    Due to a `known bug <https://github.com/godotengine/godot/pull/42123>`__,
+    Due to a `known bug <https://github.com/redotengine/redot/pull/42123>`__,
     when using a ZIP file as a pack file, the exported binary will not try to use
     it automatically. Therefore, you have to create a *launcher script* that
     the player can double-click or run from a terminal to launch the project::

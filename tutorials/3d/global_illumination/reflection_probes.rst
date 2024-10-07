@@ -19,14 +19,14 @@ low-end alternative to VoxelGI and SDFGI when :ref:`baked lightmaps
 <doc_using_lightmap_gi>` aren't viable (e.g. in procedurally generated levels).
 
 Reflection probes can also be used at the same time as screen-space reflections
-to provide reflections for off-screen objects. In this case, Godot will blend
+to provide reflections for off-screen objects. In this case, redot will blend
 together the screen-space reflections and reflections from reflection probes.
 
 .. seealso::
 
     Not sure if ReflectionProbe is suited to your needs?
     See :ref:`doc_introduction_to_global_illumination_comparison`
-    for a comparison of GI techniques available in Godot 4.
+    for a comparison of GI techniques available in redot 4.
 
 Visual comparison
 -----------------
@@ -163,7 +163,7 @@ rendered by the ReflectionProbe:
 ReflectionProbe blending
 ------------------------
 
-To make transitions between reflection sources smoother, Godot supports automatic
+To make transitions between reflection sources smoother, redot supports automatic
 probe blending:
 
 - Up to 4 ReflectionProbes can be blended together at a given location.
@@ -182,7 +182,7 @@ as little possible with other reflection probes to improve rendering performance
 Limitations
 -----------
 
-When using the Forward+ renderer, Godot uses a *clustering* approach for
+When using the Forward+ renderer, redot uses a *clustering* approach for
 reflection probe rendering. As many reflection probes as desired can be added (as long as
 performance allows). However, there's still a default limit of 512 *clustered
 elements* that can be present in the current camera view. A clustered element is

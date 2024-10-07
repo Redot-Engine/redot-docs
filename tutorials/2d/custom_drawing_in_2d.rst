@@ -6,7 +6,7 @@ Custom drawing in 2D
 Introduction
 ------------
 
-Godot has nodes to draw sprites, polygons, particles, text, and many other
+redot has nodes to draw sprites, polygons, particles, text, and many other
 common game development needs. However, if you need something specific
 not covered with the standard nodes you can make any 2D node (for example,
 :ref:`Control <class_Control>` or :ref:`Node2D <class_Node2D>`-based)
@@ -41,7 +41,7 @@ derived node, like :ref:`Control <class_Control>` or
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -86,7 +86,7 @@ of the texture when modified:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -113,7 +113,7 @@ of the texture when modified:
         }
     }
 
-To see it in action, you can set the texture to be the Godot icon on the
+To see it in action, you can set the texture to be the redot icon on the
 editor by dragging and dropping the default ``icon.svg`` from the
 ``FileSystem`` tab to the Texture property on the ``Inspector`` tab.
 When changing the ``Texture`` property value while the previous script is
@@ -136,7 +136,7 @@ from the :ref:`_process <class_Node_private_method__process>` method, like this:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -212,7 +212,7 @@ method with ``filled = false``.
 Antialiased drawing
 -------------------
 
-Godot offers method parameters in :ref:`draw_line<class_CanvasItem_method_draw_line>`
+redot offers method parameters in :ref:`draw_line<class_CanvasItem_method_draw_line>`
 to enable antialiasing, but not all custom drawing methods offer this ``antialiased``
 parameter.
 
@@ -244,8 +244,8 @@ on both GDScript and C#. See
 Example 1: drawing a custom shape
 ---------------------------------
 
-We will now use the custom drawing functionality of the Godot Engine to draw
-something that Godot doesn't provide functions for. We will recreate the Godot
+We will now use the custom drawing functionality of the redot Engine to draw
+something that redot doesn't provide functions for. We will recreate the redot
 logo but with code- only using drawing functions.
 
 You will have to code a function to perform this and draw it yourself.
@@ -290,7 +290,7 @@ the base of our shape:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyNode2D : Node2D
     {
@@ -310,14 +310,14 @@ the base of our shape:
         };
     }
 
-This format, while compact, is not the one that Godot understands to
+This format, while compact, is not the one that redot understands to
 draw a polygon. In a different scenario we could have to load
 these coordinates from a file or calculate the positions while the
 application is running, so some transformation may be needed.
 
 To transform these coordinates into the right format, we will create a new
 method ``float_array_to_Vector2Array()``. Then we will override the ``_ready()``
-function, which Godot will call only once -at the start of the execution-
+function, which redot will call only once -at the start of the execution-
 to load those coordinates into a variable:
 
 .. tabs::
@@ -366,23 +366,23 @@ like this:
 
     func _draw():
         # We are going to paint with this color.
-        var godot_blue : Color = Color("478cbf")
+        var redot_blue : Color = Color("478cbf")
         # We pass the PackedVector2Array to draw the shape.
-        draw_polygon(head, [ godot_blue ])
+        draw_polygon(head, [ redot_blue ])
 
  .. code-tab:: csharp
 
     public override void _Draw()
     {
         // We are going to paint with this color.
-        Color godotBlue = new Color("478cbf");
+        Color redotBlue = new Color("478cbf");
         // We pass the array of Vector2 to draw the shape.
-        DrawPolygon(_head, new Color[]{ godotBlue });
+        DrawPolygon(_head, new Color[]{ redotBlue });
     }
 
 When running it you should see something like this:
 
-.. image:: img/draw_godot_logo_polygon.webp
+.. image:: img/draw_redot_logo_polygon.webp
 
 Note the lower part of the logo looks segmented- this is because a low
 amount of points were used to define that part. To simulate a smooth curve,
@@ -398,7 +398,7 @@ Drawing connected lines
 
 Drawing a sequence of connected lines that don't close down to form a polygon
 is very similar to the previous method. We will use a connected set of lines to
-draw Godot's logo mouth.
+draw redot's logo mouth.
 
 First, we will define the list of coordinates that form the mouth shape, like this:
 
@@ -458,9 +458,9 @@ draw the line, like this:
     func _draw():
         # We will use white to draw the line.
         var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
+        var redot_blue : Color = Color("478cbf")
 
-        draw_polygon(head, [ godot_blue ])
+        draw_polygon(head, [ redot_blue ])
 
         # We draw the while line on top of the previous shape.
         draw_polyline(mouth, white, _mouth_width)
@@ -472,9 +472,9 @@ draw the line, like this:
     {
         // We will use white to draw the line.
         Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
+        Color redotBlue = new Color("478cbf");
 
-        DrawPolygon(_head, new Color[]{ godotBlue });
+        DrawPolygon(_head, new Color[]{ redotBlue });
 
         // We draw the while line on top of the previous shape.
         DrawPolyline(_mouth, white, _mouthWidth);
@@ -482,7 +482,7 @@ draw the line, like this:
 
 You should get the following output:
 
-.. image:: img/draw_godot_logo_polyline.webp
+.. image:: img/draw_redot_logo_polyline.webp
 
 Unlike ``draw_polygon()``, polylines can only have a single unique color
 for all its points (the second argument). This method has 2 additional
@@ -514,10 +514,10 @@ its radius, and the third is its color:
 
     func _draw():
         var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
+        var redot_blue : Color = Color("478cbf")
         var grey : Color = Color("414042")
 
-        draw_polygon(head, [ godot_blue ])
+        draw_polygon(head, [ redot_blue ])
         draw_polyline(mouth, white, _mouth_width)
 
         # Four circles for the 2 eyes: 2 white, 2 grey.
@@ -532,10 +532,10 @@ its radius, and the third is its color:
     public override void _Draw()
     {
         Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
+        Color redotBlue = new Color("478cbf");
         Color grey = new Color("414042");
 
-        DrawPolygon(_head, new Color[]{ godotBlue });
+        DrawPolygon(_head, new Color[]{ redotBlue });
         DrawPolyline(_mouth, white, _mouthWidth);
 
         // Four circles for the 2 eyes: 2 white, 2 grey.
@@ -547,7 +547,7 @@ its radius, and the third is its color:
 
 When executing it, you should have something like this:
 
-.. image:: img/draw_godot_logo_circle.webp
+.. image:: img/draw_redot_logo_circle.webp
 
 
 For partial, unfilled arcs (portions of a circle shape between certain
@@ -568,10 +568,10 @@ like this:
 
     func _draw():
         var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
+        var redot_blue : Color = Color("478cbf")
         var grey : Color = Color("414042")
 
-        draw_polygon(head, [ godot_blue ])
+        draw_polygon(head, [ redot_blue ])
         draw_polyline(mouth, white, _mouth_width)
         draw_circle(Vector2(42.479, 65.4825), 9.3905, white)
         draw_circle(Vector2(85.524, 65.4825), 9.3905, white)
@@ -586,10 +586,10 @@ like this:
     public override void _Draw()
     {
         Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
+        Color redotBlue = new Color("478cbf");
         Color grey = new Color("414042");
 
-        DrawPolygon(_head, new Color[]{ godotBlue });
+        DrawPolygon(_head, new Color[]{ redotBlue });
         DrawPolyline(_mouth, white, _mouthWidth);
         DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white);
         DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white);
@@ -603,7 +603,7 @@ like this:
 
 You should now be able to see the following shape on screen:
 
-.. image:: img/draw_godot_logo_line.webp
+.. image:: img/draw_redot_logo_line.webp
 
 Note that if multiple unconnected lines are going to be drawn at the same time,
 you may get additional performance by drawing all of them in a single call, using
@@ -614,7 +614,7 @@ Drawing text
 
 While using the :ref:`Label <class_Label>` Node is the most common way to add
 text to your application, the low level `_draw` function includes functionality
-to add text to your custom Node drawing. We will use it to add the name "GODOT"
+to add text to your custom Node drawing. We will use it to add the name "redot"
 under the robot head.
 
 We will use the :ref:`draw_string <class_CanvasItem_method_draw_string>` method
@@ -627,10 +627,10 @@ to do it, like this:
 
     func _draw():
         var white : Color = Color.WHITE
-        var godot_blue : Color = Color("478cbf")
+        var redot_blue : Color = Color("478cbf")
         var grey : Color = Color("414042")
 
-        draw_polygon(head, [ godot_blue ])
+        draw_polygon(head, [ redot_blue ])
         draw_polyline(mouth, white, _mouth_width)
         draw_circle(Vector2(42.479, 65.4825), 9.3905, white)
         draw_circle(Vector2(85.524, 65.4825), 9.3905, white)
@@ -638,8 +638,8 @@ to do it, like this:
         draw_circle(Vector2(84.626, 66.008), 6.246, grey)
         draw_line(Vector2(64.273, 60.564), Vector2(64.273, 74.349), white, 5.8)
 
-        # Draw GODOT text below the logo with the default font, size 22.
-        draw_string(default_font, Vector2(20, 130), "GODOT",
+        # Draw redot text below the logo with the default font, size 22.
+        draw_string(default_font, Vector2(20, 130), "redot",
                     HORIZONTAL_ALIGNMENT_CENTER, 90, 22)
 
  .. code-tab:: csharp
@@ -649,10 +649,10 @@ to do it, like this:
     public override void _Draw()
     {
         Color white = Colors.White;
-        Color godotBlue = new Color("478cbf");
+        Color redotBlue = new Color("478cbf");
         Color grey = new Color("414042");
 
-        DrawPolygon(_head, new Color[]{ godotBlue });
+        DrawPolygon(_head, new Color[]{ redotBlue });
         DrawPolyline(_mouth, white, _mouthWidth);
         DrawCircle(new Vector2(42.479f, 65.4825f), 9.3905f, white);
         DrawCircle(new Vector2(85.524f, 65.4825f), 9.3905f, white);
@@ -661,8 +661,8 @@ to do it, like this:
         DrawLine(new Vector2(64.273f, 60.564f), new Vector2(64.273f, 74.349f),
                  white, 5.8f);
 
-        // Draw GODOT text below the logo with the default font, size 22.
-        DrawString(_defaultFont, new Vector2(20f, 130f), "GODOT",
+        // Draw redot text below the logo with the default font, size 22.
+        DrawString(_defaultFont, new Vector2(20f, 130f), "redot",
                    HorizontalAlignment.Center, 90, 22);
     }
 
@@ -672,7 +672,7 @@ parameters: font, position, text, horizontal alignment, width, and font size.
 
 You should see the following on your screen:
 
-.. image:: img/draw_godot_logo_text.webp
+.. image:: img/draw_redot_logo_text.webp
 
 Additional parameters as well as other methods related to text and characters
 can be found on the :ref:`CanvasItem <class_CanvasItem>` class reference.
@@ -699,7 +699,7 @@ of the node to also appear while editing, like this:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class MyNode2D : Node2D
@@ -793,7 +793,7 @@ either in the editor or in code, like this:
 
 This is the result, rotating around a pivot now on ``(60, 60)``:
 
-.. image:: img/draw_godot_rotation.webp
+.. image:: img/draw_redot_rotation.webp
 
 If what we wanted to animate was a property inside the ``_draw()`` call, we must remember to
 call ``queue_redraw()`` to force a refresh, as otherwise it would not be updated on screen.
@@ -840,7 +840,7 @@ changing the width of its mouth line follow a sinusoidal (:ref:`sin<class_@globa
 
 It will look somewhat like this when run:
 
-.. image:: img/draw_godot_mouth_animation.webp
+.. image:: img/draw_redot_mouth_animation.webp
 
 Please note that ``_mouth_width`` is a user defined property like any other
 and it or any other used as a drawing argument can be animated using more
@@ -900,7 +900,7 @@ We could draw a dynamic line between those 2 points like this:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
     using System;
 
     public partial class MyNode2DLine : Node2D
@@ -970,7 +970,7 @@ inspector panel:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
     using System;
 
     public partial class MyNode2DLine : Node2D

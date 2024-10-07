@@ -1,20 +1,20 @@
 .. _doc_data_paths:
 
-File paths in Godot projects
+File paths in redot projects
 ============================
 
-This page explains how file paths work inside Godot projects. You will learn how
+This page explains how file paths work inside redot projects. You will learn how
 to access paths in your projects using the ``res://`` and ``user://`` notations,
-and where Godot stores project and editor files on your and your users' systems.
+and where redot stores project and editor files on your and your users' systems.
 
 Path separators
 ---------------
 
-To make supporting multiple platforms easier, Godot uses **UNIX-style path
+To make supporting multiple platforms easier, redot uses **UNIX-style path
 separators** (forward slash ``/``). These work on all platforms, **including
 Windows**.
 
-Instead of writing paths like ``C:\Projects\Game``, in Godot, you should write
+Instead of writing paths like ``C:\Projects\Game``, in redot, you should write
 ``C:/Projects/Game``.
 
 Windows-style path separators (backward slash ``\``) are also supported in some
@@ -28,8 +28,8 @@ guarantee that everything will work as intended.
 Accessing files in the project folder (``res://``)
 --------------------------------------------------
 
-Godot considers that a project exists in any folder that contains a
-``project.godot`` text file, even if the file is empty. The folder that contains
+redot considers that a project exists in any folder that contains a
+``project.redot`` text file, even if the file is empty. The folder that contains
 this file is your project's root folder.
 
 You can access any file relative to it by writing paths starting with
@@ -51,13 +51,13 @@ automatically and *guaranteed* to be writable to, even in an exported project.
 The location of the ``user://`` folder depends on what is configured in the
 Project Settings:
 
-- By default, the ``user://`` folder is created within Godot's
+- By default, the ``user://`` folder is created within redot's
   :ref:`editor data path <doc_data_paths_editor_data_paths>` in the
   ``app_userdata/[project_name]`` folder. This is the default so that prototypes
-  and test projects stay self-contained within Godot's data folder.
+  and test projects stay self-contained within redot's data folder.
 - If :ref:`application/config/use_custom_user_dir <class_ProjectSettings_property_application/config/use_custom_user_dir>`
   is enabled in the Project Settings, the ``user://`` folder is created **next
-  to** Godot's editor data path, i.e. in the standard location for applications
+  to** redot's editor data path, i.e. in the standard location for applications
   data.
 
   * By default, the folder name will be inferred from the project name, but it
@@ -71,9 +71,9 @@ On desktop platforms, the actual directory paths for ``user://`` are:
 +---------------------+------------------------------------------------------------------------------+
 | Type                | Location                                                                     |
 +=====================+==============================================================================+
-| Default             | | Windows: ``%APPDATA%\Godot\app_userdata\[project_name]``                   |
-|                     | | macOS: ``~/Library/Application Support/Godot/app_userdata/[project_name]`` |
-|                     | | Linux: ``~/.local/share/godot/app_userdata/[project_name]``                |
+| Default             | | Windows: ``%APPDATA%\redot\app_userdata\[project_name]``                   |
+|                     | | macOS: ``~/Library/Application Support/redot/app_userdata/[project_name]`` |
+|                     | | Linux: ``~/.local/share/redot/app_userdata/[project_name]``                |
 +---------------------+------------------------------------------------------------------------------+
 | Custom dir          | | Windows: ``%APPDATA%\[project_name]``                                      |
 |                     | | macOS: ``~/Library/Application Support/[project_name]``                    |
@@ -120,17 +120,17 @@ depending on the platform. By default, these paths are:
 +-----------------+---------------------------------------------------+
 | Type            | Location                                          |
 +=================+===================================================+
-| Editor data     | | Windows: ``%APPDATA%\Godot\``                   |
-|                 | | macOS: ``~/Library/Application Support/Godot/`` |
-|                 | | Linux: ``~/.local/share/godot/``                |
+| Editor data     | | Windows: ``%APPDATA%\redot\``                   |
+|                 | | macOS: ``~/Library/Application Support/redot/`` |
+|                 | | Linux: ``~/.local/share/redot/``                |
 +-----------------+---------------------------------------------------+
-| Editor settings | | Windows: ``%APPDATA%\Godot\``                   |
-|                 | | macOS: ``~/Library/Application Support/Godot/`` |
-|                 | | Linux: ``~/.config/godot/``                     |
+| Editor settings | | Windows: ``%APPDATA%\redot\``                   |
+|                 | | macOS: ``~/Library/Application Support/redot/`` |
+|                 | | Linux: ``~/.config/redot/``                     |
 +-----------------+---------------------------------------------------+
-| Cache           | | Windows: ``%TEMP%\Godot\``                      |
-|                 | | macOS: ``~/Library/Caches/Godot/``              |
-|                 | | Linux: ``~/.cache/godot/``                      |
+| Cache           | | Windows: ``%TEMP%\redot\``                      |
+|                 | | macOS: ``~/Library/Caches/redot/``              |
+|                 | | Linux: ``~/.cache/redot/``                      |
 +-----------------+---------------------------------------------------+
 
 - **Editor data** contains export templates and project-specific data.
@@ -138,17 +138,17 @@ depending on the platform. By default, these paths are:
   well as various other user-specific customizations (editor layouts, feature
   profiles, script templates, etc.).
 - **Cache** contains data generated by the editor, or stored temporarily.
-  It can safely be removed when Godot is closed.
+  It can safely be removed when redot is closed.
 
-Godot complies with the `XDG Base Directory Specification
+redot complies with the `XDG Base Directory Specification
 <https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html>`__
 on all platforms. You can override environment variables following the
 specification to change the editor and project data paths.
 
-.. note:: If you use `Godot packaged as a Flatpak
-          <https://flathub.org/apps/details/org.godotengine.Godot>`__, the
+.. note:: If you use `redot packaged as a Flatpak
+          <https://flathub.org/apps/details/org.redotengine.redot>`__, the
           editor data paths will be located in subfolders in
-          ``~/.var/app/org.godotengine.Godot/``.
+          ``~/.var/app/org.redotengine.redot/``.
 
 .. _doc_data_paths_self_contained_mode:
 
@@ -156,13 +156,13 @@ Self-contained mode
 ~~~~~~~~~~~~~~~~~~~
 
 If you create a file called ``._sc_`` or ``_sc_`` in the same directory as the
-editor binary (or in `MacOS/Contents/` for a macOS editor .app bundle), Godot
+editor binary (or in `MacOS/Contents/` for a macOS editor .app bundle), redot
 will enable *self-contained mode*.
-This mode makes Godot write all editor data, settings, and cache to a directory
+This mode makes redot write all editor data, settings, and cache to a directory
 named ``editor_data/`` in the same directory as the editor binary.
 You can use it to create a portable installation of the editor.
 
-The `Steam release of Godot <https://store.steampowered.com/app/404790/>`__ uses
+The `Steam release of redot <https://store.steampowered.com/app/404790/>`__ uses
 self-contained mode by default.
 
 .. note::

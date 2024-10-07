@@ -3,7 +3,7 @@
 The XR action map
 =================
 
-Godot has an action map feature as part of the XR system.
+redot has an action map feature as part of the XR system.
 At this point in time this system is part of the OpenXR module.
 There are plans to encompass WebXR into this in the near future hence we call it the XR action map system in this document.
 It implements the built-in action map system of OpenXR mostly exactly as it is offered.
@@ -20,20 +20,20 @@ You will then find the XR Action Map interface in the bottom of the screen:
 .. image:: img/xr_action_map.webp
 
 .. note::
-  Godot's built-in input system has many things in common with the XR action map system.
+  redot's built-in input system has many things in common with the XR action map system.
   In fact our original idea was to add functionality to the existing input system and expose the data to the OpenXR action map system.
   We may revisit that idea at some point but as it turns out there were just too many problems to overcome.
   To name a few:
 
-    * Godot's input system mainly centers around button inputs, XR adds triggers, axis, poses and haptics (output) into the mix.
+    * redot's input system mainly centers around button inputs, XR adds triggers, axis, poses and haptics (output) into the mix.
       This would greatly complicate the input system with features that won't work for normal controllers or contrast with the current approach.
-      It was felt this would lead to confusion for the majority of Godot users.
-    * Godot's input system works with raw input data that is parsed and triggers emitting actions.
+      It was felt this would lead to confusion for the majority of redot users.
+    * redot's input system works with raw input data that is parsed and triggers emitting actions.
       This input data is made available to the end user.
       OpenXR completely hides raw data and does all the parsing for us, we only get access to already parsed action data.
       This inconsistency is likely to lead to bugs when an unsuspecting user tries to use an XR device as a normal input device.
-    * Godot's input system allows changes to what inputs are bound to actions in runtime, OpenXR does not.
-    * Godot's input system is based on device ids which are meaningless in OpenXR.
+    * redot's input system allows changes to what inputs are bound to actions in runtime, OpenXR does not.
+    * redot's input system is based on device ids which are meaningless in OpenXR.
 
   This does mean that a game/application that mixes traditional inputs with XR controllers will have a separation.
   For most applications either one or the other is used and this is not seen as a problem.
@@ -42,17 +42,17 @@ You will then find the XR Action Map interface in the bottom of the screen:
 The default action map
 ----------------------
 
-Godot will automatically create a default action map if no action map file is found.
+redot will automatically create a default action map if no action map file is found.
 
 .. warning::
-  This default map was designed to help developers port their XR games/applications from Godot 3 to Godot 4.
+  This default map was designed to help developers port their XR games/applications from redot 3 to redot 4.
   As a result this map essentially binds all known inputs on all controllers supported by default, to actions one on one.
   This is not a good example of setting up an action map.
-  It does allow a new developer to have a starting point when they want to become familiar with Godot XR.
+  It does allow a new developer to have a starting point when they want to become familiar with redot XR.
   It prevents having to design a proper action map for their game/application first.
 
 For this walkthrough we're going to start with a blank action map.
-You can simply delete the "Godot action set" entry at the top by pressing the trash can icon.
+You can simply delete the "redot action set" entry at the top by pressing the trash can icon.
 This will clear out all actions.
 You might also want to remove the controllers that you do not wish to setup, more on this later.
 
@@ -148,7 +148,7 @@ It emits the ``input_float_changed`` signal when changed.
 .. note::
   Where analogue inputs are queried as buttons a threshold is applied.
   This threshold is currently managed exclusively by the XR runtime.
-  There are plans to extend Godot to provide some level of control over these thresholds in the future.
+  There are plans to extend redot to provide some level of control over these thresholds in the future.
 
 The ``Vector2`` type defines the input as an axis input.
 Touchpads, thumbsticks and similar inputs are exposed as vectors.
@@ -161,7 +161,7 @@ Your :ref:`XRController3D <class_xrcontroller3d>` node is automatically position
 More about poses later.
 
 .. note::
-  The OpenXR implementation in Godot also exposes a special pose called ``Skeleton``.
+  The OpenXR implementation in redot also exposes a special pose called ``Skeleton``.
   This is part of the hand tracking implementation.
   This pose is exposed through the ``skeleton`` action that is supported outside of the action map system.
   It is thus always present if hand tracking is supported.
@@ -272,11 +272,11 @@ There are also provisions for devices such as treadmills, haptic vests and such 
   XR runtimes that do not support a device added through extensions will not accept these profiles.
   XR runtimes that do not support added input or output types will often crash if supplied.
 
-  As such Godot keeps meta data of all available devices, their inputs and outputs and which extension adds support for them.
+  As such redot keeps meta data of all available devices, their inputs and outputs and which extension adds support for them.
   You can create interaction profiles for all devices you wish to support.
-  Godot will filter out those not supported by the XR runtime the user is using.
+  redot will filter out those not supported by the XR runtime the user is using.
 
-  This does mean that in order to support new devices, you might need to update to a more recent version of Godot.
+  This does mean that in order to support new devices, you might need to update to a more recent version of redot.
 
 It is however also important to note that the action map has been designed with this in mind.
 When new devices enter the market, or when your users use devices that you do not have access to, the action map system relies on the XR runtime.
@@ -291,7 +291,7 @@ If all else fails, it will check the generic :ref:`"Simple controller" <doc_xr_a
 
 .. note::
   There is an important conclusion to be made here:
-  When a controller is found, and the action map is applied to it, the XR runtime is not limited to the exact configurations you set up in Godot's action map editor.
+  When a controller is found, and the action map is applied to it, the XR runtime is not limited to the exact configurations you set up in redot's action map editor.
   While the runtime will generally choose a suitable mapping based on one of the bindings you set up in the action map, it can deviate from it.
 
   For example, when the Touch controller profile is used any of the following scenarios could be true:
@@ -375,7 +375,7 @@ This is why many XR runtimes only use it as a last resort and will attempt to us
 .. note::
   Due to the simple controller likely not covering the needs of your game, it is tempting to provide bindings for every controller supported by OpenXR.
   The default action map seems to suggest this as a valid course of action.
-  As mentioned before, the default action map was designed for ease of migration from Godot 3.
+  As mentioned before, the default action map was designed for ease of migration from redot 3.
 
   It is the recommendation from the OpenXR Working Group that only bindings for controllers actually tested by the developer are setup.
   The XR runtimes are designed with this in mind.

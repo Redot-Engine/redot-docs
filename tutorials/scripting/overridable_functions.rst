@@ -3,14 +3,14 @@
 Overridable functions
 =====================
 
-Godot's Node class provides virtual functions you can override to update nodes
+redot's Node class provides virtual functions you can override to update nodes
 every frame or on specific events, like when they enter the scene tree.
 
 This document presents the ones you'll use most often.
 
-.. seealso:: Under the hood, these functions rely on Godot's low-level
+.. seealso:: Under the hood, these functions rely on redot's low-level
              notifications system. To learn more about it, see
-             :ref:`doc_godot_notifications`.
+             :ref:`doc_redot_notifications`.
 
 Two functions allow you to initialize and get nodes besides the class's
 constructor: ``_enter_tree()`` and ``_ready()``.
@@ -107,7 +107,7 @@ every key press, mouse click, etc. that have not been handled already in an
 gameplay input in general. The ``_input()`` callback allows you to intercept and
 process input events before ``_unhandled_input()`` gets them.
 
-To learn more about inputs in Godot, see the :ref:`Input section <toc-learn-features-inputs>`.
+To learn more about inputs in redot, see the :ref:`Input section <toc-learn-features-inputs>`.
 
 .. tabs::
  .. code-tab:: gdscript GDScript

@@ -9,18 +9,18 @@ CLion
 Importing the project
 ---------------------
 
-CLion can import a project's `compilation database file <https://clang.llvm.org/docs/JSONCompilationDatabase.html>`_, commonly named ``compile_commands.json``. To generate the compilation database file, open the terminal, change to the Godot root directory, and run:
+CLion can import a project's `compilation database file <https://clang.llvm.org/docs/JSONCompilationDatabase.html>`_, commonly named ``compile_commands.json``. To generate the compilation database file, open the terminal, change to the redot root directory, and run:
 
 ::
 
     scons compiledb=yes
 
-Then, open the Godot root directory with CLion. CLion will import the compilation database, index the codebase, and provide autocompletion and other advanced code navigation and refactoring functionality.
+Then, open the redot root directory with CLion. CLion will import the compilation database, index the codebase, and provide autocompletion and other advanced code navigation and refactoring functionality.
 
 Compiling and debugging the project
 -----------------------------------
 
-CLion does not support compiling and debugging Godot via SCons out of the box. This can be achieved by creating a custom build target and run configuration in CLion. Before creating a custom build target, you must :ref:`compile Godot <toc-devel-compiling>` once on the command line, to generate the Godot executable. Open the terminal, change into the Godot root directory, and execute:
+CLion does not support compiling and debugging redot via SCons out of the box. This can be achieved by creating a custom build target and run configuration in CLion. Before creating a custom build target, you must :ref:`compile redot <toc-devel-compiling>` once on the command line, to generate the redot executable. Open the terminal, change into the redot root directory, and execute:
 
 ::
 
@@ -33,7 +33,7 @@ To add a custom build target that invokes SCons for compilation:
 .. figure:: img/clion-preferences.png
    :align: center
 
-- Click **Add target** and give the target a name, e.g. ``Godot debug``.
+- Click **Add target** and give the target a name, e.g. ``redot debug``.
 
 .. figure:: img/clion-target.png
    :align: center
@@ -43,19 +43,19 @@ To add a custom build target that invokes SCons for compilation:
 .. figure:: img/clion-external-tools.png
    :align: center
 
-- Give the tool a name, e.g. ``Build Godot debug``, set **Program** to ``scons``, set **Arguments** to the compilation settings you want (see :ref:`compiling Godot <toc-devel-compiling>`), and set the **Working directory** to ``$ProjectFileDir$``, which equals the Godot root directory. Click **OK** to create the tool.
+- Give the tool a name, e.g. ``Build redot debug``, set **Program** to ``scons``, set **Arguments** to the compilation settings you want (see :ref:`compiling redot <toc-devel-compiling>`), and set the **Working directory** to ``$ProjectFileDir$``, which equals the redot root directory. Click **OK** to create the tool.
 
    .. note:: CLion does not expand shell commands like ``scons -j$(nproc)``. Use concrete values instead, e.g. ``scons -j8``.
 
 .. figure:: img/clion-create-build-tool.webp
    :align: center
 
-- Back in the **External Tools** dialog, click the **+** again to add a second external tool for cleaning the Godot build via SCons. Give the tool a name, e.g. ``Clean Godot debug``, set **Program** to ``scons``, set **Arguments** to ``-c`` (which will clean the build), and set the **Working directory** to ``$ProjectFileDir$``. Click **OK** to create the tool.
+- Back in the **External Tools** dialog, click the **+** again to add a second external tool for cleaning the redot build via SCons. Give the tool a name, e.g. ``Clean redot debug``, set **Program** to ``scons``, set **Arguments** to ``-c`` (which will clean the build), and set the **Working directory** to ``$ProjectFileDir$``. Click **OK** to create the tool.
 
 .. figure:: img/clion-create-clean-tool.png
    :align: center
 
-- Close the **External Tools** dialog. In the **Custom Build Target** dialog for the custom ``Godot debug`` build target, select the **Build Godot debug** tool from the **Build** select box, and select the **Clean Godot debug** tool from the **Clean** select box. Click **OK** to create the custom build target.
+- Close the **External Tools** dialog. In the **Custom Build Target** dialog for the custom ``redot debug`` build target, select the **Build redot debug** tool from the **Build** select box, and select the **Clean redot debug** tool from the **Clean** select box. Click **OK** to create the custom build target.
 
 .. figure:: img/clion-select-tools.png
    :align: center
@@ -70,14 +70,14 @@ To add a custom build target that invokes SCons for compilation:
 .. figure:: img/clion-add-custom-build-application.png
    :align: center
 
-- Give the run/debug configuration a name, e.g. ``Godot debug``, select the ``Godot debug`` custom build target as the **Target**. Select the Godot executable in the ``bin/`` folder as the **Executable**, and set the **Program arguments** to ``--editor --path path-to-your-project/``, where ``path-to-your-project/`` should be a path pointing to an existing Godot project. If you omit the ``--path`` argument, you will only be able to debug the Godot Project Manager window. Click **OK** to create the run/debug configuration.
+- Give the run/debug configuration a name, e.g. ``redot debug``, select the ``redot debug`` custom build target as the **Target**. Select the redot executable in the ``bin/`` folder as the **Executable**, and set the **Program arguments** to ``--editor --path path-to-your-project/``, where ``path-to-your-project/`` should be a path pointing to an existing redot project. If you omit the ``--path`` argument, you will only be able to debug the redot Project Manager window. Click **OK** to create the run/debug configuration.
 
 .. figure:: img/clion-run-configuration.png
    :align: center
 
-You can now build, run, debug, profile, and Valgrind check the Godot editor via the run configuration.
+You can now build, run, debug, profile, and Valgrind check the redot editor via the run configuration.
 
 .. figure:: img/clion-build-run.png
    :align: center
 
-When playing a scene, the Godot editor will spawn a separate process. You can debug this process in CLion by going to **Run > Attach to process...**, typing ``godot``, and selecting the Godot process with the highest **pid** (process ID), which will usually be the running project.
+When playing a scene, the redot editor will spawn a separate process. You can debug this process in CLion by going to **Run > Attach to process...**, typing ``redot``, and selecting the redot process with the highest **pid** (process ID), which will usually be the running project.

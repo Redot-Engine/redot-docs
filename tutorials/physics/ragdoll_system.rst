@@ -6,11 +6,11 @@ Ragdoll system
 Introduction
 ------------
 
-Since version 3.1, Godot supports ragdoll physics. Ragdolls rely on physics simulation to create realistic procedural animation. They are used for death animations in many games.
+Since version 3.1, redot supports ragdoll physics. Ragdolls rely on physics simulation to create realistic procedural animation. They are used for death animations in many games.
 
 In this tutorial, we will be using the Platformer3D demo to set up a ragdoll.
 
-.. note:: You can download the Platformer3D demo on `GitHub <https://github.com/godotengine/godot-demo-projects/tree/master/3d/platformer>`_ or using the `Asset Library <https://godotengine.org/asset-library/asset/2748>`_.
+.. note:: You can download the Platformer3D demo on `GitHub <https://github.com/redotengine/redot-demo-projects/tree/master/3d/platformer>`_ or using the `Asset Library <https://redotengine.org/asset-library/asset/2748>`_.
 
 Setting up the ragdoll
 ----------------------
@@ -20,11 +20,11 @@ Creating physical bones
 
 Like many other features in the engine, there is a node to set up a ragdoll: the :ref:`PhysicalBone3D <class_PhysicalBone3D>` node. To simplify the setup, you can generate ``PhysicalBone`` nodes with the "Create physical skeleton" feature in the skeleton node.
 
-Open the platformer demo in Godot, and then the Robi scene. Select the ``Skeleton`` node. A skeleton button appears on the top bar menu:
+Open the platformer demo in redot, and then the Robi scene. Select the ``Skeleton`` node. A skeleton button appears on the top bar menu:
 
 .. image:: img/ragdoll_menu.png
 
-Click it and select the ``Create physical skeleton`` option. Godot will generate ``PhysicalBone`` nodes and collision shapes for each bone in the skeleton and pin joints to connect them together:
+Click it and select the ``Create physical skeleton`` option. redot will generate ``PhysicalBone`` nodes and collision shapes for each bone in the skeleton and pin joints to connect them together:
 
 .. image:: img/ragdoll_bones.png
 

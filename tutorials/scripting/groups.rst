@@ -3,7 +3,7 @@
 Groups
 ======
 
-Groups in Godot work like tags in other software. You can add a node to as many
+Groups in redot work like tags in other software. You can add a node to as many
 groups as you want. Then, in code, you can use the SceneTree to:
 
 - Get a list of nodes in a group.

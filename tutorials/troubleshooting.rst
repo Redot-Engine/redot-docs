@@ -3,12 +3,12 @@
 Troubleshooting
 ===============
 
-This page lists common issues encountered when using Godot and possible solutions.
+This page lists common issues encountered when using redot and possible solutions.
 
 .. seealso::
 
     See :ref:`doc_using_the_web_editor` for caveats specific to the Web version
-    of the Godot editor.
+    of the redot editor.
 
 The editor runs slowly and uses all my CPU and GPU resources, making my computer noisy
 --------------------------------------------------------------------------------------
@@ -35,11 +35,11 @@ There are several ways to improve performance and battery life:
 The editor stutters and flickers on my variable refresh rate monitor (G-Sync/FreeSync)
 --------------------------------------------------------------------------------------
 
-This is a `known issue <https://github.com/godotengine/godot/issues/38219>`__.
+This is a `known issue <https://github.com/redotengine/redot/issues/38219>`__.
 Variable refresh rate monitors need to adjust their gamma curves continuously to
 emit a consistent amount of light over time. This can cause flicker to appear in
 dark areas of the image when the refresh rate varies a lot, which occurs as
-the Godot editor only redraws when necessary.
+the redot editor only redraws when necessary.
 
 There are several workarounds for this:
 
@@ -63,11 +63,11 @@ The editor or project takes a very long time to start
 When using one of the Vulkan-based renderers (Forward+ or Forward Mobile),
 the first startup is expected to be relatively long. This is because shaders
 need to be compiled before they can be cached. Shaders also need to be cached
-again after updating Godot, after updating graphics drivers or after switching
+again after updating redot, after updating graphics drivers or after switching
 graphics cards.
 
 If the issue persists after the first startup, this is a
-`known bug <https://github.com/godotengine/godot/issues/20566>`__ on
+`known bug <https://github.com/redotengine/redot/issues/20566>`__ on
 Windows when you have specific USB peripherals connected. In particular,
 Corsair's iCUE software seems to cause this bug. Try updating your USB
 peripherals' drivers to their latest version. If the bug persists, you need to
@@ -88,21 +88,21 @@ large number of files. Consinder adding the project folder to the list of exclus
 by going to Virus & threat protection > Virus & threat protection settings >
 Add or remove exclusions.
 
-The Godot editor appears frozen after clicking the system console
+The redot editor appears frozen after clicking the system console
 -----------------------------------------------------------------
 
-When running Godot on Windows with the system console enabled, you can
+When running redot on Windows with the system console enabled, you can
 accidentally enable *selection mode* by clicking inside the command window. This
 Windows-specific behavior pauses the application to let you select text inside
-the system console. Godot cannot override this system-specific behavior.
+the system console. redot cannot override this system-specific behavior.
 
 To solve this, select the system console window and press Enter to leave
 selection mode.
 
-The Godot editor's macOS dock icon gets duplicated every time it is manually moved
+The redot editor's macOS dock icon gets duplicated every time it is manually moved
 ----------------------------------------------------------------------------------
 
-If you open the Godot editor and manually change the position of the dock icon,
+If you open the redot editor and manually change the position of the dock icon,
 then restart the editor, you will get a duplicate dock icon all the way to the
 right of the dock.
 
@@ -113,7 +113,7 @@ process when starting the editor. While using a single process instance would
 bring several benefits, it isn't planned to be done in the near future due to
 the complexity of the task.
 
-To avoid this issue, keep the Godot editor's dock icon at its default location
+To avoid this issue, keep the redot editor's dock icon at its default location
 as created by macOS.
 
 Some text such as "NO DC" appears in the top-left corner of the Project Manager and editor window
@@ -184,7 +184,7 @@ sharpening or FXAA on all Vulkan applications. You may want to check their
 configuration as well.
 
 After changing options in the graphics driver or third-party utilities, restart
-Godot to make the changes effective.
+redot to make the changes effective.
 
 If you still wish to force sharpening or FXAA on other applications, it's
 recommended to do so on a per-application basis using the application profiles
@@ -193,7 +193,7 @@ system provided by graphics drivers' control panels.
 The editor or project appears to have washed out colors
 -------------------------------------------------------
 
-On Windows, this is usually caused by incorrect OS or monitor settings, as Godot
+On Windows, this is usually caused by incorrect OS or monitor settings, as redot
 currently does not support :abbr:`HDR (High Dynamic Range)` *output*
 (even though it may internally render in HDR).
 
@@ -233,7 +233,7 @@ The project works when run from the editor, but fails to load some files when ru
 -----------------------------------------------------------------------------------------------------------
 
 This is usually caused by forgetting to specify a filter for non-resource files
-in the Export dialog. By default, Godot will only include actual *resources*
+in the Export dialog. By default, redot will only include actual *resources*
 into the PCK file. Some files commonly used, such as JSON files, are not
 considered resources. For example, if you load ``test.json`` in the exported
 project, you need to specify ``*.json`` in the non-resource export filter. See

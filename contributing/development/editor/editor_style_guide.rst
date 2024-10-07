@@ -6,9 +6,9 @@ Editor style guide
 Introduction
 ------------
 
-Thanks for your interest in contributing to the Godot editor!
+Thanks for your interest in contributing to the redot editor!
 
-This page describes the grammar and writing style used throughout the Godot
+This page describes the grammar and writing style used throughout the redot
 editor. Following this style guide will help your contribution get merged faster
 since there will be fewer review steps required.
 
@@ -62,7 +62,7 @@ Inspector performance hints
 Enum properties that noticeably impact performance should have a performance
 hint associated. The hint should refer to the *absolute* performance impact,
 rather than being relative to the other options provided in the enum. Here are
-some examples taken from the Godot editor:
+some examples taken from the redot editor:
 
 - **Screen-space antialiasing:** *Disabled (Fastest), FXAA (Fast)*
 - **MSAA quality:** *Disabled (Fastest), 2x (Fast), 4x (Average), 8x (Slow), 16x

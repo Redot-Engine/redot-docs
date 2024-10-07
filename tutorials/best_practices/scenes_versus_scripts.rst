@@ -16,7 +16,7 @@ Anonymous types
 ---------------
 
 It *is* possible to completely define a scenes' contents using a script alone.
-This is, in essence, what the Godot Editor does, only in the C++ constructor
+This is, in essence, what the redot Editor does, only in the C++ constructor
 of its objects.
 
 But, choosing which one to use can be a dilemma. Creating script instances
@@ -35,7 +35,7 @@ a change in API:
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Game : Node
     {
@@ -118,7 +118,7 @@ There are two systems for registering types:
    - Engine developers must add support for languages manually (both name exposure and
      runtime accessibility).
 
-   - Godot 3.1+ only.
+   - redot 3.1+ only.
 
    - The Editor scans project folders and registers any exposed names for all
      scripting languages. Each scripting language must implement its own
@@ -164,7 +164,7 @@ with it, and finally adds it as a child of the ``Main`` node:
 
   .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Main : Node
     {
@@ -178,7 +178,7 @@ with it, and finally adds it as a child of the ``Main`` node:
             Child.SetScript(GD.Load<Script>("res://Path/To/Child.cs"));
             // SetScript() causes the C# wrapper object to be disposed, so obtain a new
             // wrapper for the Child node using its instance ID before proceeding.
-            Child = (Node)GodotObject.InstanceFromId(childID);
+            Child = (Node)redotObject.InstanceFromId(childID);
             AddChild(Child);
             Child.Owner = this;
         }

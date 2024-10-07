@@ -48,7 +48,7 @@ You may be wondering how this affects you. Let's look at a practical example:
 
 Imagine you are working on a first-person controller (e.g. an FPS game). Moving the mouse left and right controls your view angle parallel to the ground, while moving it up and down moves the player's view up and down.
 
-In this case to achieve the desired effect, rotation must be applied first in the *Y* axis ("up" in this case, since Godot uses a "Y-Up" orientation), followed by rotation in the *X* axis.
+In this case to achieve the desired effect, rotation must be applied first in the *Y* axis ("up" in this case, since redot uses a "Y-Up" orientation), followed by rotation in the *X* axis.
 
 .. image:: img/transforms_rotate1.gif
 
@@ -79,14 +79,14 @@ There are a few reasons this may happen:
 Say no to Euler angles
 ======================
 
-The result of all this is that you should **not use** the ``rotation`` property of :ref:`class_Node3D` nodes in Godot for games. It's there to be used mainly in the editor, for coherence with the 2D engine, and for simple rotations (generally just one axis, or even two in limited cases). As much as you may be tempted, don't use it.
+The result of all this is that you should **not use** the ``rotation`` property of :ref:`class_Node3D` nodes in redot for games. It's there to be used mainly in the editor, for coherence with the 2D engine, and for simple rotations (generally just one axis, or even two in limited cases). As much as you may be tempted, don't use it.
 
 Instead, there is a better way to solve your rotation problems.
 
 Introducing transforms
 ----------------------
 
-Godot uses the :ref:`class_Transform3D` datatype for orientations. Each :ref:`class_Node3D` node contains a ``transform`` property which is relative to the parent's transform, if the parent is a Node3D-derived type.
+redot uses the :ref:`class_Transform3D` datatype for orientations. Each :ref:`class_Node3D` node contains a ``transform`` property which is relative to the parent's transform, if the parent is a Node3D-derived type.
 
 It is also possible to access the world coordinate transform via the ``global_transform`` property.
 
@@ -401,4 +401,4 @@ Transforms are your friend
 
 For most beginners, getting used to working with transforms can take some time. However, once you get used to them, you will appreciate their simplicity and power.
 
-Don't hesitate to ask for help on this topic in any of Godot's `online communities <https://godotengine.org/community>`_ and, once you become confident enough, please help others!
+Don't hesitate to ask for help on this topic in any of redot's `online communities <https://redotengine.org/community>`_ and, once you become confident enough, please help others!

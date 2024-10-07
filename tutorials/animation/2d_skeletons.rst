@@ -13,17 +13,17 @@ and most 3D modeling applications support it. For 2D, as this function is not
 used as often, it's difficult to find mainstream software aimed for this.
 
 One option is to create animations in third-party software such as Spine or
-Dragonbones. From Godot 3.1 onwards, though, this functionality is supported
+Dragonbones. From redot 3.1 onwards, though, this functionality is supported
 built-in.
 
-Why would you want to do skeletal animations directly in Godot? The answer is
+Why would you want to do skeletal animations directly in redot? The answer is
 that there are many advantages to it:
 
 * Better integration with the engine, so less hassle importing and editing from
   an external tool.
 * Ability to control particle systems, shaders, sounds, call scripts, colors,
   transparency, etc. in animations.
-* The built-in skeletal system in Godot is very efficient and designed for
+* The built-in skeletal system in redot is very efficient and designed for
   performance.
 
 The following tutorial will, then, explain 2D skeletal deformations.
@@ -35,7 +35,7 @@ Setup
 
    Before starting, we recommend you to go through the
    :ref:`doc_cutout_animation` tutorial to gain a general understanding of
-   animating within Godot.
+   animating within redot.
 
 For this tutorial, we will be using a single image to construct our character.
 Download it from :download:`gBot_pieces.png <img/gBot_pieces.png>` or save the
@@ -202,7 +202,7 @@ yield unexpected results:
 
 .. image:: img/skel2d21.gif
 
-This happens because Godot generates internal triangles that connect the points
+This happens because redot generates internal triangles that connect the points
 when drawing the polygon. They don't always bend the way you would expect. To
 solve this, you need to set hints in the geometry to clarify how you expect it
 to deform.

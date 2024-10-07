@@ -27,7 +27,7 @@ as a base to develop and test the plugins.
 The first thing you need for the editor to identify a new plugin is to
 create two files: a ``plugin.cfg`` for configuration and a tool script with the
 functionality. Plugins have a standard path like ``addons/plugin_name`` inside
-the project folder. Godot provides a dialog for generating those files and
+the project folder. redot provides a dialog for generating those files and
 placing them where they need to be.
 
 In the main toolbar, click the ``Project`` dropdown. Then click
@@ -48,7 +48,7 @@ To continue with the example, use the following values:
 
     Plugin Name: My Custom Node
     Subfolder: my_custom_node
-    Description: A custom node made to extend the Godot Engine.
+    Description: A custom node made to extend the redot Engine.
     Author: Your Name Here
     Version: 1.0.0
     Language: GDScript
@@ -59,7 +59,7 @@ To continue with the example, use the following values:
 
     Plugin Name: My Custom Node
     Subfolder: MyCustomNode
-    Description: A custom node made to extend the Godot Engine.
+    Description: A custom node made to extend the redot Engine.
     Author: Your Name Here
     Version: 1.0.0
     Language: C#
@@ -82,7 +82,7 @@ The name and description help people understand what it does.
 Your name helps you get properly credited for your work.
 The version number helps others know if they have an outdated version;
 if you are unsure on how to come up with the version number, check out `Semantic Versioning <https://semver.org/>`_.
-The main script file will instruct Godot what your plugin does in the editor
+The main script file will instruct redot what your plugin does in the editor
 once it is active.
 
 The script file
@@ -126,7 +126,7 @@ like this:
  .. code-tab:: csharp
 
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class CustomNode : EditorPlugin
@@ -189,7 +189,7 @@ clicked. For that, we'll need a script that extends from
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class MyButton : Button
@@ -208,7 +208,7 @@ clicked. For that, we'll need a script that extends from
 That's it for our basic button. You can save this as ``my_button.gd`` inside the
 plugin folder. You'll also need a 16×16 icon to show in the scene tree. If you
 don't have one, you can grab the default one from the engine and save it in your
-`addons/my_custom_node` folder as `icon.png`, or use the default Godot logo
+`addons/my_custom_node` folder as `icon.png`, or use the default redot logo
 (`preload("res://icon.svg")`).
 
 .. tip::
@@ -217,7 +217,7 @@ don't have one, you can grab the default one from the engine and save it in your
     **Editor > Scale With Editor Scale** and **Editor > Convert Colors With Editor Theme**
     :ref:`import options <doc_importing_images_editor_import_options>` enabled. This allows
     icons to follow the editor's scale and theming settings if the icons are designed with
-    the same color palette as Godot's own icons.
+    the same color palette as redot's own icons.
 
 .. image:: img/making_plugins-custom_node_icon.png
 
@@ -245,7 +245,7 @@ dialog. For that, change the ``custom_node.gd`` script to the following:
  .. code-tab:: csharp
 
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class CustomNode : EditorPlugin
@@ -318,7 +318,7 @@ Then create the script ``custom_dock.gd`` in the same folder. Fill it with the
 good start.
 
 Since we're trying to add a new custom dock, we need to create the contents of
-the dock. This is nothing more than a standard Godot scene: just create
+the dock. This is nothing more than a standard redot scene: just create
 a new scene in the editor then edit it.
 
 For an editor dock, the root node **must** be a :ref:`Control <class_Control>`
@@ -370,7 +370,7 @@ The script could look like this:
  .. code-tab:: csharp
 
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class CustomDock : EditorPlugin
@@ -422,7 +422,7 @@ it is a powerful way to create specialized editors without having to delve into
 C++ modules.
 
 You can make your own plugins to help yourself and share them in the
-`Asset Library <https://godotengine.org/asset-library/>`_ so that people
+`Asset Library <https://redotengine.org/asset-library/>`_ so that people
 can benefit from your work.
 
 .. _doc_making_plugins_autoload:
@@ -461,7 +461,7 @@ Use the following code to register a singleton from an editor plugin:
  .. code-tab:: csharp
 
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class MyEditorPlugin : EditorPlugin

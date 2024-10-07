@@ -36,7 +36,7 @@ for display on a particular display type.
 
 .. note::
 
-    Godot does not support high dynamic range *output* yet. It can only perform
+    redot does not support high dynamic range *output* yet. It can only perform
     lighting in HDR and tonemap the result to a low dynamic range image.
 
     For advanced users, it is still possible to get a non-tonemapped image
@@ -59,7 +59,7 @@ the transfer characteristics of the input (OETF) and output (EOTF).
 
 Not all displays use the same OETF and EOTF as a computer display.
 For example, television broadcast displays use the BT.1886 EOTF.
-However, Godot currently only supports sRGB displays.
+However, redot currently only supports sRGB displays.
 
 The sRGB standard is based around the nonlinear relationship between the current
 to light output of common desktop computing CRT displays.

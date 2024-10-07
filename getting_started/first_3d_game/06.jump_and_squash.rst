@@ -175,7 +175,7 @@ Let's add the squash mechanic next. We're going to make the character bounce
 over monsters and kill them at the same time.
 
 We need to detect collisions with a monster and to differentiate them from
-collisions with the floor. To do so, we can use Godot's :ref:`group
+collisions with the floor. To do so, we can use redot's :ref:`group
 <doc_groups>` tagging feature.
 
 Open the scene ``mob.tscn`` again and select the *Mob* node. Go to the *Node*
@@ -221,7 +221,7 @@ when jumping.
     public int BounceImpulse { get; set; } = 16;
 
 Then, after the **Jumping** codeblock we added above in ``_physics_process()``, add the following loop. With
-``move_and_slide()``, Godot makes the body move sometimes multiple times in a
+``move_and_slide()``, redot makes the body move sometimes multiple times in a
 row to smooth out the character's motion. So we have to loop over all collisions
 that may have happened.
 
@@ -354,7 +354,7 @@ destroy the mob.
 
 .. note::
 
-    When using C#, Godot will create the appropriate events automatically for all Signals ending with `EventHandler`, see :ref:`C# Signals <doc_c_sharp_signals>`.
+    When using C#, redot will create the appropriate events automatically for all Signals ending with `EventHandler`, see :ref:`C# Signals <doc_c_sharp_signals>`.
 
 We will use the signal to add points to the score in the next lesson.
 

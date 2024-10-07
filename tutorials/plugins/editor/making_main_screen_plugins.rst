@@ -60,7 +60,7 @@ Add five extra methods such that the script looks like this:
  .. code-tab:: csharp
 
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class MainScreenPlugin : EditorPlugin
@@ -129,7 +129,7 @@ Add a script to the button like this:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class PrintHello : Button
@@ -198,7 +198,7 @@ Here is the full plugin script:
  .. code-tab:: csharp
 
     #if TOOLS
-    using Godot;
+    using redot;
 
     [Tool]
     public partial class MainScreenPlugin : EditorPlugin
@@ -284,8 +284,8 @@ new main screen plugin, and the button in the middle will print text.
 
 If you would like to try a finished version of this plugin,
 check out the plugin demos here:
-https://github.com/godotengine/godot-demo-projects/tree/master/plugins
+https://github.com/redotengine/redot-demo-projects/tree/master/plugins
 
 If you would like to see a more complete example of what main screen plugins
 are capable of, check out the 2.5D demo projects here:
-https://github.com/godotengine/godot-demo-projects/tree/master/misc/2.5d
+https://github.com/redotengine/redot-demo-projects/tree/master/misc/2.5d

@@ -1,11 +1,11 @@
 .. _doc_running_on_macos:
 
-Running Godot apps on macOS
+Running redot apps on macOS
 ===========================
 
 .. seealso::
 
-    This page covers running Godot projects on macOS.
+    This page covers running redot projects on macOS.
     If you haven't exported your project yet, read :ref:`doc_exporting_for_macos` first.
 
 By default, macOS will run only applications that are signed and notarized.
@@ -57,7 +57,7 @@ App is signed (including ad-hoc signatures) but not notarized
 
 .. note::
 
-    App developer used self-signed certificate or ad-hoc signing (default Godot behavior for exported project).
+    App developer used self-signed certificate or ad-hoc signing (default redot behavior for exported project).
 
 When you run the app for the first time, the following dialog is displayed:
 

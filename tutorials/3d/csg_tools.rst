@@ -9,18 +9,18 @@ CSG stands for **Constructive Solid Geometry**, and is a tool to combine basic
 shapes or custom meshes to create more complex shapes. In 3D modeling software,
 CSG is mostly known as "Boolean Operators".
 
-Level prototyping is one of the main uses of CSG in Godot. This technique allows
+Level prototyping is one of the main uses of CSG in redot. This technique allows
 users to create the most common shapes by combining primitives.
 Interior environments can be created by using inverted primitives.
 
-.. note:: The CSG nodes in Godot are mainly intended for prototyping. There is
+.. note:: The CSG nodes in redot are mainly intended for prototyping. There is
           no built-in support for UV mapping or editing 3D polygons (though
           extruded 2D polygons can be used with the CSGPolygon3D node). In
           addition CSG can't reliably create meshes made up of multiple nodes
           without holes.
 
           If you're looking for an easy to use level design tool for a project,
-          you may want to use `FuncGodot <https://github.com/func-godot/func_godot_plugin>`__
+          you may want to use `Funcredot <https://github.com/func-redot/func_redot_plugin>`__
           or `Cyclops Level Builder <https://github.com/blackears/cyclopsLevelBuilder>`__
           instead.
 
@@ -33,12 +33,12 @@ Interior environments can be created by using inverted primitives.
 .. seealso::
 
     You can check how to use CSG nodes to build various shapes (such as stairs or roads) using the
-    `Constructive Solid Geometry demo project <https://github.com/godotengine/godot-demo-projects/tree/master/3d/csg>`__.
+    `Constructive Solid Geometry demo project <https://github.com/redotengine/redot-demo-projects/tree/master/3d/csg>`__.
 
 Introduction to CSG nodes
 -------------------------
 
-Like other features of Godot, CSG is supported in the form of nodes. These are
+Like other features of redot, CSG is supported in the form of nodes. These are
 the CSG nodes:
 
 - :ref:`CSGBox3D <class_CSGBox3D>`
@@ -92,7 +92,7 @@ Custom meshes
 ~~~~~~~~~~~~~
 
 Any mesh can be used for :ref:`CSGMesh3D <class_CSGMesh3D>`; the mesh can be
-modeled in other software and imported into Godot. Multiple materials are
+modeled in other software and imported into redot. Multiple materials are
 supported. There are some restrictions for geometry:
 
 - it must be closed,
@@ -254,16 +254,16 @@ this:
 
 .. image:: img/csg_room_result.png
 
-You've successfully prototyped a room level with the CSG tools in Godot.
+You've successfully prototyped a room level with the CSG tools in redot.
 CSG tools can be used for designing all kinds of levels, such as a maze
 or a city; explore its limitations when designing your game.
 
 Using prototype textures
 ------------------------
 
-Godot's :ref:`doc_standard_material_3d` supports *triplanar mapping*, which can be
+redot's :ref:`doc_standard_material_3d` supports *triplanar mapping*, which can be
 used to automatically apply a texture to arbitrary objects without distortion.
-This is handy when using CSG as Godot doesn't support editing UV maps on CSG
+This is handy when using CSG as redot doesn't support editing UV maps on CSG
 nodes yet. Triplanar mapping is relatively slow, which usually restricts its
 usage to organic surfaces like terrain. Still, when prototyping, it can be used
 to quickly apply textures to CSG-based levels.

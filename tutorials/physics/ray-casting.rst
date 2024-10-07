@@ -11,7 +11,7 @@ custom shaped object) and checking what it hits. This enables complex
 behaviors, AI, etc. to take place. This tutorial will explain how to
 do this in 2D and 3D.
 
-Godot stores all the low level game information in servers, while the
+redot stores all the low level game information in servers, while the
 scene is only a frontend. As such, ray casting is generally a
 lower-level task. For simple raycasts, nodes like
 :ref:`RayCast3D <class_RayCast3D>` and :ref:`RayCast2D <class_RayCast2D>`
@@ -24,7 +24,7 @@ so a way to do this by code must exist.
 Space
 -----
 
-In the physics world, Godot stores all the low level collision and
+In the physics world, redot stores all the low level collision and
 physics information in a *space*. The current 2d space (for 2D Physics)
 can be obtained by accessing
 :ref:`CanvasItem.get_world_2d().space <class_CanvasItem_method_get_world_2d>`.
@@ -37,7 +37,7 @@ The resulting space :ref:`RID <class_RID>` can be used in
 Accessing space
 ---------------
 
-Godot physics runs by default in the same thread as game logic, but may
+redot physics runs by default in the same thread as game logic, but may
 be set to run on a separate thread to work more efficiently. Due to
 this, the only time accessing space is safe is during the
 :ref:`Node._physics_process() <class_Node_private_method__physics_process>`
@@ -216,7 +216,7 @@ from a CharacterBody2D or any other collision object node:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyCharacterBody2D : CharacterBody2D
     {
@@ -224,7 +224,7 @@ from a CharacterBody2D or any other collision object node:
         {
             var spaceState = GetWorld2D().DirectSpaceState;
             var query = PhysicsRayQueryParameters2D.Create(globalPosition, playerPosition);
-            query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+            query.Exclude = new redot.Collections.Array<Rid> { GetRid() };
             var result = spaceState.IntersectRay(query);
         }
     }
@@ -255,7 +255,7 @@ member variable. The array of exceptions can be supplied as the last argument as
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class MyCharacterBody2D : CharacterBody2D
     {
@@ -263,7 +263,7 @@ member variable. The array of exceptions can be supplied as the last argument as
         {
             var spaceState = GetWorld2D().DirectSpaceState;
             var query = PhysicsRayQueryParameters2D.Create(globalPosition, targetPosition,
-                CollisionMask, new Godot.Collections.Array<Rid> { GetRid() });
+                CollisionMask, new redot.Collections.Array<Rid> { GetRid() });
             var result = spaceState.IntersectRay(query);
         }
     }

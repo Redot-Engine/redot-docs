@@ -3,7 +3,7 @@
 C# global classes
 =================
 
-Global classes (also known as named scripts) are types registered in Godot's editor so they can be used
+Global classes (also known as named scripts) are types registered in redot's editor so they can be used
 more conveniently.
 
 - Global classes show up in the *Add Node* and *Create Resource* dialogs.
@@ -15,7 +15,7 @@ Global classes are registered with the ``[GlobalClass]`` attribute.
 
 .. code-block:: csharp
 
-    using Godot;
+    using redot;
 
     [GlobalClass]
     public partial class MyNode : Node
@@ -40,7 +40,7 @@ of nodes in the scene to match the assignment restriction.
 .. image:: img/globalclasses_exportednode.webp
 
 If a custom type isn't registered as a global class, the assignment is
-restricted to the Godot type the custom type is based on. For example, inspector
+restricted to the redot type the custom type is based on. For example, inspector
 assignments to an export of the type ``MySimpleSprite2D`` are restricted to
 ``Sprite2D`` and derived types.
 
@@ -56,7 +56,7 @@ editor.
 
 .. code-block:: csharp
 
-    using Godot;
+    using redot;
 
     [GlobalClass, Icon("res://Stats/StatsIcon.svg")]
     public partial class Stats : Resource
@@ -83,9 +83,9 @@ will let you create and load instances of this type easily.
 
 .. warning::
 
-    The Godot editor will hide these custom classes with names that begin with the prefix
+    The redot editor will hide these custom classes with names that begin with the prefix
     "Editor" in the 'Create New Node' or 'Create New Scene' dialog windows. The classes 
     are available for instantiation at runtime via their class names, but are 
     automatically hidden by the editor windows along with the built-in editor nodes used 
-    by the Godot editor.
+    by the redot editor.
     

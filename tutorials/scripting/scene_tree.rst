@@ -13,7 +13,7 @@ they enter the *scene tree*.
 MainLoop
 --------
 
-The way Godot works internally is as follows. There is the
+The way redot works internally is as follows. There is the
 :ref:`OS <class_OS>` class,
 which is the only instance that runs at the beginning. Afterwards, all
 drivers, servers, scripting languages, scene system, etc are loaded.
@@ -27,12 +27,12 @@ see how this works internally).
 The user program, or game, starts in the MainLoop. This class has a few
 methods, for initialization, idle (frame-synchronized callback), fixed
 (physics-synchronized callback), and input. Again, this is low
-level and when making games in Godot, writing your own MainLoop seldom makes sense.
+level and when making games in redot, writing your own MainLoop seldom makes sense.
 
 SceneTree
 ---------
 
-One of the ways to explain how Godot works is that it's a high level
+One of the ways to explain how redot works is that it's a high level
 game engine over a low level middleware.
 
 The scene system is the game engine, while the :ref:`OS <class_OS>`
@@ -105,7 +105,7 @@ receive and send notifications, play sounds, etc. When they are removed from the
 Tree order
 ----------
 
-Most node operations in Godot, such as drawing 2D, processing, or getting
+Most node operations in redot, such as drawing 2D, processing, or getting
 notifications are done in *tree order*, or top to bottom as seen in the
 editor (also known as pre-order traversal):
 

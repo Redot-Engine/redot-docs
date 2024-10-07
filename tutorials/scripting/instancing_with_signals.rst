@@ -37,7 +37,7 @@ given velocity:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Bullet : Area2D
     {
@@ -106,7 +106,7 @@ Here is the code for the player using signals to emit the bullet:
 
  .. code-tab:: csharp
 
-    using Godot;
+    using redot;
 
     public partial class Player : Sprite2D
     {

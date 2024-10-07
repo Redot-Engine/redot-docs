@@ -3,14 +3,14 @@
 Available 3D formats
 ====================
 
-When dealing with 3D assets, Godot has a flexible and configurable importer.
+When dealing with 3D assets, redot has a flexible and configurable importer.
 
-Godot works with *scenes*. This means that the entire scene being worked on in
+redot works with *scenes*. This means that the entire scene being worked on in
 your favorite 3D modeling software will be transferred as close as possible.
 
-Godot supports the following 3D *scene file formats*:
+redot supports the following 3D *scene file formats*:
 
-- glTF 2.0 **(recommended)**. Godot has support for both text (``.gltf``)
+- glTF 2.0 **(recommended)**. redot has support for both text (``.gltf``)
   and binary (``.glb``) formats.
 - ``.blend`` (Blender). This works by calling Blender to export to glTF in a
   transparent manner (requires Blender to be installed).
@@ -19,13 +19,13 @@ Godot supports the following 3D *scene file formats*:
   supported, but pretty limited given the format's limitations (no support for
   pivots, skeletons, animations, UV2, PBR materials, ...).
 - FBX, supported via the `ufbx <https://github.com/ufbx/ufbx>`__ library. The
-  previous import workflow used `FBX2glTF <https://github.com/godotengine/FBX2glTF>`__
+  previous import workflow used `FBX2glTF <https://github.com/redotengine/FBX2glTF>`__
   integration. This requires installing an external program that links against the
   proprietary FBX SDK, so we recommend using the default ubfx method or other formats
   listed above (if suitable for your workflow).
 
 Copy the scene file together with the textures and mesh data (if separate) to
-the project repository, then Godot will do a full import when focusing the
+the project repository, then redot will do a full import when focusing the
 editor window.
 
 Exporting glTF 2.0 files from Blender (recommended)
@@ -39,11 +39,11 @@ There are 3 ways to export glTF files from Blender:
   file + ``.bin`` file + textures).
 
 glTF binary files (``.glb``) are the smallest of the three options. They include
-the mesh and textures set up in Blender. When brought into Godot the textures
+the mesh and textures set up in Blender. When brought into redot the textures
 are part of the object's material file.
 
 glTF embedded files (``.gltf``) function the same way as binary files. They
-don't provide extra functionality in Godot, and shouldn't be used since they
+don't provide extra functionality in redot, and shouldn't be used since they
 have a larger file size.
 
 There are two reasons to use glTF with the textures separate. One is to have the
@@ -54,24 +54,24 @@ separate from the material file. If you don't need either of those, glTF binary
 files are fine.
 
 The glTF import process first loads the glTF file's data into an in-memory
-GLTFState class. This data is then used to generate a Godot scene.
+GLTFState class. This data is then used to generate a redot scene.
 When importing files at runtime, this scene can be directly added to the tree.
-The export process is the reverse of this, a Godot scene is converted to a
+The export process is the reverse of this, a redot scene is converted to a
 GLTFState class, then the glTF file is generated from that.
 
 .. figure:: img/importing_3d_scenes_available_formats_gltf_runtime.webp
    :align: center
-   :alt: Diagram explaining the runtime import and export process for glTF files in Godot
+   :alt: Diagram explaining the runtime import and export process for glTF files in redot
 
 When importing glTF files in the editor, there are two more steps.
-After generating the Godot scene, the ResourceImporterScene class is used to
+After generating the redot scene, the ResourceImporterScene class is used to
 apply additional import settings, including settings you set through the
 Import dock and the Advanced Import Settings dialog. This is then saved as
-a Godot scene file, which is what gets used when you run/export your game.
+a redot scene file, which is what gets used when you run/export your game.
 
 .. figure:: img/importing_3d_scenes_available_formats_gltf_editor.webp
    :align: center
-   :alt: Diagram explaining the editor import process for glTF files in Godot
+   :alt: Diagram explaining the editor import process for glTF files in redot
 
 .. warning::
 
@@ -89,12 +89,12 @@ a Godot scene file, which is what gets used when you run/export your game.
 
     By default, Blender has backface culling disabled on materials and will
     export materials to match how they render in Blender. This means that
-    materials in Godot will have their cull mode set to **Disabled**. This can
+    materials in redot will have their cull mode set to **Disabled**. This can
     decrease performance since backfaces will be rendered, even when they are
     being culled by other faces. To resolve this, enable **Backface Culling** in
     Blender's Materials tab, then export the scene to glTF again.
 
-Importing ``.blend`` files directly within Godot
+Importing ``.blend`` files directly within redot
 ------------------------------------------------
 
 .. note::
@@ -108,33 +108,33 @@ Importing ``.blend`` files directly within Godot
     This avoids any issues related to packaging, such as different library
     versions that can cause incompatibilities or sandboxing restrictions.
 
-From Godot 4.0 onwards, the editor can directly import ``.blend`` files by
+From redot 4.0 onwards, the editor can directly import ``.blend`` files by
 calling `Blender <https://www.blender.org/>`__'s glTF export functionality in a
 transparent manner.
 
 This allows you to iterate on your 3D scenes faster, as you can save the scene
-in Blender, alt-tab back to Godot then see your changes immediately. When
+in Blender, alt-tab back to redot then see your changes immediately. When
 working with version control, this is also more efficient as you no longer need
 to commit a copy of the exported glTF file to version control.
 
-To use ``.blend`` import, you must install Blender before opening the Godot
+To use ``.blend`` import, you must install Blender before opening the redot
 editor (if opening a project that already contains ``.blend`` files). If you
-keep Blender installed at its default location, Godot should be able to detect
+keep Blender installed at its default location, redot should be able to detect
 its path automatically. If this isn't the case, configure the path to the
 directory containing the Blender executable in the Editor Settings
 (**Filesystem > Import > Blender > Blender 3 Path**).
 
 If you keep ``.blend`` files within your project folder but don't want them to
-be imported by Godot, disable **Filesystem > Import > Blender > Enabled** in the
+be imported by redot, disable **Filesystem > Import > Blender > Enabled** in the
 advanced Project Settings.
 
 The ``.blend`` import process converts to glTF first, so it still uses
-Godot's glTF import code. Therefore, the ``.blend`` import process is the same
+redot's glTF import code. Therefore, the ``.blend`` import process is the same
 as the glTF import process, but with an extra step at the beginning.
 
 .. figure:: img/importing_3d_scenes_available_formats_blend.webp
    :align: center
-   :alt: Diagram explaining the import process for Blender files in Godot
+   :alt: Diagram explaining the import process for Blender files in redot
 
 .. note::
 
@@ -154,18 +154,18 @@ Blender has built-in COLLADA support, but it does not work properly for the
 needs of game engines and shouldn't be used as-is. However, scenes exported with
 the built-in Collada support may still work for simple scenes without animation.
 
-For complex scenes or scenes that contain animations, Godot provides a
-`Blender plugin <https://github.com/godotengine/collada-exporter>`_
-that will correctly export COLLADA scenes for use in Godot.
+For complex scenes or scenes that contain animations, redot provides a
+`Blender plugin <https://github.com/redotengine/collada-exporter>`_
+that will correctly export COLLADA scenes for use in redot.
 
-Importing OBJ files in Godot
+Importing OBJ files in redot
 ----------------------------
 
-OBJ is one of the simplest 3D formats out there, so Godot should be able to
+OBJ is one of the simplest 3D formats out there, so redot should be able to
 import most OBJ files successfully. However, OBJ is also a very limited format:
 it doesn't support skinning, animation, UV2 or PBR materials.
 
-There are 2 ways to use OBJ meshes in Godot:
+There are 2 ways to use OBJ meshes in redot:
 
 - Load them directly in a MeshInstance3D node, or any other property that
   expects as mesh (such as GPUParticles3D). This is the default mode.
@@ -176,41 +176,41 @@ There are 2 ways to use OBJ meshes in Godot:
 .. note::
 
     Blender 3.4 and later can export RGB vertex colors in OBJ files (this is a
-    nonstandard extension of the OBJ format). Godot is able to import those
-    vertex colors since Godot 4.0, but they will not be displayed on the
+    nonstandard extension of the OBJ format). redot is able to import those
+    vertex colors since redot 4.0, but they will not be displayed on the
     material unless you enable **Vertex Color > Use As Albedo** on the material.
 
     Vertex colors from OBJ meshes keep their original color space once imported
     (sRGB/linear), but their brightness is clamped to 1.0 (they can't be
     overbright).
 
-Importing FBX files in Godot
+Importing FBX files in redot
 ----------------------------
 
-By default any FBX file added to a Godot project in Godot 4.3 or later will
+By default any FBX file added to a redot project in redot 4.3 or later will
 use the ufbx import method. Any file that was was added to a project in a
 previous version, such as 4.2, will continue to be imported via the FBX2glTF
 method unless you go into that files import settings, and change the importer
 to  ``ufbx``.
 
 If you keep ``.fbx`` files within your project folder but don't want them to
-be imported by Godot, disable **Filesystem > Import > FBX > Enabled** in the
+be imported by redot, disable **Filesystem > Import > FBX > Enabled** in the
 advanced Project Settings.
 
 If you want to setup the FBX2glTF workflow, which is generally not recommend
-unless you have a specific reason to use it, you need to download the `FBX2glTF <https://github.com/godotengine/FBX2glTF>`__
+unless you have a specific reason to use it, you need to download the `FBX2glTF <https://github.com/redotengine/FBX2glTF>`__
 executable, then specify the path to that executable in the editor settings under
 **Filesystem > Import > FBX > FBX2glTFPath**
 
 The FBX2glTF import process converts to glTF first, so it still uses
-Godot's glTF import code. Therefore, the FBX import process is the same
+redot's glTF import code. Therefore, the FBX import process is the same
 as the glTF import process, but with an extra step at the beginning.
 
 .. figure:: img/importing_3d_scenes_available_formats_fbx.webp
    :align: center
-   :alt: Diagram explaining the import process for FBX files in Godot  via FBX2glTF
+   :alt: Diagram explaining the import process for FBX files in redot  via FBX2glTF
 
 .. seealso::
 
-    The full installation process for using FBX2glTF in Godot is described on the
-    `FBX import page of the Godot website <https://godotengine.org/fbx-import>`__.
+    The full installation process for using FBX2glTF in redot is described on the
+    `FBX import page of the redot website <https://redotengine.org/fbx-import>`__.

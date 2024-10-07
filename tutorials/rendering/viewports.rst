@@ -31,7 +31,7 @@ What all these use cases have in common is that you are given the ability to
 draw objects to a texture as if it were another screen and can then choose
 what to do with the resulting texture.
 
-Another kind of Viewports in Godot are :ref:`Windows <class_Window>`. They allow their content to be projected onto a window. While the Root Viewport is a Window, they are less
+Another kind of Viewports in redot are :ref:`Windows <class_Window>`. They allow their content to be projected onto a window. While the Root Viewport is a Window, they are less
 flexible. If you want to use the texture of a Viewport, you'll be working with :ref:`SubViewports <class_SubViewport>` most of the time.
 
 Input
@@ -45,12 +45,12 @@ disabled with the :ref:`Disable Input <class_Viewport_property_gui_disable_input
 
 .. image:: img/input.webp
 
-For more information on how Godot handles input, please read the :ref:`Input Event Tutorial <doc_inputevent>`.
+For more information on how redot handles input, please read the :ref:`Input Event Tutorial <doc_inputevent>`.
 
 Listener
 --------
 
-Godot supports 3D sound (in both 2D and 3D nodes). More on this can be
+redot supports 3D sound (in both 2D and 3D nodes). More on this can be
 found in the :ref:`Audio Streams Tutorial <doc_audio_streams>`. For this type of sound to be
 audible, the :ref:`Viewport <class_Viewport>` needs to be enabled as a listener (for 2D or 3D).
 If you are using a :ref:`SubViewport <class_SubViewport>` to display your :ref:`World3D <class_World3D>` or
@@ -139,7 +139,7 @@ For 2D, each :ref:`Viewport <class_Viewport>` always contains its own :ref:`Worl
 This suffices in most cases, but in case sharing them may be desired, it
 is possible to do so by setting :ref:`world_2d<class_Viewport_property_world_2d>` on the Viewport through code.
 
-For an example of how this works, see the demo projects `3D in 2D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/3d_in_2d>`_ and `2D in 3D <https://github.com/godotengine/godot-demo-projects/tree/master/viewport/2d_in_3d>`_ respectively.
+For an example of how this works, see the demo projects `3D in 2D <https://github.com/redotengine/redot-demo-projects/tree/master/viewport/3d_in_2d>`_ and `2D in 3D <https://github.com/redotengine/redot-demo-projects/tree/master/viewport/2d_in_3d>`_ respectively.
 
 Capture
 -------
@@ -205,7 +205,7 @@ Due to the fact that the :ref:`Viewport <class_Viewport>` is an entryway into an
 rendering properties that can be different from the project settings. You can
 choose to use a different level of :ref:`MSAA <class_Viewport_property_msaa_2d>` for each Viewport. The default behavior is ``Disabled``.
 
-If you know that the :ref:`Viewport <class_Viewport>` is only going to be used for 2D, you can :ref:`Disable 3D<class_Viewport_property_disable_3d>`. Godot will then
+If you know that the :ref:`Viewport <class_Viewport>` is only going to be used for 2D, you can :ref:`Disable 3D<class_Viewport_property_disable_3d>`. redot will then
 restrict how the Viewport is drawn.
 Disabling 3D is slightly faster and uses less memory compared to enabled 3D. It's a good idea to disable 3D if your viewport doesn't render anything in 3D.
 
@@ -214,7 +214,7 @@ Disabling 3D is slightly faster and uses less memory compared to enabled 3D. It'
     If you need to render 3D shadows in the viewport, make sure to set the viewport's :ref:`positional_shadow_atlas_size<class_Viewport_property_positional_shadow_atlas_size>` property to a value higher than ``0``.
     Otherwise, shadows won't be rendered. By default, the equivalent project setting is set to ``4096`` on desktop platforms and ``2048`` on mobile platforms.
 
-Godot also provides a way of customizing how everything is drawn inside :ref:`Viewports <class_Viewport>` using :ref:`Debug Draw<class_Viewport_property_debug_draw>`.
+redot also provides a way of customizing how everything is drawn inside :ref:`Viewports <class_Viewport>` using :ref:`Debug Draw<class_Viewport_property_debug_draw>`.
 Debug Draw allows you to specify a mode which determines how the Viewport will display things drawn
 inside it. Debug Draw is ``Disabled`` by default. Some other options are ``Unshaded``, ``Overdraw``, and ``Wireframe``. For a full list, refer to the :ref:`Viewport Documentation<class_Viewport_property_debug_draw>`.
 
@@ -282,4 +282,4 @@ This flexibility allows users to render an image once and then use the texture w
 
     Make sure to check the Viewport demos. They are available in the
     viewport folder of the demos archive, or at
-    https://github.com/godotengine/godot-demo-projects/tree/master/viewport.
+    https://github.com/redotengine/redot-demo-projects/tree/master/viewport.

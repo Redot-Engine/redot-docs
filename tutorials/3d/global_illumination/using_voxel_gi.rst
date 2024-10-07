@@ -16,7 +16,7 @@ it's best used when targeting dedicated graphics cards.
 
     Not sure if VoxelGI is suited to your needs?
     See :ref:`doc_introduction_to_global_illumination_comparison`
-    for a comparison of GI techniques available in Godot 4.
+    for a comparison of GI techniques available in redot 4.
 
 Visual comparison
 -----------------
@@ -196,11 +196,11 @@ in your level geometry. This can be remedied in several ways:
 
 If you notice VoxelGI nodes popping in and out of existence as the camera moves,
 this is most likely because the engine is rendering too many VoxelGI instances
-at once. Godot is limited to rendering 8 VoxelGI nodes at once, which means up
+at once. redot is limited to rendering 8 VoxelGI nodes at once, which means up
 to 8 instances can be in the camera view before some of them will start
 flickering.
 
-Additionally, for performance reasons, Godot can only blend between 2 VoxelGI
+Additionally, for performance reasons, redot can only blend between 2 VoxelGI
 nodes at a given pixel on the screen. If you have more than 2 VoxelGI nodes
 overlapping, global illumination may appear to flicker as the camera moves or
 rotates.
