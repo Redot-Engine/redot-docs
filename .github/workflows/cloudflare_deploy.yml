@@ -26,7 +26,8 @@ jobs:
       - name: execute py script
         run: |
           python migrate.py . _migrated True
-          sphinx-build -b html ./_migrated/ ./build/html
+          echo "Hello, Github deployment" > ./build/html/index.html
+#          sphinx-build -b html ./_migrated/ ./build/html
           
       - name: commit files
         run: |
