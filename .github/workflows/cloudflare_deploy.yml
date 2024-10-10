@@ -34,7 +34,8 @@ jobs:
           python migrate.py . _migrated True
           mkdir build
           mkdir build/html
-          echo `Hello from branch ${GITHUB_REF##*/}` > build/html/index.html
+          echo "Hello from branch " > build/html/index.html
+          echo ${GITHUB_REF##*/} >> build/html/index.html
         #   sphinx-build -b html ./_migrated/ ./build/html
           
     #   - name: commit files
