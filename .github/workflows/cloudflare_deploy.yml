@@ -31,18 +31,18 @@ jobs:
           echo "Hello, Github deployment" > build/html/index.html
 #          sphinx-build -b html ./_migrated/ ./build/html
           
-      - name: commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git commit -m "github action auto build" -a
+    #   - name: commit files
+    #     run: |
+    #       git config --local user.email "action@github.com"
+    #       git config --local user.name "GitHub Action"
+    #       git add -A
+    #       git commit -m "github action auto build" -a
           
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main  
+    #   - name: push changes
+    #     uses: ad-m/github-push-action@v0.6.0
+    #     with:
+    #       github_token: ${{ secrets.GITHUB_TOKEN }}
+    #       branch: main  
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -50,5 +50,5 @@ jobs:
           apiToken: ${{ secrets.CF_API_KEY}}
           accountId: ${{ secrets.CF_ACCOUNT_ID}}
           projectName: NAME_OF_PROJECT
-          branch: main
+          branch: cloudflare-deployment
           directory: build/html
