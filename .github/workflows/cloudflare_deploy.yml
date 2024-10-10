@@ -2,6 +2,9 @@ name: Cloudflare Deploy
 
 on: [push]
 
+env:
+ BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,6 +15,9 @@ jobs:
 
       - name: checkout repo content
         uses: actions/checkout@v3 # checkout repo to the runner
+
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
 
       - name: setup python
         uses: actions/setup-python@v4
@@ -26,20 +32,23 @@ jobs:
       - name: execute py script
         run: |
           python migrate.py . _migrated True
-          sphinx-build -b html ./_migrated/ ./build/html
+          mkdir build
+          mkdir build/html
+          echo `Hello from branch ${GITHUB_REF##*/}` > build/html/index.html
+        #   sphinx-build -b html ./_migrated/ ./build/html
           
-      - name: commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git commit -m "github action auto build" -a
+    #   - name: commit files
+    #     run: |
+    #       git config --local user.email "action@github.com"
+    #       git config --local user.name "GitHub Action"
+    #       git add -A
+    #       git commit -m "github action auto build" -a
           
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: publish-build
+    #   - name: push changes
+    #     uses: ad-m/github-push-action@v0.6.0
+    #     with:
+    #       github_token: ${{ secrets.GITHUB_TOKEN }}
+    #       branch: publish-build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -47,5 +56,5 @@ jobs:
           apiToken: ${{ secrets.CF_API_KEY}}
           accountId: ${{ secrets.CF_ACCOUNT_ID}}
           projectName: redot-docs
-          branch: publish-build
+          branch: ${GITHUB_REF##*/}
           directory: build/html
