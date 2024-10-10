@@ -1,3 +1,5 @@
+name: Cloudflare Deploy
+
 on: [push]
 
 jobs:
@@ -24,7 +26,6 @@ jobs:
       - name: execute py script
         run: |
           python migrate.py . _migrated True
-          python custom-build-script.py
           sphinx-build -b html ./_migrated/ _build/html
           
       - name: commit files
