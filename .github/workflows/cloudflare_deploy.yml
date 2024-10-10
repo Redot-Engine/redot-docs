@@ -49,6 +49,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_KEY}}
           accountId: ${{ secrets.CF_ACCOUNT_ID}}
-          projectName: NAME_OF_PROJECT
+          projectName: redot-docs
           branch: cloudflare-deployment
           directory: build/html
