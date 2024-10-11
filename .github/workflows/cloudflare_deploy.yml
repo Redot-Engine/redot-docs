@@ -31,8 +31,11 @@ jobs:
           
       - name: execute py script
         run: |
-          python migrate.py . _migrated True
-          sphinx-build -b html ./_migrated/ ./build/html
+          mkdir build
+          mkdir build/html
+          echo "Hello, python" > build/html/index.html
+# python migrate.py . _migrated True
+# sphinx-build -b html ./_migrated/ ./build/html
           
     #   - name: commit files
     #     run: |
