@@ -50,11 +50,11 @@ jobs:
     #       github_token: ${{ secrets.GITHUB_TOKEN }}
     #       branch: publish-build
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CF_API_KEY}}
-          accountId: ${{ secrets.CF_ACCOUNT_ID}}
-          projectName: redot-docs
-          branch: ${GITHUB_REF##*/}
-          directory: build/html
+      # - name: Publish to Cloudflare Pages
+      #   uses: cloudflare/pages-action@v1
+      #   with:
+      #     apiToken: ${{ secrets.CF_API_KEY}}
+      #     accountId: ${{ secrets.CF_ACCOUNT_ID}}
+      #     projectName: redot-docs
+      #     branch: ${GITHUB_REF##*/}
+      #     directory: build/html
