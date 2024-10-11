@@ -170,7 +170,6 @@ html_theme_options = {
     "collapse_navigation": False,
     # Hide the documentation version name/number under the logo
     "display_version": False,
-    "navigation_depth": 4,
 }
 
 html_title = supported_languages[language] % ( "(" + version + ")" )
