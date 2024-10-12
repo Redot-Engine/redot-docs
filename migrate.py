@@ -183,6 +183,7 @@ mappings = [
     ("const homeUrl = baseUrl.split('/latest/')[0] + '/stable/';", "const homeUrl = 'https://redot-docs-4-3.pages.dev/';"),
     ('Read the Docs', 'Versions'),
     ('{% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}', '{% set listed_languages = ({"en":"#"}).items() -%}'),
+    ('({"stable":"#", "latest":"#"})', '({"stable":"https://redot-docs-4-3.pages.dev/", "latest":"https://redot-docs-4-4.pages.dev/", "3.6":"https://redot-docs-3-6.pages.dev/"})'),
     ('Hosted by <a href="https://readthedocs.org">Read the Docs', 'Hosted by <a href="https://cloudflare.com">CloudFlare'),
     ('<a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>', ''),
     ('G-dot', 'Godot'),
