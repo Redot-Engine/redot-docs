@@ -144,7 +144,7 @@ mappings = [
     ('https://chat.godotengine.org/', 'https://discord.gg/a53QyHJZ'),
     # Generic replacements
     ('GODOT_COPYRIGHT.txt', 'REDOT_COPYRIGHT.txt'),
-    ('godotengine.org', 'redotengine.org')
+    ('godotengine.org', 'redotengine.org'),
     ('godot-docs', 'redot-docs'),
     ('GODOT ENGINE', 'REDOT ENGINE'),
     ('/bin/godot', '/bin/redot'),
@@ -184,7 +184,7 @@ mappings = [
     ('Read the Docs', 'Versions'),
     ('{% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}', '{% set listed_languages = ({"en":"#"}).items() -%}'),
     ('Hosted by <a href="https://readthedocs.org">Read the Docs', 'Hosted by <a href="https://cloudflare.com">CloudFlare'),
-
+    ('<a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>', ''),
     ('G-dot', 'Godot'),
 ]
 
