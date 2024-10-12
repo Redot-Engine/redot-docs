@@ -1,13 +1,21 @@
 """
 ## Migrate files from Godot to Redot
 
-Usage (order is important):
-py migrate.py [inputdir] [outputdir] [include unimplemented]
+usage: Migrate [-h] [-e] [-t] [-v] input output
 
-example:
-py migrate.py . _migrated True
+Simple file migrator. Uses str.replace to map from Godot to Redot. Also converts some filenames.
 
-Will replace specific godot strings with redot. It tries to ignore external projects and other things that can't
+positional arguments:
+  input           Input directory relative to current
+  output          Output directory relative to current
+
+options:
+  -h, --help      show this help message and exit
+  -e, --extended  Include unimplemented substitutions, don't use in production
+  -t, --tiny      Exclude classes directory
+  -v, --verbose
+
+Will replace specific godot strings with redot. It tries to ignore external projects and other things that shouldn't
 change.
 
 A distinction is made between unimplemented instances of the godot keyword (for instance references to the main 
@@ -76,7 +84,6 @@ mappings_unimplemented = [
     ('Support/Godot/', 'Support/Redot/'),
     ('config/godot/', 'config/redot/'),
     ('share/godot/', 'share/redot/'),
-    (' godot_', ' redot_'),
     ('org.godotengine.Godot', 'org.redotengine.Redot'),
     ('godot-ios-plugins', 'redot-ios-plugins'),
     ('godot-syntax-themes', 'redot-syntax-themes'),
@@ -191,6 +198,7 @@ mappings = [
     ('Hosted by <a href="https://readthedocs.org">Read the Docs', 'Hosted by <a href="https://cloudflare.com">CloudFlare'),
     ('<a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>', ''),
     ('G-dot', 'Godot'),
+    (' godot_', ' redot_'),
 ]
 
 filename_mappings = [
