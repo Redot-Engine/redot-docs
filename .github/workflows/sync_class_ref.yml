@@ -20,7 +20,7 @@ jobs:
     env:
       engine_rev: 'master'
     permissions:
-      contents: write
+      pull-requests: write
     
     steps:
       - name: Checkout the documentation repository
