@@ -23,6 +23,7 @@ if necessary, and then save them to the output directory (default _migrated)
 From there, the docs can be built in the normal way.
 """
 
+import argparse
 import fnmatch
 import os
 from shutil import copyfile
@@ -31,10 +32,13 @@ import sys
 import codecs
 from distutils.dir_util import copy_tree
 
-encoding = 'utf-8'
 defaultInputDirectory = '.'
 defaultOutputDirectory = '_migrated'
 defaultIncludeUnimplemented = False
+defaultIgnoreClasses = True
+defaultVerbose = False
+
+encoding = 'utf-8'
 filename_masks = ['.rst', '.md']
 
 # Mappings that will currently lead to nowhere. Can be treated as a todo list.
@@ -180,8 +184,8 @@ mappings = [
     ('by-godot', 'by-redot'),
     ('MadeWithGodot', 'MadeWithRedot'),
     (' if on_rtd else "(DEV) "', ''),
+    ('<span class="fa fa-book"> Read the Docs</span>', '<span class="fa fa-book"> Versions</span>'),
     ("const homeUrl = baseUrl.split('/latest/')[0] + '/stable/';", "const homeUrl = 'https://redot-docs-4-3.pages.dev/';"),
-    ('Read the Docs', 'Versions'),
     ('{% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}', '{% set listed_languages = ({"en":"#"}).items() -%}'),
     ('({"stable":"#", "latest":"#"})', '({"stable":"https://redot-docs-4-3.pages.dev/", "latest":"https://redot-docs-4-4.pages.dev/", "3.6":"https://redot-docs-3-6.pages.dev/"})'),
     ('Hosted by <a href="https://readthedocs.org">Read the Docs', 'Hosted by <a href="https://cloudflare.com">CloudFlare'),
@@ -243,18 +247,18 @@ def ensureDirExists(outputName):
     except FileExistsError:
         pass
 
-def copyFile(root, filename, outputDirectory):
+def copyFile(root, filename, outputDirectory, verbose):
     inputName = os.path.join(root, filename)
     outputName = generateOutputName(root, inputName.replace('.\\', '').replace('./', ''), outputDirectory)
 
-    print(f'Copying "{inputName}" to "{outputName}"')
+    if verbose: print(f'Copying "{inputName}" to "{outputName}"')
     shutil.copyfile(inputName, outputName)
 
-def convertFile(root, filename, outputDirectory, includeUnimplemented):
+def convertFile(root, filename, outputDirectory, includeUnimplemented, verbose):
     inputName = os.path.join(root, filename)
     outputName = generateOutputName(root, filename, outputDirectory)
 
-    print(f'Converting "{inputName}" to "{outputName}"')
+    if verbose: print(f'Converting "{inputName}" to "{outputName}"')
     with open(inputName, mode = 'r', encoding = encoding) as input: 
         data = input.read()
 
@@ -265,64 +269,86 @@ def convertFile(root, filename, outputDirectory, includeUnimplemented):
         with open(outputName, mode = 'w', encoding = encoding) as output:
             output.write(data)
 
-def copyGlobalDir(inputDirectory, inputMask, outputDirectory):
+def copyGlobalDir(inputDirectory, inputMask, outputDirectory, verbose):
     for root, dirs, files in os.walk(inputDirectory):
         if (inputMask in root and outputDirectory not in root):
             for f in files:
                 inputName = os.path.join(root, f)
                 outputName = generateOutputName(root, f, outputDirectory)
                 ensureDirExists(outputName)
-                print(f"Copying {inputName} to {outputName}")
+                if verbose: print(f"Copying {inputName} to {outputName}")
                 copyfile(inputName, outputName)
 
-def convertStaticDir(inputDirectory, outputDirectory):
+def convertStaticDir(inputDirectory, outputDirectory, verbose):
     for root, dirs, files in os.walk(inputDirectory):
         if (outputDirectory not in root and '__' not in root):
             for f in files:
                 if (f.split('.')[1] in alphanumeric):
-                    convertFile(root, f, outputDirectory, True)
+                    convertFile(root, f, outputDirectory, True, verbose)
                 else:
-                    copyFile(root, f, outputDirectory)
+                    copyFile(root, f, outputDirectory, verbose)
 
-def migrate(inputDirectory, outputDirectory, includeUnimplemented):
+def migrate(inputDirectory, outputDirectory, includeUnimplemented, ignoreClasses, verbose):
     outputsig = os.path.join('.', outputDirectory)
     for root, dirs, files in os.walk(inputDirectory):
         # ignore output path
         if (root.startswith(outputsig)):
             continue
 
+        if (ignoreClasses and 'classes' in root):
+            continue
+
         items = filter(is_target, files)
         for item in items:
-            convertFile(root, item, outputDirectory, includeUnimplemented)
+            convertFile(root, item, outputDirectory, includeUnimplemented, verbose)
 
-inputDir = defaultInputDirectory
-outputDir = defaultOutputDirectory
-includeUnimplemented = defaultIncludeUnimplemented
-if (len(sys.argv) > 1):
-    inputDir = sys.argv[1]
-if (len(sys.argv) > 2):
-    outputDir = sys.argv[2]
-if (len(sys.argv) > 3):
-    includeUnimplemented = sys.argv[3]
+def main():
+    inputDir = defaultInputDirectory
+    outputDir = defaultOutputDirectory
+    includeUnimplemented = defaultIncludeUnimplemented
+    ignoreClasses = defaultIgnoreClasses
+    verbose = defaultVerbose
 
-print(f"Simple rst migrator. Uses str.replace to map from Godot to Redot.")
-print(f"Usage: py migrate.py [inputDir] [outputDir] [includeUnimplemented], example: py migrate.py . _mymigration True")
-print(f"Author: @Craptain on X")
-print(f"Input directory: {inputDir}, output directory: {outputDir}, include unimplemented: {includeUnimplemented}")
+    parser = argparse.ArgumentParser(
+                    prog='Migrate',
+                    description='Simple file migrator. Uses str.replace to map from Godot to Redot. Also converts some filenames.',
+                    epilog='Done. Made by @Craptain')
+    
+    parser.add_argument('input', help='Input directory relative to current')
+    parser.add_argument('output', help='Output directory relative to current')
+    parser.add_argument('-e', '--extended', action='store_true', help='Include unimplemented substitutions, don\'t use in production')
+    parser.add_argument('-t', '--tiny', action='store_true', help='Exclude classes directory')
+    parser.add_argument('-v', '--verbose', action='store_true') 
 
-migrate(inputDir, outputDir, includeUnimplemented)
+    args = parser.parse_args()
+    verbose = args.verbose
+    if (verbose):
+        print("arguments:")
+        print(args)
 
-print("Copying config files...")
-convertFile(inputDir, 'conf.py', outputDir, includeUnimplemented)
-convertFile(inputDir, 'robots.txt', outputDir, includeUnimplemented)
-copyFile(inputDir, 'favicon.ico', outputDir)
-print("Copying static directories...")
+    inputDir = args.input
+    outputDir = args.output
+    includeUnimplemented = args.extended
+    ignoreClasses = args.tiny
+    
+    print("Migrating...")
+    migrate(inputDir, outputDir, includeUnimplemented, ignoreClasses, verbose)
 
-for dir in static_dirs:
-    if ('**' in dir):
-        print(f"Copying dirs with mask {dir}")
-        copyGlobalDir(inputDir, dir.split('/')[1], outputDir)
-    else:
-        print(f"Converting dir {dir}")
-        convertStaticDir(dir, outputDir)
-print("Done")
+    print("Copying config files...")
+    convertFile(inputDir, 'conf.py', outputDir, includeUnimplemented, verbose)
+    convertFile(inputDir, 'robots.txt', outputDir, includeUnimplemented, verbose)
+    copyFile(inputDir, 'favicon.ico', outputDir, verbose)
+
+    print("Copying static directories...")
+    for dir in static_dirs:
+        if ('**' in dir):
+            if verbose: print(f"Copying dirs with mask {dir}")
+            copyGlobalDir(inputDir, dir.split('/')[1], outputDir, verbose)
+        else:
+            if verbose: print(f"Converting dir {dir}")
+            convertStaticDir(dir, outputDir, verbose)
+
+    print(parser.epilog)
+
+if __name__ == "__main__":
+    main()
