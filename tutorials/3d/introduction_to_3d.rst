@@ -31,7 +31,7 @@ Editing 3D scenes is done in the 3D workspace. This workspace can be selected
 manually, but it will be automatically selected when a Node3D node is
 selected.
 
-.. image:: img/tuto_3d3.webp
+.. image:: img/redot01.png
 
 Similar to 2D, the tabs below the workspace selector are used to change between
 currently opened scenes or create a new one using the plus (+) button. The left and
