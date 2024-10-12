@@ -49,7 +49,7 @@ Some buttons may have additional functionality if another keypress is performed.
 of main functionality of each button with its default shortcut is provided below from 
 left to right:
 
-.. image:: img/3d_toolbar.webp
+.. image:: img/redot02.jpg
 
 - **Select Mode** (:kbd:`Q`): Allows selection of nodes in the viewport. Left clicking
   on a node to select one. Left clicking and dragging a rectangle selects all 
