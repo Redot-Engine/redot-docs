@@ -144,6 +144,7 @@ mappings = [
     ('https://chat.godotengine.org/', 'https://discord.gg/a53QyHJZ'),
     # Generic replacements
     ('GODOT_COPYRIGHT.txt', 'REDOT_COPYRIGHT.txt'),
+    ('godotengine.org', 'redotengine.org')
     ('godot-docs', 'redot-docs'),
     ('GODOT ENGINE', 'REDOT ENGINE'),
     ('/bin/godot', '/bin/redot'),
@@ -178,6 +179,12 @@ mappings = [
     ('godot.html', 'redot.html'),
     ('by-godot', 'by-redot'),
     ('MadeWithGodot', 'MadeWithRedot'),
+    (' if on_rtd else "(DEV) "', ''),
+    ("const homeUrl = baseUrl.split('/latest/')[0] + '/stable/';", "const homeUrl = 'https://redot-docs-4-3.pages.dev/';"),
+    ('Read the Docs', 'Versions'),
+    ('{% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}', '{% set listed_languages = ({"en":"#"}).items() -%}'),
+    ('Hosted by <a href="https://readthedocs.org">Read the Docs', 'Hosted by <a href="https://cloudflare.com">CloudFlare'),
+
     ('G-dot', 'Godot'),
 ]
 
