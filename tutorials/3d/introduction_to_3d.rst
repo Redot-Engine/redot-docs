@@ -105,13 +105,13 @@ left to right:
 
 - **View menu**: Controls the view options and enables additional viewports:
 
-.. image:: img/tuto_3d6.webp
+.. image:: img/redot03.png
 
 In this menu, you can also show/hide grids, which are set to 1x1 meter by default,
 and the origin, where the blue, green, and red axis lines intersect.
 Moreover, specific types of gizmos can be toggled in this menu.
 
-.. image:: img/tuto_3d6_2.webp
+.. image:: img/redot04.png
 
 An open eye means that the gizmo is visible, a closed eye means it is hidden.
 A half-open eye means that it is also visible through opaque surfaces.
