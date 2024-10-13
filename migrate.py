@@ -236,6 +236,13 @@ if (sys.stdout.encoding != encoding):
 def is_target(filename):
     return any(filename.lower().endswith(m) for m in filename_masks)
 
+def ensureDirExists(outputName):
+    dirname = os.path.dirname(outputName)
+    try:
+        os.makedirs(dirname)
+    except FileExistsError:
+        pass
+
 def generateOutputName(root, fileName, outputDirectory):
     on = os.path.join('.', outputDirectory, root, fileName)
     on = convertContent(on, filename_mappings)
@@ -248,13 +255,6 @@ def convertContent(content, mappings):
         if (search != ''):
             content = content.replace(search, replace)
     return content
-
-def ensureDirExists(outputName):
-    dirname = os.path.dirname(outputName)
-    try:
-        os.makedirs(dirname)
-    except FileExistsError:
-        pass
 
 def copyFile(root, filename, outputDirectory, verbose):
     inputName = os.path.join(root, filename)
@@ -344,8 +344,9 @@ def main():
     includeUnimplemented = args.extended
     ignoreClasses = args.tiny
 
-    print("Deleting output dir")
-    shutil.rmtree(outputDir)
+    if (os.path.exists(outputDir)):
+        print(f"Deleting {outputDir}")
+        shutil.rmtree(outputDir)
     
     print("Migrating...")
     migrate(inputDir, outputDir, includeUnimplemented, ignoreClasses, verbose)
