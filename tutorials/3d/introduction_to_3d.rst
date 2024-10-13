@@ -133,7 +133,7 @@ Below the *Select* tool, in the 3D viewport, clicking on the three dots opens th
 Hiding all shown gizmos in the editor's 3D view can also be performed through
 this menu:
 
-.. image:: img/tuto_3d6_1.webp
+.. image:: img/redot05.png
 
 This menu also displays the current view type and enables quick adjustment of the 
 viewport's viewing angle. Additionally, it offers options to modify the appearance of 
@@ -217,7 +217,7 @@ similar to other tools in the Editor Settings. To change the controls
 to Maya or Modo controls, you can navigate to **Editor Settings > Editors > 3D**.
 Then, under *Navigation*, search for *Navigation Scheme*.
 
-.. image:: img/tuto_3d4.webp
+.. image:: img/redot06.png
 
 Using the default settings, the following shortcuts control how one can
 navigate in the viewport:
