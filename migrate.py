@@ -140,7 +140,8 @@ mappings = [
     ('| ``"Please include this when reporting the bug on: https://github.com/godotengine/godot/issues"`` |', '| ``"Please include this when reporting the bug on: https://github.com/redot-engine/godot/issues"``|'),
     ('https://github.com/godotengine/godot/pull/40364>`_ for more.     |', 'https://github.com/redot-engine/redot/pull/40364>`_ for more.    |'),
     # Almost existing urls
-    ('https://docs.godotengine.org', ''),
+    ('https://docs.godotengine.org/', '/'),
+    ('https://docs.godotengine.org', 'https://docs.redotengine.org'),
     ('https://godotengine.org', 'https://redotengine.org'),
     # Existing urls
     ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot', 'https://nightly.link/redot-engine/redot-docs/workflows/build_offline_docs/master/redot'),
@@ -200,6 +201,7 @@ mappings = [
     ('<a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>', ''),
     ('G-dot', 'Godot'),
     (' godot_', ' redot_'),
+    ('class_godotsharp', 'class_redotsharp'),
 ]
 
 filename_mappings = [
