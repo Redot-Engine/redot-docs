@@ -34,6 +34,7 @@ From there, the docs can be built in the normal way.
 import argparse
 import fnmatch
 import os
+import re
 from shutil import copyfile
 import shutil
 import sys
@@ -335,9 +336,16 @@ def main():
         print(args)
 
     inputDir = args.input
-    outputDir = args.output
+    if (args.output != '.' and not args.output.startswith('/')):
+        outputDir = args.output
+    else:
+        print("output can't be . or start with /")
+        exit(1)
     includeUnimplemented = args.extended
     ignoreClasses = args.tiny
+
+    print("Deleting output dir")
+    shutil.rmtree(outputDir)
     
     print("Migrating...")
     migrate(inputDir, outputDir, includeUnimplemented, ignoreClasses, verbose)
