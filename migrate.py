@@ -62,11 +62,6 @@ mappings_unimplemented = [
     ('https://hosted.weblate.org/projects/godot-engine/', 'https://hosted.weblate.org/projects/redot-engine/'),
     ('https://hosted.weblate.org/browse/godot-engine', 'https://hosted.weblate.org/browse/redot-engine'),
     ('https://repo1.maven.org/maven2/org/godotengine/godot/', 'https://repo1.maven.org/maven2/org/redot-engine/redot/'),
-    # Non existing internal urls
-    ('https://chat.godotengine.org/', 'https://chat.redotengine.org/'),
-    ('https://editor.godotengine.org', 'https://editor.redotengine.org'),
-    ('https://forum.godotengine.org/', 'https://forum.redotengine.org/'),
-    ('https://fund.godotengine.org', 'https://fund.redotengine.org'),
     # The following mappings probably require changes to the core engine
     ('GodotEngine.epub', 'RedotEngine.epub'),
     ('godotengine.org/license', 'redotengine.org/license'),
@@ -136,14 +131,27 @@ mappings_unimplemented = [
 
 # Mappings that should work on first migration
 mappings = [
+    # These will have to change eventually.
+    ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-stable.zip', 'https://download.redotengine.org/docs/redot-docs-html-stable.zip'),
+    ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-master.zip', 'https://download.redotengine.org/docs/redot-docs-html-master.zip'),
+    ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-html-3.6.zip', 'https://download.redotengine.org/docs/redot-docs-html-3.6.zip'),
+    ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-stable.zip', 'https://download.redotengine.org/docs/redot-docs-epub-stable.zip'),
+    ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-master.zip', 'https://download.redotengine.org/docs/redot-docs-epub-master.zip'),
+    ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot-docs-epub-3.6.zip', 'https://download.redotengine.org/docs/redot-docs-epub-3.6.zip'),
     # Table breakers
     ('| ``"Please include this when reporting the bug on: https://github.com/godotengine/godot/issues"`` |', '| ``"Please include this when reporting the bug on: https://github.com/redot-engine/godot/issues"``|'),
     ('https://github.com/godotengine/godot/pull/40364>`_ for more.     |', 'https://github.com/redot-engine/redot/pull/40364>`_ for more.    |'),
+    # Non existing internal urls
+    ('https://chat.godotengine.org/', 'https://www.redotengine.org/'),
+    ('https://editor.godotengine.org', 'https://www.redotengine.org'),
+    ('https://forum.godotengine.org/', 'https://www.redotengine.org/'),
+    ('https://fund.godotengine.org', 'https://www.redotengine.org'),
     # Almost existing urls
     ('https://docs.godotengine.org/', '/'),
     ('https://docs.godotengine.org', 'https://docs.redotengine.org'),
     ('https://godotengine.org', 'https://redotengine.org'),
     # Existing urls
+    ('https://godotengine.org/community', 'https://www.redot.org'),
     ('https://nightly.link/godotengine/godot-docs/workflows/build_offline_docs/master/godot', 'https://nightly.link/redot-engine/redot-docs/workflows/build_offline_docs/master/redot'),
     ('https://github.com/godotengine/godot-docs/issues', 'https://github.com/redot-engine/redot-docs/issues'),
     ('https://github.com/godotengine/godot/blob/master', 'https://github.com/redot-engine/redot/blob/master'),
@@ -154,7 +162,7 @@ mappings = [
     ('https://github.com/godotengine/godot-proposals', 'https://github.com/redot-engine/redot-proposals'),
     ('https://raw.githubusercontent.com/godotengine/godot-docs', 'https://raw.githubusercontent.com/redot-engine/redot-docs'),
     ('https://github.com/godotengine/', 'https://github.com/redot-engine/'),
-    ('https://chat.godotengine.org/', 'https://discord.gg/a53QyHJZ'),
+    ('https://chat.godotengine.org/', 'https://discord.gg/redot'),
     # Generic replacements
     ('GODOT_COPYRIGHT.txt', 'REDOT_COPYRIGHT.txt'),
     ('godotengine.org', 'redotengine.org'),
@@ -194,9 +202,9 @@ mappings = [
     ('MadeWithGodot', 'MadeWithRedot'),
     (' if on_rtd else "(DEV) "', ''),
     ('<span class="fa fa-book"> Read the Docs</span>', '<span class="fa fa-book"> Versions</span>'),
-    ("const homeUrl = baseUrl.split('/latest/')[0] + '/stable/';", "const homeUrl = 'https://redot-docs-4-3.pages.dev/';"),
+    ("const homeUrl = baseUrl.split('/latest/')[0] + '/stable/';", "const homeUrl = 'https://docs-stable.redotengine.org/';"),
     ('{% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}', '{% set listed_languages = ({"en":"#"}).items() -%}'),
-    ('({"stable":"#", "latest":"#"})', '({"stable":"https://redot-docs-4-3.pages.dev/", "latest":"https://redot-docs-4-4.pages.dev/", "3.6":"https://redot-docs-3-6.pages.dev/"})'),
+    ('({"stable":"#", "latest":"#"})', '({"stable":"https://docs-stable.redotengine.org/", "latest":"https://docs-latest.redotengine.org/", "3.6":"https://docs-3-6.redotengine.org/"})'),
     ('Hosted by <a href="https://readthedocs.org">Read the Docs', 'Hosted by <a href="https://cloudflare.com">CloudFlare'),
     ('<a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>', ''),
     ('G-dot', 'Godot'),
