@@ -5,6 +5,11 @@ REPORT_DIR="build-report"
 REPORT_FILE="$REPORT_DIR/index.html"
 
 GIT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+if [ $CF_PAGES -gt 0 ]
+then
+    echo "We are on pages"
+    GIT_BRANCH=$CF_PAGES_BRANCH
+fi
 GIT_COMMIT_MESSAGE="branch $GIT_BRANCH on $DATE"
 GIT_LIVE_BRANCH=${2:-develop}
 
@@ -14,7 +19,7 @@ SPHINX_DIR="_sphinx"
 REPO_DIR="_repo"
 
 LIVE_ROOT="redot-docs-live"
-LIVE_REPO="git@github.com:Redot-Engine/$LIVE_ROOT.git"
+LIVE_REPO="https://github.com/Redot-Engine/$LIVE_ROOT.git"
 BUILD_DIR="html/en/$GIT_BRANCH"
 
 mkdir -p $REPORT_DIR
@@ -43,15 +48,16 @@ git clone $LIVE_REPO $REPO_DIR 2>&1 | tee -a $REPORT_FILE
 
 echo "Checking out $GIT_LIVE_BRANCH"
 cd $REPO_DIR
-git checkout $GIT_LIVE_BRANCH 2>&1 | tee -a $REPORT_FILE
+git checkout $GIT_LIVE_BRANCH 2>&1 | tee -a ../$REPORT_FILE
 echo "mkdir -p $BUILD_DIR"
 mkdir -p $BUILD_DIR
-echo "cp -r ../$SPHINX_DIR/* $BUILD_DIR" 2>&1 | tee -a $REPORT_FILE
-cp -r ../$SPHINX_DIR/* $BUILD_DIR 2>&1 | tee -a $REPORT_FILE
+echo "cp -r ../$SPHINX_DIR/* $BUILD_DIR" 2>&1 | tee -a ../$REPORT_FILE
+cp -r ../$SPHINX_DIR/* $BUILD_DIR 2>&1 | tee -a ../$REPORT_FILE
 
-echo "Commit and push to $GIT_REMOTE_BRANCH, with message $GIT_COMMIT_MESSAGE" 2>&1 | tee -a $REPORT_FILE
-git add . 2>&1 | tee -a $REPORT_FILE
-git commit -m "$GIT_COMMIT_MESSAGE" 2>&1 | tee -a $REPORT_FILE
-git push -f 2>&1 | tee -a $REPORT_FILE
+echo "Commit and push to $GIT_REMOTE_BRANCH, with message $GIT_COMMIT_MESSAGE" 2>&1 | tee -a ../$REPORT_FILE
+git add . 2>&1 | tee -a ../$REPORT_FILE
 
-echo "Done. Made by @Craptain" 2>&1 | tee -a $REPORT_FILE
+git commit -m "$GIT_COMMIT_MESSAGE" 2>&1 | tee -a ../$REPORT_FILE
+git push -f 2>&1 | tee -a ../$REPORT_FILE
+
+echo "Done. Made by @Craptain" 2>&1 | tee -a ../$REPORT_FILE
