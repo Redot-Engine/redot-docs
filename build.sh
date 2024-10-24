@@ -22,6 +22,9 @@ LIVE_ROOT="redot-docs-live"
 LIVE_REPO="https://github.com/Redot-Engine/$LIVE_ROOT.git"
 BUILD_DIR="html/en/$GIT_BRANCH"
 
+echo "###############################"
+ls -la ~/.ssh
+
 mkdir -p $REPORT_DIR
 rm $REPORT_FILE
 echo "reporting to $REPORT_FILE" 2>&1 | tee -a $REPORT_FILE
