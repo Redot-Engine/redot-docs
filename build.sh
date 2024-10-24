@@ -54,9 +54,12 @@ mkdir -p $BUILD_DIR
 echo "cp -r ../$SPHINX_DIR/* $BUILD_DIR" 2>&1 | tee -a ../$REPORT_FILE
 cp -r ../$SPHINX_DIR/* $BUILD_DIR 2>&1 | tee -a ../$REPORT_FILE
 
-echo "Commit and push to $GIT_REMOTE_BRANCH, with message $GIT_COMMIT_MESSAGE" 2>&1 | tee -a ../$REPORT_FILE
-git add . 2>&1 | tee -a ../$REPORT_FILE
+echo "Setting credentials"
+git config --global user.email "buildbot@cloudflare.com"
+git config --global user.name "CloudFlare bot"
 
+echo "Commit and push to $GIT_LIVE_BRANCH, with message $GIT_COMMIT_MESSAGE" 2>&1 | tee -a ../$REPORT_FILE
+git add . 2>&1 | tee -a ../$REPORT_FILE
 git commit -m "$GIT_COMMIT_MESSAGE" 2>&1 | tee -a ../$REPORT_FILE
 git push -f 2>&1 | tee -a ../$REPORT_FILE
 
