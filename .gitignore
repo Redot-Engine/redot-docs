@@ -7,6 +7,7 @@ _build-old/
 _migrated/
 _sphinx/
 _repo/
+build-report/
 env/
 __pycache__
 *.pyc
