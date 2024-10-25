@@ -2,13 +2,6 @@
 !redirects.csv
 .env
 
-_build/
-_build-old/
-_migrated/
-_sphinx/
-_repo/
-build-report/
-id_priv
 env/
 __pycache__
 *.pyc
@@ -57,4 +50,8 @@ godot-docs-venv/
 # Jetbrains IDE files
 /.idea/
 
+_build/
+_migrated/
+_sphinx/
+_repo/
 *.log
