@@ -147,7 +147,7 @@ it's recommended to validate the project conversion by running the Godot editor 
 
     # [<max_file_kb>] [<max_line_size>] are optional arguments.
     # Remove them if you aren't changing their values.
-    path/to/godot.binary --path /path/to/project/folder --validate-conversion-3to4 [<max_file_kb>] [<max_line_size>]
+    path/to/redot.binary --path /path/to/project/folder --validate-conversion-3to4 [<max_file_kb>] [<max_line_size>]
 
 If the list of planned upgrades looks good to you, run the following command on
 the Godot editor binary to upgrade project files:
@@ -156,7 +156,7 @@ the Godot editor binary to upgrade project files:
 
     # [<max_file_kb>] [<max_line_size>] are optional arguments.
     # Remove them if you aren't changing their values.
-    path/to/godot.binary --path /path/to/project/folder --convert-3to4 [<max_file_kb>] [<max_line_size>]
+    path/to/redot.binary --path /path/to/project/folder --convert-3to4 [<max_file_kb>] [<max_line_size>]
 
 ``[<max_file_kb>]`` and ``[<max_line_size>]`` are *optional* arguments to specify
 the maximum size of files to be converted (in kilobytes and lines). The default
@@ -171,7 +171,7 @@ running the Godot editor binary with those arguments increases both limits by a
 
 ::
 
-    path/to/godot.binary --path /path/to/project/folder --convert-3to4 40000 1000000
+    path/to/redot.binary --path /path/to/project/folder --convert-3to4 40000 1000000
 
 .. note::
 
