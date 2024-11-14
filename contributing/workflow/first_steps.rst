@@ -54,7 +54,7 @@ way more contributions than people validating them.
 
 To make sure that your time and efforts aren't wasted, it is recommended to vet the idea
 first before implementing it and putting it for a review as a PR. To that end, Godot
-has a `proposal system <https://github.com/godotengine/godot-proposals>`_. Its
+has a `proposal system <https://github.com/Redot-Engine/redot-proposals>`_. Its
 usage is encouraged to plan changes and discuss them with the community. Implementation
 details can also be discussed with other contributors on the `Godot Contributors Chat <https://chat.godotengine.org/>`_.
 
