@@ -19,7 +19,7 @@ Provides methods for file reading and writing operations.
 Description
 -----------
 
-This class can be used to permanently store data in the user device's file system and to read from it. This is useful for store game save data or player configuration files.
+This class can be used to permanently store data in the user device's file system and to read from it. This is useful for storing game save data or player configuration files.
 
 Here's a sample on how to write and read from a file:
 
