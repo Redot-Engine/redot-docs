@@ -1002,7 +1002,7 @@ Specifies how the content's aspect behaves when the **Window** is resized. The b
 - |void| **set_content_scale_factor**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_content_scale_factor**\ (\ )
 
-Specifies the base scale of **Window**'s content when its :ref:`size<class_Window_property_size>` is equal to :ref:`content_scale_size<class_Window_property_content_scale_size>`.
+Specifies the base scale of **Window**'s content when its :ref:`size<class_Window_property_size>` is equal to :ref:`content_scale_size<class_Window_property_content_scale_size>`. See also :ref:`Viewport.get_stretch_transform<class_Viewport_method_get_stretch_transform>`.
 
 .. rst-class:: classref-item-separator
 
