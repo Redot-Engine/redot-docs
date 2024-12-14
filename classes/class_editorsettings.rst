@@ -63,6 +63,8 @@ Properties
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debugger/auto_switch_to_remote_scene_tree<class_EditorSettings_property_debugger/auto_switch_to_remote_scene_tree>`                                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debugger/auto_switch_to_stack_trace<class_EditorSettings_property_debugger/auto_switch_to_stack_trace>`                                                                                                     |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debugger/profile_native_calls<class_EditorSettings_property_debugger/profile_native_calls>`                                                                                                                 |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debugger/profiler_frame_history_size<class_EditorSettings_property_debugger/profiler_frame_history_size>`                                                                                                   |
@@ -188,6 +190,8 @@ Properties
    | :ref:`float<class_float>`                         | :ref:`editors/3d/navigation_feel/orbit_sensitivity<class_EditorSettings_property_editors/3d/navigation_feel/orbit_sensitivity>`                                                                                   |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`editors/3d/navigation_feel/translation_inertia<class_EditorSettings_property_editors/3d/navigation_feel/translation_inertia>`                                                                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                         | :ref:`editors/3d/navigation_feel/translation_sensitivity<class_EditorSettings_property_editors/3d/navigation_feel/translation_sensitivity>`                                                                       |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`editors/3d/navigation_feel/zoom_inertia<class_EditorSettings_property_editors/3d/navigation_feel/zoom_inertia>`                                                                                             |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -956,6 +960,18 @@ If ``true``, the Asset Library uses multiple threads for its HTTP requests. This
 If ``true``, automatically switches to the **Remote** scene tree when running the project from the editor. If ``false``, stays on the **Local** scene tree when running the project from the editor.
 
 \ **Warning:** Enabling this setting can cause stuttering when running a project with a large amount of nodes (typically a few thousands of nodes or more), even if the editor window isn't focused. This is due to the remote scene tree being updated every second regardless of whether the editor is focused.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_debugger/auto_switch_to_stack_trace:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debugger/auto_switch_to_stack_trace** :ref:`🔗<class_EditorSettings_property_debugger/auto_switch_to_stack_trace>`
+
+If ``true``, automatically switches to the **Stack Trace** panel when the debugger hits a breakpoint or steps.
 
 .. rst-class:: classref-item-separator
 
@@ -1748,6 +1764,18 @@ The mouse sensitivity to use when orbiting in the 3D editor. See also :ref:`edit
 :ref:`float<class_float>` **editors/3d/navigation_feel/translation_inertia** :ref:`🔗<class_EditorSettings_property_editors/3d/navigation_feel/translation_inertia>`
 
 The inertia to use when panning in the 3D editor. Higher values make the camera start and stop slower, which looks smoother but adds latency.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_editors/3d/navigation_feel/translation_sensitivity:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **editors/3d/navigation_feel/translation_sensitivity** :ref:`🔗<class_EditorSettings_property_editors/3d/navigation_feel/translation_sensitivity>`
+
+The mouse sensitivity to use when panning in the 3D editor.
 
 .. rst-class:: classref-item-separator
 
@@ -4181,7 +4209,7 @@ The editor theme spacing preset to use. See also :ref:`interface/theme/base_spac
 
 If ``true``, set accent color based on system settings.
 
-\ **Note:** This setting is only effective on Windows and MacOS.
+\ **Note:** This setting is only effective on Windows, MacOS, and Android.
 
 .. rst-class:: classref-item-separator
 
@@ -5107,7 +5135,7 @@ If ``true``, adds :doc:`GDScript static typing <../tutorials/scripting/gdscript/
 
 :ref:`bool<class_bool>` **text_editor/completion/auto_brace_complete** :ref:`🔗<class_EditorSettings_property_text_editor/completion/auto_brace_complete>`
 
-If ``true``, automatically completes braces when making use of code completion.
+If ``true``, automatically inserts the matching closing brace when the opening brace is inserted by typing or autocompletion. Also automatically removes the closing brace when pressing :kbd:`Backspace` on the opening brace. This includes brackets (``()``, ``[]``, ``{}``), string quotation marks (``''``, ``""``), and comments (``/**/``) if the language supports it.
 
 .. rst-class:: classref-item-separator
 

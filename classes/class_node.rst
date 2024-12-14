@@ -642,7 +642,7 @@ Duplicate the node's script (also overriding the duplicated children's scripts, 
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_USE_INSTANTIATION** = ``8``
 
-Duplicate using :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>`. If the node comes from a scene saved on disk, re-uses :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>` as the base for the duplicated node and its children.
+Duplicate using :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>`. If the node comes from a scene saved on disk, reuses :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>` as the base for the duplicated node and its children.
 
 .. rst-class:: classref-item-separator
 
@@ -1597,7 +1597,7 @@ For gameplay input, this and :ref:`_unhandled_input<class_Node_private_method__u
 
 |void| **_unhandled_picking_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_Node_private_method__unhandled_picking_input>`
 
-Called when an :ref:`InputEventKey<class_InputEventKey>` hasn't been consumed by physics picking. The input event propagates up through the node tree in the current :ref:`Viewport<class_Viewport>` until a node consumes it.
+Called when an :ref:`InputEvent<class_InputEvent>` hasn't been consumed by physics picking. The input event propagates up through the node tree in the current :ref:`Viewport<class_Viewport>` until a node consumes it.
 
 It is only called if unhandled picking input processing is enabled, which is done automatically if this method is overridden, and can be toggled with :ref:`set_process_unhandled_picking_input<class_Node_method_set_process_unhandled_picking_input>`.
 
