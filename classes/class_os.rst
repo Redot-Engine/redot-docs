@@ -141,6 +141,8 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_system_fonts<class_OS_method_get_system_fonts>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                     |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`get_temp_dir<class_OS_method_get_temp_dir>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`get_thread_caller_id<class_OS_method_get_thread_caller_id>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                             |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`get_unique_id<class_OS_method_get_unique_id>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                           |
@@ -1325,6 +1327,18 @@ Returns the list of font family names available.
 
 ----
 
+.. _class_OS_method_get_temp_dir:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **get_temp_dir**\ (\ ) |const| :ref:`🔗<class_OS_method_get_temp_dir>`
+
+Returns the *global* temporary data directory according to the operating system's standards.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_OS_method_get_thread_caller_id:
 
 .. rst-class:: classref-method
@@ -1662,6 +1676,8 @@ Reads a user input as a UTF-8 encoded string from the standard input. This opera
 - If standard input is pipe, this method will block until a specific amount of data is read or pipe is closed.
 
 - If standard input is a file, this method will read a specific amount of data (or less if end-of-file is reached) and return immediately.
+
+\ **Note:** This method automatically replaces ``\r\n`` line breaks with ``\n`` and removes them from the end of the string. Use :ref:`read_buffer_from_stdin<class_OS_method_read_buffer_from_stdin>` to read the unprocessed data.
 
 \ **Note:** This method is implemented on Linux, macOS, and Windows.
 

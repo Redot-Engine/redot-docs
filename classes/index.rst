@@ -211,6 +211,7 @@ Nodes
     class_remotetransform2d
     class_remotetransform3d
     class_resourcepreloader
+    class_retargetmodifier3d
     class_richtextlabel
     class_rigidbody2d
     class_rigidbody3d
@@ -373,6 +374,7 @@ Resources
     class_capsuleshape3d
     class_circleshape2d
     class_codehighlighter
+    class_colorpalette
     class_compositor
     class_compositoreffect
     class_compressedcubemap
@@ -921,6 +923,7 @@ Other objects
     class_scriptlanguage
     class_scriptlanguageextension
     class_semaphore
+    class_shaderincludedb
     class_skinreference
     class_streampeer
     class_streampeerbuffer
