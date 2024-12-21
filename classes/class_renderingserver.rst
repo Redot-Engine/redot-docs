@@ -649,6 +649,8 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedFloat32Array<class_PackedFloat32Array>`                              | :ref:`multimesh_get_buffer<class_RenderingServer_method_multimesh_get_buffer>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                                                            | :ref:`multimesh_get_buffer_rd_rid<class_RenderingServer_method_multimesh_get_buffer_rd_rid>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`AABB<class_AABB>`                                                          | :ref:`multimesh_get_custom_aabb<class_RenderingServer_method_multimesh_get_custom_aabb>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                                            | :ref:`multimesh_get_instance_count<class_RenderingServer_method_multimesh_get_instance_count>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -796,6 +798,8 @@ Methods
    | |void|                                                                           | :ref:`reflection_probe_set_ambient_mode<class_RenderingServer_method_reflection_probe_set_ambient_mode>`\ (\ probe\: :ref:`RID<class_RID>`, mode\: :ref:`ReflectionProbeAmbientMode<enum_RenderingServer_ReflectionProbeAmbientMode>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`reflection_probe_set_as_interior<class_RenderingServer_method_reflection_probe_set_as_interior>`\ (\ probe\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`reflection_probe_set_blend_distance<class_RenderingServer_method_reflection_probe_set_blend_distance>`\ (\ probe\: :ref:`RID<class_RID>`, blend_distance\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`reflection_probe_set_cull_mask<class_RenderingServer_method_reflection_probe_set_cull_mask>`\ (\ probe\: :ref:`RID<class_RID>`, layers\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -3502,6 +3506,8 @@ Objects are displayed semi-transparent with additive blending so you can see whe
 
 Debug draw draws objects in wireframe.
 
+\ **Note:** :ref:`set_debug_generate_wireframes<class_RenderingServer_method_set_debug_generate_wireframes>` must be called before loading any meshes for wireframes to be visible when using the Compatibility renderer.
+
 .. _class_RenderingServer_constant_VIEWPORT_DEBUG_DRAW_NORMAL_BUFFER:
 
 .. rst-class:: classref-enumeration-constant
@@ -5662,7 +5668,7 @@ Buffer memory used (in bytes). This includes vertex data, uniform buffers, and m
 
 :ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_VIDEO_MEM_USED** = ``5``
 
-Video memory used (in bytes). When using the Forward+ or mobile rendering backends, this is always greater than the sum of :ref:`RENDERING_INFO_TEXTURE_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_TEXTURE_MEM_USED>` and :ref:`RENDERING_INFO_BUFFER_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_BUFFER_MEM_USED>`, since there is miscellaneous data not accounted for by those two metrics. When using the GL Compatibility backend, this is equal to the sum of :ref:`RENDERING_INFO_TEXTURE_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_TEXTURE_MEM_USED>` and :ref:`RENDERING_INFO_BUFFER_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_BUFFER_MEM_USED>`.
+Video memory used (in bytes). When using the Forward+ or Mobile renderers, this is always greater than the sum of :ref:`RENDERING_INFO_TEXTURE_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_TEXTURE_MEM_USED>` and :ref:`RENDERING_INFO_BUFFER_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_BUFFER_MEM_USED>`, since there is miscellaneous data not accounted for by those two metrics. When using the Compatibility renderer, this is equal to the sum of :ref:`RENDERING_INFO_TEXTURE_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_TEXTURE_MEM_USED>` and :ref:`RENDERING_INFO_BUFFER_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_BUFFER_MEM_USED>`.
 
 .. _class_RenderingServer_constant_RENDERING_INFO_PIPELINE_COMPILATIONS_CANVAS:
 
@@ -7484,7 +7490,7 @@ Sets the compositor effects for the specified compositor RID. ``effects`` should
 
 Creates a RenderingDevice that can be used to do draw and compute operations on a separate thread. Cannot draw to the screen nor share data with the global RenderingDevice.
 
-\ **Note:** When using the OpenGL backend or when running in headless mode, this function always returns ``null``.
+\ **Note:** When using the OpenGL rendering driver or when running in headless mode, this function always returns ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -8178,7 +8184,7 @@ Returns the time taken to setup rendering on the CPU in milliseconds. This value
 
 Returns the global RenderingDevice.
 
-\ **Note:** When using the OpenGL backend or when running in headless mode, this function always returns ``null``.
+\ **Note:** When using the OpenGL rendering driver or when running in headless mode, this function always returns ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -8290,7 +8296,7 @@ Returns the name of the video adapter (e.g. "GeForce GTX 1080/PCIe/SSE2").
 
 Returns the type of the video adapter. Since dedicated graphics cards from a given generation will *usually* be significantly faster than integrated graphics made in the same generation, the device type can be used as a basis for automatic graphics settings adjustment. However, this is not always true, so make sure to provide users with a way to manually override graphics settings.
 
-\ **Note:** When using the OpenGL backend or when running in headless mode, this function always returns :ref:`RenderingDevice.DEVICE_TYPE_OTHER<class_RenderingDevice_constant_DEVICE_TYPE_OTHER>`.
+\ **Note:** When using the OpenGL rendering driver or when running in headless mode, this function always returns :ref:`RenderingDevice.DEVICE_TYPE_OTHER<class_RenderingDevice_constant_DEVICE_TYPE_OTHER>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9728,6 +9734,18 @@ Returns the MultiMesh data (such as instance transforms, colors, etc.). See :ref
 
 ----
 
+.. _class_RenderingServer_method_multimesh_get_buffer_rd_rid:
+
+.. rst-class:: classref-method
+
+:ref:`RID<class_RID>` **multimesh_get_buffer_rd_rid**\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_RenderingServer_method_multimesh_get_buffer_rd_rid>`
+
+Returns the :ref:`RenderingDevice<class_RenderingDevice>` :ref:`RID<class_RID>` handle of the :ref:`MultiMesh<class_MultiMesh>`, which can be used as any other buffer on the Rendering Device.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RenderingServer_method_multimesh_get_custom_aabb:
 
 .. rst-class:: classref-method
@@ -10681,6 +10699,18 @@ If ``true``, reflections will ignore sky contribution. Equivalent to :ref:`Refle
 
 ----
 
+.. _class_RenderingServer_method_reflection_probe_set_blend_distance:
+
+.. rst-class:: classref-method
+
+|void| **reflection_probe_set_blend_distance**\ (\ probe\: :ref:`RID<class_RID>`, blend_distance\: :ref:`float<class_float>`\ ) :ref:`🔗<class_RenderingServer_method_reflection_probe_set_blend_distance>`
+
+Sets the distance in meters over which a probe blends into the scene.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RenderingServer_method_reflection_probe_set_cull_mask:
 
 .. rst-class:: classref-method
@@ -10919,7 +10949,9 @@ Sets a boot image. The color defines the background color. If ``scale`` is ``tru
 
 |void| **set_debug_generate_wireframes**\ (\ generate\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_RenderingServer_method_set_debug_generate_wireframes>`
 
-This method is currently unimplemented and does nothing if called with ``generate`` set to ``true``.
+If ``generate`` is ``true``, generates debug wireframes for all meshes that are loaded when using the Compatibility renderer. By default, the engine does not generate debug wireframes at runtime, since they slow down loading of assets and take up VRAM.
+
+\ **Note:** You must call this method before loading any meshes when using the Compatibility renderer, otherwise wireframes will not be used.
 
 .. rst-class:: classref-item-separator
 
@@ -12162,7 +12194,7 @@ If ``true``, enables debanding on the specified viewport. Equivalent to :ref:`Pr
 
 If ``true``, 2D rendering will use a high dynamic range (HDR) format framebuffer matching the bit depth of the 3D framebuffer. When using the Forward+ renderer this will be an ``RGBA16`` framebuffer, while when using the Mobile renderer it will be an ``RGB10_A2`` framebuffer. Additionally, 2D rendering will take place in linear color space and will be converted to sRGB space immediately before blitting to the screen (if the Viewport is attached to the screen). Practically speaking, this means that the end result of the Viewport will not be clamped into the ``0-1`` range and can be used in 3D rendering without color space adjustments. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow) as well as substantially improves the appearance of effects requiring highly detailed gradients. This setting has the same effect as :ref:`Viewport.use_hdr_2d<class_Viewport_property_use_hdr_2d>`.
 
-\ **Note:** This setting will have no effect when using the GL Compatibility renderer as the GL Compatibility renderer always renders in low dynamic range for performance reasons.
+\ **Note:** This setting will have no effect when using the Compatibility renderer, which always renders in low dynamic range for performance reasons.
 
 .. rst-class:: classref-item-separator
 
