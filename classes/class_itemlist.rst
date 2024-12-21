@@ -353,6 +353,14 @@ Only allow selecting a single item.
 
 Allows selecting multiple items by holding :kbd:`Ctrl` or :kbd:`Shift`.
 
+.. _class_ItemList_constant_SELECT_TOGGLE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SelectMode<enum_ItemList_SelectMode>` **SELECT_TOGGLE** = ``2``
+
+Allows selecting multiple items by toggling them on and off.
+
 .. rst-class:: classref-section-separator
 
 ----
