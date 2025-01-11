@@ -789,12 +789,12 @@ Returns a hexadecimal representation of this array as a :ref:`String<class_Strin
  .. code-tab:: gdscript
 
     var array = PackedByteArray([11, 46, 255])
-    print(array.hex_encode()) # Prints: 0b2eff
+    print(array.hex_encode()) # Prints "0b2eff"
 
  .. code-tab:: csharp
 
-    var array = new byte[] {11, 46, 255};
-    GD.Print(array.HexEncode()); // Prints: 0b2eff
+    byte[] array = [11, 46, 255];
+    GD.Print(array.HexEncode()); // Prints "0b2eff"
 
 
 

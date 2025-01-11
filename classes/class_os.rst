@@ -527,7 +527,7 @@ If the process is successfully created, this method returns its process ID, whic
 
  .. code-tab:: csharp
 
-    var pid = OS.CreateProcess(OS.GetExecutablePath(), new string[] {});
+    var pid = OS.CreateProcess(OS.GetExecutablePath(), []);
 
 
 
@@ -601,8 +601,8 @@ For example, to retrieve a list of the working directory's contents:
 
  .. code-tab:: csharp
 
-    var output = new Godot.Collections.Array();
-    int exitCode = OS.Execute("ls", new string[] {"-l", "/tmp"}, output);
+    Godot.Collections.Array output = [];
+    int exitCode = OS.Execute("ls", ["-l", "/tmp"], output);
 
 
 
@@ -618,8 +618,8 @@ If you wish to access a shell built-in or execute a composite command, a platfor
 
  .. code-tab:: csharp
 
-    var output = new Godot.Collections.Array();
-    OS.Execute("CMD.exe", new string[] {"/C", "cd %TEMP% && dir"}, output);
+    Godot.Collections.Array output = [];
+    OS.Execute("CMD.exe", ["/C", "cd %TEMP% && dir"], output);
 
 
 
@@ -1717,9 +1717,17 @@ Reads a user input as a UTF-8 encoded string from the standard input. This opera
 
 :ref:`bool<class_bool>` **request_permission**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OS_method_request_permission>`
 
-Requests permission from the OS for the given ``name``. Returns ``true`` if the permission has been successfully granted.
+Requests permission from the OS for the given ``name``. Returns ``true`` if the permission has already been granted. See also :ref:`MainLoop.on_request_permissions_result<class_MainLoop_signal_on_request_permissions_result>`.
 
-\ **Note:** This method is currently only implemented on Android, to specifically request permission for ``"RECORD_AUDIO"`` by ``AudioDriverOpenSL``.
+The ``name`` must be the full permission name. For example:
+
+- ``OS.request_permission("android.permission.READ_EXTERNAL_STORAGE")``\ 
+
+- ``OS.request_permission("android.permission.POST_NOTIFICATIONS")``\ 
+
+\ **Note:** Permission must be checked during export.
+
+\ **Note:** This method is only implemented on Android.
 
 .. rst-class:: classref-item-separator
 
@@ -1731,7 +1739,9 @@ Requests permission from the OS for the given ``name``. Returns ``true`` if the 
 
 :ref:`bool<class_bool>` **request_permissions**\ (\ ) :ref:`🔗<class_OS_method_request_permissions>`
 
-Requests *dangerous* permissions from the OS. Returns ``true`` if permissions have been successfully granted.
+Requests *dangerous* permissions from the OS. Returns ``true`` if permissions have already been granted. See also :ref:`MainLoop.on_request_permissions_result<class_MainLoop_signal_on_request_permissions_result>`.
+
+\ **Note:** Permissions must be checked during export.
 
 \ **Note:** This method is only implemented on Android. Normal permissions are automatically granted at install time in Android applications.
 

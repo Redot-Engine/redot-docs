@@ -1211,6 +1211,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`navigation/pathfinding/max_threads<class_ProjectSettings_property_navigation/pathfinding/max_threads>`                                                                                               | ``4``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`navigation/world/map_use_async_iterations<class_ProjectSettings_property_navigation/world/map_use_async_iterations>`                                                                                 | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_chars_per_second<class_ProjectSettings_property_network/limits/debugger/max_chars_per_second>`                                                                           | ``32768``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_errors_per_second<class_ProjectSettings_property_network/limits/debugger/max_errors_per_second>`                                                                         | ``400``                                                                                                  |
@@ -1646,6 +1648,10 @@ Properties
    | :ref:`float<class_float>`                         | :ref:`rendering/scaling_3d/fsr_sharpness<class_ProjectSettings_property_rendering/scaling_3d/fsr_sharpness>`                                                                                               | ``0.2``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`                                                                                                                 | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode.ios<class_ProjectSettings_property_rendering/scaling_3d/mode.ios>`                                                                                                         |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode.macos<class_ProjectSettings_property_rendering/scaling_3d/mode.macos>`                                                                                                     |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`rendering/scaling_3d/scale<class_ProjectSettings_property_rendering/scaling_3d/scale>`                                                                                                               | ``1.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -9196,6 +9202,18 @@ Maximum number of threads that can run pathfinding queries simultaneously on the
 
 ----
 
+.. _class_ProjectSettings_property_navigation/world/map_use_async_iterations:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **navigation/world/map_use_async_iterations** = ``true`` :ref:`🔗<class_ProjectSettings_property_navigation/world/map_use_async_iterations>`
+
+If enabled, navigation map synchronization uses an async process that runs on a background thread. This avoids stalling the main thread but adds an additional delay to any navigation map change.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_network/limits/debugger/max_chars_per_second:
 
 .. rst-class:: classref-property
@@ -10149,6 +10167,8 @@ If ``true``, enables the body pair contact cache, which removes the need for pot
 :ref:`float<class_float>` **physics/jolt_physics_3d/simulation/bounce_velocity_threshold** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/bounce_velocity_threshold>`
 
 The minimum velocity needed before a collision can be bouncy, in meters per second.
+
+\ **Note:** This setting will only be read once during the lifetime of the application.
 
 .. rst-class:: classref-item-separator
 
@@ -12012,7 +12032,7 @@ If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_opengl3** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>`
 
-If ``true``, the forward renderer will fall back to OpenGL 3 if both Direct3D 12, Metal and Vulkan are not supported.
+If ``true``, the forward renderer will fall back to OpenGL 3 if Direct3D 12, Metal, and Vulkan are not supported.
 
 \ **Note:** This setting is implemented only on Windows, Android, macOS, iOS, and Linux/X11.
 
@@ -12197,6 +12217,30 @@ Determines how sharp the upscaled image will be when using the FSR upscaling mod
 Sets the scaling 3D mode. Bilinear scaling renders at different resolution to either undersample or supersample the viewport. FidelityFX Super Resolution 1.0, abbreviated to FSR, is an upscaling technology that produces high quality images at fast framerates by using a spatially-aware upscaling algorithm. FSR is slightly more expensive than bilinear, but it produces significantly higher image quality. On particularly low-end GPUs, the added cost of FSR may not be worth it (compared to using bilinear scaling with a slightly higher resolution scale to match performance).
 
 \ **Note:** FSR is only effective when using the Forward+ rendering method, not Mobile or Compatibility. If using an incompatible rendering method, FSR will fall back to bilinear scaling.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/scaling_3d/mode.ios:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/scaling_3d/mode.ios** :ref:`🔗<class_ProjectSettings_property_rendering/scaling_3d/mode.ios>`
+
+iOS override for :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`. This allows selecting the MetalFX spatial and MetalFX temporal scaling modes, which are exclusive to platforms where the Metal rendering driver is used.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/scaling_3d/mode.macos:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/scaling_3d/mode.macos** :ref:`🔗<class_ProjectSettings_property_rendering/scaling_3d/mode.macos>`
+
+macOS override for :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`. This allows selecting the MetalFX spatial and MetalFX temporal scaling modes, which are exclusive to platforms where the Metal rendering driver is used.
 
 .. rst-class:: classref-item-separator
 
