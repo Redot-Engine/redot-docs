@@ -305,6 +305,14 @@ Methods
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                          | :ref:`seed<class_@GlobalScope_method_seed>`\ (\ base\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                           |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`sigmoid<class_@GlobalScope_method_sigmoid>`\ (\ x\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                                    |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`sigmoid_affine<class_@GlobalScope_method_sigmoid_affine>`\ (\ x\: :ref:`float<class_float>`, amplitude\: :ref:`float<class_float>`, y_translation\: :ref:`float<class_float>`\ )                                                                                                                                                                                                    |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`sigmoid_affine_approx<class_@GlobalScope_method_sigmoid_affine_approx>`\ (\ x\: :ref:`float<class_float>`, amplitude\: :ref:`float<class_float>`, y_translation\: :ref:`float<class_float>`\ )                                                                                                                                                                                      |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`sigmoid_approx<class_@GlobalScope_method_sigmoid_approx>`\ (\ x\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                      |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`                   | :ref:`sign<class_@GlobalScope_method_sign>`\ (\ x\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                                                                                                                                      |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                       | :ref:`signf<class_@GlobalScope_method_signf>`\ (\ x\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                                        |
@@ -2329,7 +2337,7 @@ Key Code mask.
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MODIFIER_MASK** = ``532676608``
+:ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MODIFIER_MASK** = ``2130706432``
 
 Modifier key mask.
 
@@ -5767,9 +5775,9 @@ Returns a human-readable name for the given :ref:`Error<enum_@GlobalScope_Error>
 ::
 
     print(OK)                              # Prints 0
-    print(error_string(OK))                # Prints OK
-    print(error_string(ERR_BUSY))          # Prints Busy
-    print(error_string(ERR_OUT_OF_MEMORY)) # Prints Out of memory
+    print(error_string(OK))                # Prints "OK"
+    print(error_string(ERR_BUSY))          # Prints "Busy"
+    print(error_string(ERR_OUT_OF_MEMORY)) # Prints "Out of memory"
 
 .. rst-class:: classref-item-separator
 
@@ -5934,24 +5942,24 @@ Returns the :ref:`Object<class_Object>` that corresponds to ``instance_id``. All
 
  .. code-tab:: gdscript
 
-    var foo = "bar"
+    var drink = "water"
     
     func _ready():
         var id = get_instance_id()
-        var inst = instance_from_id(id)
-        print(inst.foo) # Prints bar
+        var instance = instance_from_id(id)
+        print(instance.foo) # Prints "water"
 
  .. code-tab:: csharp
 
     public partial class MyNode : Node
     {
-        public string Foo { get; set; } = "bar";
+        public string Drink { get; set; } = "water";
     
         public override void _Ready()
         {
             ulong id = GetInstanceId();
-            var inst = (MyNode)InstanceFromId(Id);
-            GD.Print(inst.Foo); // Prints bar
+            var instance = (MyNode)InstanceFromId(Id);
+            GD.Print(instance.Drink); // Prints "water"
         }
     }
 
@@ -6448,12 +6456,12 @@ Converts one or more arguments of any type to string in the best way possible an
  .. code-tab:: gdscript
 
     var a = [1, 2, 3]
-    print("a", "b", a) # Prints ab[1, 2, 3]
+    print("a", "b", a) # Prints "ab[1, 2, 3]"
 
  .. code-tab:: csharp
 
-    var a = new Godot.Collections.Array { 1, 2, 3 };
-    GD.Print("a", "b", a); // Prints ab[1, 2, 3]
+    Godot.Collections.Array a = [1, 2, 3];
+    GD.Print("a", "b", a); // Prints "ab[1, 2, 3]"
 
 
 
@@ -6482,11 +6490,11 @@ When printing to standard output, the supported subset of BBCode is converted to
 
  .. code-tab:: gdscript
 
-    print_rich("[color=green][b]Hello world![/b][/color]") # Prints out "Hello world!" in green with a bold font
+    print_rich("[color=green][b]Hello world![/b][/color]") # Prints "Hello world!", in green with a bold font.
 
  .. code-tab:: csharp
 
-    GD.PrintRich("[color=green][b]Hello world![/b][/color]"); // Prints out "Hello world!" in green with a bold font
+    GD.PrintRich("[color=green][b]Hello world![/b][/color]"); // Prints "Hello world!", in green with a bold font.
 
 
 
@@ -6552,17 +6560,17 @@ Prints one or more arguments to strings in the best way possible to the OS termi
 
  .. code-tab:: gdscript
 
+    # Prints "ABC" to terminal.
     printraw("A")
     printraw("B")
     printraw("C")
-    # Prints ABC to terminal
 
  .. code-tab:: csharp
 
+    // Prints "ABC" to terminal.
     GD.PrintRaw("A");
     GD.PrintRaw("B");
     GD.PrintRaw("C");
-    // Prints ABC to terminal
 
 
 
@@ -6583,11 +6591,11 @@ Prints one or more arguments to the console with a space between each argument.
 
  .. code-tab:: gdscript
 
-    prints("A", "B", "C") # Prints A B C
+    prints("A", "B", "C") # Prints "A B C"
 
  .. code-tab:: csharp
 
-    GD.PrintS("A", "B", "C"); // Prints A B C
+    GD.PrintS("A", "B", "C"); // Prints "A B C"
 
 
 
@@ -6608,11 +6616,11 @@ Prints one or more arguments to the console with a tab between each argument.
 
  .. code-tab:: gdscript
 
-    printt("A", "B", "C") # Prints A       B       C
+    printt("A", "B", "C") # Prints "A       B       C"
 
  .. code-tab:: csharp
 
-    GD.PrintT("A", "B", "C"); // Prints A       B       C
+    GD.PrintT("A", "B", "C"); // Prints "A       B       C"
 
 
 
@@ -6633,11 +6641,11 @@ Pushes an error message to Redot's built-in debugger and to the OS terminal.
 
  .. code-tab:: gdscript
 
-    push_error("test error") # Prints "test error" to debugger and terminal as error call
+    push_error("test error") # Prints "test error" to debugger and terminal as an error.
 
  .. code-tab:: csharp
 
-    GD.PushError("test error"); // Prints "test error" to debugger and terminal as error call
+    GD.PushError("test error"); // Prints "test error" to debugger and terminal as an error.
 
 
 
@@ -6660,11 +6668,11 @@ Pushes a warning message to Redot's built-in debugger and to the OS terminal.
 
  .. code-tab:: gdscript
 
-    push_warning("test warning") # Prints "test warning" to debugger and terminal as warning call
+    push_warning("test warning") # Prints "test warning" to debugger and terminal as a warning.
 
  .. code-tab:: csharp
 
-    GD.PushWarning("test warning"); // Prints "test warning" to debugger and terminal as warning call
+    GD.PushWarning("test warning"); // Prints "test warning" to debugger and terminal as a warning.
 
 
 
@@ -6989,6 +6997,118 @@ Sets the seed for the random number generator to ``base``. Setting the seed manu
     // a and b are now identical
 
 
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_method_sigmoid:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **sigmoid**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sigmoid>`
+
+Computes the sigmoid for ``x``, which maps the input value into the range (0, 1).
+
+The sigmoid function is defined as:
+
+::
+
+    sigmoid(x) = 1 / (1 + exp(-x))
+
+This is the most accurate implementation of the sigmoid.
+
+::
+
+    var result = sigmoid(0.0)  # result is 0.5
+    var result = sigmoid(1.0)  # result is approximately 0.7310
+    var result = sigmoid(-1.0) # result is approximately 0.2689
+    var result = sigmoid(5.0)  # result is approximately 0.9933
+
+\ **Note:** For faster but less accurate approximation, see :ref:`sigmoid_approx<class_@GlobalScope_method_sigmoid_approx>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_method_sigmoid_affine:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **sigmoid_affine**\ (\ x\: :ref:`float<class_float>`, amplitude\: :ref:`float<class_float>`, y_translation\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sigmoid_affine>`
+
+Computes an affine-transformed sigmoid for ``x``, which allows scaling by ``amplitude`` and translation by ``y_translation``.
+
+The affine sigmoid function is defined as:
+
+::
+
+    sigmoid_affine(x, amplitude, y_translation) = (amplitude / (1 + exp(-x))) + y_translation
+
+This function modifies the standard sigmoid by introducing scaling and vertical translation.
+
+::
+
+    var result = sigmoid_affine(0.0, 1.0, 0.0)  # result is 0.5
+    var result = sigmoid_affine(1.0, 2.0, -1.0) # result is approximately 0.4621
+    var result = sigmoid_affine(-1.0, 3.0, 2.0) # result is approximately 2.8068
+    var result = sigmoid_affine(1.0, 2.0, 2.5) # result is approximately 3.9621
+
+\ **Note:** This is a more accurate but computationally heavier version of the affine sigmoid. For faster approximations, see :ref:`sigmoid_affine_approx<class_@GlobalScope_method_sigmoid_affine_approx>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_method_sigmoid_affine_approx:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **sigmoid_affine_approx**\ (\ x\: :ref:`float<class_float>`, amplitude\: :ref:`float<class_float>`, y_translation\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sigmoid_affine_approx>`
+
+Computes an approximation of the affine-transformed sigmoid function for ``x``, allowing scaling by ``amplitude`` and translation by ``y_translation``.
+
+The approximation function is defined as:
+
+::
+
+    affine_sigmoid_approx(x, amplitude, y_translation) = amplitude * (0.5 + (x / (4 + abs(x)))) + y_translation
+
+This function approximates the affine sigmoid, offering faster computation at the cost of some precision. It is useful in performance-sensitive environments where both transformation and speed are needed.
+
+::
+
+    var result = sigmoid_affine_approx(0.0, 1.0, 0.0)  # result is 0.5
+    var result = sigmoid_affine_approx(2.0, 2.0, 1.0)  # result is approximately 2.6667
+    var result = sigmoid_affine_approx(-1.0, 3.0, 0.5) # result is 1.4
+    var result = sigmoid_affine_approx(1.0, 2.0, 2.5) # result is 3.9
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_method_sigmoid_approx:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **sigmoid_approx**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sigmoid_approx>`
+
+Computes an approximation of the sigmoid function for ``x``, which maps the input value into the range (0, 1).
+
+The approximation function is defined as:
+
+::
+
+    sigmoid_approx(x) = 0.5 + (x / (4 + abs(x)))
+
+This function is faster than the standard :ref:`sigmoid<class_@GlobalScope_method_sigmoid>`, especially useful in performance-sensitive environments where a balance between accuracy and speed is desired.
+
+::
+
+    var result = sigmoid_approx(0.0)  # result is 0.5
+    var result = sigmoid_approx(2.0)  # result is approximately 0.8333
+    var result = sigmoid_approx(-1.0) # result is 0.3
+    var result = sigmoid_approx(5.0)  # result is approximately 1.0555
 
 .. rst-class:: classref-item-separator
 
@@ -7337,9 +7457,9 @@ Returns a human-readable name of the given ``type``, using the :ref:`Variant.Typ
 
 ::
 
-    print(TYPE_INT) # Prints 2.
-    print(type_string(TYPE_INT)) # Prints "int".
-    print(type_string(TYPE_STRING)) # Prints "String".
+    print(TYPE_INT) # Prints 2
+    print(type_string(TYPE_INT)) # Prints "int"
+    print(type_string(TYPE_STRING)) # Prints "String"
 
 See also :ref:`typeof<class_@GlobalScope_method_typeof>`.
 
@@ -7360,10 +7480,10 @@ Returns the internal type of the given ``variable``, using the :ref:`Variant.Typ
     var json = JSON.new()
     json.parse('["a", "b", "c"]')
     var result = json.get_data()
-    if typeof(result) == TYPE_ARRAY:
-        print(result[0]) # Prints a
+    if result is Array:
+        print(result[0]) # Prints "a"
     else:
-        print("Unexpected result")
+        print("Unexpected result!")
 
 See also :ref:`type_string<class_@GlobalScope_method_type_string>`.
 

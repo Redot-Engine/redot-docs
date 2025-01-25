@@ -256,6 +256,10 @@ Methods
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`show<class_Window_method_show>`\ (\ )                                                                                                                                                                                                             |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`start_drag<class_Window_method_start_drag>`\ (\ )                                                                                                                                                                                                 |
+   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`start_resize<class_Window_method_start_resize>`\ (\ edge\: :ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>`\ )                                                                                                                        |
+   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -1326,13 +1330,13 @@ Passing an empty array will disable passthrough support (all mouse events will b
  .. code-tab:: csharp
 
     // Set region, using Path2D node.
-    GetNode<Window>("Window").MousePassthrough = GetNode<Path2D>("Path2D").Curve.GetBakedPoints();
+    GetNode<Window>("Window").MousePassthroughPolygon = GetNode<Path2D>("Path2D").Curve.GetBakedPoints();
     
     // Set region, using Polygon2D node.
-    GetNode<Window>("Window").MousePassthrough = GetNode<Polygon2D>("Polygon2D").Polygon;
+    GetNode<Window>("Window").MousePassthroughPolygon = GetNode<Polygon2D>("Polygon2D").Polygon;
     
     // Reset region to default.
-    GetNode<Window>("Window").MousePassthrough = new Vector2[] {};
+    GetNode<Window>("Window").MousePassthroughPolygon = [];
 
 
 
@@ -2554,6 +2558,30 @@ Enables font oversampling. This makes fonts look better when they are scaled up.
 |void| **show**\ (\ ) :ref:`🔗<class_Window_method_show>`
 
 Makes the **Window** appear. This enables interactions with the **Window** and doesn't change any of its property other than visibility (unlike e.g. :ref:`popup<class_Window_method_popup>`).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Window_method_start_drag:
+
+.. rst-class:: classref-method
+
+|void| **start_drag**\ (\ ) :ref:`🔗<class_Window_method_start_drag>`
+
+Starts an interactive drag operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's title bar. Using this method allows the window to participate in space switching, tiling, and other system features.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Window_method_start_resize:
+
+.. rst-class:: classref-method
+
+|void| **start_resize**\ (\ edge\: :ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>`\ ) :ref:`🔗<class_Window_method_start_resize>`
+
+Starts an interactive resize operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's edge.
 
 .. rst-class:: classref-section-separator
 
