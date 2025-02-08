@@ -217,6 +217,10 @@ Methods
    +-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                                       | :ref:`is_input_handled<class_Viewport_method_is_input_handled>`\ (\ ) |const|                                                                                                                                                                                         |
    +-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                                        | :ref:`notify_mouse_entered<class_Viewport_method_notify_mouse_entered>`\ (\ )                                                                                                                                                                                         |
+   +-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                                        | :ref:`notify_mouse_exited<class_Viewport_method_notify_mouse_exited>`\ (\ )                                                                                                                                                                                           |
+   +-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                                        | :ref:`push_input<class_Viewport_method_push_input>`\ (\ event\: :ref:`InputEvent<class_InputEvent>`, in_local_coords\: :ref:`bool<class_bool>` = false\ )                                                                                                             |
    +-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                                        | :ref:`push_text_input<class_Viewport_method_push_text_input>`\ (\ text\: :ref:`String<class_String>`\ )                                                                                                                                                               |
@@ -378,11 +382,43 @@ Use AMD FidelityFX Super Resolution 1.0 upscaling for the viewport's 3D buffer. 
 
 Use AMD FidelityFX Super Resolution 2.2 upscaling for the viewport's 3D buffer. The amount of scaling can be set using :ref:`scaling_3d_scale<class_Viewport_property_scaling_3d_scale>`. Values less than ``1.0`` will be result in the viewport being upscaled using FSR2. Values greater than ``1.0`` are not supported and bilinear downsampling will be used instead. A value of ``1.0`` will use FSR2 at native resolution as a TAA solution.
 
+.. _class_Viewport_constant_SCALING_3D_MODE_METALFX_SPATIAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` **SCALING_3D_MODE_METALFX_SPATIAL** = ``3``
+
+Use the `MetalFX spatial upscaler <https://developer.apple.com/documentation/metalfx/mtlfxspatialscaler#overview>`__ for the viewport's 3D buffer.
+
+The amount of scaling can be set using :ref:`scaling_3d_scale<class_Viewport_property_scaling_3d_scale>`.
+
+Values less than ``1.0`` will be result in the viewport being upscaled using MetalFX. Values greater than ``1.0`` are not supported and bilinear downsampling will be used instead. A value of ``1.0`` disables scaling.
+
+More information: `MetalFX <https://developer.apple.com/documentation/metalfx>`__.
+
+\ **Note:** Only supported when the Metal rendering driver is in use, which limits this scaling mode to macOS and iOS.
+
+.. _class_Viewport_constant_SCALING_3D_MODE_METALFX_TEMPORAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` **SCALING_3D_MODE_METALFX_TEMPORAL** = ``4``
+
+Use the `MetalFX temporal upscaler <https://developer.apple.com/documentation/metalfx/mtlfxtemporalscaler#overview>`__ for the viewport's 3D buffer.
+
+The amount of scaling can be set using :ref:`scaling_3d_scale<class_Viewport_property_scaling_3d_scale>`. To determine the minimum input scale, use the :ref:`RenderingDevice.limit_get<class_RenderingDevice_method_limit_get>` method with :ref:`RenderingDevice.LIMIT_METALFX_TEMPORAL_SCALER_MIN_SCALE<class_RenderingDevice_constant_LIMIT_METALFX_TEMPORAL_SCALER_MIN_SCALE>`.
+
+Values less than ``1.0`` will be result in the viewport being upscaled using MetalFX. Values greater than ``1.0`` are not supported and bilinear downsampling will be used instead. A value of ``1.0`` will use MetalFX at native resolution as a TAA solution.
+
+More information: `MetalFX <https://developer.apple.com/documentation/metalfx>`__.
+
+\ **Note:** Only supported when the Metal rendering driver is in use, which limits this scaling mode to macOS and iOS.
+
 .. _class_Viewport_constant_SCALING_3D_MODE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` **SCALING_3D_MODE_MAX** = ``3``
+:ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` **SCALING_3D_MODE_MAX** = ``5``
 
 Represents the size of the :ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` enum.
 
@@ -2323,6 +2359,34 @@ Returns whether the current :ref:`InputEvent<class_InputEvent>` has been handled
 This is usually done as part of input handling methods like :ref:`Node._input<class_Node_private_method__input>`, :ref:`Control._gui_input<class_Control_private_method__gui_input>` or others, as well as in corresponding signal handlers.
 
 If :ref:`handle_input_locally<class_Viewport_property_handle_input_locally>` is set to ``false``, this method will try finding the first parent viewport that is set to handle input locally, and return its value for :ref:`is_input_handled<class_Viewport_method_is_input_handled>` instead.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Viewport_method_notify_mouse_entered:
+
+.. rst-class:: classref-method
+
+|void| **notify_mouse_entered**\ (\ ) :ref:`🔗<class_Viewport_method_notify_mouse_entered>`
+
+Inform the Viewport that the mouse has entered its area. Use this function before sending an :ref:`InputEventMouseButton<class_InputEventMouseButton>` or :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` to the **Viewport** with :ref:`push_input<class_Viewport_method_push_input>`. See also :ref:`notify_mouse_exited<class_Viewport_method_notify_mouse_exited>`.
+
+\ **Note:** In most cases, it is not necessary to call this function because :ref:`SubViewport<class_SubViewport>` nodes that are children of :ref:`SubViewportContainer<class_SubViewportContainer>` are notified automatically. This is only necessary when interacting with viewports in non-default ways, for example as textures in :ref:`TextureRect<class_TextureRect>` or with an :ref:`Area3D<class_Area3D>` that forwards input events.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Viewport_method_notify_mouse_exited:
+
+.. rst-class:: classref-method
+
+|void| **notify_mouse_exited**\ (\ ) :ref:`🔗<class_Viewport_method_notify_mouse_exited>`
+
+Inform the Viewport that the mouse has left its area. Use this function when the node that displays the viewport notices the mouse has left the area of the displayed viewport. See also :ref:`notify_mouse_entered<class_Viewport_method_notify_mouse_entered>`.
+
+\ **Note:** In most cases, it is not necessary to call this function because :ref:`SubViewport<class_SubViewport>` nodes that are children of :ref:`SubViewportContainer<class_SubViewportContainer>` are notified automatically. This is only necessary when interacting with viewports in non-default ways, for example as textures in :ref:`TextureRect<class_TextureRect>` or with an :ref:`Area3D<class_Area3D>` that forwards input events.
 
 .. rst-class:: classref-item-separator
 
