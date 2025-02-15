@@ -73,6 +73,8 @@ Properties
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`editable<class_TextEdit_property_editable>`                                                           | ``true``                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`emoji_menu_enabled<class_TextEdit_property_emoji_menu_enabled>`                                       | ``true``                                                                            |
+   +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`empty_selection_clipboard_enabled<class_TextEdit_property_empty_selection_clipboard_enabled>`         | ``true``                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`FocusMode<enum_Control_FocusMode>`                          | focus_mode                                                                                                  | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                 |
@@ -235,7 +237,7 @@ Methods
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                                    | :ref:`get_line_background_color<class_TextEdit_method_get_line_background_color>`\ (\ line\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                      |
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                              | :ref:`get_line_column_at_pos<class_TextEdit_method_get_line_column_at_pos>`\ (\ position\: :ref:`Vector2i<class_Vector2i>`, allow_out_of_bounds\: :ref:`bool<class_bool>` = true\ ) |const|                                                                                        |
+   | :ref:`Vector2i<class_Vector2i>`                              | :ref:`get_line_column_at_pos<class_TextEdit_method_get_line_column_at_pos>`\ (\ position\: :ref:`Vector2i<class_Vector2i>`, clamp_line\: :ref:`bool<class_bool>` = true, clamp_column\: :ref:`bool<class_bool>` = true\ ) |const|                                                  |
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                        | :ref:`get_line_count<class_TextEdit_method_get_line_count>`\ (\ ) |const|                                                                                                                                                                                                          |
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -252,6 +254,8 @@ Methods
    | :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] | :ref:`get_line_ranges_from_carets<class_TextEdit_method_get_line_ranges_from_carets>`\ (\ only_selections\: :ref:`bool<class_bool>` = false, merge_adjacent\: :ref:`bool<class_bool>` = true\ ) |const|                                                                            |
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                        | :ref:`get_line_width<class_TextEdit_method_get_line_width>`\ (\ line\: :ref:`int<class_int>`, wrap_index\: :ref:`int<class_int>` = -1\ ) |const|                                                                                                                                   |
+   +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`get_line_with_ime<class_TextEdit_method_get_line_with_ime>`\ (\ line\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                      |
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                        | :ref:`get_line_wrap_count<class_TextEdit_method_get_line_wrap_count>`\ (\ line\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                  |
    +--------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -858,11 +862,19 @@ Inserts word joiner (WJ) character.
 
 Inserts soft hyphen (SHY) character.
 
+.. _class_TextEdit_constant_MENU_EMOJI_AND_SYMBOL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MenuItems<enum_TextEdit_MenuItems>` **MENU_EMOJI_AND_SYMBOL** = ``30``
+
+Opens system emoji and symbol picker.
+
 .. _class_TextEdit_constant_MENU_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`MenuItems<enum_TextEdit_MenuItems>` **MENU_MAX** = ``30``
+:ref:`MenuItems<enum_TextEdit_MenuItems>` **MENU_MAX** = ``31``
 
 Represents the size of the :ref:`MenuItems<enum_TextEdit_MenuItems>` enum.
 
@@ -1358,6 +1370,23 @@ If ``true``, the "tab" character will have a visible representation.
 - :ref:`bool<class_bool>` **is_editable**\ (\ )
 
 If ``false``, existing text cannot be modified and new text cannot be added.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextEdit_property_emoji_menu_enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **emoji_menu_enabled** = ``true`` :ref:`🔗<class_TextEdit_property_emoji_menu_enabled>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_emoji_menu_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_emoji_menu_enabled**\ (\ )
+
+If ``true``, "Emoji and Symbols" menu is enabled.
 
 .. rst-class:: classref-item-separator
 
@@ -2424,9 +2453,13 @@ Returns the custom background color of the given line. If no color is set, retur
 
 .. rst-class:: classref-method
 
-:ref:`Vector2i<class_Vector2i>` **get_line_column_at_pos**\ (\ position\: :ref:`Vector2i<class_Vector2i>`, allow_out_of_bounds\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_TextEdit_method_get_line_column_at_pos>`
+:ref:`Vector2i<class_Vector2i>` **get_line_column_at_pos**\ (\ position\: :ref:`Vector2i<class_Vector2i>`, clamp_line\: :ref:`bool<class_bool>` = true, clamp_column\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_TextEdit_method_get_line_column_at_pos>`
 
-Returns the line and column at the given position. In the returned vector, ``x`` is the column, ``y`` is the line. If ``allow_out_of_bounds`` is ``false`` and the position is not over the text, both vector values will be set to ``-1``.
+Returns the line and column at the given position. In the returned vector, ``x`` is the column and ``y`` is the line.
+
+If ``clamp_line`` is ``false`` and ``position`` is below the last line, ``Vector2i(-1, -1)`` is returned.
+
+If ``clamp_column`` is ``false`` and ``position`` is outside the column range of the line, ``Vector2i(-1, -1)`` is returned.
 
 .. rst-class:: classref-item-separator
 
@@ -2527,6 +2560,18 @@ If a selection's end column (:ref:`get_selection_to_column<class_TextEdit_method
 :ref:`int<class_int>` **get_line_width**\ (\ line\: :ref:`int<class_int>`, wrap_index\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_TextEdit_method_get_line_width>`
 
 Returns the width in pixels of the ``wrap_index`` on ``line``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextEdit_method_get_line_with_ime:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **get_line_with_ime**\ (\ line\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TextEdit_method_get_line_with_ime>`
+
+Returns line text as it is currently displayed, including IME composition string.
 
 .. rst-class:: classref-item-separator
 

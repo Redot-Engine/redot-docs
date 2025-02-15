@@ -228,6 +228,14 @@ Confines the mouse cursor to the game window, and make it visible.
 
 Confines the mouse cursor to the game window, and make it hidden.
 
+.. _class_Input_constant_MOUSE_MODE_MAX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MouseMode<enum_Input_MouseMode>` **MOUSE_MODE_MAX** = ``5``
+
+Max value of the :ref:`MouseMode<enum_Input_MouseMode>`.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -973,7 +981,9 @@ Feeds an :ref:`InputEvent<class_InputEvent>` to the game. Can be used to artific
 
 |void| **remove_joy_mapping**\ (\ guid\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Input_method_remove_joy_mapping>`
 
-Removes all mappings from the internal database that match the given GUID.
+Removes all mappings from the internal database that match the given GUID. All currently connected joypads that use this GUID will become unmapped.
+
+On Android, Redot will map to an internal fallback mapping.
 
 .. rst-class:: classref-item-separator
 
