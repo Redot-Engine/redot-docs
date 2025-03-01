@@ -36,6 +36,10 @@ Properties
    +-----------------------------+-------------------------------------------------------------------------+-----------+
    | :ref:`bool<class_bool>`     | :ref:`deletable<class_EditorProperty_property_deletable>`               | ``false`` |
    +-----------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`draw_background<class_EditorProperty_property_draw_background>`   | ``true``  |
+   +-----------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`draw_label<class_EditorProperty_property_draw_label>`             | ``true``  |
+   +-----------------------------+-------------------------------------------------------------------------+-----------+
    | :ref:`bool<class_bool>`     | :ref:`draw_warning<class_EditorProperty_property_draw_warning>`         | ``false`` |
    +-----------------------------+-------------------------------------------------------------------------+-----------+
    | :ref:`bool<class_bool>`     | :ref:`keying<class_EditorProperty_property_keying>`                     | ``false`` |
@@ -102,7 +106,7 @@ Signals
 
 **multiple_properties_changed**\ (\ properties\: :ref:`PackedStringArray<class_PackedStringArray>`, value\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_EditorProperty_signal_multiple_properties_changed>`
 
-Emit it if you want multiple properties modified at the same time. Do not use if added via :ref:`EditorInspectorPlugin._parse_property<class_EditorInspectorPlugin_private_method__parse_property>`.
+Emit it if you want multiple properties modified at the same time. Do not use if added via :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +142,7 @@ Emitted when the revertability (i.e., whether it has a non-default value and thu
 
 **property_changed**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`, field\: :ref:`StringName<class_StringName>`, changing\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_changed>`
 
-Do not emit this manually, use the :ref:`emit_changed<class_EditorProperty_method_emit_changed>` method instead.
+Do not emit this manually, use the :ref:`emit_changed()<class_EditorProperty_method_emit_changed>` method instead.
 
 .. rst-class:: classref-item-separator
 
@@ -293,6 +297,40 @@ Used by the inspector, set to ``true`` when the property is checked.
 - :ref:`bool<class_bool>` **is_deletable**\ (\ )
 
 Used by the inspector, set to ``true`` when the property can be deleted by the user.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorProperty_property_draw_background:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **draw_background** = ``true`` :ref:`🔗<class_EditorProperty_property_draw_background>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_draw_background**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_draw_background**\ (\ )
+
+Used by the inspector, set to ``true`` when the property label is drawn.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorProperty_property_draw_label:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **draw_label** = ``true`` :ref:`🔗<class_EditorProperty_property_draw_label>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_draw_label**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_draw_label**\ (\ )
+
+Used by the inspector, set to ``true`` when the property background is drawn.
 
 .. rst-class:: classref-item-separator
 
@@ -500,7 +538,7 @@ Gets the edited object.
 
 :ref:`StringName<class_StringName>` **get_edited_property**\ (\ ) |const| :ref:`🔗<class_EditorProperty_method_get_edited_property>`
 
-Gets the edited property. If your editor is for a single property (added via :ref:`EditorInspectorPlugin._parse_property<class_EditorInspectorPlugin_private_method__parse_property>`), then this will return the property.
+Gets the edited property. If your editor is for a single property (added via :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`), then this will return the property.
 
 .. rst-class:: classref-item-separator
 
@@ -536,7 +574,7 @@ Draw property as selected. Used by the inspector.
 
 |void| **set_bottom_editor**\ (\ editor\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorProperty_method_set_bottom_editor>`
 
-Puts the ``editor`` control below the property label. The control must be previously added using :ref:`Node.add_child<class_Node_method_add_child>`.
+Puts the ``editor`` control below the property label. The control must be previously added using :ref:`Node.add_child()<class_Node_method_add_child>`.
 
 .. rst-class:: classref-item-separator
 
