@@ -19,7 +19,7 @@ Stores globally-accessible variables.
 Description
 -----------
 
-Stores variables that can be accessed from everywhere. Use :ref:`get_setting<class_ProjectSettings_method_get_setting>`, :ref:`set_setting<class_ProjectSettings_method_set_setting>` or :ref:`has_setting<class_ProjectSettings_method_has_setting>` to access them. Variables stored in ``project.godot`` are also loaded into **ProjectSettings**, making this object very useful for reading custom game configuration options.
+Stores variables that can be accessed from everywhere. Use :ref:`get_setting()<class_ProjectSettings_method_get_setting>`, :ref:`set_setting()<class_ProjectSettings_method_set_setting>` or :ref:`has_setting()<class_ProjectSettings_method_has_setting>` to access them. Variables stored in ``project.godot`` are also loaded into **ProjectSettings**, making this object very useful for reading custom game configuration options.
 
 When naming a Project Settings property, use the full path to the setting including the category. For example, ``"application/config/name"`` for the project name. Category and property names can be viewed in the Project Settings dialog.
 
@@ -229,7 +229,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/redundant_static_unload<class_ProjectSettings_property_debug/gdscript/warnings/redundant_static_unload>`                                                                     | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/renamed_in_godot_4_hint<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`                                                                     | ``1``                                                                                                    |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/renamed_in_godot_4_hint<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`                                                                     | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/return_value_discarded<class_ProjectSettings_property_debug/gdscript/warnings/return_value_discarded>`                                                                       | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1211,6 +1211,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`navigation/pathfinding/max_threads<class_ProjectSettings_property_navigation/pathfinding/max_threads>`                                                                                               | ``4``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`navigation/world/map_use_async_iterations<class_ProjectSettings_property_navigation/world/map_use_async_iterations>`                                                                                 | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_chars_per_second<class_ProjectSettings_property_network/limits/debugger/max_chars_per_second>`                                                                           | ``32768``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_errors_per_second<class_ProjectSettings_property_network/limits/debugger/max_errors_per_second>`                                                                         | ``400``                                                                                                  |
@@ -1226,6 +1228,8 @@ Properties
    | :ref:`int<class_int>`                             | :ref:`network/limits/webrtc/max_channel_in_buffer_kb<class_ProjectSettings_property_network/limits/webrtc/max_channel_in_buffer_kb>`                                                                       | ``64``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`network/tls/certificate_bundle_override<class_ProjectSettings_property_network/tls/certificate_bundle_override>`                                                                                     | ``""``                                                                                                   |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`network/tls/enable_tls_v1.3<class_ProjectSettings_property_network/tls/enable_tls_v1.3>`                                                                                                             | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/2d/default_angular_damp<class_ProjectSettings_property_physics/2d/default_angular_damp>`                                                                                                     | ``1.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1449,19 +1453,19 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/environment/volumetric_fog/volume_size<class_ProjectSettings_property_rendering/environment/volumetric_fog/volume_size>`                                                                   | ``64``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`                                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`                                                                                                 | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.android<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.android<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`                                                                                 | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.ios<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`                                                                                         |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.ios<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`                                                                                         | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.linuxbsd<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`                                                                               |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.linuxbsd<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`                                                                               | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.macos<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`                                                                                     |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.macos<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`                                                                                     | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.web<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`                                                                                         |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.web<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`                                                                                         | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.windows<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.windows<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`                                                                                 | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>`                                                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1485,7 +1489,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/global_illumination/voxel_gi/quality<class_ProjectSettings_property_rendering/global_illumination/voxel_gi/quality>`                                                                       | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`rendering/lightmapping/bake_performance/max_rays_per_pass<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`                                                 | ``32``                                                                                                   |
+   | :ref:`int<class_int>`                             | :ref:`rendering/lightmapping/bake_performance/max_rays_per_pass<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`                                                 | ``4``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/lightmapping/bake_performance/max_rays_per_probe_pass<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_probe_pass>`                                     | ``64``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1607,17 +1611,17 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame<class_ProjectSettings_property_rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame>`                               | ``1024``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`                                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`                                                                                                 | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.android<class_ProjectSettings_property_rendering/rendering_device/driver.android>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.android<class_ProjectSettings_property_rendering/rendering_device/driver.android>`                                                                                 | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.ios<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`                                                                                         |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.ios<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`                                                                                         | ``"metal"``                                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.linuxbsd<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`                                                                               |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.linuxbsd<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`                                                                               | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.macos<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`                                                                                     |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.macos<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`                                                                                     | ``"metal"``                                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.windows<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.windows<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`                                                                                 | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/rendering_device/fallback_to_d3d12<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>`                                                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1646,6 +1650,10 @@ Properties
    | :ref:`float<class_float>`                         | :ref:`rendering/scaling_3d/fsr_sharpness<class_ProjectSettings_property_rendering/scaling_3d/fsr_sharpness>`                                                                                               | ``0.2``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`                                                                                                                 | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode.ios<class_ProjectSettings_property_rendering/scaling_3d/mode.ios>`                                                                                                         |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode.macos<class_ProjectSettings_property_rendering/scaling_3d/mode.macos>`                                                                                                     |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`rendering/scaling_3d/scale<class_ProjectSettings_property_rendering/scaling_3d/scale>`                                                                                                               | ``1.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1938,7 +1946,7 @@ If ``true``, the application automatically accepts quitting requests.
 
 :ref:`String<class_String>` **application/config/custom_user_dir_name** = ``""`` :ref:`🔗<class_ProjectSettings_property_application/config/custom_user_dir_name>`
 
-This user directory is used for storing persistent data (``user://`` filesystem). If a custom directory name is defined, this name will be appended to the system-specific user data directory (same parent folder as the Redot configuration folder documented in :ref:`OS.get_user_data_dir<class_OS_method_get_user_data_dir>`).
+This user directory is used for storing persistent data (``user://`` filesystem). If a custom directory name is defined, this name will be appended to the system-specific user data directory (same parent folder as the Redot configuration folder documented in :ref:`OS.get_user_data_dir()<class_OS_method_get_user_data_dir>`).
 
 The :ref:`application/config/use_custom_user_dir<class_ProjectSettings_property_application/config/use_custom_user_dir>` setting must be enabled for this to take effect.
 
@@ -1978,7 +1986,7 @@ Icon used for the project, set when project loads. Exporters will also use this 
 
 :ref:`String<class_String>` **application/config/macos_native_icon** = ``""`` :ref:`🔗<class_ProjectSettings_property_application/config/macos_native_icon>`
 
-Icon set in ``.icns`` format used on macOS to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon<class_DisplayServer_method_set_native_icon>`.
+Icon set in ``.icns`` format used on macOS to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon()<class_DisplayServer_method_set_native_icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2086,7 +2094,7 @@ The project's human-readable version identifier. This is used by exporters if th
 
 :ref:`String<class_String>` **application/config/windows_native_icon** = ``""`` :ref:`🔗<class_ProjectSettings_property_application/config/windows_native_icon>`
 
-Icon set in ``.ico`` format used on Windows to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon<class_DisplayServer_method_set_native_icon>`.
+Icon set in ``.ico`` format used on Windows to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon()<class_DisplayServer_method_set_native_icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2114,7 +2122,7 @@ It may take several seconds at a stable frame rate before the smoothing is initi
 
 :ref:`bool<class_bool>` **application/run/disable_stderr** = ``false`` :ref:`🔗<class_ProjectSettings_property_application/run/disable_stderr>`
 
-If ``true``, disables printing to standard error. If ``true``, this also hides error and warning messages printed by :ref:`@GlobalScope.push_error<class_@GlobalScope_method_push_error>` and :ref:`@GlobalScope.push_warning<class_@GlobalScope_method_push_warning>`. See also :ref:`application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>`.
+If ``true``, disables printing to standard error. If ``true``, this also hides error and warning messages printed by :ref:`@GlobalScope.push_error()<class_@GlobalScope_method_push_error>` and :ref:`@GlobalScope.push_warning()<class_@GlobalScope_method_push_warning>`. See also :ref:`application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>`.
 
 Changes to this setting will only be applied upon restarting the application. To control this at runtime, use :ref:`Engine.print_error_messages<class_Engine_property_print_error_messages>`.
 
@@ -2330,7 +2338,7 @@ Specifies the audio driver to use. This setting is platform-dependent as each pl
 
 The ``Dummy`` audio driver disables all audio playback and recording, which is useful for non-game applications as it reduces CPU usage. It also prevents the engine from appearing as an application playing audio in the OS' audio mixer.
 
-To query the value that is being used at run-time (which may be overridden by command-line arguments or headless mode), use :ref:`AudioServer.get_driver_name<class_AudioServer_method_get_driver_name>`.
+To query the value that is being used at run-time (which may be overridden by command-line arguments or headless mode), use :ref:`AudioServer.get_driver_name()<class_AudioServer_method_get_driver_name>`.
 
 \ **Note:** The driver in use can be overridden at runtime via the ``--audio-driver`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
 
@@ -2358,7 +2366,11 @@ If ``true``, microphone input will be allowed. This requires appropriate permiss
 
 :ref:`int<class_int>` **audio/driver/mix_rate** = ``44100`` :ref:`🔗<class_ProjectSettings_property_audio/driver/mix_rate>`
 
-The mixing rate used for audio (in Hz). In general, it's better to not touch this and leave it to the host operating system.
+Target mixing rate used for audio (in Hz). In general, it's better to not touch this and leave it to the host operating system.
+
+\ **Note:** On iOS and macOS, mixing rate is determined by audio driver, this value is ignored.
+
+\ **Note:** Input and output mixing rates might be different. Use :ref:`AudioServer.get_mix_rate()<class_AudioServer_method_get_mix_rate>` and :ref:`AudioServer.get_input_mix_rate()<class_AudioServer_method_get_input_mix_rate>` to get actual values.
 
 .. rst-class:: classref-item-separator
 
@@ -2384,7 +2396,7 @@ Safer override for :ref:`audio/driver/mix_rate<class_ProjectSettings_property_au
 
 Specifies the preferred output latency in milliseconds for audio. Lower values will result in lower audio latency at the cost of increased CPU usage. Low values may result in audible crackling on slower hardware.
 
-Audio output latency may be constrained by the host operating system and audio hardware drivers. If the host can not provide the specified audio output latency then Redot will attempt to use the nearest latency allowed by the host. As such you should always use :ref:`AudioServer.get_output_latency<class_AudioServer_method_get_output_latency>` to determine the actual audio output latency.
+Audio output latency may be constrained by the host operating system and audio hardware drivers. If the host can not provide the specified audio output latency then Redot will attempt to use the nearest latency allowed by the host. As such you should always use :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>` to determine the actual audio output latency.
 
 Audio output latency can be overridden using the ``--audio-output-latency <ms>`` command line argument.
 
@@ -2500,7 +2512,7 @@ Sets the `AVAudioSessionCategory <https://developer.apple.com/documentation/avfa
 
 :ref:`bool<class_bool>` **audio/general/text_to_speech** = ``false`` :ref:`🔗<class_ProjectSettings_property_audio/general/text_to_speech>`
 
-If ``true``, text-to-speech support is enabled, see :ref:`DisplayServer.tts_get_voices<class_DisplayServer_method_tts_get_voices>` and :ref:`DisplayServer.tts_speak<class_DisplayServer_method_tts_speak>`.
+If ``true``, text-to-speech support is enabled, see :ref:`DisplayServer.tts_get_voices()<class_DisplayServer_method_tts_get_voices>` and :ref:`DisplayServer.tts_speak()<class_DisplayServer_method_tts_speak>`.
 
 \ **Note:** Enabling TTS can cause addition idle CPU usage and interfere with the sleep mode, so consider disabling it if TTS is not used.
 
@@ -2836,7 +2848,7 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 :ref:`int<class_int>` **debug/gdscript/warnings/get_node_default_without_onready** = ``2`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/get_node_default_without_onready>`
 
-When set to ``warn`` or ``error``, produces a warning or an error respectively when :ref:`Node.get_node<class_Node_method_get_node>` (or the shorthand ``$``) is used as default value of a class variable without the ``@onready`` annotation.
+When set to ``warn`` or ``error``, produces a warning or an error respectively when :ref:`Node.get_node()<class_Node_method_get_node>` (or the shorthand ``$``) is used as default value of a class variable without the ``@onready`` annotation.
 
 .. rst-class:: classref-item-separator
 
@@ -3006,7 +3018,7 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/gdscript/warnings/renamed_in_godot_4_hint** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`
+:ref:`bool<class_bool>` **debug/gdscript/warnings/renamed_in_godot_4_hint** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`
 
 When enabled, using a property, enum, or function that was renamed since Godot 3 will produce a hint if an error occurs.
 
@@ -3324,7 +3336,7 @@ Maximum call stack allowed for debugging GDScript.
 
 If ``true``, enables warnings which can help pinpoint where nodes are being incorrectly updated, which will result in incorrect interpolation and visual glitches.
 
-When a node is being interpolated, it is essential that the transform is set during :ref:`Node._physics_process<class_Node_private_method__physics_process>` (during a physics tick) rather than :ref:`Node._process<class_Node_private_method__process>` (during a frame).
+When a node is being interpolated, it is essential that the transform is set during :ref:`Node._physics_process()<class_Node_private_method__physics_process>` (during a physics tick) rather than :ref:`Node._process()<class_Node_private_method__process>` (during a frame).
 
 .. rst-class:: classref-item-separator
 
@@ -3384,7 +3396,7 @@ Print GPU profile information to standard output every second. This includes how
 
 :ref:`bool<class_bool>` **debug/settings/stdout/verbose_stdout** = ``false`` :ref:`🔗<class_ProjectSettings_property_debug/settings/stdout/verbose_stdout>`
 
-Print more information to standard output when running. It displays information such as memory leaks, which scenes and resources are being loaded, etc. This can also be enabled using the ``--verbose`` or ``-v`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`, even on an exported project. See also :ref:`OS.is_stdout_verbose<class_OS_method_is_stdout_verbose>` and :ref:`@GlobalScope.print_verbose<class_@GlobalScope_method_print_verbose>`.
+Print more information to standard output when running. It displays information such as memory leaks, which scenes and resources are being loaded, etc. This can also be enabled using the ``--verbose`` or ``-v`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`, even on an exported project. See also :ref:`OS.is_stdout_verbose()<class_OS_method_is_stdout_verbose>` and :ref:`@GlobalScope.print_verbose()<class_@GlobalScope_method_print_verbose>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4272,6 +4284,8 @@ Main window initial screen, this setting is used only if :ref:`display/window/si
 
 Main window mode. See :ref:`WindowMode<enum_DisplayServer_WindowMode>` for possible values and how each mode behaves.
 
+\ **Note:** Game embedding is available only in the "Windowed" mode.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -4482,7 +4496,7 @@ V-Sync can be disabled on the command line using the ``--disable-vsync`` :doc:`c
 
 \ **Note:** The **Adaptive** and **Mailbox** V-Sync modes are only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To change the V-Sync mode at runtime, call :ref:`DisplayServer.window_set_vsync_mode<class_DisplayServer_method_window_set_vsync_mode>` instead.
+\ **Note:** This property is only read when the project starts. To change the V-Sync mode at runtime, call :ref:`DisplayServer.window_set_vsync_mode()<class_DisplayServer_method_window_set_vsync_mode>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -4534,7 +4548,7 @@ Changing this value allows setting up a multi-project scenario where there are m
 
 If ``true``, text resource (``tres``) and text scene (``tscn``) files are converted to their corresponding binary format on export. This decreases file sizes and speeds up loading slightly.
 
-\ **Note:** Because a resource's file extension may change in an exported project, it is heavily recommended to use :ref:`@GDScript.load<class_@GDScript_method_load>` or :ref:`ResourceLoader<class_ResourceLoader>` instead of :ref:`FileAccess<class_FileAccess>` to load resources dynamically.
+\ **Note:** Because a resource's file extension may change in an exported project, it is heavily recommended to use :ref:`@GDScript.load()<class_@GDScript_method_load>` or :ref:`ResourceLoader<class_ResourceLoader>` instead of :ref:`FileAccess<class_FileAccess>` to load resources dynamically.
 
 \ **Note:** The project settings file (``project.godot``) will always be converted to binary on export, regardless of this setting.
 
@@ -4920,9 +4934,9 @@ If ``true``, snaps :ref:`Control<class_Control>` node vertices to the nearest pi
 
 :ref:`bool<class_bool>` **gui/common/swap_cancel_ok** :ref:`🔗<class_ProjectSettings_property_gui/common/swap_cancel_ok>`
 
-If ``true``, swaps **Cancel** and **OK** buttons in dialogs on Windows to follow interface conventions. :ref:`DisplayServer.get_swap_cancel_ok<class_DisplayServer_method_get_swap_cancel_ok>` can be used to query whether buttons are swapped at run-time.
+If ``true``, swaps **Cancel** and **OK** buttons in dialogs on Windows to follow interface conventions. :ref:`DisplayServer.get_swap_cancel_ok()<class_DisplayServer_method_get_swap_cancel_ok>` can be used to query whether buttons are swapped at run-time.
 
-\ **Note:** This doesn't affect native dialogs such as the ones spawned by :ref:`DisplayServer.dialog_show<class_DisplayServer_method_dialog_show>`.
+\ **Note:** This doesn't affect native dialogs such as the ones spawned by :ref:`DisplayServer.dialog_show()<class_DisplayServer_method_dialog_show>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6230,7 +6244,7 @@ Enabling this can greatly improve the responsiveness to input, specially in devi
 
 :ref:`bool<class_bool>` **input_devices/compatibility/legacy_just_pressed_behavior** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/compatibility/legacy_just_pressed_behavior>`
 
-If ``true``, :ref:`Input.is_action_just_pressed<class_Input_method_is_action_just_pressed>` and :ref:`Input.is_action_just_released<class_Input_method_is_action_just_released>` will only return ``true`` if the action is still in the respective state, i.e. an action that is pressed *and* released on the same frame will be missed.
+If ``true``, :ref:`Input.is_action_just_pressed()<class_Input_method_is_action_just_pressed>` and :ref:`Input.is_action_just_released()<class_Input_method_is_action_just_released>` will only return ``true`` if the action is still in the respective state, i.e. an action that is pressed *and* released on the same frame will be missed.
 
 If ``false``, no input will be lost.
 
@@ -6250,6 +6264,8 @@ Specifies the tablet driver to use. If left empty, the default driver will be us
 
 \ **Note:** The driver in use can be overridden at runtime via the ``--tablet-driver`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
 
+\ **Note:** Use :ref:`DisplayServer.tablet_set_current_driver()<class_DisplayServer_method_tablet_set_current_driver>` to switch tablet driver in runtime.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -6260,7 +6276,15 @@ Specifies the tablet driver to use. If left empty, the default driver will be us
 
 :ref:`String<class_String>` **input_devices/pen_tablet/driver.windows** :ref:`🔗<class_ProjectSettings_property_input_devices/pen_tablet/driver.windows>`
 
-Override for :ref:`input_devices/pen_tablet/driver<class_ProjectSettings_property_input_devices/pen_tablet/driver>` on Windows.
+Override for :ref:`input_devices/pen_tablet/driver<class_ProjectSettings_property_input_devices/pen_tablet/driver>` on Windows. Supported values are:
+
+- ``auto`` (default), uses ``wintab`` if Windows Ink is disabled in the Wacom Tablet Properties or system settings, ``winink`` otherwise.
+
+- ``winink``, uses Windows native "Windows Ink" driver.
+
+- ``wintab``, uses Wacom "WinTab" driver.
+
+- ``dummy``, tablet input is disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -6332,7 +6356,7 @@ If ``true``, sends touch input events when clicking or dragging the mouse.
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_accelerometer** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_accelerometer>`
 
-If ``true``, the accelerometer sensor is enabled and :ref:`Input.get_accelerometer<class_Input_method_get_accelerometer>` returns valid data.
+If ``true``, the accelerometer sensor is enabled and :ref:`Input.get_accelerometer()<class_Input_method_get_accelerometer>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6344,7 +6368,7 @@ If ``true``, the accelerometer sensor is enabled and :ref:`Input.get_acceleromet
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_gravity** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_gravity>`
 
-If ``true``, the gravity sensor is enabled and :ref:`Input.get_gravity<class_Input_method_get_gravity>` returns valid data.
+If ``true``, the gravity sensor is enabled and :ref:`Input.get_gravity()<class_Input_method_get_gravity>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6356,7 +6380,7 @@ If ``true``, the gravity sensor is enabled and :ref:`Input.get_gravity<class_Inp
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_gyroscope** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_gyroscope>`
 
-If ``true``, the gyroscope sensor is enabled and :ref:`Input.get_gyroscope<class_Input_method_get_gyroscope>` returns valid data.
+If ``true``, the gyroscope sensor is enabled and :ref:`Input.get_gyroscope()<class_Input_method_get_gyroscope>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6368,7 +6392,7 @@ If ``true``, the gyroscope sensor is enabled and :ref:`Input.get_gyroscope<class
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_magnetometer** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_magnetometer>`
 
-If ``true``, the magnetometer sensor is enabled and :ref:`Input.get_magnetometer<class_Input_method_get_magnetometer>` returns valid data.
+If ``true``, the magnetometer sensor is enabled and :ref:`Input.get_magnetometer()<class_Input_method_get_magnetometer>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6381,6 +6405,8 @@ If ``true``, the magnetometer sensor is enabled and :ref:`Input.get_magnetometer
 :ref:`String<class_String>` **internationalization/locale/fallback** = ``"en"`` :ref:`🔗<class_ProjectSettings_property_internationalization/locale/fallback>`
 
 The locale to fall back to if a translation isn't available in a given language. If left empty, ``en`` (English) will be used.
+
+\ **Note:** Not to be confused with :ref:`TextServerFallback<class_TextServerFallback>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6396,7 +6422,7 @@ If ``true``, text server break iteration rule sets, dictionaries and other optio
 
 \ **Note:** "ICU / HarfBuzz / Graphite" text server data includes dictionaries for Burmese, Chinese, Japanese, Khmer, Lao and Thai as well as Unicode Standard Annex #29 and Unicode Standard Annex #14 word and line breaking rules. Data is about 4 MB large.
 
-\ **Note:** "Fallback" text server does not use additional data.
+\ **Note:** :ref:`TextServerFallback<class_TextServerFallback>` does not use additional data.
 
 .. rst-class:: classref-item-separator
 
@@ -6408,7 +6434,9 @@ If ``true``, text server break iteration rule sets, dictionaries and other optio
 
 :ref:`String<class_String>` **internationalization/locale/test** = ``""`` :ref:`🔗<class_ProjectSettings_property_internationalization/locale/test>`
 
-If non-empty, this locale will be used when running the project from the editor.
+If non-empty, this locale will be used instead of the automatically detected system locale.
+
+\ **Note:** This setting also applies to the exported project. To only affect testing within the editor, override this setting with an ``editor`` :doc:`feature tag <../tutorials/export/feature_tags>` for localization testing purposes.
 
 .. rst-class:: classref-item-separator
 
@@ -6444,7 +6472,7 @@ The expansion ratio to use during pseudolocalization. A value of ``0.3`` is suff
 
 :ref:`bool<class_bool>` **internationalization/pseudolocalization/fake_bidi** = ``false`` :ref:`🔗<class_ProjectSettings_property_internationalization/pseudolocalization/fake_bidi>`
 
-If ``true``, emulate bidirectional (right-to-left) text when pseudolocalization is enabled. This can be used to spot issues with RTL layout and UI mirroring that will crop up if the project is localized to RTL languages such as Arabic or Hebrew.
+If ``true``, emulate bidirectional (right-to-left) text when pseudolocalization is enabled. This can be used to spot issues with RTL layout and UI mirroring that will crop up if the project is localized to RTL languages such as Arabic or Hebrew. See also :ref:`internationalization/rendering/force_right_to_left_layout_direction<class_ProjectSettings_property_internationalization/rendering/force_right_to_left_layout_direction>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6530,7 +6558,7 @@ If ``true``, enables pseudolocalization for the project. This can be used to spo
 
 :ref:`bool<class_bool>` **internationalization/rendering/force_right_to_left_layout_direction** = ``false`` :ref:`🔗<class_ProjectSettings_property_internationalization/rendering/force_right_to_left_layout_direction>`
 
-Force layout direction and text writing direction to RTL for all controls.
+Force layout direction and text writing direction to RTL for all controls, even if the current locale is intended to use a left-to-right layout and text writing direction. This should be enabled for testing purposes only. See also :ref:`internationalization/pseudolocalization/fake_bidi<class_ProjectSettings_property_internationalization/pseudolocalization/fake_bidi>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6570,7 +6598,7 @@ Root node default layout direction.
 
 Specifies the :ref:`TextServer<class_TextServer>` to use. If left empty, the default will be used.
 
-"ICU / HarfBuzz / Graphite" is the most advanced text driver, supporting right-to-left typesetting and complex scripts (for languages like Arabic, Hebrew, etc.). The "Fallback" text driver does not support right-to-left typesetting and complex scripts.
+"ICU / HarfBuzz / Graphite" (:ref:`TextServerAdvanced<class_TextServerAdvanced>`) is the most advanced text driver, supporting right-to-left typesetting and complex scripts (for languages like Arabic, Hebrew, etc.). The "Fallback" text driver (:ref:`TextServerFallback<class_TextServerFallback>`) does not support right-to-left typesetting and complex scripts.
 
 \ **Note:** The driver in use can be overridden at runtime via the ``--text-driver`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
 
@@ -8998,7 +9026,7 @@ Redot uses a message queue to defer some function calls. If you run out of space
 
 :ref:`float<class_float>` **navigation/2d/default_cell_size** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/2d/default_cell_size>`
 
-Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_cell_size<class_NavigationServer2D_method_map_set_cell_size>`.
+Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_cell_size()<class_NavigationServer2D_method_map_set_cell_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9010,7 +9038,7 @@ Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_c
 
 :ref:`float<class_float>` **navigation/2d/default_edge_connection_margin** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/2d/default_edge_connection_margin>`
 
-Default edge connection margin for 2D navigation maps. See :ref:`NavigationServer2D.map_set_edge_connection_margin<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
+Default edge connection margin for 2D navigation maps. See :ref:`NavigationServer2D.map_set_edge_connection_margin()<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9022,7 +9050,7 @@ Default edge connection margin for 2D navigation maps. See :ref:`NavigationServe
 
 :ref:`float<class_float>` **navigation/2d/default_link_connection_radius** = ``4.0`` :ref:`🔗<class_ProjectSettings_property_navigation/2d/default_link_connection_radius>`
 
-Default link connection radius for 2D navigation maps. See :ref:`NavigationServer2D.map_set_link_connection_radius<class_NavigationServer2D_method_map_set_link_connection_radius>`.
+Default link connection radius for 2D navigation maps. See :ref:`NavigationServer2D.map_set_link_connection_radius()<class_NavigationServer2D_method_map_set_link_connection_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9046,7 +9074,7 @@ If enabled 2D navigation regions will use edge connections to connect with other
 
 :ref:`float<class_float>` **navigation/3d/default_cell_height** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_cell_height>`
 
-Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_height<class_NavigationServer3D_method_map_set_cell_height>`.
+Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_height()<class_NavigationServer3D_method_map_set_cell_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9058,7 +9086,7 @@ Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set
 
 :ref:`float<class_float>` **navigation/3d/default_cell_size** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_cell_size>`
 
-Default cell size for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_size<class_NavigationServer3D_method_map_set_cell_size>`.
+Default cell size for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_size()<class_NavigationServer3D_method_map_set_cell_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9070,7 +9098,7 @@ Default cell size for 3D navigation maps. See :ref:`NavigationServer3D.map_set_c
 
 :ref:`float<class_float>` **navigation/3d/default_edge_connection_margin** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_edge_connection_margin>`
 
-Default edge connection margin for 3D navigation maps. See :ref:`NavigationServer3D.map_set_edge_connection_margin<class_NavigationServer3D_method_map_set_edge_connection_margin>`.
+Default edge connection margin for 3D navigation maps. See :ref:`NavigationServer3D.map_set_edge_connection_margin()<class_NavigationServer3D_method_map_set_edge_connection_margin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9082,7 +9110,7 @@ Default edge connection margin for 3D navigation maps. See :ref:`NavigationServe
 
 :ref:`float<class_float>` **navigation/3d/default_link_connection_radius** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_link_connection_radius>`
 
-Default link connection radius for 3D navigation maps. See :ref:`NavigationServer3D.map_set_link_connection_radius<class_NavigationServer3D_method_map_set_link_connection_radius>`.
+Default link connection radius for 3D navigation maps. See :ref:`NavigationServer3D.map_set_link_connection_radius()<class_NavigationServer3D_method_map_set_link_connection_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9094,7 +9122,7 @@ Default link connection radius for 3D navigation maps. See :ref:`NavigationServe
 
 :ref:`Vector3<class_Vector3>` **navigation/3d/default_up** = ``Vector3(0, 1, 0)`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_up>`
 
-Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_set_up<class_NavigationServer3D_method_map_set_up>`.
+Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_set_up()<class_NavigationServer3D_method_map_set_up>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9106,7 +9134,7 @@ Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_
 
 :ref:`float<class_float>` **navigation/3d/merge_rasterizer_cell_scale** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/merge_rasterizer_cell_scale>`
 
-Default merge rasterizer cell scale for 3D navigation maps. See :ref:`NavigationServer3D.map_set_merge_rasterizer_cell_scale<class_NavigationServer3D_method_map_set_merge_rasterizer_cell_scale>`.
+Default merge rasterizer cell scale for 3D navigation maps. See :ref:`NavigationServer3D.map_set_merge_rasterizer_cell_scale()<class_NavigationServer3D_method_map_set_merge_rasterizer_cell_scale>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9191,6 +9219,18 @@ If enabled, and baking would potentially lead to an engine crash, the baking wil
 :ref:`int<class_int>` **navigation/pathfinding/max_threads** = ``4`` :ref:`🔗<class_ProjectSettings_property_navigation/pathfinding/max_threads>`
 
 Maximum number of threads that can run pathfinding queries simultaneously on the same pathfinding graph, for example the same navigation map. Additional threads increase memory consumption and synchronization time due to the need for extra data copies prepared for each thread. A value of ``-1`` means unlimited and the maximum available OS processor count is used. Defaults to ``1`` when the OS does not support threads.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_navigation/world/map_use_async_iterations:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **navigation/world/map_use_async_iterations** = ``true`` :ref:`🔗<class_ProjectSettings_property_navigation/world/map_use_async_iterations>`
+
+If enabled, navigation map synchronization uses an async process that runs on a background thread. This avoids stalling the main thread but adds an additional delay to any navigation map change.
 
 .. rst-class:: classref-item-separator
 
@@ -9289,6 +9329,20 @@ Maximum size (in kiB) for the :ref:`WebRTCDataChannel<class_WebRTCDataChannel>` 
 The CA certificates bundle to use for TLS connections. If this is set to a non-empty value, this will *override* Redot's default `Mozilla certificate bundle <https://github.com/redot-engine/godot-engine/blob/master/thirdparty/certs/ca-certificates.crt>`__. If left empty, the default certificate bundle will be used.
 
 If in doubt, leave this setting empty.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_network/tls/enable_tls_v1.3:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **network/tls/enable_tls_v1.3** = ``true`` :ref:`🔗<class_ProjectSettings_property_network/tls/enable_tls_v1.3>`
+
+If ``true``, enable TLSv1.3 negotiation.
+
+\ **Note:** Only supported when using Mbed TLS 3.0 or later (Linux distribution packages may be compiled against older system Mbed TLS packages), otherwise the maximum supported TLS version is always TLSv1.2.
 
 .. rst-class:: classref-item-separator
 
@@ -9400,9 +9454,13 @@ During each physics tick, Redot will multiply the linear velocity of RigidBodies
 
 Sets which physics engine to use for 2D physics.
 
-"DEFAULT" and "GodotPhysics2D" are the same, as there is currently no alternative 2D physics server implemented.
+\ **DEFAULT** is currently equivalent to **GodotPhysics2D**, but may change in future releases. Select an explicit implementation if you want to ensure that your project stays on the same engine.
 
-"Dummy" is a 2D physics server that does nothing and returns only dummy values, effectively disabling all 2D physics functionality.
+\ **GodotPhysics2D** is Redot's internal 2D physics engine.
+
+\ **Dummy** is a 2D physics server that does nothing and returns only dummy values, effectively disabling all 2D physics functionality.
+
+Third-party extensions and modules can add other physics engines to select with this setting.
 
 .. rst-class:: classref-item-separator
 
@@ -9638,9 +9696,15 @@ During each physics tick, Redot will multiply the linear velocity of RigidBodies
 
 Sets which physics engine to use for 3D physics.
 
-"DEFAULT" and "GodotPhysics3D" are the same, as there is currently no alternative 3D physics server implemented.
+\ **DEFAULT** is currently equivalent to **GodotPhysics3D**, but may change in future releases. Select an explicit implementation if you want to ensure that your project stays on the same engine.
 
-"Dummy" is a 3D physics server that does nothing and returns only dummy values, effectively disabling all 3D physics functionality.
+\ **GodotPhysics3D** is Redot's internal 3D physics engine.
+
+\ **Jolt Physics** is an alternative physics engine that is generally faster and more reliable than **GodotPhysics3D**. As it was recently implemented, it is currently considered experimental and its behavior may change in future releases.
+
+\ **Dummy** is a 3D physics server that does nothing and returns only dummy values, effectively disabling all 3D physics functionality.
+
+Third-party extensions and modules can add other physics engines to select with this setting.
 
 .. rst-class:: classref-item-separator
 
@@ -9653,6 +9717,8 @@ Sets which physics engine to use for 3D physics.
 :ref:`bool<class_bool>` **physics/3d/run_on_separate_thread** = ``false`` :ref:`🔗<class_ProjectSettings_property_physics/3d/run_on_separate_thread>`
 
 If ``true``, the 3D physics server runs on a separate thread, making better use of multi-core CPUs. If ``false``, the 3D physics server runs on the main thread. Running the physics server on a separate thread can increase performance, but restricts API access to only physics process.
+
+\ **Note:** When :ref:`physics/3d/physics_engine<class_ProjectSettings_property_physics/3d/physics_engine>` is set to ``Jolt Physics``, enabling this setting will prevent the 3D physics server from being able to provide any context when reporting errors and warnings, and will instead always refer to nodes as ``<unknown>``.
 
 .. rst-class:: classref-item-separator
 
@@ -9788,7 +9854,7 @@ Controls the maximum number of physics steps that can be simulated each rendered
 
 :ref:`bool<class_bool>` **physics/common/physics_interpolation** = ``false`` :ref:`🔗<class_ProjectSettings_property_physics/common/physics_interpolation>`
 
-If ``true``, the renderer will interpolate the transforms of physics objects between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames. See also :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` and :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`.
+If ``true``, the renderer will interpolate the transforms of physics objects between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames. See also :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` and :ref:`Node.reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>`.
 
 \ **Note:** If ``true``, the physics jitter fix should be disabled by setting :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>` to ``0.0``.
 
@@ -9822,7 +9888,7 @@ Controls how much physics ticks are synchronized with real time. For 0 or less, 
 
 :ref:`int<class_int>` **physics/common/physics_ticks_per_second** = ``60`` :ref:`🔗<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
 
-The number of fixed iterations per second. This controls how often physics simulation and :ref:`Node._physics_process<class_Node_private_method__physics_process>` methods are run. See also :ref:`application/run/max_fps<class_ProjectSettings_property_application/run/max_fps>`.
+The number of fixed iterations per second. This controls how often physics simulation and :ref:`Node._physics_process()<class_Node_private_method__physics_process>` methods are run. See also :ref:`application/run/max_fps<class_ProjectSettings_property_application/run/max_fps>`.
 
 \ **Note:** This property is only read when the project starts. To change the physics FPS at runtime, set :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` instead.
 
@@ -9988,7 +10054,7 @@ The size of :ref:`WorldBoundaryShape3D<class_WorldBoundaryShape3D>` boundaries, 
 
 Fraction of the total penetration to depenetrate per iteration during motion queries.
 
-\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion<class_PhysicsServer3D_method_body_test_motion>`.
+\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide()<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide()<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move()<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 \ **Note:** This setting will only be read once during the lifetime of the application.
 
@@ -10004,7 +10070,7 @@ Fraction of the total penetration to depenetrate per iteration during motion que
 
 The number of iterations to run when depenetrating during motion queries.
 
-\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion<class_PhysicsServer3D_method_body_test_motion>`.
+\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide()<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide()<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move()<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 \ **Note:** This setting will only be read once during the lifetime of the application.
 
@@ -10020,7 +10086,7 @@ The number of iterations to run when depenetrating during motion queries.
 
 If ``true``, enables Jolt's enhanced internal edge removal during motion queries. This can help alleviate ghost collisions, but only with edges within a single body, meaning edges between separate bodies can still cause ghost collisions.
 
-\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion<class_PhysicsServer3D_method_body_test_motion>`.
+\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide()<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide()<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move()<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 \ **Note:** This setting will only be read once during the lifetime of the application.
 
@@ -10034,7 +10100,7 @@ If ``true``, enables Jolt's enhanced internal edge removal during motion queries
 
 :ref:`bool<class_bool>` **physics/jolt_physics_3d/queries/enable_ray_cast_face_index** = ``false`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/queries/enable_ray_cast_face_index>`
 
-If ``true``, populates the ``face_index`` field in the results of :ref:`PhysicsDirectSpaceState3D.intersect_ray<class_PhysicsDirectSpaceState3D_method_intersect_ray>`, also accessed through :ref:`RayCast3D.get_collision_face_index<class_RayCast3D_method_get_collision_face_index>`. If ``false``, the ``face_index`` field will be left at its default value of ``-1``.
+If ``true``, populates the ``face_index`` field in the results of :ref:`PhysicsDirectSpaceState3D.intersect_ray()<class_PhysicsDirectSpaceState3D_method_intersect_ray>`, also accessed through :ref:`RayCast3D.get_collision_face_index()<class_RayCast3D_method_get_collision_face_index>`. If ``false``, the ``face_index`` field will be left at its default value of ``-1``.
 
 \ **Note:** Enabling this setting will increase Jolt's memory usage for :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` by around 25%.
 
@@ -10052,7 +10118,7 @@ If ``true``, populates the ``face_index`` field in the results of :ref:`PhysicsD
 
 If ``true``, enables Jolt's enhanced internal edge removal during shape queries. This can help alleviate ghost collisions when using shape queries for things like character movement, but only with edges within a single body, meaning edges between separate bodies can still cause ghost collisions.
 
-\ **Note:** This affects methods :ref:`PhysicsDirectSpaceState3D.cast_motion<class_PhysicsDirectSpaceState3D_method_cast_motion>`, :ref:`PhysicsDirectSpaceState3D.collide_shape<class_PhysicsDirectSpaceState3D_method_collide_shape>`, :ref:`PhysicsDirectSpaceState3D.get_rest_info<class_PhysicsDirectSpaceState3D_method_get_rest_info>` and :ref:`PhysicsDirectSpaceState3D.intersect_shape<class_PhysicsDirectSpaceState3D_method_intersect_shape>`.
+\ **Note:** This affects methods :ref:`PhysicsDirectSpaceState3D.cast_motion()<class_PhysicsDirectSpaceState3D_method_cast_motion>`, :ref:`PhysicsDirectSpaceState3D.collide_shape()<class_PhysicsDirectSpaceState3D_method_collide_shape>`, :ref:`PhysicsDirectSpaceState3D.get_rest_info()<class_PhysicsDirectSpaceState3D_method_get_rest_info>` and :ref:`PhysicsDirectSpaceState3D.intersect_shape()<class_PhysicsDirectSpaceState3D_method_intersect_shape>`.
 
 \ **Note:** Enabling this setting can cause certain shapes to be culled from the results entirely, but you will get at least one intersection per body.
 
@@ -10149,6 +10215,8 @@ If ``true``, enables the body pair contact cache, which removes the need for pot
 :ref:`float<class_float>` **physics/jolt_physics_3d/simulation/bounce_velocity_threshold** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/bounce_velocity_threshold>`
 
 The minimum velocity needed before a collision can be bouncy, in meters per second.
+
+\ **Note:** This setting will only be read once during the lifetime of the application.
 
 .. rst-class:: classref-item-separator
 
@@ -10328,7 +10396,7 @@ Controls how much of the original viewport size should be covered by the 2D sign
 
 The percentage specified is added on each axis and on both sides. For example, with the default setting of 120%, the signed distance field will cover 20% of the viewport's size outside the viewport on each side (top, right, bottom, left).
 
-\ **Note:** This property is only read when the project starts. To change the 2D SDF oversizing percentage at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
+\ **Note:** This property is only read when the project starts. To change the 2D SDF oversizing percentage at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale()<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10342,7 +10410,7 @@ The percentage specified is added on each axis and on both sides. For example, w
 
 The resolution scale to use for the 2D signed distance field. Higher values lead to a more precise and more stable signed distance field as the camera moves, at the cost of performance. The default value (50%) renders at half the resolution of the viewport size on each axis, which means the SDF is generated with 25% of the viewport's pixel count.
 
-\ **Note:** This property is only read when the project starts. To change the 2D SDF resolution scale at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
+\ **Note:** This property is only read when the project starts. To change the 2D SDF resolution scale at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale()<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10356,7 +10424,7 @@ The resolution scale to use for the 2D signed distance field. Higher values lead
 
 The size of the 2D shadow atlas in pixels. Higher values result in more precise :ref:`Light2D<class_Light2D>` shadows, at the cost of performance and video memory usage. The specified value is rounded up to the nearest power of 2.
 
-\ **Note:** This property is only read when the project starts. To change the 2D shadow atlas size at runtime, use :ref:`RenderingServer.canvas_set_shadow_texture_size<class_RenderingServer_method_canvas_set_shadow_texture_size>` instead.
+\ **Note:** This property is only read when the project starts. To change the 2D shadow atlas size at runtime, use :ref:`RenderingServer.canvas_set_shadow_texture_size()<class_RenderingServer_method_canvas_set_shadow_texture_size>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10370,7 +10438,7 @@ The size of the 2D shadow atlas in pixels. Higher values result in more precise 
 
 If ``true``, :ref:`CanvasItem<class_CanvasItem>` nodes will internally snap to full pixels. Useful for low-resolution pixel art games. Their position can still be sub-pixel, but the decimals will not have effect as the position is rounded. This can lead to a crisper appearance at the cost of less smooth movement, especially when :ref:`Camera2D<class_Camera2D>` smoothing is enabled.
 
-\ **Note:** This property is only read when the project starts. To toggle 2D transform snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_transforms_to_pixel<class_RenderingServer_method_viewport_set_snap_2d_transforms_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
+\ **Note:** This property is only read when the project starts. To toggle 2D transform snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_transforms_to_pixel()<class_RenderingServer_method_viewport_set_snap_2d_transforms_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
 
 \ **Note:** :ref:`Control<class_Control>` nodes are snapped to the nearest pixel by default. This is controlled by :ref:`gui/common/snap_controls_to_pixels<class_ProjectSettings_property_gui/common/snap_controls_to_pixels>`.
 
@@ -10388,7 +10456,7 @@ If ``true``, :ref:`CanvasItem<class_CanvasItem>` nodes will internally snap to f
 
 If ``true``, vertices of :ref:`CanvasItem<class_CanvasItem>` nodes will snap to full pixels. Useful for low-resolution pixel art games. Only affects the final vertex positions, not the transforms. This can lead to a crisper appearance at the cost of less smooth movement, especially when :ref:`Camera2D<class_Camera2D>` smoothing is enabled.
 
-\ **Note:** This property is only read when the project starts. To toggle 2D vertex snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_vertices_to_pixel<class_RenderingServer_method_viewport_set_snap_2d_vertices_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
+\ **Note:** This property is only read when the project starts. To toggle 2D vertex snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_vertices_to_pixel()<class_RenderingServer_method_viewport_set_snap_2d_vertices_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
 
 \ **Note:** :ref:`Control<class_Control>` nodes are snapped to the nearest pixel by default. This is controlled by :ref:`gui/common/snap_controls_to_pixels<class_ProjectSettings_property_gui/common/snap_controls_to_pixels>`.
 
@@ -10408,7 +10476,7 @@ Sets the number of multisample antialiasing (MSAA) samples to use for 2D/Canvas 
 
 \ **Note:** MSAA is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To set the number of 2D MSAA samples at runtime, set :ref:`Viewport.msaa_2d<class_Viewport_property_msaa_2d>` or use :ref:`RenderingServer.viewport_set_msaa_2d<class_RenderingServer_method_viewport_set_msaa_2d>`.
+\ **Note:** This property is only read when the project starts. To set the number of 2D MSAA samples at runtime, set :ref:`Viewport.msaa_2d<class_Viewport_property_msaa_2d>` or use :ref:`RenderingServer.viewport_set_msaa_2d()<class_RenderingServer_method_viewport_set_msaa_2d>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10422,7 +10490,7 @@ Sets the number of multisample antialiasing (MSAA) samples to use for 2D/Canvas 
 
 Sets the number of multisample antialiasing (MSAA) samples to use for 3D rendering (as a power of two). MSAA is used to reduce aliasing around the edges of polygons. A higher MSAA value results in smoother edges but can be significantly slower on some hardware, especially integrated graphics due to their limited memory bandwidth. See also :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>` for supersampling, which provides higher quality but is much more expensive. This has no effect on shader-induced aliasing or texture aliasing.
 
-\ **Note:** This property is only read when the project starts. To set the number of 3D MSAA samples at runtime, set :ref:`Viewport.msaa_3d<class_Viewport_property_msaa_3d>` or use :ref:`RenderingServer.viewport_set_msaa_3d<class_RenderingServer_method_viewport_set_msaa_3d>`.
+\ **Note:** This property is only read when the project starts. To set the number of 3D MSAA samples at runtime, set :ref:`Viewport.msaa_3d<class_Viewport_property_msaa_3d>` or use :ref:`RenderingServer.viewport_set_msaa_3d()<class_RenderingServer_method_viewport_set_msaa_3d>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10440,7 +10508,7 @@ Another way to combat specular aliasing is to enable :ref:`rendering/anti_aliasi
 
 \ **Note:** Screen-space antialiasing is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To set the screen-space antialiasing mode at runtime, set :ref:`Viewport.screen_space_aa<class_Viewport_property_screen_space_aa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_screen_space_aa<class_RenderingServer_method_viewport_set_screen_space_aa>`.
+\ **Note:** This property is only read when the project starts. To set the screen-space antialiasing mode at runtime, set :ref:`Viewport.screen_space_aa<class_Viewport_property_screen_space_aa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_screen_space_aa()<class_RenderingServer_method_viewport_set_screen_space_aa>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10456,7 +10524,7 @@ If ``true``, uses a fast post-processing filter to make banding significantly le
 
 In some cases, debanding may introduce a slightly noticeable dithering pattern. It's recommended to enable debanding only when actually needed since the dithering pattern will make lossless-compressed screenshots larger.
 
-\ **Note:** This property is only read when the project starts. To set debanding at runtime, set :ref:`Viewport.use_debanding<class_Viewport_property_use_debanding>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_debanding<class_RenderingServer_method_viewport_set_use_debanding>`.
+\ **Note:** This property is only read when the project starts. To set debanding at runtime, set :ref:`Viewport.use_debanding<class_Viewport_property_use_debanding>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_debanding()<class_RenderingServer_method_viewport_set_use_debanding>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10474,7 +10542,7 @@ Enables temporal antialiasing for the default screen :ref:`Viewport<class_Viewpo
 
 \ **Note:** TAA is only supported in the Forward+ rendering method, not Mobile or Compatibility.
 
-\ **Note:** This property is only read when the project starts. To set TAA at runtime, set :ref:`Viewport.use_taa<class_Viewport_property_use_taa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_taa<class_RenderingServer_method_viewport_set_use_taa>`.
+\ **Note:** This property is only read when the project starts. To set TAA at runtime, set :ref:`Viewport.use_taa<class_Viewport_property_use_taa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_taa()<class_RenderingServer_method_viewport_set_use_taa>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10486,7 +10554,7 @@ Enables temporal antialiasing for the default screen :ref:`Viewport<class_Viewpo
 
 :ref:`float<class_float>` **rendering/anti_aliasing/screen_space_roughness_limiter/amount** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_rendering/anti_aliasing/screen_space_roughness_limiter/amount>`
 
-**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
+**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active()<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10502,7 +10570,7 @@ If ``true``, enables a spatial filter to limit roughness in areas with high-freq
 
 \ **Note:** The screen-space roughness limiter is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
+\ **Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active()<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10514,7 +10582,7 @@ If ``true``, enables a spatial filter to limit roughness in areas with high-freq
 
 :ref:`float<class_float>` **rendering/anti_aliasing/screen_space_roughness_limiter/limit** = ``0.18`` :ref:`🔗<class_ProjectSettings_property_rendering/anti_aliasing/screen_space_roughness_limiter/limit>`
 
-**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
+**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active()<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10602,7 +10670,7 @@ The thread model to use for rendering. Rendering on a thread may improve perform
 
 :ref:`Color<class_Color>` **rendering/environment/defaults/default_clear_color** = ``Color(0.128, 0.128, 0.128, 1)`` :ref:`🔗<class_ProjectSettings_property_rendering/environment/defaults/default_clear_color>`
 
-Default background clear color. Overridable per :ref:`Viewport<class_Viewport>` using its :ref:`Environment<class_Environment>`. See :ref:`Environment.background_mode<class_Environment_property_background_mode>` and :ref:`Environment.background_color<class_Environment_property_background_color>` in particular. To change this default color programmatically, use :ref:`RenderingServer.set_default_clear_color<class_RenderingServer_method_set_default_clear_color>`.
+Default background clear color. Overridable per :ref:`Viewport<class_Viewport>` using its :ref:`Environment<class_Environment>`. See :ref:`Environment.background_mode<class_Environment_property_background_mode>` and :ref:`Environment.background_color<class_Environment_property_background_color>` in particular. To change this default color programmatically, use :ref:`RenderingServer.set_default_clear_color()<class_RenderingServer_method_set_default_clear_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10808,7 +10876,7 @@ Sets the quality of the screen-space indirect lighting effect. Higher values tak
 
 Scales the depth over which the subsurface scattering effect is applied. A high value may allow light to scatter into a part of the mesh or another mesh that is close in screen space but far in depth. See also :ref:`rendering/environment/subsurface_scattering/subsurface_scattering_scale<class_ProjectSettings_property_rendering/environment/subsurface_scattering/subsurface_scattering_scale>`.
 
-\ **Note:** This property is only read when the project starts. To set the subsurface scattering depth scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
+\ **Note:** This property is only read when the project starts. To set the subsurface scattering depth scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale()<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10822,7 +10890,7 @@ Scales the depth over which the subsurface scattering effect is applied. A high 
 
 Sets the quality of the subsurface scattering effect. Higher values are slower but look nicer. This affects the rendering of materials that have :ref:`BaseMaterial3D.subsurf_scatter_enabled<class_BaseMaterial3D_property_subsurf_scatter_enabled>` set to ``true``, along with :ref:`ShaderMaterial<class_ShaderMaterial>`\ s that set ``SSS_STRENGTH``.
 
-\ **Note:** This property is only read when the project starts. To set the subsurface scattering quality at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_quality<class_RenderingServer_method_sub_surface_scattering_set_quality>` instead.
+\ **Note:** This property is only read when the project starts. To set the subsurface scattering quality at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_quality()<class_RenderingServer_method_sub_surface_scattering_set_quality>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10836,7 +10904,7 @@ Sets the quality of the subsurface scattering effect. Higher values are slower b
 
 Scales the distance over which samples are taken for subsurface scattering effect. Changing this does not impact performance, but higher values will result in significant artifacts as the samples will become obviously spread out. A lower value results in a smaller spread of scattered light. See also :ref:`rendering/environment/subsurface_scattering/subsurface_scattering_depth_scale<class_ProjectSettings_property_rendering/environment/subsurface_scattering/subsurface_scattering_depth_scale>`.
 
-\ **Note:** This property is only read when the project starts. To set the subsurface scattering scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
+\ **Note:** This property is only read when the project starts. To set the subsurface scattering scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale()<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10882,9 +10950,23 @@ Base size used to determine size of froxel buffer in the camera X-axis and Y-axi
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver>`
 
-Sets the driver to be used by the renderer when using the Compatibility renderer. This property can not be edited directly, instead, set the driver using the platform-specific overrides.
+Sets the driver to be used by the renderer when using the Compatibility renderer. Editing this property has no effect in the default configuration, as first-party platforms each have platform-specific overrides. Use those overrides to configure the driver for each platform.
+
+This can be overridden using the ``--rendering-driver <driver>`` command line argument.
+
+Supported values are:
+
+- ``opengl3``, OpenGL 3.3 on desktop platforms, OpenGL ES 3.0 on mobile platforms, WebGL 2.0 on web.
+
+- ``opengl3_angle``, OpenGL ES 3.0 using the ANGLE compatibility layer, supported on macOS (over native OpenGL) and Windows (over Direct3D 11).
+
+- ``opengl3_es``, OpenGL ES 3.0 on Linux/BSD.
+
+\ **Note:** The availability of these options depends on whether the engine was compiled with support for them (determined by SCons options ``opengl3`` and ``angle_libs``).
+
+\ **Note:** The actual rendering driver may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering driver that is used at runtime, use :ref:`RenderingServer.get_current_rendering_driver_name()<class_RenderingServer_method_get_current_rendering_driver_name>` instead of reading this project setting's value.
 
 .. rst-class:: classref-item-separator
 
@@ -10894,9 +10976,13 @@ Sets the driver to be used by the renderer when using the Compatibility renderer
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.android** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.android** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`
 
 Android override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Only one option is supported:
+
+- ``opengl3``, OpenGL ES 3.0 from native drivers.
 
 .. rst-class:: classref-item-separator
 
@@ -10906,9 +10992,13 @@ Android override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettin
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.ios** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.ios** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`
 
 iOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Only one option is supported:
+
+- ``opengl3``, OpenGL ES 3.0 from native drivers.
 
 .. rst-class:: classref-item-separator
 
@@ -10918,9 +11008,15 @@ iOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_p
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.linuxbsd** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.linuxbsd** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`
 
 LinuxBSD override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Two options are supported:
+
+- ``opengl3`` (default), OpenGL 3.3 from native drivers.
+
+- ``opengl3_es``, OpenGL ES 3.0 from native drivers. If :ref:`rendering/gl_compatibility/fallback_to_gles<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_gles>` is enabled, this is used as a fallback if OpenGL 3.3 is not supported.
 
 .. rst-class:: classref-item-separator
 
@@ -10930,9 +11026,15 @@ LinuxBSD override for :ref:`rendering/gl_compatibility/driver<class_ProjectSetti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.macos** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.macos** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`
 
 macOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Two options are supported:
+
+- ``opengl3`` (default), OpenGL 3.3 from native drivers. If :ref:`rendering/gl_compatibility/fallback_to_native<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_native>` is enabled, this is used as a fallback if ANGLE is configured as the preferred driver but not supported.
+
+- ``opengl3_angle``, OpenGL ES 3.0 using the ANGLE compatibility layer over native OpenGL drivers. If :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>` is enabled, this is used as a fallback if OpenGL 3.3 is not supported.
 
 .. rst-class:: classref-item-separator
 
@@ -10942,9 +11044,13 @@ macOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.web** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.web** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`
 
 Web override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Only one option is supported:
+
+- ``opengl3``, WebGL 2.0. The underlying native API depends on the target OS, browser, and browser configuration.
 
 .. rst-class:: classref-item-separator
 
@@ -10954,9 +11060,15 @@ Web override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_p
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.windows** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.windows** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`
 
 Windows override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Two options are supported:
+
+- ``opengl3`` (default), OpenGL 3.3 from native drivers. If :ref:`rendering/gl_compatibility/fallback_to_native<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_native>` is enabled, this is used as a fallback if ANGLE is configured as the preferred driver but not supported.
+
+- ``opengl3_angle``, OpenGL ES 3.0 using the ANGLE compatibility layer over native Direct3D 11 drivers. If :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>` is enabled, this is used as a fallback if OpenGL 3.3 is not supported. By default, ANGLE is used as the default driver for some devices listed in :ref:`rendering/gl_compatibility/force_angle_on_devices<class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices>`.
 
 .. rst-class:: classref-item-separator
 
@@ -11054,7 +11166,7 @@ If ``true``, disables the threaded optimization feature from the NVIDIA drivers,
 
 If ``true``, renders :ref:`VoxelGI<class_VoxelGI>` and SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`) buffers at halved resolution (e.g. 960×540 when the viewport size is 1920×1080). This improves performance significantly when VoxelGI or SDFGI is enabled, at the cost of artifacts that may be visible on polygon edges. The loss in quality becomes less noticeable as the viewport resolution increases. :ref:`LightmapGI<class_LightmapGI>` rendering is not affected by this setting.
 
-\ **Note:** This property is only read when the project starts. To set half-resolution GI at run-time, call :ref:`RenderingServer.gi_set_use_half_resolution<class_RenderingServer_method_gi_set_use_half_resolution>` instead.
+\ **Note:** This property is only read when the project starts. To set half-resolution GI at run-time, call :ref:`RenderingServer.gi_set_use_half_resolution()<class_RenderingServer_method_gi_set_use_half_resolution>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11068,7 +11180,7 @@ If ``true``, renders :ref:`VoxelGI<class_VoxelGI>` and SDFGI (:ref:`Environment.
 
 The number of frames to use for converging signed distance field global illumination. Higher values lead to a less noisy result, at the cost of taking a longer time to fully converge. This means the scene's global illumination will be too dark for a longer period of time, especially when the camera moves fast. The actual convergence speed depends on rendered framerate. For example, with the default setting of 30 frames, rendering at 60 FPS will make SDFGI fully converge after 0.5 seconds. See also :ref:`rendering/global_illumination/sdfgi/frames_to_update_lights<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_update_lights>` and :ref:`rendering/global_illumination/sdfgi/probe_ray_count<class_ProjectSettings_property_rendering/global_illumination/sdfgi/probe_ray_count>`.
 
-\ **Note:** This property is only read when the project starts. To control SDFGI convergence speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_converge<class_RenderingServer_method_environment_set_sdfgi_frames_to_converge>` instead.
+\ **Note:** This property is only read when the project starts. To control SDFGI convergence speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_converge()<class_RenderingServer_method_environment_set_sdfgi_frames_to_converge>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11084,7 +11196,7 @@ The number of frames over which dynamic lights should be updated in signed dista
 
 \ **Note:** This only affects :ref:`Light3D<class_Light3D>` nodes whose :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` is :ref:`Light3D.BAKE_DYNAMIC<class_Light3D_constant_BAKE_DYNAMIC>` (which is the default). Consider making non-moving lights use the :ref:`Light3D.BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>` bake mode to improve performance.
 
-\ **Note:** This property is only read when the project starts. To control SDFGI light update speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_update_light<class_RenderingServer_method_environment_set_sdfgi_frames_to_update_light>` instead.
+\ **Note:** This property is only read when the project starts. To control SDFGI light update speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_update_light()<class_RenderingServer_method_environment_set_sdfgi_frames_to_update_light>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11098,7 +11210,7 @@ The number of frames over which dynamic lights should be updated in signed dista
 
 The number of rays to throw per frame when computing signed distance field global illumination. Higher values lead to a less noisy result, at the cost of performance. See also :ref:`rendering/global_illumination/sdfgi/frames_to_converge<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_converge>` and :ref:`rendering/global_illumination/sdfgi/frames_to_update_lights<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_update_lights>`.
 
-\ **Note:** This property is only read when the project starts. To control SDFGI quality at runtime, call :ref:`RenderingServer.environment_set_sdfgi_ray_count<class_RenderingServer_method_environment_set_sdfgi_ray_count>` instead.
+\ **Note:** This property is only read when the project starts. To control SDFGI quality at runtime, call :ref:`RenderingServer.environment_set_sdfgi_ray_count()<class_RenderingServer_method_environment_set_sdfgi_ray_count>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11112,7 +11224,7 @@ The number of rays to throw per frame when computing signed distance field globa
 
 The VoxelGI quality to use. High quality leads to more precise lighting and better reflections, but is slower to render. This setting does not affect the baked data and doesn't require baking the :ref:`VoxelGI<class_VoxelGI>` again to apply.
 
-\ **Note:** This property is only read when the project starts. To control VoxelGI quality at runtime, call :ref:`RenderingServer.voxel_gi_set_quality<class_RenderingServer_method_voxel_gi_set_quality>` instead.
+\ **Note:** This property is only read when the project starts. To control VoxelGI quality at runtime, call :ref:`RenderingServer.voxel_gi_set_quality()<class_RenderingServer_method_voxel_gi_set_quality>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11122,9 +11234,11 @@ The VoxelGI quality to use. High quality leads to more precise lighting and bett
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **rendering/lightmapping/bake_performance/max_rays_per_pass** = ``32`` :ref:`🔗<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`
+:ref:`int<class_int>` **rendering/lightmapping/bake_performance/max_rays_per_pass** = ``4`` :ref:`🔗<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`
 
 The maximum number of rays that can be thrown per pass when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`. Depending on the scene, adjusting this value may result in higher GPU utilization when baking lightmaps, leading to faster bake times.
+
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
 
 .. rst-class:: classref-item-separator
 
@@ -11138,6 +11252,8 @@ The maximum number of rays that can be thrown per pass when baking lightmaps wit
 
 The maximum number of rays that can be thrown per pass when baking dynamic object lighting in :ref:`LightmapProbe<class_LightmapProbe>`\ s with :ref:`LightmapGI<class_LightmapGI>`. Depending on the scene, adjusting this value may result in higher GPU utilization when baking lightmaps, leading to faster bake times.
 
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -11150,6 +11266,8 @@ The maximum number of rays that can be thrown per pass when baking dynamic objec
 
 The maximum number of retry rays that can be thrown per pass when hitting a transparent surface when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`. Depending on the scene, reducing this value may lead to faster bake times.
 
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -11160,7 +11278,9 @@ The maximum number of retry rays that can be thrown per pass when hitting a tran
 
 :ref:`int<class_int>` **rendering/lightmapping/bake_performance/region_size** = ``512`` :ref:`🔗<class_ProjectSettings_property_rendering/lightmapping/bake_performance/region_size>`
 
-The region size to use when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`.
+The region size to use when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`. The specified value is rounded up to the nearest power of 2.
+
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
 
 .. rst-class:: classref-item-separator
 
@@ -11662,7 +11782,7 @@ The automatic LOD bias to use for meshes rendered within the :ref:`ReflectionPro
 
 The `Bounding Volume Hierarchy <https://en.wikipedia.org/wiki/Bounding_volume_hierarchy>`__ quality to use when rendering the occlusion culling buffer. Higher values will result in more accurate occlusion culling, at the cost of higher CPU usage. See also :ref:`rendering/occlusion_culling/occlusion_rays_per_thread<class_ProjectSettings_property_rendering/occlusion_culling/occlusion_rays_per_thread>`.
 
-\ **Note:** This property is only read when the project starts. To adjust the BVH build quality at runtime, use :ref:`RenderingServer.viewport_set_occlusion_culling_build_quality<class_RenderingServer_method_viewport_set_occlusion_culling_build_quality>`.
+\ **Note:** This property is only read when the project starts. To adjust the BVH build quality at runtime, use :ref:`RenderingServer.viewport_set_occlusion_culling_build_quality()<class_RenderingServer_method_viewport_set_occlusion_culling_build_quality>`.
 
 .. rst-class:: classref-item-separator
 
@@ -11688,7 +11808,7 @@ If ``true``, the projection used for rendering the occlusion buffer will be jitt
 
 The number of occlusion rays traced per CPU thread. Higher values will result in more accurate occlusion culling, at the cost of higher CPU usage. The occlusion culling buffer's pixel count is roughly equal to ``occlusion_rays_per_thread * number_of_logical_cpu_cores``, so it will depend on the system's CPU. Therefore, CPUs with fewer cores will use a lower resolution to attempt keeping performance costs even across devices. See also :ref:`rendering/occlusion_culling/bvh_build_quality<class_ProjectSettings_property_rendering/occlusion_culling/bvh_build_quality>`.
 
-\ **Note:** This property is only read when the project starts. To adjust the number of occlusion rays traced per thread at runtime, use :ref:`RenderingServer.viewport_set_occlusion_rays_per_thread<class_RenderingServer_method_viewport_set_occlusion_rays_per_thread>`.
+\ **Note:** This property is only read when the project starts. To adjust the number of occlusion rays traced per thread at runtime, use :ref:`RenderingServer.viewport_set_occlusion_rays_per_thread()<class_RenderingServer_method_viewport_set_occlusion_rays_per_thread>`.
 
 .. rst-class:: classref-item-separator
 
@@ -11834,7 +11954,7 @@ Sets the renderer that will be used by the project. Options are:
 
 This can be overridden using the ``--rendering-method <method>`` command line argument.
 
-\ **Note:** The actual rendering method may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering method that is used at runtime, use :ref:`RenderingServer.get_current_rendering_method<class_RenderingServer_method_get_current_rendering_method>` instead of reading this project setting's value.
+\ **Note:** The actual rendering method may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering method that is used at runtime, use :ref:`RenderingServer.get_current_rendering_method()<class_RenderingServer_method_get_current_rendering_method>` instead of reading this project setting's value.
 
 .. rst-class:: classref-item-separator
 
@@ -11922,11 +12042,25 @@ Depending on the complexity of scenes, this value may be lowered or may need to 
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver>`
+:ref:`String<class_String>` **rendering/rendering_device/driver** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver>`
 
-Sets the driver to be used by the renderer when using a RenderingDevice-based renderer like the Forward+ or Mobile renderers. This property can't be edited directly. Instead, set the driver using the platform-specific overrides. This can be overridden using the ``--rendering-driver <driver>`` command line argument.
+Sets the driver to be used by the renderer when using a RenderingDevice-based renderer like the Forward+ or Mobile renderers. Editing this property has no effect in the default configuration, as first-party platforms each have platform-specific overrides. Use those overrides to configure the driver for each platform.
 
-\ **Note:** The actual rendering driver may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering driver that is used at runtime, use :ref:`RenderingServer.get_current_rendering_driver_name<class_RenderingServer_method_get_current_rendering_driver_name>` instead of reading this project setting's value.
+This can be overridden using the ``--rendering-driver <driver>`` command line argument.
+
+Supported values are:
+
+- ``metal``, Metal (supported on Apple Silicon Macs and iOS).
+
+- ``vulkan``, Vulkan (supported on all desktop and mobile platforms).
+
+- ``d3d12``, Direct3D 12 (supported on Windows).
+
+\ **Note:** The availability of these options depends on whether the engine was compiled with support for them (determined by SCons options ``vulkan``, ``metal``, and ``d3d12``).
+
+\ **Note:** If a given platform has no registered drivers, it can fall back to the Compatibility renderer (OpenGL 3) if :ref:`rendering/rendering_device/fallback_to_opengl3<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>` is enabled. This fallback happens automatically for the Web platform regardless of that property.
+
+\ **Note:** The actual rendering driver may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering driver that is used at runtime, use :ref:`RenderingServer.get_current_rendering_driver_name()<class_RenderingServer_method_get_current_rendering_driver_name>` instead of reading this project setting's value.
 
 .. rst-class:: classref-item-separator
 
@@ -11936,9 +12070,15 @@ Sets the driver to be used by the renderer when using a RenderingDevice-based re
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.android** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.android>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.android** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.android>`
 
 Android override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Only one option is supported:
+
+- ``vulkan``, Vulkan from native drivers.
+
+\ **Note:** If Vulkan was disabled at compile time, there is no alternative RenderingDevice driver.
 
 .. rst-class:: classref-item-separator
 
@@ -11948,9 +12088,15 @@ Android override for :ref:`rendering/rendering_device/driver<class_ProjectSettin
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.ios** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.ios** = ``"metal"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`
 
 iOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Two options are supported:
+
+- ``metal`` (default), Metal from native drivers.
+
+- ``vulkan``, Vulkan over Metal via MoltenVK.
 
 .. rst-class:: classref-item-separator
 
@@ -11960,9 +12106,15 @@ iOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_p
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.linuxbsd** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.linuxbsd** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`
 
 LinuxBSD override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Only one option is supported:
+
+- ``vulkan``, Vulkan from native drivers.
+
+\ **Note:** If Vulkan was disabled at compile time, there is no alternative RenderingDevice driver.
 
 .. rst-class:: classref-item-separator
 
@@ -11972,9 +12124,15 @@ LinuxBSD override for :ref:`rendering/rendering_device/driver<class_ProjectSetti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.macos** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.macos** = ``"metal"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`
 
 macOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Two options are supported:
+
+- ``metal`` (default), Metal from native drivers, only supported on Apple Silicon Macs. On Intel Macs, it will automatically fall back to ``vulkan`` as Metal support is not implemented.
+
+- ``vulkan``, Vulkan over Metal via MoltenVK, supported on both Apple Silicon and Intel Macs.
 
 .. rst-class:: classref-item-separator
 
@@ -11984,9 +12142,15 @@ macOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.windows** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.windows** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`
 
 Windows override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Two options are supported:
+
+- ``vulkan`` (default), Vulkan from native drivers. If :ref:`rendering/rendering_device/fallback_to_vulkan<class_ProjectSettings_property_rendering/rendering_device/fallback_to_vulkan>` is enabled, this is used as a fallback if Direct3D 12 is not supported.
+
+- ``d3d12``, Direct3D 12 from native drivers. If :ref:`rendering/rendering_device/fallback_to_d3d12<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>` is enabled, this is used as a fallback if Vulkan is not supported.
 
 .. rst-class:: classref-item-separator
 
@@ -11998,7 +12162,7 @@ Windows override for :ref:`rendering/rendering_device/driver<class_ProjectSettin
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_d3d12** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>`
 
-If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not supported.
+If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not supported. The fallback is always attempted regardless of this setting if Vulkan driver support was disabled at compile time.
 
 \ **Note:** This setting is implemented only on Windows.
 
@@ -12012,7 +12176,7 @@ If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_opengl3** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>`
 
-If ``true``, the forward renderer will fall back to OpenGL 3 if both Direct3D 12, Metal and Vulkan are not supported.
+If ``true``, the forward renderer will fall back to OpenGL 3 if Direct3D 12, Metal, and Vulkan are not supported.
 
 \ **Note:** This setting is implemented only on Windows, Android, macOS, iOS, and Linux/X11.
 
@@ -12026,9 +12190,9 @@ If ``true``, the forward renderer will fall back to OpenGL 3 if both Direct3D 12
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_vulkan** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_vulkan>`
 
-If ``true``, the forward renderer will fall back to Vulkan if Direct3D 12 is not supported.
+If ``true``, the forward renderer will fall back to Vulkan if Direct3D 12 (on Windows) or Metal (on macOS x86_64) are not supported. The fallback is always attempted regardless of this setting if Direct3D 12 (Windows) or Metal (macOS) driver support was disabled at compile time.
 
-\ **Note:** This setting is implemented only on Windows.
+\ **Note:** This setting is implemented only on Windows and macOS.
 
 .. rst-class:: classref-item-separator
 
@@ -12094,7 +12258,7 @@ The maximum amount of memory allowed to be used by staging buffers. If the amoun
 
 :ref:`int<class_int>` **rendering/rendering_device/staging_buffer/texture_download_region_size_px** = ``64`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/texture_download_region_size_px>`
 
-The region size in pixels used to download texture data from the GPU when using methods like :ref:`RenderingDevice.texture_get_data_async<class_RenderingDevice_method_texture_get_data_async>`.
+The region size in pixels used to download texture data from the GPU when using methods like :ref:`RenderingDevice.texture_get_data_async()<class_RenderingDevice_method_texture_get_data_async>`.
 
 \ **Note:** This property's upper limit is controlled by :ref:`rendering/rendering_device/staging_buffer/block_size_kb<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/block_size_kb>` and whether it's possible to allocate a single block of texture data with this region size in the format that is requested.
 
@@ -12110,7 +12274,7 @@ The region size in pixels used to download texture data from the GPU when using 
 
 :ref:`int<class_int>` **rendering/rendering_device/staging_buffer/texture_upload_region_size_px** = ``64`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/texture_upload_region_size_px>`
 
-The region size in pixels used to upload texture data from the GPU when using methods like :ref:`RenderingDevice.texture_update<class_RenderingDevice_method_texture_update>`.
+The region size in pixels used to upload texture data from the GPU when using methods like :ref:`RenderingDevice.texture_update()<class_RenderingDevice_method_texture_update>`.
 
 \ **Note:** This property's upper limit is controlled by :ref:`rendering/rendering_device/staging_buffer/block_size_kb<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/block_size_kb>` and whether it's possible to allocate a single block of texture data with this region size in the format that is requested.
 
@@ -12197,6 +12361,30 @@ Determines how sharp the upscaled image will be when using the FSR upscaling mod
 Sets the scaling 3D mode. Bilinear scaling renders at different resolution to either undersample or supersample the viewport. FidelityFX Super Resolution 1.0, abbreviated to FSR, is an upscaling technology that produces high quality images at fast framerates by using a spatially-aware upscaling algorithm. FSR is slightly more expensive than bilinear, but it produces significantly higher image quality. On particularly low-end GPUs, the added cost of FSR may not be worth it (compared to using bilinear scaling with a slightly higher resolution scale to match performance).
 
 \ **Note:** FSR is only effective when using the Forward+ rendering method, not Mobile or Compatibility. If using an incompatible rendering method, FSR will fall back to bilinear scaling.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/scaling_3d/mode.ios:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/scaling_3d/mode.ios** :ref:`🔗<class_ProjectSettings_property_rendering/scaling_3d/mode.ios>`
+
+iOS override for :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`. This allows selecting the MetalFX spatial and MetalFX temporal scaling modes, which are exclusive to platforms where the Metal rendering driver is used.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/scaling_3d/mode.macos:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/scaling_3d/mode.macos** :ref:`🔗<class_ProjectSettings_property_rendering/scaling_3d/mode.macos>`
+
+macOS override for :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`. This allows selecting the MetalFX spatial and MetalFX temporal scaling modes, which are exclusive to platforms where the Metal rendering driver is used.
 
 .. rst-class:: classref-item-separator
 
@@ -12981,7 +13169,7 @@ Returns the value of the setting identified by ``name``. If the setting doesn't 
 
 
 
-\ **Note:** This method doesn't take potential feature overrides into account automatically. Use :ref:`get_setting_with_override<class_ProjectSettings_method_get_setting_with_override>` to handle seamlessly.
+\ **Note:** This method doesn't take potential feature overrides into account automatically. Use :ref:`get_setting_with_override()<class_ProjectSettings_method_get_setting_with_override>` to handle seamlessly.
 
 .. rst-class:: classref-item-separator
 
@@ -12993,7 +13181,7 @@ Returns the value of the setting identified by ``name``. If the setting doesn't 
 
 :ref:`Variant<class_Variant>` **get_setting_with_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_get_setting_with_override>`
 
-Similar to :ref:`get_setting<class_ProjectSettings_method_get_setting>`, but applies feature tag overrides if any exists and is valid.
+Similar to :ref:`get_setting()<class_ProjectSettings_method_get_setting>`, but applies feature tag overrides if any exists and is valid.
 
 \ **Example:** If the setting override ``"application/config/name.windows"`` exists, and the following code is executed on a *Windows* operating system, the overridden setting is printed instead:
 
@@ -13020,9 +13208,9 @@ Similar to :ref:`get_setting<class_ProjectSettings_method_get_setting>`, but app
 
 :ref:`String<class_String>` **globalize_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_globalize_path>`
 
-Returns the absolute, native OS path corresponding to the localized ``path`` (starting with ``res://`` or ``user://``). The returned path will vary depending on the operating system and user preferences. See :doc:`File paths in Redot projects <../tutorials/io/data_paths>` to see what those paths convert to. See also :ref:`localize_path<class_ProjectSettings_method_localize_path>`.
+Returns the absolute, native OS path corresponding to the localized ``path`` (starting with ``res://`` or ``user://``). The returned path will vary depending on the operating system and user preferences. See :doc:`File paths in Redot projects <../tutorials/io/data_paths>` to see what those paths convert to. See also :ref:`localize_path()<class_ProjectSettings_method_localize_path>`.
 
-\ **Note:** :ref:`globalize_path<class_ProjectSettings_method_globalize_path>` with ``res://`` will not work in an exported project. Instead, prepend the executable's base directory to the path when running from an exported project:
+\ **Note:** :ref:`globalize_path()<class_ProjectSettings_method_globalize_path>` with ``res://`` will not work in an exported project. Instead, prepend the executable's base directory to the path when running from an exported project:
 
 ::
 
@@ -13066,6 +13254,8 @@ Loads the contents of the .pck or .zip file specified by ``pack`` into the resou
 
 \ **Note:** The optional ``offset`` parameter can be used to specify the offset in bytes to the start of the resource pack. This is only supported for .pck files.
 
+\ **Note:** :ref:`DirAccess<class_DirAccess>` will not show changes made to the contents of ``res://`` after calling this function.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -13076,7 +13266,7 @@ Loads the contents of the .pck or .zip file specified by ``pack`` into the resou
 
 :ref:`String<class_String>` **localize_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_localize_path>`
 
-Returns the localized path (starting with ``res://``) corresponding to the absolute, native OS ``path``. See also :ref:`globalize_path<class_ProjectSettings_method_globalize_path>`.
+Returns the localized path (starting with ``res://``) corresponding to the absolute, native OS ``path``. See also :ref:`globalize_path()<class_ProjectSettings_method_globalize_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -13090,7 +13280,7 @@ Returns the localized path (starting with ``res://``) corresponding to the absol
 
 Saves the configuration to the ``project.godot`` file.
 
-\ **Note:** This method is intended to be used by editor plugins, as modified **ProjectSettings** can't be loaded back in the running app. If you want to change project settings in exported projects, use :ref:`save_custom<class_ProjectSettings_method_save_custom>` to save ``override.cfg`` file.
+\ **Note:** This method is intended to be used by editor plugins, as modified **ProjectSettings** can't be loaded back in the running app. If you want to change project settings in exported projects, use :ref:`save_custom()<class_ProjectSettings_method_save_custom>` to save ``override.cfg`` file.
 
 .. rst-class:: classref-item-separator
 
@@ -13164,7 +13354,7 @@ Sets the order of a configuration value (influences when saved to the config fil
 
 Sets whether a setting requires restarting the editor to properly take effect.
 
-\ **Note:** This is just a hint to display to the user that the editor must be restarted for changes to take effect. Enabling :ref:`set_restart_if_changed<class_ProjectSettings_method_set_restart_if_changed>` does *not* delay the setting being set when changed.
+\ **Note:** This is just a hint to display to the user that the editor must be restarted for changes to take effect. Enabling :ref:`set_restart_if_changed()<class_ProjectSettings_method_set_restart_if_changed>` does *not* delay the setting being set when changed.
 
 .. rst-class:: classref-item-separator
 
