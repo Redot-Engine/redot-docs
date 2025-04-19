@@ -12,7 +12,7 @@ Node3D
 
 **Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AudioListener3D<class_AudioListener3D>`, :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>`, :ref:`BoneAttachment3D<class_BoneAttachment3D>`, :ref:`Camera3D<class_Camera3D>`, :ref:`CollisionObject3D<class_CollisionObject3D>`, :ref:`CollisionPolygon3D<class_CollisionPolygon3D>`, :ref:`CollisionShape3D<class_CollisionShape3D>`, :ref:`GridMap<class_GridMap>`, :ref:`ImporterMeshInstance3D<class_ImporterMeshInstance3D>`, :ref:`Joint3D<class_Joint3D>`, :ref:`LightmapProbe<class_LightmapProbe>`, :ref:`Marker3D<class_Marker3D>`, :ref:`NavigationLink3D<class_NavigationLink3D>`, :ref:`NavigationObstacle3D<class_NavigationObstacle3D>`, :ref:`NavigationRegion3D<class_NavigationRegion3D>`, :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`, :ref:`OpenXRHand<class_OpenXRHand>`, :ref:`Path3D<class_Path3D>`, :ref:`PathFollow3D<class_PathFollow3D>`, :ref:`RayCast3D<class_RayCast3D>`, :ref:`RemoteTransform3D<class_RemoteTransform3D>`, :ref:`ShapeCast3D<class_ShapeCast3D>`, :ref:`Skeleton3D<class_Skeleton3D>`, :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`, :ref:`SpringArm3D<class_SpringArm3D>`, :ref:`VehicleWheel3D<class_VehicleWheel3D>`, :ref:`VisualInstance3D<class_VisualInstance3D>`, :ref:`XRFaceModifier3D<class_XRFaceModifier3D>`, :ref:`XRNode3D<class_XRNode3D>`, :ref:`XROrigin3D<class_XROrigin3D>`
+**Inherited By:** :ref:`AudioListener3D<class_AudioListener3D>`, :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>`, :ref:`BoneAttachment3D<class_BoneAttachment3D>`, :ref:`Camera3D<class_Camera3D>`, :ref:`CollisionObject3D<class_CollisionObject3D>`, :ref:`CollisionPolygon3D<class_CollisionPolygon3D>`, :ref:`CollisionShape3D<class_CollisionShape3D>`, :ref:`GridMap<class_GridMap>`, :ref:`ImporterMeshInstance3D<class_ImporterMeshInstance3D>`, :ref:`Joint3D<class_Joint3D>`, :ref:`LightmapProbe<class_LightmapProbe>`, :ref:`Marker3D<class_Marker3D>`, :ref:`NavigationLink3D<class_NavigationLink3D>`, :ref:`NavigationObstacle3D<class_NavigationObstacle3D>`, :ref:`NavigationRegion3D<class_NavigationRegion3D>`, :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`, :ref:`OpenXRHand<class_OpenXRHand>`, :ref:`Path3D<class_Path3D>`, :ref:`PathFollow3D<class_PathFollow3D>`, :ref:`RayCast3D<class_RayCast3D>`, :ref:`RemoteTransform3D<class_RemoteTransform3D>`, :ref:`ShapeCast3D<class_ShapeCast3D>`, :ref:`Skeleton3D<class_Skeleton3D>`, :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`, :ref:`SpringArm3D<class_SpringArm3D>`, :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`, :ref:`VehicleWheel3D<class_VehicleWheel3D>`, :ref:`VisualInstance3D<class_VisualInstance3D>`, :ref:`XRFaceModifier3D<class_XRFaceModifier3D>`, :ref:`XRNode3D<class_XRNode3D>`, :ref:`XROrigin3D<class_XROrigin3D>`
 
 Most basic 3D game object, parent of all 3D-related nodes.
 
@@ -25,7 +25,7 @@ Most basic 3D game object, with a :ref:`Transform3D<class_Transform3D>` and visi
 
 Affine operations (rotate, scale, translate) happen in parent's local coordinate system, unless the **Node3D** object is set as top-level. Affine operations in this coordinate system correspond to direct affine operations on the **Node3D**'s transform. The word local below refers to this coordinate system. The coordinate system that is attached to the **Node3D** object itself is referred to as object-local coordinate system.
 
-\ **Note:** Unless otherwise specified, all methods that have angle parameters must have angles specified as *radians*. To convert degrees to radians, use :ref:`@GlobalScope.deg_to_rad<class_@GlobalScope_method_deg_to_rad>`.
+\ **Note:** Unless otherwise specified, all methods that have angle parameters must have angles specified as *radians*. To convert degrees to radians, use :ref:`@GlobalScope.deg_to_rad()<class_@GlobalScope_method_deg_to_rad>`.
 
 \ **Note:** Be aware that "Spatial" nodes are now called "Node3D" starting with Redot 4. Any Redot 3.x references to "Spatial" nodes refer to "Node3D" in Redot 4.
 
@@ -239,7 +239,7 @@ Constants
 
 **Node3D** nodes receive this notification when their global transform changes. This means that either the current or a parent node changed its transform.
 
-In order for :ref:`NOTIFICATION_TRANSFORM_CHANGED<class_Node3D_constant_NOTIFICATION_TRANSFORM_CHANGED>` to work, users first need to ask for it, with :ref:`set_notify_transform<class_Node3D_method_set_notify_transform>`. The notification is also sent if the node is in the editor context and it has at least one valid gizmo.
+In order for :ref:`NOTIFICATION_TRANSFORM_CHANGED<class_Node3D_constant_NOTIFICATION_TRANSFORM_CHANGED>` to work, users first need to ask for it, with :ref:`set_notify_transform()<class_Node3D_method_set_notify_transform>`. The notification is also sent if the node is in the editor context and it has at least one valid gizmo.
 
 .. _class_Node3D_constant_NOTIFICATION_ENTER_WORLD:
 
@@ -273,7 +273,7 @@ In order for :ref:`NOTIFICATION_TRANSFORM_CHANGED<class_Node3D_constant_NOTIFICA
 
 **Node3D** nodes receive this notification when their local transform changes. This is not received when the transform of a parent node is changed.
 
-In order for :ref:`NOTIFICATION_LOCAL_TRANSFORM_CHANGED<class_Node3D_constant_NOTIFICATION_LOCAL_TRANSFORM_CHANGED>` to work, users first need to ask for it, with :ref:`set_notify_local_transform<class_Node3D_method_set_notify_local_transform>`.
+In order for :ref:`NOTIFICATION_LOCAL_TRANSFORM_CHANGED<class_Node3D_constant_NOTIFICATION_LOCAL_TRANSFORM_CHANGED>` to work, users first need to ask for it, with :ref:`set_notify_local_transform()<class_Node3D_method_set_notify_local_transform>`.
 
 .. rst-class:: classref-section-separator
 
@@ -577,7 +577,7 @@ Defines the visibility range parent for this node and its subtree. The visibilit
 - |void| **set_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_visible**\ (\ )
 
-If ``true``, this node is drawn. The node is only visible if all of its ancestors are visible as well (in other words, :ref:`is_visible_in_tree<class_Node3D_method_is_visible_in_tree>` must return ``true``).
+If ``true``, this node is drawn. The node is only visible if all of its ancestors are visible as well (in other words, :ref:`is_visible_in_tree()<class_Node3D_method_is_visible_in_tree>` must return ``true``).
 
 .. rst-class:: classref-section-separator
 
@@ -658,9 +658,9 @@ Returns all the gizmos attached to this **Node3D**.
 
 When using physics interpolation, there will be circumstances in which you want to know the interpolated (displayed) transform of a node rather than the standard transform (which may only be accurate to the most recent physics tick).
 
-This is particularly important for frame-based operations that take place in :ref:`Node._process<class_Node_private_method__process>`, rather than :ref:`Node._physics_process<class_Node_private_method__physics_process>`. Examples include :ref:`Camera3D<class_Camera3D>`\ s focusing on a node, or finding where to fire lasers from on a frame rather than physics tick.
+This is particularly important for frame-based operations that take place in :ref:`Node._process()<class_Node_private_method__process>`, rather than :ref:`Node._physics_process()<class_Node_private_method__physics_process>`. Examples include :ref:`Camera3D<class_Camera3D>`\ s focusing on a node, or finding where to fire lasers from on a frame rather than physics tick.
 
-\ **Note:** This function creates an interpolation pump on the **Node3D** the first time it is called, which can respond to physics interpolation resets. If you get problems with "streaking" when initially following a **Node3D**, be sure to call :ref:`get_global_transform_interpolated<class_Node3D_method_get_global_transform_interpolated>` at least once *before* resetting the **Node3D** physics interpolation.
+\ **Note:** This function creates an interpolation pump on the **Node3D** the first time it is called, which can respond to physics interpolation resets. If you get problems with "streaking" when initially following a **Node3D**, be sure to call :ref:`get_global_transform_interpolated()<class_Node3D_method_get_global_transform_interpolated>` at least once *before* resetting the **Node3D** physics interpolation.
 
 .. rst-class:: classref-item-separator
 
@@ -784,6 +784,10 @@ Returns whether the node notifies about its global and local transformation chan
 
 Returns ``true`` if the node is present in the :ref:`SceneTree<class_SceneTree>`, its :ref:`visible<class_Node3D_property_visible>` property is ``true`` and all its ancestors are also visible. If any ancestor is hidden, this node will not be visible in the scene tree.
 
+Visibility is checked only in parent nodes that inherit from **Node3D**. If the parent is of any other type (such as :ref:`Node<class_Node>`, :ref:`AnimationPlayer<class_AnimationPlayer>`, or :ref:`Node2D<class_Node2D>`), it is assumed to be visible.
+
+\ **Note:** This method does not take :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` into account, so even if this method returns ``true``, the node might end up not being rendered.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -798,7 +802,9 @@ Rotates the node so that the local forward axis (-Z, :ref:`Vector3.FORWARD<class
 
 The local up axis (+Y) points as close to the ``up`` vector as possible while staying perpendicular to the local forward axis. The resulting transform is orthogonal, and the scale is preserved. Non-uniform scaling may not work correctly.
 
-The ``target`` position cannot be the same as the node's position, the ``up`` vector cannot be zero, and the direction from the node's position to the ``target`` vector cannot be parallel to the ``up`` vector.
+The ``target`` position cannot be the same as the node's position, the ``up`` vector cannot be zero.
+
+The ``target`` and the ``up`` cannot be :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`, and shouldn't be colinear to avoid unintended rotation around local Z axis.
 
 Operations take place in global space, which means that the node must be in the scene tree.
 
@@ -814,7 +820,7 @@ If ``use_model_front`` is ``true``, the +Z axis (asset front) is treated as forw
 
 |void| **look_at_from_position**\ (\ position\: :ref:`Vector3<class_Vector3>`, target\: :ref:`Vector3<class_Vector3>`, up\: :ref:`Vector3<class_Vector3>` = Vector3(0, 1, 0), use_model_front\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node3D_method_look_at_from_position>`
 
-Moves the node to the specified ``position``, and then rotates the node to point toward the ``target`` as per :ref:`look_at<class_Node3D_method_look_at>`. Operations take place in global space.
+Moves the node to the specified ``position``, and then rotates the node to point toward the ``target`` as per :ref:`look_at()<class_Node3D_method_look_at>`. Operations take place in global space.
 
 .. rst-class:: classref-item-separator
 

@@ -324,6 +324,8 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`_shaped_get_span_count<class_TextServerExtension_private_method__shaped_get_span_count>`\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                                                |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                   | :ref:`_shaped_get_span_embedded_object<class_TextServerExtension_private_method__shaped_get_span_embedded_object>`\ (\ shaped\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) |virtual| |const|                                                                                                                                                                                                             |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`                                   | :ref:`_shaped_get_span_meta<class_TextServerExtension_private_method__shaped_get_span_meta>`\ (\ shaped\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) |virtual| |const|                                                                                                                                                                                                                                   |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                          | :ref:`_shaped_set_span_update_font<class_TextServerExtension_private_method__shaped_set_span_update_font>`\ (\ shaped\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`, fonts\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\], size\: :ref:`int<class_int>`, opentype_features\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual|                                                                          |
@@ -1916,7 +1918,7 @@ Sets kerning for the pair of glyphs.
 
 **Optional.**\ 
 
-Adds override for :ref:`_font_is_language_supported<class_TextServerExtension_private_method__font_is_language_supported>`.
+Adds override for :ref:`_font_is_language_supported()<class_TextServerExtension_private_method__font_is_language_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2028,7 +2030,7 @@ Sets scaling factor of the color bitmap font.
 
 **Optional.**\ 
 
-Adds override for :ref:`_font_is_script_supported<class_TextServerExtension_private_method__font_is_script_supported>`.
+Adds override for :ref:`_font_is_script_supported()<class_TextServerExtension_private_method__font_is_script_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2518,7 +2520,21 @@ Saves optional TextServer database (e.g. ICU break iterators and dictionaries) t
 
 **Required.**\ 
 
-Returns number of text spans added using :ref:`_shaped_text_add_string<class_TextServerExtension_private_method__shaped_text_add_string>` or :ref:`_shaped_text_add_object<class_TextServerExtension_private_method__shaped_text_add_object>`.
+Returns number of text spans added using :ref:`_shaped_text_add_string()<class_TextServerExtension_private_method__shaped_text_add_string>` or :ref:`_shaped_text_add_object()<class_TextServerExtension_private_method__shaped_text_add_object>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__shaped_get_span_embedded_object:
+
+.. rst-class:: classref-method
+
+:ref:`Variant<class_Variant>` **_shaped_get_span_embedded_object**\ (\ shaped\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_TextServerExtension_private_method__shaped_get_span_embedded_object>`
+
+**Required.**\ 
+
+Returns text embedded object key.
 
 .. rst-class:: classref-item-separator
 

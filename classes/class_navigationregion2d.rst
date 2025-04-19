@@ -23,7 +23,7 @@ Description
 
 A traversable 2D region based on a :ref:`NavigationPolygon<class_NavigationPolygon>` that :ref:`NavigationAgent2D<class_NavigationAgent2D>`\ s can use for pathfinding.
 
-Two regions can be connected to each other if they share a similar edge. You can set the minimum distance between two vertices required to connect two edges by using :ref:`NavigationServer2D.map_set_edge_connection_margin<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
+Two regions can be connected to each other if they share a similar edge. You can set the minimum distance between two vertices required to connect two edges by using :ref:`NavigationServer2D.map_set_edge_connection_margin()<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
 
 \ **Note:** Overlapping two regions' navigation polygons is not enough for connecting two regions. They must share a similar edge.
 
@@ -72,23 +72,25 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`bake_navigation_polygon<class_NavigationRegion2D_method_bake_navigation_polygon>`\ (\ on_thread\: :ref:`bool<class_bool>` = true\ )                                  |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`get_navigation_layer_value<class_NavigationRegion2D_method_get_navigation_layer_value>`\ (\ layer_number\: :ref:`int<class_int>`\ ) |const|                          |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`   | :ref:`get_navigation_map<class_NavigationRegion2D_method_get_navigation_map>`\ (\ ) |const|                                                                                |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`   | :ref:`get_region_rid<class_NavigationRegion2D_method_get_region_rid>`\ (\ ) |const|                                                                                        |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`   | :ref:`get_rid<class_NavigationRegion2D_method_get_rid>`\ (\ ) |const|                                                                                                      |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`is_baking<class_NavigationRegion2D_method_is_baking>`\ (\ ) |const|                                                                                                  |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`set_navigation_layer_value<class_NavigationRegion2D_method_set_navigation_layer_value>`\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`set_navigation_map<class_NavigationRegion2D_method_set_navigation_map>`\ (\ navigation_map\: :ref:`RID<class_RID>`\ )                                                |
-   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`bake_navigation_polygon<class_NavigationRegion2D_method_bake_navigation_polygon>`\ (\ on_thread\: :ref:`bool<class_bool>` = true\ )                                  |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>` | :ref:`get_bounds<class_NavigationRegion2D_method_get_bounds>`\ (\ ) |const|                                                                                                |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`get_navigation_layer_value<class_NavigationRegion2D_method_get_navigation_layer_value>`\ (\ layer_number\: :ref:`int<class_int>`\ ) |const|                          |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`     | :ref:`get_navigation_map<class_NavigationRegion2D_method_get_navigation_map>`\ (\ ) |const|                                                                                |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`     | :ref:`get_region_rid<class_NavigationRegion2D_method_get_region_rid>`\ (\ ) |const|                                                                                        |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`     | :ref:`get_rid<class_NavigationRegion2D_method_get_rid>`\ (\ ) |const|                                                                                                      |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`is_baking<class_NavigationRegion2D_method_is_baking>`\ (\ ) |const|                                                                                                  |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_navigation_layer_value<class_NavigationRegion2D_method_set_navigation_layer_value>`\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_navigation_map<class_NavigationRegion2D_method_set_navigation_map>`\ (\ navigation_map\: :ref:`RID<class_RID>`\ )                                                |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -173,7 +175,7 @@ When pathfinding enters this region's navigation mesh from another regions navig
 - |void| **set_navigation_layers**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_navigation_layers**\ (\ )
 
-A bitfield determining all navigation layers the region belongs to. These navigation layers can be checked upon when requesting a path with :ref:`NavigationServer2D.map_get_path<class_NavigationServer2D_method_map_get_path>`.
+A bitfield determining all navigation layers the region belongs to. These navigation layers can be checked upon when requesting a path with :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -247,6 +249,18 @@ Bakes the :ref:`NavigationPolygon<class_NavigationPolygon>`. If ``on_thread`` is
 
 ----
 
+.. _class_NavigationRegion2D_method_get_bounds:
+
+.. rst-class:: classref-method
+
+:ref:`Rect2<class_Rect2>` **get_bounds**\ (\ ) |const| :ref:`🔗<class_NavigationRegion2D_method_get_bounds>`
+
+Returns the axis-aligned rectangle for the region's transformed navigation mesh.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_NavigationRegion2D_method_get_navigation_layer_value:
 
 .. rst-class:: classref-method
@@ -277,7 +291,7 @@ Returns the current navigation map :ref:`RID<class_RID>` used by this region.
 
 :ref:`RID<class_RID>` **get_region_rid**\ (\ ) |const| :ref:`🔗<class_NavigationRegion2D_method_get_region_rid>`
 
-**Deprecated:** Use :ref:`get_rid<class_NavigationRegion2D_method_get_rid>` instead.
+**Deprecated:** Use :ref:`get_rid()<class_NavigationRegion2D_method_get_rid>` instead.
 
 Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
@@ -291,7 +305,7 @@ Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer2D
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_NavigationRegion2D_method_get_rid>`
 
-Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer2D<class_NavigationServer2D>`. Combined with :ref:`NavigationServer2D.map_get_closest_point_owner<class_NavigationServer2D_method_map_get_closest_point_owner>` can be used to identify the **NavigationRegion2D** closest to a point on the merged navigation map.
+Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer2D<class_NavigationServer2D>`. Combined with :ref:`NavigationServer2D.map_get_closest_point_owner()<class_NavigationServer2D_method_map_get_closest_point_owner>` can be used to identify the **NavigationRegion2D** closest to a point on the merged navigation map.
 
 .. rst-class:: classref-item-separator
 
