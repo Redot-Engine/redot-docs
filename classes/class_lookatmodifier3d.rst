@@ -40,7 +40,7 @@ Properties
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
    | :ref:`EaseType<enum_Tween_EaseType>`                | :ref:`ease_type<class_LookAtModifier3D_property_ease_type>`                                                 | ``0``                |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>`     | :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>`                                           | ``4``                |
+   | :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>`   | :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>`                                           | ``4``                |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
    | :ref:`int<class_int>`                               | :ref:`origin_bone<class_LookAtModifier3D_property_origin_bone>`                                             |                      |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
@@ -115,64 +115,6 @@ Methods
 
 Enumerations
 ------------
-
-.. _enum_LookAtModifier3D_BoneAxis:
-
-.. rst-class:: classref-enumeration
-
-enum **BoneAxis**: :ref:`🔗<enum_LookAtModifier3D_BoneAxis>`
-
-.. _class_LookAtModifier3D_constant_BONE_AXIS_PLUS_X:
-
-.. rst-class:: classref-enumeration-constant
-
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **BONE_AXIS_PLUS_X** = ``0``
-
-Enumerated value for the +X axis.
-
-.. _class_LookAtModifier3D_constant_BONE_AXIS_MINUS_X:
-
-.. rst-class:: classref-enumeration-constant
-
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **BONE_AXIS_MINUS_X** = ``1``
-
-Enumerated value for the -X axis.
-
-.. _class_LookAtModifier3D_constant_BONE_AXIS_PLUS_Y:
-
-.. rst-class:: classref-enumeration-constant
-
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **BONE_AXIS_PLUS_Y** = ``2``
-
-Enumerated value for the +Y axis.
-
-.. _class_LookAtModifier3D_constant_BONE_AXIS_MINUS_Y:
-
-.. rst-class:: classref-enumeration-constant
-
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **BONE_AXIS_MINUS_Y** = ``3``
-
-Enumerated value for the -Y axis.
-
-.. _class_LookAtModifier3D_constant_BONE_AXIS_PLUS_Z:
-
-.. rst-class:: classref-enumeration-constant
-
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **BONE_AXIS_PLUS_Z** = ``4``
-
-Enumerated value for the +Z axis.
-
-.. _class_LookAtModifier3D_constant_BONE_AXIS_MINUS_Z:
-
-.. rst-class:: classref-enumeration-constant
-
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **BONE_AXIS_MINUS_Z** = ``5``
-
-Enumerated value for the -Z axis.
-
-.. rst-class:: classref-item-separator
-
-----
 
 .. _enum_LookAtModifier3D_OriginFrom:
 
@@ -295,12 +237,12 @@ The ease type of the time-based interpolation. See also :ref:`EaseType<enum_Twee
 
 .. rst-class:: classref-property
 
-:ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **forward_axis** = ``4`` :ref:`🔗<class_LookAtModifier3D_property_forward_axis>`
+:ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **forward_axis** = ``4`` :ref:`🔗<class_LookAtModifier3D_property_forward_axis>`
 
 .. rst-class:: classref-property-setget
 
-- |void| **set_forward_axis**\ (\ value\: :ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>`\ )
-- :ref:`BoneAxis<enum_LookAtModifier3D_BoneAxis>` **get_forward_axis**\ (\ )
+- |void| **set_forward_axis**\ (\ value\: :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>`\ )
+- :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **get_forward_axis**\ (\ )
 
 The forward axis of the bone. This :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` modifies the bone so that this axis points toward the :ref:`target_node<class_LookAtModifier3D_property_target_node>`.
 
@@ -701,7 +643,7 @@ The transition type of the time-based interpolation. See also :ref:`TransitionTy
 
 If ``true``, limits the degree of rotation. This helps prevent the character's neck from rotating 360 degrees.
 
-\ **Note:** As with :ref:`AnimationTree<class_AnimationTree>` blending, interpolation is provided that favors :ref:`Skeleton3D.get_bone_rest<class_Skeleton3D_method_get_bone_rest>`. This means that interpolation does not select the shortest path in some cases.
+\ **Note:** As with :ref:`AnimationTree<class_AnimationTree>` blending, interpolation is provided that favors :ref:`Skeleton3D.get_bone_rest()<class_Skeleton3D_method_get_bone_rest>`. This means that interpolation does not select the shortest path in some cases.
 
 \ **Note:** Some :ref:`transition_type<class_LookAtModifier3D_property_transition_type>` may exceed the limitations (e.g. `Back`, `Elastic`, and `Spring`). If interpolation occurs while overshooting the limitations, the result might possibly not respect the bone rest.
 
@@ -749,7 +691,7 @@ Returns the remaining seconds of the time-based interpolation.
 
 :ref:`bool<class_bool>` **is_interpolating**\ (\ ) |const| :ref:`🔗<class_LookAtModifier3D_method_is_interpolating>`
 
-Returns whether the time-based interpolation is running or not. If ``true``, it is equivalent to :ref:`get_interpolation_remaining<class_LookAtModifier3D_method_get_interpolation_remaining>` being ``0``.
+Returns ``true`` if time-based interpolation is running. If ``true``, it is equivalent to :ref:`get_interpolation_remaining()<class_LookAtModifier3D_method_get_interpolation_remaining>` returning ``0.0``.
 
 This is useful to determine whether a **LookAtModifier3D** can be removed safely.
 
@@ -765,7 +707,7 @@ This is useful to determine whether a **LookAtModifier3D** can be removed safely
 
 Returns whether the target is within the angle limitations. It is useful for unsetting the :ref:`target_node<class_LookAtModifier3D_property_target_node>` when the target is outside of the angle limitations.
 
-\ **Note:** The value is updated after :ref:`SkeletonModifier3D._process_modification<class_SkeletonModifier3D_private_method__process_modification>`. To retrieve this value correctly, we recommend using the signal :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
+\ **Note:** The value is updated after :ref:`SkeletonModifier3D._process_modification()<class_SkeletonModifier3D_private_method__process_modification>`. To retrieve this value correctly, we recommend using the signal :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
