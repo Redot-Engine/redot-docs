@@ -105,6 +105,7 @@ Nodes
     class_filesystemdock
     class_flowcontainer
     class_fogvolume
+    class_foldablecontainer
     class_generic6dofjoint3d
     class_geometryinstance3d
     class_gpuparticles2d
@@ -240,6 +241,11 @@ Nodes
     class_splitcontainer
     class_spotlight3d
     class_springarm3d
+    class_springbonecollision3d
+    class_springbonecollisioncapsule3d
+    class_springbonecollisionplane3d
+    class_springbonecollisionsphere3d
+    class_springbonesimulator3d
     class_sprite2d
     class_sprite3d
     class_spritebase3d
@@ -412,6 +418,7 @@ Resources
     class_fbxdocument
     class_fbxstate
     class_fogmaterial
+    class_foldablegroup
     class_font
     class_fontfile
     class_fontvariation
@@ -560,6 +567,7 @@ Resources
     class_styleboxflat
     class_styleboxline
     class_styleboxtexture
+    class_svgtexture
     class_syntaxhighlighter
     class_systemfont
     class_textmesh
@@ -812,6 +820,7 @@ Other objects
     class_kinematiccollision3d
     class_lightmapper
     class_lightmapperrd
+    class_logger
     class_mainloop
     class_marshalls
     class_meshconvexdecompositionsettings
@@ -837,7 +846,10 @@ Other objects
     class_offlinemultiplayerpeer
     class_oggpacketsequenceplayback
     class_openxrapiextension
+    class_openxrextensionwrapper
     class_openxrextensionwrapperextension
+    class_openxrfutureextension
+    class_openxrfutureresult
     class_openxrinteractionprofilemetadata
     class_openxrinterface
     class_os
@@ -922,6 +934,7 @@ Other objects
     class_resourceimporteroggvorbis
     class_resourceimporterscene
     class_resourceimportershaderfile
+    class_resourceimportersvg
     class_resourceimportertexture
     class_resourceimportertextureatlas
     class_resourceimporterwav
@@ -932,6 +945,7 @@ Other objects
     class_scenestate
     class_scenetree
     class_scenetreetimer
+    class_scriptbacktrace
     class_scriptlanguage
     class_scriptlanguageextension
     class_semaphore
@@ -943,6 +957,7 @@ Other objects
     class_streampeergzip
     class_streampeertcp
     class_streampeertls
+    class_subtweentweener
     class_surfacetool
     class_tcpserver
     class_textline

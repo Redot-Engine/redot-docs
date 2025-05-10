@@ -62,6 +62,8 @@ Methods
    +--------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                  | :ref:`is_keeping_all_compressed_buffers<class_PortableCompressedTexture2D_method_is_keeping_all_compressed_buffers>`\ (\ ) |static|                                                                                                                                                                                       |
    +--------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                   | :ref:`set_basisu_compressor_params<class_PortableCompressedTexture2D_method_set_basisu_compressor_params>`\ (\ uastc_level\: :ref:`int<class_int>`, rdo_quality_loss\: :ref:`float<class_float>`\ )                                                                                                                       |
+   +--------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                   | :ref:`set_keep_all_compressed_buffers<class_PortableCompressedTexture2D_method_set_keep_all_compressed_buffers>`\ (\ keep\: :ref:`bool<class_bool>`\ ) |static|                                                                                                                                                           |
    +--------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -152,6 +154,18 @@ enum **CompressionMode**: :ref:`🔗<enum_PortableCompressedTexture2D_Compressio
 
 
 
+.. _class_PortableCompressedTexture2D_constant_COMPRESSION_MODE_ASTC:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CompressionMode<enum_PortableCompressedTexture2D_CompressionMode>` **COMPRESSION_MODE_ASTC** = ``6``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -175,6 +189,8 @@ Property Descriptions
 When running on the editor, this class will keep the source compressed data in memory. Otherwise, the source compressed data is lost after loading and the resource can't be re saved.
 
 This flag allows to keep the compressed data in memory if you intend it to persist after loading.
+
+\ **Note:** This must be set before :ref:`create_from_image()<class_PortableCompressedTexture2D_method_create_from_image>` to take effect.
 
 .. rst-class:: classref-item-separator
 
@@ -249,6 +265,20 @@ Return the image format used (valid after initialized).
 :ref:`bool<class_bool>` **is_keeping_all_compressed_buffers**\ (\ ) |static| :ref:`🔗<class_PortableCompressedTexture2D_method_is_keeping_all_compressed_buffers>`
 
 Return whether the flag is overridden for all textures of this type.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PortableCompressedTexture2D_method_set_basisu_compressor_params:
+
+.. rst-class:: classref-method
+
+|void| **set_basisu_compressor_params**\ (\ uastc_level\: :ref:`int<class_int>`, rdo_quality_loss\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PortableCompressedTexture2D_method_set_basisu_compressor_params>`
+
+Sets the compressor parameters for Basis Universal compression. See also the settings in :ref:`ResourceImporterTexture<class_ResourceImporterTexture>`.
+
+\ **Note:** This must be set before :ref:`create_from_image()<class_PortableCompressedTexture2D_method_create_from_image>` to take effect.
 
 .. rst-class:: classref-item-separator
 

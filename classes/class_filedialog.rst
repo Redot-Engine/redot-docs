@@ -48,6 +48,8 @@ Properties
    +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`mode_overrides_title<class_FileDialog_property_mode_overrides_title>` | ``true``                                                                                 |
    +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | ok_button_text                                                              | ``"Save"`` (overrides :ref:`AcceptDialog<class_AcceptDialog_property_ok_button_text>`)   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`option_count<class_FileDialog_property_option_count>`                 | ``0``                                                                                    |
    +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`root_subfolder<class_FileDialog_property_root_subfolder>`             | ``""``                                                                                   |
@@ -405,9 +407,9 @@ See also :ref:`filters<class_FileDialog_property_filters>`, which should be used
 - |void| **set_filters**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_filters**\ (\ )
 
-The available file type filters. Each filter string in the array should be formatted like this: ``*.txt,*.doc;Text Files``. The description text of the filter is optional and can be omitted.
+The available file type filters. Each filter string in the array should be formatted like this: ``*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg``. The description text of the filter is optional and can be omitted. Both file extensions and MIME type should be always set.
 
-\ **Note:** For android native dialog, MIME types are used like this: ``image/*, application/pdf``.
+\ **Note:** Embedded file dialog and Windows file dialog support only file extensions, while Android, Linux, and macOS file dialogs also support MIME types.
 
 **Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
 
@@ -504,7 +506,7 @@ If ``true``, and if supported by the current :ref:`DisplayServer<class_DisplaySe
 
 \ **Note:** On Linux and macOS, sandboxed apps always use native dialogs to access the host file system.
 
-\ **Note:** On macOS, sandboxed apps will save security-scoped bookmarks to retain access to the opened folders across multiple sessions. Use :ref:`OS.get_granted_permissions<class_OS_method_get_granted_permissions>` to get a list of saved bookmarks.
+\ **Note:** On macOS, sandboxed apps will save security-scoped bookmarks to retain access to the opened folders across multiple sessions. Use :ref:`OS.get_granted_permissions()<class_OS_method_get_granted_permissions>` to get a list of saved bookmarks.
 
 \ **Note:** Native dialogs are isolated from the base process, file dialog properties can't be modified once the dialog is shown.
 
@@ -655,7 +657,7 @@ Returns the vertical box container of the dialog, custom controls can be added t
 
 \ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
 
-\ **Note:** Changes to this node are ignored by native file dialogs, use :ref:`add_option<class_FileDialog_method_add_option>` to add custom elements to the dialog instead.
+\ **Note:** Changes to this node are ignored by native file dialogs, use :ref:`add_option()<class_FileDialog_method_add_option>` to add custom elements to the dialog instead.
 
 .. rst-class:: classref-item-separator
 

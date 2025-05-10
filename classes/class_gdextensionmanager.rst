@@ -30,7 +30,7 @@ Tutorials
 
 - :doc:`GDExtension overview <../tutorials/scripting/gdextension/what_is_gdextension>`
 
-- :doc:`GDExtension example in C++ <../tutorials/scripting/gdextension/gdextension_cpp_example>`
+- :doc:`GDExtension example in C++ <../tutorials/scripting/cpp/gdextension_cpp_example>`
 
 .. rst-class:: classref-reftable-group
 
@@ -193,7 +193,7 @@ Returns the file paths of all currently loaded extensions.
 
 :ref:`bool<class_bool>` **is_extension_loaded**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_GDExtensionManager_method_is_extension_loaded>`
 
-Returns ``true`` if the extension at the given file ``path`` has already been loaded successfully. See also :ref:`get_loaded_extensions<class_GDExtensionManager_method_get_loaded_extensions>`.
+Returns ``true`` if the extension at the given file ``path`` has already been loaded successfully. See also :ref:`get_loaded_extensions()<class_GDExtensionManager_method_get_loaded_extensions>`.
 
 .. rst-class:: classref-item-separator
 

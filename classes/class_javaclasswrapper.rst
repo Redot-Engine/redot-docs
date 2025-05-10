@@ -33,6 +33,8 @@ The JavaClassWrapper singleton provides a way for the Redot application to send 
     
     print(datetime.format(formatter))
 
+\ **Warning:** When calling Java methods, be sure to check :ref:`get_exception()<class_JavaClassWrapper_method_get_exception>` to check if the method threw an exception.
+
 .. rst-class:: classref-reftable-group
 
 Methods
@@ -41,9 +43,11 @@ Methods
 .. table::
    :widths: auto
 
-   +-----------------------------------+-------------------------------------------------------------------------------------------+
-   | :ref:`JavaClass<class_JavaClass>` | :ref:`wrap<class_JavaClassWrapper_method_wrap>`\ (\ name\: :ref:`String<class_String>`\ ) |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+
+   +-------------------------------------+-------------------------------------------------------------------------------------------+
+   | :ref:`JavaObject<class_JavaObject>` | :ref:`get_exception<class_JavaClassWrapper_method_get_exception>`\ (\ )                   |
+   +-------------------------------------+-------------------------------------------------------------------------------------------+
+   | :ref:`JavaClass<class_JavaClass>`   | :ref:`wrap<class_JavaClassWrapper_method_wrap>`\ (\ name\: :ref:`String<class_String>`\ ) |
+   +-------------------------------------+-------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -54,6 +58,20 @@ Methods
 Method Descriptions
 -------------------
 
+.. _class_JavaClassWrapper_method_get_exception:
+
+.. rst-class:: classref-method
+
+:ref:`JavaObject<class_JavaObject>` **get_exception**\ (\ ) :ref:`🔗<class_JavaClassWrapper_method_get_exception>`
+
+Returns the Java exception from the last call into a Java class. If there was no exception, it will return ``null``.
+
+\ **Note:** This method only works on Android. On every other platform, this method will always return ``null``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_JavaClassWrapper_method_wrap:
 
 .. rst-class:: classref-method
@@ -61,6 +79,8 @@ Method Descriptions
 :ref:`JavaClass<class_JavaClass>` **wrap**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JavaClassWrapper_method_wrap>`
 
 Wraps a class defined in Java, and returns it as a :ref:`JavaClass<class_JavaClass>` :ref:`Object<class_Object>` type that Redot can interact with.
+
+When wrapping inner (nested) classes, use ``$`` instead of ``.`` to separate them. For example, ``JavaClassWrapper.wrap("android.view.WindowManager$LayoutParams")`` wraps the **WindowManager.LayoutParams** class.
 
 \ **Note:** This method only works on Android. On every other platform, this method does nothing and returns an empty :ref:`JavaClass<class_JavaClass>`.
 
