@@ -23,9 +23,9 @@ Camera node for 2D scenes. It forces the screen (current layer) to scroll follow
 
 Cameras register themselves in the nearest :ref:`Viewport<class_Viewport>` node (when ascending the tree). Only one camera can be active per viewport. If no viewport is available ascending the tree, the camera will register in the global viewport.
 
-This node is intended to be a simple helper to get things going quickly, but more functionality may be desired to change how the camera works. To make your own custom camera node, inherit it from :ref:`Node2D<class_Node2D>` and change the transform of the canvas by setting :ref:`Viewport.canvas_transform<class_Viewport_property_canvas_transform>` in :ref:`Viewport<class_Viewport>` (you can obtain the current :ref:`Viewport<class_Viewport>` by using :ref:`Node.get_viewport<class_Node_method_get_viewport>`).
+This node is intended to be a simple helper to get things going quickly, but more functionality may be desired to change how the camera works. To make your own custom camera node, inherit it from :ref:`Node2D<class_Node2D>` and change the transform of the canvas by setting :ref:`Viewport.canvas_transform<class_Viewport_property_canvas_transform>` in :ref:`Viewport<class_Viewport>` (you can obtain the current :ref:`Viewport<class_Viewport>` by using :ref:`Node.get_viewport()<class_Node_method_get_viewport>`).
 
-Note that the **Camera2D** node's ``position`` doesn't represent the actual position of the screen, which may differ due to applied smoothing or limits. You can use :ref:`get_screen_center_position<class_Camera2D_method_get_screen_center_position>` to get the real position.
+Note that the **Camera2D** node's ``position`` doesn't represent the actual position of the screen, which may differ due to applied smoothing or limits. You can use :ref:`get_screen_center_position()<class_Camera2D_method_get_screen_center_position>` to get the real position.
 
 .. rst-class:: classref-introduction-group
 
@@ -76,6 +76,8 @@ Properties
    | :ref:`bool<class_bool>`                                               | :ref:`ignore_rotation<class_Camera2D_property_ignore_rotation>`                       | ``true``          |
    +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------------------+
    | :ref:`int<class_int>`                                                 | :ref:`limit_bottom<class_Camera2D_property_limit_bottom>`                             | ``10000000``      |
+   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                               | :ref:`limit_enabled<class_Camera2D_property_limit_enabled>`                           | ``true``          |
    +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------------------+
    | :ref:`int<class_int>`                                                 | :ref:`limit_left<class_Camera2D_property_limit_left>`                                 | ``-10000000``     |
    +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------------------+
@@ -434,7 +436,7 @@ If ``true``, draws the camera's screen rectangle in the editor.
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-Controls whether the camera can be active or not. If ``true``, the **Camera2D** will become the main camera when it enters the scene tree and there is no active camera currently (see :ref:`Viewport.get_camera_2d<class_Viewport_method_get_camera_2d>`).
+Controls whether the camera can be active or not. If ``true``, the **Camera2D** will become the main camera when it enters the scene tree and there is no active camera currently (see :ref:`Viewport.get_camera_2d()<class_Viewport_method_get_camera_2d>`).
 
 When the camera is currently active and :ref:`enabled<class_Camera2D_property_enabled>` is set to ``false``, the next enabled **Camera2D** in the scene tree will become active.
 
@@ -471,6 +473,23 @@ If ``true``, the camera's rendered view is not affected by its :ref:`Node2D.rota
 - :ref:`int<class_int>` **get_limit**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
 Bottom scroll limit in pixels. The camera stops moving when reaching this value, but :ref:`offset<class_Camera2D_property_offset>` can push the view past the limit.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Camera2D_property_limit_enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **limit_enabled** = ``true`` :ref:`🔗<class_Camera2D_property_limit_enabled>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_limit_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_limit_enabled**\ (\ )
+
+If ``true``, the limits will be enabled. Disabling this will allow the camera to focus anywhere, when the four ``limit_*`` properties will not work.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +544,7 @@ If ``true``, the camera smoothly stops when reaches its limits.
 
 This property has no effect if :ref:`position_smoothing_enabled<class_Camera2D_property_position_smoothing_enabled>` is ``false``.
 
-\ **Note:** To immediately update the camera's position to be within limits without smoothing, even with this setting enabled, invoke :ref:`reset_smoothing<class_Camera2D_method_reset_smoothing>`.
+\ **Note:** To immediately update the camera's position to be within limits without smoothing, even with this setting enabled, invoke :ref:`reset_smoothing()<class_Camera2D_method_reset_smoothing>`.
 
 .. rst-class:: classref-item-separator
 
@@ -732,7 +751,7 @@ Returns the camera limit for the specified :ref:`Side<enum_@GlobalScope_Side>`. 
 
 Returns the center of the screen from this camera's point of view, in global coordinates.
 
-\ **Note:** The exact targeted position of the camera may be different. See :ref:`get_target_position<class_Camera2D_method_get_target_position>`.
+\ **Note:** The exact targeted position of the camera may be different. See :ref:`get_target_position()<class_Camera2D_method_get_target_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -746,7 +765,7 @@ Returns the center of the screen from this camera's point of view, in global coo
 
 Returns this camera's target position, in global coordinates.
 
-\ **Note:** The returned value is not the same as :ref:`Node2D.global_position<class_Node2D_property_global_position>`, as it is affected by the drag properties. It is also not the same as the current position if :ref:`position_smoothing_enabled<class_Camera2D_property_position_smoothing_enabled>` is ``true`` (see :ref:`get_screen_center_position<class_Camera2D_method_get_screen_center_position>`).
+\ **Note:** The returned value is not the same as :ref:`Node2D.global_position<class_Node2D_property_global_position>`, as it is affected by the drag properties. It is also not the same as the current position if :ref:`position_smoothing_enabled<class_Camera2D_property_position_smoothing_enabled>` is ``true`` (see :ref:`get_screen_center_position()<class_Camera2D_method_get_screen_center_position>`).
 
 .. rst-class:: classref-item-separator
 
@@ -758,7 +777,7 @@ Returns this camera's target position, in global coordinates.
 
 :ref:`bool<class_bool>` **is_current**\ (\ ) |const| :ref:`🔗<class_Camera2D_method_is_current>`
 
-Returns ``true`` if this **Camera2D** is the active camera (see :ref:`Viewport.get_camera_2d<class_Viewport_method_get_camera_2d>`).
+Returns ``true`` if this **Camera2D** is the active camera (see :ref:`Viewport.get_camera_2d()<class_Viewport_method_get_camera_2d>`).
 
 .. rst-class:: classref-item-separator
 
