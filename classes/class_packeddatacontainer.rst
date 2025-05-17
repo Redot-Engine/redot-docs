@@ -10,6 +10,8 @@
 PackedDataContainer
 ===================
 
+**Deprecated:** Use :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` or :ref:`FileAccess.store_var()<class_FileAccess_method_store_var>` instead. To enable data compression, use :ref:`PackedByteArray.compress()<class_PackedByteArray_method_compress>` or :ref:`FileAccess.open_compressed()<class_FileAccess_method_open_compressed>`.
+
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 Efficiently packs and serializes :ref:`Array<class_Array>` or :ref:`Dictionary<class_Dictionary>`.
@@ -35,11 +37,14 @@ You can retrieve the data by iterating on the container, which will work as if i
     var container = load("packed_data.res")
     for key in container:
         prints(key, container[key])
-    
-    # Prints:
-    # key value
-    # lock (0, 0)
-    # another_key 123
+
+Prints:
+
+.. code:: text
+
+    key value
+    lock (0, 0)
+    another_key 123
 
 Nested containers will be packed recursively. While iterating, they will be returned as :ref:`PackedDataContainerRef<class_PackedDataContainerRef>`.
 
@@ -86,7 +91,7 @@ Packs the given container into a binary representation. The ``value`` must be ei
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_PackedDataContainer_method_size>`
 
-Returns the size of the packed container (see :ref:`Array.size<class_Array_method_size>` and :ref:`Dictionary.size<class_Dictionary_method_size>`).
+Returns the size of the packed container (see :ref:`Array.size()<class_Array_method_size>` and :ref:`Dictionary.size()<class_Dictionary_method_size>`).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

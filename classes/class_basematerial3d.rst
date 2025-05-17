@@ -77,6 +77,10 @@ Properties
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`Texture2D<class_Texture2D>`                               | :ref:`backlight_texture<class_BaseMaterial3D_property_backlight_texture>`                                         |                       |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                         | :ref:`bent_normal_enabled<class_BaseMaterial3D_property_bent_normal_enabled>`                                     | ``false``             |
+   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Texture2D<class_Texture2D>`                               | :ref:`bent_normal_texture<class_BaseMaterial3D_property_bent_normal_texture>`                                     |                       |
+   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`billboard_keep_scale<class_BaseMaterial3D_property_billboard_keep_scale>`                                   | ``false``             |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`BillboardMode<enum_BaseMaterial3D_BillboardMode>`         | :ref:`billboard_mode<class_BaseMaterial3D_property_billboard_mode>`                                               | ``0``                 |
@@ -114,6 +118,8 @@ Properties
    | :ref:`bool<class_bool>`                                         | :ref:`disable_fog<class_BaseMaterial3D_property_disable_fog>`                                                     | ``false``             |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`disable_receive_shadows<class_BaseMaterial3D_property_disable_receive_shadows>`                             | ``false``             |
+   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                         | :ref:`disable_specular_occlusion<class_BaseMaterial3D_property_disable_specular_occlusion>`                       | ``false``             |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`float<class_float>`                                       | :ref:`distance_fade_max_distance<class_BaseMaterial3D_property_distance_fade_max_distance>`                       | ``10.0``              |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-----------------------+
@@ -351,6 +357,14 @@ Texture specifying per-pixel emission color.
 
 Texture specifying per-pixel normal vector.
 
+.. _class_BaseMaterial3D_constant_TEXTURE_BENT_NORMAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`TextureParam<enum_BaseMaterial3D_TextureParam>` **TEXTURE_BENT_NORMAL** = ``18``
+
+Texture specifying per-pixel bent normal vector.
+
 .. _class_BaseMaterial3D_constant_TEXTURE_RIM:
 
 .. rst-class:: classref-enumeration-constant
@@ -459,7 +473,7 @@ Texture holding ambient occlusion, roughness, and metallic.
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`TextureParam<enum_BaseMaterial3D_TextureParam>` **TEXTURE_MAX** = ``18``
+:ref:`TextureParam<enum_BaseMaterial3D_TextureParam>` **TEXTURE_MAX** = ``19``
 
 Represents the size of the :ref:`TextureParam<enum_BaseMaterial3D_TextureParam>` enum.
 
@@ -761,11 +775,19 @@ Constant for setting :ref:`refraction_enabled<class_BaseMaterial3D_property_refr
 
 Constant for setting :ref:`detail_enabled<class_BaseMaterial3D_property_detail_enabled>`.
 
+.. _class_BaseMaterial3D_constant_FEATURE_BENT_NORMAL_MAPPING:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_BaseMaterial3D_Feature>` **FEATURE_BENT_NORMAL_MAPPING** = ``12``
+
+Constant for setting :ref:`bent_normal_enabled<class_BaseMaterial3D_property_bent_normal_enabled>`.
+
 .. _class_BaseMaterial3D_constant_FEATURE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`Feature<enum_BaseMaterial3D_Feature>` **FEATURE_MAX** = ``12``
+:ref:`Feature<enum_BaseMaterial3D_Feature>` **FEATURE_MAX** = ``13``
 
 Represents the size of the :ref:`Feature<enum_BaseMaterial3D_Feature>` enum.
 
@@ -1111,11 +1133,19 @@ Enables multichannel signed distance field rendering shader.
 
 Disables receiving depth-based or volumetric fog.
 
+.. _class_BaseMaterial3D_constant_FLAG_DISABLE_SPECULAR_OCCLUSION:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Flags<enum_BaseMaterial3D_Flags>` **FLAG_DISABLE_SPECULAR_OCCLUSION** = ``22``
+
+Disables specular occlusion.
+
 .. _class_BaseMaterial3D_constant_FLAG_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`Flags<enum_BaseMaterial3D_Flags>` **FLAG_MAX** = ``22``
+:ref:`Flags<enum_BaseMaterial3D_Flags>` **FLAG_MAX** = ``23``
 
 Represents the size of the :ref:`Flags<enum_BaseMaterial3D_Flags>` enum.
 
@@ -1178,6 +1208,10 @@ enum **SpecularMode**: :ref:`🔗<enum_BaseMaterial3D_SpecularMode>`
 :ref:`SpecularMode<enum_BaseMaterial3D_SpecularMode>` **SPECULAR_SCHLICK_GGX** = ``0``
 
 Default specular blob.
+
+\ **Note:** Forward+ uses multiscattering for more accurate reflections, although the impact of multiscattering is more noticeable on rough metallic surfaces than on smooth, non-metallic surfaces.
+
+\ **Note:** Mobile and Compatibility don't perform multiscattering for performance reasons. Instead, they perform single scattering, which means rough metallic surfaces may look slightly darker than intended.
 
 .. _class_BaseMaterial3D_constant_SPECULAR_TOON:
 
@@ -1701,6 +1735,46 @@ Texture used to control the backlight effect per-pixel. Added to :ref:`backlight
 
 ----
 
+.. _class_BaseMaterial3D_property_bent_normal_enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **bent_normal_enabled** = ``false`` :ref:`🔗<class_BaseMaterial3D_property_bent_normal_enabled>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_feature**\ (\ feature\: :ref:`Feature<enum_BaseMaterial3D_Feature>`, enable\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **get_feature**\ (\ feature\: :ref:`Feature<enum_BaseMaterial3D_Feature>`\ ) |const|
+
+If ``true``, the bent normal map is enabled. This allows for more accurate indirect lighting and specular occlusion.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_BaseMaterial3D_property_bent_normal_texture:
+
+.. rst-class:: classref-property
+
+:ref:`Texture2D<class_Texture2D>` **bent_normal_texture** :ref:`🔗<class_BaseMaterial3D_property_bent_normal_texture>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_texture**\ (\ param\: :ref:`TextureParam<enum_BaseMaterial3D_TextureParam>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )
+- :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ param\: :ref:`TextureParam<enum_BaseMaterial3D_TextureParam>`\ ) |const|
+
+Texture that specifies the average direction of incoming ambient light at a given pixel. The :ref:`bent_normal_texture<class_BaseMaterial3D_property_bent_normal_texture>` only uses the red and green channels; the blue and alpha channels are ignored. The normal read from :ref:`bent_normal_texture<class_BaseMaterial3D_property_bent_normal_texture>` is oriented around the surface normal provided by the :ref:`Mesh<class_Mesh>`.
+
+\ **Note:** A bent normal map is different from a regular normal map. When baking a bent normal map make sure to use **a cosine distribution** for the bent normal map to work correctly.
+
+\ **Note:** The mesh must have both normals and tangents defined in its vertex data. Otherwise, the shading produced by the bent normal map will not look correct. If creating geometry with :ref:`SurfaceTool<class_SurfaceTool>`, you can use :ref:`SurfaceTool.generate_normals()<class_SurfaceTool_method_generate_normals>` and :ref:`SurfaceTool.generate_tangents()<class_SurfaceTool_method_generate_tangents>` to automatically generate normals and tangents respectively.
+
+\ **Note:** Redot expects the bent normal map to use X+, Y+, and Z+ coordinates. See `this page <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates>`__ for a comparison of normal map coordinates expected by popular engines.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_BaseMaterial3D_property_billboard_keep_scale:
 
 .. rst-class:: classref-property
@@ -2034,6 +2108,23 @@ If ``true``, the object receives no shadow that would otherwise be cast onto it.
 
 ----
 
+.. _class_BaseMaterial3D_property_disable_specular_occlusion:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **disable_specular_occlusion** = ``false`` :ref:`🔗<class_BaseMaterial3D_property_disable_specular_occlusion>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_flag**\ (\ flag\: :ref:`Flags<enum_BaseMaterial3D_Flags>`, enable\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **get_flag**\ (\ flag\: :ref:`Flags<enum_BaseMaterial3D_Flags>`\ ) |const|
+
+If ``true``, disables specular occlusion even if :ref:`ProjectSettings.rendering/reflections/specular_occlusion/enabled<class_ProjectSettings_property_rendering/reflections/specular_occlusion/enabled>` is ``false``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_BaseMaterial3D_property_distance_fade_max_distance:
 
 .. rst-class:: classref-property
@@ -2219,7 +2310,7 @@ Texture that specifies how much surface emits light at a given point.
 - |void| **set_flag**\ (\ flag\: :ref:`Flags<enum_BaseMaterial3D_Flags>`, enable\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flag**\ (\ flag\: :ref:`Flags<enum_BaseMaterial3D_Flags>`\ ) |const|
 
-If ``true``, the object is rendered at the same size regardless of distance.
+If ``true``, the object is rendered at the same size regardless of distance. The object's size on screen is the same as if the camera was ``1.0`` units away from the object's origin, regardless of the actual distance from the camera. The :ref:`Camera3D<class_Camera3D>`'s field of view (or :ref:`Camera3D.size<class_Camera3D_property_size>` when in orthogonal/frustum mode) still affects the size the object is drawn at.
 
 .. rst-class:: classref-item-separator
 
@@ -2238,7 +2329,7 @@ If ``true``, the object is rendered at the same size regardless of distance.
 
 If ``true``, enables the vertex grow setting. This can be used to create mesh-based outlines using a second material pass and its :ref:`cull_mode<class_BaseMaterial3D_property_cull_mode>` set to :ref:`CULL_FRONT<class_BaseMaterial3D_constant_CULL_FRONT>`. See also :ref:`grow_amount<class_BaseMaterial3D_property_grow_amount>`.
 
-\ **Note:** Vertex growth cannot create new vertices, which means that visible gaps may occur in sharp corners. This can be alleviated by designing the mesh to use smooth normals exclusively using `face weighted normals <https://wiki.polycount.com/wiki/Face_weighted_normals>`__ in the 3D authoring software. In this case, grow will be able to join every outline together, just like in the original mesh.
+\ **Note:** Vertex growth cannot create new vertices, which means that visible gaps may occur in sharp corners. This can be alleviated by designing the mesh to use smooth normals exclusively using `face weighted normals <http://wiki.polycount.com/wiki/Face_weighted_normals>`__ in the 3D authoring software. In this case, grow will be able to join every outline together, just like in the original mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -2596,7 +2687,7 @@ The strength of the normal map's effect.
 
 Texture used to specify the normal at a given pixel. The :ref:`normal_texture<class_BaseMaterial3D_property_normal_texture>` only uses the red and green channels; the blue and alpha channels are ignored. The normal read from :ref:`normal_texture<class_BaseMaterial3D_property_normal_texture>` is oriented around the surface normal provided by the :ref:`Mesh<class_Mesh>`.
 
-\ **Note:** The mesh must have both normals and tangents defined in its vertex data. Otherwise, the normal map won't render correctly and will only appear to darken the whole surface. If creating geometry with :ref:`SurfaceTool<class_SurfaceTool>`, you can use :ref:`SurfaceTool.generate_normals<class_SurfaceTool_method_generate_normals>` and :ref:`SurfaceTool.generate_tangents<class_SurfaceTool_method_generate_tangents>` to automatically generate normals and tangents respectively.
+\ **Note:** The mesh must have both normals and tangents defined in its vertex data. Otherwise, the normal map won't render correctly and will only appear to darken the whole surface. If creating geometry with :ref:`SurfaceTool<class_SurfaceTool>`, you can use :ref:`SurfaceTool.generate_normals()<class_SurfaceTool_method_generate_normals>` and :ref:`SurfaceTool.generate_tangents()<class_SurfaceTool_method_generate_tangents>` to automatically generate normals and tangents respectively.
 
 \ **Note:** Redot expects the normal map to use X+, Y+, and Z+ coordinates. See `this page <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates>`__ for a comparison of normal map coordinates expected by popular engines.
 
