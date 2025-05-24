@@ -21,7 +21,7 @@ Description
 
 Maintains a list of resources, nodes, exported and overridden properties, and built-in scripts associated with a scene. They cannot be modified from a **SceneState**, only accessed. Useful for peeking into what a :ref:`PackedScene<class_PackedScene>` contains without instantiating it.
 
-This class cannot be instantiated directly, it is retrieved for a given scene as the result of :ref:`PackedScene.get_state<class_PackedScene_method_get_state>`.
+This class cannot be instantiated directly, it is retrieved for a given scene as the result of :ref:`PackedScene.get_state()<class_PackedScene_method_get_state>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -31,6 +31,8 @@ Methods
 .. table::
    :widths: auto
 
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`SceneState<class_SceneState>`               | :ref:`get_base_scene_state<class_SceneState_method_get_base_scene_state>`\ (\ ) |const|                                                                      |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`                         | :ref:`get_connection_binds<class_SceneState_method_get_connection_binds>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                         |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -72,6 +74,8 @@ Methods
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`StringName<class_StringName>`               | :ref:`get_node_type<class_SceneState_method_get_node_type>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                       |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`get_path<class_SceneState_method_get_path>`\ (\ ) |const|                                                                                              |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`is_node_instance_placeholder<class_SceneState_method_is_node_instance_placeholder>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                         |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -96,7 +100,7 @@ enum **GenEditState**: :ref:`🔗<enum_SceneState_GenEditState>`
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_DISABLED** = ``0``
 
-If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>`, blocks edits to the scene state.
+If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, blocks edits to the scene state.
 
 .. _class_SceneState_constant_GEN_EDIT_STATE_INSTANCE:
 
@@ -104,7 +108,7 @@ If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_INSTANCE** = ``1``
 
-If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>`, provides inherited scene resources to the local scene.
+If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, provides inherited scene resources to the local scene.
 
 \ **Note:** Only available in editor builds.
 
@@ -114,7 +118,7 @@ If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_MAIN** = ``2``
 
-If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>`, provides local scene resources to the local scene. Only the main scene should receive the main edit state.
+If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, provides local scene resources to the local scene. Only the main scene should receive the main edit state.
 
 \ **Note:** Only available in editor builds.
 
@@ -124,7 +128,7 @@ If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_MAIN_INHERITED** = ``3``
 
-If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>`, it's similar to :ref:`GEN_EDIT_STATE_MAIN<class_SceneState_constant_GEN_EDIT_STATE_MAIN>`, but for the case where the scene is being instantiated to be the base of another one.
+If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, it's similar to :ref:`GEN_EDIT_STATE_MAIN<class_SceneState_constant_GEN_EDIT_STATE_MAIN>`, but for the case where the scene is being instantiated to be the base of another one.
 
 \ **Note:** Only available in editor builds.
 
@@ -136,6 +140,18 @@ If passed to :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>
 
 Method Descriptions
 -------------------
+
+.. _class_SceneState_method_get_base_scene_state:
+
+.. rst-class:: classref-method
+
+:ref:`SceneState<class_SceneState>` **get_base_scene_state**\ (\ ) |const| :ref:`🔗<class_SceneState_method_get_base_scene_state>`
+
+Returns the **SceneState** of the scene that this scene inherits from, or ``null`` if it doesn't inherit from any scene.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_SceneState_method_get_connection_binds:
 
@@ -380,6 +396,18 @@ Returns the value of the property at ``prop_idx`` for the node at ``idx``.
 :ref:`StringName<class_StringName>` **get_node_type**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_type>`
 
 Returns the type of the node at ``idx``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SceneState_method_get_path:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **get_path**\ (\ ) |const| :ref:`🔗<class_SceneState_method_get_path>`
+
+Returns the resource path to the represented :ref:`PackedScene<class_PackedScene>`.
 
 .. rst-class:: classref-item-separator
 

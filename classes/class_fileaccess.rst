@@ -21,7 +21,7 @@ Description
 
 This class can be used to permanently store data in the user device's file system and to read from it. This is useful for storing game save data or player configuration files.
 
-Here's a sample on how to write and read from a file:
+\ **Example:** How to write and read from a file. The file named ``"save_game.dat"`` will be stored in the user data folder, as specified in the :doc:`Data paths <../tutorials/io/data_paths>` documentation:
 
 
 .. tabs::
@@ -54,13 +54,11 @@ Here's a sample on how to write and read from a file:
 
 
 
-In the example above, the file will be saved in the user data folder as specified in the :doc:`Data paths <../tutorials/io/data_paths>` documentation.
-
-\ **FileAccess** will close when it's freed, which happens when it goes out of scope or when it gets assigned with ``null``. :ref:`close<class_FileAccess_method_close>` can be used to close it before then explicitly. In C# the reference must be disposed manually, which can be done with the ``using`` statement or by calling the ``Dispose`` method directly.
+A **FileAccess** instance will close its file when the instance is freed. Since it inherits :ref:`RefCounted<class_RefCounted>`, this happens automatically when it is no longer in use. :ref:`close()<class_FileAccess_method_close>` can be called to close it earlier. In C#, the reference must be disposed manually, which can be done with the ``using`` statement or by calling the ``Dispose`` method directly.
 
 \ **Note:** To access project resources once exported, it is recommended to use :ref:`ResourceLoader<class_ResourceLoader>` instead of **FileAccess**, as some files are converted to engine-specific formats and their original source files might not be present in the exported PCK package. If using **FileAccess**, make sure the file is included in the export by changing its import mode to **Keep File (exported as is)** in the Import dock, or, for files where this option is not available, change the non-resource export filter in the Export dialog to include the file's extension (e.g. ``*.txt``).
 
-\ **Note:** Files are automatically closed only if the process exits "normally" (such as by clicking the window manager's close button or pressing **Alt + F4**). If you stop the project execution by pressing **F8** while the project is running, the file won't be closed as the game process will be killed. You can work around this by calling :ref:`flush<class_FileAccess_method_flush>` at regular intervals.
+\ **Note:** Files are automatically closed only if the process exits "normally" (such as by clicking the window manager's close button or pressing :kbd:`Alt + F4`). If you stop the project execution by pressing :kbd:`F8` while the project is running, the file won't be closed as the game process will be killed. You can work around this by calling :ref:`flush()<class_FileAccess_method_flush>` at regular intervals.
 
 .. rst-class:: classref-introduction-group
 
@@ -112,6 +110,8 @@ Methods
    +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                                         | :ref:`get_64<class_FileAccess_method_get_64>`\ (\ ) |const|                                                                                                                                                                                                                                             |
    +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                         | :ref:`get_access_time<class_FileAccess_method_get_access_time>`\ (\ file\: :ref:`String<class_String>`\ ) |static|                                                                                                                                                                                      |
+   +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                                   | :ref:`get_as_text<class_FileAccess_method_get_as_text>`\ (\ skip_cr\: :ref:`bool<class_bool>` = false\ ) |const|                                                                                                                                                                                        |
    +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedByteArray<class_PackedByteArray>`                                 | :ref:`get_buffer<class_FileAccess_method_get_buffer>`\ (\ length\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                     |
@@ -155,6 +155,8 @@ Methods
    | :ref:`float<class_float>`                                                     | :ref:`get_real<class_FileAccess_method_get_real>`\ (\ ) |const|                                                                                                                                                                                                                                         |
    +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                                   | :ref:`get_sha256<class_FileAccess_method_get_sha256>`\ (\ path\: :ref:`String<class_String>`\ ) |static|                                                                                                                                                                                                |
+   +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                         | :ref:`get_size<class_FileAccess_method_get_size>`\ (\ file\: :ref:`String<class_String>`\ ) |static|                                                                                                                                                                                                    |
    +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |bitfield|\[:ref:`UnixPermissionFlags<enum_FileAccess_UnixPermissionFlags>`\] | :ref:`get_unix_permissions<class_FileAccess_method_get_unix_permissions>`\ (\ file\: :ref:`String<class_String>`\ ) |static|                                                                                                                                                                            |
    +-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -242,7 +244,7 @@ Opens the file for read operations. The cursor is positioned at the beginning of
 
 Opens the file for write operations. The file is created if it does not exist, and truncated if it does.
 
-\ **Note:** When creating a file it must be in an already existing directory. To recursively create directories for a file path, see :ref:`DirAccess.make_dir_recursive<class_DirAccess_method_make_dir_recursive>`.
+\ **Note:** When creating a file it must be in an already existing directory. To recursively create directories for a file path, see :ref:`DirAccess.make_dir_recursive()<class_DirAccess_method_make_dir_recursive>`.
 
 .. _class_FileAccess_constant_READ_WRITE:
 
@@ -260,7 +262,7 @@ Opens the file for read and write operations. Does not truncate the file. The cu
 
 Opens the file for read and write operations. The file is created if it does not exist, and truncated if it does. The cursor is positioned at the beginning of the file.
 
-\ **Note:** When creating a file it must be in an already existing directory. To recursively create directories for a file path, see :ref:`DirAccess.make_dir_recursive<class_DirAccess_method_make_dir_recursive>`.
+\ **Note:** When creating a file it must be in an already existing directory. To recursively create directories for a file path, see :ref:`DirAccess.make_dir_recursive()<class_DirAccess_method_make_dir_recursive>`.
 
 .. rst-class:: classref-item-separator
 
@@ -440,9 +442,7 @@ Property Descriptions
 
 If ``true``, the file is read with big-endian `endianness <https://en.wikipedia.org/wiki/Endianness>`__. If ``false``, the file is read with little-endian endianness. If in doubt, leave this to ``false`` as most files are written with little-endian endianness.
 
-\ **Note:** :ref:`big_endian<class_FileAccess_property_big_endian>` is only about the file format, not the CPU type. The CPU endianness doesn't affect the default endianness for files written.
-
-\ **Note:** This is always reset to ``false`` whenever you open the file. Therefore, you must set :ref:`big_endian<class_FileAccess_property_big_endian>` *after* opening the file, not before.
+\ **Note:** This is always reset to system endianness, which is little-endian on all supported platforms, whenever you open the file. Therefore, you must set :ref:`big_endian<class_FileAccess_property_big_endian>` *after* opening the file, not before.
 
 .. rst-class:: classref-section-separator
 
@@ -459,7 +459,7 @@ Method Descriptions
 
 |void| **close**\ (\ ) :ref:`🔗<class_FileAccess_method_close>`
 
-Closes the currently opened file and prevents subsequent read/write operations. Use :ref:`flush<class_FileAccess_method_flush>` to persist the data to disk without closing the file.
+Closes the currently opened file and prevents subsequent read/write operations. Use :ref:`flush()<class_FileAccess_method_flush>` to persist the data to disk without closing the file.
 
 \ **Note:** **FileAccess** will automatically close when it's freed, which happens when it goes out of scope or when it gets assigned with ``null``. In C# the reference must be disposed after we are done using it, this can be done with the ``using`` statement or calling the ``Dispose`` method directly.
 
@@ -481,7 +481,7 @@ If ``extension`` is not empty, it will be appended to the temporary file name.
 
 If ``keep`` is ``true``, the file is not deleted when the returned **FileAccess** is freed.
 
-Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns ``null`` if opening the file failed. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -526,9 +526,9 @@ Returns ``true`` if the file cursor has already read past the end of the file.
 
 Returns ``true`` if the file exists in the given path.
 
-\ **Note:** Many resources types are imported (e.g. textures or sound files), and their source asset will not be included in the exported game, as only the imported version is used. See :ref:`ResourceLoader.exists<class_ResourceLoader_method_exists>` for an alternative approach that takes resource remapping into account.
+\ **Note:** Many resources types are imported (e.g. textures or sound files), and their source asset will not be included in the exported game, as only the imported version is used. See :ref:`ResourceLoader.exists()<class_ResourceLoader_method_exists>` for an alternative approach that takes resource remapping into account.
 
-For a non-static, relative equivalent, use :ref:`DirAccess.file_exists<class_DirAccess_method_file_exists>`.
+For a non-static, relative equivalent, use :ref:`DirAccess.file_exists()<class_DirAccess_method_file_exists>`.
 
 .. rst-class:: classref-item-separator
 
@@ -540,9 +540,9 @@ For a non-static, relative equivalent, use :ref:`DirAccess.file_exists<class_Dir
 
 |void| **flush**\ (\ ) :ref:`🔗<class_FileAccess_method_flush>`
 
-Writes the file's buffer to disk. Flushing is automatically performed when the file is closed. This means you don't need to call :ref:`flush<class_FileAccess_method_flush>` manually before closing a file. Still, calling :ref:`flush<class_FileAccess_method_flush>` can be used to ensure the data is safe even if the project crashes instead of being closed gracefully.
+Writes the file's buffer to disk. Flushing is automatically performed when the file is closed. This means you don't need to call :ref:`flush()<class_FileAccess_method_flush>` manually before closing a file. Still, calling :ref:`flush()<class_FileAccess_method_flush>` can be used to ensure the data is safe even if the project crashes instead of being closed gracefully.
 
-\ **Note:** Only call :ref:`flush<class_FileAccess_method_flush>` when you actually need it. Otherwise, it will decrease performance due to constant disk writes.
+\ **Note:** Only call :ref:`flush()<class_FileAccess_method_flush>` when you actually need it. Otherwise, it will decrease performance due to constant disk writes.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ Writes the file's buffer to disk. Flushing is automatically performed when the f
 
 :ref:`int<class_int>` **get_8**\ (\ ) |const| :ref:`🔗<class_FileAccess_method_get_8>`
 
-Returns the next 8 bits from the file as an integer. See :ref:`store_8<class_FileAccess_method_store_8>` for details on what values can be stored and retrieved this way.
+Returns the next 8 bits from the file as an integer. See :ref:`store_8()<class_FileAccess_method_store_8>` for details on what values can be stored and retrieved this way.
 
 .. rst-class:: classref-item-separator
 
@@ -566,7 +566,7 @@ Returns the next 8 bits from the file as an integer. See :ref:`store_8<class_Fil
 
 :ref:`int<class_int>` **get_16**\ (\ ) |const| :ref:`🔗<class_FileAccess_method_get_16>`
 
-Returns the next 16 bits from the file as an integer. See :ref:`store_16<class_FileAccess_method_store_16>` for details on what values can be stored and retrieved this way.
+Returns the next 16 bits from the file as an integer. See :ref:`store_16()<class_FileAccess_method_store_16>` for details on what values can be stored and retrieved this way.
 
 .. rst-class:: classref-item-separator
 
@@ -578,7 +578,7 @@ Returns the next 16 bits from the file as an integer. See :ref:`store_16<class_F
 
 :ref:`int<class_int>` **get_32**\ (\ ) |const| :ref:`🔗<class_FileAccess_method_get_32>`
 
-Returns the next 32 bits from the file as an integer. See :ref:`store_32<class_FileAccess_method_store_32>` for details on what values can be stored and retrieved this way.
+Returns the next 32 bits from the file as an integer. See :ref:`store_32()<class_FileAccess_method_store_32>` for details on what values can be stored and retrieved this way.
 
 .. rst-class:: classref-item-separator
 
@@ -590,7 +590,19 @@ Returns the next 32 bits from the file as an integer. See :ref:`store_32<class_F
 
 :ref:`int<class_int>` **get_64**\ (\ ) |const| :ref:`🔗<class_FileAccess_method_get_64>`
 
-Returns the next 64 bits from the file as an integer. See :ref:`store_64<class_FileAccess_method_store_64>` for details on what values can be stored and retrieved this way.
+Returns the next 64 bits from the file as an integer. See :ref:`store_64()<class_FileAccess_method_store_64>` for details on what values can be stored and retrieved this way.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileAccess_method_get_access_time:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_access_time**\ (\ file\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_FileAccess_method_get_access_time>`
+
+Returns the last time the ``file`` was accessed in Unix timestamp format, or ``0`` on error. This Unix timestamp can be converted to another format using the :ref:`Time<class_Time>` singleton.
 
 .. rst-class:: classref-item-separator
 
@@ -678,7 +690,7 @@ Returns the last error that happened when trying to perform operations. Compare 
 
 Returns the whole ``path`` file contents as a :ref:`PackedByteArray<class_PackedByteArray>` without any decoding.
 
-Returns an empty :ref:`PackedByteArray<class_PackedByteArray>` if an error occurred while opening the file. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns an empty :ref:`PackedByteArray<class_PackedByteArray>` if an error occurred while opening the file. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -692,7 +704,7 @@ Returns an empty :ref:`PackedByteArray<class_PackedByteArray>` if an error occur
 
 Returns the whole ``path`` file contents as a :ref:`String<class_String>`. Text is interpreted as being UTF-8 encoded.
 
-Returns an empty :ref:`String<class_String>` if an error occurred while opening the file. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns an empty :ref:`String<class_String>` if an error occurred while opening the file. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -742,7 +754,7 @@ Returns ``true``, if file ``hidden`` attribute is set.
 
 :ref:`int<class_int>` **get_length**\ (\ ) |const| :ref:`🔗<class_FileAccess_method_get_length>`
 
-Returns the size of the file in bytes.
+Returns the size of the file in bytes. For a pipe, returns the number of bytes available for reading from the pipe.
 
 .. rst-class:: classref-item-separator
 
@@ -792,7 +804,7 @@ Returns the last time the ``file`` was modified in Unix timestamp format, or ``0
 
 :ref:`Error<enum_@GlobalScope_Error>` **get_open_error**\ (\ ) |static| :ref:`🔗<class_FileAccess_method_get_open_error>`
 
-Returns the result of the last :ref:`open<class_FileAccess_method_open>` call in the current thread.
+Returns the result of the last :ref:`open()<class_FileAccess_method_open>` call in the current thread.
 
 .. rst-class:: classref-item-separator
 
@@ -886,6 +898,18 @@ Returns an SHA-256 :ref:`String<class_String>` representing the file at the give
 
 ----
 
+.. _class_FileAccess_method_get_size:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_size**\ (\ file\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_FileAccess_method_get_size>`
+
+Returns file size in bytes, or ``-1`` on error.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileAccess_method_get_unix_permissions:
 
 .. rst-class:: classref-method
@@ -908,7 +932,7 @@ Returns file UNIX permissions.
 
 Returns the next :ref:`Variant<class_Variant>` value from the file. If ``allow_objects`` is ``true``, decoding objects is allowed.
 
-Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.bytes_to_var<class_@GlobalScope_method_bytes_to_var>` method.
+Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.bytes_to_var()<class_@GlobalScope_method_bytes_to_var>` method.
 
 \ **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats such as remote code execution.
 
@@ -936,7 +960,7 @@ Returns ``true`` if the file is currently opened.
 
 Creates a new **FileAccess** object and opens the file for writing or reading, depending on the flags.
 
-Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns ``null`` if opening the file failed. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -950,9 +974,9 @@ Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<cl
 
 Creates a new **FileAccess** object and opens a compressed file for reading or writing.
 
-\ **Note:** :ref:`open_compressed<class_FileAccess_method_open_compressed>` can only read files that were saved by Redot, not third-party compression formats. See `GitHub issue #28999 <https://github.com/godotengine/godot/issues/28999>`__ for a workaround.
+\ **Note:** :ref:`open_compressed()<class_FileAccess_method_open_compressed>` can only read files that were saved by Redot, not third-party compression formats. See `GitHub issue #28999 <https://github.com/godotengine/godot/issues/28999>`__ for a workaround.
 
-Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns ``null`` if opening the file failed. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -968,7 +992,7 @@ Creates a new **FileAccess** object and opens an encrypted file in write or read
 
 \ **Note:** The provided key must be 32 bytes long.
 
-Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns ``null`` if opening the file failed. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -982,7 +1006,7 @@ Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<cl
 
 Creates a new **FileAccess** object and opens an encrypted file in write or read mode. You need to pass a password to encrypt/decrypt it.
 
-Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+Returns ``null`` if opening the file failed. You can use :ref:`get_open_error()<class_FileAccess_method_get_open_error>` to check the error that occurred.
 
 .. rst-class:: classref-item-separator
 
@@ -1080,7 +1104,7 @@ Stores an integer as 8 bits in the file.
 
 \ **Note:** If an error occurs, the resulting value of the file position indicator is indeterminate.
 
-To store a signed integer, use :ref:`store_64<class_FileAccess_method_store_64>`, or convert it manually (see :ref:`store_16<class_FileAccess_method_store_16>` for an example).
+To store a signed integer, use :ref:`store_64()<class_FileAccess_method_store_64>`, or convert it manually (see :ref:`store_16()<class_FileAccess_method_store_16>` for an example).
 
 .. rst-class:: classref-item-separator
 
@@ -1098,7 +1122,7 @@ Stores an integer as 16 bits in the file.
 
 \ **Note:** If an error occurs, the resulting value of the file position indicator is indeterminate.
 
-To store a signed integer, use :ref:`store_64<class_FileAccess_method_store_64>` or store a signed integer from the interval ``[-2^15, 2^15 - 1]`` (i.e. keeping one bit for the signedness) and compute its sign manually when reading. For example:
+To store a signed integer, use :ref:`store_64()<class_FileAccess_method_store_64>` or store a signed integer from the interval ``[-2^15, 2^15 - 1]`` (i.e. keeping one bit for the signedness) and compute its sign manually when reading. For example:
 
 
 .. tabs::
@@ -1153,7 +1177,7 @@ Stores an integer as 32 bits in the file.
 
 \ **Note:** If an error occurs, the resulting value of the file position indicator is indeterminate.
 
-To store a signed integer, use :ref:`store_64<class_FileAccess_method_store_64>`, or convert it manually (see :ref:`store_16<class_FileAccess_method_store_16>` for an example).
+To store a signed integer, use :ref:`store_64()<class_FileAccess_method_store_64>`, or convert it manually (see :ref:`store_16()<class_FileAccess_method_store_16>` for an example).
 
 .. rst-class:: classref-item-separator
 
@@ -1241,6 +1265,8 @@ Stores a floating-point number as 32 bits in the file.
 
 Stores a half-precision floating-point number as 16 bits in the file.
 
+\ **Note:** If an error occurs, the resulting value of the file position indicator is indeterminate.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -1297,7 +1323,7 @@ Stores a floating-point number in the file.
 
 Stores ``string`` in the file without a newline character (``\n``), encoding the text as UTF-8.
 
-\ **Note:** This method is intended to be used to write text files. The string is stored as a UTF-8 encoded buffer without string length or terminating zero, which means that it can't be loaded back easily. If you want to store a retrievable string in a binary file, consider using :ref:`store_pascal_string<class_FileAccess_method_store_pascal_string>` instead. For retrieving strings from a text file, you can use ``get_buffer(length).get_string_from_utf8()`` (if you know the length) or :ref:`get_as_text<class_FileAccess_method_get_as_text>`.
+\ **Note:** This method is intended to be used to write text files. The string is stored as a UTF-8 encoded buffer without string length or terminating zero, which means that it can't be loaded back easily. If you want to store a retrievable string in a binary file, consider using :ref:`store_pascal_string()<class_FileAccess_method_store_pascal_string>` instead. For retrieving strings from a text file, you can use ``get_buffer(length).get_string_from_utf8()`` (if you know the length) or :ref:`get_as_text()<class_FileAccess_method_get_as_text>`.
 
 \ **Note:** If an error occurs, the resulting value of the file position indicator is indeterminate.
 
@@ -1313,9 +1339,9 @@ Stores ``string`` in the file without a newline character (``\n``), encoding the
 
 Stores any Variant value in the file. If ``full_objects`` is ``true``, encoding objects is allowed (and can potentially include code).
 
-Internally, this uses the same encoding mechanism as the :ref:`@GlobalScope.var_to_bytes<class_@GlobalScope_method_var_to_bytes>` method.
+Internally, this uses the same encoding mechanism as the :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` method.
 
-\ **Note:** Not all properties are included. Only properties that are configured with the :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` flag set will be serialized. You can add a new usage flag to a property by overriding the :ref:`Object._get_property_list<class_Object_private_method__get_property_list>` method in your class. You can also check how property usage is configured by calling :ref:`Object._get_property_list<class_Object_private_method__get_property_list>`. See :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` for the possible usage flags.
+\ **Note:** Not all properties are included. Only properties that are configured with the :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` flag set will be serialized. You can add a new usage flag to a property by overriding the :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>` method in your class. You can also check how property usage is configured by calling :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`. See :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` for the possible usage flags.
 
 \ **Note:** If an error occurs, the resulting value of the file position indicator is indeterminate.
 
