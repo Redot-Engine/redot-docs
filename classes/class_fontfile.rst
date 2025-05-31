@@ -100,6 +100,8 @@ Properties
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`keep_rounding_remainders<class_FontFile_property_keep_rounding_remainders>`                     | ``true``              |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                         | :ref:`modulate_color_glyphs<class_FontFile_property_modulate_color_glyphs>`                           | ``false``             |
+   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`int<class_int>`                                           | :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>`                                     | ``16``                |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`int<class_int>`                                           | :ref:`msdf_size<class_FontFile_property_msdf_size>`                                                   | ``48``                |
@@ -108,7 +110,7 @@ Properties
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`Dictionary<class_Dictionary>`                             | :ref:`opentype_feature_overrides<class_FontFile_property_opentype_feature_overrides>`                 | ``{}``                |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                       | :ref:`oversampling<class_FontFile_property_oversampling>`                                             | ``0.0``               |
+   | :ref:`float<class_float>`                                       | :ref:`oversampling<class_FontFile_property_oversampling>`                                             |                       |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`String<class_String>`                                     | :ref:`style_name<class_FontFile_property_style_name>`                                                 | ``""``                |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
@@ -508,6 +510,23 @@ If set to ``true``, when aligning glyphs to the pixel boundaries rounding remain
 
 ----
 
+.. _class_FontFile_property_modulate_color_glyphs:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **modulate_color_glyphs** = ``false`` :ref:`🔗<class_FontFile_property_modulate_color_glyphs>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_modulate_color_glyphs**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_modulate_color_glyphs**\ (\ )
+
+If set to ``true``, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FontFile_property_msdf_pixel_range:
 
 .. rst-class:: classref-property
@@ -584,14 +603,16 @@ Font OpenType feature set override.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **oversampling** = ``0.0`` :ref:`🔗<class_FontFile_property_oversampling>`
+:ref:`float<class_float>` **oversampling** :ref:`🔗<class_FontFile_property_oversampling>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_oversampling**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_oversampling**\ (\ )
 
-Font oversampling factor. If set to ``0.0``, the global oversampling factor is used instead. Used by dynamic fonts only (MSDF fonts ignore oversampling).
+**Deprecated:** Use the ``oversampling`` argument of the ``draw_*`` methods instead.
+
+Deprecated. This property does nothing.
 
 .. rst-class:: classref-item-separator
 
@@ -656,7 +677,7 @@ Removes all font cache entries.
 
 Removes all rendered glyph information from the cache entry.
 
-\ **Note:** This function will not remove textures associated with the glyphs, use :ref:`remove_texture<class_FontFile_method_remove_texture>` to remove them manually.
+\ **Note:** This function will not remove textures associated with the glyphs, use :ref:`remove_texture()<class_FontFile_method_remove_texture>` to remove them manually.
 
 .. rst-class:: classref-item-separator
 
@@ -694,7 +715,7 @@ Removes all font sizes from the cache entry.
 
 Removes all textures from font cache entry.
 
-\ **Note:** This function will not remove glyphs associated with the texture, use :ref:`remove_glyph<class_FontFile_method_remove_glyph>` to remove them manually.
+\ **Note:** This function will not remove glyphs associated with the texture, use :ref:`remove_glyph()<class_FontFile_method_remove_glyph>` to remove them manually.
 
 .. rst-class:: classref-item-separator
 
@@ -778,7 +799,7 @@ Returns thickness of the underline in pixels.
 
 :ref:`int<class_int>` **get_char_from_glyph_index**\ (\ size\: :ref:`int<class_int>`, glyph_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_char_from_glyph_index>`
 
-Returns character code associated with ``glyph_index``, or ``0`` if ``glyph_index`` is invalid. See :ref:`get_glyph_index<class_FontFile_method_get_glyph_index>`.
+Returns character code associated with ``glyph_index``, or ``0`` if ``glyph_index`` is invalid. See :ref:`get_glyph_index()<class_FontFile_method_get_glyph_index>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1056,7 +1077,7 @@ Returns 2D transform, applied to the font outlines, can be used for slanting, fl
 
 :ref:`Dictionary<class_Dictionary>` **get_variation_coordinates**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_variation_coordinates>`
 
-Returns variation coordinates for the specified font cache entry. See :ref:`Font.get_supported_variation_list<class_Font_method_get_supported_variation_list>` for more info.
+Returns variation coordinates for the specified font cache entry. See :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>` for more info.
 
 .. rst-class:: classref-item-separator
 
@@ -1110,7 +1131,7 @@ Removes specified font cache entry.
 
 Removes specified rendered glyph information from the cache entry.
 
-\ **Note:** This function will not remove textures associated with the glyphs, use :ref:`remove_texture<class_FontFile_method_remove_texture>` to remove them manually.
+\ **Note:** This function will not remove textures associated with the glyphs, use :ref:`remove_texture()<class_FontFile_method_remove_texture>` to remove them manually.
 
 .. rst-class:: classref-item-separator
 
@@ -1172,7 +1193,7 @@ Removes specified font size from the cache entry.
 
 Removes specified texture from the cache entry.
 
-\ **Note:** This function will not remove glyphs associated with the texture. Remove them manually using :ref:`remove_glyph<class_FontFile_method_remove_glyph>`.
+\ **Note:** This function will not remove glyphs associated with the texture. Remove them manually using :ref:`remove_glyph()<class_FontFile_method_remove_glyph>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1390,7 +1411,7 @@ Sets kerning for the pair of glyphs.
 
 |void| **set_language_support_override**\ (\ language\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_FontFile_method_set_language_support_override>`
 
-Adds override for :ref:`Font.is_language_supported<class_Font_method_is_language_supported>`.
+Adds override for :ref:`Font.is_language_supported()<class_Font_method_is_language_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1402,7 +1423,7 @@ Adds override for :ref:`Font.is_language_supported<class_Font_method_is_language
 
 |void| **set_script_support_override**\ (\ script\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_FontFile_method_set_script_support_override>`
 
-Adds override for :ref:`Font.is_script_supported<class_Font_method_is_script_supported>`.
+Adds override for :ref:`Font.is_script_supported()<class_Font_method_is_script_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1450,7 +1471,7 @@ Sets 2D transform, applied to the font outlines, can be used for slanting, flipp
 
 |void| **set_variation_coordinates**\ (\ cache_index\: :ref:`int<class_int>`, variation_coordinates\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_FontFile_method_set_variation_coordinates>`
 
-Sets variation coordinates for the specified font cache entry. See :ref:`Font.get_supported_variation_list<class_Font_method_get_supported_variation_list>` for more info.
+Sets variation coordinates for the specified font cache entry. See :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>` for more info.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

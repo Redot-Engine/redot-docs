@@ -32,7 +32,7 @@ Properties
    :widths: auto
 
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                          | focus_mode                                                                                                    | ``0`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                 |
+   | :ref:`FocusMode<enum_Control_FocusMode>`                          | focus_mode                                                                                                    | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                 |
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                       | :ref:`language<class_LinkButton_property_language>`                                                           | ``""``                                                                              |
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
@@ -246,7 +246,7 @@ The underline mode to use for the text. See :ref:`UnderlineMode<enum_LinkButton_
 - |void| **set_uri**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_uri**\ (\ )
 
-The `URI <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier>`__ for this **LinkButton**. If set to a valid URI, pressing the button opens the URI using the operating system's default program for the protocol (via :ref:`OS.shell_open<class_OS_method_shell_open>`). HTTP and HTTPS URLs open the default web browser.
+The `URI <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier>`__ for this **LinkButton**. If set to a valid URI, pressing the button opens the URI using the operating system's default program for the protocol (via :ref:`OS.shell_open()<class_OS_method_shell_open>`). HTTP and HTTPS URLs open the default web browser.
 
 
 .. tabs::
