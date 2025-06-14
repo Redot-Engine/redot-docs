@@ -21,7 +21,7 @@ Description
 
 This object manages the functionality and display of toast notifications within the editor, ensuring timely and informative alerts are presented to users.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_editor_toaster<class_EditorInterface_method_get_editor_toaster>`.
+\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_editor_toaster()<class_EditorInterface_method_get_editor_toaster>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -92,6 +92,7 @@ Method Descriptions
 Pushes a toast notification to the editor for display.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

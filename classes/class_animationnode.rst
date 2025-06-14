@@ -31,9 +31,9 @@ You can access the time information as read-only parameter which is processed an
 
 ::
 
-    var current_length = $AnimationTree[parameters/AnimationNodeName/current_length]
-    var current_position = $AnimationTree[parameters/AnimationNodeName/current_position]
-    var current_delta = $AnimationTree[parameters/AnimationNodeName/current_delta]
+    var current_length = $AnimationTree["parameters/AnimationNodeName/current_length"]
+    var current_position = $AnimationTree["parameters/AnimationNodeName/current_position"]
+    var current_delta = $AnimationTree["parameters/AnimationNodeName/current_delta"]
 
 .. rst-class:: classref-introduction-group
 
@@ -283,7 +283,7 @@ When inheriting from :ref:`AnimationRootNode<class_AnimationRootNode>`, implemen
 
 :ref:`Array<class_Array>` **_get_parameter_list**\ (\ ) |virtual| |const| :ref:`🔗<class_AnimationNode_private_method__get_parameter_list>`
 
-When inheriting from :ref:`AnimationRootNode<class_AnimationRootNode>`, implement this virtual method to return a list of the properties on this animation node. Parameters are custom local memory used for your animation nodes, given a resource can be reused in multiple trees. Format is similar to :ref:`Object.get_property_list<class_Object_method_get_property_list>`.
+When inheriting from :ref:`AnimationRootNode<class_AnimationRootNode>`, implement this virtual method to return a list of the properties on this animation node. Parameters are custom local memory used for your animation nodes, given a resource can be reused in multiple trees. Format is similar to :ref:`Object.get_property_list()<class_Object_method_get_property_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -323,7 +323,7 @@ When inheriting from :ref:`AnimationRootNode<class_AnimationRootNode>`, implemen
 
 When inheriting from :ref:`AnimationRootNode<class_AnimationRootNode>`, implement this virtual method to run some code when this animation node is processed. The ``time`` parameter is a relative delta, unless ``seek`` is ``true``, in which case it is absolute.
 
-Here, call the :ref:`blend_input<class_AnimationNode_method_blend_input>`, :ref:`blend_node<class_AnimationNode_method_blend_node>` or :ref:`blend_animation<class_AnimationNode_method_blend_animation>` functions. You can also use :ref:`get_parameter<class_AnimationNode_method_get_parameter>` and :ref:`set_parameter<class_AnimationNode_method_set_parameter>` to modify local memory.
+Here, call the :ref:`blend_input()<class_AnimationNode_method_blend_input>`, :ref:`blend_node()<class_AnimationNode_method_blend_node>` or :ref:`blend_animation()<class_AnimationNode_method_blend_animation>` functions. You can also use :ref:`get_parameter()<class_AnimationNode_method_get_parameter>` and :ref:`set_parameter()<class_AnimationNode_method_set_parameter>` to modify local memory.
 
 This function should return the delta.
 
@@ -349,9 +349,9 @@ Adds an input to the animation node. This is only useful for animation nodes cre
 
 |void| **blend_animation**\ (\ animation\: :ref:`StringName<class_StringName>`, time\: :ref:`float<class_float>`, delta\: :ref:`float<class_float>`, seeked\: :ref:`bool<class_bool>`, is_external_seeking\: :ref:`bool<class_bool>`, blend\: :ref:`float<class_float>`, looped_flag\: :ref:`LoopedFlag<enum_Animation_LoopedFlag>` = 0\ ) :ref:`🔗<class_AnimationNode_method_blend_animation>`
 
-Blend an animation by ``blend`` amount (name must be valid in the linked :ref:`AnimationPlayer<class_AnimationPlayer>`). A ``time`` and ``delta`` may be passed, as well as whether ``seeked`` happened.
+Blends an animation by ``blend`` amount (name must be valid in the linked :ref:`AnimationPlayer<class_AnimationPlayer>`). A ``time`` and ``delta`` may be passed, as well as whether ``seeked`` happened.
 
-A ``looped_flag`` is used by internal processing immediately after the loop. See also :ref:`LoopedFlag<enum_Animation_LoopedFlag>`.
+A ``looped_flag`` is used by internal processing immediately after the loop.
 
 .. rst-class:: classref-item-separator
 
@@ -363,7 +363,7 @@ A ``looped_flag`` is used by internal processing immediately after the loop. See
 
 :ref:`float<class_float>` **blend_input**\ (\ input_index\: :ref:`int<class_int>`, time\: :ref:`float<class_float>`, seek\: :ref:`bool<class_bool>`, is_external_seeking\: :ref:`bool<class_bool>`, blend\: :ref:`float<class_float>`, filter\: :ref:`FilterAction<enum_AnimationNode_FilterAction>` = 0, sync\: :ref:`bool<class_bool>` = true, test_only\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AnimationNode_method_blend_input>`
 
-Blend an input. This is only useful for animation nodes created for an :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`. The ``time`` parameter is a relative delta, unless ``seek`` is ``true``, in which case it is absolute. A filter mode may be optionally passed (see :ref:`FilterAction<enum_AnimationNode_FilterAction>` for options).
+Blends an input. This is only useful for animation nodes created for an :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`. The ``time`` parameter is a relative delta, unless ``seek`` is ``true``, in which case it is absolute. A filter mode may be optionally passed.
 
 .. rst-class:: classref-item-separator
 
@@ -437,7 +437,7 @@ Gets the value of a parameter. Parameters are custom local memory used for your 
 
 Returns the object id of the :ref:`AnimationTree<class_AnimationTree>` that owns this node.
 
-\ **Note:** This method should only be called from within the :ref:`AnimationNodeExtension._process_animation_node<class_AnimationNodeExtension_private_method__process_animation_node>` method, and will return an invalid id otherwise.
+\ **Note:** This method should only be called from within the :ref:`AnimationNodeExtension._process_animation_node()<class_AnimationNodeExtension_private_method__process_animation_node>` method, and will return an invalid id otherwise.
 
 .. rst-class:: classref-item-separator
 
@@ -512,6 +512,7 @@ Sets the name of the input at the given ``input`` index. If the setting fails, r
 Sets a custom parameter. These are used as local memory, because resources can be reused across the tree or scenes.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
