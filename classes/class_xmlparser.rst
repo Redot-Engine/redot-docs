@@ -21,7 +21,7 @@ Description
 
 Provides a low-level interface for creating parsers for `XML <https://en.wikipedia.org/wiki/XML>`__ files. This class can serve as base to make custom XML parsers.
 
-To parse XML, you must open a file with the :ref:`open<class_XMLParser_method_open>` method or a buffer with the :ref:`open_buffer<class_XMLParser_method_open_buffer>` method. Then, the :ref:`read<class_XMLParser_method_read>` method must be called to parse the next nodes. Most of the methods take into consideration the currently parsed node.
+To parse XML, you must open a file with the :ref:`open()<class_XMLParser_method_open>` method or a buffer with the :ref:`open_buffer()<class_XMLParser_method_open_buffer>` method. Then, the :ref:`read()<class_XMLParser_method_read>` method must be called to parse the next nodes. Most of the methods take into consideration the currently parsed node.
 
 Here is an example of using **XMLParser** to parse an SVG file (which is based on XML), printing each element and its attributes as a dictionary:
 
@@ -389,6 +389,7 @@ Moves the buffer cursor to a certain offset (since the beginning) and reads the 
 Skips the current section. If the currently parsed node contains more inner nodes, they will be ignored and the cursor will go to the closing of the current element.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

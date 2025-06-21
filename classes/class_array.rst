@@ -28,29 +28,29 @@ An array data structure that can contain a sequence of elements of any :ref:`Var
     print(array[0])  # Prints "First"
     print(array[2])  # Prints 3
     print(array[-1]) # Prints "Last"
-    
+
     array[1] = "Second"
     print(array[1])  # Prints "Second"
     print(array[-3]) # Prints "Second"
 
  .. code-tab:: csharp
 
-    var array = new Godot.Collections.Array{"First", 2, 3, "Last"};
+    Godot.Collections.Array array = ["First", 2, 3, "Last"];
     GD.Print(array[0]); // Prints "First"
     GD.Print(array[2]); // Prints 3
-    GD.Print(array[array.Count - 1]); // Prints "Last"
-    
-    array[2] = "Second";
+    GD.Print(array[^1]); // Prints "Last"
+
+    array[1] = "Second";
     GD.Print(array[1]); // Prints "Second"
-    GD.Print(array[array.Count - 3]); // Prints "Second"
+    GD.Print(array[^3]); // Prints "Second"
 
 
 
-\ **Note:** Arrays are always passed by **reference**. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate<class_Array_method_duplicate>`.
+\ **Note:** Arrays are always passed by **reference**. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate()<class_Array_method_duplicate>`.
 
 \ **Note:** Erasing elements while iterating over arrays is **not** supported and will result in unpredictable behavior.
 
-\ **Differences between packed arrays, typed arrays, and untyped arrays:** Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. :ref:`PackedInt64Array<class_PackedInt64Array>` versus ``Array[int]``). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such as :ref:`map<class_Array_method_map>`. Typed arrays are in turn faster to iterate on and modify than untyped arrays.
+\ **Differences between packed arrays, typed arrays, and untyped arrays:** Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. :ref:`PackedInt64Array<class_PackedInt64Array>` versus ``Array[int]``). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such as :ref:`map()<class_Array_method_map>`. Typed arrays are in turn faster to iterate on and modify than untyped arrays.
 
 .. note::
 
@@ -122,6 +122,8 @@ Methods
    | :ref:`int<class_int>`               | :ref:`count<class_Array_method_count>`\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const|                                                                                                             |
    +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`           | :ref:`duplicate<class_Array_method_duplicate>`\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const|                                                                                                    |
+   +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`           | :ref:`duplicate_deep<class_Array_method_duplicate_deep>`\ (\ deep_subresources_mode\: :ref:`int<class_int>` = 1\ ) |const|                                                                              |
    +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`erase<class_Array_method_erase>`\ (\ value\: :ref:`Variant<class_Variant>`\ )                                                                                                                     |
    +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -257,7 +259,7 @@ Creates a typed array from the ``base`` array. A typed array can only contain el
 
 - ``type`` is the built-in :ref:`Variant<class_Variant>` type, as one the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constants.
 
-- ``class_name`` is the built-in class name (see :ref:`Object.get_class<class_Object_method_get_class>`).
+- ``class_name`` is the built-in class name (see :ref:`Object.get_class()<class_Object_method_get_class>`).
 
 - ``script`` is the associated script. It must be a :ref:`Script<class_Script>` instance or ``null``.
 
@@ -267,10 +269,10 @@ If ``type`` is not :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TY
 
     class_name Sword
     extends Node
-    
+
     class Stats:
         pass
-    
+
     func _ready():
         var a = Array([], TYPE_INT, "", null)               # Array[int]
         var b = Array([], TYPE_OBJECT, "Node", null)        # Array[Node]
@@ -285,7 +287,7 @@ In GDScript, this constructor is usually not necessary, as it is possible to cre
 
     var numbers: Array[float] = []
     var children: Array[Node] = [$Node, $Sprite2D, $RigidBody3D]
-    
+
     var integers: Array[int] = [0.2, 4.5, -2.0]
     print(integers) # Prints [0, 4, -2]
 
@@ -297,7 +299,7 @@ In GDScript, this constructor is usually not necessary, as it is possible to cre
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`Array<class_Array>`\ )
 
-Returns the same array as ``from``. If you need a copy of the array, use :ref:`duplicate<class_Array_method_duplicate>`.
+Returns the same array as ``from``. If you need a copy of the array, use :ref:`duplicate()<class_Array_method_duplicate>`.
 
 .. rst-class:: classref-item-separator
 
@@ -425,13 +427,13 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
 
     func greater_than_5(number):
         return number > 5
-    
+
     func _ready():
         print([6, 10, 6].all(greater_than_5)) # Prints true (3/3 elements evaluate to true).
         print([4, 10, 4].all(greater_than_5)) # Prints false (1/3 elements evaluate to true).
         print([4, 4, 4].all(greater_than_5))  # Prints false (0/3 elements evaluate to true).
         print([].all(greater_than_5))         # Prints true (0/0 elements evaluate to true).
-    
+
         # Same as the first line above, but using a lambda function.
         print([6, 10, 6].all(func(element): return element > 5)) # Prints true
 
@@ -441,7 +443,7 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
     {
         return number > 5;
     }
-    
+
     public override void _Ready()
     {
         // Prints True (3/3 elements evaluate to true).
@@ -452,16 +454,16 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
         GD.Print(new Godot.Collections.Array>int< { 4, 4, 4 }.All(GreaterThan5));
         // Prints True (0/0 elements evaluate to true).
         GD.Print(new Godot.Collections.Array>int< { }.All(GreaterThan5));
-    
+
         // Same as the first line above, but using a lambda function.
         GD.Print(new Godot.Collections.Array>int< { 6, 10, 6 }.All(element => element > 5)); // Prints True
     }
 
 
 
-See also :ref:`any<class_Array_method_any>`, :ref:`filter<class_Array_method_filter>`, :ref:`map<class_Array_method_map>` and :ref:`reduce<class_Array_method_reduce>`.
+See also :ref:`any()<class_Array_method_any>`, :ref:`filter()<class_Array_method_filter>`, :ref:`map()<class_Array_method_map>` and :ref:`reduce()<class_Array_method_reduce>`.
 
-\ **Note:** Unlike relying on the size of an array returned by :ref:`filter<class_Array_method_filter>`, this method will return as early as possible to improve performance (especially with large arrays).
+\ **Note:** Unlike relying on the size of an array returned by :ref:`filter()<class_Array_method_filter>`, this method will return as early as possible to improve performance (especially with large arrays).
 
 \ **Note:** For an empty array, this method `always <https://en.wikipedia.org/wiki/Vacuous_truth>`__ returns ``true``.
 
@@ -483,19 +485,19 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
 
     func greater_than_5(number):
         return number > 5
-    
+
     func _ready():
         print([6, 10, 6].any(greater_than_5)) # Prints true (3 elements evaluate to true).
         print([4, 10, 4].any(greater_than_5)) # Prints true (1 elements evaluate to true).
         print([4, 4, 4].any(greater_than_5))  # Prints false (0 elements evaluate to true).
         print([].any(greater_than_5))         # Prints false (0 elements evaluate to true).
-    
+
         # Same as the first line above, but using a lambda function.
         print([6, 10, 6].any(func(number): return number > 5)) # Prints true
 
-See also :ref:`all<class_Array_method_all>`, :ref:`filter<class_Array_method_filter>`, :ref:`map<class_Array_method_map>` and :ref:`reduce<class_Array_method_reduce>`.
+See also :ref:`all()<class_Array_method_all>`, :ref:`filter()<class_Array_method_filter>`, :ref:`map()<class_Array_method_map>` and :ref:`reduce()<class_Array_method_reduce>`.
 
-\ **Note:** Unlike relying on the size of an array returned by :ref:`filter<class_Array_method_filter>`, this method will return as early as possible to improve performance (especially with large arrays).
+\ **Note:** Unlike relying on the size of an array returned by :ref:`filter()<class_Array_method_filter>`, this method will return as early as possible to improve performance (especially with large arrays).
 
 \ **Note:** For an empty array, this method always returns ``false``.
 
@@ -509,7 +511,7 @@ See also :ref:`all<class_Array_method_all>`, :ref:`filter<class_Array_method_fil
 
 |void| **append**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_append>`
 
-Appends ``value`` at the end of the array (alias of :ref:`push_back<class_Array_method_push_back>`).
+Appends ``value`` at the end of the array (alias of :ref:`push_back()<class_Array_method_push_back>`).
 
 .. rst-class:: classref-item-separator
 
@@ -552,7 +554,7 @@ Assigns elements of another ``array`` into the array. Resizes the array to match
 
 :ref:`Variant<class_Variant>` **back**\ (\ ) |const| :ref:`🔗<class_Array_method_back>`
 
-Returns the last element of the array. If the array is empty, fails and returns ``null``. See also :ref:`front<class_Array_method_front>`.
+Returns the last element of the array. If the array is empty, fails and returns ``null``. See also :ref:`front()<class_Array_method_front>`.
 
 \ **Note:** Unlike with the ``[]`` operator (``array[-1]``), an error is generated without stopping project execution.
 
@@ -574,15 +576,15 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
 
     var numbers = [2, 4, 8, 10]
     var idx = numbers.bsearch(7)
-    
+
     numbers.insert(idx, 7)
     print(numbers) # Prints [2, 4, 7, 8, 10]
-    
+
     var fruits = ["Apple", "Lemon", "Lemon", "Orange"]
     print(fruits.bsearch("Lemon", true))  # Prints 1, points at the first "Lemon".
     print(fruits.bsearch("Lemon", false)) # Prints 3, points at "Orange".
 
-\ **Note:** Calling :ref:`bsearch<class_Array_method_bsearch>` on an *unsorted* array will result in unexpected behavior. Use :ref:`sort<class_Array_method_sort>` before calling this method.
+\ **Note:** Calling :ref:`bsearch()<class_Array_method_bsearch>` on an *unsorted* array will result in unexpected behavior. Use :ref:`sort()<class_Array_method_sort>` before calling this method.
 
 .. rst-class:: classref-item-separator
 
@@ -596,7 +598,7 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
 
 Returns the index of ``value`` in the sorted array. If it cannot be found, returns where ``value`` should be inserted to keep the array sorted (using ``func`` for the comparisons). The algorithm used is `binary search <https://en.wikipedia.org/wiki/Binary_search_algorithm>`__.
 
-Similar to :ref:`sort_custom<class_Array_method_sort_custom>`, ``func`` is called as many times as necessary, receiving one array element and ``value`` as arguments. The function should return ``true`` if the array element should be *behind* ``value``, otherwise it should return ``false``.
+Similar to :ref:`sort_custom()<class_Array_method_sort_custom>`, ``func`` is called as many times as necessary, receiving one array element and ``value`` as arguments. The function should return ``true`` if the array element should be *behind* ``value``, otherwise it should return ``false``.
 
 If ``before`` is ``true`` (as by default), the returned index comes before all existing elements equal to ``value`` in the array.
 
@@ -606,22 +608,22 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
         if a[1] < b[1]:
             return true
         return false
-    
+
     func _ready():
         var my_items = [["Tomato", 2], ["Kiwi", 5], ["Rice", 9]]
-    
+
         var apple = ["Apple", 5]
         # "Apple" is inserted before "Kiwi".
         my_items.insert(my_items.bsearch_custom(apple, sort_by_amount, true), apple)
-    
+
         var banana = ["Banana", 5]
         # "Banana" is inserted after "Kiwi".
         my_items.insert(my_items.bsearch_custom(banana, sort_by_amount, false), banana)
-    
+
         # Prints [["Tomato", 2], ["Apple", 5], ["Kiwi", 5], ["Banana", 5], ["Rice", 9]]
         print(my_items)
 
-\ **Note:** Calling :ref:`bsearch_custom<class_Array_method_bsearch_custom>` on an *unsorted* array will result in unexpected behavior. Use :ref:`sort_custom<class_Array_method_sort_custom>` with ``func`` before calling this method.
+\ **Note:** Calling :ref:`bsearch_custom()<class_Array_method_bsearch_custom>` on an *unsorted* array will result in unexpected behavior. Use :ref:`sort_custom()<class_Array_method_sort_custom>` with ``func`` before calling this method.
 
 .. rst-class:: classref-item-separator
 
@@ -633,7 +635,7 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
 
 |void| **clear**\ (\ ) :ref:`🔗<class_Array_method_clear>`
 
-Removes all elements from the array. This is equivalent to using :ref:`resize<class_Array_method_resize>` with a size of ``0``.
+Removes all elements from the array. This is equivalent to using :ref:`resize()<class_Array_method_resize>` with a size of ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -647,7 +649,7 @@ Removes all elements from the array. This is equivalent to using :ref:`resize<cl
 
 Returns the number of times an element is in the array.
 
-To count how many elements in an array satisfy a condition, see :ref:`reduce<class_Array_method_reduce>`.
+To count how many elements in an array satisfy a condition, see :ref:`reduce()<class_Array_method_reduce>`.
 
 .. rst-class:: classref-item-separator
 
@@ -661,9 +663,23 @@ To count how many elements in an array satisfy a condition, see :ref:`reduce<cla
 
 Returns a new copy of the array.
 
-By default, a **shallow** copy is returned: all nested **Array** and :ref:`Dictionary<class_Dictionary>` elements are shared with the original array. Modifying them in one array will also affect them in the other.
+By default, a **shallow** copy is returned: all nested **Array**, :ref:`Dictionary<class_Dictionary>`, and :ref:`Resource<class_Resource>` elements are shared with the original array. Modifying any of those in one array will also affect them in the other.
 
-If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dictionaries are also duplicated (recursively).
+If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dictionaries are also duplicated (recursively). Any :ref:`Resource<class_Resource>` is still shared with the original array, though.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Array_method_duplicate_deep:
+
+.. rst-class:: classref-method
+
+:ref:`Array<class_Array>` **duplicate_deep**\ (\ deep_subresources_mode\: :ref:`int<class_int>` = 1\ ) |const| :ref:`🔗<class_Array_method_duplicate_deep>`
+
+Duplicates this array, deeply, like :ref:`duplicate()<class_Array_method_duplicate>`\ ``(true)``, with extra control over how subresources are handled.
+
+\ ``deep_subresources_mode`` must be one of the values from :ref:`ResourceDeepDuplicateMode<enum_Resource_ResourceDeepDuplicateMode>`. By default, only internal resources will be duplicated (recursively).
 
 .. rst-class:: classref-item-separator
 
@@ -675,7 +691,7 @@ If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dict
 
 |void| **erase**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_erase>`
 
-Finds and removes the first occurrence of ``value`` from the array. If ``value`` does not exist in the array, nothing happens. To remove an element by index, use :ref:`remove_at<class_Array_method_remove_at>` instead.
+Finds and removes the first occurrence of ``value`` from the array. If ``value`` does not exist in the array, nothing happens. To remove an element by index, use :ref:`remove_at()<class_Array_method_remove_at>` instead.
 
 \ **Note:** This method shifts every element's index after the removed ``value`` back, which may have a noticeable performance cost, especially on larger arrays.
 
@@ -693,7 +709,7 @@ Finds and removes the first occurrence of ``value`` from the array. If ``value``
 
 Assigns the given ``value`` to all elements in the array.
 
-This method can often be combined with :ref:`resize<class_Array_method_resize>` to create an array with a given size and initialized elements:
+This method can often be combined with :ref:`resize()<class_Array_method_resize>` to create an array with a given size and initialized elements:
 
 
 .. tabs::
@@ -707,7 +723,7 @@ This method can often be combined with :ref:`resize<class_Array_method_resize>` 
 
  .. code-tab:: csharp
 
-    var array = new Godot.Collections.Array();
+    Godot.Collections.Array array = [];
     array.Resize(5);
     array.Fill(2);
     GD.Print(array); // Prints [2, 2, 2, 2, 2]
@@ -734,14 +750,14 @@ The ``method`` receives one of the array elements as an argument, and should ret
 
     func is_even(number):
         return number % 2 == 0
-    
+
     func _ready():
         print([1, 4, 5, 8].filter(is_even)) # Prints [4, 8]
-    
+
         # Same as above, but using a lambda function.
         print([1, 4, 5, 8].filter(func(number): return number % 2 == 0))
 
-See also :ref:`any<class_Array_method_any>`, :ref:`all<class_Array_method_all>`, :ref:`map<class_Array_method_map>` and :ref:`reduce<class_Array_method_reduce>`.
+See also :ref:`any()<class_Array_method_any>`, :ref:`all()<class_Array_method_all>`, :ref:`map()<class_Array_method_map>` and :ref:`reduce()<class_Array_method_reduce>`.
 
 .. rst-class:: classref-item-separator
 
@@ -755,7 +771,7 @@ See also :ref:`any<class_Array_method_any>`, :ref:`all<class_Array_method_all>`,
 
 Returns the index of the **first** occurrence of ``what`` in this array, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the end of the array.
 
-\ **Note:** If you just want to know whether the array contains ``what``, use :ref:`has<class_Array_method_has>` (``Contains`` in C#). In GDScript, you may also use the ``in`` operator.
+\ **Note:** If you just want to know whether the array contains ``what``, use :ref:`has()<class_Array_method_has>` (``Contains`` in C#). In GDScript, you may also use the ``in`` operator.
 
 \ **Note:** For performance reasons, the search is affected by ``what``'s :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`. For example, ``7`` (:ref:`int<class_int>`) and ``7.0`` (:ref:`float<class_float>`) are not considered equal for this method.
 
@@ -773,7 +789,7 @@ Returns the index of the **first** element in the array that causes ``method`` t
 
 \ ``method`` is a callable that takes an element of the array, and returns a :ref:`bool<class_bool>`.
 
-\ **Note:** If you just want to know whether the array contains *anything* that satisfies ``method``, use :ref:`any<class_Array_method_any>`.
+\ **Note:** If you just want to know whether the array contains *anything* that satisfies ``method``, use :ref:`any()<class_Array_method_any>`.
 
 
 .. tabs::
@@ -782,9 +798,9 @@ Returns the index of the **first** element in the array that causes ``method`` t
 
     func is_even(number):
         return number % 2 == 0
-    
+
     func _ready():
-        print([1, 3, 4, 7].find_custom(is_even.bind())) # prints 2
+        print([1, 3, 4, 7].find_custom(is_even.bind())) # Prints 2
 
 
 
@@ -798,7 +814,7 @@ Returns the index of the **first** element in the array that causes ``method`` t
 
 :ref:`Variant<class_Variant>` **front**\ (\ ) |const| :ref:`🔗<class_Array_method_front>`
 
-Returns the first element of the array. If the array is empty, fails and returns ``null``. See also :ref:`back<class_Array_method_back>`.
+Returns the first element of the array. If the array is empty, fails and returns ``null``. See also :ref:`back()<class_Array_method_back>`.
 
 \ **Note:** Unlike with the ``[]`` operator (``array[0]``), an error is generated without stopping project execution.
 
@@ -812,7 +828,9 @@ Returns the first element of the array. If the array is empty, fails and returns
 
 :ref:`Variant<class_Variant>` **get**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Array_method_get>`
 
-Returns the element at the given ``index`` in the array. This is the same as using the ``[]`` operator (``array[index]``).
+Returns the element at the given ``index`` in the array. If ``index`` out-of-bounds or negative, this method fails and returns ``null``.
+
+This method is similar (but not identical) to the ``[]`` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.
 
 .. rst-class:: classref-item-separator
 
@@ -824,7 +842,7 @@ Returns the element at the given ``index`` in the array. This is the same as usi
 
 :ref:`int<class_int>` **get_typed_builtin**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_builtin>`
 
-Returns the built-in :ref:`Variant<class_Variant>` type of the typed array as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the array is not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed<class_Array_method_is_typed>`.
+Returns the built-in :ref:`Variant<class_Variant>` type of the typed array as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the array is not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed()<class_Array_method_is_typed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -836,7 +854,7 @@ Returns the built-in :ref:`Variant<class_Variant>` type of the typed array as a 
 
 :ref:`StringName<class_StringName>` **get_typed_class_name**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_class_name>`
 
-Returns the **built-in** class name of the typed array, if the built-in :ref:`Variant<class_Variant>` type :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed<class_Array_method_is_typed>` and :ref:`Object.get_class<class_Object_method_get_class>`.
+Returns the **built-in** class name of the typed array, if the built-in :ref:`Variant<class_Variant>` type :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed()<class_Array_method_is_typed>` and :ref:`Object.get_class()<class_Object_method_get_class>`.
 
 .. rst-class:: classref-item-separator
 
@@ -848,7 +866,7 @@ Returns the **built-in** class name of the typed array, if the built-in :ref:`Va
 
 :ref:`Variant<class_Variant>` **get_typed_script**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_script>`
 
-Returns the :ref:`Script<class_Script>` instance associated with this typed array, or ``null`` if it does not exist. See also :ref:`is_typed<class_Array_method_is_typed>`.
+Returns the :ref:`Script<class_Script>` instance associated with this typed array, or ``null`` if it does not exist. See also :ref:`is_typed()<class_Array_method_is_typed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -874,7 +892,7 @@ Returns ``true`` if the array contains the given ``value``.
 
  .. code-tab:: csharp
 
-    var arr = new Godot.Collections.Array { "inside", 7 };
+    Godot.Collections.Array arr = ["inside", 7];
     // By C# convention, this method is renamed to `Contains`.
     GD.Print(arr.Contains("inside"));  // Prints True
     GD.Print(arr.Contains("outside")); // Prints False
@@ -916,7 +934,7 @@ Returns a hashed 32-bit integer value representing the array and its contents.
 
 :ref:`int<class_int>` **insert**\ (\ position\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_insert>`
 
-Inserts a new element (``value``) at a given index (``position``) in the array. ``position`` should be between ``0`` and the array's :ref:`size<class_Array_method_size>`.
+Inserts a new element (``value``) at a given index (``position``) in the array. ``position`` should be between ``0`` and the array's :ref:`size()<class_Array_method_size>`. If negative, ``position`` is considered relative to the end of the array.
 
 Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the other :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails.
 
@@ -932,7 +950,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or on
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_Array_method_is_empty>`
 
-Returns ``true`` if the array is empty (``[]``). See also :ref:`size<class_Array_method_size>`.
+Returns ``true`` if the array is empty (``[]``). See also :ref:`size()<class_Array_method_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -944,7 +962,7 @@ Returns ``true`` if the array is empty (``[]``). See also :ref:`size<class_Array
 
 :ref:`bool<class_bool>` **is_read_only**\ (\ ) |const| :ref:`🔗<class_Array_method_is_read_only>`
 
-Returns ``true`` if the array is read-only. See :ref:`make_read_only<class_Array_method_make_read_only>`.
+Returns ``true`` if the array is read-only. See :ref:`make_read_only()<class_Array_method_make_read_only>`.
 
 In GDScript, arrays are automatically read-only if declared with the ``const`` keyword.
 
@@ -958,7 +976,7 @@ In GDScript, arrays are automatically read-only if declared with the ``const`` k
 
 :ref:`bool<class_bool>` **is_same_typed**\ (\ array\: :ref:`Array<class_Array>`\ ) |const| :ref:`🔗<class_Array_method_is_same_typed>`
 
-Returns ``true`` if this array is typed the same as the given ``array``. See also :ref:`is_typed<class_Array_method_is_typed>`.
+Returns ``true`` if this array is typed the same as the given ``array``. See also :ref:`is_typed()<class_Array_method_is_typed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1011,14 +1029,14 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
 
     func double(number):
         return number * 2
-    
+
     func _ready():
         print([1, 2, 3].map(double)) # Prints [2, 4, 6]
-    
+
         # Same as above, but using a lambda function.
         print([1, 2, 3].map(func(element): return element * 2))
 
-See also :ref:`filter<class_Array_method_filter>`, :ref:`reduce<class_Array_method_reduce>`, :ref:`any<class_Array_method_any>` and :ref:`all<class_Array_method_all>`.
+See also :ref:`filter()<class_Array_method_filter>`, :ref:`reduce()<class_Array_method_reduce>`, :ref:`any()<class_Array_method_any>` and :ref:`all()<class_Array_method_all>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1030,9 +1048,9 @@ See also :ref:`filter<class_Array_method_filter>`, :ref:`reduce<class_Array_meth
 
 :ref:`Variant<class_Variant>` **max**\ (\ ) |const| :ref:`🔗<class_Array_method_max>`
 
-Returns the maximum value contained in the array, if all elements can be compared. Otherwise, returns ``null``. See also :ref:`min<class_Array_method_min>`.
+Returns the maximum value contained in the array, if all elements can be compared. Otherwise, returns ``null``. See also :ref:`min()<class_Array_method_min>`.
 
-To find the maximum value using a custom comparator, you can use :ref:`reduce<class_Array_method_reduce>`.
+To find the maximum value using a custom comparator, you can use :ref:`reduce()<class_Array_method_reduce>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1044,7 +1062,7 @@ To find the maximum value using a custom comparator, you can use :ref:`reduce<cl
 
 :ref:`Variant<class_Variant>` **min**\ (\ ) |const| :ref:`🔗<class_Array_method_min>`
 
-Returns the minimum value contained in the array, if all elements can be compared. Otherwise, returns ``null``. See also :ref:`max<class_Array_method_max>`.
+Returns the minimum value contained in the array, if all elements can be compared. Otherwise, returns ``null``. See also :ref:`max()<class_Array_method_max>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1068,12 +1086,12 @@ Returns a random element from the array. Generates an error and returns ``null``
 
  .. code-tab:: csharp
 
-    var array = new Godot.Collections.Array { 1, 2, 3.25f, "Hi" };
+    Godot.Collections.Array array = [1, 2, 3.25f, "Hi"];
     GD.Print(array.PickRandom()); // May print 1, 2, 3.25, or "Hi".
 
 
 
-\ **Note:** Like many similar functions in the engine (such as :ref:`@GlobalScope.randi<class_@GlobalScope_method_randi>` or :ref:`shuffle<class_Array_method_shuffle>`), this method uses a common, global random seed. To get a predictable outcome from this method, see :ref:`@GlobalScope.seed<class_@GlobalScope_method_seed>`.
+\ **Note:** Like many similar functions in the engine (such as :ref:`@GlobalScope.randi()<class_@GlobalScope_method_randi>` or :ref:`shuffle()<class_Array_method_shuffle>`), this method uses a common, global random seed. To get a predictable outcome from this method, see :ref:`@GlobalScope.seed()<class_@GlobalScope_method_seed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1099,7 +1117,7 @@ Removes and returns the element of the array at index ``position``. If negative,
 
 :ref:`Variant<class_Variant>` **pop_back**\ (\ ) :ref:`🔗<class_Array_method_pop_back>`
 
-Removes and returns the last element of the array. Returns ``null`` if the array is empty, without generating an error. See also :ref:`pop_front<class_Array_method_pop_front>`.
+Removes and returns the last element of the array. Returns ``null`` if the array is empty, without generating an error. See also :ref:`pop_front()<class_Array_method_pop_front>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1111,7 +1129,7 @@ Removes and returns the last element of the array. Returns ``null`` if the array
 
 :ref:`Variant<class_Variant>` **pop_front**\ (\ ) :ref:`🔗<class_Array_method_pop_front>`
 
-Removes and returns the first element of the array. Returns ``null`` if the array is empty, without generating an error. See also :ref:`pop_back<class_Array_method_pop_back>`.
+Removes and returns the first element of the array. Returns ``null`` if the array is empty, without generating an error. See also :ref:`pop_back()<class_Array_method_pop_back>`.
 
 \ **Note:** This method shifts every other element's index back, which may have a noticeable performance cost, especially on larger arrays.
 
@@ -1125,7 +1143,7 @@ Removes and returns the first element of the array. Returns ``null`` if the arra
 
 |void| **push_back**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_push_back>`
 
-Appends an element at the end of the array. See also :ref:`push_front<class_Array_method_push_front>`.
+Appends an element at the end of the array. See also :ref:`push_front()<class_Array_method_push_front>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1137,7 +1155,7 @@ Appends an element at the end of the array. See also :ref:`push_front<class_Arra
 
 |void| **push_front**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_push_front>`
 
-Adds an element at the beginning of the array. See also :ref:`push_back<class_Array_method_push_back>`.
+Adds an element at the beginning of the array. See also :ref:`push_back()<class_Array_method_push_back>`.
 
 \ **Note:** This method shifts every other element's index forward, which may have a noticeable performance cost, especially on larger arrays.
 
@@ -1159,41 +1177,41 @@ The ``method`` takes two arguments: the current value of ``accum`` and the curre
 
     func sum(accum, number):
         return accum + number
-    
+
     func _ready():
         print([1, 2, 3].reduce(sum, 0))  # Prints 6
         print([1, 2, 3].reduce(sum, 10)) # Prints 16
-    
+
         # Same as above, but using a lambda function.
         print([1, 2, 3].reduce(func(accum, number): return accum + number, 10))
 
-If :ref:`max<class_Array_method_max>` is not desirable, this method may also be used to implement a custom comparator:
+If :ref:`max()<class_Array_method_max>` is not desirable, this method may also be used to implement a custom comparator:
 
 ::
 
     func _ready():
-        var arr = [Vector2(5, 0), Vector2(3, 4), Vector2(1, 2)]
-    
+        var arr = [Vector2i(5, 0), Vector2i(3, 4), Vector2i(1, 2)]
+
         var longest_vec = arr.reduce(func(max, vec): return vec if is_length_greater(vec, max) else max)
-        print(longest_vec) # Prints Vector2(3, 4).
-    
+        print(longest_vec) # Prints (3, 4)
+
     func is_length_greater(a, b):
         return a.length() > b.length()
 
-This method can also be used to count how many elements in an array satisfy a certain condition, similar to :ref:`count<class_Array_method_count>`:
+This method can also be used to count how many elements in an array satisfy a certain condition, similar to :ref:`count()<class_Array_method_count>`:
 
 ::
 
     func is_even(number):
         return number % 2 == 0
-    
+
     func _ready():
         var arr = [1, 2, 3, 4, 5]
-        # Increment count if it's even, else leaves count the same.
+        # If the current element is even, increment count, otherwise leave count the same.
         var even_count = arr.reduce(func(count, next): return count + 1 if is_even(next) else count, 0)
         print(even_count) # Prints 2
 
-See also :ref:`map<class_Array_method_map>`, :ref:`filter<class_Array_method_filter>`, :ref:`any<class_Array_method_any>` and :ref:`all<class_Array_method_all>`.
+See also :ref:`map()<class_Array_method_map>`, :ref:`filter()<class_Array_method_filter>`, :ref:`any()<class_Array_method_any>`, and :ref:`all()<class_Array_method_all>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1205,9 +1223,9 @@ See also :ref:`map<class_Array_method_map>`, :ref:`filter<class_Array_method_fil
 
 |void| **remove_at**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_remove_at>`
 
-Removes the element from the array at the given index (``position``). If the index is out of bounds, this method fails.
+Removes the element from the array at the given index (``position``). If the index is out of bounds, this method fails. If the index is negative, ``position`` is considered relative to the end of the array.
 
-If you need to return the removed element, use :ref:`pop_at<class_Array_method_pop_at>`. To remove an element by value, use :ref:`erase<class_Array_method_erase>` instead.
+If you need to return the removed element, use :ref:`pop_at()<class_Array_method_pop_at>`. To remove an element by value, use :ref:`erase()<class_Array_method_erase>` instead.
 
 \ **Note:** This method shifts every element's index after ``position`` back, which may have a noticeable performance cost, especially on larger arrays.
 
@@ -1225,9 +1243,9 @@ If you need to return the removed element, use :ref:`pop_at<class_Array_method_p
 
 Sets the array's number of elements to ``size``. If ``size`` is smaller than the array's current size, the elements at the end are removed. If ``size`` is greater, new default elements (usually ``null``) are added, depending on the array's type.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the other :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails.
+Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the following :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails: :ref:`@GlobalScope.ERR_LOCKED<class_@GlobalScope_constant_ERR_LOCKED>` if the array is read-only, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the size is negative, or :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` if allocations fail. Use :ref:`size()<class_Array_method_size>` to find the actual size of the array after resize.
 
-\ **Note:** Calling this method once and assigning the new values is faster than calling :ref:`append<class_Array_method_append>` for every new element.
+\ **Note:** Calling this method once and assigning the new values is faster than calling :ref:`append()<class_Array_method_append>` for every new element.
 
 .. rst-class:: classref-item-separator
 
@@ -1251,7 +1269,7 @@ Reverses the order of all elements in the array.
 
 :ref:`int<class_int>` **rfind**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Array_method_rfind>`
 
-Returns the index of the **last** occurrence of ``what`` in this array, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the array. This method is the reverse of :ref:`find<class_Array_method_find>`.
+Returns the index of the **last** occurrence of ``what`` in this array, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the array. This method is the reverse of :ref:`find()<class_Array_method_find>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1263,7 +1281,7 @@ Returns the index of the **last** occurrence of ``what`` in this array, or ``-1`
 
 :ref:`int<class_int>` **rfind_custom**\ (\ method\: :ref:`Callable<class_Callable>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Array_method_rfind_custom>`
 
-Returns the index of the **last** element of the array that causes ``method`` to return ``true``, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the array. This method is the reverse of :ref:`find_custom<class_Array_method_find_custom>`.
+Returns the index of the **last** element of the array that causes ``method`` to return ``true``, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the array. This method is the reverse of :ref:`find_custom()<class_Array_method_find_custom>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1289,7 +1307,7 @@ Sets the value of the element at the given ``index`` to the given ``value``. Thi
 
 Shuffles all elements of the array in a random order.
 
-\ **Note:** Like many similar functions in the engine (such as :ref:`@GlobalScope.randi<class_@GlobalScope_method_randi>` or :ref:`pick_random<class_Array_method_pick_random>`), this method uses a common, global random seed. To get a predictable outcome from this method, see :ref:`@GlobalScope.seed<class_@GlobalScope_method_seed>`.
+\ **Note:** Like many similar functions in the engine (such as :ref:`@GlobalScope.randi()<class_@GlobalScope_method_randi>` or :ref:`pick_random()<class_Array_method_pick_random>`), this method uses a common, global random seed. To get a predictable outcome from this method, see :ref:`@GlobalScope.seed()<class_@GlobalScope_method_seed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1301,7 +1319,7 @@ Shuffles all elements of the array in a random order.
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_Array_method_size>`
 
-Returns the number of elements in the array. Empty arrays (``[]``) always return ``0``. See also :ref:`is_empty<class_Array_method_is_empty>`.
+Returns the number of elements in the array. Empty arrays (``[]``) always return ``0``. See also :ref:`is_empty()<class_Array_method_is_empty>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1319,16 +1337,16 @@ If either ``begin`` or ``end`` are negative, their value is relative to the end 
 
 If ``step`` is negative, this method iterates through the array in reverse, returning a slice ordered backwards. For this to work, ``begin`` must be greater than ``end``.
 
-If ``deep`` is ``true``, all nested **Array** and :ref:`Dictionary<class_Dictionary>` elements in the slice are duplicated from the original, recursively. See also :ref:`duplicate<class_Array_method_duplicate>`).
+If ``deep`` is ``true``, all nested **Array** and :ref:`Dictionary<class_Dictionary>` elements in the slice are duplicated from the original, recursively. See also :ref:`duplicate()<class_Array_method_duplicate>`.
 
 ::
 
     var letters = ["A", "B", "C", "D", "E", "F"]
-    
+
     print(letters.slice(0, 2))  # Prints ["A", "B"]
     print(letters.slice(2, -2)) # Prints ["C", "D"]
     print(letters.slice(-2, 6)) # Prints ["E", "F"]
-    
+
     print(letters.slice(0, 6, 2))  # Prints ["A", "C", "E"]
     print(letters.slice(4, 1, -1)) # Prints ["E", "D", "C"]
 
@@ -1355,13 +1373,13 @@ Sorts the array in ascending order. The final order is dependent on the "less th
 
  .. code-tab:: csharp
 
-    var numbers = new Godot.Collections.Array { 10, 5, 2.5, 8 };
+    Godot.Collections.Array numbers = [10, 5, 2.5, 8];
     numbers.Sort();
     GD.Print(numbers); // Prints [2.5, 5, 8, 10]
 
 
 
-\ **Note:** The sorting algorithm used is not `stable <https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`__. This means that equivalent elements (such as ``2`` and ``2.0``) may have their order changed when calling :ref:`sort<class_Array_method_sort>`.
+\ **Note:** The sorting algorithm used is not `stable <https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`__. This means that equivalent elements (such as ``2`` and ``2.0``) may have their order changed when calling :ref:`sort()<class_Array_method_sort>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1383,17 +1401,17 @@ Sorts the array using a custom :ref:`Callable<class_Callable>`.
         if a[1] < b[1]:
             return true
         return false
-    
+
     func _ready():
         var my_items = [["Tomato", 5], ["Apple", 9], ["Rice", 4]]
         my_items.sort_custom(sort_ascending)
         print(my_items) # Prints [["Rice", 4], ["Tomato", 5], ["Apple", 9]]
-    
+
         # Sort descending, using a lambda function.
         my_items.sort_custom(func(a, b): return a[1] > b[1])
         print(my_items) # Prints [["Apple", 9], ["Tomato", 5], ["Rice", 4]]
 
-It may also be necessary to use this method to sort strings by natural order, with :ref:`String.naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`, as in the following example:
+It may also be necessary to use this method to sort strings by natural order, with :ref:`String.naturalnocasecmp_to()<class_String_method_naturalnocasecmp_to>`, as in the following example:
 
 ::
 
@@ -1448,13 +1466,13 @@ Appends the ``right`` array to the left operand, creating a new **Array**. This 
  .. code-tab:: csharp
 
     // Note that concatenation is not possible with C#'s native Array type.
-    var array1 = new Godot.Collections.Array{"One", 2};
-    var array2 = new Godot.Collections.Array{3, "Four"};
+    Godot.Collections.Array array1 = ["One", 2];
+    Godot.Collections.Array array2 = [3, "Four"];
     GD.Print(array1 + array2); // Prints ["One", 2, 3, "Four"]
 
 
 
-\ **Note:** For existing arrays, :ref:`append_array<class_Array_method_append_array>` is much more efficient than concatenation and assignment with the ``+=`` operator.
+\ **Note:** For existing arrays, :ref:`append_array()<class_Array_method_append_array>` is much more efficient than concatenation and assignment with the ``+=`` operator.
 
 .. rst-class:: classref-item-separator
 
@@ -1537,6 +1555,7 @@ If all searched elements are equal, returns ``true`` if this array's size is gre
 Returns the :ref:`Variant<class_Variant>` element at the specified ``index``. Arrays start at index 0. If ``index`` is greater or equal to ``0``, the element is fetched starting from the beginning of the array. If ``index`` is a negative value, the element is fetched starting from the end. Accessing an array out-of-bounds will cause a run-time error, pausing the project execution if run from the editor.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -32,9 +32,21 @@ This class implements a writer that allows storing the multiple blobs in a ZIP a
         writer.start_file("hello.txt")
         writer.write_file("Hello World".to_utf8_buffer())
         writer.close_file()
-    
+
         writer.close()
         return OK
+
+.. rst-class:: classref-reftable-group
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-----------------------+----------------------------------------------------------------------+--------+
+   | :ref:`int<class_int>` | :ref:`compression_level<class_ZIPPacker_property_compression_level>` | ``-1`` |
+   +-----------------------+----------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-reftable-group
 
@@ -95,6 +107,70 @@ Append a new zip archive to the end of the already existing file at the given pa
 
 Add new files to the existing zip archive at the given path.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_ZIPPacker_CompressionLevel:
+
+.. rst-class:: classref-enumeration
+
+enum **CompressionLevel**: :ref:`🔗<enum_ZIPPacker_CompressionLevel>`
+
+.. _class_ZIPPacker_constant_COMPRESSION_DEFAULT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_DEFAULT** = ``-1``
+
+Start a file with the default Deflate compression level (``6``). This is a good compromise between speed and file size.
+
+.. _class_ZIPPacker_constant_COMPRESSION_NONE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_NONE** = ``0``
+
+Start a file with no compression. This is also known as the "Store" compression mode and is the fastest method of packing files inside a ZIP archive. Consider using this mode for files that are already compressed (such as JPEG, PNG, MP3, or Ogg Vorbis files).
+
+.. _class_ZIPPacker_constant_COMPRESSION_FAST:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_FAST** = ``1``
+
+Start a file with the fastest Deflate compression level (``1``). This is fast to compress, but results in larger file sizes than :ref:`COMPRESSION_DEFAULT<class_ZIPPacker_constant_COMPRESSION_DEFAULT>`. Decompression speed is generally unaffected by the chosen compression level.
+
+.. _class_ZIPPacker_constant_COMPRESSION_BEST:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_BEST** = ``9``
+
+Start a file with the best Deflate compression level (``9``). This is slow to compress, but results in smaller file sizes than :ref:`COMPRESSION_DEFAULT<class_ZIPPacker_constant_COMPRESSION_DEFAULT>`. Decompression speed is generally unaffected by the chosen compression level.
+
+.. rst-class:: classref-section-separator
+
+----
+
+.. rst-class:: classref-descriptions-group
+
+Property Descriptions
+---------------------
+
+.. _class_ZIPPacker_property_compression_level:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **compression_level** = ``-1`` :ref:`🔗<class_ZIPPacker_property_compression_level>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_compression_level**\ (\ value\: :ref:`int<class_int>`\ )
+- :ref:`int<class_int>` **get_compression_level**\ (\ )
+
+The compression level used when :ref:`start_file()<class_ZIPPacker_method_start_file>` is called. Use :ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` as a reference.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -152,7 +228,7 @@ This must be called before everything else.
 
 Starts writing to a file within the archive. Only one file can be written at the same time.
 
-Must be called after :ref:`open<class_ZIPPacker_method_open>`.
+Must be called after :ref:`open()<class_ZIPPacker_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -166,9 +242,10 @@ Must be called after :ref:`open<class_ZIPPacker_method_open>`.
 
 Write the given ``data`` to the file.
 
-Needs to be called after :ref:`start_file<class_ZIPPacker_method_start_file>`.
+Needs to be called after :ref:`start_file()<class_ZIPPacker_method_start_file>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

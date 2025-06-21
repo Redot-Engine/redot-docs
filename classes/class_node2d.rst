@@ -396,7 +396,7 @@ Rotates the node so that its local +X axis points towards the ``point``, which i
 
 |void| **move_local_x**\ (\ delta\: :ref:`float<class_float>`, scaled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node2D_method_move_local_x>`
 
-Applies a local translation on the node's X axis based on the :ref:`Node._process<class_Node_private_method__process>`'s ``delta``. If ``scaled`` is ``false``, normalizes the movement.
+Applies a local translation on the node's X axis based on the :ref:`Node._process()<class_Node_private_method__process>`'s ``delta``. If ``scaled`` is ``false``, normalizes the movement.
 
 .. rst-class:: classref-item-separator
 
@@ -408,7 +408,7 @@ Applies a local translation on the node's X axis based on the :ref:`Node._proces
 
 |void| **move_local_y**\ (\ delta\: :ref:`float<class_float>`, scaled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node2D_method_move_local_y>`
 
-Applies a local translation on the node's Y axis based on the :ref:`Node._process<class_Node_private_method__process>`'s ``delta``. If ``scaled`` is ``false``, normalizes the movement.
+Applies a local translation on the node's Y axis based on the :ref:`Node._process()<class_Node_private_method__process>`'s ``delta``. If ``scaled`` is ``false``, normalizes the movement.
 
 .. rst-class:: classref-item-separator
 
@@ -459,6 +459,7 @@ Transforms the provided global position into a position in local coordinate spac
 Translates the node by the given ``offset`` in local coordinates.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

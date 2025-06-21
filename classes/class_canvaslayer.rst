@@ -27,7 +27,7 @@ Description
 
 \ **Note:** Embedded :ref:`Window<class_Window>`\ s are placed on layer ``1024``. :ref:`CanvasItem<class_CanvasItem>`\ s on layers ``1025`` and higher appear in front of embedded windows.
 
-\ **Note:** Each **CanvasLayer** is drawn on one specific :ref:`Viewport<class_Viewport>` and cannot be shared between multiple :ref:`Viewport<class_Viewport>`\ s, see :ref:`custom_viewport<class_CanvasLayer_property_custom_viewport>`. When using multiple :ref:`Viewport<class_Viewport>`\ s, for example in a split-screen game, you need create an individual **CanvasLayer** for each :ref:`Viewport<class_Viewport>` you want it to be drawn on.
+\ **Note:** Each **CanvasLayer** is drawn on one specific :ref:`Viewport<class_Viewport>` and cannot be shared between multiple :ref:`Viewport<class_Viewport>`\ s, see :ref:`custom_viewport<class_CanvasLayer_property_custom_viewport>`. When using multiple :ref:`Viewport<class_Viewport>`\ s, for example in a split-screen game, you need to create an individual **CanvasLayer** for each :ref:`Viewport<class_Viewport>` you want it to be drawn on.
 
 .. rst-class:: classref-introduction-group
 
@@ -140,7 +140,7 @@ The custom :ref:`Viewport<class_Viewport>` node assigned to the **CanvasLayer**.
 - |void| **set_follow_viewport**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_following_viewport**\ (\ )
 
-If enabled, the **CanvasLayer** stays in a fixed position on the screen. If disabled, the **CanvasLayer** maintains its position in world space.
+If enabled, the **CanvasLayer** maintains its position in world space. If disabled, the **CanvasLayer** stays in a fixed position on the screen.
 
 Together with :ref:`follow_viewport_scale<class_CanvasLayer_property_follow_viewport_scale>`, this can be used for a pseudo-3D effect.
 
@@ -179,6 +179,8 @@ Scales the layer when using :ref:`follow_viewport_enabled<class_CanvasLayer_prop
 Layer index for draw order. Lower values are drawn behind higher values.
 
 \ **Note:** If multiple CanvasLayers have the same layer index, :ref:`CanvasItem<class_CanvasItem>` children of one CanvasLayer are drawn behind the :ref:`CanvasItem<class_CanvasItem>` children of the other CanvasLayer. Which CanvasLayer is drawn in front is non-deterministic.
+
+\ **Note:** The layer index should be between :ref:`RenderingServer.CANVAS_LAYER_MIN<class_RenderingServer_constant_CANVAS_LAYER_MIN>` and :ref:`RenderingServer.CANVAS_LAYER_MAX<class_RenderingServer_constant_CANVAS_LAYER_MAX>` (inclusive). Any other value will wrap around.
 
 .. rst-class:: classref-item-separator
 
@@ -321,6 +323,7 @@ Hides any :ref:`CanvasItem<class_CanvasItem>` under this **CanvasLayer**. This i
 Shows any :ref:`CanvasItem<class_CanvasItem>` under this **CanvasLayer**. This is equivalent to setting :ref:`visible<class_CanvasLayer_property_visible>` to ``true``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
