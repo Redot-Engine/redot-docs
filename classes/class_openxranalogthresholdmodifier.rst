@@ -78,7 +78,7 @@ Haptic pulse to emit when the user releases the input.
 - |void| **set_off_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_off_threshold**\ (\ )
 
-When our input value falls below this, our output becomes false.
+When our input value falls below this, our output becomes ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -112,9 +112,10 @@ Haptic pulse to emit when the user presses the input.
 - |void| **set_on_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_on_threshold**\ (\ )
 
-When our input value is equal or larger than this value, our output becomes true. It stays true until it falls under the :ref:`off_threshold<class_OpenXRAnalogThresholdModifier_property_off_threshold>` value.
+When our input value is equal or larger than this value, our output becomes ``true``. It stays ``true`` until it falls under the :ref:`off_threshold<class_OpenXRAnalogThresholdModifier_property_off_threshold>` value.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
