@@ -23,7 +23,7 @@ A camera feed gives you access to a single physical camera attached to your devi
 
 \ **Note:** Many cameras will return YCbCr images which are split into two textures and need to be combined in a shader. Redot does this automatically for you if you set the environment to show the camera image in the background.
 
-\ **Note:** This class is currently only implemented on Linux, macOS, and iOS. On other platforms no **CameraFeed**\ s will be available. To get a **CameraFeed** on iOS, the camera plugin from `godot-ios-plugins <https://github.com/godotengine/godot-ios-plugins>`__ is required.
+\ **Note:** This class is currently only implemented on Linux, Android, macOS, and iOS. On other platforms no **CameraFeed**\ s will be available. To get a **CameraFeed** on iOS, the camera plugin from `godot-ios-plugins <https://github.com/godotengine/godot-ios-plugins>`__ is required.
 
 .. rst-class:: classref-reftable-group
 
@@ -361,13 +361,13 @@ Sets the feed as external feed provided by another library.
 
 :ref:`bool<class_bool>` **set_format**\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_CameraFeed_method_set_format>`
 
-Sets the feed format parameters for the given index in the :ref:`formats<class_CameraFeed_property_formats>` array. Returns ``true`` on success. By default YUYV encoded stream is transformed to FEED_RGB. YUYV encoded stream output format can be changed with ``parameters``.output value:
+Sets the feed format parameters for the given ``index`` in the :ref:`formats<class_CameraFeed_property_formats>` array. Returns ``true`` on success. By default, the YUYV encoded stream is transformed to :ref:`FEED_RGB<class_CameraFeed_constant_FEED_RGB>`. The YUYV encoded stream output format can be changed by setting ``parameters``'s ``output`` entry to one of the following:
 
-\ ``separate`` will result in FEED_YCBCR_SEP
+- ``"separate"`` will result in :ref:`FEED_YCBCR_SEP<class_CameraFeed_constant_FEED_YCBCR_SEP>`;
 
-\ ``grayscale`` will result in desaturated FEED_RGB
+- ``"grayscale"`` will result in desaturated :ref:`FEED_RGB<class_CameraFeed_constant_FEED_RGB>`;
 
-\ ``copy`` will result in FEED_YCBCR
+- ``"copy"`` will result in :ref:`FEED_YCBCR<class_CameraFeed_constant_FEED_YCBCR>`.
 
 .. rst-class:: classref-item-separator
 
@@ -418,6 +418,7 @@ Sets RGB image for this feed.
 Sets YCbCr image for this feed.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

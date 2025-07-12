@@ -546,6 +546,8 @@ Returns the horizontal field of view of the projection (in degrees).
 
 Returns the vertical field of view of the projection (in degrees) associated with the given horizontal field of view (in degrees) and aspect ratio.
 
+\ **Note:** Unlike most methods of **Projection**, ``aspect`` is expected to be 1 divided by the X:Y aspect ratio.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -568,7 +570,7 @@ Returns the factor by which the visible level of detail is scaled by this **Proj
 
 :ref:`int<class_int>` **get_pixels_per_meter**\ (\ for_pixel_width\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Projection_method_get_pixels_per_meter>`
 
-Returns the number of pixels with the given pixel width displayed per meter, after this **Projection** is applied.
+Returns ``for_pixel_width`` divided by the viewport's width measured in meters on the near plane, after this **Projection** is applied.
 
 .. rst-class:: classref-item-separator
 
@@ -742,6 +744,7 @@ Returns the column of the **Projection** with the given index.
 Indices are in the following order: x, y, z, w.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

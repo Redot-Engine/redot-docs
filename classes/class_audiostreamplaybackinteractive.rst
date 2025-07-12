@@ -52,7 +52,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_current_clip_index**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlaybackInteractive_method_get_current_clip_index>`
 
-Return the index of the currently playing clip. You can use this to get the name of the currently playing clip with :ref:`AudioStreamInteractive.get_clip_name<class_AudioStreamInteractive_method_get_clip_name>`.
+Return the index of the currently playing clip. You can use this to get the name of the currently playing clip with :ref:`AudioStreamInteractive.get_clip_name()<class_AudioStreamInteractive_method_get_clip_name>`.
 
 \ **Example:** Get the currently playing clip name from inside an :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` node.
 
@@ -90,6 +90,7 @@ Switch to a clip (by index).
 Switch to a clip (by name).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

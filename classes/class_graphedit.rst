@@ -27,7 +27,7 @@ Description
 
 \ **Performance:** It is greatly advised to enable low-processor usage mode (see :ref:`OS.low_processor_usage_mode<class_OS_property_low_processor_usage_mode>`) when using GraphEdits.
 
-\ **Note:** Keep in mind that :ref:`Node.get_children<class_Node_method_get_children>` will also return the connection layer node named ``_connection_layer`` due to technical limitations. This behavior may change in future releases.
+\ **Note:** Keep in mind that :ref:`Node.get_children()<class_Node_method_get_children>` will also return the connection layer node named ``_connection_layer`` due to technical limitations. This behavior may change in future releases.
 
 .. rst-class:: classref-reftable-group
 
@@ -82,11 +82,13 @@ Properties
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`snapping_enabled<class_GraphEdit_property_snapping_enabled>`                         | ``true``                                                                  |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`type_names<class_GraphEdit_property_type_names>`                                     | ``{}``                                                                    |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                        | :ref:`zoom<class_GraphEdit_property_zoom>`                                                 | ``1.0``                                                                   |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`zoom_max<class_GraphEdit_property_zoom_max>`                                         | ``2.0736``                                                                |
+   | :ref:`float<class_float>`                                        | :ref:`zoom_max<class_GraphEdit_property_zoom_max>`                                         | ``2.0736003``                                                             |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`zoom_min<class_GraphEdit_property_zoom_min>`                                         | ``0.232568``                                                              |
+   | :ref:`float<class_float>`                                        | :ref:`zoom_min<class_GraphEdit_property_zoom_min>`                                         | ``0.23256795``                                                            |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                        | :ref:`zoom_step<class_GraphEdit_property_zoom_step>`                                       | ``1.2``                                                                   |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
@@ -135,6 +137,8 @@ Methods
    | :ref:`int<class_int>`                                            | :ref:`get_connection_count<class_GraphEdit_method_get_connection_count>`\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`\ )                                                                                                                           |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedVector2Array<class_PackedVector2Array>`              | :ref:`get_connection_line<class_GraphEdit_method_get_connection_line>`\ (\ from_node\: :ref:`Vector2<class_Vector2>`, to_node\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                     |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_connection_list_from_node<class_GraphEdit_method_get_connection_list_from_node>`\ (\ node\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                         |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_connections_intersecting_with_rect<class_GraphEdit_method_get_connections_intersecting_with_rect>`\ (\ rect\: :ref:`Rect2<class_Rect2>`\ ) |const|                                                                                                                                 |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -205,6 +209,8 @@ Theme Properties
    | :ref:`StyleBox<class_StyleBox>`   | :ref:`menu_panel<class_GraphEdit_theme_style_menu_panel>`                                                 |                               |
    +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
    | :ref:`StyleBox<class_StyleBox>`   | :ref:`panel<class_GraphEdit_theme_style_panel>`                                                           |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`panel_focus<class_GraphEdit_theme_style_panel_focus>`                                               |                               |
    +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -366,7 +372,7 @@ Emitted at the end of a :ref:`GraphElement<class_GraphElement>`'s movement.
 
 .. rst-class:: classref-signal
 
-**frame_rect_changed**\ (\ frame\: :ref:`GraphFrame<class_GraphFrame>`, new_rect\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphEdit_signal_frame_rect_changed>`
+**frame_rect_changed**\ (\ frame\: :ref:`GraphFrame<class_GraphFrame>`, new_rect\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_GraphEdit_signal_frame_rect_changed>`
 
 Emitted when the :ref:`GraphFrame<class_GraphFrame>` ``frame`` is resized to ``new_rect``.
 
@@ -864,6 +870,23 @@ If ``true``, enables snapping.
 
 ----
 
+.. _class_GraphEdit_property_type_names:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **type_names** = ``{}`` :ref:`🔗<class_GraphEdit_property_type_names>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_type_names**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
+- :ref:`Dictionary<class_Dictionary>` **get_type_names**\ (\ )
+
+:ref:`Dictionary<class_Dictionary>` of human readable port type names.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_GraphEdit_property_zoom:
 
 .. rst-class:: classref-property
@@ -885,7 +908,7 @@ The current zoom value.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **zoom_max** = ``2.0736`` :ref:`🔗<class_GraphEdit_property_zoom_max>`
+:ref:`float<class_float>` **zoom_max** = ``2.0736003`` :ref:`🔗<class_GraphEdit_property_zoom_max>`
 
 .. rst-class:: classref-property-setget
 
@@ -902,7 +925,7 @@ The upper zoom limit.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **zoom_min** = ``0.232568`` :ref:`🔗<class_GraphEdit_property_zoom_min>`
+:ref:`float<class_float>` **zoom_min** = ``0.23256795`` :ref:`🔗<class_GraphEdit_property_zoom_min>`
 
 .. rst-class:: classref-property-setget
 
@@ -957,7 +980,7 @@ Virtual method which can be overridden to customize how connections are drawn.
 
 Returns whether the ``mouse_position`` is in the input hot zone.
 
-By default, a hot zone is a :ref:`Rect2<class_Rect2>` positioned such that its center is at ``in_node``.\ :ref:`GraphNode.get_input_port_position<class_GraphNode_method_get_input_port_position>`\ (``in_port``) (For output's case, call :ref:`GraphNode.get_output_port_position<class_GraphNode_method_get_output_port_position>` instead). The hot zone's width is twice the Theme Property ``port_grab_distance_horizontal``, and its height is twice the ``port_grab_distance_vertical``.
+By default, a hot zone is a :ref:`Rect2<class_Rect2>` positioned such that its center is at ``in_node``.\ :ref:`GraphNode.get_input_port_position()<class_GraphNode_method_get_input_port_position>`\ (``in_port``) (For output's case, call :ref:`GraphNode.get_output_port_position()<class_GraphNode_method_get_output_port_position>` instead). The hot zone's width is twice the Theme Property ``port_grab_distance_horizontal``, and its height is twice the ``port_grab_distance_vertical``.
 
 Below is a sample code to help get started:
 
@@ -967,7 +990,7 @@ Below is a sample code to help get started:
         var port_size = Vector2(get_theme_constant("port_grab_distance_horizontal"), get_theme_constant("port_grab_distance_vertical"))
         var port_pos = in_node.get_position() + in_node.get_input_port_position(in_port) - port_size / 2
         var rect = Rect2(port_pos, port_size)
-    
+
         return rect.has_point(mouse_position)
 
 .. rst-class:: classref-item-separator
@@ -980,7 +1003,7 @@ Below is a sample code to help get started:
 
 :ref:`bool<class_bool>` **_is_in_output_hotzone**\ (\ in_node\: :ref:`Object<class_Object>`, in_port\: :ref:`int<class_int>`, mouse_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| :ref:`🔗<class_GraphEdit_private_method__is_in_output_hotzone>`
 
-Returns whether the ``mouse_position`` is in the output hot zone. For more information on hot zones, see :ref:`_is_in_input_hotzone<class_GraphEdit_private_method__is_in_input_hotzone>`.
+Returns whether the ``mouse_position`` is in the output hot zone. For more information on hot zones, see :ref:`_is_in_input_hotzone()<class_GraphEdit_private_method__is_in_input_hotzone>`.
 
 Below is a sample code to help get started:
 
@@ -990,7 +1013,7 @@ Below is a sample code to help get started:
         var port_size = Vector2(get_theme_constant("port_grab_distance_horizontal"), get_theme_constant("port_grab_distance_vertical"))
         var port_pos = in_node.get_position() + in_node.get_output_port_position(in_port) - port_size / 2
         var rect = Rect2(port_pos, port_size)
-    
+
         return rect.has_point(mouse_position)
 
 .. rst-class:: classref-item-separator
@@ -1036,9 +1059,9 @@ In this example a connection to same node is suppressed:
 
 |void| **add_valid_connection_type**\ (\ from_type\: :ref:`int<class_int>`, to_type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_add_valid_connection_type>`
 
-Allows the connection between two different port types. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot<class_GraphNode_method_set_slot>` method.
+Allows the connection between two different port types. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>` method.
 
-See also :ref:`is_valid_connection_type<class_GraphEdit_method_is_valid_connection_type>` and :ref:`remove_valid_connection_type<class_GraphEdit_method_remove_valid_connection_type>`.
+See also :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connection_type>` and :ref:`remove_valid_connection_type()<class_GraphEdit_method_remove_valid_connection_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1050,7 +1073,7 @@ See also :ref:`is_valid_connection_type<class_GraphEdit_method_is_valid_connecti
 
 |void| **add_valid_left_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_add_valid_left_disconnect_type>`
 
-Allows to disconnect nodes when dragging from the left port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. See also :ref:`remove_valid_left_disconnect_type<class_GraphEdit_method_remove_valid_left_disconnect_type>`.
+Allows to disconnect nodes when dragging from the left port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. See also :ref:`remove_valid_left_disconnect_type()<class_GraphEdit_method_remove_valid_left_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1062,7 +1085,7 @@ Allows to disconnect nodes when dragging from the left port of the :ref:`GraphNo
 
 |void| **add_valid_right_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_add_valid_right_disconnect_type>`
 
-Allows to disconnect nodes when dragging from the right port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. See also :ref:`remove_valid_right_disconnect_type<class_GraphEdit_method_remove_valid_right_disconnect_type>`.
+Allows to disconnect nodes when dragging from the right port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. See also :ref:`remove_valid_right_disconnect_type()<class_GraphEdit_method_remove_valid_right_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1229,6 +1252,30 @@ Returns the points which would make up a connection between ``from_node`` and ``
 
 ----
 
+.. _class_GraphEdit_method_get_connection_list_from_node:
+
+.. rst-class:: classref-method
+
+:ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_connection_list_from_node**\ (\ node\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_GraphEdit_method_get_connection_list_from_node>`
+
+Returns an :ref:`Array<class_Array>` containing a list of all connections for ``node``.
+
+A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form of:
+
+::
+
+    {
+        from_node: StringName,
+        from_port: int,
+        to_node: StringName,
+        to_port: int,
+        keep_alive: bool
+    }
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_GraphEdit_method_get_connections_intersecting_with_rect:
 
 .. rst-class:: classref-method
@@ -1297,9 +1344,9 @@ Returns ``true`` if the ``from_port`` of the ``from_node`` :ref:`GraphNode<class
 
 :ref:`bool<class_bool>` **is_valid_connection_type**\ (\ from_type\: :ref:`int<class_int>`, to_type\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphEdit_method_is_valid_connection_type>`
 
-Returns whether it's possible to make a connection between two different port types. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot<class_GraphNode_method_set_slot>` method.
+Returns whether it's possible to make a connection between two different port types. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>` method.
 
-See also :ref:`add_valid_connection_type<class_GraphEdit_method_add_valid_connection_type>` and :ref:`remove_valid_connection_type<class_GraphEdit_method_remove_valid_connection_type>`.
+See also :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>` and :ref:`remove_valid_connection_type()<class_GraphEdit_method_remove_valid_connection_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1311,9 +1358,9 @@ See also :ref:`add_valid_connection_type<class_GraphEdit_method_add_valid_connec
 
 |void| **remove_valid_connection_type**\ (\ from_type\: :ref:`int<class_int>`, to_type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_remove_valid_connection_type>`
 
-Disallows the connection between two different port types previously allowed by :ref:`add_valid_connection_type<class_GraphEdit_method_add_valid_connection_type>`. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot<class_GraphNode_method_set_slot>` method.
+Disallows the connection between two different port types previously allowed by :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>`. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>` method.
 
-See also :ref:`is_valid_connection_type<class_GraphEdit_method_is_valid_connection_type>`.
+See also :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connection_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1325,7 +1372,7 @@ See also :ref:`is_valid_connection_type<class_GraphEdit_method_is_valid_connecti
 
 |void| **remove_valid_left_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_remove_valid_left_disconnect_type>`
 
-Disallows to disconnect nodes when dragging from the left port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. Use this to disable disconnection previously allowed with :ref:`add_valid_left_disconnect_type<class_GraphEdit_method_add_valid_left_disconnect_type>`.
+Disallows to disconnect nodes when dragging from the left port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. Use this to disable disconnection previously allowed with :ref:`add_valid_left_disconnect_type()<class_GraphEdit_method_add_valid_left_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1337,7 +1384,7 @@ Disallows to disconnect nodes when dragging from the left port of the :ref:`Grap
 
 |void| **remove_valid_right_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_remove_valid_right_disconnect_type>`
 
-Disallows to disconnect nodes when dragging from the right port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. Use this to disable disconnection previously allowed with :ref:`add_valid_right_disconnect_type<class_GraphEdit_method_add_valid_right_disconnect_type>`.
+Disallows to disconnect nodes when dragging from the right port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. Use this to disable disconnection previously allowed with :ref:`add_valid_right_disconnect_type()<class_GraphEdit_method_add_valid_right_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1378,7 +1425,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **activity** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_GraphEdit_theme_color_activity>`
 
-Color the connection line is interpolated to based on the activity value of a connection (see :ref:`set_connection_activity<class_GraphEdit_method_set_connection_activity>`).
+Color the connection line is interpolated to based on the activity value of a connection (see :ref:`set_connection_activity()<class_GraphEdit_method_set_connection_activity>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1610,7 +1657,20 @@ The icon for the zoom reset button.
 
 The background drawn under the grid.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GraphEdit_theme_style_panel_focus:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`StyleBox<class_StyleBox>` **panel_focus** :ref:`🔗<class_GraphEdit_theme_style_panel_focus>`
+
+:ref:`StyleBox<class_StyleBox>` used when the **GraphEdit** is focused (when used with assistive apps).
+
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
