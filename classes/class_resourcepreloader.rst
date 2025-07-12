@@ -21,7 +21,7 @@ Description
 
 This node is used to preload sub-resources inside a scene, so when the scene is loaded, all the resources are ready to use and can be retrieved from the preloader. You can add the resources using the ResourcePreloader tab when the node is selected.
 
-GDScript has a simplified :ref:`@GDScript.preload<class_@GDScript_method_preload>` built-in method which can be used in most situations, leaving the use of **ResourcePreloader** for more advanced scenarios.
+GDScript has a simplified :ref:`@GDScript.preload()<class_@GDScript_method_preload>` built-in method which can be used in most situations, leaving the use of **ResourcePreloader** for more advanced scenarios.
 
 .. rst-class:: classref-reftable-group
 
@@ -123,6 +123,7 @@ Removes the resource associated to ``name`` from the preloader.
 Renames a resource inside the preloader from ``name`` to ``newname``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

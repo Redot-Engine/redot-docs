@@ -249,7 +249,7 @@ Returns an array of all loaded locales of the project.
 
 Returns the current locale of the project.
 
-See also :ref:`OS.get_locale<class_OS_method_get_locale>` and :ref:`OS.get_locale_language<class_OS_method_get_locale_language>` to query the locale of the user system.
+See also :ref:`OS.get_locale()<class_OS_method_get_locale>` and :ref:`OS.get_locale_language()<class_OS_method_get_locale_language>` to query the locale of the user system.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ Returns a readable script name for the ``script`` code.
 
 Returns the current locale of the editor.
 
-\ **Note:** When called from an exported project returns the same value as :ref:`get_locale<class_TranslationServer_method_get_locale>`.
+\ **Note:** When called from an exported project returns the same value as :ref:`get_locale()<class_TranslationServer_method_get_locale>`.
 
 .. rst-class:: classref-item-separator
 
@@ -434,6 +434,7 @@ The number ``n`` is the number or quantity of the plural object. It will be used
 \ **Note:** This method always uses the main translation domain.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

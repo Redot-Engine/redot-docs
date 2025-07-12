@@ -23,7 +23,19 @@ The **CameraServer** keeps track of different cameras accessible in Redot. These
 
 It is notably used to provide AR modules with a video feed from the camera.
 
-\ **Note:** This class is currently only implemented on Linux, macOS, and iOS. On other platforms no :ref:`CameraFeed<class_CameraFeed>`\ s will be available. To get a :ref:`CameraFeed<class_CameraFeed>` on iOS, the camera plugin from `godot-ios-plugins <https://github.com/godotengine/godot-ios-plugins>`__ is required.
+\ **Note:** This class is currently only implemented on Linux, Android, macOS, and iOS. On other platforms no :ref:`CameraFeed<class_CameraFeed>`\ s will be available. To get a :ref:`CameraFeed<class_CameraFeed>` on iOS, the camera plugin from `godot-ios-plugins <https://github.com/godotengine/godot-ios-plugins>`__ is required.
+
+.. rst-class:: classref-reftable-group
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-------------------------+-----------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>` | :ref:`monitoring_feeds<class_CameraServer_property_monitoring_feeds>` | ``false`` |
+   +-------------------------+-----------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
@@ -127,6 +139,30 @@ The CbCr component camera image.
 
 .. rst-class:: classref-descriptions-group
 
+Property Descriptions
+---------------------
+
+.. _class_CameraServer_property_monitoring_feeds:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **monitoring_feeds** = ``false`` :ref:`🔗<class_CameraServer_property_monitoring_feeds>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_monitoring_feeds**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_monitoring_feeds**\ (\ )
+
+If ``true``, the server is actively monitoring available camera feeds.
+
+This has a performance cost, so only set it to ``true`` when you're actively accessing the camera.
+
+.. rst-class:: classref-section-separator
+
+----
+
+.. rst-class:: classref-descriptions-group
+
 Method Descriptions
 -------------------
 
@@ -187,6 +223,7 @@ Returns the number of :ref:`CameraFeed<class_CameraFeed>`\ s registered.
 Removes the specified camera ``feed``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -41,6 +41,8 @@ Properties
    +-----------------------------------------------------+----------------------------------------------------------------------------------+--------------------------+
    | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`path<class_NavigationPathQueryResult2D_property_path>`                     | ``PackedVector2Array()`` |
    +-----------------------------------------------------+----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`float<class_float>`                           | :ref:`path_length<class_NavigationPathQueryResult2D_property_path_length>`       | ``0.0``                  |
+   +-----------------------------------------------------+----------------------------------------------------------------------------------+--------------------------+
    | :ref:`PackedInt64Array<class_PackedInt64Array>`     | :ref:`path_owner_ids<class_NavigationPathQueryResult2D_property_path_owner_ids>` | ``PackedInt64Array()``   |
    +-----------------------------------------------------+----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]  | :ref:`path_rids<class_NavigationPathQueryResult2D_property_path_rids>`           | ``[]``                   |
@@ -111,9 +113,26 @@ Property Descriptions
 - |void| **set_path**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_path**\ (\ )
 
-The resulting path array from the navigation query. All path array positions are in global coordinates. Without customized query parameters this is the same path as returned by :ref:`NavigationServer2D.map_get_path<class_NavigationServer2D_method_map_get_path>`.
+The resulting path array from the navigation query. All path array positions are in global coordinates. Without customized query parameters this is the same path as returned by :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>`.
 
 **Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationPathQueryResult2D_property_path_length:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **path_length** = ``0.0`` :ref:`🔗<class_NavigationPathQueryResult2D_property_path_length>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_path_length**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_path_length**\ (\ )
+
+Returns the length of the path.
 
 .. rst-class:: classref-item-separator
 
@@ -188,6 +207,7 @@ Method Descriptions
 Reset the result object to its initial state. This is useful to reuse the object across multiple queries.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

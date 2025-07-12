@@ -19,7 +19,7 @@ A control used for visual representation of a percentage.
 Description
 -----------
 
-A control used for visual representation of a percentage. Shows fill percentage from right to left.
+A control used for visual representation of a percentage. Shows the fill percentage in the center. Can also be used to show indeterminate progress. For more fill modes, use :ref:`TextureProgressBar<class_TextureProgressBar>` instead.
 
 .. rst-class:: classref-reftable-group
 
@@ -84,7 +84,7 @@ enum **FillMode**: :ref:`🔗<enum_ProgressBar_FillMode>`
 
 :ref:`FillMode<enum_ProgressBar_FillMode>` **FILL_BEGIN_TO_END** = ``0``
 
-The progress bar fills from begin to end horizontally, according to the language direction. If :ref:`Control.is_layout_rtl<class_Control_method_is_layout_rtl>` returns ``false``, it fills from left to right, and if it returns ``true``, it fills from right to left.
+The progress bar fills from begin to end horizontally, according to the language direction. If :ref:`Control.is_layout_rtl()<class_Control_method_is_layout_rtl>` returns ``false``, it fills from left to right, and if it returns ``true``, it fills from right to left.
 
 .. _class_ProgressBar_constant_FILL_END_TO_BEGIN:
 
@@ -92,7 +92,7 @@ The progress bar fills from begin to end horizontally, according to the language
 
 :ref:`FillMode<enum_ProgressBar_FillMode>` **FILL_END_TO_BEGIN** = ``1``
 
-The progress bar fills from end to begin horizontally, according to the language direction. If :ref:`Control.is_layout_rtl<class_Control_method_is_layout_rtl>` returns ``false``, it fills from right to left, and if it returns ``true``, it fills from left to right.
+The progress bar fills from end to begin horizontally, according to the language direction. If :ref:`Control.is_layout_rtl()<class_Control_method_is_layout_rtl>` returns ``false``, it fills from right to left, and if it returns ``true``, it fills from left to right.
 
 .. _class_ProgressBar_constant_FILL_TOP_TO_BOTTOM:
 
@@ -275,6 +275,7 @@ The style of the background.
 The style of the progress (i.e. the part that fills the bar).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
