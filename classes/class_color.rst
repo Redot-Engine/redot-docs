@@ -19,7 +19,9 @@ Description
 
 A color represented in RGBA format by a red (:ref:`r<class_Color_property_r>`), green (:ref:`g<class_Color_property_g>`), blue (:ref:`b<class_Color_property_b>`), and alpha (:ref:`a<class_Color_property_a>`) component. Each component is a 32-bit floating-point value, usually ranging from ``0.0`` to ``1.0``. Some properties (such as :ref:`CanvasItem.modulate<class_CanvasItem_property_modulate>`) may support values greater than ``1.0``, for overbright or HDR (High Dynamic Range) colors.
 
-Colors can be created in various ways: By the various **Color** constructors, by static methods such as :ref:`from_hsv<class_Color_method_from_hsv>`, and by using a name from the set of standardized colors based on `X11 color names <https://en.wikipedia.org/wiki/X11_color_names>`__ with the addition of :ref:`TRANSPARENT<class_Color_constant_TRANSPARENT>`. GDScript also provides :ref:`@GDScript.Color8<class_@GDScript_method_Color8>`, which uses integers from ``0`` to ``255`` and doesn't support overbright colors.
+Colors can be created in various ways: By the various **Color** constructors, by static methods such as :ref:`from_hsv()<class_Color_method_from_hsv>`, and by using a name from the set of standardized colors based on `X11 color names <https://en.wikipedia.org/wiki/X11_color_names>`__ with the addition of :ref:`TRANSPARENT<class_Color_constant_TRANSPARENT>`. GDScript also provides :ref:`@GDScript.Color8()<class_@GDScript_method_Color8>`, which uses integers from ``0`` to ``255`` and doesn't support overbright colors.
+
+Color data may be stored in many color spaces and encodings. The :ref:`srgb_to_linear()<class_Color_method_srgb_to_linear>` and :ref:`linear_to_srgb()<class_Color_method_linear_to_srgb>` methods can convert between nonlinear sRGB encoding and linear RGB encoding.
 
 \ **Note:** In a boolean context, a Color will evaluate to ``false`` if it is equal to ``Color(0, 0, 0, 1)`` (opaque black). Otherwise, a Color will always evaluate to ``true``.
 
@@ -121,6 +123,8 @@ Methods
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`   | :ref:`from_ok_hsl<class_Color_method_from_ok_hsl>`\ (\ h\: :ref:`float<class_float>`, s\: :ref:`float<class_float>`, l\: :ref:`float<class_float>`, alpha\: :ref:`float<class_float>` = 1.0\ ) |static| |
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`   | :ref:`from_rgba8<class_Color_method_from_rgba8>`\ (\ r8\: :ref:`int<class_int>`, g8\: :ref:`int<class_int>`, b8\: :ref:`int<class_int>`, a8\: :ref:`int<class_int>` = 255\ ) |static|                   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`   | :ref:`from_rgbe9995<class_Color_method_from_rgbe9995>`\ (\ rgbe\: :ref:`int<class_int>`\ ) |static|                                                                                                     |
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`   | :ref:`from_string<class_Color_method_from_string>`\ (\ str\: :ref:`String<class_String>`, default\: :ref:`Color<class_Color>`\ ) |static|                                                               |
@@ -211,7 +215,7 @@ Constants
 
 .. rst-class:: classref-constant
 
-**ALICE_BLUE** = ``Color(0.941176, 0.972549, 1, 1)`` :ref:`🔗<class_Color_constant_ALICE_BLUE>`
+**ALICE_BLUE** = ``Color(0.9411765, 0.972549, 1, 1)`` :ref:`🔗<class_Color_constant_ALICE_BLUE>`
 
 Alice blue color.
 
@@ -219,7 +223,7 @@ Alice blue color.
 
 .. rst-class:: classref-constant
 
-**ANTIQUE_WHITE** = ``Color(0.980392, 0.921569, 0.843137, 1)`` :ref:`🔗<class_Color_constant_ANTIQUE_WHITE>`
+**ANTIQUE_WHITE** = ``Color(0.98039216, 0.92156863, 0.84313726, 1)`` :ref:`🔗<class_Color_constant_ANTIQUE_WHITE>`
 
 Antique white color.
 
@@ -235,7 +239,7 @@ Aqua color.
 
 .. rst-class:: classref-constant
 
-**AQUAMARINE** = ``Color(0.498039, 1, 0.831373, 1)`` :ref:`🔗<class_Color_constant_AQUAMARINE>`
+**AQUAMARINE** = ``Color(0.49803922, 1, 0.83137256, 1)`` :ref:`🔗<class_Color_constant_AQUAMARINE>`
 
 Aquamarine color.
 
@@ -243,7 +247,7 @@ Aquamarine color.
 
 .. rst-class:: classref-constant
 
-**AZURE** = ``Color(0.941176, 1, 1, 1)`` :ref:`🔗<class_Color_constant_AZURE>`
+**AZURE** = ``Color(0.9411765, 1, 1, 1)`` :ref:`🔗<class_Color_constant_AZURE>`
 
 Azure color.
 
@@ -251,7 +255,7 @@ Azure color.
 
 .. rst-class:: classref-constant
 
-**BEIGE** = ``Color(0.960784, 0.960784, 0.862745, 1)`` :ref:`🔗<class_Color_constant_BEIGE>`
+**BEIGE** = ``Color(0.9607843, 0.9607843, 0.8627451, 1)`` :ref:`🔗<class_Color_constant_BEIGE>`
 
 Beige color.
 
@@ -259,7 +263,7 @@ Beige color.
 
 .. rst-class:: classref-constant
 
-**BISQUE** = ``Color(1, 0.894118, 0.768627, 1)`` :ref:`🔗<class_Color_constant_BISQUE>`
+**BISQUE** = ``Color(1, 0.89411765, 0.76862746, 1)`` :ref:`🔗<class_Color_constant_BISQUE>`
 
 Bisque color.
 
@@ -275,7 +279,7 @@ Black color. In GDScript, this is the default value of any color.
 
 .. rst-class:: classref-constant
 
-**BLANCHED_ALMOND** = ``Color(1, 0.921569, 0.803922, 1)`` :ref:`🔗<class_Color_constant_BLANCHED_ALMOND>`
+**BLANCHED_ALMOND** = ``Color(1, 0.92156863, 0.8039216, 1)`` :ref:`🔗<class_Color_constant_BLANCHED_ALMOND>`
 
 Blanched almond color.
 
@@ -291,7 +295,7 @@ Blue color.
 
 .. rst-class:: classref-constant
 
-**BLUE_VIOLET** = ``Color(0.541176, 0.168627, 0.886275, 1)`` :ref:`🔗<class_Color_constant_BLUE_VIOLET>`
+**BLUE_VIOLET** = ``Color(0.5411765, 0.16862746, 0.8862745, 1)`` :ref:`🔗<class_Color_constant_BLUE_VIOLET>`
 
 Blue violet color.
 
@@ -299,7 +303,7 @@ Blue violet color.
 
 .. rst-class:: classref-constant
 
-**BROWN** = ``Color(0.647059, 0.164706, 0.164706, 1)`` :ref:`🔗<class_Color_constant_BROWN>`
+**BROWN** = ``Color(0.64705884, 0.16470589, 0.16470589, 1)`` :ref:`🔗<class_Color_constant_BROWN>`
 
 Brown color.
 
@@ -307,7 +311,7 @@ Brown color.
 
 .. rst-class:: classref-constant
 
-**BURLYWOOD** = ``Color(0.870588, 0.721569, 0.529412, 1)`` :ref:`🔗<class_Color_constant_BURLYWOOD>`
+**BURLYWOOD** = ``Color(0.87058824, 0.72156864, 0.5294118, 1)`` :ref:`🔗<class_Color_constant_BURLYWOOD>`
 
 Burlywood color.
 
@@ -315,7 +319,7 @@ Burlywood color.
 
 .. rst-class:: classref-constant
 
-**CADET_BLUE** = ``Color(0.372549, 0.619608, 0.627451, 1)`` :ref:`🔗<class_Color_constant_CADET_BLUE>`
+**CADET_BLUE** = ``Color(0.37254903, 0.61960787, 0.627451, 1)`` :ref:`🔗<class_Color_constant_CADET_BLUE>`
 
 Cadet blue color.
 
@@ -323,7 +327,7 @@ Cadet blue color.
 
 .. rst-class:: classref-constant
 
-**CHARTREUSE** = ``Color(0.498039, 1, 0, 1)`` :ref:`🔗<class_Color_constant_CHARTREUSE>`
+**CHARTREUSE** = ``Color(0.49803922, 1, 0, 1)`` :ref:`🔗<class_Color_constant_CHARTREUSE>`
 
 Chartreuse color.
 
@@ -331,7 +335,7 @@ Chartreuse color.
 
 .. rst-class:: classref-constant
 
-**CHOCOLATE** = ``Color(0.823529, 0.411765, 0.117647, 1)`` :ref:`🔗<class_Color_constant_CHOCOLATE>`
+**CHOCOLATE** = ``Color(0.8235294, 0.4117647, 0.11764706, 1)`` :ref:`🔗<class_Color_constant_CHOCOLATE>`
 
 Chocolate color.
 
@@ -339,7 +343,7 @@ Chocolate color.
 
 .. rst-class:: classref-constant
 
-**CORAL** = ``Color(1, 0.498039, 0.313726, 1)`` :ref:`🔗<class_Color_constant_CORAL>`
+**CORAL** = ``Color(1, 0.49803922, 0.3137255, 1)`` :ref:`🔗<class_Color_constant_CORAL>`
 
 Coral color.
 
@@ -347,7 +351,7 @@ Coral color.
 
 .. rst-class:: classref-constant
 
-**CORNFLOWER_BLUE** = ``Color(0.392157, 0.584314, 0.929412, 1)`` :ref:`🔗<class_Color_constant_CORNFLOWER_BLUE>`
+**CORNFLOWER_BLUE** = ``Color(0.39215687, 0.58431375, 0.92941177, 1)`` :ref:`🔗<class_Color_constant_CORNFLOWER_BLUE>`
 
 Cornflower blue color.
 
@@ -355,7 +359,7 @@ Cornflower blue color.
 
 .. rst-class:: classref-constant
 
-**CORNSILK** = ``Color(1, 0.972549, 0.862745, 1)`` :ref:`🔗<class_Color_constant_CORNSILK>`
+**CORNSILK** = ``Color(1, 0.972549, 0.8627451, 1)`` :ref:`🔗<class_Color_constant_CORNSILK>`
 
 Cornsilk color.
 
@@ -363,7 +367,7 @@ Cornsilk color.
 
 .. rst-class:: classref-constant
 
-**CRIMSON** = ``Color(0.862745, 0.0784314, 0.235294, 1)`` :ref:`🔗<class_Color_constant_CRIMSON>`
+**CRIMSON** = ``Color(0.8627451, 0.078431375, 0.23529412, 1)`` :ref:`🔗<class_Color_constant_CRIMSON>`
 
 Crimson color.
 
@@ -379,7 +383,7 @@ Cyan color.
 
 .. rst-class:: classref-constant
 
-**DARK_BLUE** = ``Color(0, 0, 0.545098, 1)`` :ref:`🔗<class_Color_constant_DARK_BLUE>`
+**DARK_BLUE** = ``Color(0, 0, 0.54509807, 1)`` :ref:`🔗<class_Color_constant_DARK_BLUE>`
 
 Dark blue color.
 
@@ -387,7 +391,7 @@ Dark blue color.
 
 .. rst-class:: classref-constant
 
-**DARK_CYAN** = ``Color(0, 0.545098, 0.545098, 1)`` :ref:`🔗<class_Color_constant_DARK_CYAN>`
+**DARK_CYAN** = ``Color(0, 0.54509807, 0.54509807, 1)`` :ref:`🔗<class_Color_constant_DARK_CYAN>`
 
 Dark cyan color.
 
@@ -395,7 +399,7 @@ Dark cyan color.
 
 .. rst-class:: classref-constant
 
-**DARK_GOLDENROD** = ``Color(0.721569, 0.52549, 0.0431373, 1)`` :ref:`🔗<class_Color_constant_DARK_GOLDENROD>`
+**DARK_GOLDENROD** = ``Color(0.72156864, 0.5254902, 0.043137256, 1)`` :ref:`🔗<class_Color_constant_DARK_GOLDENROD>`
 
 Dark goldenrod color.
 
@@ -403,7 +407,7 @@ Dark goldenrod color.
 
 .. rst-class:: classref-constant
 
-**DARK_GRAY** = ``Color(0.662745, 0.662745, 0.662745, 1)`` :ref:`🔗<class_Color_constant_DARK_GRAY>`
+**DARK_GRAY** = ``Color(0.6627451, 0.6627451, 0.6627451, 1)`` :ref:`🔗<class_Color_constant_DARK_GRAY>`
 
 Dark gray color.
 
@@ -411,7 +415,7 @@ Dark gray color.
 
 .. rst-class:: classref-constant
 
-**DARK_GREEN** = ``Color(0, 0.392157, 0, 1)`` :ref:`🔗<class_Color_constant_DARK_GREEN>`
+**DARK_GREEN** = ``Color(0, 0.39215687, 0, 1)`` :ref:`🔗<class_Color_constant_DARK_GREEN>`
 
 Dark green color.
 
@@ -419,7 +423,7 @@ Dark green color.
 
 .. rst-class:: classref-constant
 
-**DARK_KHAKI** = ``Color(0.741176, 0.717647, 0.419608, 1)`` :ref:`🔗<class_Color_constant_DARK_KHAKI>`
+**DARK_KHAKI** = ``Color(0.7411765, 0.7176471, 0.41960785, 1)`` :ref:`🔗<class_Color_constant_DARK_KHAKI>`
 
 Dark khaki color.
 
@@ -427,7 +431,7 @@ Dark khaki color.
 
 .. rst-class:: classref-constant
 
-**DARK_MAGENTA** = ``Color(0.545098, 0, 0.545098, 1)`` :ref:`🔗<class_Color_constant_DARK_MAGENTA>`
+**DARK_MAGENTA** = ``Color(0.54509807, 0, 0.54509807, 1)`` :ref:`🔗<class_Color_constant_DARK_MAGENTA>`
 
 Dark magenta color.
 
@@ -435,7 +439,7 @@ Dark magenta color.
 
 .. rst-class:: classref-constant
 
-**DARK_OLIVE_GREEN** = ``Color(0.333333, 0.419608, 0.184314, 1)`` :ref:`🔗<class_Color_constant_DARK_OLIVE_GREEN>`
+**DARK_OLIVE_GREEN** = ``Color(0.33333334, 0.41960785, 0.18431373, 1)`` :ref:`🔗<class_Color_constant_DARK_OLIVE_GREEN>`
 
 Dark olive green color.
 
@@ -443,7 +447,7 @@ Dark olive green color.
 
 .. rst-class:: classref-constant
 
-**DARK_ORANGE** = ``Color(1, 0.54902, 0, 1)`` :ref:`🔗<class_Color_constant_DARK_ORANGE>`
+**DARK_ORANGE** = ``Color(1, 0.54901963, 0, 1)`` :ref:`🔗<class_Color_constant_DARK_ORANGE>`
 
 Dark orange color.
 
@@ -451,7 +455,7 @@ Dark orange color.
 
 .. rst-class:: classref-constant
 
-**DARK_ORCHID** = ``Color(0.6, 0.196078, 0.8, 1)`` :ref:`🔗<class_Color_constant_DARK_ORCHID>`
+**DARK_ORCHID** = ``Color(0.6, 0.19607843, 0.8, 1)`` :ref:`🔗<class_Color_constant_DARK_ORCHID>`
 
 Dark orchid color.
 
@@ -459,7 +463,7 @@ Dark orchid color.
 
 .. rst-class:: classref-constant
 
-**DARK_RED** = ``Color(0.545098, 0, 0, 1)`` :ref:`🔗<class_Color_constant_DARK_RED>`
+**DARK_RED** = ``Color(0.54509807, 0, 0, 1)`` :ref:`🔗<class_Color_constant_DARK_RED>`
 
 Dark red color.
 
@@ -467,7 +471,7 @@ Dark red color.
 
 .. rst-class:: classref-constant
 
-**DARK_SALMON** = ``Color(0.913725, 0.588235, 0.478431, 1)`` :ref:`🔗<class_Color_constant_DARK_SALMON>`
+**DARK_SALMON** = ``Color(0.9137255, 0.5882353, 0.47843137, 1)`` :ref:`🔗<class_Color_constant_DARK_SALMON>`
 
 Dark salmon color.
 
@@ -475,7 +479,7 @@ Dark salmon color.
 
 .. rst-class:: classref-constant
 
-**DARK_SEA_GREEN** = ``Color(0.560784, 0.737255, 0.560784, 1)`` :ref:`🔗<class_Color_constant_DARK_SEA_GREEN>`
+**DARK_SEA_GREEN** = ``Color(0.56078434, 0.7372549, 0.56078434, 1)`` :ref:`🔗<class_Color_constant_DARK_SEA_GREEN>`
 
 Dark sea green color.
 
@@ -483,7 +487,7 @@ Dark sea green color.
 
 .. rst-class:: classref-constant
 
-**DARK_SLATE_BLUE** = ``Color(0.282353, 0.239216, 0.545098, 1)`` :ref:`🔗<class_Color_constant_DARK_SLATE_BLUE>`
+**DARK_SLATE_BLUE** = ``Color(0.28235295, 0.23921569, 0.54509807, 1)`` :ref:`🔗<class_Color_constant_DARK_SLATE_BLUE>`
 
 Dark slate blue color.
 
@@ -491,7 +495,7 @@ Dark slate blue color.
 
 .. rst-class:: classref-constant
 
-**DARK_SLATE_GRAY** = ``Color(0.184314, 0.309804, 0.309804, 1)`` :ref:`🔗<class_Color_constant_DARK_SLATE_GRAY>`
+**DARK_SLATE_GRAY** = ``Color(0.18431373, 0.30980393, 0.30980393, 1)`` :ref:`🔗<class_Color_constant_DARK_SLATE_GRAY>`
 
 Dark slate gray color.
 
@@ -499,7 +503,7 @@ Dark slate gray color.
 
 .. rst-class:: classref-constant
 
-**DARK_TURQUOISE** = ``Color(0, 0.807843, 0.819608, 1)`` :ref:`🔗<class_Color_constant_DARK_TURQUOISE>`
+**DARK_TURQUOISE** = ``Color(0, 0.80784315, 0.81960785, 1)`` :ref:`🔗<class_Color_constant_DARK_TURQUOISE>`
 
 Dark turquoise color.
 
@@ -507,7 +511,7 @@ Dark turquoise color.
 
 .. rst-class:: classref-constant
 
-**DARK_VIOLET** = ``Color(0.580392, 0, 0.827451, 1)`` :ref:`🔗<class_Color_constant_DARK_VIOLET>`
+**DARK_VIOLET** = ``Color(0.5803922, 0, 0.827451, 1)`` :ref:`🔗<class_Color_constant_DARK_VIOLET>`
 
 Dark violet color.
 
@@ -515,7 +519,7 @@ Dark violet color.
 
 .. rst-class:: classref-constant
 
-**DEEP_PINK** = ``Color(1, 0.0784314, 0.576471, 1)`` :ref:`🔗<class_Color_constant_DEEP_PINK>`
+**DEEP_PINK** = ``Color(1, 0.078431375, 0.5764706, 1)`` :ref:`🔗<class_Color_constant_DEEP_PINK>`
 
 Deep pink color.
 
@@ -523,7 +527,7 @@ Deep pink color.
 
 .. rst-class:: classref-constant
 
-**DEEP_SKY_BLUE** = ``Color(0, 0.74902, 1, 1)`` :ref:`🔗<class_Color_constant_DEEP_SKY_BLUE>`
+**DEEP_SKY_BLUE** = ``Color(0, 0.7490196, 1, 1)`` :ref:`🔗<class_Color_constant_DEEP_SKY_BLUE>`
 
 Deep sky blue color.
 
@@ -531,7 +535,7 @@ Deep sky blue color.
 
 .. rst-class:: classref-constant
 
-**DIM_GRAY** = ``Color(0.411765, 0.411765, 0.411765, 1)`` :ref:`🔗<class_Color_constant_DIM_GRAY>`
+**DIM_GRAY** = ``Color(0.4117647, 0.4117647, 0.4117647, 1)`` :ref:`🔗<class_Color_constant_DIM_GRAY>`
 
 Dim gray color.
 
@@ -539,7 +543,7 @@ Dim gray color.
 
 .. rst-class:: classref-constant
 
-**DODGER_BLUE** = ``Color(0.117647, 0.564706, 1, 1)`` :ref:`🔗<class_Color_constant_DODGER_BLUE>`
+**DODGER_BLUE** = ``Color(0.11764706, 0.5647059, 1, 1)`` :ref:`🔗<class_Color_constant_DODGER_BLUE>`
 
 Dodger blue color.
 
@@ -547,7 +551,7 @@ Dodger blue color.
 
 .. rst-class:: classref-constant
 
-**FIREBRICK** = ``Color(0.698039, 0.133333, 0.133333, 1)`` :ref:`🔗<class_Color_constant_FIREBRICK>`
+**FIREBRICK** = ``Color(0.69803923, 0.13333334, 0.13333334, 1)`` :ref:`🔗<class_Color_constant_FIREBRICK>`
 
 Firebrick color.
 
@@ -555,7 +559,7 @@ Firebrick color.
 
 .. rst-class:: classref-constant
 
-**FLORAL_WHITE** = ``Color(1, 0.980392, 0.941176, 1)`` :ref:`🔗<class_Color_constant_FLORAL_WHITE>`
+**FLORAL_WHITE** = ``Color(1, 0.98039216, 0.9411765, 1)`` :ref:`🔗<class_Color_constant_FLORAL_WHITE>`
 
 Floral white color.
 
@@ -563,7 +567,7 @@ Floral white color.
 
 .. rst-class:: classref-constant
 
-**FOREST_GREEN** = ``Color(0.133333, 0.545098, 0.133333, 1)`` :ref:`🔗<class_Color_constant_FOREST_GREEN>`
+**FOREST_GREEN** = ``Color(0.13333334, 0.54509807, 0.13333334, 1)`` :ref:`🔗<class_Color_constant_FOREST_GREEN>`
 
 Forest green color.
 
@@ -579,7 +583,7 @@ Fuchsia color.
 
 .. rst-class:: classref-constant
 
-**GAINSBORO** = ``Color(0.862745, 0.862745, 0.862745, 1)`` :ref:`🔗<class_Color_constant_GAINSBORO>`
+**GAINSBORO** = ``Color(0.8627451, 0.8627451, 0.8627451, 1)`` :ref:`🔗<class_Color_constant_GAINSBORO>`
 
 Gainsboro color.
 
@@ -595,7 +599,7 @@ Ghost white color.
 
 .. rst-class:: classref-constant
 
-**GOLD** = ``Color(1, 0.843137, 0, 1)`` :ref:`🔗<class_Color_constant_GOLD>`
+**GOLD** = ``Color(1, 0.84313726, 0, 1)`` :ref:`🔗<class_Color_constant_GOLD>`
 
 Gold color.
 
@@ -603,7 +607,7 @@ Gold color.
 
 .. rst-class:: classref-constant
 
-**GOLDENROD** = ``Color(0.854902, 0.647059, 0.12549, 1)`` :ref:`🔗<class_Color_constant_GOLDENROD>`
+**GOLDENROD** = ``Color(0.85490197, 0.64705884, 0.1254902, 1)`` :ref:`🔗<class_Color_constant_GOLDENROD>`
 
 Goldenrod color.
 
@@ -611,7 +615,7 @@ Goldenrod color.
 
 .. rst-class:: classref-constant
 
-**GRAY** = ``Color(0.745098, 0.745098, 0.745098, 1)`` :ref:`🔗<class_Color_constant_GRAY>`
+**GRAY** = ``Color(0.74509805, 0.74509805, 0.74509805, 1)`` :ref:`🔗<class_Color_constant_GRAY>`
 
 Gray color.
 
@@ -627,7 +631,7 @@ Green color.
 
 .. rst-class:: classref-constant
 
-**GREEN_YELLOW** = ``Color(0.678431, 1, 0.184314, 1)`` :ref:`🔗<class_Color_constant_GREEN_YELLOW>`
+**GREEN_YELLOW** = ``Color(0.6784314, 1, 0.18431373, 1)`` :ref:`🔗<class_Color_constant_GREEN_YELLOW>`
 
 Green yellow color.
 
@@ -635,7 +639,7 @@ Green yellow color.
 
 .. rst-class:: classref-constant
 
-**HONEYDEW** = ``Color(0.941176, 1, 0.941176, 1)`` :ref:`🔗<class_Color_constant_HONEYDEW>`
+**HONEYDEW** = ``Color(0.9411765, 1, 0.9411765, 1)`` :ref:`🔗<class_Color_constant_HONEYDEW>`
 
 Honeydew color.
 
@@ -643,7 +647,7 @@ Honeydew color.
 
 .. rst-class:: classref-constant
 
-**HOT_PINK** = ``Color(1, 0.411765, 0.705882, 1)`` :ref:`🔗<class_Color_constant_HOT_PINK>`
+**HOT_PINK** = ``Color(1, 0.4117647, 0.7058824, 1)`` :ref:`🔗<class_Color_constant_HOT_PINK>`
 
 Hot pink color.
 
@@ -651,7 +655,7 @@ Hot pink color.
 
 .. rst-class:: classref-constant
 
-**INDIAN_RED** = ``Color(0.803922, 0.360784, 0.360784, 1)`` :ref:`🔗<class_Color_constant_INDIAN_RED>`
+**INDIAN_RED** = ``Color(0.8039216, 0.36078432, 0.36078432, 1)`` :ref:`🔗<class_Color_constant_INDIAN_RED>`
 
 Indian red color.
 
@@ -659,7 +663,7 @@ Indian red color.
 
 .. rst-class:: classref-constant
 
-**INDIGO** = ``Color(0.294118, 0, 0.509804, 1)`` :ref:`🔗<class_Color_constant_INDIGO>`
+**INDIGO** = ``Color(0.29411766, 0, 0.50980395, 1)`` :ref:`🔗<class_Color_constant_INDIGO>`
 
 Indigo color.
 
@@ -667,7 +671,7 @@ Indigo color.
 
 .. rst-class:: classref-constant
 
-**IVORY** = ``Color(1, 1, 0.941176, 1)`` :ref:`🔗<class_Color_constant_IVORY>`
+**IVORY** = ``Color(1, 1, 0.9411765, 1)`` :ref:`🔗<class_Color_constant_IVORY>`
 
 Ivory color.
 
@@ -675,7 +679,7 @@ Ivory color.
 
 .. rst-class:: classref-constant
 
-**KHAKI** = ``Color(0.941176, 0.901961, 0.54902, 1)`` :ref:`🔗<class_Color_constant_KHAKI>`
+**KHAKI** = ``Color(0.9411765, 0.9019608, 0.54901963, 1)`` :ref:`🔗<class_Color_constant_KHAKI>`
 
 Khaki color.
 
@@ -683,7 +687,7 @@ Khaki color.
 
 .. rst-class:: classref-constant
 
-**LAVENDER** = ``Color(0.901961, 0.901961, 0.980392, 1)`` :ref:`🔗<class_Color_constant_LAVENDER>`
+**LAVENDER** = ``Color(0.9019608, 0.9019608, 0.98039216, 1)`` :ref:`🔗<class_Color_constant_LAVENDER>`
 
 Lavender color.
 
@@ -691,7 +695,7 @@ Lavender color.
 
 .. rst-class:: classref-constant
 
-**LAVENDER_BLUSH** = ``Color(1, 0.941176, 0.960784, 1)`` :ref:`🔗<class_Color_constant_LAVENDER_BLUSH>`
+**LAVENDER_BLUSH** = ``Color(1, 0.9411765, 0.9607843, 1)`` :ref:`🔗<class_Color_constant_LAVENDER_BLUSH>`
 
 Lavender blush color.
 
@@ -699,7 +703,7 @@ Lavender blush color.
 
 .. rst-class:: classref-constant
 
-**LAWN_GREEN** = ``Color(0.486275, 0.988235, 0, 1)`` :ref:`🔗<class_Color_constant_LAWN_GREEN>`
+**LAWN_GREEN** = ``Color(0.4862745, 0.9882353, 0, 1)`` :ref:`🔗<class_Color_constant_LAWN_GREEN>`
 
 Lawn green color.
 
@@ -707,7 +711,7 @@ Lawn green color.
 
 .. rst-class:: classref-constant
 
-**LEMON_CHIFFON** = ``Color(1, 0.980392, 0.803922, 1)`` :ref:`🔗<class_Color_constant_LEMON_CHIFFON>`
+**LEMON_CHIFFON** = ``Color(1, 0.98039216, 0.8039216, 1)`` :ref:`🔗<class_Color_constant_LEMON_CHIFFON>`
 
 Lemon chiffon color.
 
@@ -715,7 +719,7 @@ Lemon chiffon color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_BLUE** = ``Color(0.678431, 0.847059, 0.901961, 1)`` :ref:`🔗<class_Color_constant_LIGHT_BLUE>`
+**LIGHT_BLUE** = ``Color(0.6784314, 0.84705883, 0.9019608, 1)`` :ref:`🔗<class_Color_constant_LIGHT_BLUE>`
 
 Light blue color.
 
@@ -723,7 +727,7 @@ Light blue color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_CORAL** = ``Color(0.941176, 0.501961, 0.501961, 1)`` :ref:`🔗<class_Color_constant_LIGHT_CORAL>`
+**LIGHT_CORAL** = ``Color(0.9411765, 0.5019608, 0.5019608, 1)`` :ref:`🔗<class_Color_constant_LIGHT_CORAL>`
 
 Light coral color.
 
@@ -731,7 +735,7 @@ Light coral color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_CYAN** = ``Color(0.878431, 1, 1, 1)`` :ref:`🔗<class_Color_constant_LIGHT_CYAN>`
+**LIGHT_CYAN** = ``Color(0.8784314, 1, 1, 1)`` :ref:`🔗<class_Color_constant_LIGHT_CYAN>`
 
 Light cyan color.
 
@@ -739,7 +743,7 @@ Light cyan color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_GOLDENROD** = ``Color(0.980392, 0.980392, 0.823529, 1)`` :ref:`🔗<class_Color_constant_LIGHT_GOLDENROD>`
+**LIGHT_GOLDENROD** = ``Color(0.98039216, 0.98039216, 0.8235294, 1)`` :ref:`🔗<class_Color_constant_LIGHT_GOLDENROD>`
 
 Light goldenrod color.
 
@@ -755,7 +759,7 @@ Light gray color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_GREEN** = ``Color(0.564706, 0.933333, 0.564706, 1)`` :ref:`🔗<class_Color_constant_LIGHT_GREEN>`
+**LIGHT_GREEN** = ``Color(0.5647059, 0.93333334, 0.5647059, 1)`` :ref:`🔗<class_Color_constant_LIGHT_GREEN>`
 
 Light green color.
 
@@ -763,7 +767,7 @@ Light green color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_PINK** = ``Color(1, 0.713726, 0.756863, 1)`` :ref:`🔗<class_Color_constant_LIGHT_PINK>`
+**LIGHT_PINK** = ``Color(1, 0.7137255, 0.75686276, 1)`` :ref:`🔗<class_Color_constant_LIGHT_PINK>`
 
 Light pink color.
 
@@ -771,7 +775,7 @@ Light pink color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_SALMON** = ``Color(1, 0.627451, 0.478431, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SALMON>`
+**LIGHT_SALMON** = ``Color(1, 0.627451, 0.47843137, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SALMON>`
 
 Light salmon color.
 
@@ -779,7 +783,7 @@ Light salmon color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_SEA_GREEN** = ``Color(0.12549, 0.698039, 0.666667, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SEA_GREEN>`
+**LIGHT_SEA_GREEN** = ``Color(0.1254902, 0.69803923, 0.6666667, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SEA_GREEN>`
 
 Light sea green color.
 
@@ -787,7 +791,7 @@ Light sea green color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_SKY_BLUE** = ``Color(0.529412, 0.807843, 0.980392, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SKY_BLUE>`
+**LIGHT_SKY_BLUE** = ``Color(0.5294118, 0.80784315, 0.98039216, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SKY_BLUE>`
 
 Light sky blue color.
 
@@ -795,7 +799,7 @@ Light sky blue color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_SLATE_GRAY** = ``Color(0.466667, 0.533333, 0.6, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SLATE_GRAY>`
+**LIGHT_SLATE_GRAY** = ``Color(0.46666667, 0.53333336, 0.6, 1)`` :ref:`🔗<class_Color_constant_LIGHT_SLATE_GRAY>`
 
 Light slate gray color.
 
@@ -803,7 +807,7 @@ Light slate gray color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_STEEL_BLUE** = ``Color(0.690196, 0.768627, 0.870588, 1)`` :ref:`🔗<class_Color_constant_LIGHT_STEEL_BLUE>`
+**LIGHT_STEEL_BLUE** = ``Color(0.6901961, 0.76862746, 0.87058824, 1)`` :ref:`🔗<class_Color_constant_LIGHT_STEEL_BLUE>`
 
 Light steel blue color.
 
@@ -811,7 +815,7 @@ Light steel blue color.
 
 .. rst-class:: classref-constant
 
-**LIGHT_YELLOW** = ``Color(1, 1, 0.878431, 1)`` :ref:`🔗<class_Color_constant_LIGHT_YELLOW>`
+**LIGHT_YELLOW** = ``Color(1, 1, 0.8784314, 1)`` :ref:`🔗<class_Color_constant_LIGHT_YELLOW>`
 
 Light yellow color.
 
@@ -827,7 +831,7 @@ Lime color.
 
 .. rst-class:: classref-constant
 
-**LIME_GREEN** = ``Color(0.196078, 0.803922, 0.196078, 1)`` :ref:`🔗<class_Color_constant_LIME_GREEN>`
+**LIME_GREEN** = ``Color(0.19607843, 0.8039216, 0.19607843, 1)`` :ref:`🔗<class_Color_constant_LIME_GREEN>`
 
 Lime green color.
 
@@ -835,7 +839,7 @@ Lime green color.
 
 .. rst-class:: classref-constant
 
-**LINEN** = ``Color(0.980392, 0.941176, 0.901961, 1)`` :ref:`🔗<class_Color_constant_LINEN>`
+**LINEN** = ``Color(0.98039216, 0.9411765, 0.9019608, 1)`` :ref:`🔗<class_Color_constant_LINEN>`
 
 Linen color.
 
@@ -851,7 +855,7 @@ Magenta color.
 
 .. rst-class:: classref-constant
 
-**MAROON** = ``Color(0.690196, 0.188235, 0.376471, 1)`` :ref:`🔗<class_Color_constant_MAROON>`
+**MAROON** = ``Color(0.6901961, 0.1882353, 0.3764706, 1)`` :ref:`🔗<class_Color_constant_MAROON>`
 
 Maroon color.
 
@@ -859,7 +863,7 @@ Maroon color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_AQUAMARINE** = ``Color(0.4, 0.803922, 0.666667, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_AQUAMARINE>`
+**MEDIUM_AQUAMARINE** = ``Color(0.4, 0.8039216, 0.6666667, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_AQUAMARINE>`
 
 Medium aquamarine color.
 
@@ -867,7 +871,7 @@ Medium aquamarine color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_BLUE** = ``Color(0, 0, 0.803922, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_BLUE>`
+**MEDIUM_BLUE** = ``Color(0, 0, 0.8039216, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_BLUE>`
 
 Medium blue color.
 
@@ -875,7 +879,7 @@ Medium blue color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_ORCHID** = ``Color(0.729412, 0.333333, 0.827451, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_ORCHID>`
+**MEDIUM_ORCHID** = ``Color(0.7294118, 0.33333334, 0.827451, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_ORCHID>`
 
 Medium orchid color.
 
@@ -883,7 +887,7 @@ Medium orchid color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_PURPLE** = ``Color(0.576471, 0.439216, 0.858824, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_PURPLE>`
+**MEDIUM_PURPLE** = ``Color(0.5764706, 0.4392157, 0.85882354, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_PURPLE>`
 
 Medium purple color.
 
@@ -891,7 +895,7 @@ Medium purple color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_SEA_GREEN** = ``Color(0.235294, 0.701961, 0.443137, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_SEA_GREEN>`
+**MEDIUM_SEA_GREEN** = ``Color(0.23529412, 0.7019608, 0.44313726, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_SEA_GREEN>`
 
 Medium sea green color.
 
@@ -899,7 +903,7 @@ Medium sea green color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_SLATE_BLUE** = ``Color(0.482353, 0.407843, 0.933333, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_SLATE_BLUE>`
+**MEDIUM_SLATE_BLUE** = ``Color(0.48235294, 0.40784314, 0.93333334, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_SLATE_BLUE>`
 
 Medium slate blue color.
 
@@ -907,7 +911,7 @@ Medium slate blue color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_SPRING_GREEN** = ``Color(0, 0.980392, 0.603922, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_SPRING_GREEN>`
+**MEDIUM_SPRING_GREEN** = ``Color(0, 0.98039216, 0.6039216, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_SPRING_GREEN>`
 
 Medium spring green color.
 
@@ -915,7 +919,7 @@ Medium spring green color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_TURQUOISE** = ``Color(0.282353, 0.819608, 0.8, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_TURQUOISE>`
+**MEDIUM_TURQUOISE** = ``Color(0.28235295, 0.81960785, 0.8, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_TURQUOISE>`
 
 Medium turquoise color.
 
@@ -923,7 +927,7 @@ Medium turquoise color.
 
 .. rst-class:: classref-constant
 
-**MEDIUM_VIOLET_RED** = ``Color(0.780392, 0.0823529, 0.521569, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_VIOLET_RED>`
+**MEDIUM_VIOLET_RED** = ``Color(0.78039217, 0.08235294, 0.52156866, 1)`` :ref:`🔗<class_Color_constant_MEDIUM_VIOLET_RED>`
 
 Medium violet red color.
 
@@ -931,7 +935,7 @@ Medium violet red color.
 
 .. rst-class:: classref-constant
 
-**MIDNIGHT_BLUE** = ``Color(0.0980392, 0.0980392, 0.439216, 1)`` :ref:`🔗<class_Color_constant_MIDNIGHT_BLUE>`
+**MIDNIGHT_BLUE** = ``Color(0.09803922, 0.09803922, 0.4392157, 1)`` :ref:`🔗<class_Color_constant_MIDNIGHT_BLUE>`
 
 Midnight blue color.
 
@@ -939,7 +943,7 @@ Midnight blue color.
 
 .. rst-class:: classref-constant
 
-**MINT_CREAM** = ``Color(0.960784, 1, 0.980392, 1)`` :ref:`🔗<class_Color_constant_MINT_CREAM>`
+**MINT_CREAM** = ``Color(0.9607843, 1, 0.98039216, 1)`` :ref:`🔗<class_Color_constant_MINT_CREAM>`
 
 Mint cream color.
 
@@ -947,7 +951,7 @@ Mint cream color.
 
 .. rst-class:: classref-constant
 
-**MISTY_ROSE** = ``Color(1, 0.894118, 0.882353, 1)`` :ref:`🔗<class_Color_constant_MISTY_ROSE>`
+**MISTY_ROSE** = ``Color(1, 0.89411765, 0.88235295, 1)`` :ref:`🔗<class_Color_constant_MISTY_ROSE>`
 
 Misty rose color.
 
@@ -955,7 +959,7 @@ Misty rose color.
 
 .. rst-class:: classref-constant
 
-**MOCCASIN** = ``Color(1, 0.894118, 0.709804, 1)`` :ref:`🔗<class_Color_constant_MOCCASIN>`
+**MOCCASIN** = ``Color(1, 0.89411765, 0.70980394, 1)`` :ref:`🔗<class_Color_constant_MOCCASIN>`
 
 Moccasin color.
 
@@ -963,7 +967,7 @@ Moccasin color.
 
 .. rst-class:: classref-constant
 
-**NAVAJO_WHITE** = ``Color(1, 0.870588, 0.678431, 1)`` :ref:`🔗<class_Color_constant_NAVAJO_WHITE>`
+**NAVAJO_WHITE** = ``Color(1, 0.87058824, 0.6784314, 1)`` :ref:`🔗<class_Color_constant_NAVAJO_WHITE>`
 
 Navajo white color.
 
@@ -971,7 +975,7 @@ Navajo white color.
 
 .. rst-class:: classref-constant
 
-**NAVY_BLUE** = ``Color(0, 0, 0.501961, 1)`` :ref:`🔗<class_Color_constant_NAVY_BLUE>`
+**NAVY_BLUE** = ``Color(0, 0, 0.5019608, 1)`` :ref:`🔗<class_Color_constant_NAVY_BLUE>`
 
 Navy blue color.
 
@@ -979,7 +983,7 @@ Navy blue color.
 
 .. rst-class:: classref-constant
 
-**OLD_LACE** = ``Color(0.992157, 0.960784, 0.901961, 1)`` :ref:`🔗<class_Color_constant_OLD_LACE>`
+**OLD_LACE** = ``Color(0.99215686, 0.9607843, 0.9019608, 1)`` :ref:`🔗<class_Color_constant_OLD_LACE>`
 
 Old lace color.
 
@@ -987,7 +991,7 @@ Old lace color.
 
 .. rst-class:: classref-constant
 
-**OLIVE** = ``Color(0.501961, 0.501961, 0, 1)`` :ref:`🔗<class_Color_constant_OLIVE>`
+**OLIVE** = ``Color(0.5019608, 0.5019608, 0, 1)`` :ref:`🔗<class_Color_constant_OLIVE>`
 
 Olive color.
 
@@ -995,7 +999,7 @@ Olive color.
 
 .. rst-class:: classref-constant
 
-**OLIVE_DRAB** = ``Color(0.419608, 0.556863, 0.137255, 1)`` :ref:`🔗<class_Color_constant_OLIVE_DRAB>`
+**OLIVE_DRAB** = ``Color(0.41960785, 0.5568628, 0.13725491, 1)`` :ref:`🔗<class_Color_constant_OLIVE_DRAB>`
 
 Olive drab color.
 
@@ -1003,7 +1007,7 @@ Olive drab color.
 
 .. rst-class:: classref-constant
 
-**ORANGE** = ``Color(1, 0.647059, 0, 1)`` :ref:`🔗<class_Color_constant_ORANGE>`
+**ORANGE** = ``Color(1, 0.64705884, 0, 1)`` :ref:`🔗<class_Color_constant_ORANGE>`
 
 Orange color.
 
@@ -1011,7 +1015,7 @@ Orange color.
 
 .. rst-class:: classref-constant
 
-**ORANGE_RED** = ``Color(1, 0.270588, 0, 1)`` :ref:`🔗<class_Color_constant_ORANGE_RED>`
+**ORANGE_RED** = ``Color(1, 0.27058825, 0, 1)`` :ref:`🔗<class_Color_constant_ORANGE_RED>`
 
 Orange red color.
 
@@ -1019,7 +1023,7 @@ Orange red color.
 
 .. rst-class:: classref-constant
 
-**ORCHID** = ``Color(0.854902, 0.439216, 0.839216, 1)`` :ref:`🔗<class_Color_constant_ORCHID>`
+**ORCHID** = ``Color(0.85490197, 0.4392157, 0.8392157, 1)`` :ref:`🔗<class_Color_constant_ORCHID>`
 
 Orchid color.
 
@@ -1027,7 +1031,7 @@ Orchid color.
 
 .. rst-class:: classref-constant
 
-**PALE_GOLDENROD** = ``Color(0.933333, 0.909804, 0.666667, 1)`` :ref:`🔗<class_Color_constant_PALE_GOLDENROD>`
+**PALE_GOLDENROD** = ``Color(0.93333334, 0.9098039, 0.6666667, 1)`` :ref:`🔗<class_Color_constant_PALE_GOLDENROD>`
 
 Pale goldenrod color.
 
@@ -1035,7 +1039,7 @@ Pale goldenrod color.
 
 .. rst-class:: classref-constant
 
-**PALE_GREEN** = ``Color(0.596078, 0.984314, 0.596078, 1)`` :ref:`🔗<class_Color_constant_PALE_GREEN>`
+**PALE_GREEN** = ``Color(0.59607846, 0.9843137, 0.59607846, 1)`` :ref:`🔗<class_Color_constant_PALE_GREEN>`
 
 Pale green color.
 
@@ -1043,7 +1047,7 @@ Pale green color.
 
 .. rst-class:: classref-constant
 
-**PALE_TURQUOISE** = ``Color(0.686275, 0.933333, 0.933333, 1)`` :ref:`🔗<class_Color_constant_PALE_TURQUOISE>`
+**PALE_TURQUOISE** = ``Color(0.6862745, 0.93333334, 0.93333334, 1)`` :ref:`🔗<class_Color_constant_PALE_TURQUOISE>`
 
 Pale turquoise color.
 
@@ -1051,7 +1055,7 @@ Pale turquoise color.
 
 .. rst-class:: classref-constant
 
-**PALE_VIOLET_RED** = ``Color(0.858824, 0.439216, 0.576471, 1)`` :ref:`🔗<class_Color_constant_PALE_VIOLET_RED>`
+**PALE_VIOLET_RED** = ``Color(0.85882354, 0.4392157, 0.5764706, 1)`` :ref:`🔗<class_Color_constant_PALE_VIOLET_RED>`
 
 Pale violet red color.
 
@@ -1059,7 +1063,7 @@ Pale violet red color.
 
 .. rst-class:: classref-constant
 
-**PAPAYA_WHIP** = ``Color(1, 0.937255, 0.835294, 1)`` :ref:`🔗<class_Color_constant_PAPAYA_WHIP>`
+**PAPAYA_WHIP** = ``Color(1, 0.9372549, 0.8352941, 1)`` :ref:`🔗<class_Color_constant_PAPAYA_WHIP>`
 
 Papaya whip color.
 
@@ -1067,7 +1071,7 @@ Papaya whip color.
 
 .. rst-class:: classref-constant
 
-**PEACH_PUFF** = ``Color(1, 0.854902, 0.72549, 1)`` :ref:`🔗<class_Color_constant_PEACH_PUFF>`
+**PEACH_PUFF** = ``Color(1, 0.85490197, 0.7254902, 1)`` :ref:`🔗<class_Color_constant_PEACH_PUFF>`
 
 Peach puff color.
 
@@ -1075,7 +1079,7 @@ Peach puff color.
 
 .. rst-class:: classref-constant
 
-**PERU** = ``Color(0.803922, 0.521569, 0.247059, 1)`` :ref:`🔗<class_Color_constant_PERU>`
+**PERU** = ``Color(0.8039216, 0.52156866, 0.24705882, 1)`` :ref:`🔗<class_Color_constant_PERU>`
 
 Peru color.
 
@@ -1083,7 +1087,7 @@ Peru color.
 
 .. rst-class:: classref-constant
 
-**PINK** = ``Color(1, 0.752941, 0.796078, 1)`` :ref:`🔗<class_Color_constant_PINK>`
+**PINK** = ``Color(1, 0.7529412, 0.79607844, 1)`` :ref:`🔗<class_Color_constant_PINK>`
 
 Pink color.
 
@@ -1091,7 +1095,7 @@ Pink color.
 
 .. rst-class:: classref-constant
 
-**PLUM** = ``Color(0.866667, 0.627451, 0.866667, 1)`` :ref:`🔗<class_Color_constant_PLUM>`
+**PLUM** = ``Color(0.8666667, 0.627451, 0.8666667, 1)`` :ref:`🔗<class_Color_constant_PLUM>`
 
 Plum color.
 
@@ -1099,7 +1103,7 @@ Plum color.
 
 .. rst-class:: classref-constant
 
-**POWDER_BLUE** = ``Color(0.690196, 0.878431, 0.901961, 1)`` :ref:`🔗<class_Color_constant_POWDER_BLUE>`
+**POWDER_BLUE** = ``Color(0.6901961, 0.8784314, 0.9019608, 1)`` :ref:`🔗<class_Color_constant_POWDER_BLUE>`
 
 Powder blue color.
 
@@ -1107,7 +1111,7 @@ Powder blue color.
 
 .. rst-class:: classref-constant
 
-**PURPLE** = ``Color(0.627451, 0.12549, 0.941176, 1)`` :ref:`🔗<class_Color_constant_PURPLE>`
+**PURPLE** = ``Color(0.627451, 0.1254902, 0.9411765, 1)`` :ref:`🔗<class_Color_constant_PURPLE>`
 
 Purple color.
 
@@ -1131,7 +1135,7 @@ Red color.
 
 .. rst-class:: classref-constant
 
-**ROSY_BROWN** = ``Color(0.737255, 0.560784, 0.560784, 1)`` :ref:`🔗<class_Color_constant_ROSY_BROWN>`
+**ROSY_BROWN** = ``Color(0.7372549, 0.56078434, 0.56078434, 1)`` :ref:`🔗<class_Color_constant_ROSY_BROWN>`
 
 Rosy brown color.
 
@@ -1139,7 +1143,7 @@ Rosy brown color.
 
 .. rst-class:: classref-constant
 
-**ROYAL_BLUE** = ``Color(0.254902, 0.411765, 0.882353, 1)`` :ref:`🔗<class_Color_constant_ROYAL_BLUE>`
+**ROYAL_BLUE** = ``Color(0.25490198, 0.4117647, 0.88235295, 1)`` :ref:`🔗<class_Color_constant_ROYAL_BLUE>`
 
 Royal blue color.
 
@@ -1147,7 +1151,7 @@ Royal blue color.
 
 .. rst-class:: classref-constant
 
-**SADDLE_BROWN** = ``Color(0.545098, 0.270588, 0.0745098, 1)`` :ref:`🔗<class_Color_constant_SADDLE_BROWN>`
+**SADDLE_BROWN** = ``Color(0.54509807, 0.27058825, 0.07450981, 1)`` :ref:`🔗<class_Color_constant_SADDLE_BROWN>`
 
 Saddle brown color.
 
@@ -1155,7 +1159,7 @@ Saddle brown color.
 
 .. rst-class:: classref-constant
 
-**SALMON** = ``Color(0.980392, 0.501961, 0.447059, 1)`` :ref:`🔗<class_Color_constant_SALMON>`
+**SALMON** = ``Color(0.98039216, 0.5019608, 0.44705883, 1)`` :ref:`🔗<class_Color_constant_SALMON>`
 
 Salmon color.
 
@@ -1163,7 +1167,7 @@ Salmon color.
 
 .. rst-class:: classref-constant
 
-**SANDY_BROWN** = ``Color(0.956863, 0.643137, 0.376471, 1)`` :ref:`🔗<class_Color_constant_SANDY_BROWN>`
+**SANDY_BROWN** = ``Color(0.95686275, 0.6431373, 0.3764706, 1)`` :ref:`🔗<class_Color_constant_SANDY_BROWN>`
 
 Sandy brown color.
 
@@ -1171,7 +1175,7 @@ Sandy brown color.
 
 .. rst-class:: classref-constant
 
-**SEA_GREEN** = ``Color(0.180392, 0.545098, 0.341176, 1)`` :ref:`🔗<class_Color_constant_SEA_GREEN>`
+**SEA_GREEN** = ``Color(0.18039216, 0.54509807, 0.34117648, 1)`` :ref:`🔗<class_Color_constant_SEA_GREEN>`
 
 Sea green color.
 
@@ -1179,7 +1183,7 @@ Sea green color.
 
 .. rst-class:: classref-constant
 
-**SEASHELL** = ``Color(1, 0.960784, 0.933333, 1)`` :ref:`🔗<class_Color_constant_SEASHELL>`
+**SEASHELL** = ``Color(1, 0.9607843, 0.93333334, 1)`` :ref:`🔗<class_Color_constant_SEASHELL>`
 
 Seashell color.
 
@@ -1187,7 +1191,7 @@ Seashell color.
 
 .. rst-class:: classref-constant
 
-**SIENNA** = ``Color(0.627451, 0.321569, 0.176471, 1)`` :ref:`🔗<class_Color_constant_SIENNA>`
+**SIENNA** = ``Color(0.627451, 0.32156864, 0.1764706, 1)`` :ref:`🔗<class_Color_constant_SIENNA>`
 
 Sienna color.
 
@@ -1195,7 +1199,7 @@ Sienna color.
 
 .. rst-class:: classref-constant
 
-**SILVER** = ``Color(0.752941, 0.752941, 0.752941, 1)`` :ref:`🔗<class_Color_constant_SILVER>`
+**SILVER** = ``Color(0.7529412, 0.7529412, 0.7529412, 1)`` :ref:`🔗<class_Color_constant_SILVER>`
 
 Silver color.
 
@@ -1203,7 +1207,7 @@ Silver color.
 
 .. rst-class:: classref-constant
 
-**SKY_BLUE** = ``Color(0.529412, 0.807843, 0.921569, 1)`` :ref:`🔗<class_Color_constant_SKY_BLUE>`
+**SKY_BLUE** = ``Color(0.5294118, 0.80784315, 0.92156863, 1)`` :ref:`🔗<class_Color_constant_SKY_BLUE>`
 
 Sky blue color.
 
@@ -1211,7 +1215,7 @@ Sky blue color.
 
 .. rst-class:: classref-constant
 
-**SLATE_BLUE** = ``Color(0.415686, 0.352941, 0.803922, 1)`` :ref:`🔗<class_Color_constant_SLATE_BLUE>`
+**SLATE_BLUE** = ``Color(0.41568628, 0.3529412, 0.8039216, 1)`` :ref:`🔗<class_Color_constant_SLATE_BLUE>`
 
 Slate blue color.
 
@@ -1219,7 +1223,7 @@ Slate blue color.
 
 .. rst-class:: classref-constant
 
-**SLATE_GRAY** = ``Color(0.439216, 0.501961, 0.564706, 1)`` :ref:`🔗<class_Color_constant_SLATE_GRAY>`
+**SLATE_GRAY** = ``Color(0.4392157, 0.5019608, 0.5647059, 1)`` :ref:`🔗<class_Color_constant_SLATE_GRAY>`
 
 Slate gray color.
 
@@ -1227,7 +1231,7 @@ Slate gray color.
 
 .. rst-class:: classref-constant
 
-**SNOW** = ``Color(1, 0.980392, 0.980392, 1)`` :ref:`🔗<class_Color_constant_SNOW>`
+**SNOW** = ``Color(1, 0.98039216, 0.98039216, 1)`` :ref:`🔗<class_Color_constant_SNOW>`
 
 Snow color.
 
@@ -1235,7 +1239,7 @@ Snow color.
 
 .. rst-class:: classref-constant
 
-**SPRING_GREEN** = ``Color(0, 1, 0.498039, 1)`` :ref:`🔗<class_Color_constant_SPRING_GREEN>`
+**SPRING_GREEN** = ``Color(0, 1, 0.49803922, 1)`` :ref:`🔗<class_Color_constant_SPRING_GREEN>`
 
 Spring green color.
 
@@ -1243,7 +1247,7 @@ Spring green color.
 
 .. rst-class:: classref-constant
 
-**STEEL_BLUE** = ``Color(0.27451, 0.509804, 0.705882, 1)`` :ref:`🔗<class_Color_constant_STEEL_BLUE>`
+**STEEL_BLUE** = ``Color(0.27450982, 0.50980395, 0.7058824, 1)`` :ref:`🔗<class_Color_constant_STEEL_BLUE>`
 
 Steel blue color.
 
@@ -1251,7 +1255,7 @@ Steel blue color.
 
 .. rst-class:: classref-constant
 
-**TAN** = ``Color(0.823529, 0.705882, 0.54902, 1)`` :ref:`🔗<class_Color_constant_TAN>`
+**TAN** = ``Color(0.8235294, 0.7058824, 0.54901963, 1)`` :ref:`🔗<class_Color_constant_TAN>`
 
 Tan color.
 
@@ -1259,7 +1263,7 @@ Tan color.
 
 .. rst-class:: classref-constant
 
-**TEAL** = ``Color(0, 0.501961, 0.501961, 1)`` :ref:`🔗<class_Color_constant_TEAL>`
+**TEAL** = ``Color(0, 0.5019608, 0.5019608, 1)`` :ref:`🔗<class_Color_constant_TEAL>`
 
 Teal color.
 
@@ -1267,7 +1271,7 @@ Teal color.
 
 .. rst-class:: classref-constant
 
-**THISTLE** = ``Color(0.847059, 0.74902, 0.847059, 1)`` :ref:`🔗<class_Color_constant_THISTLE>`
+**THISTLE** = ``Color(0.84705883, 0.7490196, 0.84705883, 1)`` :ref:`🔗<class_Color_constant_THISTLE>`
 
 Thistle color.
 
@@ -1275,7 +1279,7 @@ Thistle color.
 
 .. rst-class:: classref-constant
 
-**TOMATO** = ``Color(1, 0.388235, 0.278431, 1)`` :ref:`🔗<class_Color_constant_TOMATO>`
+**TOMATO** = ``Color(1, 0.3882353, 0.2784314, 1)`` :ref:`🔗<class_Color_constant_TOMATO>`
 
 Tomato color.
 
@@ -1291,7 +1295,7 @@ Transparent color (white with zero alpha).
 
 .. rst-class:: classref-constant
 
-**TURQUOISE** = ``Color(0.25098, 0.878431, 0.815686, 1)`` :ref:`🔗<class_Color_constant_TURQUOISE>`
+**TURQUOISE** = ``Color(0.2509804, 0.8784314, 0.8156863, 1)`` :ref:`🔗<class_Color_constant_TURQUOISE>`
 
 Turquoise color.
 
@@ -1299,7 +1303,7 @@ Turquoise color.
 
 .. rst-class:: classref-constant
 
-**VIOLET** = ``Color(0.933333, 0.509804, 0.933333, 1)`` :ref:`🔗<class_Color_constant_VIOLET>`
+**VIOLET** = ``Color(0.93333334, 0.50980395, 0.93333334, 1)`` :ref:`🔗<class_Color_constant_VIOLET>`
 
 Violet color.
 
@@ -1307,7 +1311,7 @@ Violet color.
 
 .. rst-class:: classref-constant
 
-**WEB_GRAY** = ``Color(0.501961, 0.501961, 0.501961, 1)`` :ref:`🔗<class_Color_constant_WEB_GRAY>`
+**WEB_GRAY** = ``Color(0.5019608, 0.5019608, 0.5019608, 1)`` :ref:`🔗<class_Color_constant_WEB_GRAY>`
 
 Web gray color.
 
@@ -1315,7 +1319,7 @@ Web gray color.
 
 .. rst-class:: classref-constant
 
-**WEB_GREEN** = ``Color(0, 0.501961, 0, 1)`` :ref:`🔗<class_Color_constant_WEB_GREEN>`
+**WEB_GREEN** = ``Color(0, 0.5019608, 0, 1)`` :ref:`🔗<class_Color_constant_WEB_GREEN>`
 
 Web green color.
 
@@ -1323,7 +1327,7 @@ Web green color.
 
 .. rst-class:: classref-constant
 
-**WEB_MAROON** = ``Color(0.501961, 0, 0, 1)`` :ref:`🔗<class_Color_constant_WEB_MAROON>`
+**WEB_MAROON** = ``Color(0.5019608, 0, 0, 1)`` :ref:`🔗<class_Color_constant_WEB_MAROON>`
 
 Web maroon color.
 
@@ -1331,7 +1335,7 @@ Web maroon color.
 
 .. rst-class:: classref-constant
 
-**WEB_PURPLE** = ``Color(0.501961, 0, 0.501961, 1)`` :ref:`🔗<class_Color_constant_WEB_PURPLE>`
+**WEB_PURPLE** = ``Color(0.5019608, 0, 0.5019608, 1)`` :ref:`🔗<class_Color_constant_WEB_PURPLE>`
 
 Web purple color.
 
@@ -1339,7 +1343,7 @@ Web purple color.
 
 .. rst-class:: classref-constant
 
-**WHEAT** = ``Color(0.960784, 0.870588, 0.701961, 1)`` :ref:`🔗<class_Color_constant_WHEAT>`
+**WHEAT** = ``Color(0.9607843, 0.87058824, 0.7019608, 1)`` :ref:`🔗<class_Color_constant_WHEAT>`
 
 Wheat color.
 
@@ -1355,7 +1359,7 @@ White color.
 
 .. rst-class:: classref-constant
 
-**WHITE_SMOKE** = ``Color(0.960784, 0.960784, 0.960784, 1)`` :ref:`🔗<class_Color_constant_WHITE_SMOKE>`
+**WHITE_SMOKE** = ``Color(0.9607843, 0.9607843, 0.9607843, 1)`` :ref:`🔗<class_Color_constant_WHITE_SMOKE>`
 
 White smoke color.
 
@@ -1371,7 +1375,7 @@ Yellow color.
 
 .. rst-class:: classref-constant
 
-**YELLOW_GREEN** = ``Color(0.603922, 0.803922, 0.196078, 1)`` :ref:`🔗<class_Color_constant_YELLOW_GREEN>`
+**YELLOW_GREEN** = ``Color(0.6039216, 0.8039216, 0.19607843, 1)`` :ref:`🔗<class_Color_constant_YELLOW_GREEN>`
 
 Yellow green color.
 
@@ -1391,6 +1395,8 @@ Property Descriptions
 :ref:`float<class_float>` **a** = ``1.0`` :ref:`🔗<class_Color_property_a>`
 
 The color's alpha component, typically on the range of 0 to 1. A value of 0 means that the color is fully transparent. A value of 1 means that the color is fully opaque.
+
+\ **Note:** The alpha channel is always stored with linear encoding, regardless of the color space of the other color channels. The :ref:`linear_to_srgb()<class_Color_method_linear_to_srgb>` and :ref:`srgb_to_linear()<class_Color_method_srgb_to_linear>` methods do not affect the alpha channel.
 
 .. rst-class:: classref-item-separator
 
@@ -1710,7 +1716,7 @@ Returns a new color resulting from overlaying this color over the given color. I
 
 :ref:`Color<class_Color>` **clamp**\ (\ min\: :ref:`Color<class_Color>` = Color(0, 0, 0, 0), max\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1)\ ) |const| :ref:`🔗<class_Color_method_clamp>`
 
-Returns a new color with all components clamped between the components of ``min`` and ``max``, by running :ref:`@GlobalScope.clamp<class_@GlobalScope_method_clamp>` on each component.
+Returns a new color with all components clamped between the components of ``min`` and ``max``, by running :ref:`@GlobalScope.clamp()<class_@GlobalScope_method_clamp>` on each component.
 
 .. rst-class:: classref-item-separator
 
@@ -1722,7 +1728,7 @@ Returns a new color with all components clamped between the components of ``min`
 
 :ref:`Color<class_Color>` **darkened**\ (\ amount\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Color_method_darkened>`
 
-Returns a new color resulting from making this color darker by the specified ``amount`` (ratio from 0.0 to 1.0). See also :ref:`lightened<class_Color_method_lightened>`.
+Returns a new color resulting from making this color darker by the specified ``amount`` (ratio from 0.0 to 1.0). See also :ref:`lightened()<class_Color_method_lightened>`.
 
 
 .. tabs::
@@ -1793,6 +1799,26 @@ Constructs a color from an `OK HSL profile <https://bottosson.github.io/posts/co
 
 ----
 
+.. _class_Color_method_from_rgba8:
+
+.. rst-class:: classref-method
+
+:ref:`Color<class_Color>` **from_rgba8**\ (\ r8\: :ref:`int<class_int>`, g8\: :ref:`int<class_int>`, b8\: :ref:`int<class_int>`, a8\: :ref:`int<class_int>` = 255\ ) |static| :ref:`🔗<class_Color_method_from_rgba8>`
+
+Returns a **Color** constructed from red (``r8``), green (``g8``), blue (``b8``), and optionally alpha (``a8``) integer channels, each divided by ``255.0`` for their final value.
+
+::
+
+    var red = Color.from_rgba8(255, 0, 0)             # Same as Color(1, 0, 0).
+    var dark_blue = Color.from_rgba8(0, 0, 51)        # Same as Color(0, 0, 0.2).
+    var my_color = Color.from_rgba8(306, 255, 0, 102) # Same as Color(1.2, 1, 0, 0.4).
+
+\ **Note:** Due to the lower precision of :ref:`from_rgba8()<class_Color_method_from_rgba8>` compared to the standard **Color** constructor, a color created with :ref:`from_rgba8()<class_Color_method_from_rgba8>` will generally not be equal to the same color created with the standard **Color** constructor. Use :ref:`is_equal_approx()<class_Color_method_is_equal_approx>` for comparisons to avoid issues with floating-point precision error.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Color_method_from_rgbe9995:
 
 .. rst-class:: classref-method
@@ -1827,7 +1853,7 @@ If you want to create a color from String in a constant expression, use the equi
 
 Returns the light intensity of the color, as a value between 0.0 and 1.0 (inclusive). This is useful when determining light or dark color. Colors with a luminance smaller than 0.5 can be generally considered dark.
 
-\ **Note:** :ref:`get_luminance<class_Color_method_get_luminance>` relies on the color being in the linear color space to return an accurate relative luminance value. If the color is in the sRGB color space, use :ref:`srgb_to_linear<class_Color_method_srgb_to_linear>` to convert it to the linear color space first.
+\ **Note:** :ref:`get_luminance()<class_Color_method_get_luminance>` relies on the color being in the linear color space to return an accurate relative luminance value. If the color is in the sRGB color space, use :ref:`srgb_to_linear()<class_Color_method_srgb_to_linear>` to convert it to the linear color space first.
 
 .. rst-class:: classref-item-separator
 
@@ -1839,7 +1865,7 @@ Returns the light intensity of the color, as a value between 0.0 and 1.0 (inclus
 
 :ref:`Color<class_Color>` **hex**\ (\ hex\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_Color_method_hex>`
 
-Returns the **Color** associated with the provided ``hex`` integer in 32-bit RGBA format (8 bits per channel). This method is the inverse of :ref:`to_rgba32<class_Color_method_to_rgba32>`.
+Returns the **Color** associated with the provided ``hex`` integer in 32-bit RGBA format (8 bits per channel). This method is the inverse of :ref:`to_rgba32()<class_Color_method_to_rgba32>`.
 
 In GDScript and C#, the :ref:`int<class_int>` is best visualized with hexadecimal notation (``"0x"`` prefix, making it ``"0xRRGGBBAA"``).
 
@@ -1872,7 +1898,7 @@ If you want to use hex notation in a constant expression, use the equivalent con
 
 :ref:`Color<class_Color>` **hex64**\ (\ hex\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_Color_method_hex64>`
 
-Returns the **Color** associated with the provided ``hex`` integer in 64-bit RGBA format (16 bits per channel). This method is the inverse of :ref:`to_rgba64<class_Color_method_to_rgba64>`.
+Returns the **Color** associated with the provided ``hex`` integer in 64-bit RGBA format (16 bits per channel). This method is the inverse of :ref:`to_rgba64()<class_Color_method_to_rgba64>`.
 
 In GDScript and C#, the :ref:`int<class_int>` is best visualized with hexadecimal notation (``"0x"`` prefix, making it ``"0xRRRRGGGGBBBBAAAA"``).
 
@@ -1917,7 +1943,7 @@ Returns a new color from ``rgba``, an HTML hexadecimal color string. ``rgba`` is
 
 :ref:`bool<class_bool>` **html_is_valid**\ (\ color\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_Color_method_html_is_valid>`
 
-Returns ``true`` if ``color`` is a valid HTML hexadecimal color string. The string must be a hexadecimal value (case-insensitive) of either 3, 4, 6 or 8 digits, and may be prefixed by a hash sign (``#``). This method is identical to :ref:`String.is_valid_html_color<class_String_method_is_valid_html_color>`.
+Returns ``true`` if ``color`` is a valid HTML hexadecimal color string. The string must be a hexadecimal value (case-insensitive) of either 3, 4, 6 or 8 digits, and may be prefixed by a hash sign (``#``). This method is identical to :ref:`String.is_valid_html_color()<class_String_method_is_valid_html_color>`.
 
 
 .. tabs::
@@ -1928,7 +1954,7 @@ Returns ``true`` if ``color`` is a valid HTML hexadecimal color string. The stri
     Color.html_is_valid("#55AAFF20") # Returns true
     Color.html_is_valid("55AAFF")    # Returns true
     Color.html_is_valid("#F2C")      # Returns true
-    
+
     Color.html_is_valid("#AABBC")    # Returns false
     Color.html_is_valid("#55aaFF5")  # Returns false
 
@@ -1938,7 +1964,7 @@ Returns ``true`` if ``color`` is a valid HTML hexadecimal color string. The stri
     Color.HtmlIsValid("#55AAFF20"); // Returns true
     Color.HtmlIsValid("55AAFF");    // Returns true
     Color.HtmlIsValid("#F2C");      // Returns true
-    
+
     Color.HtmlIsValid("#AABBC");    // Returns false
     Color.HtmlIsValid("#55aaFF5");  // Returns false
 
@@ -1983,7 +2009,7 @@ Returns the color with its :ref:`r<class_Color_property_r>`, :ref:`g<class_Color
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ to\: :ref:`Color<class_Color>`\ ) |const| :ref:`🔗<class_Color_method_is_equal_approx>`
 
-Returns ``true`` if this color and ``to`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx<class_@GlobalScope_method_is_equal_approx>` on each component.
+Returns ``true`` if this color and ``to`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
 
 .. rst-class:: classref-item-separator
 
@@ -1995,7 +2021,7 @@ Returns ``true`` if this color and ``to`` are approximately equal, by running :r
 
 :ref:`Color<class_Color>` **lerp**\ (\ to\: :ref:`Color<class_Color>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Color_method_lerp>`
 
-Returns the linear interpolation between this color's components and ``to``'s components. The interpolation factor ``weight`` should be between 0.0 and 1.0 (inclusive). See also :ref:`@GlobalScope.lerp<class_@GlobalScope_method_lerp>`.
+Returns the linear interpolation between this color's components and ``to``'s components. The interpolation factor ``weight`` should be between 0.0 and 1.0 (inclusive). See also :ref:`@GlobalScope.lerp()<class_@GlobalScope_method_lerp>`.
 
 
 .. tabs::
@@ -2004,7 +2030,7 @@ Returns the linear interpolation between this color's components and ``to``'s co
 
     var red = Color(1.0, 0.0, 0.0)
     var aqua = Color(0.0, 1.0, 0.8)
-    
+
     red.lerp(aqua, 0.2) # Returns Color(0.8, 0.2, 0.16)
     red.lerp(aqua, 0.5) # Returns Color(0.5, 0.5, 0.4)
     red.lerp(aqua, 1.0) # Returns Color(0.0, 1.0, 0.8)
@@ -2013,7 +2039,7 @@ Returns the linear interpolation between this color's components and ``to``'s co
 
     var red = new Color(1.0f, 0.0f, 0.0f);
     var aqua = new Color(0.0f, 1.0f, 0.8f);
-    
+
     red.Lerp(aqua, 0.2f); // Returns Color(0.8f, 0.2f, 0.16f)
     red.Lerp(aqua, 0.5f); // Returns Color(0.5f, 0.5f, 0.4f)
     red.Lerp(aqua, 1.0f); // Returns Color(0.0f, 1.0f, 0.8f)
@@ -2030,7 +2056,7 @@ Returns the linear interpolation between this color's components and ``to``'s co
 
 :ref:`Color<class_Color>` **lightened**\ (\ amount\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Color_method_lightened>`
 
-Returns a new color resulting from making this color lighter by the specified ``amount``, which should be a ratio from 0.0 to 1.0. See also :ref:`darkened<class_Color_method_darkened>`.
+Returns a new color resulting from making this color lighter by the specified ``amount``, which should be a ratio from 0.0 to 1.0. See also :ref:`darkened()<class_Color_method_darkened>`.
 
 
 .. tabs::
@@ -2057,7 +2083,9 @@ Returns a new color resulting from making this color lighter by the specified ``
 
 :ref:`Color<class_Color>` **linear_to_srgb**\ (\ ) |const| :ref:`🔗<class_Color_method_linear_to_srgb>`
 
-Returns the color converted to the `sRGB <https://en.wikipedia.org/wiki/SRGB>`__ color space. This method assumes the original color is in the linear color space. See also :ref:`srgb_to_linear<class_Color_method_srgb_to_linear>` which performs the opposite operation.
+Returns the color converted to the `sRGB <https://en.wikipedia.org/wiki/SRGB>`__ color space. This method assumes the original color is in the linear color space. See also :ref:`srgb_to_linear()<class_Color_method_srgb_to_linear>` which performs the opposite operation.
+
+\ **Note:** The color's :ref:`a<class_Color_property_a>`\ lpha channel is not affected. The alpha channel is always stored with linear encoding, regardless of the color space of the other color channels.
 
 .. rst-class:: classref-item-separator
 
@@ -2069,7 +2097,9 @@ Returns the color converted to the `sRGB <https://en.wikipedia.org/wiki/SRGB>`__
 
 :ref:`Color<class_Color>` **srgb_to_linear**\ (\ ) |const| :ref:`🔗<class_Color_method_srgb_to_linear>`
 
-Returns the color converted to the linear color space. This method assumes the original color already is in the sRGB color space. See also :ref:`linear_to_srgb<class_Color_method_linear_to_srgb>` which performs the opposite operation.
+Returns the color converted to the linear color space. This method assumes the original color already is in the sRGB color space. See also :ref:`linear_to_srgb()<class_Color_method_linear_to_srgb>` which performs the opposite operation.
+
+\ **Note:** The color's :ref:`a<class_Color_property_a>`\ lpha channel is not affected. The alpha channel is always stored with linear encoding, regardless of the color space of the other color channels.
 
 .. rst-class:: classref-item-separator
 
@@ -2220,7 +2250,7 @@ Setting ``with_alpha`` to ``false``, excludes alpha from the hexadecimal string,
 
 :ref:`int<class_int>` **to_rgba32**\ (\ ) |const| :ref:`🔗<class_Color_method_to_rgba32>`
 
-Returns the color converted to a 32-bit integer in RGBA format (each component is 8 bits). RGBA is Redot's default format. This method is the inverse of :ref:`hex<class_Color_method_hex>`.
+Returns the color converted to a 32-bit integer in RGBA format (each component is 8 bits). RGBA is Redot's default format. This method is the inverse of :ref:`hex()<class_Color_method_hex>`.
 
 
 .. tabs::
@@ -2247,7 +2277,7 @@ Returns the color converted to a 32-bit integer in RGBA format (each component i
 
 :ref:`int<class_int>` **to_rgba64**\ (\ ) |const| :ref:`🔗<class_Color_method_to_rgba64>`
 
-Returns the color converted to a 64-bit integer in RGBA format (each component is 16 bits). RGBA is Redot's default format. This method is the inverse of :ref:`hex64<class_Color_method_hex64>`.
+Returns the color converted to a 64-bit integer in RGBA format (each component is 16 bits). RGBA is Redot's default format. This method is the inverse of :ref:`hex64()<class_Color_method_hex64>`.
 
 
 .. tabs::
@@ -2281,7 +2311,7 @@ Operator Descriptions
 
 Returns ``true`` if the colors are not exactly equal.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx<class_Color_method_is_equal_approx>` instead, which is more reliable.
+\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Color_method_is_equal_approx>` instead, which is more reliable.
 
 .. rst-class:: classref-item-separator
 
@@ -2391,7 +2421,7 @@ Divides each component of the **Color** by the given :ref:`int<class_int>`.
 
 Returns ``true`` if the colors are exactly equal.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx<class_Color_method_is_equal_approx>` instead, which is more reliable.
+\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Color_method_is_equal_approx>` instead, which is more reliable.
 
 .. rst-class:: classref-item-separator
 
@@ -2427,9 +2457,10 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 :ref:`Color<class_Color>` **operator unary-**\ (\ ) :ref:`🔗<class_Color_operator_unminus>`
 
-Inverts the given color. This is equivalent to ``Color.WHITE - c`` or ``Color(1 - c.r, 1 - c.g, 1 - c.b, 1 - c.a)``. Unlike with :ref:`inverted<class_Color_method_inverted>`, the :ref:`a<class_Color_property_a>` component is inverted, too.
+Inverts the given color. This is equivalent to ``Color.WHITE - c`` or ``Color(1 - c.r, 1 - c.g, 1 - c.b, 1 - c.a)``. Unlike with :ref:`inverted()<class_Color_method_inverted>`, the :ref:`a<class_Color_property_a>` component is inverted, too.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

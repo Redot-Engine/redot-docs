@@ -175,6 +175,8 @@ Properties
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
    | :ref:`Curve<class_Curve>`                               | :ref:`scale_curve_z<class_CPUParticles3D_property_scale_curve_z>`                           |                            |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`int<class_int>`                                   | :ref:`seed<class_CPUParticles3D_property_seed>`                                             | ``0``                      |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
    | :ref:`float<class_float>`                               | :ref:`speed_scale<class_CPUParticles3D_property_speed_scale>`                               | ``1.0``                    |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
    | :ref:`bool<class_bool>`                                 | :ref:`split_scale<class_CPUParticles3D_property_split_scale>`                               | ``false``                  |
@@ -186,6 +188,8 @@ Properties
    | :ref:`float<class_float>`                               | :ref:`tangential_accel_max<class_CPUParticles3D_property_tangential_accel_max>`             | ``0.0``                    |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
    | :ref:`float<class_float>`                               | :ref:`tangential_accel_min<class_CPUParticles3D_property_tangential_accel_min>`             | ``0.0``                    |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`bool<class_bool>`                                 | :ref:`use_fixed_seed<class_CPUParticles3D_property_use_fixed_seed>`                         | ``false``                  |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
    | :ref:`AABB<class_AABB>`                                 | :ref:`visibility_aabb<class_CPUParticles3D_property_visibility_aabb>`                       | ``AABB(0, 0, 0, 0, 0, 0)`` |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------+----------------------------+
@@ -211,7 +215,9 @@ Methods
    +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`   | :ref:`get_particle_flag<class_CPUParticles3D_method_get_particle_flag>`\ (\ particle_flag\: :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>`\ ) |const|                           |
    +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`restart<class_CPUParticles3D_method_restart>`\ (\ )                                                                                                                                |
+   | |void|                    | :ref:`request_particles_process<class_CPUParticles3D_method_request_particles_process>`\ (\ process_time\: :ref:`float<class_float>`\ )                                                  |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`restart<class_CPUParticles3D_method_restart>`\ (\ keep_seed\: :ref:`bool<class_bool>` = false\ )                                                                                   |
    +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                    | :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>`\ (\ param\: :ref:`Parameter<enum_CPUParticles3D_Parameter>`, curve\: :ref:`Curve<class_Curve>`\ )                    |
    +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -294,7 +300,7 @@ enum **Parameter**: :ref:`🔗<enum_CPUParticles3D_Parameter>`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_INITIAL_LINEAR_VELOCITY** = ``0``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set initial velocity properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set initial velocity properties.
 
 .. _class_CPUParticles3D_constant_PARAM_ANGULAR_VELOCITY:
 
@@ -302,7 +308,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_ANGULAR_VELOCITY** = ``1``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set angular velocity properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set angular velocity properties.
 
 .. _class_CPUParticles3D_constant_PARAM_ORBIT_VELOCITY:
 
@@ -310,7 +316,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_ORBIT_VELOCITY** = ``2``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set orbital velocity properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set orbital velocity properties.
 
 .. _class_CPUParticles3D_constant_PARAM_LINEAR_ACCEL:
 
@@ -318,7 +324,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_LINEAR_ACCEL** = ``3``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set linear acceleration properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set linear acceleration properties.
 
 .. _class_CPUParticles3D_constant_PARAM_RADIAL_ACCEL:
 
@@ -326,7 +332,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_RADIAL_ACCEL** = ``4``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set radial acceleration properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set radial acceleration properties.
 
 .. _class_CPUParticles3D_constant_PARAM_TANGENTIAL_ACCEL:
 
@@ -334,7 +340,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_TANGENTIAL_ACCEL** = ``5``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set tangential acceleration properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set tangential acceleration properties.
 
 .. _class_CPUParticles3D_constant_PARAM_DAMPING:
 
@@ -342,7 +348,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_DAMPING** = ``6``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set damping properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set damping properties.
 
 .. _class_CPUParticles3D_constant_PARAM_ANGLE:
 
@@ -350,7 +356,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_ANGLE** = ``7``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set angle properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set angle properties.
 
 .. _class_CPUParticles3D_constant_PARAM_SCALE:
 
@@ -358,7 +364,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_SCALE** = ``8``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set scale properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set scale properties.
 
 .. _class_CPUParticles3D_constant_PARAM_HUE_VARIATION:
 
@@ -366,7 +372,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_HUE_VARIATION** = ``9``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set hue variation properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set hue variation properties.
 
 .. _class_CPUParticles3D_constant_PARAM_ANIM_SPEED:
 
@@ -374,7 +380,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_ANIM_SPEED** = ``10``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set animation speed properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set animation speed properties.
 
 .. _class_CPUParticles3D_constant_PARAM_ANIM_OFFSET:
 
@@ -382,7 +388,7 @@ Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`
 
 :ref:`Parameter<enum_CPUParticles3D_Parameter>` **PARAM_ANIM_OFFSET** = ``11``
 
-Use with :ref:`set_param_min<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve<class_CPUParticles3D_method_set_param_curve>` to set animation offset properties.
+Use with :ref:`set_param_min()<class_CPUParticles3D_method_set_param_min>`, :ref:`set_param_max()<class_CPUParticles3D_method_set_param_max>`, and :ref:`set_param_curve()<class_CPUParticles3D_method_set_param_curve>` to set animation offset properties.
 
 .. _class_CPUParticles3D_constant_PARAM_MAX:
 
@@ -408,7 +414,7 @@ enum **ParticleFlags**: :ref:`🔗<enum_CPUParticles3D_ParticleFlags>`
 
 :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>` **PARTICLE_FLAG_ALIGN_Y_TO_VELOCITY** = ``0``
 
-Use with :ref:`set_particle_flag<class_CPUParticles3D_method_set_particle_flag>` to set :ref:`particle_flag_align_y<class_CPUParticles3D_property_particle_flag_align_y>`.
+Use with :ref:`set_particle_flag()<class_CPUParticles3D_method_set_particle_flag>` to set :ref:`particle_flag_align_y<class_CPUParticles3D_property_particle_flag_align_y>`.
 
 .. _class_CPUParticles3D_constant_PARTICLE_FLAG_ROTATE_Y:
 
@@ -416,7 +422,7 @@ Use with :ref:`set_particle_flag<class_CPUParticles3D_method_set_particle_flag>`
 
 :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>` **PARTICLE_FLAG_ROTATE_Y** = ``1``
 
-Use with :ref:`set_particle_flag<class_CPUParticles3D_method_set_particle_flag>` to set :ref:`particle_flag_rotate_y<class_CPUParticles3D_property_particle_flag_rotate_y>`.
+Use with :ref:`set_particle_flag()<class_CPUParticles3D_method_set_particle_flag>` to set :ref:`particle_flag_rotate_y<class_CPUParticles3D_property_particle_flag_rotate_y>`.
 
 .. _class_CPUParticles3D_constant_PARTICLE_FLAG_DISABLE_Z:
 
@@ -424,7 +430,7 @@ Use with :ref:`set_particle_flag<class_CPUParticles3D_method_set_particle_flag>`
 
 :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>` **PARTICLE_FLAG_DISABLE_Z** = ``2``
 
-Use with :ref:`set_particle_flag<class_CPUParticles3D_method_set_particle_flag>` to set :ref:`particle_flag_disable_z<class_CPUParticles3D_property_particle_flag_disable_z>`.
+Use with :ref:`set_particle_flag()<class_CPUParticles3D_method_set_particle_flag>` to set :ref:`particle_flag_disable_z<class_CPUParticles3D_property_particle_flag_disable_z>`.
 
 .. _class_CPUParticles3D_constant_PARTICLE_FLAG_MAX:
 
@@ -768,7 +774,7 @@ Each particle's initial color.
 - |void| **set_color_initial_ramp**\ (\ value\: :ref:`Gradient<class_Gradient>`\ )
 - :ref:`Gradient<class_Gradient>` **get_color_initial_ramp**\ (\ )
 
-Each particle's initial color will vary along this :ref:`GradientTexture1D<class_GradientTexture1D>` (multiplied with :ref:`color<class_CPUParticles3D_property_color>`).
+Each particle's initial color will vary along this :ref:`Gradient<class_Gradient>` (multiplied with :ref:`color<class_CPUParticles3D_property_color>`).
 
 \ **Note:** :ref:`color_initial_ramp<class_CPUParticles3D_property_color_initial_ramp>` multiplies the particle mesh's vertex colors. To have a visible effect on a :ref:`BaseMaterial3D<class_BaseMaterial3D>`, :ref:`BaseMaterial3D.vertex_color_use_as_albedo<class_BaseMaterial3D_property_vertex_color_use_as_albedo>` *must* be ``true``. For a :ref:`ShaderMaterial<class_ShaderMaterial>`, ``ALBEDO *= COLOR.rgb;`` must be inserted in the shader's ``fragment()`` function. Otherwise, :ref:`color_initial_ramp<class_CPUParticles3D_property_color_initial_ramp>` will have no visible effect.
 
@@ -787,7 +793,7 @@ Each particle's initial color will vary along this :ref:`GradientTexture1D<class
 - |void| **set_color_ramp**\ (\ value\: :ref:`Gradient<class_Gradient>`\ )
 - :ref:`Gradient<class_Gradient>` **get_color_ramp**\ (\ )
 
-Each particle's color will vary along this :ref:`GradientTexture1D<class_GradientTexture1D>` over its lifetime (multiplied with :ref:`color<class_CPUParticles3D_property_color>`).
+Each particle's color will vary along this :ref:`Gradient<class_Gradient>` over its lifetime (multiplied with :ref:`color<class_CPUParticles3D_property_color>`).
 
 \ **Note:** :ref:`color_ramp<class_CPUParticles3D_property_color_ramp>` multiplies the particle mesh's vertex colors. To have a visible effect on a :ref:`BaseMaterial3D<class_BaseMaterial3D>`, :ref:`BaseMaterial3D.vertex_color_use_as_albedo<class_BaseMaterial3D_property_vertex_color_use_as_albedo>` *must* be ``true``. For a :ref:`ShaderMaterial<class_ShaderMaterial>`, ``ALBEDO *= COLOR.rgb;`` must be inserted in the shader's ``fragment()`` function. Otherwise, :ref:`color_ramp<class_CPUParticles3D_property_color_ramp>` will have no visible effect.
 
@@ -874,7 +880,7 @@ Unit vector specifying the particles' emission direction.
 - |void| **set_draw_order**\ (\ value\: :ref:`DrawOrder<enum_CPUParticles3D_DrawOrder>`\ )
 - :ref:`DrawOrder<enum_CPUParticles3D_DrawOrder>` **get_draw_order**\ (\ )
 
-Particle draw order. Uses :ref:`DrawOrder<enum_CPUParticles3D_DrawOrder>` values.
+Particle draw order.
 
 .. rst-class:: classref-item-separator
 
@@ -1054,7 +1060,7 @@ The radius of the ring when using the emitter :ref:`EMISSION_SHAPE_RING<class_CP
 - |void| **set_emission_shape**\ (\ value\: :ref:`EmissionShape<enum_CPUParticles3D_EmissionShape>`\ )
 - :ref:`EmissionShape<enum_CPUParticles3D_EmissionShape>` **get_emission_shape**\ (\ )
 
-Particles will be emitted inside this region. See :ref:`EmissionShape<enum_CPUParticles3D_EmissionShape>` for possible values.
+Particles will be emitted inside this region.
 
 .. rst-class:: classref-item-separator
 
@@ -1689,6 +1695,23 @@ Curve for the scale over life, along the z axis.
 
 ----
 
+.. _class_CPUParticles3D_property_seed:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **seed** = ``0`` :ref:`🔗<class_CPUParticles3D_property_seed>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_seed**\ (\ value\: :ref:`int<class_int>`\ )
+- :ref:`int<class_int>` **get_seed**\ (\ )
+
+Sets the random seed used by the particle system. Only effective if :ref:`use_fixed_seed<class_CPUParticles3D_property_use_fixed_seed>` is ``true``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_CPUParticles3D_property_speed_scale:
 
 .. rst-class:: classref-property
@@ -1791,6 +1814,23 @@ Minimum tangent acceleration.
 
 ----
 
+.. _class_CPUParticles3D_property_use_fixed_seed:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **use_fixed_seed** = ``false`` :ref:`🔗<class_CPUParticles3D_property_use_fixed_seed>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_use_fixed_seed**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **get_use_fixed_seed**\ (\ )
+
+If ``true``, particles will use the same seed for every simulation using the seed defined in :ref:`seed<class_CPUParticles3D_property_seed>`. This is useful for situations where the visual outcome should be consistent across replays, for example when using Movie Maker mode.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_CPUParticles3D_property_visibility_aabb:
 
 .. rst-class:: classref-property
@@ -1881,7 +1921,21 @@ Returns the minimum value range for the given parameter.
 
 :ref:`bool<class_bool>` **get_particle_flag**\ (\ particle_flag\: :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>`\ ) |const| :ref:`🔗<class_CPUParticles3D_method_get_particle_flag>`
 
-Returns the enabled state of the given particle flag (see :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>` for options).
+Returns the enabled state of the given particle flag.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_CPUParticles3D_method_request_particles_process:
+
+.. rst-class:: classref-method
+
+|void| **request_particles_process**\ (\ process_time\: :ref:`float<class_float>`\ ) :ref:`🔗<class_CPUParticles3D_method_request_particles_process>`
+
+Requests the particles to process for extra process time during a single frame.
+
+Useful for particle playback, if used in combination with :ref:`use_fixed_seed<class_CPUParticles3D_property_use_fixed_seed>` or by calling :ref:`restart()<class_CPUParticles3D_method_restart>` with parameter ``keep_seed`` set to ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1891,9 +1945,11 @@ Returns the enabled state of the given particle flag (see :ref:`ParticleFlags<en
 
 .. rst-class:: classref-method
 
-|void| **restart**\ (\ ) :ref:`🔗<class_CPUParticles3D_method_restart>`
+|void| **restart**\ (\ keep_seed\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_CPUParticles3D_method_restart>`
 
 Restarts the particle emitter.
+
+If ``keep_seed`` is ``true``, the current random seed will be preserved. Useful for seeking and playback.
 
 .. rst-class:: classref-item-separator
 
@@ -1941,9 +1997,10 @@ Sets the minimum value for the given parameter.
 
 |void| **set_particle_flag**\ (\ particle_flag\: :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CPUParticles3D_method_set_particle_flag>`
 
-Enables or disables the given particle flag (see :ref:`ParticleFlags<enum_CPUParticles3D_ParticleFlags>` for options).
+Enables or disables the given particle flag.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

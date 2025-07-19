@@ -21,7 +21,7 @@ Description
 
 A resource used by :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
 
-\ **AnimationNodeBlendSpace1D** represents a virtual axis on which any type of :ref:`AnimationRootNode<class_AnimationRootNode>`\ s can be added using :ref:`add_blend_point<class_AnimationNodeBlendSpace1D_method_add_blend_point>`. Outputs the linear blend of the two :ref:`AnimationRootNode<class_AnimationRootNode>`\ s adjacent to the current value.
+\ **AnimationNodeBlendSpace1D** represents a virtual axis on which any type of :ref:`AnimationRootNode<class_AnimationRootNode>`\ s can be added using :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`. Outputs the linear blend of the two :ref:`AnimationRootNode<class_AnimationRootNode>`\ s adjacent to the current value.
 
 You can set the extents of the axis with :ref:`min_space<class_AnimationNodeBlendSpace1D_property_min_space>` and :ref:`max_space<class_AnimationNodeBlendSpace1D_property_max_space>`.
 
@@ -137,7 +137,7 @@ Property Descriptions
 - |void| **set_blend_mode**\ (\ value\: :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>`\ )
 - :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` **get_blend_mode**\ (\ )
 
-Controls the interpolation between animations. See :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` constants.
+Controls the interpolation between animations.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Controls the interpolation between animations. See :ref:`BlendMode<enum_Animatio
 - |void| **set_max_space**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_space**\ (\ )
 
-The blend space's axis's upper limit for the points' position. See :ref:`add_blend_point<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
+The blend space's axis's upper limit for the points' position. See :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ The blend space's axis's upper limit for the points' position. See :ref:`add_ble
 - |void| **set_min_space**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min_space**\ (\ )
 
-The blend space's axis's lower limit for the points' position. See :ref:`add_blend_point<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
+The blend space's axis's lower limit for the points' position. See :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -316,6 +316,7 @@ Changes the :ref:`AnimationNode<class_AnimationNode>` referenced by the point at
 Updates the position of the point at index ``point`` on the blend axis.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
