@@ -107,7 +107,7 @@ For example, ``0-127`` represents the full ASCII range. It can also be written a
 
 For any range, the character advance and offset can be customized by appending three space-separated integer values (additional advance, x offset, y offset) to the end. For example ``'a'-'b' 4 5 2`` sets the advance to ``char_width + 4`` and offset to ``Vector2(5, 2)`` for both `a` and `b` characters.
 
-Make sure :ref:`character_ranges<class_ResourceImporterImageFont_property_character_ranges>` doesn't exceed the number of :ref:`columns<class_ResourceImporterImageFont_property_columns>` \* :ref:`rows<class_ResourceImporterImageFont_property_rows>` defined. Otherwise, the font will fail to import.
+\ **Note:** The overall number of characters must not exceed the number of :ref:`columns<class_ResourceImporterImageFont_property_columns>` multiplied by :ref:`rows<class_ResourceImporterImageFont_property_rows>`. Otherwise, the font will fail to import.
 
 **Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
 
@@ -212,6 +212,7 @@ Number of rows in the font image. See also :ref:`columns<class_ResourceImporterI
 Font scaling mode.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

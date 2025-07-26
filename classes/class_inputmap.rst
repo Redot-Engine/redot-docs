@@ -19,7 +19,7 @@ A singleton that manages all :ref:`InputEventAction<class_InputEventAction>`\ s.
 Description
 -----------
 
-Manages all :ref:`InputEventAction<class_InputEventAction>` which can be created/modified from the project settings menu **Project > Project Settings > Input Map** or in code with :ref:`add_action<class_InputMap_method_add_action>` and :ref:`action_add_event<class_InputMap_method_action_add_event>`. See :ref:`Node._input<class_Node_private_method__input>`.
+Manages all :ref:`InputEventAction<class_InputEventAction>` which can be created/modified from the project settings menu **Project > Project Settings > Input Map** or in code with :ref:`add_action()<class_InputMap_method_add_action>` and :ref:`action_add_event()<class_InputMap_method_action_add_event>`. See :ref:`Node._input()<class_Node_private_method__input>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -56,6 +56,8 @@ Methods
    | |void|                                                           | :ref:`erase_action<class_InputMap_method_erase_action>`\ (\ action\: :ref:`StringName<class_StringName>`\ )                                                                                                           |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`event_is_action<class_InputMap_method_event_is_action>`\ (\ event\: :ref:`InputEvent<class_InputEvent>`, action\: :ref:`StringName<class_StringName>`, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                      | :ref:`get_action_description<class_InputMap_method_get_action_description>`\ (\ action\: :ref:`StringName<class_StringName>`\ ) |const|                                                                               |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_actions<class_InputMap_method_get_actions>`\ (\ )                                                                                                                                                           |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -167,7 +169,7 @@ Sets a deadzone value for the action.
 
 Adds an empty action to the **InputMap** with a configurable ``deadzone``.
 
-An :ref:`InputEvent<class_InputEvent>` can then be added to this action with :ref:`action_add_event<class_InputMap_method_action_add_event>`.
+An :ref:`InputEvent<class_InputEvent>` can then be added to this action with :ref:`action_add_event()<class_InputMap_method_action_add_event>`.
 
 .. rst-class:: classref-item-separator
 
@@ -191,9 +193,21 @@ Removes an action from the **InputMap**.
 
 :ref:`bool<class_bool>` **event_is_action**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, action\: :ref:`StringName<class_StringName>`, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_InputMap_method_event_is_action>`
 
-Returns ``true`` if the given event is part of an existing action. This method ignores keyboard modifiers if the given :ref:`InputEvent<class_InputEvent>` is not pressed (for proper release detection). See :ref:`action_has_event<class_InputMap_method_action_has_event>` if you don't want this behavior.
+Returns ``true`` if the given event is part of an existing action. This method ignores keyboard modifiers if the given :ref:`InputEvent<class_InputEvent>` is not pressed (for proper release detection). See :ref:`action_has_event()<class_InputMap_method_action_has_event>` if you don't want this behavior.
 
 If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_InputMap_method_get_action_description:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **get_action_description**\ (\ action\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_InputMap_method_get_action_description>`
+
+Returns the human-readable description of the given action.
 
 .. rst-class:: classref-item-separator
 
@@ -232,6 +246,7 @@ Returns ``true`` if the **InputMap** has a registered action with the given name
 Clears all :ref:`InputEventAction<class_InputEventAction>` in the **InputMap** and load it anew from :ref:`ProjectSettings<class_ProjectSettings>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

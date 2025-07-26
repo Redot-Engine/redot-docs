@@ -154,7 +154,7 @@ Finds the index of the given ``path``.
 
 :ref:`ReplicationMode<enum_SceneReplicationConfig_ReplicationMode>` **property_get_replication_mode**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SceneReplicationConfig_method_property_get_replication_mode>`
 
-Returns the replication mode for the property identified by the given ``path``. See :ref:`ReplicationMode<enum_SceneReplicationConfig_ReplicationMode>`.
+Returns the replication mode for the property identified by the given ``path``.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ Returns ``true`` if the property identified by the given ``path`` is configured 
 
 :ref:`bool<class_bool>` **property_get_sync**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SceneReplicationConfig_method_property_get_sync>`
 
-**Deprecated:** Use :ref:`property_get_replication_mode<class_SceneReplicationConfig_method_property_get_replication_mode>` instead.
+**Deprecated:** Use :ref:`property_get_replication_mode()<class_SceneReplicationConfig_method_property_get_replication_mode>` instead.
 
 Returns ``true`` if the property identified by the given ``path`` is configured to be synchronized on process.
 
@@ -192,7 +192,7 @@ Returns ``true`` if the property identified by the given ``path`` is configured 
 
 :ref:`bool<class_bool>` **property_get_watch**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SceneReplicationConfig_method_property_get_watch>`
 
-**Deprecated:** Use :ref:`property_get_replication_mode<class_SceneReplicationConfig_method_property_get_replication_mode>` instead.
+**Deprecated:** Use :ref:`property_get_replication_mode()<class_SceneReplicationConfig_method_property_get_replication_mode>` instead.
 
 Returns ``true`` if the property identified by the given ``path`` is configured to be reliably synchronized when changes are detected on process.
 
@@ -206,7 +206,7 @@ Returns ``true`` if the property identified by the given ``path`` is configured 
 
 |void| **property_set_replication_mode**\ (\ path\: :ref:`NodePath<class_NodePath>`, mode\: :ref:`ReplicationMode<enum_SceneReplicationConfig_ReplicationMode>`\ ) :ref:`🔗<class_SceneReplicationConfig_method_property_set_replication_mode>`
 
-Sets the synchronization mode for the property identified by the given ``path``. See :ref:`ReplicationMode<enum_SceneReplicationConfig_ReplicationMode>`.
+Sets the synchronization mode for the property identified by the given ``path``.
 
 .. rst-class:: classref-item-separator
 
@@ -230,7 +230,7 @@ Sets whether the property identified by the given ``path`` is configured to be s
 
 |void| **property_set_sync**\ (\ path\: :ref:`NodePath<class_NodePath>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SceneReplicationConfig_method_property_set_sync>`
 
-**Deprecated:** Use :ref:`property_set_replication_mode<class_SceneReplicationConfig_method_property_set_replication_mode>` with :ref:`REPLICATION_MODE_ALWAYS<class_SceneReplicationConfig_constant_REPLICATION_MODE_ALWAYS>` instead.
+**Deprecated:** Use :ref:`property_set_replication_mode()<class_SceneReplicationConfig_method_property_set_replication_mode>` with :ref:`REPLICATION_MODE_ALWAYS<class_SceneReplicationConfig_constant_REPLICATION_MODE_ALWAYS>` instead.
 
 Sets whether the property identified by the given ``path`` is configured to be synchronized on process.
 
@@ -244,7 +244,7 @@ Sets whether the property identified by the given ``path`` is configured to be s
 
 |void| **property_set_watch**\ (\ path\: :ref:`NodePath<class_NodePath>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SceneReplicationConfig_method_property_set_watch>`
 
-**Deprecated:** Use :ref:`property_set_replication_mode<class_SceneReplicationConfig_method_property_set_replication_mode>` with :ref:`REPLICATION_MODE_ON_CHANGE<class_SceneReplicationConfig_constant_REPLICATION_MODE_ON_CHANGE>` instead.
+**Deprecated:** Use :ref:`property_set_replication_mode()<class_SceneReplicationConfig_method_property_set_replication_mode>` with :ref:`REPLICATION_MODE_ON_CHANGE<class_SceneReplicationConfig_constant_REPLICATION_MODE_ON_CHANGE>` instead.
 
 Sets whether the property identified by the given ``path`` is configured to be reliably synchronized when changes are detected on process.
 
@@ -261,6 +261,7 @@ Sets whether the property identified by the given ``path`` is configured to be r
 Removes the property identified by the given ``path`` from the configuration.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

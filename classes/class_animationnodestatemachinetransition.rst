@@ -19,7 +19,7 @@ A transition within an :ref:`AnimationNodeStateMachine<class_AnimationNodeStateM
 Description
 -----------
 
-The path generated when using :ref:`AnimationNodeStateMachinePlayback.travel<class_AnimationNodeStateMachinePlayback_method_travel>` is limited to the nodes connected by **AnimationNodeStateMachineTransition**.
+The path generated when using :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>` is limited to the nodes connected by **AnimationNodeStateMachineTransition**.
 
 You can set the timing and conditions of the transition in detail.
 
@@ -138,7 +138,7 @@ Don't use this transition.
 
 :ref:`AdvanceMode<enum_AnimationNodeStateMachineTransition_AdvanceMode>` **ADVANCE_MODE_ENABLED** = ``1``
 
-Only use this transition during :ref:`AnimationNodeStateMachinePlayback.travel<class_AnimationNodeStateMachinePlayback_method_travel>`.
+Only use this transition during :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`.
 
 .. _class_AnimationNodeStateMachineTransition_constant_ADVANCE_MODE_AUTO:
 
@@ -215,7 +215,7 @@ Use an expression as a condition for state machine transitions. It is possible t
 - |void| **set_advance_mode**\ (\ value\: :ref:`AdvanceMode<enum_AnimationNodeStateMachineTransition_AdvanceMode>`\ )
 - :ref:`AdvanceMode<enum_AnimationNodeStateMachineTransition_AdvanceMode>` **get_advance_mode**\ (\ )
 
-Determines whether the transition should be disabled, enabled when using :ref:`AnimationNodeStateMachinePlayback.travel<class_AnimationNodeStateMachinePlayback_method_travel>`, or traversed automatically if the :ref:`advance_condition<class_AnimationNodeStateMachineTransition_property_advance_condition>` and :ref:`advance_expression<class_AnimationNodeStateMachineTransition_property_advance_expression>` checks are ``true`` (if assigned).
+Determines whether the transition should be disabled, enabled when using :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`, or traversed automatically if the :ref:`advance_condition<class_AnimationNodeStateMachineTransition_property_advance_condition>` and :ref:`advance_expression<class_AnimationNodeStateMachineTransition_property_advance_expression>` checks are ``true`` (if assigned).
 
 .. rst-class:: classref-item-separator
 
@@ -249,7 +249,7 @@ If ``true``, breaks the loop at the end of the loop cycle for transition, even i
 - |void| **set_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_priority**\ (\ )
 
-Lower priority transitions are preferred when travelling through the tree via :ref:`AnimationNodeStateMachinePlayback.travel<class_AnimationNodeStateMachinePlayback_method_travel>` or :ref:`advance_mode<class_AnimationNodeStateMachineTransition_property_advance_mode>` is set to :ref:`ADVANCE_MODE_AUTO<class_AnimationNodeStateMachineTransition_constant_ADVANCE_MODE_AUTO>`.
+Lower priority transitions are preferred when travelling through the tree via :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>` or :ref:`advance_mode<class_AnimationNodeStateMachineTransition_property_advance_mode>` is set to :ref:`ADVANCE_MODE_AUTO<class_AnimationNodeStateMachineTransition_constant_ADVANCE_MODE_AUTO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -322,6 +322,7 @@ The time to cross-fade between this state and the next.
 \ **Note:** :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>` transitions the current state immediately after the start of the fading. The precise remaining time can only be inferred from the main animation. When :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` is considered as the most upstream, so the :ref:`xfade_time<class_AnimationNodeStateMachineTransition_property_xfade_time>` is not scaled depending on the downstream delta. See also :ref:`AnimationNodeOneShot.fadeout_time<class_AnimationNodeOneShot_property_fadeout_time>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
