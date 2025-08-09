@@ -39,7 +39,7 @@ To bake a navigation mesh at least one outline needs to be added that defines th
  .. code-tab:: csharp
 
     var newNavigationMesh = new NavigationPolygon();
-    var boundingOutline = new Vector2[] { new Vector2(0, 0), new Vector2(0, 50), new Vector2(50, 50), new Vector2(50, 0) };
+    Vector2[] boundingOutline = [new Vector2(0, 0), new Vector2(0, 50), new Vector2(50, 50), new Vector2(50, 0)];
     newNavigationMesh.AddOutline(boundingOutline);
     NavigationServer2D.BakeFromSourceGeometryData(newNavigationMesh, new NavigationMeshSourceGeometryData2D());
     GetNode<NavigationRegion2D>("NavigationRegion2D").NavigationPolygon = newNavigationMesh;
@@ -63,9 +63,9 @@ Adding vertices and polygon indices manually.
  .. code-tab:: csharp
 
     var newNavigationMesh = new NavigationPolygon();
-    var newVertices = new Vector2[] { new Vector2(0, 0), new Vector2(0, 50), new Vector2(50, 50), new Vector2(50, 0) };
+    Vector2[] newVertices = [new Vector2(0, 0), new Vector2(0, 50), new Vector2(50, 50), new Vector2(50, 0)];
     newNavigationMesh.Vertices = newVertices;
-    var newPolygonIndices = new int[] { 0, 1, 2, 3 };
+    int[] newPolygonIndices = [0, 1, 2, 3];
     newNavigationMesh.AddPolygon(newPolygonIndices);
     GetNode<NavigationRegion2D>("NavigationRegion2D").NavigationPolygon = newNavigationMesh;
 
@@ -303,6 +303,8 @@ Property Descriptions
 
 The distance to erode/shrink the walkable surface when baking the navigation mesh.
 
+\ **Note:** The radius must be equal or higher than ``0.0``. If the radius is ``0.0``, it won't be possible to fix invalid outline overlaps and other precision errors during the baking process. As a result, some obstacles may be excluded incorrectly from the final navigation mesh, or may delete the navigation mesh's polygons.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -407,7 +409,7 @@ Only used when :ref:`parsed_geometry_type<class_NavigationPolygon_property_parse
 - |void| **set_parsed_geometry_type**\ (\ value\: :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>`\ )
 - :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` **get_parsed_geometry_type**\ (\ )
 
-Determines which type of nodes will be parsed as geometry. See :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` for possible values.
+Determines which type of nodes will be parsed as geometry.
 
 .. rst-class:: classref-item-separator
 
@@ -424,7 +426,7 @@ Determines which type of nodes will be parsed as geometry. See :ref:`ParsedGeome
 - |void| **set_sample_partition_type**\ (\ value\: :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>`\ )
 - :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` **get_sample_partition_type**\ (\ )
 
-Partitioning algorithm for creating the navigation mesh polys. See :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` for possible values.
+Partitioning algorithm for creating the navigation mesh polys.
 
 .. rst-class:: classref-item-separator
 
@@ -460,7 +462,7 @@ Only used when :ref:`source_geometry_mode<class_NavigationPolygon_property_sourc
 - |void| **set_source_geometry_mode**\ (\ value\: :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>`\ )
 - :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` **get_source_geometry_mode**\ (\ )
 
-The source of the geometry used when baking. See :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` for possible values.
+The source of the geometry used when baking.
 
 .. rst-class:: classref-section-separator
 
@@ -501,7 +503,7 @@ Adds a :ref:`PackedVector2Array<class_PackedVector2Array>` that contains the ver
 
 |void| **add_polygon**\ (\ polygon\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_add_polygon>`
 
-Adds a polygon using the indices of the vertices you get when calling :ref:`get_vertices<class_NavigationPolygon_method_get_vertices>`.
+Adds a polygon using the indices of the vertices you get when calling :ref:`get_vertices()<class_NavigationPolygon_method_get_vertices>`.
 
 .. rst-class:: classref-item-separator
 
@@ -549,7 +551,7 @@ Clears the array of polygons, but it doesn't clear the array of outlines and ver
 
 :ref:`NavigationMesh<class_NavigationMesh>` **get_navigation_mesh**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_get_navigation_mesh>`
 
-Returns the :ref:`NavigationMesh<class_NavigationMesh>` resulting from this navigation polygon. This navigation mesh can be used to update the navigation mesh of a region with the :ref:`NavigationServer3D.region_set_navigation_mesh<class_NavigationServer3D_method_region_set_navigation_mesh>` API directly (as 2D uses the 3D server behind the scene).
+Returns the :ref:`NavigationMesh<class_NavigationMesh>` resulting from this navigation polygon. This navigation mesh can be used to update the navigation mesh of a region with the :ref:`NavigationServer3D.region_set_navigation_mesh()<class_NavigationServer3D_method_region_set_navigation_mesh>` API directly.
 
 .. rst-class:: classref-item-separator
 
@@ -633,7 +635,7 @@ Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing all the
 
 |void| **make_polygons_from_outlines**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_make_polygons_from_outlines>`
 
-**Deprecated:** Use :ref:`NavigationServer2D.parse_source_geometry_data<class_NavigationServer2D_method_parse_source_geometry_data>` and :ref:`NavigationServer2D.bake_from_source_geometry_data<class_NavigationServer2D_method_bake_from_source_geometry_data>` instead.
+**Deprecated:** Use :ref:`NavigationServer2D.parse_source_geometry_data()<class_NavigationServer2D_method_parse_source_geometry_data>` and :ref:`NavigationServer2D.bake_from_source_geometry_data()<class_NavigationServer2D_method_bake_from_source_geometry_data>` instead.
 
 Creates polygons from the outlines added in the editor or by script.
 
@@ -647,7 +649,7 @@ Creates polygons from the outlines added in the editor or by script.
 
 |void| **remove_outline**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationPolygon_method_remove_outline>`
 
-Removes an outline created in the editor or by script. You have to call :ref:`make_polygons_from_outlines<class_NavigationPolygon_method_make_polygons_from_outlines>` for the polygons to update.
+Removes an outline created in the editor or by script. You have to call :ref:`make_polygons_from_outlines()<class_NavigationPolygon_method_make_polygons_from_outlines>` for the polygons to update.
 
 .. rst-class:: classref-item-separator
 
@@ -659,7 +661,7 @@ Removes an outline created in the editor or by script. You have to call :ref:`ma
 
 |void| **set_outline**\ (\ idx\: :ref:`int<class_int>`, outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_set_outline>`
 
-Changes an outline created in the editor or by script. You have to call :ref:`make_polygons_from_outlines<class_NavigationPolygon_method_make_polygons_from_outlines>` for the polygons to update.
+Changes an outline created in the editor or by script. You have to call :ref:`make_polygons_from_outlines()<class_NavigationPolygon_method_make_polygons_from_outlines>` for the polygons to update.
 
 .. rst-class:: classref-item-separator
 
@@ -683,9 +685,10 @@ Based on ``value``, enables or disables the specified layer in the :ref:`parsed_
 
 |void| **set_vertices**\ (\ vertices\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_set_vertices>`
 
-Sets the vertices that can be then indexed to create polygons with the :ref:`add_polygon<class_NavigationPolygon_method_add_polygon>` method.
+Sets the vertices that can be then indexed to create polygons with the :ref:`add_polygon()<class_NavigationPolygon_method_add_polygon>` method.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

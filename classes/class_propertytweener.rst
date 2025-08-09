@@ -19,11 +19,11 @@ Interpolates an :ref:`Object<class_Object>`'s property over time.
 Description
 -----------
 
-**PropertyTweener** is used to interpolate a property in an object. See :ref:`Tween.tween_property<class_Tween_method_tween_property>` for more usage information.
+**PropertyTweener** is used to interpolate a property in an object. See :ref:`Tween.tween_property()<class_Tween_method_tween_property>` for more usage information.
 
 The tweener will finish automatically if the target object is freed.
 
-\ **Note:** :ref:`Tween.tween_property<class_Tween_method_tween_property>` is the only correct way to create **PropertyTweener**. Any **PropertyTweener** created manually will not function correctly.
+\ **Note:** :ref:`Tween.tween_property()<class_Tween_method_tween_property>` is the only correct way to create **PropertyTweener**. Any **PropertyTweener** created manually will not function correctly.
 
 .. rst-class:: classref-reftable-group
 
@@ -122,7 +122,7 @@ Sets a custom initial value to the **PropertyTweener**.
 
 :ref:`PropertyTweener<class_PropertyTweener>` **from_current**\ (\ ) :ref:`🔗<class_PropertyTweener_method_from_current>`
 
-Makes the **PropertyTweener** use the current property value (i.e. at the time of creating this **PropertyTweener**) as a starting point. This is equivalent of using :ref:`from<class_PropertyTweener_method_from>` with the current value. These two calls will do the same:
+Makes the **PropertyTweener** use the current property value (i.e. at the time of creating this **PropertyTweener**) as a starting point. This is equivalent of using :ref:`from()<class_PropertyTweener_method_from>` with the current value. These two calls will do the same:
 
 
 .. tabs::
@@ -157,12 +157,12 @@ Allows interpolating the value with a custom easing function. The provided ``int
  .. code-tab:: gdscript
 
     @export var curve: Curve
-    
+
     func _ready():
         var tween = create_tween()
         # Interpolate the value using a custom curve.
         tween.tween_property(self, "position:x", 300, 1).as_relative().set_custom_interpolator(tween_curve)
-    
+
     func tween_curve(v):
         return curve.sample_baked(v)
 
@@ -170,7 +170,7 @@ Allows interpolating the value with a custom easing function. The provided ``int
 
     [Export]
     public Curve Curve { get; set; }
-    
+
     public override void _Ready()
     {
         Tween tween = CreateTween();
@@ -178,7 +178,7 @@ Allows interpolating the value with a custom easing function. The provided ``int
         Callable tweenCurveCallable = Callable.From<float, float>(TweenCurve);
         tween.TweenProperty(this, "position:x", 300.0f, 1.0f).AsRelative().SetCustomInterpolator(tweenCurveCallable);
     }
-    
+
     private float TweenCurve(float value)
     {
         return Curve.SampleBaked(value);
@@ -223,6 +223,7 @@ Sets the type of used easing from :ref:`EaseType<enum_Tween_EaseType>`. If not s
 Sets the type of used transition from :ref:`TransitionType<enum_Tween_TransitionType>`. If not set, the default transition is used from the :ref:`Tween<class_Tween>` that contains this Tweener.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

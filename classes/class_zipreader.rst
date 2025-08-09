@@ -32,25 +32,25 @@ This class implements a reader that can extract the content of individual files 
         var res = reader.read_file("hello.txt")
         reader.close()
         return res
-    
+
     # Extract all files from a ZIP archive, preserving the directories within.
     # This acts like the "Extract all" functionality from most archive managers.
     func extract_all_from_zip():
         var reader = ZIPReader.new()
         reader.open("res://archive.zip")
-    
+
         # Destination directory for the extracted files (this folder must exist before extraction).
         # Not all ZIP archives put everything in a single root folder,
         # which means several files/folders may be created in `root_dir` after extraction.
         var root_dir = DirAccess.open("user://")
-    
+
         var files = reader.get_files()
         for file_path in files:
             # If the current entry is a directory.
             if file_path.ends_with("/"):
                 root_dir.make_dir_recursive(file_path)
                 continue
-    
+
             # Write file contents, creating folders automatically when needed.
             # Not all ZIP archives are strictly ordered, so we need to do this in case
             # the file entry comes before the folder entry.
@@ -67,17 +67,19 @@ Methods
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`close<class_ZIPReader_method_close>`\ (\ )                                                                                                  |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`file_exists<class_ZIPReader_method_file_exists>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ ) |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_files<class_ZIPReader_method_get_files>`\ (\ )                                                                                          |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`open<class_ZIPReader_method_open>`\ (\ path\: :ref:`String<class_String>`\ )                                                                |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>`     | :ref:`read_file<class_ZIPReader_method_read_file>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ )     |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`close<class_ZIPReader_method_close>`\ (\ )                                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`file_exists<class_ZIPReader_method_file_exists>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ )                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_compression_level<class_ZIPReader_method_get_compression_level>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ ) |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_files<class_ZIPReader_method_get_files>`\ (\ )                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`open<class_ZIPReader_method_open>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                    |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>`     | :ref:`read_file<class_ZIPReader_method_read_file>`\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ )                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -108,7 +110,19 @@ Closes the underlying resources used by this instance.
 
 Returns ``true`` if the file exists in the loaded zip archive.
 
-Must be called after :ref:`open<class_ZIPReader_method_open>`.
+Must be called after :ref:`open()<class_ZIPReader_method_open>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ZIPReader_method_get_compression_level:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_compression_level**\ (\ path\: :ref:`String<class_String>`, case_sensitive\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ZIPReader_method_get_compression_level>`
+
+Returns the compression level of the file in the loaded zip archive. Returns ``-1`` if the file doesn't exist or any other error occurs. Must be called after :ref:`open()<class_ZIPReader_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +136,7 @@ Must be called after :ref:`open<class_ZIPReader_method_open>`.
 
 Returns the list of names of all files in the loaded archive.
 
-Must be called after :ref:`open<class_ZIPReader_method_open>`.
+Must be called after :ref:`open()<class_ZIPReader_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -148,9 +162,10 @@ Opens the zip archive at the given ``path`` and reads its file index.
 
 Loads the whole content of a file in the loaded zip archive into memory and returns it.
 
-Must be called after :ref:`open<class_ZIPReader_method_open>`.
+Must be called after :ref:`open()<class_ZIPReader_method_open>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

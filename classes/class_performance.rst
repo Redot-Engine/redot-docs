@@ -19,9 +19,9 @@ Exposes performance-related data.
 Description
 -----------
 
-This class provides access to a number of different monitors related to performance, such as memory usage, draw calls, and FPS. These are the same as the values displayed in the **Monitor** tab in the editor's **Debugger** panel. By using the :ref:`get_monitor<class_Performance_method_get_monitor>` method of this class, you can access this data from your code.
+This class provides access to a number of different monitors related to performance, such as memory usage, draw calls, and FPS. These are the same as the values displayed in the **Monitor** tab in the editor's **Debugger** panel. By using the :ref:`get_monitor()<class_Performance_method_get_monitor>` method of this class, you can access this data from your code.
 
-You can add custom monitors using the :ref:`add_custom_monitor<class_Performance_method_add_custom_monitor>` method. Custom monitors are available in **Monitor** tab in the editor's **Debugger** panel together with built-in monitors.
+You can add custom monitors using the :ref:`add_custom_monitor()<class_Performance_method_add_custom_monitor>` method. Custom monitors are available in **Monitor** tab in the editor's **Debugger** panel together with built-in monitors.
 
 \ **Note:** Some of the built-in monitors are only available in debug mode and will always return ``0`` when used in a project exported in release mode.
 
@@ -258,7 +258,7 @@ Number of islands in the 3D physics engine. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **AUDIO_OUTPUT_LATENCY** = ``23``
 
-Output latency of the :ref:`AudioServer<class_AudioServer>`. Equivalent to calling :ref:`AudioServer.get_output_latency<class_AudioServer_method_get_output_latency>`, it is not recommended to call this every frame.
+Output latency of the :ref:`AudioServer<class_AudioServer>`. Equivalent to calling :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>`, it is not recommended to call this every frame.
 
 .. _class_Performance_constant_NAVIGATION_ACTIVE_MAPS:
 
@@ -266,7 +266,7 @@ Output latency of the :ref:`AudioServer<class_AudioServer>`. Equivalent to calli
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_ACTIVE_MAPS** = ``24``
 
-Number of active navigation maps in the :ref:`NavigationServer3D<class_NavigationServer3D>`. This also includes the two empty default navigation maps created by World2D and World3D.
+Number of active navigation maps in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`. This also includes the two empty default navigation maps created by World2D and World3D.
 
 .. _class_Performance_constant_NAVIGATION_REGION_COUNT:
 
@@ -274,7 +274,7 @@ Number of active navigation maps in the :ref:`NavigationServer3D<class_Navigatio
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_REGION_COUNT** = ``25``
 
-Number of active navigation regions in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of active navigation regions in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_AGENT_COUNT:
 
@@ -282,7 +282,7 @@ Number of active navigation regions in the :ref:`NavigationServer3D<class_Naviga
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_AGENT_COUNT** = ``26``
 
-Number of active navigation agents processing avoidance in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of active navigation agents processing avoidance in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_LINK_COUNT:
 
@@ -290,7 +290,7 @@ Number of active navigation agents processing avoidance in the :ref:`NavigationS
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_LINK_COUNT** = ``27``
 
-Number of active navigation links in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of active navigation links in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_POLYGON_COUNT:
 
@@ -298,7 +298,7 @@ Number of active navigation links in the :ref:`NavigationServer3D<class_Navigati
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_POLYGON_COUNT** = ``28``
 
-Number of navigation mesh polygons in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of navigation mesh polygons in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_COUNT:
 
@@ -306,7 +306,7 @@ Number of navigation mesh polygons in the :ref:`NavigationServer3D<class_Navigat
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_COUNT** = ``29``
 
-Number of navigation mesh polygon edges in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of navigation mesh polygon edges in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_MERGE_COUNT:
 
@@ -314,7 +314,7 @@ Number of navigation mesh polygon edges in the :ref:`NavigationServer3D<class_Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_MERGE_COUNT** = ``30``
 
-Number of navigation mesh polygon edges that were merged due to edge key overlap in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of navigation mesh polygon edges that were merged due to edge key overlap in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_CONNECTION_COUNT:
 
@@ -322,7 +322,7 @@ Number of navigation mesh polygon edges that were merged due to edge key overlap
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_CONNECTION_COUNT** = ``31``
 
-Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_FREE_COUNT:
 
@@ -330,7 +330,7 @@ Number of polygon edges that are considered connected by edge proximity :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_FREE_COUNT** = ``32``
 
-Number of navigation mesh polygon edges that could not be merged in the :ref:`NavigationServer3D<class_NavigationServer3D>`. The edges still may be connected by edge proximity or with links.
+Number of navigation mesh polygon edges that could not be merged in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`. The edges still may be connected by edge proximity or with links.
 
 .. _class_Performance_constant_NAVIGATION_OBSTACLE_COUNT:
 
@@ -338,7 +338,7 @@ Number of navigation mesh polygon edges that could not be merged in the :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_OBSTACLE_COUNT** = ``33``
 
-Number of active navigation obstacles in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Number of active navigation obstacles in the :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_CANVAS:
 
@@ -362,7 +362,7 @@ Number of pipeline compilations that were triggered by loading meshes. These com
 
 :ref:`Monitor<enum_Performance_Monitor>` **PIPELINE_COMPILATIONS_SURFACE** = ``36``
 
-Number of pipeline compilations that were triggered by building the surface cache before rendering the scene. These compilations will show up as a stutter when loading an scene the first time a user runs the game and the pipeline is required.
+Number of pipeline compilations that were triggered by building the surface cache before rendering the scene. These compilations will show up as a stutter when loading a scene the first time a user runs the game and the pipeline is required.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_DRAW:
 
@@ -380,11 +380,171 @@ Number of pipeline compilations that were triggered while drawing the scene. The
 
 Number of pipeline compilations that were triggered to optimize the current scene. These compilations are done in the background and should not cause any stutters whatsoever.
 
+.. _class_Performance_constant_NAVIGATION_2D_ACTIVE_MAPS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_ACTIVE_MAPS** = ``39``
+
+Number of active navigation maps in the :ref:`NavigationServer2D<class_NavigationServer2D>`. This also includes the two empty default navigation maps created by World2D.
+
+.. _class_Performance_constant_NAVIGATION_2D_REGION_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_REGION_COUNT** = ``40``
+
+Number of active navigation regions in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_AGENT_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_AGENT_COUNT** = ``41``
+
+Number of active navigation agents processing avoidance in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_LINK_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_LINK_COUNT** = ``42``
+
+Number of active navigation links in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_POLYGON_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_POLYGON_COUNT** = ``43``
+
+Number of navigation mesh polygons in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_EDGE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_COUNT** = ``44``
+
+Number of navigation mesh polygon edges in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_EDGE_MERGE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_MERGE_COUNT** = ``45``
+
+Number of navigation mesh polygon edges that were merged due to edge key overlap in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_EDGE_CONNECTION_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_CONNECTION_COUNT** = ``46``
+
+Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_2D_EDGE_FREE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_FREE_COUNT** = ``47``
+
+Number of navigation mesh polygon edges that could not be merged in the :ref:`NavigationServer2D<class_NavigationServer2D>`. The edges still may be connected by edge proximity or with links.
+
+.. _class_Performance_constant_NAVIGATION_2D_OBSTACLE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_OBSTACLE_COUNT** = ``48``
+
+Number of active navigation obstacles in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_ACTIVE_MAPS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_ACTIVE_MAPS** = ``49``
+
+Number of active navigation maps in the :ref:`NavigationServer3D<class_NavigationServer3D>`. This also includes the two empty default navigation maps created by World3D.
+
+.. _class_Performance_constant_NAVIGATION_3D_REGION_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_REGION_COUNT** = ``50``
+
+Number of active navigation regions in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_AGENT_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_AGENT_COUNT** = ``51``
+
+Number of active navigation agents processing avoidance in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_LINK_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_LINK_COUNT** = ``52``
+
+Number of active navigation links in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_POLYGON_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_POLYGON_COUNT** = ``53``
+
+Number of navigation mesh polygons in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_EDGE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_COUNT** = ``54``
+
+Number of navigation mesh polygon edges in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_EDGE_MERGE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_MERGE_COUNT** = ``55``
+
+Number of navigation mesh polygon edges that were merged due to edge key overlap in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_EDGE_CONNECTION_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_CONNECTION_COUNT** = ``56``
+
+Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
+.. _class_Performance_constant_NAVIGATION_3D_EDGE_FREE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_FREE_COUNT** = ``57``
+
+Number of navigation mesh polygon edges that could not be merged in the :ref:`NavigationServer3D<class_NavigationServer3D>`. The edges still may be connected by edge proximity or with links.
+
+.. _class_Performance_constant_NAVIGATION_3D_OBSTACLE_COUNT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_OBSTACLE_COUNT** = ``58``
+
+Number of active navigation obstacles in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+
 .. _class_Performance_constant_MONITOR_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`Monitor<enum_Performance_Monitor>` **MONITOR_MAX** = ``39``
+:ref:`Monitor<enum_Performance_Monitor>` **MONITOR_MAX** = ``59``
 
 Represents the size of the :ref:`Monitor<enum_Performance_Monitor>` enum.
 
@@ -412,21 +572,21 @@ Adds a custom monitor with the name ``id``. You can specify the category of the 
 
     func _ready():
         var monitor_value = Callable(self, "get_monitor_value")
-    
+
         # Adds monitor with name "MyName" to category "MyCategory".
         Performance.add_custom_monitor("MyCategory/MyMonitor", monitor_value)
-    
+
         # Adds monitor with name "MyName" to category "Custom".
         # Note: "MyCategory/MyMonitor" and "MyMonitor" have same name but different IDs, so the code is valid.
         Performance.add_custom_monitor("MyMonitor", monitor_value)
-    
+
         # Adds monitor with name "MyName" to category "Custom".
         # Note: "MyMonitor" and "Custom/MyMonitor" have same name and same category but different IDs, so the code is valid.
         Performance.add_custom_monitor("Custom/MyMonitor", monitor_value)
-    
+
         # Adds monitor with name "MyCategoryOne/MyCategoryTwo/MyMonitor" to category "Custom".
         Performance.add_custom_monitor("MyCategoryOne/MyCategoryTwo/MyMonitor", monitor_value)
-    
+
     func get_monitor_value():
         return randi() % 25
 
@@ -435,21 +595,21 @@ Adds a custom monitor with the name ``id``. You can specify the category of the 
     public override void _Ready()
     {
         var monitorValue = new Callable(this, MethodName.GetMonitorValue);
-    
+
         // Adds monitor with name "MyName" to category "MyCategory".
         Performance.AddCustomMonitor("MyCategory/MyMonitor", monitorValue);
         // Adds monitor with name "MyName" to category "Custom".
         // Note: "MyCategory/MyMonitor" and "MyMonitor" have same name but different ids so the code is valid.
         Performance.AddCustomMonitor("MyMonitor", monitorValue);
-    
+
         // Adds monitor with name "MyName" to category "Custom".
         // Note: "MyMonitor" and "Custom/MyMonitor" have same name and same category but different ids so the code is valid.
         Performance.AddCustomMonitor("Custom/MyMonitor", monitorValue);
-    
+
         // Adds monitor with name "MyCategoryOne/MyCategoryTwo/MyMonitor" to category "Custom".
         Performance.AddCustomMonitor("MyCategoryOne/MyCategoryTwo/MyMonitor", monitorValue);
     }
-    
+
     public int GetMonitorValue()
     {
         return GD.Randi() % 25;
@@ -471,7 +631,7 @@ Callables are called with arguments supplied in argument array.
 
 :ref:`Variant<class_Variant>` **get_custom_monitor**\ (\ id\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Performance_method_get_custom_monitor>`
 
-Returns the value of custom monitor with given ``id``. The callable is called to get the value of custom monitor. See also :ref:`has_custom_monitor<class_Performance_method_has_custom_monitor>`. Prints an error if the given ``id`` is absent.
+Returns the value of custom monitor with given ``id``. The callable is called to get the value of custom monitor. See also :ref:`has_custom_monitor()<class_Performance_method_has_custom_monitor>`. Prints an error if the given ``id`` is absent.
 
 .. rst-class:: classref-item-separator
 
@@ -510,7 +670,7 @@ Returns the value of one of the available built-in monitors. You should provide 
 
 
 
-See :ref:`get_custom_monitor<class_Performance_method_get_custom_monitor>` to query custom performance monitors' values.
+See :ref:`get_custom_monitor()<class_Performance_method_get_custom_monitor>` to query custom performance monitors' values.
 
 .. rst-class:: classref-item-separator
 
@@ -522,7 +682,7 @@ See :ref:`get_custom_monitor<class_Performance_method_get_custom_monitor>` to qu
 
 :ref:`int<class_int>` **get_monitor_modification_time**\ (\ ) :ref:`🔗<class_Performance_method_get_monitor_modification_time>`
 
-Returns the last tick in which custom monitor was added/removed (in microseconds since the engine started). This is set to :ref:`Time.get_ticks_usec<class_Time_method_get_ticks_usec>` when the monitor is updated.
+Returns the last tick in which custom monitor was added/removed (in microseconds since the engine started). This is set to :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>` when the monitor is updated.
 
 .. rst-class:: classref-item-separator
 
@@ -549,6 +709,7 @@ Returns ``true`` if custom monitor with the given ``id`` is present, ``false`` o
 Removes the custom monitor with given ``id``. Prints an error if the given ``id`` is already absent.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
