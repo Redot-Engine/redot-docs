@@ -40,17 +40,17 @@ Properties
 .. table::
    :widths: auto
 
-   +---------------------------+-----------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`depth_far<class_GLTFCamera_property_depth_far>`     | ``4000.0`` |
-   +---------------------------+-----------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`depth_near<class_GLTFCamera_property_depth_near>`   | ``0.05``   |
-   +---------------------------+-----------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`fov<class_GLTFCamera_property_fov>`                 | ``1.309``  |
-   +---------------------------+-----------------------------------------------------------+------------+
-   | :ref:`bool<class_bool>`   | :ref:`perspective<class_GLTFCamera_property_perspective>` | ``true``   |
-   +---------------------------+-----------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`size_mag<class_GLTFCamera_property_size_mag>`       | ``0.5``    |
-   +---------------------------+-----------------------------------------------------------+------------+
+   +---------------------------+-----------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`depth_far<class_GLTFCamera_property_depth_far>`     | ``4000.0``    |
+   +---------------------------+-----------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`depth_near<class_GLTFCamera_property_depth_near>`   | ``0.05``      |
+   +---------------------------+-----------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`fov<class_GLTFCamera_property_fov>`                 | ``1.3089969`` |
+   +---------------------------+-----------------------------------------------------------+---------------+
+   | :ref:`bool<class_bool>`   | :ref:`perspective<class_GLTFCamera_property_perspective>` | ``true``      |
+   +---------------------------+-----------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`size_mag<class_GLTFCamera_property_size_mag>`       | ``0.5``       |
+   +---------------------------+-----------------------------------------------------------+---------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -117,7 +117,7 @@ The distance to the near culling boundary for this camera relative to its local 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **fov** = ``1.309`` :ref:`🔗<class_GLTFCamera_property_fov>`
+:ref:`float<class_float>` **fov** = ``1.3089969`` :ref:`🔗<class_GLTFCamera_property_fov>`
 
 .. rst-class:: classref-property-setget
 
@@ -214,6 +214,7 @@ Serializes this GLTFCamera instance into a :ref:`Dictionary<class_Dictionary>`.
 Converts this GLTFCamera instance into a Redot :ref:`Camera3D<class_Camera3D>` node.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

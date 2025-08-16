@@ -32,6 +32,10 @@ When **StaticBody3D** is moved, it is teleported to its new position without aff
 Tutorials
 ---------
 
+- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+
+- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+
 - `3D Physics Tests Demo <https://godotengine.org/asset-library/asset/2747>`__
 
 - `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
@@ -113,6 +117,7 @@ The physics material override for the body.
 If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
