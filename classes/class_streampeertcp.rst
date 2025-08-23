@@ -115,7 +115,7 @@ Method Descriptions
 
 Opens the TCP socket, and binds it to the specified local address.
 
-This method is generally not needed, and only used to force the subsequent call to :ref:`connect_to_host<class_StreamPeerTCP_method_connect_to_host>` to use the specified ``host`` and ``port`` as source address. This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
+This method is generally not needed, and only used to force the subsequent call to :ref:`connect_to_host()<class_StreamPeerTCP_method_connect_to_host>` to use the specified ``host`` and ``port`` as source address. This can be desired in some NAT punchthrough techniques, or when forcing the source network interface.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ Returns the local port to which this peer is bound.
 
 :ref:`Status<enum_StreamPeerTCP_Status>` **get_status**\ (\ ) |const| :ref:`🔗<class_StreamPeerTCP_method_get_status>`
 
-Returns the status of the connection, see :ref:`Status<enum_StreamPeerTCP_Status>`.
+Returns the status of the connection.
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ Returns the status of the connection, see :ref:`Status<enum_StreamPeerTCP_Status
 
 :ref:`Error<enum_@GlobalScope_Error>` **poll**\ (\ ) :ref:`🔗<class_StreamPeerTCP_method_poll>`
 
-Poll the socket, updating its state. See :ref:`get_status<class_StreamPeerTCP_method_get_status>`.
+Poll the socket, updating its state. See :ref:`get_status()<class_StreamPeerTCP_method_get_status>`.
 
 .. rst-class:: classref-item-separator
 
@@ -216,6 +216,7 @@ If ``enabled`` is ``true``, packets will be sent immediately. If ``enabled`` is 
 \ **Note:** It's recommended to leave this disabled for applications that send large packets or need to transfer a lot of data, as enabling this can decrease the total available bandwidth.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

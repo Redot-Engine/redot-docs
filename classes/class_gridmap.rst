@@ -177,7 +177,7 @@ Constants
 
 **INVALID_CELL_ITEM** = ``-1`` :ref:`🔗<class_GridMap_constant_INVALID_CELL_ITEM>`
 
-Invalid cell item that can be used in :ref:`set_cell_item<class_GridMap_method_set_cell_item>` to clear cells (or represent an empty cell in :ref:`get_cell_item<class_GridMap_method_get_cell_item>`).
+Invalid cell item that can be used in :ref:`set_cell_item()<class_GridMap_method_set_cell_item>` to clear cells (or represent an empty cell in :ref:`get_cell_item()<class_GridMap_method_get_cell_item>`).
 
 .. rst-class:: classref-section-separator
 
@@ -421,7 +421,7 @@ Clear all cells.
 
 |void| **clear_baked_meshes**\ (\ ) :ref:`🔗<class_GridMap_method_clear_baked_meshes>`
 
-Clears all baked meshes. See :ref:`make_baked_meshes<class_GridMap_method_make_baked_meshes>`.
+Clears all baked meshes. See :ref:`make_baked_meshes()<class_GridMap_method_make_baked_meshes>`.
 
 .. rst-class:: classref-item-separator
 
@@ -445,7 +445,9 @@ Returns :ref:`RID<class_RID>` of a baked mesh with the given ``idx``.
 
 :ref:`Array<class_Array>` **get_bake_meshes**\ (\ ) :ref:`🔗<class_GridMap_method_get_bake_meshes>`
 
-Returns an array of :ref:`ArrayMesh<class_ArrayMesh>`\ es and :ref:`Transform3D<class_Transform3D>` references of all bake meshes that exist within the current GridMap.
+Returns an array of :ref:`ArrayMesh<class_ArrayMesh>`\ es and :ref:`Transform3D<class_Transform3D>` references of all bake meshes that exist within the current GridMap. Even indices contain :ref:`ArrayMesh<class_ArrayMesh>`\ es, while odd indices contain :ref:`Transform3D<class_Transform3D>`\ s that are always equal to :ref:`Transform3D.IDENTITY<class_Transform3D_constant_IDENTITY>`.
+
+This method relies on the output of :ref:`make_baked_meshes()<class_GridMap_method_make_baked_meshes>`, which will be called with ``gen_lightmap_uv`` set to ``true`` and ``lightmap_uv_texel_size`` set to ``0.1`` if it hasn't been called yet.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +531,7 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_Gri
 
 :ref:`Array<class_Array>` **get_meshes**\ (\ ) |const| :ref:`🔗<class_GridMap_method_get_meshes>`
 
-Returns an array of :ref:`Transform3D<class_Transform3D>` and :ref:`Mesh<class_Mesh>` references corresponding to the non-empty cells in the grid. The transforms are specified in local space.
+Returns an array of :ref:`Transform3D<class_Transform3D>` and :ref:`Mesh<class_Mesh>` references corresponding to the non-empty cells in the grid. The transforms are specified in local space. Even indices contain :ref:`Transform3D<class_Transform3D>`\ s, while odd indices contain :ref:`Mesh<class_Mesh>`\ es related to the :ref:`Transform3D<class_Transform3D>` in the index preceding it.
 
 .. rst-class:: classref-item-separator
 
@@ -591,7 +593,7 @@ Returns an array of all cells with the given item index specified in ``item``.
 
 :ref:`Vector3i<class_Vector3i>` **local_to_map**\ (\ local_position\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_GridMap_method_local_to_map>`
 
-Returns the map coordinates of the cell containing the given ``local_position``. If ``local_position`` is in global coordinates, consider using :ref:`Node3D.to_local<class_Node3D_method_to_local>` before passing it to this method. See also :ref:`map_to_local<class_GridMap_method_map_to_local>`.
+Returns the map coordinates of the cell containing the given ``local_position``. If ``local_position`` is in global coordinates, consider using :ref:`Node3D.to_local()<class_Node3D_method_to_local>` before passing it to this method. See also :ref:`map_to_local()<class_GridMap_method_map_to_local>`.
 
 .. rst-class:: classref-item-separator
 
@@ -603,7 +605,9 @@ Returns the map coordinates of the cell containing the given ``local_position``.
 
 |void| **make_baked_meshes**\ (\ gen_lightmap_uv\: :ref:`bool<class_bool>` = false, lightmap_uv_texel_size\: :ref:`float<class_float>` = 0.1\ ) :ref:`🔗<class_GridMap_method_make_baked_meshes>`
 
-Bakes lightmap data for all meshes in the assigned :ref:`MeshLibrary<class_MeshLibrary>`.
+Generates a baked mesh that represents all meshes in the assigned :ref:`MeshLibrary<class_MeshLibrary>` for use with :ref:`LightmapGI<class_LightmapGI>`. If ``gen_lightmap_uv`` is ``true``, UV2 data will be generated for each mesh currently used in the **GridMap**. Otherwise, only meshes that already have UV2 data present will be able to use baked lightmaps. When generating UV2, ``lightmap_uv_texel_size`` controls the texel density for lightmaps, with lower values resulting in more detailed lightmaps. ``lightmap_uv_texel_size`` is ignored if ``gen_lightmap_uv`` is ``false``. See also :ref:`get_bake_meshes()<class_GridMap_method_get_bake_meshes>`, which relies on the output of this method.
+
+\ **Note:** Calling this method will not actually bake lightmaps, as lightmap baking is performed using the :ref:`LightmapGI<class_LightmapGI>` node.
 
 .. rst-class:: classref-item-separator
 
@@ -615,7 +619,7 @@ Bakes lightmap data for all meshes in the assigned :ref:`MeshLibrary<class_MeshL
 
 :ref:`Vector3<class_Vector3>` **map_to_local**\ (\ map_position\: :ref:`Vector3i<class_Vector3i>`\ ) |const| :ref:`🔗<class_GridMap_method_map_to_local>`
 
-Returns the position of a grid cell in the GridMap's local coordinate space. To convert the returned value into global coordinates, use :ref:`Node3D.to_global<class_Node3D_method_to_global>`. See also :ref:`local_to_map<class_GridMap_method_local_to_map>`.
+Returns the position of a grid cell in the GridMap's local coordinate space. To convert the returned value into global coordinates, use :ref:`Node3D.to_global()<class_Node3D_method_to_global>`. See also :ref:`local_to_map()<class_GridMap_method_local_to_map>`.
 
 .. rst-class:: classref-item-separator
 
@@ -645,7 +649,7 @@ Sets the mesh index for the cell referenced by its grid coordinates.
 
 A negative item index such as :ref:`INVALID_CELL_ITEM<class_GridMap_constant_INVALID_CELL_ITEM>` will clear the cell.
 
-Optionally, the item's orientation can be passed. For valid orientation values, see :ref:`get_orthogonal_index_from_basis<class_GridMap_method_get_orthogonal_index_from_basis>`.
+Optionally, the item's orientation can be passed. For valid orientation values, see :ref:`get_orthogonal_index_from_basis()<class_GridMap_method_get_orthogonal_index_from_basis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -684,6 +688,7 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 Sets the :ref:`RID<class_RID>` of the navigation map this GridMap node should use for its cell baked navigation meshes.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

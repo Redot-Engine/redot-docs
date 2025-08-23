@@ -27,9 +27,9 @@ This class holds the context information required for encryption and decryption 
  .. code-tab:: gdscript
 
     extends Node
-    
+
     var aes = AESContext.new()
-    
+
     func _ready():
         var key = "My secret key!!!" # Key must be either 16 or 32 bytes.
         var data = "My secret text!!" # Data size must be multiple of 16 bytes, apply padding if needed.
@@ -43,7 +43,7 @@ This class holds the context information required for encryption and decryption 
         aes.finish()
         # Check ECB
         assert(decrypted == data.to_utf8_buffer())
-    
+
         var iv = "My secret iv!!!!" # IV must be of exactly 16 bytes.
         # Encrypt CBC
         aes.start(AESContext.MODE_CBC_ENCRYPT, key.to_utf8_buffer(), iv.to_utf8_buffer())
@@ -60,11 +60,11 @@ This class holds the context information required for encryption and decryption 
 
     using Godot;
     using System.Diagnostics;
-    
+
     public partial class MyNode : Node
     {
         private AesContext _aes = new AesContext();
-    
+
         public override void _Ready()
         {
             string key = "My secret key!!!"; // Key must be either 16 or 32 bytes.
@@ -79,7 +79,7 @@ This class holds the context information required for encryption and decryption 
             _aes.Finish();
             // Check ECB
             Debug.Assert(decrypted == data.ToUtf8Buffer());
-    
+
             string iv = "My secret iv!!!!"; // IV must be of exactly 16 bytes.
             // Encrypt CBC
             _aes.Start(AesContext.Mode.EcbEncrypt, key.ToUtf8Buffer(), iv.ToUtf8Buffer());
@@ -184,7 +184,7 @@ Method Descriptions
 
 |void| **finish**\ (\ ) :ref:`🔗<class_AESContext_method_finish>`
 
-Close this AES context so it can be started again. See :ref:`start<class_AESContext_method_start>`.
+Close this AES context so it can be started again. See :ref:`start()<class_AESContext_method_start>`.
 
 .. rst-class:: classref-item-separator
 
@@ -196,7 +196,7 @@ Close this AES context so it can be started again. See :ref:`start<class_AESCont
 
 :ref:`PackedByteArray<class_PackedByteArray>` **get_iv_state**\ (\ ) :ref:`🔗<class_AESContext_method_get_iv_state>`
 
-Get the current IV state for this context (IV gets updated when calling :ref:`update<class_AESContext_method_update>`). You normally don't need this function.
+Get the current IV state for this context (IV gets updated when calling :ref:`update()<class_AESContext_method_update>`). You normally don't need this function.
 
 \ **Note:** This function only makes sense when the context is started with :ref:`MODE_CBC_ENCRYPT<class_AESContext_constant_MODE_CBC_ENCRYPT>` or :ref:`MODE_CBC_DECRYPT<class_AESContext_constant_MODE_CBC_DECRYPT>`.
 
@@ -222,11 +222,12 @@ Start the AES context in the given ``mode``. A ``key`` of either 16 or 32 bytes 
 
 :ref:`PackedByteArray<class_PackedByteArray>` **update**\ (\ src\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_AESContext_method_update>`
 
-Run the desired operation for this AES context. Will return a :ref:`PackedByteArray<class_PackedByteArray>` containing the result of encrypting (or decrypting) the given ``src``. See :ref:`start<class_AESContext_method_start>` for mode of operation.
+Run the desired operation for this AES context. Will return a :ref:`PackedByteArray<class_PackedByteArray>` containing the result of encrypting (or decrypting) the given ``src``. See :ref:`start()<class_AESContext_method_start>` for mode of operation.
 
 \ **Note:** The size of ``src`` must be a multiple of 16. Apply some padding if needed.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

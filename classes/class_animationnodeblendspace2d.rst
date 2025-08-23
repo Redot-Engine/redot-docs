@@ -23,7 +23,7 @@ A resource used by :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
 
 \ **AnimationNodeBlendSpace2D** represents a virtual 2D space on which :ref:`AnimationRootNode<class_AnimationRootNode>`\ s are placed. Outputs the linear blend of the three adjacent animations using a :ref:`Vector2<class_Vector2>` weight. Adjacent in this context means the three :ref:`AnimationRootNode<class_AnimationRootNode>`\ s making up the triangle that contains the current value.
 
-You can add vertices to the blend space with :ref:`add_blend_point<class_AnimationNodeBlendSpace2D_method_add_blend_point>` and automatically triangulate it by setting :ref:`auto_triangles<class_AnimationNodeBlendSpace2D_property_auto_triangles>` to ``true``. Otherwise, use :ref:`add_triangle<class_AnimationNodeBlendSpace2D_method_add_triangle>` and :ref:`remove_triangle<class_AnimationNodeBlendSpace2D_method_remove_triangle>` to triangulate the blend space by hand.
+You can add vertices to the blend space with :ref:`add_blend_point()<class_AnimationNodeBlendSpace2D_method_add_blend_point>` and automatically triangulate it by setting :ref:`auto_triangles<class_AnimationNodeBlendSpace2D_property_auto_triangles>` to ``true``. Otherwise, use :ref:`add_triangle()<class_AnimationNodeBlendSpace2D_method_add_triangle>` and :ref:`remove_triangle()<class_AnimationNodeBlendSpace2D_method_remove_triangle>` to triangulate the blend space by hand.
 
 .. rst-class:: classref-introduction-group
 
@@ -168,7 +168,7 @@ Property Descriptions
 - |void| **set_auto_triangles**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_auto_triangles**\ (\ )
 
-If ``true``, the blend space is triangulated automatically. The mesh updates every time you add or remove points with :ref:`add_blend_point<class_AnimationNodeBlendSpace2D_method_add_blend_point>` and :ref:`remove_blend_point<class_AnimationNodeBlendSpace2D_method_remove_blend_point>`.
+If ``true``, the blend space is triangulated automatically. The mesh updates every time you add or remove points with :ref:`add_blend_point()<class_AnimationNodeBlendSpace2D_method_add_blend_point>` and :ref:`remove_blend_point()<class_AnimationNodeBlendSpace2D_method_remove_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ If ``true``, the blend space is triangulated automatically. The mesh updates eve
 - |void| **set_blend_mode**\ (\ value\: :ref:`BlendMode<enum_AnimationNodeBlendSpace2D_BlendMode>`\ )
 - :ref:`BlendMode<enum_AnimationNodeBlendSpace2D_BlendMode>` **get_blend_mode**\ (\ )
 
-Controls the interpolation between animations. See :ref:`BlendMode<enum_AnimationNodeBlendSpace2D_BlendMode>` constants.
+Controls the interpolation between animations.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ Controls the interpolation between animations. See :ref:`BlendMode<enum_Animatio
 - |void| **set_max_space**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_max_space**\ (\ )
 
-The blend space's X and Y axes' upper limit for the points' position. See :ref:`add_blend_point<class_AnimationNodeBlendSpace2D_method_add_blend_point>`.
+The blend space's X and Y axes' upper limit for the points' position. See :ref:`add_blend_point()<class_AnimationNodeBlendSpace2D_method_add_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ The blend space's X and Y axes' upper limit for the points' position. See :ref:`
 - |void| **set_min_space**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_min_space**\ (\ )
 
-The blend space's X and Y axes' lower limit for the points' position. See :ref:`add_blend_point<class_AnimationNodeBlendSpace2D_method_add_blend_point>`.
+The blend space's X and Y axes' lower limit for the points' position. See :ref:`add_blend_point()<class_AnimationNodeBlendSpace2D_method_add_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -429,6 +429,7 @@ Changes the :ref:`AnimationNode<class_AnimationNode>` referenced by the point at
 Updates the position of the point at index ``point`` in the blend space.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
