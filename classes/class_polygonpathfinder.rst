@@ -144,13 +144,13 @@ Returns ``true`` if ``point`` falls inside the polygon area.
  .. code-tab:: csharp
 
     var polygonPathFinder = new PolygonPathFinder();
-    var points = new Vector2[]
-    {
+    Vector2[] points =
+    [
         new Vector2(0.0f, 0.0f),
         new Vector2(1.0f, 0.0f),
         new Vector2(0.0f, 1.0f)
-    };
-    var connections = new int[] { 0, 1, 1, 2, 2, 0 };
+    ];
+    int[] connections = [0, 1, 1, 2, 2, 0];
     polygonPathFinder.Setup(points, connections);
     GD.Print(polygonPathFinder.IsPointInside(new Vector2(0.2f, 0.2f))); // Prints True
     GD.Print(polygonPathFinder.IsPointInside(new Vector2(1.0f, 1.0f))); // Prints False
@@ -198,18 +198,19 @@ The length of ``connections`` must be even, returns an error if odd.
  .. code-tab:: csharp
 
     var polygonPathFinder = new PolygonPathFinder();
-    var points = new Vector2[]
-    {
+    Vector2[] points =
+    [
         new Vector2(0.0f, 0.0f),
         new Vector2(1.0f, 0.0f),
         new Vector2(0.0f, 1.0f)
-    };
-    var connections = new int[] { 0, 1, 1, 2, 2, 0 };
+    ];
+    int[] connections = [0, 1, 1, 2, 2, 0];
     polygonPathFinder.Setup(points, connections);
 
 
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
