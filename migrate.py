@@ -374,6 +374,7 @@ def main():
     print("Copying config files...")
     convertFile(inputDir, 'conf.py', outputDir, includeUnimplemented, verbose)
     convertFile(inputDir, 'robots.txt', outputDir, includeUnimplemented, verbose)
+    convertFile(inputDir, 'sitemap.xml', outputDir, includeUnimplemented, verbose)
     copyFile(inputDir, 'favicon.ico', outputDir, verbose)
 
     print("Copying static directories...")
