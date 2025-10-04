@@ -19,9 +19,65 @@ A shortcut for binding input.
 Description
 -----------
 
-Shortcuts are commonly used for interacting with a :ref:`Control<class_Control>` element from an :ref:`InputEvent<class_InputEvent>` (also known as hotkeys).
+Shortcuts (also known as hotkeys) are containers of :ref:`InputEvent<class_InputEvent>` resources. They are commonly used to interact with a :ref:`Control<class_Control>` element from an :ref:`InputEvent<class_InputEvent>`.
 
-One shortcut can contain multiple :ref:`InputEvent<class_InputEvent>`\ s, allowing the possibility of triggering one action with multiple different inputs.
+One shortcut can contain multiple :ref:`InputEvent<class_InputEvent>` resources, making it possible to trigger one action with multiple different inputs.
+
+\ **Example:** Capture the :kbd:`Ctrl + S` shortcut using a **Shortcut** resource:
+
+
+.. tabs::
+
+ .. code-tab:: gdscript
+
+    extends Node
+
+    var save_shortcut = Shortcut.new()
+    func _ready():
+        var key_event = InputEventKey.new()
+        key_event.keycode = KEY_S
+        key_event.ctrl_pressed = true
+        key_event.command_or_control_autoremap = true # Swaps Ctrl for Command on Mac.
+        save_shortcut.events = [key_event]
+
+    func _input(event):
+        if save_shortcut.matches_event(event) and event.is_pressed() and not event.is_echo():
+            print("Save shortcut pressed!")
+            get_viewport().set_input_as_handled()
+
+ .. code-tab:: csharp
+
+    using Godot;
+
+    public partial class MyNode : Node
+    {
+        private readonly Shortcut _saveShortcut = new Shortcut();
+
+        public override void _Ready()
+        {
+            InputEventKey keyEvent = new InputEventKey
+            {
+                Keycode = Key.S,
+                CtrlPressed = true,
+                CommandOrControlAutoremap = true, // Swaps Ctrl for Command on Mac.
+            };
+
+            _saveShortcut.Events = [keyEvent];
+        }
+
+        public override void _Input(InputEvent @event)
+        {
+            if (@event is InputEventKey keyEvent &&
+                _saveShortcut.MatchesEvent(@event) &&
+                keyEvent.Pressed && !keyEvent.Echo)
+            {
+                GD.Print("Save shortcut pressed!");
+                GetViewport().SetInputAsHandled();
+            }
+        }
+    }
+
+
 
 .. rst-class:: classref-reftable-group
 
@@ -114,9 +170,10 @@ Returns whether :ref:`events<class_Shortcut_property_events>` contains an :ref:`
 
 :ref:`bool<class_bool>` **matches_event**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |const| :ref:`🔗<class_Shortcut_method_matches_event>`
 
-Returns whether any :ref:`InputEvent<class_InputEvent>` in :ref:`events<class_Shortcut_property_events>` equals ``event``. This uses :ref:`InputEvent.is_match<class_InputEvent_method_is_match>` to compare events.
+Returns whether any :ref:`InputEvent<class_InputEvent>` in :ref:`events<class_Shortcut_property_events>` equals ``event``. This uses :ref:`InputEvent.is_match()<class_InputEvent_method_is_match>` to compare events.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

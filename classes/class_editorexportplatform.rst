@@ -12,7 +12,7 @@ EditorExportPlatform
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorExportPlatformAndroid<class_EditorExportPlatformAndroid>`, :ref:`EditorExportPlatformExtension<class_EditorExportPlatformExtension>`, :ref:`EditorExportPlatformIOS<class_EditorExportPlatformIOS>`, :ref:`EditorExportPlatformMacOS<class_EditorExportPlatformMacOS>`, :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>`, :ref:`EditorExportPlatformWeb<class_EditorExportPlatformWeb>`
+**Inherited By:** :ref:`EditorExportPlatformAndroid<class_EditorExportPlatformAndroid>`, :ref:`EditorExportPlatformAppleEmbedded<class_EditorExportPlatformAppleEmbedded>`, :ref:`EditorExportPlatformExtension<class_EditorExportPlatformExtension>`, :ref:`EditorExportPlatformMacOS<class_EditorExportPlatformMacOS>`, :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>`, :ref:`EditorExportPlatformWeb<class_EditorExportPlatformWeb>`
 
 Identifies a supported export platform, and internally provides the functionality of exporting to that platform.
 
@@ -23,7 +23,7 @@ Description
 
 Base resource that provides the functionality of exporting a release build of a project to a platform, from the editor. Stores platform-specific metadata such as the name and supported features of the platform, and performs the exporting of projects, PCK files, and ZIP files. Uses an export template for the platform provided at the time of project exporting.
 
-Used in scripting by :ref:`EditorExportPlugin<class_EditorExportPlugin>` to configure platform-specific customization of scenes and resources. See :ref:`EditorExportPlugin._begin_customize_scenes<class_EditorExportPlugin_private_method__begin_customize_scenes>` and :ref:`EditorExportPlugin._begin_customize_resources<class_EditorExportPlugin_private_method__begin_customize_resources>` for more details.
+Used in scripting by :ref:`EditorExportPlugin<class_EditorExportPlugin>` to configure platform-specific customization of scenes and resources. See :ref:`EditorExportPlugin._begin_customize_scenes()<class_EditorExportPlugin_private_method__begin_customize_scenes>` and :ref:`EditorExportPlugin._begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` for more details.
 
 .. rst-class:: classref-introduction-group
 
@@ -65,9 +65,9 @@ Methods
    +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`                                             | :ref:`get_current_presets<class_EditorExportPlatform_method_get_current_presets>`\ (\ ) |const|                                                                                                                                                                                                                                                                                              |
    +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                     | :ref:`get_forced_export_files<class_EditorExportPlatform_method_get_forced_export_files>`\ (\ ) |static|                                                                                                                                                                                                                                                                                     |
+   | :ref:`PackedStringArray<class_PackedStringArray>`                     | :ref:`get_forced_export_files<class_EditorExportPlatform_method_get_forced_export_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>` = null\ ) |static|                                                                                                                                                                                                                |
    +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`get_internal_export_files<class_EditorExportPlatform_method_get_internal_export_files>`\ (\ ) |static|                                                                                                                                                                                                                                                                                 |
+   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`get_internal_export_files<class_EditorExportPlatform_method_get_internal_export_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                           |
    +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                           | :ref:`get_message_category<class_EditorExportPlatform_method_get_message_category>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                             |
    +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -159,7 +159,7 @@ flags **DebugFlags**: :ref:`🔗<enum_EditorExportPlatform_DebugFlags>`
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_DUMB_CLIENT** = ``1``
 
-Flag is set if remotely debugged project is expected to use remote file system. If set, :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>` will add ``--remove-fs`` and ``--remote-fs-password`` (if password is set in the editor settings) command line arguments to the list.
+Flag is set if the remotely debugged project is expected to use the remote file system. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append ``--remote-fs`` and ``--remote-fs-password`` (if :ref:`EditorSettings.filesystem/file_server/password<class_EditorSettings_property_filesystem/file_server/password>` is defined) command line arguments to the returned list.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_REMOTE_DEBUG:
 
@@ -167,7 +167,7 @@ Flag is set if remotely debugged project is expected to use remote file system. 
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_REMOTE_DEBUG** = ``2``
 
-Flag is set if remote debug is enabled. If set, :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>` will add ``--remote-debug`` and ``--breakpoints`` (if breakpoints are selected in the script editor or added by the plugin) command line arguments to the list.
+Flag is set if remote debug is enabled. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append ``--remote-debug`` and ``--breakpoints`` (if breakpoints are selected in the script editor or added by the plugin) command line arguments to the returned list.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_REMOTE_DEBUG_LOCALHOST:
 
@@ -175,7 +175,7 @@ Flag is set if remote debug is enabled. If set, :ref:`gen_export_flags<class_Edi
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_REMOTE_DEBUG_LOCALHOST** = ``4``
 
-Flag is set if remotely debugged project is running on the localhost. If set, :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>` will use ``localhost`` instead of :ref:`EditorSettings.network/debug/remote_host<class_EditorSettings_property_network/debug/remote_host>` as remote debugger host.
+Flag is set if remotely debugged project is running on the localhost. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will use ``localhost`` instead of :ref:`EditorSettings.network/debug/remote_host<class_EditorSettings_property_network/debug/remote_host>` as remote debugger host.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_VIEW_COLLISIONS:
 
@@ -183,7 +183,7 @@ Flag is set if remotely debugged project is running on the localhost. If set, :r
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_VIEW_COLLISIONS** = ``8``
 
-Flag is set if "Visible Collision Shapes" remote debug option is enabled. If set, :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>` will add ``--debug-collisions`` command line arguments to the list.
+Flag is set if the "Visible Collision Shapes" remote debug option is enabled. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append the ``--debug-collisions`` command line argument to the returned list.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_VIEW_NAVIGATION:
 
@@ -191,7 +191,7 @@ Flag is set if "Visible Collision Shapes" remote debug option is enabled. If set
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_VIEW_NAVIGATION** = ``16``
 
-Flag is set if Visible Navigation" remote debug option is enabled. If set, :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>` will add ``--debug-navigation`` command line arguments to the list.
+Flag is set if the "Visible Navigation" remote debug option is enabled. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append the ``--debug-navigation`` command line argument to the returned list.
 
 .. rst-class:: classref-section-separator
 
@@ -288,7 +288,7 @@ Exports project files for the specified preset. This method can be used to imple
 
 \ ``shared_cb`` is called for exported native shared/static libraries and have the following arguments: ``file_path: String``, ``tags: PackedStringArray``, ``target_folder: String``.
 
-\ **Note:** ``file_index`` and ``file_count`` are intended for progress tracking only and aren't necesserely unique and precise.
+\ **Note:** ``file_index`` and ``file_count`` are intended for progress tracking only and aren't necessarily unique and precise.
 
 .. rst-class:: classref-item-separator
 
@@ -360,7 +360,7 @@ Returns array of :ref:`EditorExportPreset<class_EditorExportPreset>`\ s for this
 
 .. rst-class:: classref-method
 
-:ref:`PackedStringArray<class_PackedStringArray>` **get_forced_export_files**\ (\ ) |static| :ref:`🔗<class_EditorExportPlatform_method_get_forced_export_files>`
+:ref:`PackedStringArray<class_PackedStringArray>` **get_forced_export_files**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>` = null\ ) |static| :ref:`🔗<class_EditorExportPlatform_method_get_forced_export_files>`
 
 Returns array of core file names that always should be exported regardless of preset config.
 
@@ -372,7 +372,7 @@ Returns array of core file names that always should be exported regardless of pr
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **get_internal_export_files**\ (\ ) |static| :ref:`🔗<class_EditorExportPlatform_method_get_internal_export_files>`
+:ref:`Dictionary<class_Dictionary>` **get_internal_export_files**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorExportPlatform_method_get_internal_export_files>`
 
 Returns additional files that should always be exported regardless of preset configuration, and are not part of the project source. The returned :ref:`Dictionary<class_Dictionary>` contains filename keys (:ref:`String<class_String>`) and their corresponding raw data (:ref:`PackedByteArray<class_PackedByteArray>`).
 
@@ -535,6 +535,7 @@ Executes specified command on the remote host via SSH protocol and returns comma
 Executes specified command on the remote host via SSH protocol and returns process ID (on the remote host) without waiting for command to finish.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

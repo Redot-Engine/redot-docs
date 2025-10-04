@@ -161,6 +161,8 @@ Methods
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`has_coords_level_tile_proxy<class_TileSet_method_has_coords_level_tile_proxy>`\ (\ source_from\: :ref:`int<class_int>`, coords_from\: :ref:`Vector2i<class_Vector2i>`\ )                                                                                                                                                                             |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`has_custom_data_layer_by_name<class_TileSet_method_has_custom_data_layer_by_name>`\ (\ layer_name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`has_source<class_TileSet_method_has_source>`\ (\ source_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                        |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`has_source_level_tile_proxy<class_TileSet_method_has_source_level_tile_proxy>`\ (\ source_from\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                            |
@@ -267,7 +269,7 @@ Rectangular tile shape.
 
 Diamond tile shape (for isometric look).
 
-\ **Note:** Isometric **TileSet** works best if :ref:`TileMap<class_TileMap>` and all its layers have Y-sort enabled.
+\ **Note:** Isometric **TileSet** works best if all sibling :ref:`TileMapLayer<class_TileMapLayer>`\ s and their parent inheriting from :ref:`Node2D<class_Node2D>` have Y-sort enabled.
 
 .. _class_TileSet_constant_TILE_SHAPE_HALF_OFFSET_SQUARE:
 
@@ -561,7 +563,7 @@ Property Descriptions
 - |void| **set_tile_layout**\ (\ value\: :ref:`TileLayout<enum_TileSet_TileLayout>`\ )
 - :ref:`TileLayout<enum_TileSet_TileLayout>` **get_tile_layout**\ (\ )
 
-For all half-offset shapes (Isometric, Hexagonal and Half-Offset square), changes the way tiles are indexed in the TileMap grid.
+For all half-offset shapes (Isometric, Hexagonal and Half-Offset square), changes the way tiles are indexed in the :ref:`TileMapLayer<class_TileMapLayer>` grid.
 
 .. rst-class:: classref-item-separator
 
@@ -890,7 +892,7 @@ Returns the navigation layers count.
 
 :ref:`int<class_int>` **get_next_source_id**\ (\ ) |const| :ref:`🔗<class_TileSet_method_get_next_source_id>`
 
-Returns a new unused source ID. This generated ID is the same that a call to :ref:`add_source<class_TileSet_method_add_source>` would return.
+Returns a new unused source ID. This generated ID is the same that a call to :ref:`add_source()<class_TileSet_method_add_source>` would return.
 
 .. rst-class:: classref-item-separator
 
@@ -1150,6 +1152,18 @@ Returns if there is a coodinates-level proxy for the given identifiers.
 
 ----
 
+.. _class_TileSet_method_has_custom_data_layer_by_name:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **has_custom_data_layer_by_name**\ (\ layer_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TileSet_method_has_custom_data_layer_by_name>`
+
+Returns if there is a custom data layer named ``layer_name``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TileSet_method_has_source:
 
 .. rst-class:: classref-method
@@ -1402,9 +1416,7 @@ Removes the terrain set at index ``terrain_set``. Also updates the atlas tiles a
 
 Create an alternative-level proxy for the given identifiers. A proxy will map set of tile identifiers to another set of identifiers.
 
-This can be used to replace a tile in all TileMaps using this TileSet, as TileMap nodes will find and use the proxy's target tile when one is available.
-
-Proxied tiles can be automatically replaced in TileMap nodes using the editor.
+Proxied tiles can be automatically replaced in TileMapLayer nodes using the editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1418,9 +1430,7 @@ Proxied tiles can be automatically replaced in TileMap nodes using the editor.
 
 Creates a coordinates-level proxy for the given identifiers. A proxy will map set of tile identifiers to another set of identifiers. The alternative tile ID is kept the same when using coordinates-level proxies.
 
-This can be used to replace a tile in all TileMaps using this TileSet, as TileMap nodes will find and use the proxy's target tile when one is available.
-
-Proxied tiles can be automatically replaced in TileMap nodes using the editor.
+Proxied tiles can be automatically replaced in TileMapLayer nodes using the editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1566,9 +1576,7 @@ Changes a source's ID.
 
 Creates a source-level proxy for the given source ID. A proxy will map set of tile identifiers to another set of identifiers. Both the atlas coordinates ID and the alternative tile ID are kept the same when using source-level proxies.
 
-This can be used to replace a source in all TileMaps using this TileSet, as TileMap nodes will find and use the proxy's target source when one is available.
-
-Proxied tiles can be automatically replaced in TileMap nodes using the editor.
+Proxied tiles can be automatically replaced in TileMapLayer nodes using the editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1607,6 +1615,7 @@ Sets a terrain's name.
 Sets a terrain mode. Each mode determines which bits of a tile shape is used to match the neighboring tiles' terrains.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

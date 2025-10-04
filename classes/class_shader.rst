@@ -184,7 +184,7 @@ Returns the shader mode for the shader.
 
 :ref:`Array<class_Array>` **get_shader_uniform_list**\ (\ get_groups\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Shader_method_get_shader_uniform_list>`
 
-Returns the list of shader uniforms that can be assigned to a :ref:`ShaderMaterial<class_ShaderMaterial>`, for use with :ref:`ShaderMaterial.set_shader_parameter<class_ShaderMaterial_method_set_shader_parameter>` and :ref:`ShaderMaterial.get_shader_parameter<class_ShaderMaterial_method_get_shader_parameter>`. The parameters returned are contained in dictionaries in a similar format to the ones returned by :ref:`Object.get_property_list<class_Object_method_get_property_list>`.
+Returns the list of shader uniforms that can be assigned to a :ref:`ShaderMaterial<class_ShaderMaterial>`, for use with :ref:`ShaderMaterial.set_shader_parameter()<class_ShaderMaterial_method_set_shader_parameter>` and :ref:`ShaderMaterial.get_shader_parameter()<class_ShaderMaterial_method_get_shader_parameter>`. The parameters returned are contained in dictionaries in a similar format to the ones returned by :ref:`Object.get_property_list()<class_Object_method_get_property_list>`.
 
 If argument ``get_groups`` is ``true``, parameter grouping hints are also included in the list.
 
@@ -198,7 +198,7 @@ If argument ``get_groups`` is ``true``, parameter grouping hints are also includ
 
 |void| **inspect_native_shader_code**\ (\ ) :ref:`🔗<class_Shader_method_inspect_native_shader_code>`
 
-Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also :ref:`Material.inspect_native_shader_code<class_Material_method_inspect_native_shader_code>`.
+Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also :ref:`Material.inspect_native_shader_code()<class_Material_method_inspect_native_shader_code>`.
 
 .. rst-class:: classref-item-separator
 
@@ -217,6 +217,7 @@ Sets the default texture to be used with a texture uniform. The default is used 
 \ **Note:** If the sampler array is used use ``index`` to access the specified texture.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -29,11 +29,13 @@ Properties
 .. table::
    :widths: auto
 
-   +---------------------------+------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`vrs_min_radius<class_XRVRS_property_vrs_min_radius>` | ``20.0`` |
-   +---------------------------+------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`vrs_strength<class_XRVRS_property_vrs_strength>`     | ``1.0``  |
-   +---------------------------+------------------------------------------------------------+----------+
+   +-----------------------------+------------------------------------------------------------------+------------------------+
+   | :ref:`float<class_float>`   | :ref:`vrs_min_radius<class_XRVRS_property_vrs_min_radius>`       | ``20.0``               |
+   +-----------------------------+------------------------------------------------------------------+------------------------+
+   | :ref:`Rect2i<class_Rect2i>` | :ref:`vrs_render_region<class_XRVRS_property_vrs_render_region>` | ``Rect2i(0, 0, 0, 0)`` |
+   +-----------------------------+------------------------------------------------------------------+------------------------+
+   | :ref:`float<class_float>`   | :ref:`vrs_strength<class_XRVRS_property_vrs_strength>`           | ``1.0``                |
+   +-----------------------------+------------------------------------------------------------------+------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -73,6 +75,23 @@ The minimum radius around the focal point where full quality is guaranteed if VR
 
 ----
 
+.. _class_XRVRS_property_vrs_render_region:
+
+.. rst-class:: classref-property
+
+:ref:`Rect2i<class_Rect2i>` **vrs_render_region** = ``Rect2i(0, 0, 0, 0)`` :ref:`🔗<class_XRVRS_property_vrs_render_region>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_vrs_render_region**\ (\ value\: :ref:`Rect2i<class_Rect2i>`\ )
+- :ref:`Rect2i<class_Rect2i>` **get_vrs_render_region**\ (\ )
+
+The render region that the VRS texture will be scaled to when generated.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_XRVRS_property_vrs_strength:
 
 .. rst-class:: classref-property
@@ -106,6 +125,7 @@ Generates the VRS texture based on a render ``target_size`` adjusted by our VRS 
 The result will be cached, requesting a VRS texture with unchanged parameters and settings will return the cached RID.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

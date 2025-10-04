@@ -12,14 +12,14 @@ ReferenceRect
 
 **Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A rectangle hint for designing UIs.
+A rectangular box for designing UIs.
 
 .. rst-class:: classref-introduction-group
 
 Description
 -----------
 
-A rectangle box that displays only a colored border around its rectangle. It is used to visualize the extents of a :ref:`Control<class_Control>`.
+A rectangular box that displays only a colored border around its rectangle (see :ref:`Control.get_rect()<class_Control_method_get_rect>`). It can be used to visualize the extents of a :ref:`Control<class_Control>` node, for testing purposes.
 
 .. rst-class:: classref-reftable-group
 
@@ -94,6 +94,7 @@ Sets the border width of the **ReferenceRect**. The border grows both inwards an
 If ``true``, the **ReferenceRect** will only be visible while in editor. Otherwise, **ReferenceRect** will be visible in the running project.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
