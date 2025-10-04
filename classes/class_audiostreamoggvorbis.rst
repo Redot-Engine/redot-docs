@@ -49,6 +49,8 @@ Properties
    +---------------------------------------------------+-----------------------------------------------------------------------------+-----------+
    | :ref:`OggPacketSequence<class_OggPacketSequence>` | :ref:`packet_sequence<class_AudioStreamOggVorbis_property_packet_sequence>` |           |
    +---------------------------------------------------+-----------------------------------------------------------------------------+-----------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`tags<class_AudioStreamOggVorbis_property_tags>`                       | ``{}``    |
+   +---------------------------------------------------+-----------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
@@ -58,11 +60,11 @@ Methods
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` | :ref:`load_from_buffer<class_AudioStreamOggVorbis_method_load_from_buffer>`\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| |
-   +---------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` | :ref:`load_from_file<class_AudioStreamOggVorbis_method_load_from_file>`\ (\ path\: :ref:`String<class_String>`\ ) |static|                         |
-   +---------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` | :ref:`load_from_buffer<class_AudioStreamOggVorbis_method_load_from_buffer>`\ (\ stream_data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` | :ref:`load_from_file<class_AudioStreamOggVorbis_method_load_from_file>`\ (\ path\: :ref:`String<class_String>`\ ) |static|                              |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -177,6 +179,27 @@ Time in seconds at which the stream starts after being looped.
 
 Contains the raw Ogg data for this stream.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_AudioStreamOggVorbis_property_tags:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **tags** = ``{}`` :ref:`🔗<class_AudioStreamOggVorbis_property_tags>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_tags**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
+- :ref:`Dictionary<class_Dictionary>` **get_tags**\ (\ )
+
+Contains user-defined tags if found in the Ogg Vorbis data.
+
+Commonly used tags include ``title``, ``artist``, ``album``, ``tracknumber``, and ``date`` (``date`` does not have a standard date format).
+
+\ **Note:** No tag is *guaranteed* to be present in every file, so make sure to account for the keys not always existing.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -190,9 +213,9 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_buffer**\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| :ref:`🔗<class_AudioStreamOggVorbis_method_load_from_buffer>`
+:ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_buffer**\ (\ stream_data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| :ref:`🔗<class_AudioStreamOggVorbis_method_load_from_buffer>`
 
-Creates a new AudioStreamOggVorbis instance from the given buffer. The buffer must contain Ogg Vorbis data.
+Creates a new **AudioStreamOggVorbis** instance from the given buffer. The buffer must contain Ogg Vorbis data.
 
 .. rst-class:: classref-item-separator
 
@@ -204,9 +227,10 @@ Creates a new AudioStreamOggVorbis instance from the given buffer. The buffer mu
 
 :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_file**\ (\ path\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_AudioStreamOggVorbis_method_load_from_file>`
 
-Creates a new AudioStreamOggVorbis instance from the given file path. The file must be in Ogg Vorbis format.
+Creates a new **AudioStreamOggVorbis** instance from the given file path. The file must be in Ogg Vorbis format.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -113,7 +113,7 @@ Overrides the :ref:`AABB<class_AABB>` with one defined by user for use with frus
 - |void| **set_flip_faces**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flip_faces**\ (\ )
 
-If set, the order of the vertices in each triangle are reversed resulting in the backside of the mesh being drawn.
+If ``true``, the order of the vertices in each triangle is reversed, resulting in the backside of the mesh being drawn.
 
 This gives the same result as using :ref:`BaseMaterial3D.CULL_FRONT<class_BaseMaterial3D_constant_CULL_FRONT>` in :ref:`BaseMaterial3D.cull_mode<class_BaseMaterial3D_property_cull_mode>`.
 
@@ -182,7 +182,7 @@ Override this method to customize how this primitive mesh should be generated. S
 
 Returns the mesh arrays used to make up the surface of this primitive mesh.
 
-\ **Example:** Pass the result to :ref:`ArrayMesh.add_surface_from_arrays<class_ArrayMesh_method_add_surface_from_arrays>` to create a new surface:
+\ **Example:** Pass the result to :ref:`ArrayMesh.add_surface_from_arrays()<class_ArrayMesh_method_add_surface_from_arrays>` to create a new surface:
 
 
 .. tabs::
@@ -214,6 +214,7 @@ Returns the mesh arrays used to make up the surface of this primitive mesh.
 Request an update of this primitive mesh based on its properties.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

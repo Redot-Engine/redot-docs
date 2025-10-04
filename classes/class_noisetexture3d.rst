@@ -21,7 +21,7 @@ Description
 
 Uses the :ref:`FastNoiseLite<class_FastNoiseLite>` library or other noise generators to fill the texture data of your desired size.
 
-The class uses :ref:`Thread<class_Thread>`\ s to generate the texture data internally, so :ref:`Texture3D.get_data<class_Texture3D_method_get_data>` may return ``null`` if the generation process has not completed yet. In that case, you need to wait for the texture to be generated before accessing the image:
+The class uses :ref:`Thread<class_Thread>`\ s to generate the texture data internally, so :ref:`Texture3D.get_data()<class_Texture3D_method_get_data>` may return ``null`` if the generation process has not completed yet. In that case, you need to wait for the texture to be generated before accessing the image:
 
 ::
 
@@ -225,6 +225,7 @@ Used for the default/fallback implementation of the seamless texture generation.
 Width of the generated texture (in pixels).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

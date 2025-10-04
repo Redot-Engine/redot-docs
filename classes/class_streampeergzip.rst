@@ -23,7 +23,7 @@ Description
 
 This class allows to compress or decompress data using GZIP/deflate in a streaming fashion. This is particularly useful when compressing or decompressing files that have to be sent through the network without needing to allocate them all in memory.
 
-After starting the stream via :ref:`start_compression<class_StreamPeerGZIP_method_start_compression>` (or :ref:`start_decompression<class_StreamPeerGZIP_method_start_decompression>`), calling :ref:`StreamPeer.put_partial_data<class_StreamPeer_method_put_partial_data>` on this stream will compress (or decompress) the data, writing it to the internal buffer. Calling :ref:`StreamPeer.get_available_bytes<class_StreamPeer_method_get_available_bytes>` will return the pending bytes in the internal buffer, and :ref:`StreamPeer.get_partial_data<class_StreamPeer_method_get_partial_data>` will retrieve the compressed (or decompressed) bytes from it. When the stream is over, you must call :ref:`finish<class_StreamPeerGZIP_method_finish>` to ensure the internal buffer is properly flushed (make sure to call :ref:`StreamPeer.get_available_bytes<class_StreamPeer_method_get_available_bytes>` on last time to check if more data needs to be read after that).
+After starting the stream via :ref:`start_compression()<class_StreamPeerGZIP_method_start_compression>` (or :ref:`start_decompression()<class_StreamPeerGZIP_method_start_decompression>`), calling :ref:`StreamPeer.put_partial_data()<class_StreamPeer_method_put_partial_data>` on this stream will compress (or decompress) the data, writing it to the internal buffer. Calling :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` will return the pending bytes in the internal buffer, and :ref:`StreamPeer.get_partial_data()<class_StreamPeer_method_get_partial_data>` will retrieve the compressed (or decompressed) bytes from it. When the stream is over, you must call :ref:`finish()<class_StreamPeerGZIP_method_finish>` to ensure the internal buffer is properly flushed (make sure to call :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` on last time to check if more data needs to be read after that).
 
 .. rst-class:: classref-reftable-group
 
@@ -70,7 +70,9 @@ Clears this stream, resetting the internal state.
 
 :ref:`Error<enum_@GlobalScope_Error>` **finish**\ (\ ) :ref:`🔗<class_StreamPeerGZIP_method_finish>`
 
-Finalizes the stream, compressing or decompressing any buffered chunk left.
+Finalizes the stream, compressing any buffered chunk left.
+
+You must call it only when you are compressing.
 
 .. rst-class:: classref-item-separator
 
@@ -97,6 +99,7 @@ Start the stream in compression mode with the given ``buffer_size``, if ``use_de
 Start the stream in decompression mode with the given ``buffer_size``, if ``use_deflate`` is ``true`` uses deflate instead of GZIP.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
