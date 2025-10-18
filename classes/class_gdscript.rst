@@ -21,7 +21,7 @@ Description
 
 A script implemented in the GDScript programming language, saved with the ``.gd`` extension. The script extends the functionality of all objects that instantiate it.
 
-Calling :ref:`new<class_GDScript_method_new>` creates a new instance of the script. :ref:`Object.set_script<class_Object_method_set_script>` extends an existing object, if that object's class matches one of the script's base classes.
+Calling :ref:`new()<class_GDScript_method_new>` creates a new instance of the script. :ref:`Object.set_script()<class_Object_method_set_script>` extends an existing object, if that object's class matches one of the script's base classes.
 
 If you are looking for GDScript's built-in functions, see :ref:`@GDScript<class_@GDScript>` instead.
 
@@ -68,6 +68,7 @@ Returns a new instance of the script.
     print(instance.get_script() == MyClass) # Prints true
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

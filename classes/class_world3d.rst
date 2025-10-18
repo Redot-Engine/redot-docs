@@ -88,7 +88,7 @@ The default :ref:`CameraAttributes<class_CameraAttributes>` resource to use if n
 
 - :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>` **get_direct_space_state**\ (\ )
 
-Direct access to the world's physics 3D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to :ref:`Node._physics_process<class_Node_private_method__physics_process>` in the main thread.
+Direct access to the world's physics 3D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to :ref:`Node._physics_process()<class_Node_private_method__physics_process>` in the main thread.
 
 .. rst-class:: classref-item-separator
 
@@ -173,6 +173,7 @@ The World3D's visual scenario.
 The World3D's physics space.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

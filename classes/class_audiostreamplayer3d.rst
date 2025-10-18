@@ -24,7 +24,7 @@ Description
 
 Plays audio with positional sound effects, based on the relative position of the audio listener. Positional effects include distance attenuation, directionality, and the Doppler effect. For greater realism, a low-pass filter is applied to distant sounds. This can be disabled by setting :ref:`attenuation_filter_cutoff_hz<class_AudioStreamPlayer3D_property_attenuation_filter_cutoff_hz>` to ``20500``.
 
-By default, audio is heard from the camera position. This can be changed by adding an :ref:`AudioListener3D<class_AudioListener3D>` node to the scene and enabling it by calling :ref:`AudioListener3D.make_current<class_AudioListener3D_method_make_current>` on it.
+By default, audio is heard from the camera position. This can be changed by adding an :ref:`AudioListener3D<class_AudioListener3D>` node to the scene and enabling it by calling :ref:`AudioListener3D.make_current()<class_AudioListener3D_method_make_current>` on it.
 
 See also :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` to play a sound non-positionally.
 
@@ -337,6 +337,8 @@ The bus on which this audio is playing.
 
 Decides in which step the Doppler effect should be calculated.
 
+\ **Note:** If :ref:`doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` is not :ref:`DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>` but the current :ref:`Camera3D<class_Camera3D>`/:ref:`AudioListener3D<class_AudioListener3D>` has doppler tracking disabled, the Doppler effect will be heard but will not take the movement of the current listener into account. If accurate Doppler effect is desired, doppler tracking should be enabled on both the **AudioStreamPlayer3D** and the current :ref:`Camera3D<class_Camera3D>`/:ref:`AudioListener3D<class_AudioListener3D>`.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -454,7 +456,11 @@ The maximum number of sounds this node can play at the same time. Playing additi
 - |void| **set_panning_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_panning_strength**\ (\ )
 
-Scales the panning strength for this node by multiplying the base :ref:`ProjectSettings.audio/general/3d_panning_strength<class_ProjectSettings_property_audio/general/3d_panning_strength>` with this factor. Higher values will pan audio from left to right more dramatically than lower values.
+Scales the panning strength for this node by multiplying the base :ref:`ProjectSettings.audio/general/3d_panning_strength<class_ProjectSettings_property_audio/general/3d_panning_strength>` by this factor. If the product is ``0.0`` then stereo panning is disabled and the volume is the same for all channels. If the product is ``1.0`` then one of the channels will be muted when the sound is located exactly to the left (or right) of the listener.
+
+Two speaker stereo arrangements implement the `WebAudio standard for StereoPannerNode Panning <https://webaudio.github.io/web-audio-api/#stereopanner-algorithm>`__ where the volume is cosine of half the azimuth angle to the ear.
+
+For other speaker arrangements such as the 5.1 and 7.1 the SPCAP (Speaker-Placement Correction Amplitude) algorithm is implemented.
 
 .. rst-class:: classref-item-separator
 
@@ -507,7 +513,7 @@ The playback type of the stream player. If set other than to the default value, 
 - |void| **set_playing**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_playing**\ (\ )
 
-If ``true``, audio is playing or is queued to be played (see :ref:`play<class_AudioStreamPlayer3D_method_play>`).
+If ``true``, audio is playing or is queued to be played (see :ref:`play()<class_AudioStreamPlayer3D_method_play>`).
 
 .. rst-class:: classref-item-separator
 
@@ -594,7 +600,7 @@ The base sound level before attenuation, in decibels.
 
 The base sound level before attenuation, as a linear value.
 
-\ **Note:** This member modifies :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` for convenience. The returned value is equivalent to the result of :ref:`@GlobalScope.db_to_linear<class_@GlobalScope_method_db_to_linear>` on :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>`. Setting this member is equivalent to setting :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` to the result of :ref:`@GlobalScope.linear_to_db<class_@GlobalScope_method_linear_to_db>` on a value.
+\ **Note:** This member modifies :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` for convenience. The returned value is equivalent to the result of :ref:`@GlobalScope.db_to_linear()<class_@GlobalScope_method_db_to_linear>` on :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>`. Setting this member is equivalent to setting :ref:`volume_db<class_AudioStreamPlayer3D_property_volume_db>` to the result of :ref:`@GlobalScope.linear_to_db()<class_@GlobalScope_method_linear_to_db>` on a value.
 
 .. rst-class:: classref-section-separator
 
@@ -674,6 +680,7 @@ Sets the position from which audio will be played, in seconds.
 Stops the audio.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

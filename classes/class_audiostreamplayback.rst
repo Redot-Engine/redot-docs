@@ -38,45 +38,45 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                 | :ref:`_get_loop_count<class_AudioStreamPlayback_private_method__get_loop_count>`\ (\ ) |virtual| |const|                                                                          |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                         | :ref:`_get_parameter<class_AudioStreamPlayback_private_method__get_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |virtual| |const|                                |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                             | :ref:`_get_playback_position<class_AudioStreamPlayback_private_method__get_playback_position>`\ (\ ) |virtual| |const|                                                            |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`_is_playing<class_AudioStreamPlayback_private_method__is_playing>`\ (\ ) |virtual| |const|                                                                                  |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                 | :ref:`_mix<class_AudioStreamPlayback_private_method__mix>`\ (\ buffer\: ``AudioFrame*``, rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ ) |virtual|      |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`_seek<class_AudioStreamPlayback_private_method__seek>`\ (\ position\: :ref:`float<class_float>`\ ) |virtual|                                                                |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`_set_parameter<class_AudioStreamPlayback_private_method__set_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |virtual| |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`_start<class_AudioStreamPlayback_private_method__start>`\ (\ from_pos\: :ref:`float<class_float>`\ ) |virtual|                                                              |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`_stop<class_AudioStreamPlayback_private_method__stop>`\ (\ ) |virtual|                                                                                                      |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`_tag_used_streams<class_AudioStreamPlayback_private_method__tag_used_streams>`\ (\ ) |virtual|                                                                              |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                 | :ref:`get_loop_count<class_AudioStreamPlayback_method_get_loop_count>`\ (\ ) |const|                                                                                              |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                             | :ref:`get_playback_position<class_AudioStreamPlayback_method_get_playback_position>`\ (\ ) |const|                                                                                |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` | :ref:`get_sample_playback<class_AudioStreamPlayback_method_get_sample_playback>`\ (\ ) |const|                                                                                    |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_playing<class_AudioStreamPlayback_method_is_playing>`\ (\ ) |const|                                                                                                      |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>`   | :ref:`mix_audio<class_AudioStreamPlayback_method_mix_audio>`\ (\ rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ )                                        |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`seek<class_AudioStreamPlayback_method_seek>`\ (\ time\: :ref:`float<class_float>` = 0.0\ )                                                                                  |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_sample_playback<class_AudioStreamPlayback_method_set_sample_playback>`\ (\ playback_sample\: :ref:`AudioSamplePlayback<class_AudioSamplePlayback>`\ )                   |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`start<class_AudioStreamPlayback_method_start>`\ (\ from_pos\: :ref:`float<class_float>` = 0.0\ )                                                                            |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`stop<class_AudioStreamPlayback_method_stop>`\ (\ )                                                                                                                          |
-   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                 | :ref:`_get_loop_count<class_AudioStreamPlayback_private_method__get_loop_count>`\ (\ ) |virtual| |const|                                                                                |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                         | :ref:`_get_parameter<class_AudioStreamPlayback_private_method__get_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |virtual| |const|                                      |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                             | :ref:`_get_playback_position<class_AudioStreamPlayback_private_method__get_playback_position>`\ (\ ) |virtual| |const|                                                                  |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                               | :ref:`_is_playing<class_AudioStreamPlayback_private_method__is_playing>`\ (\ ) |virtual| |const|                                                                                        |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                 | :ref:`_mix<class_AudioStreamPlayback_private_method__mix>`\ (\ buffer\: ``AudioFrame*``, rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ ) |virtual| |required| |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`_seek<class_AudioStreamPlayback_private_method__seek>`\ (\ position\: :ref:`float<class_float>`\ ) |virtual|                                                                      |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`_set_parameter<class_AudioStreamPlayback_private_method__set_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |virtual|       |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`_start<class_AudioStreamPlayback_private_method__start>`\ (\ from_pos\: :ref:`float<class_float>`\ ) |virtual|                                                                    |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`_stop<class_AudioStreamPlayback_private_method__stop>`\ (\ ) |virtual|                                                                                                            |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`_tag_used_streams<class_AudioStreamPlayback_private_method__tag_used_streams>`\ (\ ) |virtual|                                                                                    |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                 | :ref:`get_loop_count<class_AudioStreamPlayback_method_get_loop_count>`\ (\ ) |const|                                                                                                    |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                             | :ref:`get_playback_position<class_AudioStreamPlayback_method_get_playback_position>`\ (\ ) |const|                                                                                      |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` | :ref:`get_sample_playback<class_AudioStreamPlayback_method_get_sample_playback>`\ (\ ) |const|                                                                                          |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                               | :ref:`is_playing<class_AudioStreamPlayback_method_is_playing>`\ (\ ) |const|                                                                                                            |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>`   | :ref:`mix_audio<class_AudioStreamPlayback_method_mix_audio>`\ (\ rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ )                                              |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`seek<class_AudioStreamPlayback_method_seek>`\ (\ time\: :ref:`float<class_float>` = 0.0\ )                                                                                        |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`set_sample_playback<class_AudioStreamPlayback_method_set_sample_playback>`\ (\ playback_sample\: :ref:`AudioSamplePlayback<class_AudioSamplePlayback>`\ )                         |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`start<class_AudioStreamPlayback_method_start>`\ (\ from_pos\: :ref:`float<class_float>` = 0.0\ )                                                                                  |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                | :ref:`stop<class_AudioStreamPlayback_method_stop>`\ (\ )                                                                                                                                |
+   +-------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -105,7 +105,7 @@ Overridable method. Should return how many times this audio stream has looped. M
 
 :ref:`Variant<class_Variant>` **_get_parameter**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_AudioStreamPlayback_private_method__get_parameter>`
 
-Return the current value of a playback parameter by name (see :ref:`AudioStream._get_parameter_list<class_AudioStream_private_method__get_parameter_list>`).
+Return the current value of a playback parameter by name (see :ref:`AudioStream._get_parameter_list()<class_AudioStream_private_method__get_parameter_list>`).
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ Overridable method. Should return ``true`` if this playback is active and playin
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **_mix**\ (\ buffer\: ``AudioFrame*``, rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__mix>`
+:ref:`int<class_int>` **_mix**\ (\ buffer\: ``AudioFrame*``, rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ ) |virtual| |required| :ref:`🔗<class_AudioStreamPlayback_private_method__mix>`
 
 Override this method to customize how the audio stream is mixed. This method is called even if the playback is not active.
 
@@ -155,7 +155,7 @@ Override this method to customize how the audio stream is mixed. This method is 
 
 |void| **_seek**\ (\ position\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__seek>`
 
-Override this method to customize what happens when seeking this audio stream at the given ``position``, such as by calling :ref:`AudioStreamPlayer.seek<class_AudioStreamPlayer_method_seek>`.
+Override this method to customize what happens when seeking this audio stream at the given ``position``, such as by calling :ref:`AudioStreamPlayer.seek()<class_AudioStreamPlayer_method_seek>`.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Override this method to customize what happens when seeking this audio stream at
 
 |void| **_set_parameter**\ (\ name\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__set_parameter>`
 
-Set the current value of a playback parameter by name (see :ref:`AudioStream._get_parameter_list<class_AudioStream_private_method__get_parameter_list>`).
+Set the current value of a playback parameter by name (see :ref:`AudioStream._get_parameter_list()<class_AudioStream_private_method__get_parameter_list>`).
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Set the current value of a playback parameter by name (see :ref:`AudioStream._ge
 
 |void| **_start**\ (\ from_pos\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__start>`
 
-Override this method to customize what happens when the playback starts at the given position, such as by calling :ref:`AudioStreamPlayer.play<class_AudioStreamPlayer_method_play>`.
+Override this method to customize what happens when the playback starts at the given position, such as by calling :ref:`AudioStreamPlayer.play()<class_AudioStreamPlayer_method_play>`.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Override this method to customize what happens when the playback starts at the g
 
 |void| **_stop**\ (\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__stop>`
 
-Override this method to customize what happens when the playback is stopped, such as by calling :ref:`AudioStreamPlayer.stop<class_AudioStreamPlayer_method_stop>`.
+Override this method to customize what happens when the playback is stopped, such as by calling :ref:`AudioStreamPlayer.stop()<class_AudioStreamPlayer_method_stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Override this method to customize what happens when the playback is stopped, suc
 
 |void| **_tag_used_streams**\ (\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__tag_used_streams>`
 
-Overridable method. Called whenever the audio stream is mixed if the playback is active and :ref:`AudioServer.set_enable_tagging_used_audio_streams<class_AudioServer_method_set_enable_tagging_used_audio_streams>` has been set to ``true``. Editor plugins may use this method to "tag" the current position along the audio stream and display it in a preview.
+Overridable method. Called whenever the audio stream is mixed if the playback is active and :ref:`AudioServer.set_enable_tagging_used_audio_streams()<class_AudioServer_method_set_enable_tagging_used_audio_streams>` has been set to ``true``. Editor plugins may use this method to "tag" the current position along the audio stream and display it in a preview.
 
 .. rst-class:: classref-item-separator
 
@@ -322,6 +322,7 @@ Starts the stream from the given ``from_pos``, in seconds.
 Stops the stream.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
