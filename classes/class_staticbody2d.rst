@@ -27,6 +27,15 @@ When **StaticBody2D** is moved, it is teleported to its new position without aff
 
 \ **StaticBody2D** is useful for completely static objects like floors and walls, as well as moving surfaces like conveyor belts and circular revolving platforms (by using :ref:`constant_linear_velocity<class_StaticBody2D_property_constant_linear_velocity>` and :ref:`constant_angular_velocity<class_StaticBody2D_property_constant_angular_velocity>`).
 
+.. rst-class:: classref-introduction-group
+
+Tutorials
+---------
+
+- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+
+- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+
 .. rst-class:: classref-reftable-group
 
 Properties
@@ -102,6 +111,7 @@ The physics material override for the body.
 If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

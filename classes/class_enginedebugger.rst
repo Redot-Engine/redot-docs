@@ -268,7 +268,7 @@ Registers a message capture with given ``name``. If ``name`` is "my_message" the
 
 The callable must accept a message string and a data array as argument. The callable should return ``true`` if the message is recognized.
 
-\ **Note:** The callable will receive the message with the prefix stripped, unlike :ref:`EditorDebuggerPlugin._capture<class_EditorDebuggerPlugin_private_method__capture>`. See the :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>` description for an example.
+\ **Note:** The callable will receive the message with the prefix stripped, unlike :ref:`EditorDebuggerPlugin._capture()<class_EditorDebuggerPlugin_private_method__capture>`. See the :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>` description for an example.
 
 .. rst-class:: classref-item-separator
 
@@ -371,6 +371,7 @@ Unregisters the message capture with given ``name``.
 Unregisters a profiler with given ``name``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -19,7 +19,7 @@ Holds an :ref:`Object<class_Object>`. If the object is :ref:`RefCounted<class_Re
 Description
 -----------
 
-A weakref can hold a :ref:`RefCounted<class_RefCounted>` without contributing to the reference counter. A weakref can be created from an :ref:`Object<class_Object>` using :ref:`@GlobalScope.weakref<class_@GlobalScope_method_weakref>`. If this object is not a reference, weakref still works, however, it does not have any effect on the object. Weakrefs are useful in cases where multiple classes have variables that refer to each other. Without weakrefs, using these classes could lead to memory leaks, since both references keep each other from being released. Making part of the variables a weakref can prevent this cyclic dependency, and allows the references to be released.
+A weakref can hold a :ref:`RefCounted<class_RefCounted>` without contributing to the reference counter. A weakref can be created from an :ref:`Object<class_Object>` using :ref:`@GlobalScope.weakref()<class_@GlobalScope_method_weakref>`. If this object is not a reference, weakref still works, however, it does not have any effect on the object. Weakrefs are useful in cases where multiple classes have variables that refer to each other. Without weakrefs, using these classes could lead to memory leaks, since both references keep each other from being released. Making part of the variables a weakref can prevent this cyclic dependency, and allows the references to be released.
 
 .. rst-class:: classref-reftable-group
 
@@ -51,6 +51,7 @@ Method Descriptions
 Returns the :ref:`Object<class_Object>` this weakref is referring to. Returns ``null`` if that object no longer exists.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

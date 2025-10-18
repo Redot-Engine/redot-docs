@@ -67,15 +67,15 @@ Properties
 .. table::
    :widths: auto
 
-   +------------------------------------------+--------------------------------------------------------------------+---------------+
-   | :ref:`bool<class_bool>`                  | :ref:`capture_included<class_Animation_property_capture_included>` | ``false``     |
-   +------------------------------------------+--------------------------------------------------------------------+---------------+
-   | :ref:`float<class_float>`                | :ref:`length<class_Animation_property_length>`                     | ``1.0``       |
-   +------------------------------------------+--------------------------------------------------------------------+---------------+
-   | :ref:`LoopMode<enum_Animation_LoopMode>` | :ref:`loop_mode<class_Animation_property_loop_mode>`               | ``0``         |
-   +------------------------------------------+--------------------------------------------------------------------+---------------+
-   | :ref:`float<class_float>`                | :ref:`step<class_Animation_property_step>`                         | ``0.0333333`` |
-   +------------------------------------------+--------------------------------------------------------------------+---------------+
+   +------------------------------------------+--------------------------------------------------------------------+-----------------+
+   | :ref:`bool<class_bool>`                  | :ref:`capture_included<class_Animation_property_capture_included>` | ``false``       |
+   +------------------------------------------+--------------------------------------------------------------------+-----------------+
+   | :ref:`float<class_float>`                | :ref:`length<class_Animation_property_length>`                     | ``1.0``         |
+   +------------------------------------------+--------------------------------------------------------------------+-----------------+
+   | :ref:`LoopMode<enum_Animation_LoopMode>` | :ref:`loop_mode<class_Animation_property_loop_mode>`               | ``0``           |
+   +------------------------------------------+--------------------------------------------------------------------+-----------------+
+   | :ref:`float<class_float>`                | :ref:`step<class_Animation_property_step>`                         | ``0.033333335`` |
+   +------------------------------------------+--------------------------------------------------------------------+-----------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -416,7 +416,7 @@ Update at the keyframes.
 
 :ref:`UpdateMode<enum_Animation_UpdateMode>` **UPDATE_CAPTURE** = ``2``
 
-Same as :ref:`UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` but works as a flag to capture the value of the current object and perform interpolation in some methods. See also :ref:`AnimationMixer.capture<class_AnimationMixer_method_capture>`, :ref:`AnimationPlayer.playback_auto_capture<class_AnimationPlayer_property_playback_auto_capture>`, and :ref:`AnimationPlayer.play_with_capture<class_AnimationPlayer_method_play_with_capture>`.
+Same as :ref:`UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` but works as a flag to capture the value of the current object and perform interpolation in some methods. See also :ref:`AnimationMixer.capture()<class_AnimationMixer_method_capture>`, :ref:`AnimationPlayer.playback_auto_capture<class_AnimationPlayer_property_playback_auto_capture>`, and :ref:`AnimationPlayer.play_with_capture()<class_AnimationPlayer_method_play_with_capture>`.
 
 .. rst-class:: classref-item-separator
 
@@ -575,7 +575,7 @@ The total length of the animation (in seconds).
 - |void| **set_loop_mode**\ (\ value\: :ref:`LoopMode<enum_Animation_LoopMode>`\ )
 - :ref:`LoopMode<enum_Animation_LoopMode>` **get_loop_mode**\ (\ )
 
-Determines the behavior of both ends of the animation timeline during animation playback. This is used for correct interpolation of animation cycles, and for hinting the player that it must restart the animation.
+Determines the behavior of both ends of the animation timeline during animation playback. This indicates whether and how the animation should be restarted, and is also used to correctly interpolate animation cycles.
 
 .. rst-class:: classref-item-separator
 
@@ -585,7 +585,7 @@ Determines the behavior of both ends of the animation timeline during animation 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **step** = ``0.0333333`` :ref:`🔗<class_Animation_property_step>`
+:ref:`float<class_float>` **step** = ``0.033333335`` :ref:`🔗<class_Animation_property_step>`
 
 .. rst-class:: classref-property-setget
 
@@ -917,7 +917,7 @@ Clear the animation (clear all tracks and reset all).
 
 |void| **compress**\ (\ page_size\: :ref:`int<class_int>` = 8192, fps\: :ref:`int<class_int>` = 120, split_tolerance\: :ref:`float<class_float>` = 4.0\ ) :ref:`🔗<class_Animation_method_compress>`
 
-Compress the animation and all its tracks in-place. This will make :ref:`track_is_compressed<class_Animation_method_track_is_compressed>` return ``true`` once called on this **Animation**. Compressed tracks require less memory to be played, and are designed to be used for complex 3D animations (such as cutscenes) imported from external 3D software. Compression is lossy, but the difference is usually not noticeable in real world conditions.
+Compress the animation and all its tracks in-place. This will make :ref:`track_is_compressed()<class_Animation_method_track_is_compressed>` return ``true`` once called on this **Animation**. Compressed tracks require less memory to be played, and are designed to be used for complex 3D animations (such as cutscenes) imported from external 3D software. Compression is lossy, but the difference is usually not noticeable in real world conditions.
 
 \ **Note:** Compressed tracks have various limitations (such as not being editable from the editor), so only use compressed animations if you actually need them.
 
@@ -1261,7 +1261,7 @@ Returns the time at which the key is located.
 
 :ref:`float<class_float>` **track_get_key_transition**\ (\ track_idx\: :ref:`int<class_int>`, key_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Animation_method_track_get_key_transition>`
 
-Returns the transition curve (easing) for a specific key (see the built-in math function :ref:`@GlobalScope.ease<class_@GlobalScope_method_ease>`).
+Returns the transition curve (easing) for a specific key (see the built-in math function :ref:`@GlobalScope.ease()<class_@GlobalScope_method_ease>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1285,7 +1285,7 @@ Returns the value of a given key in a given track.
 
 :ref:`NodePath<class_NodePath>` **track_get_path**\ (\ track_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Animation_method_track_get_path>`
 
-Gets the path of a track. For more information on the path format, see :ref:`track_set_path<class_Animation_method_track_set_path>`.
+Gets the path of a track. For more information on the path format, see :ref:`track_set_path()<class_Animation_method_track_set_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1321,7 +1321,7 @@ Inserts a generic key in a given track. Returns the key index.
 
 :ref:`bool<class_bool>` **track_is_compressed**\ (\ track_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Animation_method_track_is_compressed>`
 
-Returns ``true`` if the track is compressed, ``false`` otherwise. See also :ref:`compress<class_Animation_method_compress>`.
+Returns ``true`` if the track is compressed, ``false`` otherwise. See also :ref:`compress()<class_Animation_method_compress>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1477,7 +1477,7 @@ Sets the time of an existing key.
 
 |void| **track_set_key_transition**\ (\ track_idx\: :ref:`int<class_int>`, key_idx\: :ref:`int<class_int>`, transition\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Animation_method_track_set_key_transition>`
 
-Sets the transition curve (easing) for a specific key (see the built-in math function :ref:`@GlobalScope.ease<class_@GlobalScope_method_ease>`).
+Sets the transition curve (easing) for a specific key (see the built-in math function :ref:`@GlobalScope.ease()<class_@GlobalScope_method_ease>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1541,7 +1541,7 @@ Returns the update mode of a value track.
 
 Returns the interpolated value at the given time (in seconds). The ``track_idx`` must be the index of a value track.
 
-A ``backward`` mainly affects the direction of key retrieval of the track with :ref:`UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` converted by :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS>` to match the result with :ref:`track_find_key<class_Animation_method_track_find_key>`.
+A ``backward`` mainly affects the direction of key retrieval of the track with :ref:`UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` converted by :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS>` to match the result with :ref:`track_find_key()<class_Animation_method_track_find_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1553,9 +1553,10 @@ A ``backward`` mainly affects the direction of key retrieval of the track with :
 
 |void| **value_track_set_update_mode**\ (\ track_idx\: :ref:`int<class_int>`, mode\: :ref:`UpdateMode<enum_Animation_UpdateMode>`\ ) :ref:`🔗<class_Animation_method_value_track_set_update_mode>`
 
-Sets the update mode (see :ref:`UpdateMode<enum_Animation_UpdateMode>`) of a value track.
+Sets the update mode of a value track.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

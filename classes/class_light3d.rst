@@ -321,7 +321,7 @@ enum **BakeMode**: :ref:`🔗<enum_Light3D_BakeMode>`
 
 :ref:`BakeMode<enum_Light3D_BakeMode>` **BAKE_DISABLED** = ``0``
 
-Light is ignored when baking. This is the fastest mode, but the light will be taken into account when baking global illumination. This mode should generally be used for dynamic lights that change quickly, as the effect of global illumination is less noticeable on those lights.
+Light is ignored when baking. This is the fastest mode, but the light will not be taken into account when baking global illumination. This mode should generally be used for dynamic lights that change quickly, as the effect of global illumination is less noticeable on those lights.
 
 \ **Note:** Hiding a light does *not* affect baking :ref:`LightmapGI<class_LightmapGI>`. Hiding a light will still affect baking :ref:`VoxelGI<class_VoxelGI>` and SDFGI (see :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
 
@@ -477,7 +477,7 @@ The light's angular size in degrees. Increasing this will make shadows softer at
 - |void| **set_bake_mode**\ (\ value\: :ref:`BakeMode<enum_Light3D_BakeMode>`\ )
 - :ref:`BakeMode<enum_Light3D_BakeMode>` **get_bake_mode**\ (\ )
 
-The light's bake mode. This will affect the global illumination techniques that have an effect on the light's rendering. See :ref:`BakeMode<enum_Light3D_BakeMode>`.
+The light's bake mode. This will affect the global illumination techniques that have an effect on the light's rendering.
 
 \ **Note:** Meshes' global illumination mode will also affect the global illumination rendering. See :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>`.
 
@@ -496,7 +496,7 @@ The light's bake mode. This will affect the global illumination techniques that 
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The light's color. An *overbright* color can be used to achieve a result equivalent to increasing the light's :ref:`light_energy<class_Light3D_property_light_energy>`.
+The light's color in the nonlinear sRGB color space. An *overbright* color can be used to achieve a result equivalent to increasing the light's :ref:`light_energy<class_Light3D_property_light_energy>`.
 
 .. rst-class:: classref-item-separator
 
@@ -885,6 +885,7 @@ Returns the value of the specified :ref:`Param<enum_Light3D_Param>` parameter.
 Sets the value of the specified :ref:`Param<enum_Light3D_Param>` parameter.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
