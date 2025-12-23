@@ -30,18 +30,6 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
-
-.. table::
-   :widths: auto
-
-   +-------------------------------+---------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`graph_offset<class_VisualShader_property_graph_offset>` | ``Vector2(0, 0)`` |
-   +-------------------------------+---------------------------------------------------------------+-------------------+
-
-.. rst-class:: classref-reftable-group
-
 Methods
 -------
 
@@ -340,28 +328,6 @@ Indicates an output node of **VisualShader**.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
-
-.. _class_VisualShader_property_graph_offset:
-
-.. rst-class:: classref-property
-
-:ref:`Vector2<class_Vector2>` **graph_offset** = ``Vector2(0, 0)`` :ref:`🔗<class_VisualShader_property_graph_offset>`
-
-.. rst-class:: classref-property-setget
-
-- |void| **set_graph_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
-- :ref:`Vector2<class_Vector2>` **get_graph_offset**\ (\ )
-
-The offset vector of the whole graph.
-
-.. rst-class:: classref-section-separator
-
-----
-
-.. rst-class:: classref-descriptions-group
-
 Method Descriptions
 -------------------
 
@@ -602,6 +568,7 @@ Sets the mode of this shader.
 Sets the position of the specified node.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

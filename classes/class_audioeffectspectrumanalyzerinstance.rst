@@ -21,7 +21,7 @@ Description
 
 The runtime part of an :ref:`AudioEffectSpectrumAnalyzer<class_AudioEffectSpectrumAnalyzer>`, which can be used to query the magnitude of a frequency range on its host bus.
 
-An instance of this class can be obtained with :ref:`AudioServer.get_bus_effect_instance<class_AudioServer_method_get_bus_effect_instance>`.
+An instance of this class can be obtained with :ref:`AudioServer.get_bus_effect_instance()<class_AudioServer_method_get_bus_effect_instance>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -90,9 +90,10 @@ Method Descriptions
 
 Returns the magnitude of the frequencies from ``from_hz`` to ``to_hz`` in linear energy as a Vector2. The ``x`` component of the return value represents the left stereo channel, and ``y`` represents the right channel.
 
-\ ``mode`` determines how the frequency range will be processed. See :ref:`MagnitudeMode<enum_AudioEffectSpectrumAnalyzerInstance_MagnitudeMode>`.
+\ ``mode`` determines how the frequency range will be processed.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -54,7 +54,7 @@ Method Descriptions
 
 |void| **_add_frame**\ (\ data\: :ref:`Array<class_Array>`\ ) |virtual| :ref:`🔗<class_EngineProfiler_private_method__add_frame>`
 
-Called when data is added to profiler using :ref:`EngineDebugger.profiler_add_frame_data<class_EngineDebugger_method_profiler_add_frame_data>`.
+Called when data is added to profiler using :ref:`EngineDebugger.profiler_add_frame_data()<class_EngineDebugger_method_profiler_add_frame_data>`.
 
 .. rst-class:: classref-item-separator
 
@@ -81,6 +81,7 @@ Called once every engine iteration when the profiler is active with information 
 Called when the profiler is enabled/disabled, along with a set of ``options``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -19,7 +19,7 @@ Stores globally-accessible variables.
 Description
 -----------
 
-Stores variables that can be accessed from everywhere. Use :ref:`get_setting<class_ProjectSettings_method_get_setting>`, :ref:`set_setting<class_ProjectSettings_method_set_setting>` or :ref:`has_setting<class_ProjectSettings_method_has_setting>` to access them. Variables stored in ``project.godot`` are also loaded into **ProjectSettings**, making this object very useful for reading custom game configuration options.
+Stores variables that can be accessed from everywhere. Use :ref:`get_setting()<class_ProjectSettings_method_get_setting>`, :ref:`set_setting()<class_ProjectSettings_method_set_setting>` or :ref:`has_setting()<class_ProjectSettings_method_has_setting>` to access them. Variables stored in ``project.godot`` are also loaded into **ProjectSettings**, making this object very useful for reading custom game configuration options.
 
 When naming a Project Settings property, use the full path to the setting including the category. For example, ``"application/config/name"`` for the project name. Category and property names can be viewed in the Project Settings dialog.
 
@@ -48,6 +48,10 @@ Properties
 .. table::
    :widths: auto
 
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`accessibility/general/accessibility_support<class_ProjectSettings_property_accessibility/general/accessibility_support>`                                                                             | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`accessibility/general/updates_per_second<class_ProjectSettings_property_accessibility/general/updates_per_second>`                                                                                   | ``60``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`animation/warnings/check_angle_interpolation_type_conflicting<class_ProjectSettings_property_animation/warnings/check_angle_interpolation_type_conflicting>`                                         | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -104,6 +108,8 @@ Properties
    | :ref:`bool<class_bool>`                           | :ref:`application/run/flush_stdout_on_print.debug<class_ProjectSettings_property_application/run/flush_stdout_on_print.debug>`                                                                             | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`application/run/frame_delay_msec<class_ProjectSettings_property_application/run/frame_delay_msec>`                                                                                                   | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`application/run/load_shell_environment<class_ProjectSettings_property_application/run/load_shell_environment>`                                                                                       | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`application/run/low_processor_mode<class_ProjectSettings_property_application/run/low_processor_mode>`                                                                                               | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -229,7 +235,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/redundant_static_unload<class_ProjectSettings_property_debug/gdscript/warnings/redundant_static_unload>`                                                                     | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/renamed_in_godot_4_hint<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`                                                                     | ``1``                                                                                                    |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/renamed_in_godot_4_hint<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`                                                                     | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/return_value_discarded<class_ProjectSettings_property_debug/gdscript/warnings/return_value_discarded>`                                                                       | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -279,6 +285,10 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`debug/settings/crash_handler/message.editor<class_ProjectSettings_property_debug/settings/crash_handler/message.editor>`                                                                             | ``"Please include this when reporting the bug on: https://github.com/Redot-Engine/redot-engine/issues"`` |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`                                                                   | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/settings/gdscript/always_track_local_variables<class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables>`                                                           | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/settings/gdscript/max_call_stack<class_ProjectSettings_property_debug/settings/gdscript/max_call_stack>`                                                                                       | ``1024``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debug/settings/physics_interpolation/enable_warnings<class_ProjectSettings_property_debug/settings/physics_interpolation/enable_warnings>`                                                           | ``true``                                                                                                 |
@@ -317,23 +327,41 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debug/shader_language/warnings/unused_varying<class_ProjectSettings_property_debug/shader_language/warnings/unused_varying>`                                                                         | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/agents_radius_color<class_ProjectSettings_property_debug/shapes/avoidance/agents_radius_color>`                                                                               | ``Color(1, 1, 0, 0.25)``                                                                                 |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/2d/agents_radius_color<class_ProjectSettings_property_debug/shapes/avoidance/2d/agents_radius_color>`                                                                         | ``Color(1, 1, 0, 0.25)``                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/enable_agents_radius<class_ProjectSettings_property_debug/shapes/avoidance/enable_agents_radius>`                                                                             | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/2d/enable_agents_radius<class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_agents_radius>`                                                                       | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/enable_obstacles_radius<class_ProjectSettings_property_debug/shapes/avoidance/enable_obstacles_radius>`                                                                       | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/2d/enable_obstacles_radius<class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_obstacles_radius>`                                                                 | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/enable_obstacles_static<class_ProjectSettings_property_debug/shapes/avoidance/enable_obstacles_static>`                                                                       | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/2d/enable_obstacles_static<class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_obstacles_static>`                                                                 | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/obstacles_radius_color<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_radius_color>`                                                                         | ``Color(1, 0.5, 0, 0.25)``                                                                               |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/2d/obstacles_radius_color<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_radius_color>`                                                                   | ``Color(1, 0.5, 0, 0.25)``                                                                               |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/obstacles_static_edge_pushin_color<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_edge_pushin_color>`                                                 | ``Color(1, 0, 0, 1)``                                                                                    |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/2d/obstacles_static_edge_pushin_color<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_edge_pushin_color>`                                           | ``Color(1, 0, 0, 1)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/obstacles_static_edge_pushout_color<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_edge_pushout_color>`                                               | ``Color(1, 1, 0, 1)``                                                                                    |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/2d/obstacles_static_edge_pushout_color<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_edge_pushout_color>`                                         | ``Color(1, 1, 0, 1)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/obstacles_static_face_pushin_color<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_face_pushin_color>`                                                 | ``Color(1, 0, 0, 0)``                                                                                    |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/2d/obstacles_static_face_pushin_color<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_face_pushin_color>`                                           | ``Color(1, 0, 0, 0)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/obstacles_static_face_pushout_color<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_face_pushout_color>`                                               | ``Color(1, 1, 0, 0.5)``                                                                                  |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/2d/obstacles_static_face_pushout_color<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_face_pushout_color>`                                         | ``Color(1, 1, 0, 0.5)``                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/3d/agents_radius_color<class_ProjectSettings_property_debug/shapes/avoidance/3d/agents_radius_color>`                                                                         | ``Color(1, 1, 0, 0.25)``                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/3d/enable_agents_radius<class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_agents_radius>`                                                                       | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/3d/enable_obstacles_radius<class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_obstacles_radius>`                                                                 | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/avoidance/3d/enable_obstacles_static<class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_obstacles_static>`                                                                 | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/3d/obstacles_radius_color<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_radius_color>`                                                                   | ``Color(1, 0.5, 0, 0.25)``                                                                               |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/3d/obstacles_static_edge_pushin_color<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_edge_pushin_color>`                                           | ``Color(1, 0, 0, 1)``                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/3d/obstacles_static_edge_pushout_color<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_edge_pushout_color>`                                         | ``Color(1, 1, 0, 1)``                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/3d/obstacles_static_face_pushin_color<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_face_pushin_color>`                                           | ``Color(1, 0, 0, 0)``                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/avoidance/3d/obstacles_static_face_pushout_color<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_face_pushout_color>`                                         | ``Color(1, 1, 0, 0.5)``                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/collision/contact_color<class_ProjectSettings_property_debug/shapes/collision/contact_color>`                                                                                           | ``Color(1, 0.2, 0.1, 0.8)``                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -343,41 +371,69 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/collision/shape_color<class_ProjectSettings_property_debug/shapes/collision/shape_color>`                                                                                               | ``Color(0, 0.6, 0.7, 0.42)``                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/agent_path_color<class_ProjectSettings_property_debug/shapes/navigation/agent_path_color>`                                                                                   | ``Color(1, 0, 0, 1)``                                                                                    |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/agent_path_color<class_ProjectSettings_property_debug/shapes/navigation/2d/agent_path_color>`                                                                             | ``Color(1, 0, 0, 1)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`debug/shapes/navigation/agent_path_point_size<class_ProjectSettings_property_debug/shapes/navigation/agent_path_point_size>`                                                                         | ``4.0``                                                                                                  |
+   | :ref:`float<class_float>`                         | :ref:`debug/shapes/navigation/2d/agent_path_point_size<class_ProjectSettings_property_debug/shapes/navigation/2d/agent_path_point_size>`                                                                   | ``4.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/edge_connection_color<class_ProjectSettings_property_debug/shapes/navigation/edge_connection_color>`                                                                         | ``Color(1, 0, 1, 1)``                                                                                    |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/edge_connection_color<class_ProjectSettings_property_debug/shapes/navigation/2d/edge_connection_color>`                                                                   | ``Color(1, 0, 1, 1)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_agent_paths<class_ProjectSettings_property_debug/shapes/navigation/enable_agent_paths>`                                                                               | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/2d/enable_agent_paths<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_agent_paths>`                                                                         | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_agent_paths_xray<class_ProjectSettings_property_debug/shapes/navigation/enable_agent_paths_xray>`                                                                     | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/2d/enable_edge_connections<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_edge_connections>`                                                               | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_edge_connections<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_connections>`                                                                     | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/2d/enable_edge_lines<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_edge_lines>`                                                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_edge_connections_xray<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_connections_xray>`                                                           | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/2d/enable_geometry_face_random_color<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_geometry_face_random_color>`                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_edge_lines<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_lines>`                                                                                 | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/2d/enable_link_connections<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_link_connections>`                                                               | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_edge_lines_xray<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_lines_xray>`                                                                       | ``true``                                                                                                 |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/geometry_edge_color<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_edge_color>`                                                                       | ``Color(0.5, 1, 1, 1)``                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_geometry_face_random_color<class_ProjectSettings_property_debug/shapes/navigation/enable_geometry_face_random_color>`                                                 | ``true``                                                                                                 |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/geometry_edge_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_edge_disabled_color>`                                                     | ``Color(0.5, 0.5, 0.5, 1)``                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_link_connections<class_ProjectSettings_property_debug/shapes/navigation/enable_link_connections>`                                                                     | ``true``                                                                                                 |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/geometry_face_color<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_face_color>`                                                                       | ``Color(0.5, 1, 1, 0.4)``                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/enable_link_connections_xray<class_ProjectSettings_property_debug/shapes/navigation/enable_link_connections_xray>`                                                           | ``true``                                                                                                 |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/geometry_face_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_face_disabled_color>`                                                     | ``Color(0.5, 0.5, 0.5, 0.4)``                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/geometry_edge_color<class_ProjectSettings_property_debug/shapes/navigation/geometry_edge_color>`                                                                             | ``Color(0.5, 1, 1, 1)``                                                                                  |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/link_connection_color<class_ProjectSettings_property_debug/shapes/navigation/2d/link_connection_color>`                                                                   | ``Color(1, 0.5, 1, 1)``                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/geometry_edge_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/geometry_edge_disabled_color>`                                                           | ``Color(0.5, 0.5, 0.5, 1)``                                                                              |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/2d/link_connection_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/2d/link_connection_disabled_color>`                                                 | ``Color(0.5, 0.5, 0.5, 1)``                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/geometry_face_color<class_ProjectSettings_property_debug/shapes/navigation/geometry_face_color>`                                                                             | ``Color(0.5, 1, 1, 0.4)``                                                                                |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/agent_path_color<class_ProjectSettings_property_debug/shapes/navigation/3d/agent_path_color>`                                                                             | ``Color(1, 0, 0, 1)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/geometry_face_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/geometry_face_disabled_color>`                                                           | ``Color(0.5, 0.5, 0.5, 0.4)``                                                                            |
+   | :ref:`float<class_float>`                         | :ref:`debug/shapes/navigation/3d/agent_path_point_size<class_ProjectSettings_property_debug/shapes/navigation/3d/agent_path_point_size>`                                                                   | ``4.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/link_connection_color<class_ProjectSettings_property_debug/shapes/navigation/link_connection_color>`                                                                         | ``Color(1, 0.5, 1, 1)``                                                                                  |
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/edge_connection_color<class_ProjectSettings_property_debug/shapes/navigation/3d/edge_connection_color>`                                                                   | ``Color(1, 0, 1, 1)``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/link_connection_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/link_connection_disabled_color>`                                                       | ``Color(0.5, 0.5, 0.5, 1)``                                                                              |
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_agent_paths<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_agent_paths>`                                                                         | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_agent_paths_xray<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_agent_paths_xray>`                                                               | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_edge_connections<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_connections>`                                                               | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_edge_connections_xray<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_connections_xray>`                                                     | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_edge_lines<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_lines>`                                                                           | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_edge_lines_xray<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_lines_xray>`                                                                 | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_geometry_face_random_color<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_geometry_face_random_color>`                                           | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_link_connections<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_link_connections>`                                                               | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/shapes/navigation/3d/enable_link_connections_xray<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_link_connections_xray>`                                                     | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/geometry_edge_color<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_edge_color>`                                                                       | ``Color(0.5, 1, 1, 1)``                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/geometry_edge_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_edge_disabled_color>`                                                     | ``Color(0.5, 0.5, 0.5, 1)``                                                                              |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/geometry_face_color<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_face_color>`                                                                       | ``Color(0.5, 1, 1, 0.4)``                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/geometry_face_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_face_disabled_color>`                                                     | ``Color(0.5, 0.5, 0.5, 0.4)``                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/link_connection_color<class_ProjectSettings_property_debug/shapes/navigation/3d/link_connection_color>`                                                                   | ``Color(1, 0.5, 1, 1)``                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/navigation/3d/link_connection_disabled_color<class_ProjectSettings_property_debug/shapes/navigation/3d/link_connection_disabled_color>`                                                 | ``Color(0.5, 0.5, 0.5, 1)``                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`debug/shapes/paths/geometry_color<class_ProjectSettings_property_debug/shapes/paths/geometry_color>`                                                                                                 | ``Color(0.1, 1, 0.7, 0.4)``                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -392,6 +448,8 @@ Properties
    | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.linuxbsd<class_ProjectSettings_property_display/display_server/driver.linuxbsd>`                                                                                       |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.macos<class_ProjectSettings_property_display/display_server/driver.macos>`                                                                                             |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.visionos<class_ProjectSettings_property_display/display_server/driver.visionos>`                                                                                       |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.windows<class_ProjectSettings_property_display/display_server/driver.windows>`                                                                                         |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -432,6 +490,10 @@ Properties
    | :ref:`int<class_int>`                             | :ref:`display/window/size/initial_position_type<class_ProjectSettings_property_display/window/size/initial_position_type>`                                                                                 | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`display/window/size/initial_screen<class_ProjectSettings_property_display/window/size/initial_screen>`                                                                                               | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`display/window/size/maximize_disabled<class_ProjectSettings_property_display/window/size/maximize_disabled>`                                                                                         | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`display/window/size/minimize_disabled<class_ProjectSettings_property_display/window/size/minimize_disabled>`                                                                                         | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`display/window/size/mode<class_ProjectSettings_property_display/window/size/mode>`                                                                                                                   | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -483,11 +545,17 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`editor/movie_writer/mix_rate<class_ProjectSettings_property_editor/movie_writer/mix_rate>`                                                                                                           | ``48000``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`editor/movie_writer/mjpeg_quality<class_ProjectSettings_property_editor/movie_writer/mjpeg_quality>`                                                                                                 | ``0.75``                                                                                                 |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`editor/movie_writer/movie_file<class_ProjectSettings_property_editor/movie_writer/movie_file>`                                                                                                       | ``""``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                         | :ref:`editor/movie_writer/ogv/audio_quality<class_ProjectSettings_property_editor/movie_writer/ogv/audio_quality>`                                                                                         | ``0.5``                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`editor/movie_writer/ogv/encoding_speed<class_ProjectSettings_property_editor/movie_writer/ogv/encoding_speed>`                                                                                       | ``4``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`editor/movie_writer/ogv/keyframe_interval<class_ProjectSettings_property_editor/movie_writer/ogv/keyframe_interval>`                                                                                 | ``64``                                                                                                   |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`editor/movie_writer/speaker_mode<class_ProjectSettings_property_editor/movie_writer/speaker_mode>`                                                                                                   | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                         | :ref:`editor/movie_writer/video_quality<class_ProjectSettings_property_editor/movie_writer/video_quality>`                                                                                                 | ``0.75``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`editor/naming/default_signal_callback_name<class_ProjectSettings_property_editor/naming/default_signal_callback_name>`                                                                               | ``"_on_{node_name}_{signal_name}"``                                                                      |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -527,7 +595,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`gui/common/snap_controls_to_pixels<class_ProjectSettings_property_gui/common/snap_controls_to_pixels>`                                                                                               | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`gui/common/swap_cancel_ok<class_ProjectSettings_property_gui/common/swap_cancel_ok>`                                                                                                                 |                                                                                                          |
+   | :ref:`int<class_int>`                             | :ref:`gui/common/swap_cancel_ok<class_ProjectSettings_property_gui/common/swap_cancel_ok>`                                                                                                                 | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`gui/common/text_edit_undo_stack_max_size<class_ProjectSettings_property_gui/common/text_edit_undo_stack_max_size>`                                                                                   | ``1024``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -563,7 +631,11 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_accept<class_ProjectSettings_property_input/ui_accept>`                                                                                                                                     |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_accessibility_drag_and_drop<class_ProjectSettings_property_input/ui_accessibility_drag_and_drop>`                                                                                           |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_cancel<class_ProjectSettings_property_input/ui_cancel>`                                                                                                                                     |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_colorpicker_delete_preset<class_ProjectSettings_property_input/ui_colorpicker_delete_preset>`                                                                                               |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_copy<class_ProjectSettings_property_input/ui_copy>`                                                                                                                                         |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -579,6 +651,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_filedialog_up_one_level<class_ProjectSettings_property_input/ui_filedialog_up_one_level>`                                                                                                   |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_focus_mode<class_ProjectSettings_property_input/ui_focus_mode>`                                                                                                                             |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_focus_next<class_ProjectSettings_property_input/ui_focus_next>`                                                                                                                             |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_focus_prev<class_ProjectSettings_property_input/ui_focus_prev>`                                                                                                                             |                                                                                                          |
@@ -586,6 +660,14 @@ Properties
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_graph_delete<class_ProjectSettings_property_input/ui_graph_delete>`                                                                                                                         |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_graph_duplicate<class_ProjectSettings_property_input/ui_graph_duplicate>`                                                                                                                   |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_graph_follow_left<class_ProjectSettings_property_input/ui_graph_follow_left>`                                                                                                               |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_graph_follow_left.macos<class_ProjectSettings_property_input/ui_graph_follow_left.macos>`                                                                                                   |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_graph_follow_right<class_ProjectSettings_property_input/ui_graph_follow_right>`                                                                                                             |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_graph_follow_right.macos<class_ProjectSettings_property_input/ui_graph_follow_right.macos>`                                                                                                 |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_home<class_ProjectSettings_property_input/ui_home>`                                                                                                                                         |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -725,9 +807,13 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`input_devices/pen_tablet/driver.windows<class_ProjectSettings_property_input_devices/pen_tablet/driver.windows>`                                                                                     |                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/android/disable_scroll_deadzone<class_ProjectSettings_property_input_devices/pointing/android/disable_scroll_deadzone>`                                                       | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/android/enable_long_press_as_right_click<class_ProjectSettings_property_input_devices/pointing/android/enable_long_press_as_right_click>`                                     | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/android/enable_pan_and_scale_gestures<class_ProjectSettings_property_input_devices/pointing/android/enable_pan_and_scale_gestures>`                                           | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/android/override_volume_buttons<class_ProjectSettings_property_input_devices/pointing/android/override_volume_buttons>`                                                       | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`input_devices/pointing/android/rotary_input_scroll_axis<class_ProjectSettings_property_input_devices/pointing/android/rotary_input_scroll_axis>`                                                     | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -746,6 +832,8 @@ Properties
    | :ref:`String<class_String>`                       | :ref:`internationalization/locale/fallback<class_ProjectSettings_property_internationalization/locale/fallback>`                                                                                           | ``"en"``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`internationalization/locale/include_text_server_data<class_ProjectSettings_property_internationalization/locale/include_text_server_data>`                                                           | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`internationalization/locale/line_breaking_strictness<class_ProjectSettings_property_internationalization/locale/line_breaking_strictness>`                                                           | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`internationalization/locale/test<class_ProjectSettings_property_internationalization/locale/test>`                                                                                                   | ``""``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1211,6 +1299,10 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`navigation/pathfinding/max_threads<class_ProjectSettings_property_navigation/pathfinding/max_threads>`                                                                                               | ``4``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`navigation/world/map_use_async_iterations<class_ProjectSettings_property_navigation/world/map_use_async_iterations>`                                                                                 | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`navigation/world/region_use_async_iterations<class_ProjectSettings_property_navigation/world/region_use_async_iterations>`                                                                           | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_chars_per_second<class_ProjectSettings_property_network/limits/debugger/max_chars_per_second>`                                                                           | ``32768``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_errors_per_second<class_ProjectSettings_property_network/limits/debugger/max_errors_per_second>`                                                                         | ``400``                                                                                                  |
@@ -1227,6 +1319,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`network/tls/certificate_bundle_override<class_ProjectSettings_property_network/tls/certificate_bundle_override>`                                                                                     | ``""``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`network/tls/enable_tls_v1.3<class_ProjectSettings_property_network/tls/enable_tls_v1.3>`                                                                                                             | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/2d/default_angular_damp<class_ProjectSettings_property_physics/2d/default_angular_damp>`                                                                                                     | ``1.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/2d/default_gravity<class_ProjectSettings_property_physics/2d/default_gravity>`                                                                                                               | ``980.0``                                                                                                |
@@ -1239,7 +1333,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`physics/2d/run_on_separate_thread<class_ProjectSettings_property_physics/2d/run_on_separate_thread>`                                                                                                 | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`physics/2d/sleep_threshold_angular<class_ProjectSettings_property_physics/2d/sleep_threshold_angular>`                                                                                               | ``0.139626``                                                                                             |
+   | :ref:`float<class_float>`                         | :ref:`physics/2d/sleep_threshold_angular<class_ProjectSettings_property_physics/2d/sleep_threshold_angular>`                                                                                               | ``0.13962634``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/2d/sleep_threshold_linear<class_ProjectSettings_property_physics/2d/sleep_threshold_linear>`                                                                                                 | ``2.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1267,9 +1361,11 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`physics/3d/physics_engine<class_ProjectSettings_property_physics/3d/physics_engine>`                                                                                                                 | ``"DEFAULT"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`physics/3d/physics_interpolation/scene_traversal<class_ProjectSettings_property_physics/3d/physics_interpolation/scene_traversal>`                                                                   | ``"DEFAULT"``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`physics/3d/run_on_separate_thread<class_ProjectSettings_property_physics/3d/run_on_separate_thread>`                                                                                                 | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`physics/3d/sleep_threshold_angular<class_ProjectSettings_property_physics/3d/sleep_threshold_angular>`                                                                                               | ``0.139626``                                                                                             |
+   | :ref:`float<class_float>`                         | :ref:`physics/3d/sleep_threshold_angular<class_ProjectSettings_property_physics/3d/sleep_threshold_angular>`                                                                                               | ``0.13962634``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/3d/sleep_threshold_linear<class_ProjectSettings_property_physics/3d/sleep_threshold_linear>`                                                                                                 | ``0.1``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1295,13 +1391,13 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`                                                                                     | ``60``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/collisions/active_edge_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/active_edge_threshold>`                                                   | ``0.872665``                                                                                             |
+   | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/collisions/active_edge_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/active_edge_threshold>`                                                   | ``0.87266463``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/collisions/collision_margin_fraction<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/collision_margin_fraction>`                                           | ``0.08``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`physics/jolt_physics_3d/joints/world_node<class_ProjectSettings_property_physics/jolt_physics_3d/joints/world_node>`                                                                                 | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/limits/max_angular_velocity<class_ProjectSettings_property_physics/jolt_physics_3d/limits/max_angular_velocity>`                                                             | ``47.1239``                                                                                              |
+   | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/limits/max_angular_velocity<class_ProjectSettings_property_physics/jolt_physics_3d/limits/max_angular_velocity>`                                                             | ``47.12389``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`physics/jolt_physics_3d/limits/max_bodies<class_ProjectSettings_property_physics/jolt_physics_3d/limits/max_bodies>`                                                                                 | ``10240``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1327,11 +1423,9 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`physics/jolt_physics_3d/simulation/allow_sleep<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/allow_sleep>`                                                                       | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`physics/jolt_physics_3d/simulation/areas_detect_static_bodies<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/areas_detect_static_bodies>`                                         | ``false``                                                                                                |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/simulation/baumgarte_stabilization_factor<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/baumgarte_stabilization_factor>`                                 | ``0.2``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold>`               | ``0.0349066``                                                                                            |
+   | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold>`               | ``0.034906585``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/jolt_physics_3d/simulation/body_pair_contact_cache_distance_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/body_pair_contact_cache_distance_threshold>`         | ``0.001``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1380,6 +1474,8 @@ Properties
    | :ref:`int<class_int>`                             | :ref:`rendering/anti_aliasing/quality/msaa_3d<class_ProjectSettings_property_rendering/anti_aliasing/quality/msaa_3d>`                                                                                     | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/anti_aliasing/quality/screen_space_aa<class_ProjectSettings_property_rendering/anti_aliasing/quality/screen_space_aa>`                                                                     | ``0``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                         | :ref:`rendering/anti_aliasing/quality/smaa_edge_detection_threshold<class_ProjectSettings_property_rendering/anti_aliasing/quality/smaa_edge_detection_threshold>`                                         | ``0.05``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/anti_aliasing/quality/use_debanding<class_ProjectSettings_property_rendering/anti_aliasing/quality/use_debanding>`                                                                         | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1449,19 +1545,19 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/environment/volumetric_fog/volume_size<class_ProjectSettings_property_rendering/environment/volumetric_fog/volume_size>`                                                                   | ``64``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`                                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`                                                                                                 | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.android<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.android<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`                                                                                 | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.ios<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`                                                                                         |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.ios<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`                                                                                         | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.linuxbsd<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`                                                                               |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.linuxbsd<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`                                                                               | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.macos<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`                                                                                     |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.macos<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`                                                                                     | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.web<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`                                                                                         |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.web<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`                                                                                         | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.windows<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.windows<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`                                                                                 | ``"opengl3"``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>`                                                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1485,7 +1581,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/global_illumination/voxel_gi/quality<class_ProjectSettings_property_rendering/global_illumination/voxel_gi/quality>`                                                                       | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`rendering/lightmapping/bake_performance/max_rays_per_pass<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`                                                 | ``32``                                                                                                   |
+   | :ref:`int<class_int>`                             | :ref:`rendering/lightmapping/bake_performance/max_rays_per_pass<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`                                                 | ``4``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/lightmapping/bake_performance/max_rays_per_probe_pass<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_probe_pass>`                                     | ``64``                                                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1593,6 +1689,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/reflections/sky_reflections/texture_array_reflections.mobile<class_ProjectSettings_property_rendering/reflections/sky_reflections/texture_array_reflections.mobile>`                       | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/reflections/specular_occlusion/enabled<class_ProjectSettings_property_rendering/reflections/specular_occlusion/enabled>`                                                                   | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`rendering/renderer/rendering_method<class_ProjectSettings_property_rendering/renderer/rendering_method>`                                                                                             | ``"forward_plus"``                                                                                       |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`rendering/renderer/rendering_method.mobile<class_ProjectSettings_property_rendering/renderer/rendering_method.mobile>`                                                                               | ``"mobile"``                                                                                             |
@@ -1607,17 +1705,19 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame<class_ProjectSettings_property_rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame>`                               | ``1024``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`                                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`                                                                                                 | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.android<class_ProjectSettings_property_rendering/rendering_device/driver.android>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.android<class_ProjectSettings_property_rendering/rendering_device/driver.android>`                                                                                 | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.ios<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`                                                                                         |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.ios<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`                                                                                         | ``"metal"``                                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.linuxbsd<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`                                                                               |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.linuxbsd<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`                                                                               | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.macos<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`                                                                                     |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.macos<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`                                                                                     | ``"metal"``                                                                                              |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.windows<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`                                                                                 |                                                                                                          |
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.visionos<class_ProjectSettings_property_rendering/rendering_device/driver.visionos>`                                                                               | ``"metal"``                                                                                              |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver.windows<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`                                                                                 | ``"vulkan"``                                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/rendering_device/fallback_to_d3d12<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>`                                                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1647,6 +1747,10 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`                                                                                                                 | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode.ios<class_ProjectSettings_property_rendering/scaling_3d/mode.ios>`                                                                                                         |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/scaling_3d/mode.macos<class_ProjectSettings_property_rendering/scaling_3d/mode.macos>`                                                                                                     |                                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`rendering/scaling_3d/scale<class_ProjectSettings_property_rendering/scaling_3d/scale>`                                                                                                               | ``1.0``                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/shader_compiler/shader_cache/compress<class_ProjectSettings_property_rendering/shader_compiler/shader_cache/compress>`                                                                     | ``true``                                                                                                 |
@@ -1664,6 +1768,12 @@ Properties
    | :ref:`bool<class_bool>`                           | :ref:`rendering/shading/overrides/force_lambert_over_burley.mobile<class_ProjectSettings_property_rendering/shading/overrides/force_lambert_over_burley.mobile>`                                           | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/shading/overrides/force_vertex_shading<class_ProjectSettings_property_rendering/shading/overrides/force_vertex_shading>`                                                                   | ``false``                                                                                                |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/textures/basis_universal/rdo_dict_size<class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size>`                                                                   | ``1024``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/basis_universal/zstd_supercompression<class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression>`                                                   | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/textures/basis_universal/zstd_supercompression_level<class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level>`                                       | ``6``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/textures/canvas_textures/default_texture_filter<class_ProjectSettings_property_rendering/textures/canvas_textures/default_texture_filter>`                                                 | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -1754,43 +1864,45 @@ Methods
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`add_property_info<class_ProjectSettings_method_add_property_info>`\ (\ hint\: :ref:`Dictionary<class_Dictionary>`\ )                                                                               |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`clear<class_ProjectSettings_method_clear>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                               |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_global_class_list<class_ProjectSettings_method_get_global_class_list>`\ (\ )                                                                                                                   |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                            | :ref:`get_order<class_ProjectSettings_method_get_order>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                                                                               |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                    | :ref:`get_setting<class_ProjectSettings_method_get_setting>`\ (\ name\: :ref:`String<class_String>`, default_value\: :ref:`Variant<class_Variant>` = null\ ) |const|                                     |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                    | :ref:`get_setting_with_override<class_ProjectSettings_method_get_setting_with_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                       |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                      | :ref:`globalize_path<class_ProjectSettings_method_globalize_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                     |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`has_setting<class_ProjectSettings_method_has_setting>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                                                                           |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`load_resource_pack<class_ProjectSettings_method_load_resource_pack>`\ (\ pack\: :ref:`String<class_String>`, replace_files\: :ref:`bool<class_bool>` = true, offset\: :ref:`int<class_int>` = 0\ ) |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                      | :ref:`localize_path<class_ProjectSettings_method_localize_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                       |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`save<class_ProjectSettings_method_save>`\ (\ )                                                                                                                                                     |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`save_custom<class_ProjectSettings_method_save_custom>`\ (\ file\: :ref:`String<class_String>`\ )                                                                                                   |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`set_as_basic<class_ProjectSettings_method_set_as_basic>`\ (\ name\: :ref:`String<class_String>`, basic\: :ref:`bool<class_bool>`\ )                                                                |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`set_as_internal<class_ProjectSettings_method_set_as_internal>`\ (\ name\: :ref:`String<class_String>`, internal\: :ref:`bool<class_bool>`\ )                                                       |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`set_initial_value<class_ProjectSettings_method_set_initial_value>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`set_order<class_ProjectSettings_method_set_order>`\ (\ name\: :ref:`String<class_String>`, position\: :ref:`int<class_int>`\ )                                                                     |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`set_restart_if_changed<class_ProjectSettings_method_set_restart_if_changed>`\ (\ name\: :ref:`String<class_String>`, restart\: :ref:`bool<class_bool>`\ )                                          |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`set_setting<class_ProjectSettings_method_set_setting>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                            |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`add_property_info<class_ProjectSettings_method_add_property_info>`\ (\ hint\: :ref:`Dictionary<class_Dictionary>`\ )                                                                                                                               |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`clear<class_ProjectSettings_method_clear>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                                               |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_global_class_list<class_ProjectSettings_method_get_global_class_list>`\ (\ )                                                                                                                                                                   |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`get_order<class_ProjectSettings_method_get_order>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                               |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                    | :ref:`get_setting<class_ProjectSettings_method_get_setting>`\ (\ name\: :ref:`String<class_String>`, default_value\: :ref:`Variant<class_Variant>` = null\ ) |const|                                                                                     |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                    | :ref:`get_setting_with_override<class_ProjectSettings_method_get_setting_with_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                       |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                    | :ref:`get_setting_with_override_and_custom_features<class_ProjectSettings_method_get_setting_with_override_and_custom_features>`\ (\ name\: :ref:`StringName<class_StringName>`, features\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |const| |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                      | :ref:`globalize_path<class_ProjectSettings_method_globalize_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                                                                     |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`has_setting<class_ProjectSettings_method_has_setting>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                           |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`load_resource_pack<class_ProjectSettings_method_load_resource_pack>`\ (\ pack\: :ref:`String<class_String>`, replace_files\: :ref:`bool<class_bool>` = true, offset\: :ref:`int<class_int>` = 0\ )                                                 |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                      | :ref:`localize_path<class_ProjectSettings_method_localize_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                                                                       |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`save<class_ProjectSettings_method_save>`\ (\ )                                                                                                                                                                                                     |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`save_custom<class_ProjectSettings_method_save_custom>`\ (\ file\: :ref:`String<class_String>`\ )                                                                                                                                                   |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`set_as_basic<class_ProjectSettings_method_set_as_basic>`\ (\ name\: :ref:`String<class_String>`, basic\: :ref:`bool<class_bool>`\ )                                                                                                                |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`set_as_internal<class_ProjectSettings_method_set_as_internal>`\ (\ name\: :ref:`String<class_String>`, internal\: :ref:`bool<class_bool>`\ )                                                                                                       |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`set_initial_value<class_ProjectSettings_method_set_initial_value>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`set_order<class_ProjectSettings_method_set_order>`\ (\ name\: :ref:`String<class_String>`, position\: :ref:`int<class_int>`\ )                                                                                                                     |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`set_restart_if_changed<class_ProjectSettings_method_set_restart_if_changed>`\ (\ name\: :ref:`String<class_String>`, restart\: :ref:`bool<class_bool>`\ )                                                                                          |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`set_setting<class_ProjectSettings_method_set_setting>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                            |
+   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -1817,6 +1929,38 @@ Emitted when any setting is changed, up to once per process frame.
 
 Property Descriptions
 ---------------------
+
+.. _class_ProjectSettings_property_accessibility/general/accessibility_support:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **accessibility/general/accessibility_support** = ``0`` :ref:`🔗<class_ProjectSettings_property_accessibility/general/accessibility_support>`
+
+Accessibility support mode:
+
+- **Auto** (``0``): Accessibility support is enabled, but updates to the accessibility information are processed only if an assistive app (such as a screen reader or a Braille display) is active (default).
+
+- **Always Active** (``1``): Accessibility support is enabled, and updates to the accessibility information are always processed, regardless of the status of assistive apps.
+
+- **Disabled** (``2``): Accessibility support is fully disabled.
+
+\ **Note:** Accessibility debugging tools, such as Accessibility Insights for Windows, Accessibility Inspector (macOS), or AT-SPI Browser (Linux/BSD) do not count as assistive apps. To test your project with these tools, use **Always Active**.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_accessibility/general/updates_per_second:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **accessibility/general/updates_per_second** = ``60`` :ref:`🔗<class_ProjectSettings_property_accessibility/general/updates_per_second>`
+
+The number of accessibility information updates per second.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_ProjectSettings_property_animation/warnings/check_angle_interpolation_type_conflicting:
 
@@ -1938,7 +2082,7 @@ If ``true``, the application automatically accepts quitting requests.
 
 :ref:`String<class_String>` **application/config/custom_user_dir_name** = ``""`` :ref:`🔗<class_ProjectSettings_property_application/config/custom_user_dir_name>`
 
-This user directory is used for storing persistent data (``user://`` filesystem). If a custom directory name is defined, this name will be appended to the system-specific user data directory (same parent folder as the Redot configuration folder documented in :ref:`OS.get_user_data_dir<class_OS_method_get_user_data_dir>`).
+This user directory is used for storing persistent data (``user://`` filesystem). If a custom directory name is defined, this name will be appended to the system-specific user data directory (same parent folder as the Redot configuration folder documented in :ref:`OS.get_user_data_dir()<class_OS_method_get_user_data_dir>`).
 
 The :ref:`application/config/use_custom_user_dir<class_ProjectSettings_property_application/config/use_custom_user_dir>` setting must be enabled for this to take effect.
 
@@ -1978,7 +2122,7 @@ Icon used for the project, set when project loads. Exporters will also use this 
 
 :ref:`String<class_String>` **application/config/macos_native_icon** = ``""`` :ref:`🔗<class_ProjectSettings_property_application/config/macos_native_icon>`
 
-Icon set in ``.icns`` format used on macOS to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon<class_DisplayServer_method_set_native_icon>`.
+Icon set in ``.icns`` format used on macOS to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon()<class_DisplayServer_method_set_native_icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2086,7 +2230,7 @@ The project's human-readable version identifier. This is used by exporters if th
 
 :ref:`String<class_String>` **application/config/windows_native_icon** = ``""`` :ref:`🔗<class_ProjectSettings_property_application/config/windows_native_icon>`
 
-Icon set in ``.ico`` format used on Windows to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon<class_DisplayServer_method_set_native_icon>`.
+Icon set in ``.ico`` format used on Windows to set the game's icon. This is done automatically on start by calling :ref:`DisplayServer.set_native_icon()<class_DisplayServer_method_set_native_icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2114,7 +2258,7 @@ It may take several seconds at a stable frame rate before the smoothing is initi
 
 :ref:`bool<class_bool>` **application/run/disable_stderr** = ``false`` :ref:`🔗<class_ProjectSettings_property_application/run/disable_stderr>`
 
-If ``true``, disables printing to standard error. If ``true``, this also hides error and warning messages printed by :ref:`@GlobalScope.push_error<class_@GlobalScope_method_push_error>` and :ref:`@GlobalScope.push_warning<class_@GlobalScope_method_push_warning>`. See also :ref:`application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>`.
+If ``true``, disables printing to standard error. If ``true``, this also hides error and warning messages printed by :ref:`@GlobalScope.push_error()<class_@GlobalScope_method_push_error>` and :ref:`@GlobalScope.push_warning()<class_@GlobalScope_method_push_warning>`. See also :ref:`application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>`.
 
 Changes to this setting will only be applied upon restarting the application. To control this at runtime, use :ref:`Engine.print_error_messages<class_Engine_property_print_error_messages>`.
 
@@ -2193,6 +2337,20 @@ Changes to this setting will only be applied upon restarting the application.
 Forces a *constant* delay between frames in the main loop (in milliseconds). In most situations, :ref:`application/run/max_fps<class_ProjectSettings_property_application/run/max_fps>` should be preferred as an FPS limiter as it's more precise.
 
 This setting can be overridden using the ``--frame-delay <ms;>`` command line argument.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_application/run/load_shell_environment:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **application/run/load_shell_environment** = ``false`` :ref:`🔗<class_ProjectSettings_property_application/run/load_shell_environment>`
+
+If ``true``, loads the default shell and copies environment variables set by the shell startup scripts to the app environment.
+
+\ **Note:** This setting is implemented on macOS for non-sandboxed applications only.
 
 .. rst-class:: classref-item-separator
 
@@ -2330,7 +2488,7 @@ Specifies the audio driver to use. This setting is platform-dependent as each pl
 
 The ``Dummy`` audio driver disables all audio playback and recording, which is useful for non-game applications as it reduces CPU usage. It also prevents the engine from appearing as an application playing audio in the OS' audio mixer.
 
-To query the value that is being used at run-time (which may be overridden by command-line arguments or headless mode), use :ref:`AudioServer.get_driver_name<class_AudioServer_method_get_driver_name>`.
+To query the value that is being used at run-time (which may be overridden by command-line arguments or headless mode), use :ref:`AudioServer.get_driver_name()<class_AudioServer_method_get_driver_name>`.
 
 \ **Note:** The driver in use can be overridden at runtime via the ``--audio-driver`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
 
@@ -2346,7 +2504,7 @@ To query the value that is being used at run-time (which may be overridden by co
 
 If ``true``, microphone input will be allowed. This requires appropriate permissions to be set when exporting to Android or iOS.
 
-\ **Note:** If the operating system blocks access to audio input devices (due to the user's privacy settings), audio capture will only return silence. On Windows 10 and later, make sure that apps are allowed to access the microphone in the OS' privacy settings.
+\ **Note:** If the operating system blocks access to audio input devices (due to the user's privacy settings), audio capture will only return silence. On Windows, make sure that apps are allowed to access the microphone in the OS' privacy settings.
 
 .. rst-class:: classref-item-separator
 
@@ -2358,7 +2516,11 @@ If ``true``, microphone input will be allowed. This requires appropriate permiss
 
 :ref:`int<class_int>` **audio/driver/mix_rate** = ``44100`` :ref:`🔗<class_ProjectSettings_property_audio/driver/mix_rate>`
 
-The mixing rate used for audio (in Hz). In general, it's better to not touch this and leave it to the host operating system.
+Target mixing rate used for audio (in Hz). In general, it's better to not touch this and leave it to the host operating system.
+
+\ **Note:** On iOS and macOS, mixing rate is determined by audio driver, this value is ignored.
+
+\ **Note:** Input and output mixing rates might be different. Use :ref:`AudioServer.get_mix_rate()<class_AudioServer_method_get_mix_rate>` and :ref:`AudioServer.get_input_mix_rate()<class_AudioServer_method_get_input_mix_rate>` to get actual values.
 
 .. rst-class:: classref-item-separator
 
@@ -2384,11 +2546,11 @@ Safer override for :ref:`audio/driver/mix_rate<class_ProjectSettings_property_au
 
 Specifies the preferred output latency in milliseconds for audio. Lower values will result in lower audio latency at the cost of increased CPU usage. Low values may result in audible crackling on slower hardware.
 
-Audio output latency may be constrained by the host operating system and audio hardware drivers. If the host can not provide the specified audio output latency then Redot will attempt to use the nearest latency allowed by the host. As such you should always use :ref:`AudioServer.get_output_latency<class_AudioServer_method_get_output_latency>` to determine the actual audio output latency.
+Audio output latency may be constrained by the host operating system and audio hardware drivers. If the host can not provide the specified audio output latency then Redot will attempt to use the nearest latency allowed by the host. As such you should always use :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>` to determine the actual audio output latency.
 
 Audio output latency can be overridden using the ``--audio-output-latency <ms>`` command line argument.
 
-\ **Note:** This setting is ignored on Android, and on all versions of Windows prior to Windows 10.
+\ **Note:** This setting is ignored on Android.
 
 .. rst-class:: classref-item-separator
 
@@ -2428,7 +2590,7 @@ The default value of ``0.5`` is tuned for headphones. When using speakers, you m
 
 The base strength of the panning effect for all :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>` nodes. The panning strength can be further scaled on each Node using :ref:`AudioStreamPlayer3D.panning_strength<class_AudioStreamPlayer3D_property_panning_strength>`. A value of ``0.0`` disables stereo panning entirely, leaving only volume attenuation in place. A value of ``1.0`` completely mutes one of the channels if the sound is located exactly to the left (or right) of the listener.
 
-The default value of ``0.5`` is tuned for headphones. When using speakers, you may find lower values to sound better as speakers have a lower stereo separation compared to headphones.
+The default value of ``0.5`` is tuned for headphones which means that the opposite side channel goes no lower than 50% of the volume of the nearside channel. You may find that you can set this value higher for speakers to have the same effect since both ears can hear from each speaker.
 
 .. rst-class:: classref-item-separator
 
@@ -2500,7 +2662,7 @@ Sets the `AVAudioSessionCategory <https://developer.apple.com/documentation/avfa
 
 :ref:`bool<class_bool>` **audio/general/text_to_speech** = ``false`` :ref:`🔗<class_ProjectSettings_property_audio/general/text_to_speech>`
 
-If ``true``, text-to-speech support is enabled, see :ref:`DisplayServer.tts_get_voices<class_DisplayServer_method_tts_get_voices>` and :ref:`DisplayServer.tts_speak<class_DisplayServer_method_tts_speak>`.
+If ``true``, text-to-speech support is enabled on startup, otherwise it is enabled first time TTS method is used, see :ref:`DisplayServer.tts_get_voices()<class_DisplayServer_method_tts_get_voices>` and :ref:`DisplayServer.tts_speak()<class_DisplayServer_method_tts_speak>`.
 
 \ **Note:** Enabling TTS can cause addition idle CPU usage and interfere with the sleep mode, so consider disabling it if TTS is not used.
 
@@ -2836,7 +2998,7 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 :ref:`int<class_int>` **debug/gdscript/warnings/get_node_default_without_onready** = ``2`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/get_node_default_without_onready>`
 
-When set to ``warn`` or ``error``, produces a warning or an error respectively when :ref:`Node.get_node<class_Node_method_get_node>` (or the shorthand ``$``) is used as default value of a class variable without the ``@onready`` annotation.
+When set to ``warn`` or ``error``, produces a warning or an error respectively when :ref:`Node.get_node()<class_Node_method_get_node>` (or the shorthand ``$``) is used as default value of a class variable without the ``@onready`` annotation.
 
 .. rst-class:: classref-item-separator
 
@@ -3006,7 +3168,7 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/gdscript/warnings/renamed_in_godot_4_hint** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`
+:ref:`bool<class_bool>` **debug/gdscript/warnings/renamed_in_godot_4_hint** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/renamed_in_godot_4_hint>`
 
 When enabled, using a property, enum, or function that was renamed since Godot 3 will produce a hint if an error occurs.
 
@@ -3304,6 +3466,38 @@ Editor-only override for :ref:`debug/settings/crash_handler/message<class_Projec
 
 ----
 
+.. _class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/settings/gdscript/always_track_call_stacks** = ``false`` :ref:`🔗<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`
+
+Whether GDScript call stacks will be tracked in release builds, thus allowing :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>` to function.
+
+Enabling this comes at the cost of roughly 40 KiB for every thread that runs any GDScript code.
+
+\ **Note:** This setting has no effect on editor builds or debug builds, where GDScript call stacks are tracked regardless.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/settings/gdscript/always_track_local_variables** = ``false`` :ref:`🔗<class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables>`
+
+Whether GDScript local variables will be tracked in all builds, including export builds, thus allowing :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>` to capture them when enabling its ``include_variables`` parameter.
+
+Enabling this comes at the cost of roughly 50 bytes of memory per local variable, for every compiled class in the entire project, so can be several MiB in larger projects.
+
+\ **Note:** This setting has no effect when running the game from the editor, where GDScript local variables are tracked regardless.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_debug/settings/gdscript/max_call_stack:
 
 .. rst-class:: classref-property
@@ -3324,7 +3518,7 @@ Maximum call stack allowed for debugging GDScript.
 
 If ``true``, enables warnings which can help pinpoint where nodes are being incorrectly updated, which will result in incorrect interpolation and visual glitches.
 
-When a node is being interpolated, it is essential that the transform is set during :ref:`Node._physics_process<class_Node_private_method__physics_process>` (during a physics tick) rather than :ref:`Node._process<class_Node_private_method__process>` (during a frame).
+When a node is being interpolated, it is essential that the transform is set during :ref:`Node._physics_process()<class_Node_private_method__physics_process>` (during a physics tick) rather than :ref:`Node._process()<class_Node_private_method__process>` (during a frame).
 
 .. rst-class:: classref-item-separator
 
@@ -3384,7 +3578,7 @@ Print GPU profile information to standard output every second. This includes how
 
 :ref:`bool<class_bool>` **debug/settings/stdout/verbose_stdout** = ``false`` :ref:`🔗<class_ProjectSettings_property_debug/settings/stdout/verbose_stdout>`
 
-Print more information to standard output when running. It displays information such as memory leaks, which scenes and resources are being loaded, etc. This can also be enabled using the ``--verbose`` or ``-v`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`, even on an exported project. See also :ref:`OS.is_stdout_verbose<class_OS_method_is_stdout_verbose>` and :ref:`@GlobalScope.print_verbose<class_@GlobalScope_method_print_verbose>`.
+Print more information to standard output when running. It displays information such as memory leaks, which scenes and resources are being loaded, etc. This can also be enabled using the ``--verbose`` or ``-v`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`, even on an exported project. See also :ref:`OS.is_stdout_verbose()<class_OS_method_is_stdout_verbose>` and :ref:`@GlobalScope.print_verbose()<class_@GlobalScope_method_print_verbose>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3534,11 +3728,11 @@ When set to ``true``, produces a warning when a varying is never used.
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/agents_radius_color:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/agents_radius_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/avoidance/agents_radius_color** = ``Color(1, 1, 0, 0.25)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/agents_radius_color>`
+:ref:`Color<class_Color>` **debug/shapes/avoidance/2d/agents_radius_color** = ``Color(1, 1, 0, 0.25)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/agents_radius_color>`
 
 Color of the avoidance agents radius, visible when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3546,11 +3740,11 @@ Color of the avoidance agents radius, visible when "Visible Avoidance" is enable
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/enable_agents_radius:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_agents_radius:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/avoidance/enable_agents_radius** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/enable_agents_radius>`
+:ref:`bool<class_bool>` **debug/shapes/avoidance/2d/enable_agents_radius** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_agents_radius>`
 
 If enabled, displays avoidance agents radius when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3558,11 +3752,11 @@ If enabled, displays avoidance agents radius when "Visible Avoidance" is enabled
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/enable_obstacles_radius:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_obstacles_radius:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/avoidance/enable_obstacles_radius** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/enable_obstacles_radius>`
+:ref:`bool<class_bool>` **debug/shapes/avoidance/2d/enable_obstacles_radius** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_obstacles_radius>`
 
 If enabled, displays avoidance obstacles radius when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3570,11 +3764,11 @@ If enabled, displays avoidance obstacles radius when "Visible Avoidance" is enab
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/enable_obstacles_static:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_obstacles_static:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/avoidance/enable_obstacles_static** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/enable_obstacles_static>`
+:ref:`bool<class_bool>` **debug/shapes/avoidance/2d/enable_obstacles_static** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/enable_obstacles_static>`
 
 If enabled, displays static avoidance obstacles when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3582,11 +3776,11 @@ If enabled, displays static avoidance obstacles when "Visible Avoidance" is enab
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/obstacles_radius_color:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_radius_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/avoidance/obstacles_radius_color** = ``Color(1, 0.5, 0, 0.25)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_radius_color>`
+:ref:`Color<class_Color>` **debug/shapes/avoidance/2d/obstacles_radius_color** = ``Color(1, 0.5, 0, 0.25)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_radius_color>`
 
 Color of the avoidance obstacles radius, visible when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3594,11 +3788,11 @@ Color of the avoidance obstacles radius, visible when "Visible Avoidance" is ena
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_edge_pushin_color:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_edge_pushin_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/avoidance/obstacles_static_edge_pushin_color** = ``Color(1, 0, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_edge_pushin_color>`
+:ref:`Color<class_Color>` **debug/shapes/avoidance/2d/obstacles_static_edge_pushin_color** = ``Color(1, 0, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_edge_pushin_color>`
 
 Color of the static avoidance obstacles edges when their vertices are winded in order to push agents in, visible when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3606,11 +3800,11 @@ Color of the static avoidance obstacles edges when their vertices are winded in 
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_edge_pushout_color:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_edge_pushout_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/avoidance/obstacles_static_edge_pushout_color** = ``Color(1, 1, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_edge_pushout_color>`
+:ref:`Color<class_Color>` **debug/shapes/avoidance/2d/obstacles_static_edge_pushout_color** = ``Color(1, 1, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_edge_pushout_color>`
 
 Color of the static avoidance obstacles edges when their vertices are winded in order to push agents out, visible when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3618,11 +3812,11 @@ Color of the static avoidance obstacles edges when their vertices are winded in 
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_face_pushin_color:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_face_pushin_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/avoidance/obstacles_static_face_pushin_color** = ``Color(1, 0, 0, 0)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_face_pushin_color>`
+:ref:`Color<class_Color>` **debug/shapes/avoidance/2d/obstacles_static_face_pushin_color** = ``Color(1, 0, 0, 0)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_face_pushin_color>`
 
 Color of the static avoidance obstacles faces when their vertices are winded in order to push agents in, visible when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3630,11 +3824,119 @@ Color of the static avoidance obstacles faces when their vertices are winded in 
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_face_pushout_color:
+.. _class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_face_pushout_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/avoidance/obstacles_static_face_pushout_color** = ``Color(1, 1, 0, 0.5)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/obstacles_static_face_pushout_color>`
+:ref:`Color<class_Color>` **debug/shapes/avoidance/2d/obstacles_static_face_pushout_color** = ``Color(1, 1, 0, 0.5)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/2d/obstacles_static_face_pushout_color>`
+
+Color of the static avoidance obstacles faces when their vertices are winded in order to push agents out, visible when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/agents_radius_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/avoidance/3d/agents_radius_color** = ``Color(1, 1, 0, 0.25)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/agents_radius_color>`
+
+Color of the avoidance agents radius, visible when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_agents_radius:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/avoidance/3d/enable_agents_radius** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_agents_radius>`
+
+If enabled, displays avoidance agents radius when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_obstacles_radius:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/avoidance/3d/enable_obstacles_radius** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_obstacles_radius>`
+
+If enabled, displays avoidance obstacles radius when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_obstacles_static:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/avoidance/3d/enable_obstacles_static** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/enable_obstacles_static>`
+
+If enabled, displays static avoidance obstacles when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_radius_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/avoidance/3d/obstacles_radius_color** = ``Color(1, 0.5, 0, 0.25)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_radius_color>`
+
+Color of the avoidance obstacles radius, visible when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_edge_pushin_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/avoidance/3d/obstacles_static_edge_pushin_color** = ``Color(1, 0, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_edge_pushin_color>`
+
+Color of the static avoidance obstacles edges when their vertices are winded in order to push agents in, visible when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_edge_pushout_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/avoidance/3d/obstacles_static_edge_pushout_color** = ``Color(1, 1, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_edge_pushout_color>`
+
+Color of the static avoidance obstacles edges when their vertices are winded in order to push agents out, visible when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_face_pushin_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/avoidance/3d/obstacles_static_face_pushin_color** = ``Color(1, 0, 0, 0)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_face_pushin_color>`
+
+Color of the static avoidance obstacles faces when their vertices are winded in order to push agents in, visible when "Visible Avoidance" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_face_pushout_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/avoidance/3d/obstacles_static_face_pushout_color** = ``Color(1, 1, 0, 0.5)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/avoidance/3d/obstacles_static_face_pushout_color>`
 
 Color of the static avoidance obstacles faces when their vertices are winded in order to push agents out, visible when "Visible Avoidance" is enabled in the Debug menu.
 
@@ -3690,11 +3992,11 @@ Color of the collision shapes, visible when "Visible Collision Shapes" is enable
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/agent_path_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/agent_path_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/agent_path_color** = ``Color(1, 0, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/agent_path_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/agent_path_color** = ``Color(1, 0, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/agent_path_color>`
 
 Color to display enabled navigation agent paths when an agent has debug enabled.
 
@@ -3702,11 +4004,11 @@ Color to display enabled navigation agent paths when an agent has debug enabled.
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/agent_path_point_size:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/agent_path_point_size:
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **debug/shapes/navigation/agent_path_point_size** = ``4.0`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/agent_path_point_size>`
+:ref:`float<class_float>` **debug/shapes/navigation/2d/agent_path_point_size** = ``4.0`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/agent_path_point_size>`
 
 Rasterized size (pixel) used to render navigation agent path points when an agent has debug enabled.
 
@@ -3714,11 +4016,11 @@ Rasterized size (pixel) used to render navigation agent path points when an agen
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/edge_connection_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/edge_connection_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/edge_connection_color** = ``Color(1, 0, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/edge_connection_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/edge_connection_color** = ``Color(1, 0, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/edge_connection_color>`
 
 Color to display edge connections between navigation regions, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3726,11 +4028,11 @@ Color to display edge connections between navigation regions, visible when "Visi
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_agent_paths:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/enable_agent_paths:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_agent_paths** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_agent_paths>`
+:ref:`bool<class_bool>` **debug/shapes/navigation/2d/enable_agent_paths** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_agent_paths>`
 
 If enabled, displays navigation agent paths when an agent has debug enabled.
 
@@ -3738,23 +4040,11 @@ If enabled, displays navigation agent paths when an agent has debug enabled.
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_agent_paths_xray:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/enable_edge_connections:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_agent_paths_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_agent_paths_xray>`
-
-If enabled, displays navigation agent paths through geometry when an agent has debug enabled.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_edge_connections:
-
-.. rst-class:: classref-property
-
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_edge_connections** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_connections>`
+:ref:`bool<class_bool>` **debug/shapes/navigation/2d/enable_edge_connections** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_edge_connections>`
 
 If enabled, displays edge connections between navigation regions when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3762,23 +4052,11 @@ If enabled, displays edge connections between navigation regions when "Visible N
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_edge_connections_xray:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/enable_edge_lines:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_edge_connections_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_connections_xray>`
-
-If enabled, displays edge connections between navigation regions through geometry when "Visible Navigation" is enabled in the Debug menu.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_edge_lines:
-
-.. rst-class:: classref-property
-
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_edge_lines** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_lines>`
+:ref:`bool<class_bool>` **debug/shapes/navigation/2d/enable_edge_lines** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_edge_lines>`
 
 If enabled, displays navigation mesh polygon edges when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3786,23 +4064,11 @@ If enabled, displays navigation mesh polygon edges when "Visible Navigation" is 
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_edge_lines_xray:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/enable_geometry_face_random_color:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_edge_lines_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_edge_lines_xray>`
-
-If enabled, displays navigation mesh polygon edges through geometry when "Visible Navigation" is enabled in the Debug menu.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_geometry_face_random_color:
-
-.. rst-class:: classref-property
-
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_geometry_face_random_color** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_geometry_face_random_color>`
+:ref:`bool<class_bool>` **debug/shapes/navigation/2d/enable_geometry_face_random_color** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_geometry_face_random_color>`
 
 If enabled, colorizes each navigation mesh polygon face with a random color when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3810,11 +4076,11 @@ If enabled, colorizes each navigation mesh polygon face with a random color when
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_link_connections:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/enable_link_connections:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_link_connections** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_link_connections>`
+:ref:`bool<class_bool>` **debug/shapes/navigation/2d/enable_link_connections** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/enable_link_connections>`
 
 If enabled, displays navigation link connections when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3822,23 +4088,11 @@ If enabled, displays navigation link connections when "Visible Navigation" is en
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/enable_link_connections_xray:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_edge_color:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **debug/shapes/navigation/enable_link_connections_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/enable_link_connections_xray>`
-
-If enabled, displays navigation link connections through geometry when "Visible Navigation" is enabled in the Debug menu.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ProjectSettings_property_debug/shapes/navigation/geometry_edge_color:
-
-.. rst-class:: classref-property
-
-:ref:`Color<class_Color>` **debug/shapes/navigation/geometry_edge_color** = ``Color(0.5, 1, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/geometry_edge_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/geometry_edge_color** = ``Color(0.5, 1, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_edge_color>`
 
 Color to display enabled navigation mesh polygon edges, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3846,11 +4100,11 @@ Color to display enabled navigation mesh polygon edges, visible when "Visible Na
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/geometry_edge_disabled_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_edge_disabled_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/geometry_edge_disabled_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/geometry_edge_disabled_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/geometry_edge_disabled_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_edge_disabled_color>`
 
 Color to display disabled navigation mesh polygon edges, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3858,11 +4112,11 @@ Color to display disabled navigation mesh polygon edges, visible when "Visible N
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/geometry_face_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_face_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/geometry_face_color** = ``Color(0.5, 1, 1, 0.4)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/geometry_face_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/geometry_face_color** = ``Color(0.5, 1, 1, 0.4)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_face_color>`
 
 Color to display enabled navigation mesh polygon faces, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3870,11 +4124,11 @@ Color to display enabled navigation mesh polygon faces, visible when "Visible Na
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/geometry_face_disabled_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_face_disabled_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/geometry_face_disabled_color** = ``Color(0.5, 0.5, 0.5, 0.4)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/geometry_face_disabled_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/geometry_face_disabled_color** = ``Color(0.5, 0.5, 0.5, 0.4)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/geometry_face_disabled_color>`
 
 Color to display disabled navigation mesh polygon faces, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3882,11 +4136,11 @@ Color to display disabled navigation mesh polygon faces, visible when "Visible N
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/link_connection_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/link_connection_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/link_connection_color** = ``Color(1, 0.5, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/link_connection_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/link_connection_color** = ``Color(1, 0.5, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/link_connection_color>`
 
 Color to use to display navigation link connections, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3894,11 +4148,227 @@ Color to use to display navigation link connections, visible when "Visible Navig
 
 ----
 
-.. _class_ProjectSettings_property_debug/shapes/navigation/link_connection_disabled_color:
+.. _class_ProjectSettings_property_debug/shapes/navigation/2d/link_connection_disabled_color:
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **debug/shapes/navigation/link_connection_disabled_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/link_connection_disabled_color>`
+:ref:`Color<class_Color>` **debug/shapes/navigation/2d/link_connection_disabled_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/2d/link_connection_disabled_color>`
+
+Color to use to display disabled navigation link connections, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/agent_path_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/agent_path_color** = ``Color(1, 0, 0, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/agent_path_color>`
+
+Color to display enabled navigation agent paths when an agent has debug enabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/agent_path_point_size:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **debug/shapes/navigation/3d/agent_path_point_size** = ``4.0`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/agent_path_point_size>`
+
+Rasterized size (pixel) used to render navigation agent path points when an agent has debug enabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/edge_connection_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/edge_connection_color** = ``Color(1, 0, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/edge_connection_color>`
+
+Color to display edge connections between navigation regions, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_agent_paths:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_agent_paths** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_agent_paths>`
+
+If enabled, displays navigation agent paths when an agent has debug enabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_agent_paths_xray:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_agent_paths_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_agent_paths_xray>`
+
+If enabled, displays navigation agent paths through geometry when an agent has debug enabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_connections:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_edge_connections** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_connections>`
+
+If enabled, displays edge connections between navigation regions when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_connections_xray:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_edge_connections_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_connections_xray>`
+
+If enabled, displays edge connections between navigation regions through geometry when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_lines:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_edge_lines** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_lines>`
+
+If enabled, displays navigation mesh polygon edges when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_lines_xray:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_edge_lines_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_edge_lines_xray>`
+
+If enabled, displays navigation mesh polygon edges through geometry when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_geometry_face_random_color:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_geometry_face_random_color** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_geometry_face_random_color>`
+
+If enabled, colorizes each navigation mesh polygon face with a random color when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_link_connections:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_link_connections** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_link_connections>`
+
+If enabled, displays navigation link connections when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/enable_link_connections_xray:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/shapes/navigation/3d/enable_link_connections_xray** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/enable_link_connections_xray>`
+
+If enabled, displays navigation link connections through geometry when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_edge_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/geometry_edge_color** = ``Color(0.5, 1, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_edge_color>`
+
+Color to display enabled navigation mesh polygon edges, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_edge_disabled_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/geometry_edge_disabled_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_edge_disabled_color>`
+
+Color to display disabled navigation mesh polygon edges, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_face_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/geometry_face_color** = ``Color(0.5, 1, 1, 0.4)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_face_color>`
+
+Color to display enabled navigation mesh polygon faces, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_face_disabled_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/geometry_face_disabled_color** = ``Color(0.5, 0.5, 0.5, 0.4)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/geometry_face_disabled_color>`
+
+Color to display disabled navigation mesh polygon faces, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/link_connection_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/link_connection_color** = ``Color(1, 0.5, 1, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/link_connection_color>`
+
+Color to use to display navigation link connections, visible when "Visible Navigation" is enabled in the Debug menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/shapes/navigation/3d/link_connection_disabled_color:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **debug/shapes/navigation/3d/link_connection_disabled_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_ProjectSettings_property_debug/shapes/navigation/3d/link_connection_disabled_color>`
 
 Color to use to display disabled navigation link connections, visible when "Visible Navigation" is enabled in the Debug menu.
 
@@ -3985,6 +4455,18 @@ LinuxBSD override for :ref:`display/display_server/driver<class_ProjectSettings_
 :ref:`String<class_String>` **display/display_server/driver.macos** :ref:`🔗<class_ProjectSettings_property_display/display_server/driver.macos>`
 
 MacOS override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.visionos:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.visionos** :ref:`🔗<class_ProjectSettings_property_display/display_server/driver.visionos>`
+
+visionOS override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4086,13 +4568,13 @@ Enable Swappy for stable frame pacing on Android. Highly recommended.
 
 Swappy mode to use. The options are:
 
-- pipeline_forced_on: Try to honor :ref:`Engine.max_fps<class_Engine_property_max_fps>`. Pipelining is always on. This is the same behavior as Desktop PC.
+- ``pipeline_forced_on``: Try to honor :ref:`Engine.max_fps<class_Engine_property_max_fps>`. Pipelining is always on. This is the same behavior as a desktop PC.
 
-- auto_fps_pipeline_forced_on: Autocalculate max fps. Actual max_fps will be between 0 and :ref:`Engine.max_fps<class_Engine_property_max_fps>`. While this sounds convenient, beware that Swappy will often downgrade max fps until it finds something that can be met and sustained. That means if your game runs between 40fps and 60fps on a 60hz screen, after some time Swappy will downgrade max fps so that the game renders at perfect 30fps.
+- ``auto_fps_pipeline_forced_on``: Calculate the max FPS automatically. The actual max FPS will be between ``0`` and :ref:`Engine.max_fps<class_Engine_property_max_fps>`. While this sounds convenient, beware that Swappy will often downgrade the max FPS until it finds a value that can be maintained. That means, if your game runs between 40fps and 60fps on a 60hz screen, after some time Swappy will downgrade the max FPS so that the game renders at a perfect 30fps.
 
-- auto_fps_auto_pipeline: Same as auto_fps_pipeline_forced_on, but if Swappy detects that rendering is very fast (e.g. it takes < 8ms to render on a 60hz screen) Swappy will disable pipelining to minimize input latency. This is the default.
+- ``auto_fps_auto_pipeline``: Same as ``auto_fps_pipeline_forced_on``, but if Swappy detects that rendering is very fast (for example it takes less than 8ms to render on a 60hz screen), Swappy will disable pipelining to minimize input latency. This is the default.
 
-\ **Note:** If :ref:`Engine.max_fps<class_Engine_property_max_fps>` is 0, actual max_fps will considered as to be the screen's refresh rate (often 60hz, 90hz or 120hz depending on device model and OS settings).
+\ **Note:** If :ref:`Engine.max_fps<class_Engine_property_max_fps>` is ``0``, the actual max FPS will be considered to be the screen's refresh rate (often 60hz, 90hz, or 120hz, depending on device model and OS settings).
 
 .. rst-class:: classref-item-separator
 
@@ -4264,6 +4746,30 @@ Main window initial screen, this setting is used only if :ref:`display/window/si
 
 ----
 
+.. _class_ProjectSettings_property_display/window/size/maximize_disabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **display/window/size/maximize_disabled** = ``false`` :ref:`🔗<class_ProjectSettings_property_display/window/size/maximize_disabled>`
+
+If ``true``, the main window's maximize button is disabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/window/size/minimize_disabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **display/window/size/minimize_disabled** = ``false`` :ref:`🔗<class_ProjectSettings_property_display/window/size/minimize_disabled>`
+
+If ``true``, the main window's minimize button is disabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_display/window/size/mode:
 
 .. rst-class:: classref-property
@@ -4271,6 +4777,8 @@ Main window initial screen, this setting is used only if :ref:`display/window/si
 :ref:`int<class_int>` **display/window/size/mode** = ``0`` :ref:`🔗<class_ProjectSettings_property_display/window/size/mode>`
 
 Main window mode. See :ref:`WindowMode<enum_DisplayServer_WindowMode>` for possible values and how each mode behaves.
+
+\ **Note:** Game embedding is available only in the "Windowed" mode.
 
 .. rst-class:: classref-item-separator
 
@@ -4482,7 +4990,7 @@ V-Sync can be disabled on the command line using the ``--disable-vsync`` :doc:`c
 
 \ **Note:** The **Adaptive** and **Mailbox** V-Sync modes are only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To change the V-Sync mode at runtime, call :ref:`DisplayServer.window_set_vsync_mode<class_DisplayServer_method_window_set_vsync_mode>` instead.
+\ **Note:** This property is only read when the project starts. To change the V-Sync mode at runtime, call :ref:`DisplayServer.window_set_vsync_mode()<class_DisplayServer_method_window_set_vsync_mode>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -4534,7 +5042,7 @@ Changing this value allows setting up a multi-project scenario where there are m
 
 If ``true``, text resource (``tres``) and text scene (``tscn``) files are converted to their corresponding binary format on export. This decreases file sizes and speeds up loading slightly.
 
-\ **Note:** Because a resource's file extension may change in an exported project, it is heavily recommended to use :ref:`@GDScript.load<class_@GDScript_method_load>` or :ref:`ResourceLoader<class_ResourceLoader>` instead of :ref:`FileAccess<class_FileAccess>` to load resources dynamically.
+\ **Note:** Because a resource's file extension may change in an exported project, it is heavily recommended to use :ref:`@GDScript.load()<class_@GDScript_method_load>` or :ref:`ResourceLoader<class_ResourceLoader>` instead of :ref:`FileAccess<class_FileAccess>` to load resources dynamically.
 
 \ **Note:** The project settings file (``project.godot``) will always be converted to binary on export, regardless of this setting.
 
@@ -4620,20 +5128,6 @@ The audio mix rate to use in the recorded audio when writing a movie (in Hz). Th
 
 ----
 
-.. _class_ProjectSettings_property_editor/movie_writer/mjpeg_quality:
-
-.. rst-class:: classref-property
-
-:ref:`float<class_float>` **editor/movie_writer/mjpeg_quality** = ``0.75`` :ref:`🔗<class_ProjectSettings_property_editor/movie_writer/mjpeg_quality>`
-
-The JPEG quality to use when writing a video to an AVI file, between ``0.01`` and ``1.0`` (inclusive). Higher ``quality`` values result in better-looking output at the cost of larger file sizes. Recommended ``quality`` values are between ``0.75`` and ``0.9``. Even at quality ``1.0``, JPEG compression remains lossy.
-
-\ **Note:** This does not affect the audio quality or writing PNG image sequences.
-
-.. rst-class:: classref-item-separator
-
-----
-
 .. _class_ProjectSettings_property_editor/movie_writer/movie_file:
 
 .. rst-class:: classref-property
@@ -4642,15 +5136,55 @@ The JPEG quality to use when writing a video to an AVI file, between ``0.01`` an
 
 The output path for the movie. The file extension determines the :ref:`MovieWriter<class_MovieWriter>` that will be used.
 
-Redot has 2 built-in :ref:`MovieWriter<class_MovieWriter>`\ s:
+Redot has 3 built-in :ref:`MovieWriter<class_MovieWriter>`\ s:
 
-- AVI container with MJPEG for video and uncompressed audio (``.avi`` file extension). Lossy compression, medium file sizes, fast encoding. The lossy compression quality can be adjusted by changing :ref:`editor/movie_writer/mjpeg_quality<class_ProjectSettings_property_editor/movie_writer/mjpeg_quality>`. The resulting file can be viewed in most video players, but it must be converted to another format for viewing on the web or by Redot with :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`. MJPEG does not support transparency. AVI output is currently limited to a file of 4 GB in size at most.
+- OGV container with Theora for video and Vorbis for audio (``.ogv`` file extension). Lossy compression, medium file sizes, fast encoding. The lossy compression quality can be adjusted by changing :ref:`editor/movie_writer/video_quality<class_ProjectSettings_property_editor/movie_writer/video_quality>` and :ref:`editor/movie_writer/ogv/audio_quality<class_ProjectSettings_property_editor/movie_writer/ogv/audio_quality>`. The resulting file can be viewed in Redot with :ref:`VideoStreamPlayer<class_VideoStreamPlayer>` and most video players, but not web browsers as they don't support Theora.
+
+- AVI container with MJPEG for video and uncompressed audio (``.avi`` file extension). Lossy compression, medium file sizes, fast encoding. The lossy compression quality can be adjusted by changing :ref:`editor/movie_writer/video_quality<class_ProjectSettings_property_editor/movie_writer/video_quality>`. The resulting file can be viewed in most video players, but it must be converted to another format for viewing on the web or by Redot with :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`. MJPEG does not support transparency. AVI output is currently limited to a file of 4 GB in size at most.
 
 - PNG image sequence for video and WAV for audio (``.png`` file extension). Lossless compression, large file sizes, slow encoding. Designed to be encoded to a video file with another tool such as `FFmpeg <https://ffmpeg.org/>`__ after recording. Transparency is currently not supported, even if the root viewport is set to be transparent.
 
 If you need to encode to a different format or pipe a stream through third-party software, you can extend this :ref:`MovieWriter<class_MovieWriter>` class to create your own movie writers.
 
 When using PNG output, the frame number will be appended at the end of the file name. It starts from 0 and is padded with 8 digits to ensure correct sorting and easier processing. For example, if the output path is ``/tmp/hello.png``, the first two frames will be ``/tmp/hello00000000.png`` and ``/tmp/hello00000001.png``. The audio will be saved at ``/tmp/hello.wav``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_editor/movie_writer/ogv/audio_quality:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **editor/movie_writer/ogv/audio_quality** = ``0.5`` :ref:`🔗<class_ProjectSettings_property_editor/movie_writer/ogv/audio_quality>`
+
+The audio encoding quality to use when writing Vorbis audio to a file, between ``-0.1`` and ``1.0`` (inclusive). Higher ``quality`` values result in better-sounding output at the cost of larger file sizes. Even at quality ``1.0``, compression remains lossy.
+
+\ **Note:** This does not affect video quality, which is controlled by :ref:`editor/movie_writer/video_quality<class_ProjectSettings_property_editor/movie_writer/video_quality>` instead.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_editor/movie_writer/ogv/encoding_speed:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **editor/movie_writer/ogv/encoding_speed** = ``4`` :ref:`🔗<class_ProjectSettings_property_editor/movie_writer/ogv/encoding_speed>`
+
+The tradeoff between encoding speed and compression efficiency. Speed ``1`` is the slowest but provides the best compression. Speed ``4`` is the fastest but provides the worst compression. Video quality is generally not affected significantly by this setting.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_editor/movie_writer/ogv/keyframe_interval:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **editor/movie_writer/ogv/keyframe_interval** = ``64`` :ref:`🔗<class_ProjectSettings_property_editor/movie_writer/ogv/keyframe_interval>`
+
+Forces keyframes at the specified interval (in frame count). Higher values can improve compression up to a certain level at the expense of higher latency when seeking.
 
 .. rst-class:: classref-item-separator
 
@@ -4663,6 +5197,18 @@ When using PNG output, the frame number will be appended at the end of the file 
 :ref:`int<class_int>` **editor/movie_writer/speaker_mode** = ``0`` :ref:`🔗<class_ProjectSettings_property_editor/movie_writer/speaker_mode>`
 
 The speaker mode to use in the recorded audio when writing a movie. See :ref:`SpeakerMode<enum_AudioServer_SpeakerMode>` for possible values.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_editor/movie_writer/video_quality:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **editor/movie_writer/video_quality** = ``0.75`` :ref:`🔗<class_ProjectSettings_property_editor/movie_writer/video_quality>`
+
+The video encoding quality to use when writing a Theora or AVI (MJPEG) video to a file, between ``0.0`` and ``1.0`` (inclusive). Higher ``quality`` values result in better-looking output at the cost of larger file sizes. Recommended ``quality`` values are between ``0.75`` and ``0.9``. Even at quality ``1.0``, compression remains lossy.
 
 .. rst-class:: classref-item-separator
 
@@ -4822,7 +5368,7 @@ Search path for project-specific script templates. Redot will search for script 
 
 If ``true``, Blender 3D scene files with the ``.blend`` extension will be imported by converting them to glTF 2.0.
 
-This requires configuring a path to a Blender executable in the editor settings at ``filesystem/import/blender/blender_path``. Blender 3.0 or later is required.
+This requires configuring a path to a Blender executable in the :ref:`EditorSettings.filesystem/import/blender/blender_path<class_EditorSettings_property_filesystem/import/blender/blender_path>` setting. Blender 3.0 or later is required.
 
 .. rst-class:: classref-item-separator
 
@@ -4918,11 +5464,17 @@ If ``true``, snaps :ref:`Control<class_Control>` node vertices to the nearest pi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gui/common/swap_cancel_ok** :ref:`🔗<class_ProjectSettings_property_gui/common/swap_cancel_ok>`
+:ref:`int<class_int>` **gui/common/swap_cancel_ok** = ``0`` :ref:`🔗<class_ProjectSettings_property_gui/common/swap_cancel_ok>`
 
-If ``true``, swaps **Cancel** and **OK** buttons in dialogs on Windows to follow interface conventions. :ref:`DisplayServer.get_swap_cancel_ok<class_DisplayServer_method_get_swap_cancel_ok>` can be used to query whether buttons are swapped at run-time.
+How to position the Cancel and OK buttons in the project's :ref:`AcceptDialog<class_AcceptDialog>`\ s. Different platforms have different standard behaviors for this, which can be overridden using this setting.
 
-\ **Note:** This doesn't affect native dialogs such as the ones spawned by :ref:`DisplayServer.dialog_show<class_DisplayServer_method_dialog_show>`.
+- **Auto** (``0``) follows the platform convention: OK first on Windows, KDE, and LXQt, Cancel first on macOS and other Linux desktop environments. :ref:`DisplayServer.get_swap_cancel_ok()<class_DisplayServer_method_get_swap_cancel_ok>` can be used to query whether buttons are swapped at run-time.
+
+- **Cancel First** (``1``) forces the ordering Cancel/OK.
+
+- **OK First** (``2``) forces the ordering OK/Cancel.
+
+\ **Note:** This doesn't affect native dialogs such as the ones spawned by :ref:`DisplayServer.dialog_show()<class_DisplayServer_method_dialog_show>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4946,9 +5498,7 @@ Maximum undo/redo history size for :ref:`TextEdit<class_TextEdit>` fields.
 
 :ref:`bool<class_bool>` **gui/fonts/dynamic_fonts/use_oversampling** = ``true`` :ref:`🔗<class_ProjectSettings_property_gui/fonts/dynamic_fonts/use_oversampling>`
 
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true`` and :ref:`display/window/stretch/mode<class_ProjectSettings_property_display/window/stretch/mode>` is set to **"canvas_items"**, font and :ref:`SVGTexture<class_SVGTexture>` oversampling is enabled in the main window. Use :ref:`Viewport.oversampling<class_Viewport_property_oversampling>` to control oversampling in other viewports and windows.
 
 .. rst-class:: classref-item-separator
 
@@ -5152,6 +5702,20 @@ Default :ref:`InputEventAction<class_InputEventAction>` to confirm a focused but
 
 ----
 
+.. _class_ProjectSettings_property_input/ui_accessibility_drag_and_drop:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_accessibility_drag_and_drop** :ref:`🔗<class_ProjectSettings_property_input/ui_accessibility_drag_and_drop>`
+
+Default :ref:`InputEventAction<class_InputEventAction>` to start or end a drag-and-drop operation without using mouse.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_input/ui_cancel:
 
 .. rst-class:: classref-property
@@ -5159,6 +5723,20 @@ Default :ref:`InputEventAction<class_InputEventAction>` to confirm a focused but
 :ref:`Dictionary<class_Dictionary>` **input/ui_cancel** :ref:`🔗<class_ProjectSettings_property_input/ui_cancel>`
 
 Default :ref:`InputEventAction<class_InputEventAction>` to discard a modal or pending input.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input/ui_colorpicker_delete_preset:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_colorpicker_delete_preset** :ref:`🔗<class_ProjectSettings_property_input/ui_colorpicker_delete_preset>`
+
+Default :ref:`InputEventAction<class_InputEventAction>` to delete a color preset in a :ref:`ColorPicker<class_ColorPicker>`.
 
 \ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
 
@@ -5264,6 +5842,20 @@ Default :ref:`InputEventAction<class_InputEventAction>` to go up one directory i
 
 ----
 
+.. _class_ProjectSettings_property_input/ui_focus_mode:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_focus_mode** :ref:`🔗<class_ProjectSettings_property_input/ui_focus_mode>`
+
+Default :ref:`InputEventAction<class_InputEventAction>` to switch :ref:`TextEdit<class_TextEdit>` :ref:`input/ui_text_indent<class_ProjectSettings_property_input/ui_text_indent>` between moving keyboard focus to the next :ref:`Control<class_Control>` in the scene and inputting a ``Tab`` character.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_input/ui_focus_next:
 
 .. rst-class:: classref-property
@@ -5315,6 +5907,58 @@ Default :ref:`InputEventAction<class_InputEventAction>` to delete a :ref:`GraphN
 Default :ref:`InputEventAction<class_InputEventAction>` to duplicate a :ref:`GraphNode<class_GraphNode>` in a :ref:`GraphEdit<class_GraphEdit>`.
 
 \ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input/ui_graph_follow_left:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_graph_follow_left** :ref:`🔗<class_ProjectSettings_property_input/ui_graph_follow_left>`
+
+Default :ref:`InputEventAction<class_InputEventAction>` to follow a :ref:`GraphNode<class_GraphNode>` input port connection.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input/ui_graph_follow_left.macos:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_graph_follow_left.macos** :ref:`🔗<class_ProjectSettings_property_input/ui_graph_follow_left.macos>`
+
+macOS specific override for the shortcut to follow a :ref:`GraphNode<class_GraphNode>` input port connection.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input/ui_graph_follow_right:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_graph_follow_right** :ref:`🔗<class_ProjectSettings_property_input/ui_graph_follow_right>`
+
+Default :ref:`InputEventAction<class_InputEventAction>` to follow a :ref:`GraphNode<class_GraphNode>` output port connection.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input/ui_graph_follow_right.macos:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_graph_follow_right.macos** :ref:`🔗<class_ProjectSettings_property_input/ui_graph_follow_right.macos>`
+
+macOS specific override for the shortcut to follow a :ref:`GraphNode<class_GraphNode>` output port connection.
 
 .. rst-class:: classref-item-separator
 
@@ -6230,7 +6874,7 @@ Enabling this can greatly improve the responsiveness to input, specially in devi
 
 :ref:`bool<class_bool>` **input_devices/compatibility/legacy_just_pressed_behavior** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/compatibility/legacy_just_pressed_behavior>`
 
-If ``true``, :ref:`Input.is_action_just_pressed<class_Input_method_is_action_just_pressed>` and :ref:`Input.is_action_just_released<class_Input_method_is_action_just_released>` will only return ``true`` if the action is still in the respective state, i.e. an action that is pressed *and* released on the same frame will be missed.
+If ``true``, :ref:`Input.is_action_just_pressed()<class_Input_method_is_action_just_pressed>` and :ref:`Input.is_action_just_released()<class_Input_method_is_action_just_released>` will only return ``true`` if the action is still in the respective state, i.e. an action that is pressed *and* released on the same frame will be missed.
 
 If ``false``, no input will be lost.
 
@@ -6250,6 +6894,8 @@ Specifies the tablet driver to use. If left empty, the default driver will be us
 
 \ **Note:** The driver in use can be overridden at runtime via the ``--tablet-driver`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
 
+\ **Note:** Use :ref:`DisplayServer.tablet_set_current_driver()<class_DisplayServer_method_tablet_set_current_driver>` to switch tablet driver in runtime.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -6260,7 +6906,27 @@ Specifies the tablet driver to use. If left empty, the default driver will be us
 
 :ref:`String<class_String>` **input_devices/pen_tablet/driver.windows** :ref:`🔗<class_ProjectSettings_property_input_devices/pen_tablet/driver.windows>`
 
-Override for :ref:`input_devices/pen_tablet/driver<class_ProjectSettings_property_input_devices/pen_tablet/driver>` on Windows.
+Override for :ref:`input_devices/pen_tablet/driver<class_ProjectSettings_property_input_devices/pen_tablet/driver>` on Windows. Supported values are:
+
+- ``auto`` (default), uses ``wintab`` if Windows Ink is disabled in the Wacom Tablet Properties or system settings, ``winink`` otherwise.
+
+- ``winink``, uses Windows native "Windows Ink" driver.
+
+- ``wintab``, uses Wacom "WinTab" driver.
+
+- ``dummy``, tablet input is disabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input_devices/pointing/android/disable_scroll_deadzone:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **input_devices/pointing/android/disable_scroll_deadzone** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/pointing/android/disable_scroll_deadzone>`
+
+If ``true``, disables the scroll deadzone on Android, allowing even very small scroll movements to be registered. This may increase scroll sensitivity but can also lead to unintended scrolling from slight finger movements.
 
 .. rst-class:: classref-item-separator
 
@@ -6285,6 +6951,18 @@ If ``true``, long press events on an Android touchscreen are transformed into ri
 :ref:`bool<class_bool>` **input_devices/pointing/android/enable_pan_and_scale_gestures** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/pointing/android/enable_pan_and_scale_gestures>`
 
 If ``true``, multi-touch pan and scale gestures are enabled on Android devices.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input_devices/pointing/android/override_volume_buttons:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **input_devices/pointing/android/override_volume_buttons** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/pointing/android/override_volume_buttons>`
+
+If ``true``, system volume changes are disabled when the buttons are used within the app.
 
 .. rst-class:: classref-item-separator
 
@@ -6332,7 +7010,7 @@ If ``true``, sends touch input events when clicking or dragging the mouse.
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_accelerometer** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_accelerometer>`
 
-If ``true``, the accelerometer sensor is enabled and :ref:`Input.get_accelerometer<class_Input_method_get_accelerometer>` returns valid data.
+If ``true``, the accelerometer sensor is enabled and :ref:`Input.get_accelerometer()<class_Input_method_get_accelerometer>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6344,7 +7022,7 @@ If ``true``, the accelerometer sensor is enabled and :ref:`Input.get_acceleromet
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_gravity** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_gravity>`
 
-If ``true``, the gravity sensor is enabled and :ref:`Input.get_gravity<class_Input_method_get_gravity>` returns valid data.
+If ``true``, the gravity sensor is enabled and :ref:`Input.get_gravity()<class_Input_method_get_gravity>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6356,7 +7034,7 @@ If ``true``, the gravity sensor is enabled and :ref:`Input.get_gravity<class_Inp
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_gyroscope** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_gyroscope>`
 
-If ``true``, the gyroscope sensor is enabled and :ref:`Input.get_gyroscope<class_Input_method_get_gyroscope>` returns valid data.
+If ``true``, the gyroscope sensor is enabled and :ref:`Input.get_gyroscope()<class_Input_method_get_gyroscope>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6368,7 +7046,7 @@ If ``true``, the gyroscope sensor is enabled and :ref:`Input.get_gyroscope<class
 
 :ref:`bool<class_bool>` **input_devices/sensors/enable_magnetometer** = ``false`` :ref:`🔗<class_ProjectSettings_property_input_devices/sensors/enable_magnetometer>`
 
-If ``true``, the magnetometer sensor is enabled and :ref:`Input.get_magnetometer<class_Input_method_get_magnetometer>` returns valid data.
+If ``true``, the magnetometer sensor is enabled and :ref:`Input.get_magnetometer()<class_Input_method_get_magnetometer>` returns valid data.
 
 .. rst-class:: classref-item-separator
 
@@ -6381,6 +7059,8 @@ If ``true``, the magnetometer sensor is enabled and :ref:`Input.get_magnetometer
 :ref:`String<class_String>` **internationalization/locale/fallback** = ``"en"`` :ref:`🔗<class_ProjectSettings_property_internationalization/locale/fallback>`
 
 The locale to fall back to if a translation isn't available in a given language. If left empty, ``en`` (English) will be used.
+
+\ **Note:** Not to be confused with :ref:`TextServerFallback<class_TextServerFallback>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6396,7 +7076,29 @@ If ``true``, text server break iteration rule sets, dictionaries and other optio
 
 \ **Note:** "ICU / HarfBuzz / Graphite" text server data includes dictionaries for Burmese, Chinese, Japanese, Khmer, Lao and Thai as well as Unicode Standard Annex #29 and Unicode Standard Annex #14 word and line breaking rules. Data is about 4 MB large.
 
-\ **Note:** "Fallback" text server does not use additional data.
+\ **Note:** :ref:`TextServerFallback<class_TextServerFallback>` does not use additional data.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_internationalization/locale/line_breaking_strictness:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **internationalization/locale/line_breaking_strictness** = ``0`` :ref:`🔗<class_ProjectSettings_property_internationalization/locale/line_breaking_strictness>`
+
+Default strictness of line-breaking rules. Can be overridden by adding ``@lb={auto,loose,normal,strict}`` to the language code.
+
+- **Auto** (``0``) - strictness is based on the length of the line.
+
+- **Loose** (``1``) - the least restrictive set of line-breaking rules. Typically used for short lines.
+
+- **Normal** (``2``) - the most common set of line-breaking rules.
+
+- **Strict** (``3``) - the most stringent set of line-breaking rules.
+
+See `Line Breaking Strictness: the line-break property <https://www.w3.org/TR/css-text-3/#line-break-property>`__ for more info.
 
 .. rst-class:: classref-item-separator
 
@@ -6408,7 +7110,9 @@ If ``true``, text server break iteration rule sets, dictionaries and other optio
 
 :ref:`String<class_String>` **internationalization/locale/test** = ``""`` :ref:`🔗<class_ProjectSettings_property_internationalization/locale/test>`
 
-If non-empty, this locale will be used when running the project from the editor.
+If non-empty, this locale will be used instead of the automatically detected system locale.
+
+\ **Note:** This setting also applies to the exported project. To only affect testing within the editor, override this setting with an ``editor`` :doc:`feature tag <../tutorials/export/feature_tags>` for localization testing purposes.
 
 .. rst-class:: classref-item-separator
 
@@ -6444,7 +7148,7 @@ The expansion ratio to use during pseudolocalization. A value of ``0.3`` is suff
 
 :ref:`bool<class_bool>` **internationalization/pseudolocalization/fake_bidi** = ``false`` :ref:`🔗<class_ProjectSettings_property_internationalization/pseudolocalization/fake_bidi>`
 
-If ``true``, emulate bidirectional (right-to-left) text when pseudolocalization is enabled. This can be used to spot issues with RTL layout and UI mirroring that will crop up if the project is localized to RTL languages such as Arabic or Hebrew.
+If ``true``, emulate bidirectional (right-to-left) text when pseudolocalization is enabled. This can be used to spot issues with RTL layout and UI mirroring that will crop up if the project is localized to RTL languages such as Arabic or Hebrew. See also :ref:`internationalization/rendering/force_right_to_left_layout_direction<class_ProjectSettings_property_internationalization/rendering/force_right_to_left_layout_direction>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6530,7 +7234,7 @@ If ``true``, enables pseudolocalization for the project. This can be used to spo
 
 :ref:`bool<class_bool>` **internationalization/rendering/force_right_to_left_layout_direction** = ``false`` :ref:`🔗<class_ProjectSettings_property_internationalization/rendering/force_right_to_left_layout_direction>`
 
-Force layout direction and text writing direction to RTL for all controls.
+Force layout direction and text writing direction to RTL for all controls, even if the current locale is intended to use a left-to-right layout and text writing direction. This should be enabled for testing purposes only. See also :ref:`internationalization/pseudolocalization/fake_bidi<class_ProjectSettings_property_internationalization/pseudolocalization/fake_bidi>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6570,7 +7274,7 @@ Root node default layout direction.
 
 Specifies the :ref:`TextServer<class_TextServer>` to use. If left empty, the default will be used.
 
-"ICU / HarfBuzz / Graphite" is the most advanced text driver, supporting right-to-left typesetting and complex scripts (for languages like Arabic, Hebrew, etc.). The "Fallback" text driver does not support right-to-left typesetting and complex scripts.
+"ICU / HarfBuzz / Graphite" (:ref:`TextServerAdvanced<class_TextServerAdvanced>`) is the most advanced text driver, supporting right-to-left typesetting and complex scripts (for languages like Arabic, Hebrew, etc.). The "Fallback" text driver (:ref:`TextServerFallback<class_TextServerFallback>`) does not support right-to-left typesetting and complex scripts.
 
 \ **Note:** The driver in use can be overridden at runtime via the ``--text-driver`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
 
@@ -8998,7 +9702,7 @@ Redot uses a message queue to defer some function calls. If you run out of space
 
 :ref:`float<class_float>` **navigation/2d/default_cell_size** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/2d/default_cell_size>`
 
-Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_cell_size<class_NavigationServer2D_method_map_set_cell_size>`.
+Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_cell_size()<class_NavigationServer2D_method_map_set_cell_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9010,7 +9714,7 @@ Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_c
 
 :ref:`float<class_float>` **navigation/2d/default_edge_connection_margin** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/2d/default_edge_connection_margin>`
 
-Default edge connection margin for 2D navigation maps. See :ref:`NavigationServer2D.map_set_edge_connection_margin<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
+Default edge connection margin for 2D navigation maps. See :ref:`NavigationServer2D.map_set_edge_connection_margin()<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9022,7 +9726,7 @@ Default edge connection margin for 2D navigation maps. See :ref:`NavigationServe
 
 :ref:`float<class_float>` **navigation/2d/default_link_connection_radius** = ``4.0`` :ref:`🔗<class_ProjectSettings_property_navigation/2d/default_link_connection_radius>`
 
-Default link connection radius for 2D navigation maps. See :ref:`NavigationServer2D.map_set_link_connection_radius<class_NavigationServer2D_method_map_set_link_connection_radius>`.
+Default link connection radius for 2D navigation maps. See :ref:`NavigationServer2D.map_set_link_connection_radius()<class_NavigationServer2D_method_map_set_link_connection_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9046,7 +9750,7 @@ If enabled 2D navigation regions will use edge connections to connect with other
 
 :ref:`float<class_float>` **navigation/3d/default_cell_height** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_cell_height>`
 
-Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_height<class_NavigationServer3D_method_map_set_cell_height>`.
+Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_height()<class_NavigationServer3D_method_map_set_cell_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9058,7 +9762,7 @@ Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set
 
 :ref:`float<class_float>` **navigation/3d/default_cell_size** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_cell_size>`
 
-Default cell size for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_size<class_NavigationServer3D_method_map_set_cell_size>`.
+Default cell size for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_size()<class_NavigationServer3D_method_map_set_cell_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9070,7 +9774,7 @@ Default cell size for 3D navigation maps. See :ref:`NavigationServer3D.map_set_c
 
 :ref:`float<class_float>` **navigation/3d/default_edge_connection_margin** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_edge_connection_margin>`
 
-Default edge connection margin for 3D navigation maps. See :ref:`NavigationServer3D.map_set_edge_connection_margin<class_NavigationServer3D_method_map_set_edge_connection_margin>`.
+Default edge connection margin for 3D navigation maps. See :ref:`NavigationServer3D.map_set_edge_connection_margin()<class_NavigationServer3D_method_map_set_edge_connection_margin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9082,7 +9786,7 @@ Default edge connection margin for 3D navigation maps. See :ref:`NavigationServe
 
 :ref:`float<class_float>` **navigation/3d/default_link_connection_radius** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_link_connection_radius>`
 
-Default link connection radius for 3D navigation maps. See :ref:`NavigationServer3D.map_set_link_connection_radius<class_NavigationServer3D_method_map_set_link_connection_radius>`.
+Default link connection radius for 3D navigation maps. See :ref:`NavigationServer3D.map_set_link_connection_radius()<class_NavigationServer3D_method_map_set_link_connection_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9094,7 +9798,7 @@ Default link connection radius for 3D navigation maps. See :ref:`NavigationServe
 
 :ref:`Vector3<class_Vector3>` **navigation/3d/default_up** = ``Vector3(0, 1, 0)`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/default_up>`
 
-Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_set_up<class_NavigationServer3D_method_map_set_up>`.
+Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_set_up()<class_NavigationServer3D_method_map_set_up>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9106,7 +9810,7 @@ Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_
 
 :ref:`float<class_float>` **navigation/3d/merge_rasterizer_cell_scale** = ``1.0`` :ref:`🔗<class_ProjectSettings_property_navigation/3d/merge_rasterizer_cell_scale>`
 
-Default merge rasterizer cell scale for 3D navigation maps. See :ref:`NavigationServer3D.map_set_merge_rasterizer_cell_scale<class_NavigationServer3D_method_map_set_merge_rasterizer_cell_scale>`.
+Default merge rasterizer cell scale for 3D navigation maps. See :ref:`NavigationServer3D.map_set_merge_rasterizer_cell_scale()<class_NavigationServer3D_method_map_set_merge_rasterizer_cell_scale>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9191,6 +9895,30 @@ If enabled, and baking would potentially lead to an engine crash, the baking wil
 :ref:`int<class_int>` **navigation/pathfinding/max_threads** = ``4`` :ref:`🔗<class_ProjectSettings_property_navigation/pathfinding/max_threads>`
 
 Maximum number of threads that can run pathfinding queries simultaneously on the same pathfinding graph, for example the same navigation map. Additional threads increase memory consumption and synchronization time due to the need for extra data copies prepared for each thread. A value of ``-1`` means unlimited and the maximum available OS processor count is used. Defaults to ``1`` when the OS does not support threads.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_navigation/world/map_use_async_iterations:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **navigation/world/map_use_async_iterations** = ``true`` :ref:`🔗<class_ProjectSettings_property_navigation/world/map_use_async_iterations>`
+
+If enabled, navigation map synchronization uses an async process that runs on a background thread. This avoids stalling the main thread but adds an additional delay to any navigation map change.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_navigation/world/region_use_async_iterations:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **navigation/world/region_use_async_iterations** = ``true`` :ref:`🔗<class_ProjectSettings_property_navigation/world/region_use_async_iterations>`
+
+If enabled, navigation region synchronization uses an async process that runs on a background thread. This avoids stalling the main thread but adds an additional delay to any navigation region change.
 
 .. rst-class:: classref-item-separator
 
@@ -9289,6 +10017,20 @@ Maximum size (in kiB) for the :ref:`WebRTCDataChannel<class_WebRTCDataChannel>` 
 The CA certificates bundle to use for TLS connections. If this is set to a non-empty value, this will *override* Redot's default `Mozilla certificate bundle <https://github.com/redot-engine/godot-engine/blob/master/thirdparty/certs/ca-certificates.crt>`__. If left empty, the default certificate bundle will be used.
 
 If in doubt, leave this setting empty.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_network/tls/enable_tls_v1.3:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **network/tls/enable_tls_v1.3** = ``true`` :ref:`🔗<class_ProjectSettings_property_network/tls/enable_tls_v1.3>`
+
+If ``true``, enable TLSv1.3 negotiation.
+
+\ **Note:** Only supported when using Mbed TLS 3.0 or later (Linux distribution packages may be compiled against older system Mbed TLS packages), otherwise the maximum supported TLS version is always TLSv1.2.
 
 .. rst-class:: classref-item-separator
 
@@ -9400,9 +10142,13 @@ During each physics tick, Redot will multiply the linear velocity of RigidBodies
 
 Sets which physics engine to use for 2D physics.
 
-"DEFAULT" and "GodotPhysics2D" are the same, as there is currently no alternative 2D physics server implemented.
+\ **DEFAULT** is currently equivalent to **GodotPhysics2D**, but may change in future releases. Select an explicit implementation if you want to ensure that your project stays on the same engine.
 
-"Dummy" is a 2D physics server that does nothing and returns only dummy values, effectively disabling all 2D physics functionality.
+\ **GodotPhysics2D** is Redot's internal 2D physics engine.
+
+\ **Dummy** is a 2D physics server that does nothing and returns only dummy values, effectively disabling all 2D physics functionality.
+
+Third-party extensions and modules can add other physics engines to select with this setting.
 
 .. rst-class:: classref-item-separator
 
@@ -9424,7 +10170,7 @@ If ``true``, the 2D physics server runs on a separate thread, making better use 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **physics/2d/sleep_threshold_angular** = ``0.139626`` :ref:`🔗<class_ProjectSettings_property_physics/2d/sleep_threshold_angular>`
+:ref:`float<class_float>` **physics/2d/sleep_threshold_angular** = ``0.13962634`` :ref:`🔗<class_ProjectSettings_property_physics/2d/sleep_threshold_angular>`
 
 Threshold angular velocity under which a 2D physics body will be considered inactive. See :ref:`PhysicsServer2D.SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD<class_PhysicsServer2D_constant_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD>`.
 
@@ -9638,9 +10384,33 @@ During each physics tick, Redot will multiply the linear velocity of RigidBodies
 
 Sets which physics engine to use for 3D physics.
 
-"DEFAULT" and "GodotPhysics3D" are the same, as there is currently no alternative 3D physics server implemented.
+\ **DEFAULT** is currently equivalent to **GodotPhysics3D**, but may change in future releases. Select an explicit implementation if you want to ensure that your project stays on the same engine.
 
-"Dummy" is a 3D physics server that does nothing and returns only dummy values, effectively disabling all 3D physics functionality.
+\ **GodotPhysics3D** is Redot's internal 3D physics engine.
+
+\ **Jolt Physics** is an alternative physics engine that is generally faster and more reliable than **GodotPhysics3D**. As it was recently implemented, it is currently considered experimental and its behavior may change in future releases.
+
+\ **Dummy** is a 3D physics server that does nothing and returns only dummy values, effectively disabling all 3D physics functionality.
+
+Third-party extensions and modules can add other physics engines to select with this setting.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_physics/3d/physics_interpolation/scene_traversal:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **physics/3d/physics_interpolation/scene_traversal** = ``"DEFAULT"`` :ref:`🔗<class_ProjectSettings_property_physics/3d/physics_interpolation/scene_traversal>`
+
+The approach used for 3D scene traversal when physics interpolation is enabled.
+
+- ``DEFAULT``: The default optimized method.
+
+- ``Legacy``: The previous reference method used for scene tree traversal, which is slower.
+
+- ``Debug``: Swaps between ``DEFAULT`` and ``Legacy`` methods on alternating frames, and provides logging information (which in turn makes it slower). Intended for debugging only; you should use the ``DEFAULT`` method in most cases.
 
 .. rst-class:: classref-item-separator
 
@@ -9654,6 +10424,8 @@ Sets which physics engine to use for 3D physics.
 
 If ``true``, the 3D physics server runs on a separate thread, making better use of multi-core CPUs. If ``false``, the 3D physics server runs on the main thread. Running the physics server on a separate thread can increase performance, but restricts API access to only physics process.
 
+\ **Note:** When :ref:`physics/3d/physics_engine<class_ProjectSettings_property_physics/3d/physics_engine>` is set to ``Jolt Physics``, enabling this setting will prevent the 3D physics server from being able to provide any context when reporting errors and warnings, and will instead always refer to nodes as ``<unknown>``.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -9662,7 +10434,7 @@ If ``true``, the 3D physics server runs on a separate thread, making better use 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **physics/3d/sleep_threshold_angular** = ``0.139626`` :ref:`🔗<class_ProjectSettings_property_physics/3d/sleep_threshold_angular>`
+:ref:`float<class_float>` **physics/3d/sleep_threshold_angular** = ``0.13962634`` :ref:`🔗<class_ProjectSettings_property_physics/3d/sleep_threshold_angular>`
 
 Threshold angular velocity under which a 3D physics body will be considered inactive. See :ref:`PhysicsServer3D.SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD<class_PhysicsServer3D_constant_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD>`.
 
@@ -9788,11 +10560,13 @@ Controls the maximum number of physics steps that can be simulated each rendered
 
 :ref:`bool<class_bool>` **physics/common/physics_interpolation** = ``false`` :ref:`🔗<class_ProjectSettings_property_physics/common/physics_interpolation>`
 
-If ``true``, the renderer will interpolate the transforms of physics objects between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames. See also :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` and :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`.
+If ``true``, the renderer will interpolate the transforms of objects (both physics and non-physics) between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames. See also :ref:`Node.reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>`.
 
-\ **Note:** If ``true``, the physics jitter fix should be disabled by setting :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>` to ``0.0``.
+\ **Note:** Although this is a global setting, finer control of individual branches of the :ref:`SceneTree<class_SceneTree>` is possible using :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`.
 
 \ **Note:** This property is only read when the project starts. To toggle physics interpolation at runtime, set :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_interpolation>` instead.
+
+\ **Note:** Property :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>` is automatically disabled if :ref:`physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>` is set to ``true``, as the two methods are incompatible.
 
 .. rst-class:: classref-item-separator
 
@@ -9822,7 +10596,7 @@ Controls how much physics ticks are synchronized with real time. For 0 or less, 
 
 :ref:`int<class_int>` **physics/common/physics_ticks_per_second** = ``60`` :ref:`🔗<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`
 
-The number of fixed iterations per second. This controls how often physics simulation and :ref:`Node._physics_process<class_Node_private_method__physics_process>` methods are run. See also :ref:`application/run/max_fps<class_ProjectSettings_property_application/run/max_fps>`.
+The number of fixed iterations per second. This controls how often physics simulation and :ref:`Node._physics_process()<class_Node_private_method__physics_process>` methods are run. See also :ref:`application/run/max_fps<class_ProjectSettings_property_application/run/max_fps>`.
 
 \ **Note:** This property is only read when the project starts. To change the physics FPS at runtime, set :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` instead.
 
@@ -9836,7 +10610,7 @@ The number of fixed iterations per second. This controls how often physics simul
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **physics/jolt_physics_3d/collisions/active_edge_threshold** = ``0.872665`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/active_edge_threshold>`
+:ref:`float<class_float>` **physics/jolt_physics_3d/collisions/active_edge_threshold** = ``0.87266463`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/collisions/active_edge_threshold>`
 
 The maximum angle, in radians, between two adjacent triangles in a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` or :ref:`HeightMapShape3D<class_HeightMapShape3D>` for which the edge between those triangles is considered inactive.
 
@@ -9847,8 +10621,6 @@ Collisions against an inactive edge will have its normal overridden to instead b
 \ **Note:** This applies to all shape queries, as well as physics bodies within the simulation.
 
 \ **Note:** This does not apply when enabling Jolt's enhanced internal edge removal, which supersedes this.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
 
 .. rst-class:: classref-item-separator
 
@@ -9865,8 +10637,6 @@ The amount of collision margin to use for certain convex collision shapes, such 
 \ **Note:** Collision margins in Jolt do not add any extra size to the shape. Instead the shape is first shrunk by the margin and then expanded by the same amount, resulting in a shape with rounded corners.
 
 \ **Note:** Setting this value too close to ``0.0`` may also negatively affect the accuracy of the collision detection with convex shapes.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
 
 .. rst-class:: classref-item-separator
 
@@ -9890,7 +10660,7 @@ Which of the two nodes bound by a joint should represent the world when one of t
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **physics/jolt_physics_3d/limits/max_angular_velocity** = ``47.1239`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/limits/max_angular_velocity>`
+:ref:`float<class_float>` **physics/jolt_physics_3d/limits/max_angular_velocity** = ``47.12389`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/limits/max_angular_velocity>`
 
 The maximum angular velocity that a :ref:`RigidBody3D<class_RigidBody3D>` can reach, in radians per second.
 
@@ -9988,9 +10758,7 @@ The size of :ref:`WorldBoundaryShape3D<class_WorldBoundaryShape3D>` boundaries, 
 
 Fraction of the total penetration to depenetrate per iteration during motion queries.
 
-\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion<class_PhysicsServer3D_method_body_test_motion>`.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
+\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide()<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide()<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move()<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10004,9 +10772,7 @@ Fraction of the total penetration to depenetrate per iteration during motion que
 
 The number of iterations to run when depenetrating during motion queries.
 
-\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion<class_PhysicsServer3D_method_body_test_motion>`.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
+\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide()<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide()<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move()<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10020,9 +10786,7 @@ The number of iterations to run when depenetrating during motion queries.
 
 If ``true``, enables Jolt's enhanced internal edge removal during motion queries. This can help alleviate ghost collisions, but only with edges within a single body, meaning edges between separate bodies can still cause ghost collisions.
 
-\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion<class_PhysicsServer3D_method_body_test_motion>`.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
+\ **Note:** This affects methods :ref:`CharacterBody3D.move_and_slide()<class_CharacterBody3D_method_move_and_slide>`, :ref:`PhysicsBody3D.move_and_collide()<class_PhysicsBody3D_method_move_and_collide>`, :ref:`PhysicsBody3D.test_move()<class_PhysicsBody3D_method_test_move>` and :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10034,11 +10798,9 @@ If ``true``, enables Jolt's enhanced internal edge removal during motion queries
 
 :ref:`bool<class_bool>` **physics/jolt_physics_3d/queries/enable_ray_cast_face_index** = ``false`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/queries/enable_ray_cast_face_index>`
 
-If ``true``, populates the ``face_index`` field in the results of :ref:`PhysicsDirectSpaceState3D.intersect_ray<class_PhysicsDirectSpaceState3D_method_intersect_ray>`, also accessed through :ref:`RayCast3D.get_collision_face_index<class_RayCast3D_method_get_collision_face_index>`. If ``false``, the ``face_index`` field will be left at its default value of ``-1``.
+If ``true``, populates the ``face_index`` field in the results of :ref:`PhysicsDirectSpaceState3D.intersect_ray()<class_PhysicsDirectSpaceState3D_method_intersect_ray>`, also accessed through :ref:`RayCast3D.get_collision_face_index()<class_RayCast3D_method_get_collision_face_index>`. If ``false``, the ``face_index`` field will be left at its default value of ``-1``.
 
 \ **Note:** Enabling this setting will increase Jolt's memory usage for :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` by around 25%.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
 
 .. rst-class:: classref-item-separator
 
@@ -10052,11 +10814,9 @@ If ``true``, populates the ``face_index`` field in the results of :ref:`PhysicsD
 
 If ``true``, enables Jolt's enhanced internal edge removal during shape queries. This can help alleviate ghost collisions when using shape queries for things like character movement, but only with edges within a single body, meaning edges between separate bodies can still cause ghost collisions.
 
-\ **Note:** This affects methods :ref:`PhysicsDirectSpaceState3D.cast_motion<class_PhysicsDirectSpaceState3D_method_cast_motion>`, :ref:`PhysicsDirectSpaceState3D.collide_shape<class_PhysicsDirectSpaceState3D_method_collide_shape>`, :ref:`PhysicsDirectSpaceState3D.get_rest_info<class_PhysicsDirectSpaceState3D_method_get_rest_info>` and :ref:`PhysicsDirectSpaceState3D.intersect_shape<class_PhysicsDirectSpaceState3D_method_intersect_shape>`.
+\ **Note:** This affects methods :ref:`PhysicsDirectSpaceState3D.cast_motion()<class_PhysicsDirectSpaceState3D_method_cast_motion>`, :ref:`PhysicsDirectSpaceState3D.collide_shape()<class_PhysicsDirectSpaceState3D_method_collide_shape>`, :ref:`PhysicsDirectSpaceState3D.get_rest_info()<class_PhysicsDirectSpaceState3D_method_get_rest_info>` and :ref:`PhysicsDirectSpaceState3D.intersect_shape()<class_PhysicsDirectSpaceState3D_method_intersect_shape>`.
 
 \ **Note:** Enabling this setting can cause certain shapes to be culled from the results entirely, but you will get at least one intersection per body.
-
-\ **Note:** This setting will only be read once during the lifetime of the application.
 
 .. rst-class:: classref-item-separator
 
@@ -10069,24 +10829,6 @@ If ``true``, enables Jolt's enhanced internal edge removal during shape queries.
 :ref:`bool<class_bool>` **physics/jolt_physics_3d/simulation/allow_sleep** = ``true`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/allow_sleep>`
 
 If ``true``, :ref:`RigidBody3D<class_RigidBody3D>` nodes are allowed to go to sleep if their velocity is below the threshold defined in :ref:`physics/jolt_physics_3d/simulation/sleep_velocity_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/sleep_velocity_threshold>` for the duration set in :ref:`physics/jolt_physics_3d/simulation/sleep_time_threshold<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/sleep_time_threshold>`. This can improve physics simulation performance when there are non-moving :ref:`RigidBody3D<class_RigidBody3D>` nodes, at the cost of some nodes possibly failing to wake up in certain scenarios. Consider disabling this temporarily to troubleshoot :ref:`RigidBody3D<class_RigidBody3D>` nodes not moving when they should.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ProjectSettings_property_physics/jolt_physics_3d/simulation/areas_detect_static_bodies:
-
-.. rst-class:: classref-property
-
-:ref:`bool<class_bool>` **physics/jolt_physics_3d/simulation/areas_detect_static_bodies** = ``false`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/areas_detect_static_bodies>`
-
-If ``true``, :ref:`Area3D<class_Area3D>` nodes are able to detect overlaps with :ref:`StaticBody3D<class_StaticBody3D>` nodes.
-
-\ **Note:** Enabling this setting can come at a heavy CPU and memory cost if you allow many/large :ref:`Area3D<class_Area3D>` to overlap with complex static geometry, such as :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` or :ref:`HeightMapShape3D<class_HeightMapShape3D>`. It is strongly recommended that you set up your collision layers and masks in such a way that only a few small :ref:`Area3D<class_Area3D>` nodes can detect :ref:`StaticBody3D<class_StaticBody3D>` nodes.
-
-\ **Note:** This also applies to overlaps with a :ref:`RigidBody3D<class_RigidBody3D>` frozen with :ref:`RigidBody3D.FREEZE_MODE_STATIC<class_RigidBody3D_constant_FREEZE_MODE_STATIC>`.
-
-\ **Note:** This is not needed to detect overlaps with :ref:`AnimatableBody3D<class_AnimatableBody3D>`, as it is a kinematic body, despite inheriting from :ref:`StaticBody3D<class_StaticBody3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10110,7 +10852,7 @@ How much of the position error of a :ref:`RigidBody3D<class_RigidBody3D>` to fix
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold** = ``0.0349066`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold>`
+:ref:`float<class_float>` **physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold** = ``0.034906585`` :ref:`🔗<class_ProjectSettings_property_physics/jolt_physics_3d/simulation/body_pair_contact_cache_angle_threshold>`
 
 The maximum relative angle by which a body pair can move and still reuse the collision results from the previous physics step, in radians.
 
@@ -10312,7 +11054,7 @@ Maximum number of canvas item commands that can be batched into a single draw ca
 
 Maximum number of uniform sets that will be cached by the 2D renderer when batching draw calls.
 
-\ **Note:** A project that uses a large number of unique sprite textures per frame may benefit from increasing this value.
+\ **Note:** Increasing this value can improve performance if the project renders many unique sprite textures every frame.
 
 .. rst-class:: classref-item-separator
 
@@ -10328,7 +11070,7 @@ Controls how much of the original viewport size should be covered by the 2D sign
 
 The percentage specified is added on each axis and on both sides. For example, with the default setting of 120%, the signed distance field will cover 20% of the viewport's size outside the viewport on each side (top, right, bottom, left).
 
-\ **Note:** This property is only read when the project starts. To change the 2D SDF oversizing percentage at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
+\ **Note:** This property is only read when the project starts. To change the 2D SDF oversizing percentage at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale()<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10342,7 +11084,7 @@ The percentage specified is added on each axis and on both sides. For example, w
 
 The resolution scale to use for the 2D signed distance field. Higher values lead to a more precise and more stable signed distance field as the camera moves, at the cost of performance. The default value (50%) renders at half the resolution of the viewport size on each axis, which means the SDF is generated with 25% of the viewport's pixel count.
 
-\ **Note:** This property is only read when the project starts. To change the 2D SDF resolution scale at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
+\ **Note:** This property is only read when the project starts. To change the 2D SDF resolution scale at runtime, use :ref:`RenderingServer.viewport_set_sdf_oversize_and_scale()<class_RenderingServer_method_viewport_set_sdf_oversize_and_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10356,7 +11098,7 @@ The resolution scale to use for the 2D signed distance field. Higher values lead
 
 The size of the 2D shadow atlas in pixels. Higher values result in more precise :ref:`Light2D<class_Light2D>` shadows, at the cost of performance and video memory usage. The specified value is rounded up to the nearest power of 2.
 
-\ **Note:** This property is only read when the project starts. To change the 2D shadow atlas size at runtime, use :ref:`RenderingServer.canvas_set_shadow_texture_size<class_RenderingServer_method_canvas_set_shadow_texture_size>` instead.
+\ **Note:** This property is only read when the project starts. To change the 2D shadow atlas size at runtime, use :ref:`RenderingServer.canvas_set_shadow_texture_size()<class_RenderingServer_method_canvas_set_shadow_texture_size>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10370,7 +11112,7 @@ The size of the 2D shadow atlas in pixels. Higher values result in more precise 
 
 If ``true``, :ref:`CanvasItem<class_CanvasItem>` nodes will internally snap to full pixels. Useful for low-resolution pixel art games. Their position can still be sub-pixel, but the decimals will not have effect as the position is rounded. This can lead to a crisper appearance at the cost of less smooth movement, especially when :ref:`Camera2D<class_Camera2D>` smoothing is enabled.
 
-\ **Note:** This property is only read when the project starts. To toggle 2D transform snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_transforms_to_pixel<class_RenderingServer_method_viewport_set_snap_2d_transforms_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
+\ **Note:** This property is only read when the project starts. To toggle 2D transform snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_transforms_to_pixel()<class_RenderingServer_method_viewport_set_snap_2d_transforms_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
 
 \ **Note:** :ref:`Control<class_Control>` nodes are snapped to the nearest pixel by default. This is controlled by :ref:`gui/common/snap_controls_to_pixels<class_ProjectSettings_property_gui/common/snap_controls_to_pixels>`.
 
@@ -10388,7 +11130,7 @@ If ``true``, :ref:`CanvasItem<class_CanvasItem>` nodes will internally snap to f
 
 If ``true``, vertices of :ref:`CanvasItem<class_CanvasItem>` nodes will snap to full pixels. Useful for low-resolution pixel art games. Only affects the final vertex positions, not the transforms. This can lead to a crisper appearance at the cost of less smooth movement, especially when :ref:`Camera2D<class_Camera2D>` smoothing is enabled.
 
-\ **Note:** This property is only read when the project starts. To toggle 2D vertex snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_vertices_to_pixel<class_RenderingServer_method_viewport_set_snap_2d_vertices_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
+\ **Note:** This property is only read when the project starts. To toggle 2D vertex snapping at runtime, use :ref:`RenderingServer.viewport_set_snap_2d_vertices_to_pixel()<class_RenderingServer_method_viewport_set_snap_2d_vertices_to_pixel>` on the root :ref:`Viewport<class_Viewport>` instead.
 
 \ **Note:** :ref:`Control<class_Control>` nodes are snapped to the nearest pixel by default. This is controlled by :ref:`gui/common/snap_controls_to_pixels<class_ProjectSettings_property_gui/common/snap_controls_to_pixels>`.
 
@@ -10408,7 +11150,7 @@ Sets the number of multisample antialiasing (MSAA) samples to use for 2D/Canvas 
 
 \ **Note:** MSAA is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To set the number of 2D MSAA samples at runtime, set :ref:`Viewport.msaa_2d<class_Viewport_property_msaa_2d>` or use :ref:`RenderingServer.viewport_set_msaa_2d<class_RenderingServer_method_viewport_set_msaa_2d>`.
+\ **Note:** This property is only read when the project starts. To set the number of 2D MSAA samples at runtime, set :ref:`Viewport.msaa_2d<class_Viewport_property_msaa_2d>` or use :ref:`RenderingServer.viewport_set_msaa_2d()<class_RenderingServer_method_viewport_set_msaa_2d>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10422,7 +11164,7 @@ Sets the number of multisample antialiasing (MSAA) samples to use for 2D/Canvas 
 
 Sets the number of multisample antialiasing (MSAA) samples to use for 3D rendering (as a power of two). MSAA is used to reduce aliasing around the edges of polygons. A higher MSAA value results in smoother edges but can be significantly slower on some hardware, especially integrated graphics due to their limited memory bandwidth. See also :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>` for supersampling, which provides higher quality but is much more expensive. This has no effect on shader-induced aliasing or texture aliasing.
 
-\ **Note:** This property is only read when the project starts. To set the number of 3D MSAA samples at runtime, set :ref:`Viewport.msaa_3d<class_Viewport_property_msaa_3d>` or use :ref:`RenderingServer.viewport_set_msaa_3d<class_RenderingServer_method_viewport_set_msaa_3d>`.
+\ **Note:** This property is only read when the project starts. To set the number of 3D MSAA samples at runtime, set :ref:`Viewport.msaa_3d<class_Viewport_property_msaa_3d>` or use :ref:`RenderingServer.viewport_set_msaa_3d()<class_RenderingServer_method_viewport_set_msaa_3d>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10440,7 +11182,21 @@ Another way to combat specular aliasing is to enable :ref:`rendering/anti_aliasi
 
 \ **Note:** Screen-space antialiasing is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To set the screen-space antialiasing mode at runtime, set :ref:`Viewport.screen_space_aa<class_Viewport_property_screen_space_aa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_screen_space_aa<class_RenderingServer_method_viewport_set_screen_space_aa>`.
+\ **Note:** This property is only read when the project starts. To set the screen-space antialiasing mode at runtime, set :ref:`Viewport.screen_space_aa<class_Viewport_property_screen_space_aa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_screen_space_aa()<class_RenderingServer_method_viewport_set_screen_space_aa>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/anti_aliasing/quality/smaa_edge_detection_threshold:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **rendering/anti_aliasing/quality/smaa_edge_detection_threshold** = ``0.05`` :ref:`🔗<class_ProjectSettings_property_rendering/anti_aliasing/quality/smaa_edge_detection_threshold>`
+
+Sets the sensitivity to edges when using SMAA for antialiasing. Lower values will catch more edges, at a potentially higher performance cost.
+
+\ **Note:** This property is only read when the project starts. There is currently no way to change this setting at run-time.
 
 .. rst-class:: classref-item-separator
 
@@ -10456,7 +11212,7 @@ If ``true``, uses a fast post-processing filter to make banding significantly le
 
 In some cases, debanding may introduce a slightly noticeable dithering pattern. It's recommended to enable debanding only when actually needed since the dithering pattern will make lossless-compressed screenshots larger.
 
-\ **Note:** This property is only read when the project starts. To set debanding at runtime, set :ref:`Viewport.use_debanding<class_Viewport_property_use_debanding>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_debanding<class_RenderingServer_method_viewport_set_use_debanding>`.
+\ **Note:** This property is only read when the project starts. To set debanding at runtime, set :ref:`Viewport.use_debanding<class_Viewport_property_use_debanding>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_debanding()<class_RenderingServer_method_viewport_set_use_debanding>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10474,7 +11230,7 @@ Enables temporal antialiasing for the default screen :ref:`Viewport<class_Viewpo
 
 \ **Note:** TAA is only supported in the Forward+ rendering method, not Mobile or Compatibility.
 
-\ **Note:** This property is only read when the project starts. To set TAA at runtime, set :ref:`Viewport.use_taa<class_Viewport_property_use_taa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_taa<class_RenderingServer_method_viewport_set_use_taa>`.
+\ **Note:** This property is only read when the project starts. To set TAA at runtime, set :ref:`Viewport.use_taa<class_Viewport_property_use_taa>` on the root :ref:`Viewport<class_Viewport>` instead, or use :ref:`RenderingServer.viewport_set_use_taa()<class_RenderingServer_method_viewport_set_use_taa>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10486,7 +11242,7 @@ Enables temporal antialiasing for the default screen :ref:`Viewport<class_Viewpo
 
 :ref:`float<class_float>` **rendering/anti_aliasing/screen_space_roughness_limiter/amount** = ``0.25`` :ref:`🔗<class_ProjectSettings_property_rendering/anti_aliasing/screen_space_roughness_limiter/amount>`
 
-**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
+**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active()<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10502,7 +11258,7 @@ If ``true``, enables a spatial filter to limit roughness in areas with high-freq
 
 \ **Note:** The screen-space roughness limiter is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
 
-\ **Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
+\ **Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active()<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10514,7 +11270,7 @@ If ``true``, enables a spatial filter to limit roughness in areas with high-freq
 
 :ref:`float<class_float>` **rendering/anti_aliasing/screen_space_roughness_limiter/limit** = ``0.18`` :ref:`🔗<class_ProjectSettings_property_rendering/anti_aliasing/screen_space_roughness_limiter/limit>`
 
-**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
+**Note:** This property is only read when the project starts. To control the screen-space roughness limiter at runtime, call :ref:`RenderingServer.screen_space_roughness_limiter_set_active()<class_RenderingServer_method_screen_space_roughness_limiter_set_active>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10602,7 +11358,7 @@ The thread model to use for rendering. Rendering on a thread may improve perform
 
 :ref:`Color<class_Color>` **rendering/environment/defaults/default_clear_color** = ``Color(0.128, 0.128, 0.128, 1)`` :ref:`🔗<class_ProjectSettings_property_rendering/environment/defaults/default_clear_color>`
 
-Default background clear color. Overridable per :ref:`Viewport<class_Viewport>` using its :ref:`Environment<class_Environment>`. See :ref:`Environment.background_mode<class_Environment_property_background_mode>` and :ref:`Environment.background_color<class_Environment_property_background_color>` in particular. To change this default color programmatically, use :ref:`RenderingServer.set_default_clear_color<class_RenderingServer_method_set_default_clear_color>`.
+Default background clear color. Overridable per :ref:`Viewport<class_Viewport>` using its :ref:`Environment<class_Environment>`. See :ref:`Environment.background_mode<class_Environment_property_background_mode>` and :ref:`Environment.background_color<class_Environment_property_background_color>` in particular. To change this default color programmatically, use :ref:`RenderingServer.set_default_clear_color()<class_RenderingServer_method_set_default_clear_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10627,6 +11383,8 @@ Default background clear color. Overridable per :ref:`Viewport<class_Viewport>` 
 :ref:`int<class_int>` **rendering/environment/glow/upscale_mode** = ``1`` :ref:`🔗<class_ProjectSettings_property_rendering/environment/glow/upscale_mode>`
 
 Sets how the glow effect is upscaled before being copied onto the screen. Linear is faster, but looks blocky. Bicubic is slower but looks smooth.
+
+\ **Note:** :ref:`rendering/environment/glow/upscale_mode<class_ProjectSettings_property_rendering/environment/glow/upscale_mode>` is only effective when using the Forward+ or Mobile rendering methods, as Compatibility uses a different glow implementation.
 
 .. rst-class:: classref-item-separator
 
@@ -10808,7 +11566,7 @@ Sets the quality of the screen-space indirect lighting effect. Higher values tak
 
 Scales the depth over which the subsurface scattering effect is applied. A high value may allow light to scatter into a part of the mesh or another mesh that is close in screen space but far in depth. See also :ref:`rendering/environment/subsurface_scattering/subsurface_scattering_scale<class_ProjectSettings_property_rendering/environment/subsurface_scattering/subsurface_scattering_scale>`.
 
-\ **Note:** This property is only read when the project starts. To set the subsurface scattering depth scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
+\ **Note:** This property is only read when the project starts. To set the subsurface scattering depth scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale()<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10822,7 +11580,7 @@ Scales the depth over which the subsurface scattering effect is applied. A high 
 
 Sets the quality of the subsurface scattering effect. Higher values are slower but look nicer. This affects the rendering of materials that have :ref:`BaseMaterial3D.subsurf_scatter_enabled<class_BaseMaterial3D_property_subsurf_scatter_enabled>` set to ``true``, along with :ref:`ShaderMaterial<class_ShaderMaterial>`\ s that set ``SSS_STRENGTH``.
 
-\ **Note:** This property is only read when the project starts. To set the subsurface scattering quality at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_quality<class_RenderingServer_method_sub_surface_scattering_set_quality>` instead.
+\ **Note:** This property is only read when the project starts. To set the subsurface scattering quality at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_quality()<class_RenderingServer_method_sub_surface_scattering_set_quality>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10836,7 +11594,7 @@ Sets the quality of the subsurface scattering effect. Higher values are slower b
 
 Scales the distance over which samples are taken for subsurface scattering effect. Changing this does not impact performance, but higher values will result in significant artifacts as the samples will become obviously spread out. A lower value results in a smaller spread of scattered light. See also :ref:`rendering/environment/subsurface_scattering/subsurface_scattering_depth_scale<class_ProjectSettings_property_rendering/environment/subsurface_scattering/subsurface_scattering_depth_scale>`.
 
-\ **Note:** This property is only read when the project starts. To set the subsurface scattering scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
+\ **Note:** This property is only read when the project starts. To set the subsurface scattering scale at runtime, call :ref:`RenderingServer.sub_surface_scattering_set_scale()<class_RenderingServer_method_sub_surface_scattering_set_scale>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -10882,9 +11640,23 @@ Base size used to determine size of froxel buffer in the camera X-axis and Y-axi
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver>`
 
-Sets the driver to be used by the renderer when using the Compatibility renderer. This property can not be edited directly, instead, set the driver using the platform-specific overrides.
+Sets the driver to be used by the renderer when using the Compatibility renderer. Editing this property has no effect in the default configuration, as first-party platforms each have platform-specific overrides. Use those overrides to configure the driver for each platform.
+
+This can be overridden using the ``--rendering-driver <driver>`` command line argument.
+
+Supported values are:
+
+- ``opengl3``, OpenGL 3.3 on desktop platforms, OpenGL ES 3.0 on mobile platforms, WebGL 2.0 on web.
+
+- ``opengl3_angle``, OpenGL ES 3.0 using the ANGLE compatibility layer, supported on macOS (over native OpenGL) and Windows (over Direct3D 11).
+
+- ``opengl3_es``, OpenGL ES 3.0 on Linux/BSD.
+
+\ **Note:** The availability of these options depends on whether the engine was compiled with support for them (determined by SCons options ``opengl3`` and ``angle_libs``).
+
+\ **Note:** The actual rendering driver may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering driver that is used at runtime, use :ref:`RenderingServer.get_current_rendering_driver_name()<class_RenderingServer_method_get_current_rendering_driver_name>` instead of reading this project setting's value.
 
 .. rst-class:: classref-item-separator
 
@@ -10894,9 +11666,13 @@ Sets the driver to be used by the renderer when using the Compatibility renderer
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.android** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.android** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.android>`
 
 Android override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Only one option is supported:
+
+- ``opengl3``, OpenGL ES 3.0 from native drivers.
 
 .. rst-class:: classref-item-separator
 
@@ -10906,9 +11682,13 @@ Android override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettin
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.ios** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.ios** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.ios>`
 
 iOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Only one option is supported:
+
+- ``opengl3``, OpenGL ES 3.0 from native drivers.
 
 .. rst-class:: classref-item-separator
 
@@ -10918,9 +11698,15 @@ iOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_p
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.linuxbsd** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.linuxbsd** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.linuxbsd>`
 
 LinuxBSD override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Two options are supported:
+
+- ``opengl3`` (default), OpenGL 3.3 from native drivers.
+
+- ``opengl3_es``, OpenGL ES 3.0 from native drivers. If :ref:`rendering/gl_compatibility/fallback_to_gles<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_gles>` is enabled, this is used as a fallback if OpenGL 3.3 is not supported.
 
 .. rst-class:: classref-item-separator
 
@@ -10930,9 +11716,15 @@ LinuxBSD override for :ref:`rendering/gl_compatibility/driver<class_ProjectSetti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.macos** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.macos** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.macos>`
 
 macOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Two options are supported:
+
+- ``opengl3`` (default), OpenGL 3.3 from native drivers. If :ref:`rendering/gl_compatibility/fallback_to_native<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_native>` is enabled, this is used as a fallback if ANGLE is configured as the preferred driver but not supported.
+
+- ``opengl3_angle``, OpenGL ES 3.0 using the ANGLE compatibility layer over native OpenGL drivers. If :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>` is enabled, this is used as a fallback if OpenGL 3.3 is not supported.
 
 .. rst-class:: classref-item-separator
 
@@ -10942,9 +11734,13 @@ macOS override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.web** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.web** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.web>`
 
 Web override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Only one option is supported:
+
+- ``opengl3``, WebGL 2.0. The underlying native API depends on the target OS, browser, and browser configuration.
 
 .. rst-class:: classref-item-separator
 
@@ -10954,9 +11750,15 @@ Web override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_p
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/gl_compatibility/driver.windows** :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`
+:ref:`String<class_String>` **rendering/gl_compatibility/driver.windows** = ``"opengl3"`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`
 
 Windows override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>`.
+
+Two options are supported:
+
+- ``opengl3`` (default), OpenGL 3.3 from native drivers. If :ref:`rendering/gl_compatibility/fallback_to_native<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_native>` is enabled, this is used as a fallback if ANGLE is configured as the preferred driver but not supported.
+
+- ``opengl3_angle``, OpenGL ES 3.0 using the ANGLE compatibility layer over native Direct3D 11 drivers. If :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>` is enabled, this is used as a fallback if OpenGL 3.3 is not supported. By default, ANGLE is used as the default driver for some devices listed in :ref:`rendering/gl_compatibility/force_angle_on_devices<class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices>`.
 
 .. rst-class:: classref-item-separator
 
@@ -10968,7 +11770,7 @@ Windows override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettin
 
 :ref:`bool<class_bool>` **rendering/gl_compatibility/fallback_to_angle** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>`
 
-If ``true``, the compatibility renderer will fall back to ANGLE if native OpenGL is not supported or the device is listed in :ref:`rendering/gl_compatibility/force_angle_on_devices<class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices>`.
+If ``true``, the Compatibility renderer will fall back to ANGLE if native OpenGL is not supported or the device is listed in :ref:`rendering/gl_compatibility/force_angle_on_devices<class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices>`.
 
 \ **Note:** This setting is implemented only on Windows.
 
@@ -10982,7 +11784,7 @@ If ``true``, the compatibility renderer will fall back to ANGLE if native OpenGL
 
 :ref:`bool<class_bool>` **rendering/gl_compatibility/fallback_to_gles** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_gles>`
 
-If ``true``, the compatibility renderer will fall back to OpenGLES if desktop OpenGL is not supported.
+If ``true``, the Compatibility renderer will fall back to OpenGLES if desktop OpenGL is not supported.
 
 \ **Note:** This setting is implemented only on Linux/X11.
 
@@ -10996,7 +11798,7 @@ If ``true``, the compatibility renderer will fall back to OpenGLES if desktop Op
 
 :ref:`bool<class_bool>` **rendering/gl_compatibility/fallback_to_native** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_native>`
 
-If ``true``, the compatibility renderer will fall back to native OpenGL if ANGLE is not supported, or ANGLE dynamic libraries aren't found.
+If ``true``, the Compatibility renderer will fall back to native OpenGL if ANGLE is not supported, or ANGLE dynamic libraries aren't found.
 
 \ **Note:** This setting is implemented on macOS and Windows.
 
@@ -11054,7 +11856,7 @@ If ``true``, disables the threaded optimization feature from the NVIDIA drivers,
 
 If ``true``, renders :ref:`VoxelGI<class_VoxelGI>` and SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`) buffers at halved resolution (e.g. 960×540 when the viewport size is 1920×1080). This improves performance significantly when VoxelGI or SDFGI is enabled, at the cost of artifacts that may be visible on polygon edges. The loss in quality becomes less noticeable as the viewport resolution increases. :ref:`LightmapGI<class_LightmapGI>` rendering is not affected by this setting.
 
-\ **Note:** This property is only read when the project starts. To set half-resolution GI at run-time, call :ref:`RenderingServer.gi_set_use_half_resolution<class_RenderingServer_method_gi_set_use_half_resolution>` instead.
+\ **Note:** This property is only read when the project starts. To set half-resolution GI at run-time, call :ref:`RenderingServer.gi_set_use_half_resolution()<class_RenderingServer_method_gi_set_use_half_resolution>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11068,7 +11870,7 @@ If ``true``, renders :ref:`VoxelGI<class_VoxelGI>` and SDFGI (:ref:`Environment.
 
 The number of frames to use for converging signed distance field global illumination. Higher values lead to a less noisy result, at the cost of taking a longer time to fully converge. This means the scene's global illumination will be too dark for a longer period of time, especially when the camera moves fast. The actual convergence speed depends on rendered framerate. For example, with the default setting of 30 frames, rendering at 60 FPS will make SDFGI fully converge after 0.5 seconds. See also :ref:`rendering/global_illumination/sdfgi/frames_to_update_lights<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_update_lights>` and :ref:`rendering/global_illumination/sdfgi/probe_ray_count<class_ProjectSettings_property_rendering/global_illumination/sdfgi/probe_ray_count>`.
 
-\ **Note:** This property is only read when the project starts. To control SDFGI convergence speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_converge<class_RenderingServer_method_environment_set_sdfgi_frames_to_converge>` instead.
+\ **Note:** This property is only read when the project starts. To control SDFGI convergence speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_converge()<class_RenderingServer_method_environment_set_sdfgi_frames_to_converge>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11084,7 +11886,7 @@ The number of frames over which dynamic lights should be updated in signed dista
 
 \ **Note:** This only affects :ref:`Light3D<class_Light3D>` nodes whose :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` is :ref:`Light3D.BAKE_DYNAMIC<class_Light3D_constant_BAKE_DYNAMIC>` (which is the default). Consider making non-moving lights use the :ref:`Light3D.BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>` bake mode to improve performance.
 
-\ **Note:** This property is only read when the project starts. To control SDFGI light update speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_update_light<class_RenderingServer_method_environment_set_sdfgi_frames_to_update_light>` instead.
+\ **Note:** This property is only read when the project starts. To control SDFGI light update speed at runtime, call :ref:`RenderingServer.environment_set_sdfgi_frames_to_update_light()<class_RenderingServer_method_environment_set_sdfgi_frames_to_update_light>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11098,7 +11900,7 @@ The number of frames over which dynamic lights should be updated in signed dista
 
 The number of rays to throw per frame when computing signed distance field global illumination. Higher values lead to a less noisy result, at the cost of performance. See also :ref:`rendering/global_illumination/sdfgi/frames_to_converge<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_converge>` and :ref:`rendering/global_illumination/sdfgi/frames_to_update_lights<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_update_lights>`.
 
-\ **Note:** This property is only read when the project starts. To control SDFGI quality at runtime, call :ref:`RenderingServer.environment_set_sdfgi_ray_count<class_RenderingServer_method_environment_set_sdfgi_ray_count>` instead.
+\ **Note:** This property is only read when the project starts. To control SDFGI quality at runtime, call :ref:`RenderingServer.environment_set_sdfgi_ray_count()<class_RenderingServer_method_environment_set_sdfgi_ray_count>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11112,7 +11914,7 @@ The number of rays to throw per frame when computing signed distance field globa
 
 The VoxelGI quality to use. High quality leads to more precise lighting and better reflections, but is slower to render. This setting does not affect the baked data and doesn't require baking the :ref:`VoxelGI<class_VoxelGI>` again to apply.
 
-\ **Note:** This property is only read when the project starts. To control VoxelGI quality at runtime, call :ref:`RenderingServer.voxel_gi_set_quality<class_RenderingServer_method_voxel_gi_set_quality>` instead.
+\ **Note:** This property is only read when the project starts. To control VoxelGI quality at runtime, call :ref:`RenderingServer.voxel_gi_set_quality()<class_RenderingServer_method_voxel_gi_set_quality>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -11122,9 +11924,11 @@ The VoxelGI quality to use. High quality leads to more precise lighting and bett
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **rendering/lightmapping/bake_performance/max_rays_per_pass** = ``32`` :ref:`🔗<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`
+:ref:`int<class_int>` **rendering/lightmapping/bake_performance/max_rays_per_pass** = ``4`` :ref:`🔗<class_ProjectSettings_property_rendering/lightmapping/bake_performance/max_rays_per_pass>`
 
 The maximum number of rays that can be thrown per pass when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`. Depending on the scene, adjusting this value may result in higher GPU utilization when baking lightmaps, leading to faster bake times.
+
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
 
 .. rst-class:: classref-item-separator
 
@@ -11138,6 +11942,8 @@ The maximum number of rays that can be thrown per pass when baking lightmaps wit
 
 The maximum number of rays that can be thrown per pass when baking dynamic object lighting in :ref:`LightmapProbe<class_LightmapProbe>`\ s with :ref:`LightmapGI<class_LightmapGI>`. Depending on the scene, adjusting this value may result in higher GPU utilization when baking lightmaps, leading to faster bake times.
 
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -11150,6 +11956,8 @@ The maximum number of rays that can be thrown per pass when baking dynamic objec
 
 The maximum number of retry rays that can be thrown per pass when hitting a transparent surface when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`. Depending on the scene, reducing this value may lead to faster bake times.
 
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -11160,7 +11968,9 @@ The maximum number of retry rays that can be thrown per pass when hitting a tran
 
 :ref:`int<class_int>` **rendering/lightmapping/bake_performance/region_size** = ``512`` :ref:`🔗<class_ProjectSettings_property_rendering/lightmapping/bake_performance/region_size>`
 
-The region size to use when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`.
+The region size to use when baking lightmaps with :ref:`LightmapGI<class_LightmapGI>`. The specified value is rounded up to the nearest power of 2.
+
+\ **Note:** Using a value that is too high for your system can cause crashes due to the GPU being unresponsive for long periods of time, and the graphics driver being reset by the OS.
 
 .. rst-class:: classref-item-separator
 
@@ -11406,7 +12216,7 @@ Use 16 bits for the omni/spot shadow depth map. Enabling this results in shadows
 
 :ref:`int<class_int>` **rendering/lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv** = ``2`` :ref:`🔗<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv>`
 
-Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
+The subdivision amount of the first quadrant on the shadow atlas. See the `documentation <../tutorials/tutorials/3d/lights_and_shadows.html#shadow-atlas>`__ for more information.
 
 .. rst-class:: classref-item-separator
 
@@ -11418,7 +12228,7 @@ Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
 
 :ref:`int<class_int>` **rendering/lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv** = ``2`` :ref:`🔗<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv>`
 
-Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
+The subdivision amount of the second quadrant on the shadow atlas. See the `documentation <../tutorials/tutorials/3d/lights_and_shadows.html#shadow-atlas>`__ for more information.
 
 .. rst-class:: classref-item-separator
 
@@ -11430,7 +12240,7 @@ Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
 
 :ref:`int<class_int>` **rendering/lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv** = ``3`` :ref:`🔗<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv>`
 
-Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
+The subdivision amount of the third quadrant on the shadow atlas. See the `documentation <../tutorials/tutorials/3d/lights_and_shadows.html#shadow-atlas>`__ for more information.
 
 .. rst-class:: classref-item-separator
 
@@ -11442,7 +12252,7 @@ Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
 
 :ref:`int<class_int>` **rendering/lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv** = ``4`` :ref:`🔗<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv>`
 
-Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
+The subdivision amount of the fourth quadrant on the shadow atlas. See the `documentation <../tutorials/tutorials/3d/lights_and_shadows.html#shadow-atlas>`__ for more information.
 
 .. rst-class:: classref-item-separator
 
@@ -11454,7 +12264,7 @@ Subdivision quadrant size for shadow mapping. See shadow mapping documentation.
 
 :ref:`int<class_int>` **rendering/lights_and_shadows/positional_shadow/atlas_size** = ``4096`` :ref:`🔗<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/atlas_size>`
 
-Size for shadow atlas (used for OmniLights and SpotLights). See documentation.
+The size of the shadow atlas used for :ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>` nodes. See the `documentation <../tutorials/tutorials/3d/lights_and_shadows.html#shadow-atlas>`__ for more information.
 
 .. rst-class:: classref-item-separator
 
@@ -11662,7 +12472,7 @@ The automatic LOD bias to use for meshes rendered within the :ref:`ReflectionPro
 
 The `Bounding Volume Hierarchy <https://en.wikipedia.org/wiki/Bounding_volume_hierarchy>`__ quality to use when rendering the occlusion culling buffer. Higher values will result in more accurate occlusion culling, at the cost of higher CPU usage. See also :ref:`rendering/occlusion_culling/occlusion_rays_per_thread<class_ProjectSettings_property_rendering/occlusion_culling/occlusion_rays_per_thread>`.
 
-\ **Note:** This property is only read when the project starts. To adjust the BVH build quality at runtime, use :ref:`RenderingServer.viewport_set_occlusion_culling_build_quality<class_RenderingServer_method_viewport_set_occlusion_culling_build_quality>`.
+\ **Note:** This property is only read when the project starts. To adjust the BVH build quality at runtime, use :ref:`RenderingServer.viewport_set_occlusion_culling_build_quality()<class_RenderingServer_method_viewport_set_occlusion_culling_build_quality>`.
 
 .. rst-class:: classref-item-separator
 
@@ -11688,7 +12498,7 @@ If ``true``, the projection used for rendering the occlusion buffer will be jitt
 
 The number of occlusion rays traced per CPU thread. Higher values will result in more accurate occlusion culling, at the cost of higher CPU usage. The occlusion culling buffer's pixel count is roughly equal to ``occlusion_rays_per_thread * number_of_logical_cpu_cores``, so it will depend on the system's CPU. Therefore, CPUs with fewer cores will use a lower resolution to attempt keeping performance costs even across devices. See also :ref:`rendering/occlusion_culling/bvh_build_quality<class_ProjectSettings_property_rendering/occlusion_culling/bvh_build_quality>`.
 
-\ **Note:** This property is only read when the project starts. To adjust the number of occlusion rays traced per thread at runtime, use :ref:`RenderingServer.viewport_set_occlusion_rays_per_thread<class_RenderingServer_method_viewport_set_occlusion_rays_per_thread>`.
+\ **Note:** This property is only read when the project starts. To adjust the number of occlusion rays traced per thread at runtime, use :ref:`RenderingServer.viewport_set_occlusion_rays_per_thread()<class_RenderingServer_method_viewport_set_occlusion_rays_per_thread>`.
 
 .. rst-class:: classref-item-separator
 
@@ -11802,6 +12612,8 @@ Limits the number of layers to use in radiance maps when using importance sampli
 
 If ``true``, uses texture arrays instead of mipmaps for reflection probes and panorama backgrounds (sky). This reduces jitter noise and upscaling artifacts on reflections, but is significantly slower to compute and uses :ref:`rendering/reflections/sky_reflections/roughness_layers<class_ProjectSettings_property_rendering/reflections/sky_reflections/roughness_layers>` times more memory.
 
+\ **Note:** Texture array reflections are always disabled on macOS on Intel GPUs due to driver bugs.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -11813,6 +12625,18 @@ If ``true``, uses texture arrays instead of mipmaps for reflection probes and pa
 :ref:`bool<class_bool>` **rendering/reflections/sky_reflections/texture_array_reflections.mobile** = ``false`` :ref:`🔗<class_ProjectSettings_property_rendering/reflections/sky_reflections/texture_array_reflections.mobile>`
 
 Lower-end override for :ref:`rendering/reflections/sky_reflections/texture_array_reflections<class_ProjectSettings_property_rendering/reflections/sky_reflections/texture_array_reflections>` on mobile devices, due to performance concerns or driver support.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/reflections/specular_occlusion/enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/reflections/specular_occlusion/enabled** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/reflections/specular_occlusion/enabled>`
+
+If ``true``, reduces reflections based on ambient light.
 
 .. rst-class:: classref-item-separator
 
@@ -11834,7 +12658,7 @@ Sets the renderer that will be used by the project. Options are:
 
 This can be overridden using the ``--rendering-method <method>`` command line argument.
 
-\ **Note:** The actual rendering method may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering method that is used at runtime, use :ref:`RenderingServer.get_current_rendering_method<class_RenderingServer_method_get_current_rendering_method>` instead of reading this project setting's value.
+\ **Note:** The actual rendering method may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering method that is used at runtime, use :ref:`RenderingServer.get_current_rendering_method()<class_RenderingServer_method_get_current_rendering_method>` instead of reading this project setting's value.
 
 .. rst-class:: classref-item-separator
 
@@ -11922,11 +12746,25 @@ Depending on the complexity of scenes, this value may be lowered or may need to 
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver>`
+:ref:`String<class_String>` **rendering/rendering_device/driver** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver>`
 
-Sets the driver to be used by the renderer when using a RenderingDevice-based renderer like the Forward+ or Mobile renderers. This property can't be edited directly. Instead, set the driver using the platform-specific overrides. This can be overridden using the ``--rendering-driver <driver>`` command line argument.
+Sets the driver to be used by the renderer when using a RenderingDevice-based renderer like the Forward+ or Mobile renderers. Editing this property has no effect in the default configuration, as first-party platforms each have platform-specific overrides. Use those overrides to configure the driver for each platform.
 
-\ **Note:** The actual rendering driver may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering driver that is used at runtime, use :ref:`RenderingServer.get_current_rendering_driver_name<class_RenderingServer_method_get_current_rendering_driver_name>` instead of reading this project setting's value.
+This can be overridden using the ``--rendering-driver <driver>`` command line argument.
+
+Supported values are:
+
+- ``metal``, Metal (supported on Apple Silicon Macs and iOS).
+
+- ``vulkan``, Vulkan (supported on all desktop and mobile platforms).
+
+- ``d3d12``, Direct3D 12 (supported on Windows).
+
+\ **Note:** The availability of these options depends on whether the engine was compiled with support for them (determined by SCons options ``vulkan``, ``metal``, and ``d3d12``).
+
+\ **Note:** If a given platform has no registered drivers, it can fall back to the Compatibility renderer (OpenGL 3) if :ref:`rendering/rendering_device/fallback_to_opengl3<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>` is enabled. This fallback happens automatically for the Web platform regardless of that property.
+
+\ **Note:** The actual rendering driver may be automatically changed by the engine as a result of a fallback, or a user-specified command line argument. To get the actual rendering driver that is used at runtime, use :ref:`RenderingServer.get_current_rendering_driver_name()<class_RenderingServer_method_get_current_rendering_driver_name>` instead of reading this project setting's value.
 
 .. rst-class:: classref-item-separator
 
@@ -11936,9 +12774,15 @@ Sets the driver to be used by the renderer when using a RenderingDevice-based re
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.android** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.android>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.android** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.android>`
 
 Android override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Only one option is supported:
+
+- ``vulkan``, Vulkan from native drivers.
+
+\ **Note:** If Vulkan was disabled at compile time, there is no alternative RenderingDevice driver.
 
 .. rst-class:: classref-item-separator
 
@@ -11948,9 +12792,15 @@ Android override for :ref:`rendering/rendering_device/driver<class_ProjectSettin
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.ios** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.ios** = ``"metal"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.ios>`
 
 iOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Two options are supported:
+
+- ``metal`` (default), Metal from native drivers.
+
+- ``vulkan``, Vulkan over Metal via MoltenVK.
 
 .. rst-class:: classref-item-separator
 
@@ -11960,9 +12810,15 @@ iOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_p
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.linuxbsd** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.linuxbsd** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.linuxbsd>`
 
 LinuxBSD override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Only one option is supported:
+
+- ``vulkan``, Vulkan from native drivers.
+
+\ **Note:** If Vulkan was disabled at compile time, there is no alternative RenderingDevice driver.
 
 .. rst-class:: classref-item-separator
 
@@ -11972,9 +12828,31 @@ LinuxBSD override for :ref:`rendering/rendering_device/driver<class_ProjectSetti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.macos** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.macos** = ``"metal"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.macos>`
 
 macOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Two options are supported:
+
+- ``metal`` (default), Metal from native drivers, only supported on Apple Silicon Macs. On Intel Macs, it will automatically fall back to ``vulkan`` as Metal support is not implemented.
+
+- ``vulkan``, Vulkan over Metal via MoltenVK, supported on both Apple Silicon and Intel Macs.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/rendering_device/driver.visionos:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **rendering/rendering_device/driver.visionos** = ``"metal"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.visionos>`
+
+visionOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Only one option is supported:
+
+- ``metal`` (default), Metal from native drivers.
 
 .. rst-class:: classref-item-separator
 
@@ -11984,9 +12862,15 @@ macOS override for :ref:`rendering/rendering_device/driver<class_ProjectSettings
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **rendering/rendering_device/driver.windows** :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`
+:ref:`String<class_String>` **rendering/rendering_device/driver.windows** = ``"vulkan"`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/driver.windows>`
 
 Windows override for :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`.
+
+Two options are supported:
+
+- ``vulkan`` (default), Vulkan from native drivers. If :ref:`rendering/rendering_device/fallback_to_vulkan<class_ProjectSettings_property_rendering/rendering_device/fallback_to_vulkan>` is enabled, this is used as a fallback if Direct3D 12 is not supported.
+
+- ``d3d12``, Direct3D 12 from native drivers. If :ref:`rendering/rendering_device/fallback_to_d3d12<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>` is enabled, this is used as a fallback if Vulkan is not supported.
 
 .. rst-class:: classref-item-separator
 
@@ -11998,7 +12882,7 @@ Windows override for :ref:`rendering/rendering_device/driver<class_ProjectSettin
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_d3d12** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>`
 
-If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not supported.
+If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not supported. The fallback is always attempted regardless of this setting if Vulkan driver support was disabled at compile time.
 
 \ **Note:** This setting is implemented only on Windows.
 
@@ -12012,9 +12896,9 @@ If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_opengl3** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>`
 
-If ``true``, the forward renderer will fall back to OpenGL 3 if both Direct3D 12, Metal and Vulkan are not supported.
+If ``true``, the forward renderer will fall back to OpenGL 3 if Direct3D 12, Metal, and Vulkan are not supported.
 
-\ **Note:** This setting is implemented only on Windows, Android, macOS, iOS, and Linux/X11.
+\ **Note:** This setting is implemented on Windows, Android, macOS, iOS, and Linux/X11.
 
 .. rst-class:: classref-item-separator
 
@@ -12026,9 +12910,9 @@ If ``true``, the forward renderer will fall back to OpenGL 3 if both Direct3D 12
 
 :ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_vulkan** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_vulkan>`
 
-If ``true``, the forward renderer will fall back to Vulkan if Direct3D 12 is not supported.
+If ``true``, the forward renderer will fall back to Vulkan if Direct3D 12 (on Windows) or Metal (on macOS x86_64) are not supported. The fallback is always attempted regardless of this setting if Direct3D 12 (Windows) or Metal (macOS) driver support was disabled at compile time.
 
-\ **Note:** This setting is implemented only on Windows.
+\ **Note:** This setting is implemented on Windows and macOS.
 
 .. rst-class:: classref-item-separator
 
@@ -12094,7 +12978,7 @@ The maximum amount of memory allowed to be used by staging buffers. If the amoun
 
 :ref:`int<class_int>` **rendering/rendering_device/staging_buffer/texture_download_region_size_px** = ``64`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/texture_download_region_size_px>`
 
-The region size in pixels used to download texture data from the GPU when using methods like :ref:`RenderingDevice.texture_get_data_async<class_RenderingDevice_method_texture_get_data_async>`.
+The region size in pixels used to download texture data from the GPU when using methods like :ref:`RenderingDevice.texture_get_data_async()<class_RenderingDevice_method_texture_get_data_async>`.
 
 \ **Note:** This property's upper limit is controlled by :ref:`rendering/rendering_device/staging_buffer/block_size_kb<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/block_size_kb>` and whether it's possible to allocate a single block of texture data with this region size in the format that is requested.
 
@@ -12110,7 +12994,7 @@ The region size in pixels used to download texture data from the GPU when using 
 
 :ref:`int<class_int>` **rendering/rendering_device/staging_buffer/texture_upload_region_size_px** = ``64`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/texture_upload_region_size_px>`
 
-The region size in pixels used to upload texture data from the GPU when using methods like :ref:`RenderingDevice.texture_update<class_RenderingDevice_method_texture_update>`.
+The region size in pixels used to upload texture data from the GPU when using methods like :ref:`RenderingDevice.texture_update()<class_RenderingDevice_method_texture_update>`.
 
 \ **Note:** This property's upper limit is controlled by :ref:`rendering/rendering_device/staging_buffer/block_size_kb<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/block_size_kb>` and whether it's possible to allocate a single block of texture data with this region size in the format that is requested.
 
@@ -12197,6 +13081,30 @@ Determines how sharp the upscaled image will be when using the FSR upscaling mod
 Sets the scaling 3D mode. Bilinear scaling renders at different resolution to either undersample or supersample the viewport. FidelityFX Super Resolution 1.0, abbreviated to FSR, is an upscaling technology that produces high quality images at fast framerates by using a spatially-aware upscaling algorithm. FSR is slightly more expensive than bilinear, but it produces significantly higher image quality. On particularly low-end GPUs, the added cost of FSR may not be worth it (compared to using bilinear scaling with a slightly higher resolution scale to match performance).
 
 \ **Note:** FSR is only effective when using the Forward+ rendering method, not Mobile or Compatibility. If using an incompatible rendering method, FSR will fall back to bilinear scaling.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/scaling_3d/mode.ios:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/scaling_3d/mode.ios** :ref:`🔗<class_ProjectSettings_property_rendering/scaling_3d/mode.ios>`
+
+iOS override for :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`. This allows selecting the MetalFX spatial and MetalFX temporal scaling modes, which are exclusive to platforms where the Metal rendering driver is used.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/scaling_3d/mode.macos:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/scaling_3d/mode.macos** :ref:`🔗<class_ProjectSettings_property_rendering/scaling_3d/mode.macos>`
+
+macOS override for :ref:`rendering/scaling_3d/mode<class_ProjectSettings_property_rendering/scaling_3d/mode>`. This allows selecting the MetalFX spatial and MetalFX temporal scaling modes, which are exclusive to platforms where the Metal rendering driver is used.
 
 .. rst-class:: classref-item-separator
 
@@ -12313,6 +13221,44 @@ Lower-end override for :ref:`rendering/shading/overrides/force_lambert_over_burl
 :ref:`bool<class_bool>` **rendering/shading/overrides/force_vertex_shading** = ``false`` :ref:`🔗<class_ProjectSettings_property_rendering/shading/overrides/force_vertex_shading>`
 
 If ``true``, forces vertex shading for all rendering. This can increase performance a lot, but also reduces quality immensely. Can be used to optimize performance on low-end mobile devices.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/textures/basis_universal/rdo_dict_size** = ``1024`` :ref:`🔗<class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size>`
+
+The dictionary size for Rate-Distortion Optimization (RDO) when importing textures as Basis Universal and when RDO is enabled, ranging from ``64`` to ``65536``. Higher values reduce the file sizes further, but make encoding times significantly longer.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/textures/basis_universal/zstd_supercompression** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression>`
+
+If ``true``, enables Zstandard supercompression to reduce file size when importing textures as Basis Universal.
+
+\ **Note:** Basis Universal textures need to be compressed to gain the benefit of smaller file sizes, otherwise they are as large as VRAM-compressed textures.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/textures/basis_universal/zstd_supercompression_level** = ``6`` :ref:`🔗<class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level>`
+
+Specify the compression level for Basis Universal Zstandard supercompression, ranging from ``1`` to ``22``.
 
 .. rst-class:: classref-item-separator
 
@@ -12599,7 +13545,7 @@ The ratio of :ref:`WorkerThreadPool<class_WorkerThreadPool>`'s threads that will
 
 :ref:`int<class_int>` **threading/worker_pool/max_threads** = ``-1`` :ref:`🔗<class_ProjectSettings_property_threading/worker_pool/max_threads>`
 
-Maximum number of threads to be used by :ref:`WorkerThreadPool<class_WorkerThreadPool>`. Value of ``-1`` means no limit.
+Maximum number of threads to be used by :ref:`WorkerThreadPool<class_WorkerThreadPool>`. Value of ``-1`` means ``1`` on Web, or a number of *logical* CPU cores available on other platforms (see :ref:`OS.get_processor_count()<class_OS_method_get_processor_count>`).
 
 .. rst-class:: classref-item-separator
 
@@ -12735,7 +13681,7 @@ If ``true``, the hand tracking extension is enabled if available.
 
 If ``true``, support for the controller inferred data source is requested. If supported, you will receive hand tracking data even if the user has a controller in hand, with finger positions automatically inferred from controller input and/or sensors.
 
-\ **Node:** This requires the OpenXR data source extension and controller inferred handtracking to be supported by the XR runtime. If not supported this setting will be ignored. :ref:`xr/openxr/extensions/hand_tracking<class_ProjectSettings_property_xr/openxr/extensions/hand_tracking>` must be enabled for this setting to be used.
+\ **Note:** This requires the OpenXR data source extension and controller inferred handtracking to be supported by the XR runtime. If not supported this setting will be ignored. :ref:`xr/openxr/extensions/hand_tracking<class_ProjectSettings_property_xr/openxr/extensions/hand_tracking>` must be enabled for this setting to be used.
 
 .. rst-class:: classref-item-separator
 
@@ -12749,7 +13695,7 @@ If ``true``, support for the controller inferred data source is requested. If su
 
 If ``true``, support for the unobstructed data source is requested. If supported, you will receive hand tracking data based on the actual finger positions of the user often determined by optical tracking.
 
-\ **Node:** This requires the OpenXR data source extension and unobstructed handtracking to be supported by the XR runtime. If not supported this setting will be ignored. :ref:`xr/openxr/extensions/hand_tracking<class_ProjectSettings_property_xr/openxr/extensions/hand_tracking>` must be enabled for this setting to be used.
+\ **Note:** This requires the OpenXR data source extension and unobstructed handtracking to be supported by the XR runtime. If not supported this setting will be ignored. :ref:`xr/openxr/extensions/hand_tracking<class_ProjectSettings_property_xr/openxr/extensions/hand_tracking>` must be enabled for this setting to be used.
 
 .. rst-class:: classref-item-separator
 
@@ -12775,8 +13721,6 @@ Specify whether OpenXR should be configured for an HMD or a hand held device.
 
 If ``true`` and foveation is supported, will automatically adjust foveation level based on framerate up to the level set on :ref:`xr/openxr/foveation_level<class_ProjectSettings_property_xr/openxr/foveation_level>`.
 
-\ **Note:** Only works on the Compatibility rendering method.
-
 .. rst-class:: classref-item-separator
 
 ----
@@ -12789,7 +13733,7 @@ If ``true`` and foveation is supported, will automatically adjust foveation leve
 
 Applied foveation level if supported: 0 = off, 1 = low, 2 = medium, 3 = high.
 
-\ **Note:** Only works on the Compatibility rendering method. On platforms other than Android, if :ref:`rendering/anti_aliasing/quality/msaa_3d<class_ProjectSettings_property_rendering/anti_aliasing/quality/msaa_3d>` is enabled, this feature will be disabled.
+\ **Note:** On platforms other than Android, if :ref:`rendering/anti_aliasing/quality/msaa_3d<class_ProjectSettings_property_rendering/anti_aliasing/quality/msaa_3d>` is enabled, this feature will be disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -12880,31 +13824,33 @@ Adds a custom property info to a property. The dictionary must contain:
  .. code-tab:: gdscript
 
     ProjectSettings.set("category/property_name", 0)
-    
+
     var property_info = {
         "name": "category/property_name",
         "type": TYPE_INT,
         "hint": PROPERTY_HINT_ENUM,
         "hint_string": "one,two,three"
     }
-    
+
     ProjectSettings.add_property_info(property_info)
 
  .. code-tab:: csharp
 
     ProjectSettings.Singleton.Set("category/property_name", 0);
-    
+
     var propertyInfo = new Godot.Collections.Dictionary
     {
-        {"name", "category/propertyName"},
-        {"type", (int)Variant.Type.Int},
-        {"hint", (int)PropertyHint.Enum},
-        {"hint_string", "one,two,three"},
+        { "name", "category/propertyName" },
+        { "type", (int)Variant.Type.Int },
+        { "hint", (int)PropertyHint.Enum },
+        { "hint_string", "one,two,three" },
     };
-    
+
     ProjectSettings.AddPropertyInfo(propertyInfo);
 
 
+
+\ **Note:** Setting ``"usage"`` for the property is not supported. Use :ref:`set_as_basic()<class_ProjectSettings_method_set_as_basic>`, :ref:`set_restart_if_changed()<class_ProjectSettings_method_set_restart_if_changed>`, and :ref:`set_as_internal()<class_ProjectSettings_method_set_as_internal>` to modify usage flags.
 
 .. rst-class:: classref-item-separator
 
@@ -12981,7 +13927,9 @@ Returns the value of the setting identified by ``name``. If the setting doesn't 
 
 
 
-\ **Note:** This method doesn't take potential feature overrides into account automatically. Use :ref:`get_setting_with_override<class_ProjectSettings_method_get_setting_with_override>` to handle seamlessly.
+\ **Note:** This method doesn't take potential feature overrides into account automatically. Use :ref:`get_setting_with_override()<class_ProjectSettings_method_get_setting_with_override>` to handle seamlessly.
+
+See also :ref:`has_setting()<class_ProjectSettings_method_has_setting>` to check whether a setting exists.
 
 .. rst-class:: classref-item-separator
 
@@ -12993,7 +13941,7 @@ Returns the value of the setting identified by ``name``. If the setting doesn't 
 
 :ref:`Variant<class_Variant>` **get_setting_with_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_get_setting_with_override>`
 
-Similar to :ref:`get_setting<class_ProjectSettings_method_get_setting>`, but applies feature tag overrides if any exists and is valid.
+Similar to :ref:`get_setting()<class_ProjectSettings_method_get_setting>`, but applies feature tag overrides if any exists and is valid.
 
 \ **Example:** If the setting override ``"application/config/name.windows"`` exists, and the following code is executed on a *Windows* operating system, the overridden setting is printed instead:
 
@@ -13014,15 +13962,27 @@ Similar to :ref:`get_setting<class_ProjectSettings_method_get_setting>`, but app
 
 ----
 
+.. _class_ProjectSettings_method_get_setting_with_override_and_custom_features:
+
+.. rst-class:: classref-method
+
+:ref:`Variant<class_Variant>` **get_setting_with_override_and_custom_features**\ (\ name\: :ref:`StringName<class_StringName>`, features\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_get_setting_with_override_and_custom_features>`
+
+Similar to :ref:`get_setting_with_override()<class_ProjectSettings_method_get_setting_with_override>`, but applies feature tag overrides instead of current OS features.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_method_globalize_path:
 
 .. rst-class:: classref-method
 
 :ref:`String<class_String>` **globalize_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_globalize_path>`
 
-Returns the absolute, native OS path corresponding to the localized ``path`` (starting with ``res://`` or ``user://``). The returned path will vary depending on the operating system and user preferences. See :doc:`File paths in Redot projects <../tutorials/io/data_paths>` to see what those paths convert to. See also :ref:`localize_path<class_ProjectSettings_method_localize_path>`.
+Returns the absolute, native OS path corresponding to the localized ``path`` (starting with ``res://`` or ``user://``). The returned path will vary depending on the operating system and user preferences. See :doc:`File paths in Redot projects <../tutorials/io/data_paths>` to see what those paths convert to. See also :ref:`localize_path()<class_ProjectSettings_method_localize_path>`.
 
-\ **Note:** :ref:`globalize_path<class_ProjectSettings_method_globalize_path>` with ``res://`` will not work in an exported project. Instead, prepend the executable's base directory to the path when running from an exported project:
+\ **Note:** :ref:`globalize_path()<class_ProjectSettings_method_globalize_path>` with ``res://`` will not work in an exported project. Instead, prepend the executable's base directory to the path when running from an exported project:
 
 ::
 
@@ -13050,6 +14010,8 @@ Returns the absolute, native OS path corresponding to the localized ``path`` (st
 
 Returns ``true`` if a configuration value is present.
 
+\ **Note:** In order to be be detected, custom settings have to be either defined with :ref:`set_setting()<class_ProjectSettings_method_set_setting>`, or exist in the ``project.godot`` file. This is especially relevant when using :ref:`set_initial_value()<class_ProjectSettings_method_set_initial_value>`.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -13066,6 +14028,8 @@ Loads the contents of the .pck or .zip file specified by ``pack`` into the resou
 
 \ **Note:** The optional ``offset`` parameter can be used to specify the offset in bytes to the start of the resource pack. This is only supported for .pck files.
 
+\ **Note:** :ref:`DirAccess<class_DirAccess>` will not show changes made to the contents of ``res://`` after calling this function.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -13076,7 +14040,7 @@ Loads the contents of the .pck or .zip file specified by ``pack`` into the resou
 
 :ref:`String<class_String>` **localize_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_ProjectSettings_method_localize_path>`
 
-Returns the localized path (starting with ``res://``) corresponding to the absolute, native OS ``path``. See also :ref:`globalize_path<class_ProjectSettings_method_globalize_path>`.
+Returns the localized path (starting with ``res://``) corresponding to the absolute, native OS ``path``. See also :ref:`globalize_path()<class_ProjectSettings_method_globalize_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -13090,7 +14054,7 @@ Returns the localized path (starting with ``res://``) corresponding to the absol
 
 Saves the configuration to the ``project.godot`` file.
 
-\ **Note:** This method is intended to be used by editor plugins, as modified **ProjectSettings** can't be loaded back in the running app. If you want to change project settings in exported projects, use :ref:`save_custom<class_ProjectSettings_method_save_custom>` to save ``override.cfg`` file.
+\ **Note:** This method is intended to be used by editor plugins, as modified **ProjectSettings** can't be loaded back in the running app. If you want to change project settings in exported projects, use :ref:`save_custom()<class_ProjectSettings_method_save_custom>` to save ``override.cfg`` file.
 
 .. rst-class:: classref-item-separator
 
@@ -13138,7 +14102,22 @@ Defines if the specified setting is considered internal. An internal setting won
 
 |void| **set_initial_value**\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_ProjectSettings_method_set_initial_value>`
 
-Sets the specified setting's initial value. This is the value the setting reverts to.
+Sets the specified setting's initial value. This is the value the setting reverts to. The setting should already exist before calling this method. Note that project settings equal to their default value are not saved, so your code needs to account for that.
+
+::
+
+    extends EditorPlugin
+
+    const SETTING_NAME = "addons/my_setting"
+    const SETTING_DEFAULT = 10.0
+
+    func _enter_tree():
+        if not ProjectSettings.has_setting(SETTING_NAME):
+            ProjectSettings.set_setting(SETTING_NAME, SETTING_DEFAULT)
+
+        ProjectSettings.set_initial_value(SETTING_NAME, SETTING_DEFAULT)
+
+If you have a project setting defined by an :ref:`EditorPlugin<class_EditorPlugin>`, but want to use it in a running project, you will need a similar code at runtime.
 
 .. rst-class:: classref-item-separator
 
@@ -13164,7 +14143,7 @@ Sets the order of a configuration value (influences when saved to the config fil
 
 Sets whether a setting requires restarting the editor to properly take effect.
 
-\ **Note:** This is just a hint to display to the user that the editor must be restarted for changes to take effect. Enabling :ref:`set_restart_if_changed<class_ProjectSettings_method_set_restart_if_changed>` does *not* delay the setting being set when changed.
+\ **Note:** This is just a hint to display to the user that the editor must be restarted for changes to take effect. Enabling :ref:`set_restart_if_changed()<class_ProjectSettings_method_set_restart_if_changed>` does *not* delay the setting being set when changed.
 
 .. rst-class:: classref-item-separator
 
@@ -13194,6 +14173,7 @@ Sets the value of a setting.
 This can also be used to erase custom project settings. To do this change the setting value to ``null``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

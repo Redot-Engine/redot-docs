@@ -195,7 +195,7 @@ The key of the animation to play when the scene loads.
 - |void| **set_frame**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_frame**\ (\ )
 
-The displayed animation frame's index. Setting this property also resets :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>`. If this is not desired, use :ref:`set_frame_and_progress<class_AnimatedSprite3D_method_set_frame_and_progress>`.
+The displayed animation frame's index. Setting this property also resets :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>`. If this is not desired, use :ref:`set_frame_and_progress()<class_AnimatedSprite3D_method_set_frame_and_progress>`.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_playing_speed**\ (\ ) |const| :ref:`🔗<class_AnimatedSprite3D_method_get_playing_speed>`
 
-Returns the actual playing speed of current animation or ``0`` if not playing. This speed is the :ref:`speed_scale<class_AnimatedSprite3D_property_speed_scale>` property multiplied by ``custom_speed`` argument specified when calling the :ref:`play<class_AnimatedSprite3D_method_play>` method.
+Returns the actual playing speed of current animation or ``0`` if not playing. This speed is the :ref:`speed_scale<class_AnimatedSprite3D_property_speed_scale>` property multiplied by ``custom_speed`` argument specified when calling the :ref:`play()<class_AnimatedSprite3D_method_play>` method.
 
 Returns a negative value if the current animation is playing backwards.
 
@@ -291,9 +291,9 @@ Returns ``true`` if an animation is currently playing (even if :ref:`speed_scale
 
 |void| **pause**\ (\ ) :ref:`🔗<class_AnimatedSprite3D_method_pause>`
 
-Pauses the currently playing animation. The :ref:`frame<class_AnimatedSprite3D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>` will be kept and calling :ref:`play<class_AnimatedSprite3D_method_play>` or :ref:`play_backwards<class_AnimatedSprite3D_method_play_backwards>` without arguments will resume the animation from the current playback position.
+Pauses the currently playing animation. The :ref:`frame<class_AnimatedSprite3D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>` will be kept and calling :ref:`play()<class_AnimatedSprite3D_method_play>` or :ref:`play_backwards()<class_AnimatedSprite3D_method_play_backwards>` without arguments will resume the animation from the current playback position.
 
-See also :ref:`stop<class_AnimatedSprite3D_method_stop>`.
+See also :ref:`stop()<class_AnimatedSprite3D_method_stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ See also :ref:`stop<class_AnimatedSprite3D_method_stop>`.
 
 |void| **play**\ (\ name\: :ref:`StringName<class_StringName>` = &"", custom_speed\: :ref:`float<class_float>` = 1.0, from_end\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AnimatedSprite3D_method_play>`
 
-Plays the animation with key ``name``. If ``custom_speed`` is negative and ``from_end`` is ``true``, the animation will play backwards (which is equivalent to calling :ref:`play_backwards<class_AnimatedSprite3D_method_play_backwards>`).
+Plays the animation with key ``name``. If ``custom_speed`` is negative and ``from_end`` is ``true``, the animation will play backwards (which is equivalent to calling :ref:`play_backwards()<class_AnimatedSprite3D_method_play_backwards>`).
 
 If this method is called with that same animation ``name``, or with no ``name`` parameter, the assigned animation will resume playing if it was paused.
 
@@ -321,7 +321,7 @@ If this method is called with that same animation ``name``, or with no ``name`` 
 
 Plays the animation with key ``name`` in reverse.
 
-This method is a shorthand for :ref:`play<class_AnimatedSprite3D_method_play>` with ``custom_speed = -1.0`` and ``from_end = true``, so see its description for more information.
+This method is a shorthand for :ref:`play()<class_AnimatedSprite3D_method_play>` with ``custom_speed = -1.0`` and ``from_end = true``, so see its description for more information.
 
 .. rst-class:: classref-item-separator
 
@@ -333,7 +333,7 @@ This method is a shorthand for :ref:`play<class_AnimatedSprite3D_method_play>` w
 
 |void| **set_frame_and_progress**\ (\ frame\: :ref:`int<class_int>`, progress\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AnimatedSprite3D_method_set_frame_and_progress>`
 
-Sets :ref:`frame<class_AnimatedSprite3D_property_frame>` the :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>` to the given values. Unlike setting :ref:`frame<class_AnimatedSprite3D_property_frame>`, this method does not reset the :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>` to ``0.0`` implicitly.
+Sets :ref:`frame<class_AnimatedSprite3D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>` to the given values. Unlike setting :ref:`frame<class_AnimatedSprite3D_property_frame>`, this method does not reset the :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>` to ``0.0`` implicitly.
 
 \ **Example:** Change the animation while keeping the same :ref:`frame<class_AnimatedSprite3D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite3D_property_frame_progress>`:
 
@@ -359,9 +359,10 @@ Sets :ref:`frame<class_AnimatedSprite3D_property_frame>` the :ref:`frame_progres
 
 |void| **stop**\ (\ ) :ref:`🔗<class_AnimatedSprite3D_method_stop>`
 
-Stops the currently playing animation. The animation position is reset to ``0`` and the ``custom_speed`` is reset to ``1.0``. See also :ref:`pause<class_AnimatedSprite3D_method_pause>`.
+Stops the currently playing animation. The animation position is reset to ``0`` and the ``custom_speed`` is reset to ``1.0``. See also :ref:`pause()<class_AnimatedSprite3D_method_pause>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

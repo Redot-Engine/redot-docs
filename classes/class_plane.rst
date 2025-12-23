@@ -394,7 +394,7 @@ Returns the intersection point of a segment from position ``from`` to position `
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ to_plane\: :ref:`Plane<class_Plane>`\ ) |const| :ref:`🔗<class_Plane_method_is_equal_approx>`
 
-Returns ``true`` if this plane and ``to_plane`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx<class_@GlobalScope_method_is_equal_approx>` on each component.
+Returns ``true`` if this plane and ``to_plane`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ Returns ``true`` if this plane and ``to_plane`` are approximately equal, by runn
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Plane_method_is_finite>`
 
-Returns ``true`` if this plane is finite, by calling :ref:`@GlobalScope.is_finite<class_@GlobalScope_method_is_finite>` on each component.
+Returns ``true`` if this plane is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
 
 .. rst-class:: classref-item-separator
 
@@ -461,7 +461,7 @@ Operator Descriptions
 
 Returns ``true`` if the planes are not equal.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx<class_Plane_method_is_equal_approx>` instead, which is more reliable.
+\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Plane_method_is_equal_approx>` instead, which is more reliable.
 
 .. rst-class:: classref-item-separator
 
@@ -475,7 +475,7 @@ Returns ``true`` if the planes are not equal.
 
 Inversely transforms (multiplies) the **Plane** by the given :ref:`Transform3D<class_Transform3D>` transformation matrix.
 
-\ ``plane * transform`` is equivalent to ``transform.affine_inverse() * plane``. See :ref:`Transform3D.affine_inverse<class_Transform3D_method_affine_inverse>`.
+\ ``plane * transform`` is equivalent to ``transform.affine_inverse() * plane``. See :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ Inversely transforms (multiplies) the **Plane** by the given :ref:`Transform3D<c
 
 Returns ``true`` if the planes are exactly equal.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx<class_Plane_method_is_equal_approx>` instead, which is more reliable.
+\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Plane_method_is_equal_approx>` instead, which is more reliable.
 
 .. rst-class:: classref-item-separator
 
@@ -516,6 +516,7 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 Returns the negative value of the **Plane**. This is the same as writing ``Plane(-p.normal, -p.d)``. This operation flips the direction of the normal vector and also flips the distance value, resulting in a Plane that is in the same place, but facing the opposite direction.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
