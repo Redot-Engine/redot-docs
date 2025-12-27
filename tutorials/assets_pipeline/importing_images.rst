@@ -348,8 +348,10 @@ does not use the blue channel.
 A third option **Normal Map (RG Channels)** is *only* available in layered
 textures (:ref:`class_Cubemap`, :ref:`class_CubemapArray`, :ref:`class_Texture2DArray`
 and :ref:`class_Texture3D`). This forces all layers from the texture to be imported
-with the RG color format to reduce memory usage, with only the red and green
-channels preserved. This only has an effect on textures with the **VRAM Compressed**
+with the RG color format, with only the red and green
+channels preserved. :abbr:`RGTC (Red-Green Texture Compression)` compression is able to
+preserve its detail much better, while using the same amount of memory as a standard
+RGBA VRAM-compressed texture. This only has an effect on textures with the **VRAM Compressed**
 or **Basis Universal** compression modes.
 
 .. _doc_importing_images_mipmaps:
@@ -424,9 +426,12 @@ displayed correctly:
 
 - In 2D, a :ref:`class_CanvasItemMaterial` will need to be created and
   configured to use the **Premul Alpha** blend mode on CanvasItems that use this
-  texture.
-- In 3D, there is no support for premultiplied alpha blend mode yet, so this
-  option is only suited for 2D.
+  texture. In :ref:`custom canvas item shaders <doc_canvas_item_shader>`,
+  ``render_mode blend_premul_alpha;`` should be used.
+- In 3D, a :ref:`class_BaseMaterial3D` will need to be created and configured
+  to use the **Premul Alpha** blend mode on materials that use this texture.
+  In :ref:`custom spatial shaders <doc_spatial_shader>`,
+  ``render_mode blend_premul_alpha;`` should be used.
 
 Process > Normal Map Invert Y
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

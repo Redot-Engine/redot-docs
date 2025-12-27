@@ -168,8 +168,8 @@ Example of loading an image and displaying it in a :ref:`class_TextureRect` node
 Audio/video files
 -----------------
 
-Godot supports loading Ogg Vorbis audio at runtime. Note that not *all* files
-with an ``.ogg`` extension may be Ogg Vorbis files. Some may be Ogg Theora
+Godot supports loading Ogg Vorbis, MP3, and WAV audio at runtime. Note that not *all*
+files with an ``.ogg`` extension are Ogg Vorbis files. Some may be Ogg Theora
 videos, or contain Opus audio within an Ogg container. These files will **not**
 load correctly as audio files in Godot.
 
@@ -210,17 +210,6 @@ Example of loading an Ogg Theora video file in a :ref:`class_VideoStreamPlayer` 
     // VideoStreamPlayer's Autoplay property won't work if the stream is empty
     // before this property is set, so call `Play()` after setting `Stream`.
     GetNode<VideoStreamPlayer>("VideoStreamPlayer").Play();
-
-.. note::
-
-    Godot doesn't support runtime loading of MP3 or WAV files yet. Until this is
-    implemented, it's feasible to implement runtime WAV loading using a script
-    since :ref:`class_AudioStreamWAV`'s ``data`` property is exposed to
-    scripting.
-
-    It's still possible to *save* WAV files using
-    :ref:`AudioStreamWAV.save_to_wav <class_AudioStreamWAV_method_save_to_wav>`, which is useful
-    for procedurally generated audio or microphone recordings.
 
 .. _doc_runtime_file_loading_and_saving_3d_scenes:
 

@@ -15,9 +15,7 @@ Interior environments can be created by using inverted primitives.
 
 .. note:: The CSG nodes in Godot are mainly intended for prototyping. There is
           no built-in support for UV mapping or editing 3D polygons (though
-          extruded 2D polygons can be used with the CSGPolygon3D node). In
-          addition CSG can't reliably create meshes made up of multiple nodes
-          without holes.
+          extruded 2D polygons can be used with the CSGPolygon3D node).
 
           If you're looking for an easy to use level design tool for a project,
           you may want to use `FuncGodot <https://github.com/func-godot/func_godot_plugin>`__
@@ -29,6 +27,7 @@ Interior environments can be created by using inverted primitives.
    :autoplay:
    :loop:
    :muted:
+   :align: default
 
 .. seealso::
 
@@ -118,6 +117,29 @@ the following, adapted from that library's `definition of "manifold"
   order when viewed from the outside of the Godot Engine manifold mesh.
 
 .. image:: img/csg_custom_mesh.png
+
+Making an existing mesh manifold with Blender
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. UPDATE: This relies on a specific Blender addon. If it becomes unsupported,
+.. we can remove this section.
+
+If you have an existing mesh that is not already manifold, you can make it
+manifold using Blender.
+
+In Blender, install and enable the
+`3D Print Toolbox <https://extensions.blender.org/add-ons/print3d-toolbox/>`_
+addon.
+
+Select the mesh you want to make manifold. Open the sidebar by clicking on the arrow:
+
+.. image:: img/csg_manifold_step_1.webp
+
+In the **3D Print** tab, under **Clean Up**, click the **Make Manifold** button:
+
+.. image:: img/csg_manifold_step_2.webp
+
+The mesh should now be manifold, and can be used as a custom mesh.
 
 CSGCombiner3D
 ~~~~~~~~~~~~~

@@ -3,6 +3,15 @@
 Creating instances
 ==================
 
+.. note::
+
+   This tutorial refers to instancing scenes in the editor. To learn how
+   to instance scenes from code, see :ref:`doc_nodes_and_scene_instances`.
+
+   Godot's approach to *instancing* described below should not be confused with
+   hardware instancing that can be used to render large amounts of similar
+   objects quickly. See :ref:`doc_using_multimesh` instead.
+
 In the previous part, we saw that a scene is a collection of nodes organized in
 a tree structure, with a single node as its root. You can split your project
 into any number of scenes. This feature helps you break down and organize your
@@ -121,7 +130,7 @@ Let's try this. Double-click ``ball.tscn`` in the FileSystem to open it.
 
 .. image:: img/instancing_ball_scene_open.webp
 
-Select the Ball node. In the Inspector on the right, click on the PhysicsMaterial
+In the Scene dock on the left, select the Ball node. Then, in the Inspector on the right, click on the PhysicsMaterial
 property to expand it.
 
 .. image:: img/instancing_physics_material_expand.webp
