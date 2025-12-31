@@ -26,7 +26,7 @@ Description
 
 - When the **LineEdit** control is focused using the keyboard arrow keys, it will only gain focus and not enter edit mode.
 
-- To enter edit mode, click on the control with the mouse or press the ``ui_text_submit`` action (by default :kbd:`Enter` or :kbd:`Kp Enter`).
+- To enter edit mode, click on the control with the mouse, see also :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`.
 
 - To exit edit mode, press ``ui_text_submit`` or ``ui_cancel`` (by default :kbd:`Escape`) actions.
 
@@ -115,11 +115,15 @@ Properties
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`editable<class_LineEdit_property_editable>`                                                           | ``true``                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`emoji_menu_enabled<class_LineEdit_property_emoji_menu_enabled>`                                       | ``true``                                                                            |
+   +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`expand_to_text_length<class_LineEdit_property_expand_to_text_length>`                                 | ``false``                                                                           |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`flat<class_LineEdit_property_flat>`                                                                   | ``false``                                                                           |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`FocusMode<enum_Control_FocusMode>`                          | focus_mode                                                                                                  | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                 |
+   +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`                     | ``false``                                                                           |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                       | :ref:`language<class_LineEdit_property_language>`                                                           | ``""``                                                                              |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
@@ -568,11 +572,19 @@ Inserts word joiner (WJ) character.
 
 Inserts soft hyphen (SHY) character.
 
+.. _class_LineEdit_constant_MENU_EMOJI_AND_SYMBOL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_EMOJI_AND_SYMBOL** = ``30``
+
+Opens system emoji and symbol picker.
+
 .. _class_LineEdit_constant_MENU_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_MAX** = ``30``
+:ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_MAX** = ``31``
 
 Represents the size of the :ref:`MenuItems<enum_LineEdit_MenuItems>` enum.
 
@@ -867,6 +879,23 @@ If ``false``, existing text cannot be modified and new text cannot be added.
 
 ----
 
+.. _class_LineEdit_property_emoji_menu_enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **emoji_menu_enabled** = ``true`` :ref:`🔗<class_LineEdit_property_emoji_menu_enabled>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_emoji_menu_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_emoji_menu_enabled**\ (\ )
+
+If ``true``, "Emoji and Symbols" menu is enabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_LineEdit_property_expand_to_text_length:
 
 .. rst-class:: classref-property
@@ -896,6 +925,23 @@ If ``true``, the **LineEdit** width will increase to stay longer than the :ref:`
 - :ref:`bool<class_bool>` **is_flat**\ (\ )
 
 If ``true``, the **LineEdit** doesn't display decoration.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_LineEdit_property_keep_editing_on_text_submit:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **keep_editing_on_text_submit** = ``false`` :ref:`🔗<class_LineEdit_property_keep_editing_on_text_submit>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_keep_editing_on_text_submit**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_editing_kept_on_text_submit**\ (\ )
+
+If ``true``, the **LineEdit** will not exit edit mode when text is submitted by pressing ``ui_text_submit`` action (by default: :kbd:`Enter` or :kbd:`Kp Enter`).
 
 .. rst-class:: classref-item-separator
 
@@ -1291,7 +1337,7 @@ Clears the current selection.
 
 Allows entering edit mode whether the **LineEdit** is focused or not.
 
-Use :ref:`Callable.call_deferred<class_Callable_method_call_deferred>` if you want to enter edit mode on :ref:`text_submitted<class_LineEdit_signal_text_submitted>`.
+See also :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`.
 
 .. rst-class:: classref-item-separator
 

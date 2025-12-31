@@ -349,7 +349,7 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`environment_set_adjustment<class_RenderingServer_method_environment_set_adjustment>`\ (\ env\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`, brightness\: :ref:`float<class_float>`, contrast\: :ref:`float<class_float>`, saturation\: :ref:`float<class_float>`, use_1d_color_correction\: :ref:`bool<class_bool>`, color_correction\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                      |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                           | :ref:`environment_set_ambient_light<class_RenderingServer_method_environment_set_ambient_light>`\ (\ env\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`, ambient\: :ref:`EnvironmentAmbientSource<enum_RenderingServer_EnvironmentAmbientSource>` = 0, energy\: :ref:`float<class_float>` = 1.0, sky_contibution\: :ref:`float<class_float>` = 0.0, reflection_source\: :ref:`EnvironmentReflectionSource<enum_RenderingServer_EnvironmentReflectionSource>` = 0\ )                                                                                                                                                                                                                         |
+   | |void|                                                                           | :ref:`environment_set_ambient_light<class_RenderingServer_method_environment_set_ambient_light>`\ (\ env\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`, ambient\: :ref:`EnvironmentAmbientSource<enum_RenderingServer_EnvironmentAmbientSource>` = 0, energy\: :ref:`float<class_float>` = 1.0, sky_contribution\: :ref:`float<class_float>` = 0.0, reflection_source\: :ref:`EnvironmentReflectionSource<enum_RenderingServer_EnvironmentReflectionSource>` = 0\ )                                                                                                                                                                                                                        |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`environment_set_background<class_RenderingServer_method_environment_set_background>`\ (\ env\: :ref:`RID<class_RID>`, bg\: :ref:`EnvironmentBG<enum_RenderingServer_EnvironmentBG>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -651,7 +651,7 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`mesh_surface_update_vertex_region<class_RenderingServer_method_mesh_surface_update_vertex_region>`\ (\ mesh\: :ref:`RID<class_RID>`, surface\: :ref:`int<class_int>`, offset\: :ref:`int<class_int>`, data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                     |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                           | :ref:`multimesh_allocate_data<class_RenderingServer_method_multimesh_allocate_data>`\ (\ multimesh\: :ref:`RID<class_RID>`, instances\: :ref:`int<class_int>`, transform_format\: :ref:`MultimeshTransformFormat<enum_RenderingServer_MultimeshTransformFormat>`, color_format\: :ref:`bool<class_bool>` = false, custom_data_format\: :ref:`bool<class_bool>` = false\ )                                                                                                                                                                                                                                                                                                                               |
+   | |void|                                                                           | :ref:`multimesh_allocate_data<class_RenderingServer_method_multimesh_allocate_data>`\ (\ multimesh\: :ref:`RID<class_RID>`, instances\: :ref:`int<class_int>`, transform_format\: :ref:`MultimeshTransformFormat<enum_RenderingServer_MultimeshTransformFormat>`, color_format\: :ref:`bool<class_bool>` = false, custom_data_format\: :ref:`bool<class_bool>` = false, use_indirect\: :ref:`bool<class_bool>` = false\ )                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                                            | :ref:`multimesh_create<class_RenderingServer_method_multimesh_create>`\ (\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -660,6 +660,8 @@ Methods
    | :ref:`PackedFloat32Array<class_PackedFloat32Array>`                              | :ref:`multimesh_get_buffer<class_RenderingServer_method_multimesh_get_buffer>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                                            | :ref:`multimesh_get_buffer_rd_rid<class_RenderingServer_method_multimesh_get_buffer_rd_rid>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                                                            | :ref:`multimesh_get_command_buffer_rd_rid<class_RenderingServer_method_multimesh_get_command_buffer_rd_rid>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`AABB<class_AABB>`                                                          | :ref:`multimesh_get_custom_aabb<class_RenderingServer_method_multimesh_get_custom_aabb>`\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -725,6 +727,8 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`particles_collision_set_field_texture<class_RenderingServer_method_particles_collision_set_field_texture>`\ (\ particles_collision\: :ref:`RID<class_RID>`, texture\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`particles_collision_set_height_field_mask<class_RenderingServer_method_particles_collision_set_height_field_mask>`\ (\ particles_collision\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`particles_collision_set_height_field_resolution<class_RenderingServer_method_particles_collision_set_height_field_resolution>`\ (\ particles_collision\: :ref:`RID<class_RID>`, resolution\: :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>`\ )                                                                                                                                                                                                                                                                                                                                                                                      |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`particles_collision_set_sphere_radius<class_RenderingServer_method_particles_collision_set_sphere_radius>`\ (\ particles_collision\: :ref:`RID<class_RID>`, radius\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -740,6 +744,8 @@ Methods
    | :ref:`bool<class_bool>`                                                          | :ref:`particles_is_inactive<class_RenderingServer_method_particles_is_inactive>`\ (\ particles\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`particles_request_process<class_RenderingServer_method_particles_request_process>`\ (\ particles\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`particles_request_process_time<class_RenderingServer_method_particles_request_process_time>`\ (\ particles\: :ref:`RID<class_RID>`, time\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`particles_restart<class_RenderingServer_method_particles_restart>`\ (\ particles\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1634,11 +1640,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_BLEND_SHAPE_MASK** = ``7``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Mask of mesh channels permitted in blend shapes.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM_BASE:
 
@@ -1646,11 +1648,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_BASE** = ``13``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Shift of first custom channel.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM_BITS:
 
@@ -1658,11 +1656,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_BITS** = ``3``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Number of format bits per custom channel. See :ref:`ArrayCustomFormat<enum_RenderingServer_ArrayCustomFormat>`.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM0_SHIFT:
 
@@ -1670,11 +1664,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM0_SHIFT** = ``13``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Amount to shift :ref:`ArrayCustomFormat<enum_RenderingServer_ArrayCustomFormat>` for custom channel index 0.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM1_SHIFT:
 
@@ -1682,11 +1672,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM1_SHIFT** = ``16``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Amount to shift :ref:`ArrayCustomFormat<enum_RenderingServer_ArrayCustomFormat>` for custom channel index 1.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM2_SHIFT:
 
@@ -1694,11 +1680,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM2_SHIFT** = ``19``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Amount to shift :ref:`ArrayCustomFormat<enum_RenderingServer_ArrayCustomFormat>` for custom channel index 2.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM3_SHIFT:
 
@@ -1706,11 +1688,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM3_SHIFT** = ``22``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Amount to shift :ref:`ArrayCustomFormat<enum_RenderingServer_ArrayCustomFormat>` for custom channel index 3.
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM_MASK:
 
@@ -1718,11 +1696,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_MASK** = ``7``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Mask of custom format bits per custom channel. Must be shifted by one of the SHIFT constants. See :ref:`ArrayCustomFormat<enum_RenderingServer_ArrayCustomFormat>`.
 
 .. _class_RenderingServer_constant_ARRAY_COMPRESS_FLAGS_BASE:
 
@@ -1730,11 +1704,7 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_COMPRESS_FLAGS_BASE** = ``25``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Shift of first compress flag. Compress flags should be passed to :ref:`ArrayMesh.add_surface_from_arrays<class_ArrayMesh_method_add_surface_from_arrays>` and :ref:`SurfaceTool.commit<class_SurfaceTool_method_commit>`.
 
 .. _class_RenderingServer_constant_ARRAY_FLAG_USE_2D_VERTICES:
 
@@ -1750,11 +1720,7 @@ Flag used to mark that the array contains 2D vertices.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FLAG_USE_DYNAMIC_UPDATE** = ``67108864``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Flag indices that the mesh data will use ``GL_DYNAMIC_DRAW`` on GLES. Unused on Vulkan.
 
 .. _class_RenderingServer_constant_ARRAY_FLAG_USE_8_BONE_WEIGHTS:
 
@@ -3038,11 +3004,31 @@ Use AMD FidelityFX Super Resolution 1.0 upscaling for the viewport's 3D buffer. 
 
 Use AMD FidelityFX Super Resolution 2.2 upscaling for the viewport's 3D buffer. The amount of scaling can be set using :ref:`Viewport.scaling_3d_scale<class_Viewport_property_scaling_3d_scale>`. Values less than ``1.0`` will be result in the viewport being upscaled using FSR2. Values greater than ``1.0`` are not supported and bilinear downsampling will be used instead. A value of ``1.0`` will use FSR2 at native resolution as a TAA solution.
 
+.. _class_RenderingServer_constant_VIEWPORT_SCALING_3D_MODE_METALFX_SPATIAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>` **VIEWPORT_SCALING_3D_MODE_METALFX_SPATIAL** = ``3``
+
+Use MetalFX spatial upscaling for the viewport's 3D buffer. The amount of scaling can be set using :ref:`Viewport.scaling_3d_scale<class_Viewport_property_scaling_3d_scale>`. Values less than ``1.0`` will be result in the viewport being upscaled using MetalFX. Values greater than ``1.0`` are not supported and bilinear downsampling will be used instead. A value of ``1.0`` disables scaling.
+
+\ **Note:** Only supported when the Metal rendering driver is in use, which limits this scaling mode to macOS and iOS.
+
+.. _class_RenderingServer_constant_VIEWPORT_SCALING_3D_MODE_METALFX_TEMPORAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>` **VIEWPORT_SCALING_3D_MODE_METALFX_TEMPORAL** = ``4``
+
+Use MetalFX temporal upscaling for the viewport's 3D buffer. The amount of scaling can be set using :ref:`Viewport.scaling_3d_scale<class_Viewport_property_scaling_3d_scale>`. Values less than ``1.0`` will be result in the viewport being upscaled using MetalFX. Values greater than ``1.0`` are not supported and bilinear downsampling will be used instead. A value of ``1.0`` will use MetalFX at native resolution as a TAA solution.
+
+\ **Note:** Only supported when the Metal rendering driver is in use, which limits this scaling mode to macOS and iOS.
+
 .. _class_RenderingServer_constant_VIEWPORT_SCALING_3D_MODE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>` **VIEWPORT_SCALING_3D_MODE_MAX** = ``3``
+:ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>` **VIEWPORT_SCALING_3D_MODE_MAX** = ``5``
 
 Represents the size of the :ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>` enum.
 
@@ -4259,6 +4245,14 @@ Use the filmic tonemapper. This avoids clipping bright highlights, with a result
 Use the Academy Color Encoding System tonemapper. ACES is slightly more expensive than other options, but it handles bright lighting in a more realistic fashion by desaturating it as it becomes brighter. ACES typically has a more contrasted output compared to :ref:`ENV_TONE_MAPPER_REINHARD<class_RenderingServer_constant_ENV_TONE_MAPPER_REINHARD>` and :ref:`ENV_TONE_MAPPER_FILMIC<class_RenderingServer_constant_ENV_TONE_MAPPER_FILMIC>`.
 
 \ **Note:** This tonemapping operator is called "ACES Fitted" in Redot 3.x.
+
+.. _class_RenderingServer_constant_ENV_TONE_MAPPER_AGX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`EnvironmentToneMapper<enum_RenderingServer_EnvironmentToneMapper>` **ENV_TONE_MAPPER_AGX** = ``4``
+
+Use the AgX tonemapper. AgX is slightly more expensive than other options, but it handles bright lighting in a more realistic fashion by desaturating it as it becomes brighter. AgX is less likely to darken parts of the scene compared to :ref:`ENV_TONE_MAPPER_ACES<class_RenderingServer_constant_ENV_TONE_MAPPER_ACES>`, and can match :ref:`ENV_TONE_MAPPER_FILMIC<class_RenderingServer_constant_ENV_TONE_MAPPER_FILMIC>` more closely.
 
 .. rst-class:: classref-item-separator
 
@@ -7870,7 +7864,7 @@ Sets the values to be used with the "adjustments" post-process effect. See :ref:
 
 .. rst-class:: classref-method
 
-|void| **environment_set_ambient_light**\ (\ env\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`, ambient\: :ref:`EnvironmentAmbientSource<enum_RenderingServer_EnvironmentAmbientSource>` = 0, energy\: :ref:`float<class_float>` = 1.0, sky_contibution\: :ref:`float<class_float>` = 0.0, reflection_source\: :ref:`EnvironmentReflectionSource<enum_RenderingServer_EnvironmentReflectionSource>` = 0\ ) :ref:`🔗<class_RenderingServer_method_environment_set_ambient_light>`
+|void| **environment_set_ambient_light**\ (\ env\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`, ambient\: :ref:`EnvironmentAmbientSource<enum_RenderingServer_EnvironmentAmbientSource>` = 0, energy\: :ref:`float<class_float>` = 1.0, sky_contribution\: :ref:`float<class_float>` = 0.0, reflection_source\: :ref:`EnvironmentReflectionSource<enum_RenderingServer_EnvironmentReflectionSource>` = 0\ ) :ref:`🔗<class_RenderingServer_method_environment_set_ambient_light>`
 
 Sets the values to be used for ambient light rendering. See :ref:`Environment<class_Environment>` for more details.
 
@@ -9812,7 +9806,7 @@ Sets a mesh's surface's material.
 
 .. rst-class:: classref-method
 
-|void| **multimesh_allocate_data**\ (\ multimesh\: :ref:`RID<class_RID>`, instances\: :ref:`int<class_int>`, transform_format\: :ref:`MultimeshTransformFormat<enum_RenderingServer_MultimeshTransformFormat>`, color_format\: :ref:`bool<class_bool>` = false, custom_data_format\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_RenderingServer_method_multimesh_allocate_data>`
+|void| **multimesh_allocate_data**\ (\ multimesh\: :ref:`RID<class_RID>`, instances\: :ref:`int<class_int>`, transform_format\: :ref:`MultimeshTransformFormat<enum_RenderingServer_MultimeshTransformFormat>`, color_format\: :ref:`bool<class_bool>` = false, custom_data_format\: :ref:`bool<class_bool>` = false, use_indirect\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_RenderingServer_method_multimesh_allocate_data>`
 
 .. container:: contribute
 
@@ -9873,6 +9867,37 @@ Returns the MultiMesh data (such as instance transforms, colors, etc.). See :ref
 :ref:`RID<class_RID>` **multimesh_get_buffer_rd_rid**\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_RenderingServer_method_multimesh_get_buffer_rd_rid>`
 
 Returns the :ref:`RenderingDevice<class_RenderingDevice>` :ref:`RID<class_RID>` handle of the :ref:`MultiMesh<class_MultiMesh>`, which can be used as any other buffer on the Rendering Device.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_RenderingServer_method_multimesh_get_command_buffer_rd_rid:
+
+.. rst-class:: classref-method
+
+:ref:`RID<class_RID>` **multimesh_get_command_buffer_rd_rid**\ (\ multimesh\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_RenderingServer_method_multimesh_get_command_buffer_rd_rid>`
+
+Returns the :ref:`RenderingDevice<class_RenderingDevice>` :ref:`RID<class_RID>` handle of the :ref:`MultiMesh<class_MultiMesh>` command buffer. This :ref:`RID<class_RID>` is only valid if ``use_indirect`` is set to ``true`` when allocating data through :ref:`multimesh_allocate_data<class_RenderingServer_method_multimesh_allocate_data>`. It can be used to directly modify the instance count via buffer.
+
+The data structure is dependent on both how many surfaces the mesh contains and whether it is indexed or not, the buffer has 5 integers in it, with the last unused if the mesh is not indexed.
+
+Each of the values in the buffer correspond to these options:
+
+.. code:: text
+
+    Indexed:
+      0 - indexCount;
+      1 - instanceCount;
+      2 - firstIndex;
+      3 - vertexOffset;
+      4 - firstInstance;
+    Non Indexed:
+      0 - vertexCount;
+      1 - instanceCount;
+      2 - firstVertex;
+      3 - firstInstance;
+      4 - unused;
 
 .. rst-class:: classref-item-separator
 
@@ -10301,6 +10326,18 @@ Sets the signed distance field ``texture`` for the 3D GPU particles collision sp
 
 ----
 
+.. _class_RenderingServer_method_particles_collision_set_height_field_mask:
+
+.. rst-class:: classref-method
+
+|void| **particles_collision_set_height_field_mask**\ (\ particles_collision\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_RenderingServer_method_particles_collision_set_height_field_mask>`
+
+Sets the heightfield ``mask`` for the 3D GPU particles heightfield collision specified by the ``particles_collision`` RID. Equivalent to :ref:`GPUParticlesCollisionHeightField3D.heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RenderingServer_method_particles_collision_set_height_field_resolution:
 
 .. rst-class:: classref-method
@@ -10400,6 +10437,18 @@ Returns ``true`` if particles are not emitting and particles are set to inactive
 |void| **particles_request_process**\ (\ particles\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RenderingServer_method_particles_request_process>`
 
 Add particle system to list of particle systems that need to be updated. Update will take place on the next frame, or on the next call to :ref:`instances_cull_aabb<class_RenderingServer_method_instances_cull_aabb>`, :ref:`instances_cull_convex<class_RenderingServer_method_instances_cull_convex>`, or :ref:`instances_cull_ray<class_RenderingServer_method_instances_cull_ray>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_RenderingServer_method_particles_request_process_time:
+
+.. rst-class:: classref-method
+
+|void| **particles_request_process_time**\ (\ particles\: :ref:`RID<class_RID>`, time\: :ref:`float<class_float>`\ ) :ref:`🔗<class_RenderingServer_method_particles_request_process_time>`
+
+Requests particles to process for extra process time during a single frame.
 
 .. rst-class:: classref-item-separator
 
@@ -11759,16 +11808,14 @@ Copies the viewport to a region of the screen specified by ``rect``. If :ref:`vi
 
 For example, you can set the root viewport to not render at all with the following code:
 
-FIXME: The method seems to be non-existent.
-
 
 .. tabs::
 
  .. code-tab:: gdscript
 
     func _ready():
-        get_viewport().set_attach_to_screen_rect(Rect2())
-        $Viewport.set_attach_to_screen_rect(Rect2(0, 0, 600, 600))
+        RenderingServer.viewport_attach_to_screen(get_viewport().get_viewport_rid(), Rect2())
+        RenderingServer.viewport_attach_to_screen($Viewport.get_viewport_rid(), Rect2(0, 0, 600, 600))
 
 
 
@@ -12434,7 +12481,7 @@ Creates a new 3D visibility notifier object and adds it to the RenderingServer. 
 
 Once finished with your RID, you will want to free the RID using the RenderingServer's :ref:`free_rid<class_RenderingServer_method_free_rid>` method.
 
-To place in a scene, attach this mesh to an instance using :ref:`instance_set_base<class_RenderingServer_method_instance_set_base>` using the returned RID.
+To place in a scene, attach this notifier to an instance using :ref:`instance_set_base<class_RenderingServer_method_instance_set_base>` using the returned RID.
 
 \ **Note:** The equivalent node is :ref:`VisibleOnScreenNotifier3D<class_VisibleOnScreenNotifier3D>`.
 

@@ -97,6 +97,8 @@ Properties
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`docks/scene_tree/center_node_on_reparent<class_EditorSettings_property_docks/scene_tree/center_node_on_reparent>`                                                                                           |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`docks/scene_tree/hide_filtered_out_parents<class_EditorSettings_property_docks/scene_tree/hide_filtered_out_parents>`                                                                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`docks/scene_tree/start_create_dialog_fully_expanded<class_EditorSettings_property_docks/scene_tree/start_create_dialog_fully_expanded>`                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/2d/bone_color1<class_EditorSettings_property_editors/2d/bone_color1>`                                                                                                                               |
@@ -213,6 +215,8 @@ Properties
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/fog_volume<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/fog_volume>`                                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/gridmap_grid<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/gridmap_grid>`                                                                                     |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/instantiated<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/instantiated>`                                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/joint<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/joint>`                                                                                                   |
@@ -240,6 +244,12 @@ Properties
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/selected_bone<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/selected_bone>`                                                                                   |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/skeleton<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/skeleton>`                                                                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/spring_bone_collision<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_collision>`                                                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/spring_bone_inside_collision<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_inside_collision>`                                                     |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/spring_bone_joint<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_joint>`                                                                           |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/stream_player_3d<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/stream_player_3d>`                                                                             |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -272,8 +282,6 @@ Properties
    | :ref:`Color<class_Color>`                         | :ref:`editors/bone_mapper/handle_colors/set<class_EditorSettings_property_editors/bone_mapper/handle_colors/set>`                                                                                                 |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/bone_mapper/handle_colors/unset<class_EditorSettings_property_editors/bone_mapper/handle_colors/unset>`                                                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`editors/grid_map/editor_side<class_EditorSettings_property_editors/grid_map/editor_side>`                                                                                                                   |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`editors/grid_map/palette_min_width<class_EditorSettings_property_editors/grid_map/palette_min_width>`                                                                                                       |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -617,7 +625,7 @@ Properties
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`run/window_placement/android_window<class_EditorSettings_property_run/window_placement/android_window>`                                                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`run/window_placement/play_window_pip_mode<class_EditorSettings_property_run/window_placement/play_window_pip_mode>`                                                                                         |
+   | :ref:`int<class_int>`                             | :ref:`run/window_placement/game_embed_mode<class_EditorSettings_property_run/window_placement/game_embed_mode>`                                                                                                   |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`run/window_placement/rect<class_EditorSettings_property_run/window_placement/rect>`                                                                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -664,6 +672,8 @@ Properties
    | :ref:`bool<class_bool>`                           | :ref:`text_editor/appearance/whitespace/draw_tabs<class_EditorSettings_property_text_editor/appearance/whitespace/draw_tabs>`                                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`text_editor/appearance/whitespace/line_spacing<class_EditorSettings_property_text_editor/appearance/whitespace/line_spacing>`                                                                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`text_editor/behavior/documentation/enable_tooltips<class_EditorSettings_property_text_editor/behavior/documentation/enable_tooltips>`                                                                       |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`text_editor/behavior/files/auto_reload_and_parse_scripts_on_save<class_EditorSettings_property_text_editor/behavior/files/auto_reload_and_parse_scripts_on_save>`                                           |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1170,6 +1180,18 @@ If ``true``, the scene tree dock will automatically unfold nodes when a node tha
 :ref:`bool<class_bool>` **docks/scene_tree/center_node_on_reparent** :ref:`🔗<class_EditorSettings_property_docks/scene_tree/center_node_on_reparent>`
 
 If ``true``, new node created when reparenting node(s) will be positioned at the average position of the selected node(s).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_docks/scene_tree/hide_filtered_out_parents:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **docks/scene_tree/hide_filtered_out_parents** :ref:`🔗<class_EditorSettings_property_docks/scene_tree/hide_filtered_out_parents>`
+
+If ``true``, the scene tree dock will only show nodes that match the filter, without showing parents that don't. This settings can also be changed in the Scene dock's top menu.
 
 .. rst-class:: classref-item-separator
 
@@ -1905,6 +1927,18 @@ The 3D editor gizmo color for :ref:`FogVolume<class_FogVolume>` nodes.
 
 ----
 
+.. _class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/gridmap_grid:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/gridmap_grid** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/gridmap_grid>`
+
+The 3D editor gizmo color for the :ref:`GridMap<class_GridMap>` grid.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/instantiated:
 
 .. rst-class:: classref-property
@@ -2068,6 +2102,42 @@ The 3D editor gizmo color used for the currently selected :ref:`Skeleton3D<class
 :ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/skeleton** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/skeleton>`
 
 The 3D editor gizmo color used for :ref:`Skeleton3D<class_Skeleton3D>` nodes.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_collision:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/spring_bone_collision** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_collision>`
+
+The 3D editor gizmo color used for :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` nodes.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_inside_collision:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/spring_bone_inside_collision** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_inside_collision>`
+
+The 3D editor gizmo color used for :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` nodes with inside mode.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_joint:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/spring_bone_joint** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/spring_bone_joint>`
+
+The 3D editor gizmo color used for :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>` nodes.
 
 .. rst-class:: classref-item-separator
 
@@ -2270,18 +2340,6 @@ The modulate color to use for "past" frames displayed in the animation editor's 
 .. container:: contribute
 
 	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_EditorSettings_property_editors/grid_map/editor_side:
-
-.. rst-class:: classref-property
-
-:ref:`int<class_int>` **editors/grid_map/editor_side** :ref:`🔗<class_EditorSettings_property_editors/grid_map/editor_side>`
-
-Specifies the side of 3D editor's viewport where GridMap's mesh palette will appear.
 
 .. rst-class:: classref-item-separator
 
@@ -2969,9 +3027,36 @@ Port used for file server when exporting project with remote file system.
 
 :ref:`String<class_String>` **filesystem/import/blender/blender_path** :ref:`🔗<class_EditorSettings_property_filesystem/import/blender/blender_path>`
 
-The path to the directory containing the Blender executable used for converting the Blender 3D scene files ``.blend`` to glTF 2.0 format during import. Blender 3.0 or later is required.
+The path to the Blender executable used for converting the Blender 3D scene files ``.blend`` to glTF 2.0 format during import. Blender 3.0 or later is required.
 
 To enable this feature for your specific project, use :ref:`ProjectSettings.filesystem/import/blender/enabled<class_ProjectSettings_property_filesystem/import/blender/enabled>`.
+
+If this setting is empty, Blender's default paths will be detected and used automatically if present in this order:
+
+\ **Windows:**\ 
+
+::
+
+    - C:\Program Files\Blender Foundation\blender.exe
+    - C:\Program Files (x86)\Blender Foundation\blender.exe
+
+\ **macOS:**\ 
+
+::
+
+    - /opt/homebrew/bin/blender
+    - /opt/local/bin/blender
+    - /usr/local/bin/blender
+    - /usr/local/opt/blender
+    - /Applications/Blender.app/Contents/MacOS/Blender
+
+\ **Linux/\*BSD:**\ 
+
+::
+
+    - /usr/bin/blender
+    - /usr/local/bin/blender
+    - /opt/blender/bin/blender
 
 .. rst-class:: classref-item-separator
 
@@ -3603,6 +3688,8 @@ This is equivalent to :ref:`ProjectSettings.display/window/subwindows/embed_subw
 
 \ **Note:** To query whether the editor can use multiple windows in an editor plugin, use :ref:`EditorInterface.is_multi_window_enabled<class_EditorInterface_method_is_multi_window_enabled>` instead of querying the value of this editor setting.
 
+\ **Note:** If ``true``, game embedding is disabled.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -3917,7 +4004,7 @@ If ``true``, display OpenType features marked as ``hidden`` by the font file in 
 
 :ref:`bool<class_bool>` **interface/multi_window/enable** :ref:`🔗<class_EditorSettings_property_interface/multi_window/enable>`
 
-If ``true``, multiple window support in editor is enabled. The following panels can become dedicated windows (i.e. made floating): Docks, Script editor, and Shader editor.
+If ``true``, multiple window support in editor is enabled. The following panels can become dedicated windows (i.e. made floating): Docks, Script editor, Shader editor, and Game Workspace.
 
 \ **Note:** When :ref:`interface/editor/single_window_mode<class_EditorSettings_property_interface/editor/single_window_mode>` is ``true``, the multi window support is always disabled.
 
@@ -4511,29 +4598,19 @@ Specifies how the Play window is launched relative to the Android editor.
 
 - **Side-by-side with Editor** will launch the Play window side-by-side with the Editor window.
 
-- **Launch in PiP mode** will launch the Play window directly in picture-in-picture (PiP) mode if PiP mode is supported and enabled. When maximized, the Play window will occupy the same window as the Editor.
-
 \ **Note:** Only available in the Android editor.
 
 .. rst-class:: classref-item-separator
 
 ----
 
-.. _class_EditorSettings_property_run/window_placement/play_window_pip_mode:
+.. _class_EditorSettings_property_run/window_placement/game_embed_mode:
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **run/window_placement/play_window_pip_mode** :ref:`🔗<class_EditorSettings_property_run/window_placement/play_window_pip_mode>`
+:ref:`int<class_int>` **run/window_placement/game_embed_mode** :ref:`🔗<class_EditorSettings_property_run/window_placement/game_embed_mode>`
 
-Specifies the picture-in-picture (PiP) mode for the Play window.
-
-- **Disabled:** PiP is disabled for the Play window.
-
-- **Enabled:** If the device supports it, PiP is always enabled for the Play window. The Play window will contain a button to enter PiP mode.
-
-- **Enabled when Play window is same as Editor** (default for Android editor): If the device supports it, PiP is enabled when the Play window is the same as the Editor. The Play window will contain a button to enter PiP mode.
-
-\ **Note:** Only available in the Android editor.
+Overrides game embedding setting for all newly opened projects. If enabled, game embedding settings are not saved.
 
 .. rst-class:: classref-item-separator
 
@@ -4546,6 +4623,8 @@ Specifies the picture-in-picture (PiP) mode for the Play window.
 :ref:`int<class_int>` **run/window_placement/rect** :ref:`🔗<class_EditorSettings_property_run/window_placement/rect>`
 
 The window mode to use to display the project when starting the project from the editor.
+
+\ **Note:** Game embedding is not available for "Force Maximized" or "Force Fullscreen."
 
 .. rst-class:: classref-item-separator
 
@@ -4810,6 +4889,18 @@ If ``true``, draws tab characters as chevrons.
 :ref:`int<class_int>` **text_editor/appearance/whitespace/line_spacing** :ref:`🔗<class_EditorSettings_property_text_editor/appearance/whitespace/line_spacing>`
 
 The space to add between lines (in pixels). Greater line spacing can help improve readability at the cost of displaying fewer lines on screen.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_text_editor/behavior/documentation/enable_tooltips:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **text_editor/behavior/documentation/enable_tooltips** :ref:`🔗<class_EditorSettings_property_text_editor/behavior/documentation/enable_tooltips>`
+
+If ``true``, documentation tooltips will appear when hovering over a symbol.
 
 .. rst-class:: classref-item-separator
 

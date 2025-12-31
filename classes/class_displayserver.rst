@@ -272,6 +272,8 @@ Methods
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`set_system_theme_change_callback<class_DisplayServer_method_set_system_theme_change_callback>`\ (\ callable\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                                                                                                                                                                                                                                                                              |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`show_emoji_and_symbol_picker<class_DisplayServer_method_show_emoji_and_symbol_picker>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+   +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Rect2<class_Rect2>`                                               | :ref:`status_indicator_get_rect<class_DisplayServer_method_status_indicator_get_rect>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                    |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`status_indicator_set_callback<class_DisplayServer_method_status_indicator_set_callback>`\ (\ id\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -407,6 +409,8 @@ Methods
    | |void|                                                                  | :ref:`window_set_window_event_callback<class_DisplayServer_method_window_set_window_event_callback>`\ (\ callback\: :ref:`Callable<class_Callable>`, window_id\: :ref:`int<class_int>` = 0\ )                                                                                                                                                                                                                                                                                                                                                                       |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`window_start_drag<class_DisplayServer_method_window_start_drag>`\ (\ window_id\: :ref:`int<class_int>` = 0\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+   +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`window_start_resize<class_DisplayServer_method_window_start_resize>`\ (\ edge\: :ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>`, window_id\: :ref:`int<class_int>` = 0\ )                                                                                                                                                                                                                                                                                                                                                                        |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -640,7 +644,7 @@ The display server supports all features of :ref:`FEATURE_NATIVE_DIALOG_FILE<cla
 
 :ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_WINDOW_DRAG** = ``27``
 
-The display server supports initiating window drag operation on demand. See :ref:`window_start_drag<class_DisplayServer_method_window_start_drag>`.
+The display server supports initiating window drag and resize operations on demand. See :ref:`window_start_drag<class_DisplayServer_method_window_start_drag>` and :ref:`window_start_resize<class_DisplayServer_method_window_start_resize>`.
 
 .. _class_DisplayServer_constant_FEATURE_SCREEN_EXCLUDE_FROM_CAPTURE:
 
@@ -657,6 +661,22 @@ Display server supports :ref:`WINDOW_FLAG_EXCLUDE_FROM_CAPTURE<class_DisplayServ
 :ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_WINDOW_EMBEDDING** = ``29``
 
 Display server supports embedding a window from another process. **Windows, Linux (X11)**
+
+.. _class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_FILE_MIME:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_NATIVE_DIALOG_FILE_MIME** = ``30``
+
+Native file selection dialog supports MIME types as filters.
+
+.. _class_DisplayServer_constant_FEATURE_EMOJI_AND_SYMBOL_PICKER:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_EMOJI_AND_SYMBOL_PICKER** = ``31``
+
+Display server supports system emoji and symbol picker. **Windows, macOS**
 
 .. rst-class:: classref-item-separator
 
@@ -709,6 +729,14 @@ Confines the mouse cursor to the game window, and make it visible.
 :ref:`MouseMode<enum_DisplayServer_MouseMode>` **MOUSE_MODE_CONFINED_HIDDEN** = ``4``
 
 Confines the mouse cursor to the game window, and make it hidden.
+
+.. _class_DisplayServer_constant_MOUSE_MODE_MAX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MouseMode<enum_DisplayServer_MouseMode>` **MOUSE_MODE_MAX** = ``5``
+
+Max value of the :ref:`MouseMode<enum_DisplayServer_MouseMode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1126,6 +1154,8 @@ Full screen window covers the entire display area of a screen and has no border 
 
 \ **On Linux (X11):** Exclusive full screen mode bypasses compositor.
 
+\ **On Linux (Wayland):** Equivalent to :ref:`WINDOW_MODE_FULLSCREEN<class_DisplayServer_constant_WINDOW_MODE_FULLSCREEN>`.
+
 \ **Note:** Regardless of the platform, enabling full screen will change the window size to match the monitor's size. Therefore, make sure your project supports :doc:`multiple resolutions <../tutorials/rendering/multiple_resolutions>` when enabling full screen mode.
 
 .. rst-class:: classref-item-separator
@@ -1321,6 +1351,88 @@ Sent when the window is moved to the display with different DPI, or display DPI 
 Sent when the window title bar decoration is changed (e.g. :ref:`WINDOW_FLAG_EXTEND_TO_TITLE<class_DisplayServer_constant_WINDOW_FLAG_EXTEND_TO_TITLE>` is set or window entered/exited full screen mode).
 
 \ **Note:** This flag is implemented only on macOS.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_DisplayServer_WindowResizeEdge:
+
+.. rst-class:: classref-enumeration
+
+enum **WindowResizeEdge**: :ref:`🔗<enum_DisplayServer_WindowResizeEdge>`
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_TOP_LEFT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_TOP_LEFT** = ``0``
+
+Top-left edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_TOP:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_TOP** = ``1``
+
+Top edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_TOP_RIGHT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_TOP_RIGHT** = ``2``
+
+Top-right edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_LEFT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_LEFT** = ``3``
+
+Left edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_RIGHT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_RIGHT** = ``4``
+
+Right edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_BOTTOM_LEFT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_BOTTOM_LEFT** = ``5``
+
+Bottom-left edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_BOTTOM:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_BOTTOM** = ``6``
+
+Bottom edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_BOTTOM_RIGHT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_BOTTOM_RIGHT** = ``7``
+
+Bottom-right edge of a window.
+
+.. _class_DisplayServer_constant_WINDOW_EDGE_MAX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` **WINDOW_EDGE_MAX** = ``8``
+
+Represents the size of the :ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -1780,7 +1892,7 @@ Shows a text input dialog which uses the operating system's native look-and-feel
 
 Shows a text dialog which uses the operating system's native look-and-feel. ``callback`` should accept a single :ref:`int<class_int>` parameter which corresponds to the index of the pressed button.
 
-\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG>` feature. Supported platforms include macOS and Windows.
+\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG>` feature. Supported platforms include macOS, Windows, and Android.
 
 .. rst-class:: classref-item-separator
 
@@ -1808,7 +1920,7 @@ Allows the ``process_id`` PID to steal focus from this window. In other words, t
 
 Displays OS native dialog for selecting files or directories in the file system.
 
-Each filter string in the ``filters`` array should be formatted like this: ``*.txt,*.doc;Text Files``. The description text of the filter is optional and can be omitted. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
+Each filter string in the ``filters`` array should be formatted like this: ``*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg``. The description text of the filter is optional and can be omitted. It is recommended to set both file extension and MIME type. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
 
 Callbacks have the following arguments: ``status: bool, selected_paths: PackedStringArray, selected_filter_index: int``. **On Android,** callback argument ``selected_filter_index`` is always zero.
 
@@ -1816,7 +1928,7 @@ Callbacks have the following arguments: ``status: bool, selected_paths: PackedSt
 
 \ **Note:** ``current_directory`` might be ignored.
 
-\ **Note:** On Android, the filter strings in the ``filters`` array should be specified using MIME types, for example:``image/png, image/jpeg"``. Additionally, the ``mode`` :ref:`FILE_DIALOG_MODE_OPEN_ANY<class_DisplayServer_constant_FILE_DIALOG_MODE_OPEN_ANY>` is not supported on Android.
+\ **Note:** Embedded file dialog and Windows file dialog support only file extensions, while Android, Linux, and macOS file dialogs also support MIME types.
 
 \ **Note:** On Android and Linux, ``show_hidden`` is ignored.
 
@@ -1836,7 +1948,7 @@ Callbacks have the following arguments: ``status: bool, selected_paths: PackedSt
 
 Displays OS native dialog for selecting files or directories in the file system with additional user selectable options.
 
-Each filter string in the ``filters`` array should be formatted like this: ``*.txt,*.doc;Text Files``. The description text of the filter is optional and can be omitted. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
+Each filter string in the ``filters`` array should be formatted like this: ``*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg``. The description text of the filter is optional and can be omitted. It is recommended to set both file extension and MIME type. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
 
 \ ``options`` is array of :ref:`Dictionary<class_Dictionary>`\ s with the following keys:
 
@@ -1851,6 +1963,8 @@ Callbacks have the following arguments: ``status: bool, selected_paths: PackedSt
 \ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG_FILE_EXTRA<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_FILE_EXTRA>` feature. Supported platforms include Linux (X11/Wayland), Windows, and macOS.
 
 \ **Note:** ``current_directory`` might be ignored.
+
+\ **Note:** Embedded file dialog and Windows file dialog support only file extensions, while Android, Linux, and macOS file dialogs also support MIME types.
 
 \ **Note:** On Linux (X11), ``show_hidden`` is ignored.
 
@@ -1925,6 +2039,8 @@ Returns an :ref:`Array<class_Array>` of :ref:`Rect2<class_Rect2>`, each of which
 :ref:`Rect2i<class_Rect2i>` **get_display_safe_area**\ (\ ) |const| :ref:`🔗<class_DisplayServer_method_get_display_safe_area>`
 
 Returns the unobscured area of the display where interactive controls should be rendered. See also :ref:`get_display_cutouts<class_DisplayServer_method_get_display_cutouts>`.
+
+\ **Note:** Currently only implemented on Android and iOS. On other platforms, ``screen_get_usable_rect(SCREEN_OF_MAIN_WINDOW)`` will be returned as a fallback. See also :ref:`screen_get_usable_rect<class_DisplayServer_method_screen_get_usable_rect>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3577,6 +3693,20 @@ Sets the ``callable`` that should be called when system theme settings are chang
 
 ----
 
+.. _class_DisplayServer_method_show_emoji_and_symbol_picker:
+
+.. rst-class:: classref-method
+
+|void| **show_emoji_and_symbol_picker**\ (\ ) |const| :ref:`🔗<class_DisplayServer_method_show_emoji_and_symbol_picker>`
+
+Opens system emoji and symbol picker.
+
+\ **Note:** This method is implemented on macOS and Windows.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_DisplayServer_method_status_indicator_get_rect:
 
 .. rst-class:: classref-method
@@ -4440,7 +4570,7 @@ Passing an empty array will disable passthrough support (all mouse events will b
     DisplayServer.WindowSetMousePassthrough(GetNode<Polygon2D>("Polygon2D").Polygon);
     
     // Reset region to default.
-    DisplayServer.WindowSetMousePassthrough(new Vector2[] {});
+    DisplayServer.WindowSetMousePassthrough([]);
 
 
 
@@ -4603,9 +4733,23 @@ Sets the ``callback`` that will be called when an event occurs in the window spe
 
 |void| **window_start_drag**\ (\ window_id\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_DisplayServer_method_window_start_drag>`
 
-Starts a drag operation on the window with the given ``window_id``, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's title bar. Using this method allows the window to participate in space switching, tiling, and other system features.
+Starts an interactive drag operation on the window with the given ``window_id``, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's title bar. Using this method allows the window to participate in space switching, tiling, and other system features.
 
-\ **Note:** This method is implemented on Linux(X11/Wayland), macOS, and Windows.
+\ **Note:** This method is implemented on Linux (X11/Wayland), macOS, and Windows.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_DisplayServer_method_window_start_resize:
+
+.. rst-class:: classref-method
+
+|void| **window_start_resize**\ (\ edge\: :ref:`WindowResizeEdge<enum_DisplayServer_WindowResizeEdge>`, window_id\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_DisplayServer_method_window_start_resize>`
+
+Starts an interactive resize operation on the window with the given ``window_id``, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's edge.
+
+\ **Note:** This method is implemented on Linux (X11/Wayland), macOS, and Windows.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
