@@ -21,7 +21,7 @@ Description
 
 The **Timer** node is a countdown timer and is the simplest way to handle time-based logic in the engine. When a timer reaches the end of its :ref:`wait_time<class_Timer_property_wait_time>`, it will emit the :ref:`timeout<class_Timer_signal_timeout>` signal.
 
-After a timer enters the tree, it can be manually started with :ref:`start<class_Timer_method_start>`. A timer node is also started automatically if :ref:`autostart<class_Timer_property_autostart>` is ``true``.
+After a timer enters the scene tree, it can be manually started with :ref:`start()<class_Timer_method_start>`. A timer node is also started automatically if :ref:`autostart<class_Timer_property_autostart>` is ``true``.
 
 Without requiring much code, a timer node can be added and configured in the editor. The :ref:`timeout<class_Timer_signal_timeout>` signal it emits can also be connected through the Node dock in the editor:
 
@@ -30,9 +30,9 @@ Without requiring much code, a timer node can be added and configured in the edi
     func _on_timer_timeout():
         print("Time to attack!")
 
-\ **Note:** To create a one-shot timer without instantiating a node, use :ref:`SceneTree.create_timer<class_SceneTree_method_create_timer>`.
+\ **Note:** To create a one-shot timer without instantiating a node, use :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`.
 
-\ **Note:** Timers are affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>`. The higher the time scale, the sooner timers will end. How often a timer processes may depend on the framerate or :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`.
+\ **Note:** Timers in Time mode are affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>`. The higher the time scale, the sooner timers will end. How often a timer processes may depend on the framerate or :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -59,6 +59,8 @@ Properties
    | :ref:`bool<class_bool>`                                      | :ref:`paused<class_Timer_property_paused>`                       |           |
    +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
    | :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>` | :ref:`process_callback<class_Timer_property_process_callback>`   | ``1``     |
+   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`TimerProcessType<enum_Timer_TimerProcessType>`         | :ref:`process_type<class_Timer_property_process_type>`           | ``0``     |
    +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
    | :ref:`float<class_float>`                                    | :ref:`time_left<class_Timer_property_time_left>`                 |           |
    +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
@@ -129,6 +131,32 @@ Update the timer every physics process frame (see :ref:`Node.NOTIFICATION_INTERN
 
 Update the timer every process (rendered) frame (see :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_Timer_TimerProcessType:
+
+.. rst-class:: classref-enumeration
+
+enum **TimerProcessType**: :ref:`🔗<enum_Timer_TimerProcessType>`
+
+.. _class_Timer_constant_TIMER_PROCESS_TYPE_TIME:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`TimerProcessType<enum_Timer_TimerProcessType>` **TIMER_PROCESS_TYPE_TIME** = ``0``
+
+Timer works with seconds. In this mode the timer is affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>`.
+
+.. _class_Timer_constant_TIMER_PROCESS_TYPE_FRAMES:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`TimerProcessType<enum_Timer_TimerProcessType>` **TIMER_PROCESS_TYPE_FRAMES** = ``1``
+
+Timer works with frames. Speed depends on the framerate. Accepts non-fractional values only.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -168,7 +196,7 @@ If ``true``, the timer will start immediately when it enters the scene tree.
 .. rst-class:: classref-property-setget
 
 - |void| **set_ignore_time_scale**\ (\ value\: :ref:`bool<class_bool>`\ )
-- :ref:`bool<class_bool>` **get_ignore_time_scale**\ (\ )
+- :ref:`bool<class_bool>` **is_ignoring_time_scale**\ (\ )
 
 If ``true``, the timer will ignore :ref:`Engine.time_scale<class_Engine_property_time_scale>` and update with the real, elapsed time.
 
@@ -204,7 +232,7 @@ If ``true``, the timer will stop after reaching the end. Otherwise, as by defaul
 - |void| **set_paused**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_paused**\ (\ )
 
-If ``true``, the timer is paused. A paused timer does not process until this property is set back to ``false``, even when :ref:`start<class_Timer_method_start>` is called.
+If ``true``, the timer is paused. A paused timer does not process until this property is set back to ``false``, even when :ref:`start()<class_Timer_method_start>` is called. See also :ref:`stop()<class_Timer_method_stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +249,24 @@ If ``true``, the timer is paused. A paused timer does not process until this pro
 - |void| **set_timer_process_callback**\ (\ value\: :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>`\ )
 - :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>` **get_timer_process_callback**\ (\ )
 
-Specifies when the timer is updated during the main loop (see :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>`).
+Specifies when the timer is updated during the main loop.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Timer_property_process_type:
+
+.. rst-class:: classref-property
+
+:ref:`TimerProcessType<enum_Timer_TimerProcessType>` **process_type** = ``0`` :ref:`🔗<class_Timer_property_process_type>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_timer_process_type**\ (\ value\: :ref:`TimerProcessType<enum_Timer_TimerProcessType>`\ )
+- :ref:`TimerProcessType<enum_Timer_TimerProcessType>` **get_timer_process_type**\ (\ )
+
+Specifies which units the timer uses to count. (see :ref:`TimerProcessType<enum_Timer_TimerProcessType>`).
 
 .. rst-class:: classref-item-separator
 
@@ -256,9 +301,11 @@ The timer's remaining time in seconds. This is always ``0`` if the timer is stop
 - |void| **set_wait_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_wait_time**\ (\ )
 
-The time required for the timer to end, in seconds. This property can also be set every time :ref:`start<class_Timer_method_start>` is called.
+The time required for the timer to end, in seconds or frames. This property can also be set every time :ref:`start()<class_Timer_method_start>` is called.
 
-\ **Note:** Timers can only process once per physics or process frame (depending on the :ref:`process_callback<class_Timer_property_process_callback>`). An unstable framerate may cause the timer to end inconsistently, which is especially noticeable if the wait time is lower than roughly ``0.05`` seconds. For very short timers, it is recommended to write your own code instead of using a **Timer** node. Timers are also affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>`.
+Time mode uses floats while Frame mode only accepts and returns non-fractional numbers.
+
+\ **Note:** Timers can only process once per physics or process frame (depending on the :ref:`process_callback<class_Timer_property_process_callback>`). In Time mode, an unstable framerate may cause the timer to end inconsistently, which is especially noticeable if the wait time is lower than roughly ``0.05`` seconds. For very short timers, it is recommended to write your own code instead of using a **Timer** node. Timers are also affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>`.
 
 .. rst-class:: classref-section-separator
 
@@ -287,7 +334,7 @@ Returns ``true`` if the timer is stopped or has not started.
 
 |void| **start**\ (\ time_sec\: :ref:`float<class_float>` = -1\ ) :ref:`🔗<class_Timer_method_start>`
 
-Starts the timer, or resets the timer if it was started already. Fails if the timer is not inside the tree. If ``time_sec`` is greater than ``0``, this value is used for the :ref:`wait_time<class_Timer_property_wait_time>`.
+Starts the timer, or resets the timer if it was started already. Fails if the timer is not inside the scene tree. If ``time_sec`` is greater than ``0``, this value is used for the :ref:`wait_time<class_Timer_property_wait_time>`.
 
 \ **Note:** This method does not resume a paused timer. See :ref:`paused<class_Timer_property_paused>`.
 
@@ -301,9 +348,12 @@ Starts the timer, or resets the timer if it was started already. Fails if the ti
 
 |void| **stop**\ (\ ) :ref:`🔗<class_Timer_method_stop>`
 
-Stops the timer.
+Stops the timer. See also :ref:`paused<class_Timer_property_paused>`. Unlike :ref:`start()<class_Timer_method_start>`, this can safely be called if the timer is not inside the scene tree.
+
+\ **Note:** Calling :ref:`stop()<class_Timer_method_stop>` does not emit the :ref:`timeout<class_Timer_signal_timeout>` signal, as the timer is not considered to have timed out. If this is desired, use ``$Timer.timeout.emit()`` after calling :ref:`stop()<class_Timer_method_stop>` to manually emit the signal.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

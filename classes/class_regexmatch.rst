@@ -19,7 +19,7 @@ Contains the results of a :ref:`RegEx<class_RegEx>` search.
 Description
 -----------
 
-Contains the results of a single :ref:`RegEx<class_RegEx>` match returned by :ref:`RegEx.search<class_RegEx_method_search>` and :ref:`RegEx.search_all<class_RegEx_method_search_all>`. It can be used to find the position and range of the match and its capturing groups, and it can extract its substring for you.
+Contains the results of a single :ref:`RegEx<class_RegEx>` match returned by :ref:`RegEx.search()<class_RegEx_method_search>` and :ref:`RegEx.search_all()<class_RegEx_method_search_all>`. It can be used to find the position and range of the match and its capturing groups, and it can extract its substring for you.
 
 .. rst-class:: classref-reftable-group
 
@@ -170,6 +170,7 @@ Returns the substring of the match from the source string. Capturing groups can 
 Returns an empty string if the group did not match or doesn't exist.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

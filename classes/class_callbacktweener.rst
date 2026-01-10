@@ -19,11 +19,11 @@ Calls the specified method after optional delay.
 Description
 -----------
 
-**CallbackTweener** is used to call a method in a tweening sequence. See :ref:`Tween.tween_callback<class_Tween_method_tween_callback>` for more usage information.
+**CallbackTweener** is used to call a method in a tweening sequence. See :ref:`Tween.tween_callback()<class_Tween_method_tween_callback>` for more usage information.
 
 The tweener will finish automatically if the callback's target object is freed.
 
-\ **Note:** :ref:`Tween.tween_callback<class_Tween_method_tween_callback>` is the only correct way to create **CallbackTweener**. Any **CallbackTweener** created manually will not function correctly.
+\ **Note:** :ref:`Tween.tween_callback()<class_Tween_method_tween_callback>` is the only correct way to create **CallbackTweener**. Any **CallbackTweener** created manually will not function correctly.
 
 .. rst-class:: classref-reftable-group
 
@@ -54,7 +54,7 @@ Method Descriptions
 
 Makes the callback call delayed by given time in seconds.
 
-\ **Example:** Call :ref:`Node.queue_free<class_Node_method_queue_free>` after 2 seconds:
+\ **Example:** Call :ref:`Node.queue_free()<class_Node_method_queue_free>` after 2 seconds:
 
 ::
 
@@ -62,6 +62,7 @@ Makes the callback call delayed by given time in seconds.
     tween.tween_callback(queue_free).set_delay(2)
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
