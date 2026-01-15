@@ -35,13 +35,6 @@ The JavaClassWrapper singleton provides a way for the Redot application to send 
 
 \ **Warning:** When calling Java methods, be sure to check :ref:`get_exception()<class_JavaClassWrapper_method_get_exception>` to check if the method threw an exception.
 
-.. rst-class:: classref-introduction-group
-
-Tutorials
----------
-
-- :doc:`Integrating with Android APIs <../tutorials/platform/android/javaclasswrapper_and_androidruntimeplugin>`
-
 .. rst-class:: classref-reftable-group
 
 Methods
