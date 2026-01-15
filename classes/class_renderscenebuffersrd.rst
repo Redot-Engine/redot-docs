@@ -210,7 +210,7 @@ If ``msaa`` is ``true`` and MSAA is enabled, this returns the MSAA variant of th
 
 :ref:`float<class_float>` **get_fsr_sharpness**\ (\ ) |const| :ref:`🔗<class_RenderSceneBuffersRD_method_get_fsr_sharpness>`
 
-Returns the FSR sharpness value used while rendering the 3D content (if :ref:`get_scaling_3d_mode<class_RenderSceneBuffersRD_method_get_scaling_3d_mode>` is an FSR mode).
+Returns the FSR sharpness value used while rendering the 3D content (if :ref:`get_scaling_3d_mode()<class_RenderSceneBuffersRD_method_get_scaling_3d_mode>` is an FSR mode).
 
 .. rst-class:: classref-item-separator
 
@@ -431,6 +431,7 @@ Returns the view count for the associated viewport.
 Returns ``true`` if a cached texture exists for this name.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

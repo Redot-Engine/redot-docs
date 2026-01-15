@@ -21,7 +21,7 @@ An array specifically designed to hold bytes. Packs data tightly, so it saves me
 
 \ **PackedByteArray** also provides methods to encode/decode various types to/from bytes. The way values are encoded is an implementation detail and shouldn't be relied upon when interacting with external apps.
 
-\ **Note:** Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate<class_PackedByteArray_method_duplicate>`. This is *not* the case for built-in properties and methods. The returned packed array of these are a copies, and changing it will *not* affect the original value. To update a built-in property you need to modify the returned array, and then assign it to the property again.
+\ **Note:** Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate()<class_PackedByteArray_method_duplicate>`. This is *not* the case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it will *not* affect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.
 
 .. note::
 
@@ -57,6 +57,12 @@ Methods
    | |void|                                              | :ref:`append_array<class_PackedByteArray_method_append_array>`\ (\ array\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                   |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`bsearch<class_PackedByteArray_method_bsearch>`\ (\ value\: :ref:`int<class_int>`, before\: :ref:`bool<class_bool>` = true\ )                                                            |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`bswap16<class_PackedByteArray_method_bswap16>`\ (\ offset\: :ref:`int<class_int>` = 0, count\: :ref:`int<class_int>` = -1\ )                                                            |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`bswap32<class_PackedByteArray_method_bswap32>`\ (\ offset\: :ref:`int<class_int>` = 0, count\: :ref:`int<class_int>` = -1\ )                                                            |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`bswap64<class_PackedByteArray_method_bswap64>`\ (\ offset\: :ref:`int<class_int>` = 0, count\: :ref:`int<class_int>` = -1\ )                                                            |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`clear<class_PackedByteArray_method_clear>`\ (\ )                                                                                                                                        |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -120,6 +126,8 @@ Methods
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`encode_var<class_PackedByteArray_method_encode_var>`\ (\ byte_offset\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`, allow_objects\: :ref:`bool<class_bool>` = false\ ) |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`erase<class_PackedByteArray_method_erase>`\ (\ value\: :ref:`int<class_int>`\ )                                                                                                         |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`fill<class_PackedByteArray_method_fill>`\ (\ value\: :ref:`int<class_int>`\ )                                                                                                           |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`find<class_PackedByteArray_method_find>`\ (\ value\: :ref:`int<class_int>`, from\: :ref:`int<class_int>` = 0\ ) |const|                                                                 |
@@ -127,6 +135,8 @@ Methods
    | :ref:`int<class_int>`                               | :ref:`get<class_PackedByteArray_method_get>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                     |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                         | :ref:`get_string_from_ascii<class_PackedByteArray_method_get_string_from_ascii>`\ (\ ) |const|                                                                                                |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                         | :ref:`get_string_from_multibyte_char<class_PackedByteArray_method_get_string_from_multibyte_char>`\ (\ encoding\: :ref:`String<class_String>` = ""\ ) |const|                                 |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                         | :ref:`get_string_from_utf8<class_PackedByteArray_method_get_string_from_utf8>`\ (\ ) |const|                                                                                                  |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -164,6 +174,8 @@ Methods
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`sort<class_PackedByteArray_method_sort>`\ (\ )                                                                                                                                          |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedColorArray<class_PackedColorArray>`     | :ref:`to_color_array<class_PackedByteArray_method_to_color_array>`\ (\ ) |const|                                                                                                              |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`to_float32_array<class_PackedByteArray_method_to_float32_array>`\ (\ ) |const|                                                                                                          |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedFloat64Array<class_PackedFloat64Array>` | :ref:`to_float64_array<class_PackedByteArray_method_to_float64_array>`\ (\ ) |const|                                                                                                          |
@@ -171,6 +183,12 @@ Methods
    | :ref:`PackedInt32Array<class_PackedInt32Array>`     | :ref:`to_int32_array<class_PackedByteArray_method_to_int32_array>`\ (\ ) |const|                                                                                                              |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedInt64Array<class_PackedInt64Array>`     | :ref:`to_int64_array<class_PackedByteArray_method_to_int64_array>`\ (\ ) |const|                                                                                                              |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`to_vector2_array<class_PackedByteArray_method_to_vector2_array>`\ (\ ) |const|                                                                                                          |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector3Array<class_PackedVector3Array>` | :ref:`to_vector3_array<class_PackedByteArray_method_to_vector3_array>`\ (\ ) |const|                                                                                                          |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector4Array<class_PackedVector4Array>` | :ref:`to_vector4_array<class_PackedByteArray_method_to_vector4_array>`\ (\ ) |const|                                                                                                          |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -243,7 +261,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **append**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedByteArray_method_append>`
 
-Appends an element at the end of the array (alias of :ref:`push_back<class_PackedByteArray_method_push_back>`).
+Appends an element at the end of the array (alias of :ref:`push_back()<class_PackedByteArray_method_push_back>`).
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +287,43 @@ Appends a **PackedByteArray** at the end of this array.
 
 Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a ``before`` specifier can be passed. If ``false``, the returned index comes after all existing entries of the value in the array.
 
-\ **Note:** Calling :ref:`bsearch<class_PackedByteArray_method_bsearch>` on an unsorted array results in unexpected behavior.
+\ **Note:** Calling :ref:`bsearch()<class_PackedByteArray_method_bsearch>` on an unsorted array results in unexpected behavior.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_bswap16:
+
+.. rst-class:: classref-method
+
+|void| **bswap16**\ (\ offset\: :ref:`int<class_int>` = 0, count\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_PackedByteArray_method_bswap16>`
+
+Swaps the byte order of ``count`` 16-bit segments of the array starting at ``offset``. Swap is done in-place. If ``count`` is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 2, the byte after the last processed 16-bit segment is not modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_bswap32:
+
+.. rst-class:: classref-method
+
+|void| **bswap32**\ (\ offset\: :ref:`int<class_int>` = 0, count\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_PackedByteArray_method_bswap32>`
+
+Swaps the byte order of ``count`` 32-bit segments of the array starting at ``offset``. Swap is done in-place. If ``count`` is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 4, bytes after the last processed 32-bit segment are not modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_bswap64:
+
+.. rst-class:: classref-method
+
+|void| **bswap64**\ (\ offset\: :ref:`int<class_int>` = 0, count\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_PackedByteArray_method_bswap64>`
+
+Swaps the byte order of ``count`` 64-bit segments of the array starting at ``offset``. Swap is done in-place. If ``count`` is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 8, bytes after the last processed 64-bit segment are not modified.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +335,7 @@ Finds the index of an existing value (or the insertion index that maintains sort
 
 |void| **clear**\ (\ ) :ref:`🔗<class_PackedByteArray_method_clear>`
 
-Clears the array. This is equivalent to using :ref:`resize<class_PackedByteArray_method_resize>` with a size of ``0``.
+Clears the array. This is equivalent to using :ref:`resize()<class_PackedByteArray_method_resize>` with a size of ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +543,7 @@ Returns a new **PackedByteArray** with the data decompressed. Set ``buffer_size`
 
 Returns a new **PackedByteArray** with the data decompressed. Set the compression mode using one of :ref:`CompressionMode<enum_FileAccess_CompressionMode>`'s constants. **This method only accepts brotli, gzip, and deflate compression modes.**\ 
 
-This method is potentially slower than :ref:`decompress<class_PackedByteArray_method_decompress>`, as it may have to re-allocate its output buffer multiple times while decompressing, whereas :ref:`decompress<class_PackedByteArray_method_decompress>` knows it's output buffer size from the beginning.
+This method is potentially slower than :ref:`decompress()<class_PackedByteArray_method_decompress>`, as it may have to re-allocate its output buffer multiple times while decompressing, whereas :ref:`decompress()<class_PackedByteArray_method_decompress>` knows it's output buffer size from the beginning.
 
 GZIP has a maximal compression ratio of 1032:1, meaning it's very possible for a small compressed payload to decompress to a potentially very large output. To guard against this, you may provide a maximum size this function is allowed to allocate in bytes via ``max_output_size``. Passing -1 will allow for unbounded output. If any positive value is passed, and the decompression exceeds that amount in bytes, then an error will be returned.
 
@@ -655,13 +709,25 @@ Encodes a :ref:`Variant<class_Variant>` at the index of ``byte_offset`` bytes. A
 
 ----
 
+.. _class_PackedByteArray_method_erase:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **erase**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedByteArray_method_erase>`
+
+Removes the first occurrence of a value from the array and returns ``true``. If the value does not exist in the array, nothing happens and ``false`` is returned. To remove an element by index, use :ref:`remove_at()<class_PackedByteArray_method_remove_at>` instead.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_PackedByteArray_method_fill:
 
 .. rst-class:: classref-method
 
 |void| **fill**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedByteArray_method_fill>`
 
-Assigns the given value to all elements in the array. This can typically be used together with :ref:`resize<class_PackedByteArray_method_resize>` to create an array with a given size and initialized elements.
+Assigns the given value to all elements in the array. This can typically be used together with :ref:`resize()<class_PackedByteArray_method_resize>` to create an array with a given size and initialized elements.
 
 .. rst-class:: classref-item-separator
 
@@ -685,7 +751,9 @@ Searches the array for a value and returns its index or ``-1`` if not found. Opt
 
 :ref:`int<class_int>` **get**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PackedByteArray_method_get>`
 
-Returns the byte at the given ``index`` in the array. This is the same as using the ``[]`` operator (``array[index]``).
+Returns the byte at the given ``index`` in the array. If ``index`` out-of-bounds or negative, this method fails and returns ``0``.
+
+This method is similar (but not identical) to the ``[]`` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.
 
 .. rst-class:: classref-item-separator
 
@@ -697,7 +765,25 @@ Returns the byte at the given ``index`` in the array. This is the same as using 
 
 :ref:`String<class_String>` **get_string_from_ascii**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_get_string_from_ascii>`
 
-Converts ASCII/Latin-1 encoded array to :ref:`String<class_String>`. Fast alternative to :ref:`get_string_from_utf8<class_PackedByteArray_method_get_string_from_utf8>` if the content is ASCII/Latin-1 only. Unlike the UTF-8 function this function maps every byte to a character in the array. Multibyte sequences will not be interpreted correctly. For parsing user input always use :ref:`get_string_from_utf8<class_PackedByteArray_method_get_string_from_utf8>`. This is the inverse of :ref:`String.to_ascii_buffer<class_String_method_to_ascii_buffer>`.
+Converts ASCII/Latin-1 encoded array to :ref:`String<class_String>`. Fast alternative to :ref:`get_string_from_utf8()<class_PackedByteArray_method_get_string_from_utf8>` if the content is ASCII/Latin-1 only. Unlike the UTF-8 function this function maps every byte to a character in the array. Multibyte sequences will not be interpreted correctly. For parsing user input always use :ref:`get_string_from_utf8()<class_PackedByteArray_method_get_string_from_utf8>`. This is the inverse of :ref:`String.to_ascii_buffer()<class_String_method_to_ascii_buffer>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_get_string_from_multibyte_char:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **get_string_from_multibyte_char**\ (\ encoding\: :ref:`String<class_String>` = ""\ ) |const| :ref:`🔗<class_PackedByteArray_method_get_string_from_multibyte_char>`
+
+Converts system multibyte code page encoded array to :ref:`String<class_String>`. If conversion fails, empty string is returned. This is the inverse of :ref:`String.to_multibyte_char_buffer()<class_String_method_to_multibyte_char_buffer>`.
+
+The values permitted for ``encoding`` are system dependent. If ``encoding`` is empty string, system default encoding is used.
+
+- For Windows, see `Code Page Identifiers <https://learn.microsoft.com/en-us/windows/win32/Intl/code-page-identifiers>`__ .NET names.
+
+- For macOS and Linux/BSD, see ``libiconv`` library documentation and ``iconv --list`` for a list of supported encodings.
 
 .. rst-class:: classref-item-separator
 
@@ -709,7 +795,7 @@ Converts ASCII/Latin-1 encoded array to :ref:`String<class_String>`. Fast altern
 
 :ref:`String<class_String>` **get_string_from_utf8**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_get_string_from_utf8>`
 
-Converts UTF-8 encoded array to :ref:`String<class_String>`. Slower than :ref:`get_string_from_ascii<class_PackedByteArray_method_get_string_from_ascii>` but supports UTF-8 encoded data. Use this function if you are unsure about the source of the data. For user input this function should always be preferred. Returns empty string if source array is not valid UTF-8 string. This is the inverse of :ref:`String.to_utf8_buffer<class_String_method_to_utf8_buffer>`.
+Converts UTF-8 encoded array to :ref:`String<class_String>`. Slower than :ref:`get_string_from_ascii()<class_PackedByteArray_method_get_string_from_ascii>` but supports UTF-8 encoded data. Use this function if you are unsure about the source of the data. For user input this function should always be preferred. Returns empty string if source array is not valid UTF-8 string. This is the inverse of :ref:`String.to_utf8_buffer()<class_String_method_to_utf8_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -721,7 +807,7 @@ Converts UTF-8 encoded array to :ref:`String<class_String>`. Slower than :ref:`g
 
 :ref:`String<class_String>` **get_string_from_utf16**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_get_string_from_utf16>`
 
-Converts UTF-16 encoded array to :ref:`String<class_String>`. If the BOM is missing, system endianness is assumed. Returns empty string if source array is not valid UTF-16 string. This is the inverse of :ref:`String.to_utf16_buffer<class_String_method_to_utf16_buffer>`.
+Converts UTF-16 encoded array to :ref:`String<class_String>`. If the BOM is missing, little-endianness is assumed. Returns empty string if source array is not valid UTF-16 string. This is the inverse of :ref:`String.to_utf16_buffer()<class_String_method_to_utf16_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -733,7 +819,7 @@ Converts UTF-16 encoded array to :ref:`String<class_String>`. If the BOM is miss
 
 :ref:`String<class_String>` **get_string_from_utf32**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_get_string_from_utf32>`
 
-Converts UTF-32 encoded array to :ref:`String<class_String>`. System endianness is assumed. Returns empty string if source array is not valid UTF-32 string. This is the inverse of :ref:`String.to_utf32_buffer<class_String_method_to_utf32_buffer>`.
+Converts UTF-32 encoded array to :ref:`String<class_String>`. Returns empty string if source array is not valid UTF-32 string. This is the inverse of :ref:`String.to_utf32_buffer()<class_String_method_to_utf32_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -745,7 +831,7 @@ Converts UTF-32 encoded array to :ref:`String<class_String>`. System endianness 
 
 :ref:`String<class_String>` **get_string_from_wchar**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_get_string_from_wchar>`
 
-Converts wide character (``wchar_t``, UTF-16 on Windows, UTF-32 on other platforms) encoded array to :ref:`String<class_String>`. Returns empty string if source array is not valid wide string. This is the inverse of :ref:`String.to_wchar_buffer<class_String_method_to_wchar_buffer>`.
+Converts wide character (``wchar_t``, UTF-16 on Windows, UTF-32 on other platforms) encoded array to :ref:`String<class_String>`. Returns empty string if source array is not valid wide string. This is the inverse of :ref:`String.to_wchar_buffer()<class_String_method_to_wchar_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -789,12 +875,12 @@ Returns a hexadecimal representation of this array as a :ref:`String<class_Strin
  .. code-tab:: gdscript
 
     var array = PackedByteArray([11, 46, 255])
-    print(array.hex_encode()) # Prints: 0b2eff
+    print(array.hex_encode()) # Prints "0b2eff"
 
  .. code-tab:: csharp
 
-    var array = new byte[] {11, 46, 255};
-    GD.Print(array.HexEncode()); // Prints: 0b2eff
+    byte[] array = [11, 46, 255];
+    GD.Print(array.HexEncode()); // Prints "0b2eff"
 
 
 
@@ -856,7 +942,9 @@ Removes an element from the array by index.
 
 :ref:`int<class_int>` **resize**\ (\ new_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedByteArray_method_resize>`
 
-Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling :ref:`resize<class_PackedByteArray_method_resize>` once and assigning the new values is faster than adding new elements one by one.
+Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling :ref:`resize()<class_PackedByteArray_method_resize>` once and assigning the new values is faster than adding new elements one by one.
+
+Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the following :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails: :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the size is negative, or :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` if allocations fail. Use :ref:`size()<class_PackedByteArray_method_size>` to find the actual size of the array after resize.
 
 .. rst-class:: classref-item-separator
 
@@ -938,6 +1026,20 @@ Sorts the elements of the array in ascending order.
 
 ----
 
+.. _class_PackedByteArray_method_to_color_array:
+
+.. rst-class:: classref-method
+
+:ref:`PackedColorArray<class_PackedColorArray>` **to_color_array**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_to_color_array>`
+
+Returns a copy of the data converted to a :ref:`PackedColorArray<class_PackedColorArray>`, where each block of 16 bytes has been converted to a :ref:`Color<class_Color>` variant.
+
+\ **Note:** The size of the input array must be a multiple of 16 (size of four 32-bit float variables). The size of the new array will be ``byte_array.size() / 16``. If the original data can't be converted to :ref:`Color<class_Color>` variants, the resulting data is undefined.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_PackedByteArray_method_to_float32_array:
 
 .. rst-class:: classref-method
@@ -998,6 +1100,48 @@ The size of the input array must be a multiple of 8 (size of 64-bit integer). Th
 
 If the original data can't be converted to signed 64-bit integers, the resulting data is undefined.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_to_vector2_array:
+
+.. rst-class:: classref-method
+
+:ref:`PackedVector2Array<class_PackedVector2Array>` **to_vector2_array**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_to_vector2_array>`
+
+Returns a copy of the data converted to a :ref:`PackedVector2Array<class_PackedVector2Array>`, where each block of 8 bytes or 16 bytes (32-bit or 64-bit) has been converted to a :ref:`Vector2<class_Vector2>` variant.
+
+\ **Note:** The size of the input array must be a multiple of 8 or 16 (depending on the build settings, see :ref:`Vector2<class_Vector2>` for more details). The size of the new array will be ``byte_array.size() / (8 or 16)``. If the original data can't be converted to :ref:`Vector2<class_Vector2>` variants, the resulting data is undefined.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_to_vector3_array:
+
+.. rst-class:: classref-method
+
+:ref:`PackedVector3Array<class_PackedVector3Array>` **to_vector3_array**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_to_vector3_array>`
+
+Returns a copy of the data converted to a :ref:`PackedVector3Array<class_PackedVector3Array>`, where each block of 12 or 24 bytes (32-bit or 64-bit) has been converted to a :ref:`Vector3<class_Vector3>` variant.
+
+\ **Note:** The size of the input array must be a multiple of 12 or 24 (depending on the build settings, see :ref:`Vector3<class_Vector3>` for more details). The size of the new array will be ``byte_array.size() / (12 or 24)``. If the original data can't be converted to :ref:`Vector3<class_Vector3>` variants, the resulting data is undefined.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PackedByteArray_method_to_vector4_array:
+
+.. rst-class:: classref-method
+
+:ref:`PackedVector4Array<class_PackedVector4Array>` **to_vector4_array**\ (\ ) |const| :ref:`🔗<class_PackedByteArray_method_to_vector4_array>`
+
+Returns a copy of the data converted to a :ref:`PackedVector4Array<class_PackedVector4Array>`, where each block of 16 or 32 bytes (32-bit or 64-bit) has been converted to a :ref:`Vector4<class_Vector4>` variant.
+
+\ **Note:** The size of the input array must be a multiple of 16 or 32 (depending on the build settings, see :ref:`Vector4<class_Vector4>` for more details). The size of the new array will be ``byte_array.size() / (16 or 32)``. If the original data can't be converted to :ref:`Vector4<class_Vector4>` variants, the resulting data is undefined.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -1025,7 +1169,7 @@ Returns ``true`` if contents of the arrays differ.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **operator +**\ (\ right\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_PackedByteArray_operator_sum_PackedByteArray>`
 
-Returns a new **PackedByteArray** with contents of ``right`` added at the end of this array. For better performance, consider using :ref:`append_array<class_PackedByteArray_method_append_array>` instead.
+Returns a new **PackedByteArray** with contents of ``right`` added at the end of this array. For better performance, consider using :ref:`append_array()<class_PackedByteArray_method_append_array>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -1054,6 +1198,7 @@ Returns the byte at index ``index``. Negative indices can be used to access the 
 Note that the byte is returned as a 64-bit :ref:`int<class_int>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

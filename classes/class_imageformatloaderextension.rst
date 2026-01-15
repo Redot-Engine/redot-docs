@@ -21,7 +21,7 @@ Description
 
 The engine supports multiple image formats out of the box (PNG, SVG, JPEG, WebP to name a few), but you can choose to implement support for additional image formats by extending this class.
 
-Be sure to respect the documented return types and values. You should create an instance of it, and call :ref:`add_format_loader<class_ImageFormatLoaderExtension_method_add_format_loader>` to register that loader during the initialization phase.
+Be sure to respect the documented return types and values. You should create an instance of it, and call :ref:`add_format_loader()<class_ImageFormatLoaderExtension_method_add_format_loader>` to register that loader during the initialization phase.
 
 .. rst-class:: classref-reftable-group
 
@@ -80,7 +80,7 @@ Loads the content of ``fileaccess`` into the provided ``image``.
 
 |void| **add_format_loader**\ (\ ) :ref:`🔗<class_ImageFormatLoaderExtension_method_add_format_loader>`
 
-Add this format loader to the engine, allowing it to recognize the file extensions returned by :ref:`_get_recognized_extensions<class_ImageFormatLoaderExtension_private_method__get_recognized_extensions>`.
+Add this format loader to the engine, allowing it to recognize the file extensions returned by :ref:`_get_recognized_extensions()<class_ImageFormatLoaderExtension_private_method__get_recognized_extensions>`.
 
 .. rst-class:: classref-item-separator
 
@@ -95,6 +95,7 @@ Add this format loader to the engine, allowing it to recognize the file extensio
 Remove this format loader from the engine.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

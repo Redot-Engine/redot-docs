@@ -32,22 +32,22 @@ After setting the request and changing the animation playback, the one-shot node
     animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
     # Alternative syntax (same result as above).
     animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-    
+
     # Abort child animation connected to "shot" port.
     animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
     # Alternative syntax (same result as above).
     animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
-    
+
     # Abort child animation with fading out connected to "shot" port.
     animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
     # Alternative syntax (same result as above).
     animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT
-    
+
     # Get current state (read-only).
     animation_tree.get("parameters/OneShot/active")
     # Alternative syntax (same result as above).
     animation_tree["parameters/OneShot/active"]
-    
+
     # Get current internal state (read-only).
     animation_tree.get("parameters/OneShot/internal_active")
     # Alternative syntax (same result as above).
@@ -57,16 +57,16 @@ After setting the request and changing the animation playback, the one-shot node
 
     // Play child animation connected to "shot" port.
     animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.Fire);
-    
+
     // Abort child animation connected to "shot" port.
     animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.Abort);
-    
+
     // Abort child animation with fading out connected to "shot" port.
     animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.FadeOut);
-    
+
     // Get current state (read-only).
     animationTree.Get("parameters/OneShot/active");
-    
+
     // Get current internal state (read-only).
     animationTree.Get("parameters/OneShot/internal_active");
 
@@ -291,7 +291,7 @@ Determines how cross-fading between animations is eased. If empty, the transitio
 
 The fade-in duration. For example, setting this to ``1.0`` for a 5 second length animation will produce a cross-fade that starts at 0 second and ends at 1 second during the animation.
 
-\ **Note:** **AnimationNodeOneShot** transitions the current state after the end of the fading. When :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` is considered as the most upstream, so the :ref:`fadein_time<class_AnimationNodeOneShot_property_fadein_time>` is scaled depending on the downstream delta. For example, if this value is set to ``1.0`` and a :ref:`AnimationNodeTimeScale<class_AnimationNodeTimeScale>` with a value of ``2.0`` is chained downstream, the actual processing time will be 0.5 second.
+\ **Note:** **AnimationNodeOneShot** transitions the current state after the fading has finished.
 
 .. rst-class:: classref-item-separator
 
@@ -327,7 +327,7 @@ Determines how cross-fading between animations is eased. If empty, the transitio
 
 The fade-out duration. For example, setting this to ``1.0`` for a 5 second length animation will produce a cross-fade that starts at 4 second and ends at 5 second during the animation.
 
-\ **Note:** **AnimationNodeOneShot** transitions the current state after the end of the fading. When :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` is considered as the most upstream, so the :ref:`fadeout_time<class_AnimationNodeOneShot_property_fadeout_time>` is scaled depending on the downstream delta. For example, if this value is set to ``1.0`` and an :ref:`AnimationNodeTimeScale<class_AnimationNodeTimeScale>` with a value of ``2.0`` is chained downstream, the actual processing time will be 0.5 second.
+\ **Note:** **AnimationNodeOneShot** transitions the current state after the fading has finished.
 
 .. rst-class:: classref-item-separator
 
@@ -347,6 +347,7 @@ The fade-out duration. For example, setting this to ``1.0`` for a 5 second lengt
 The blend type.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

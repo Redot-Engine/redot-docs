@@ -25,7 +25,7 @@ GLTFDocument supports reading data from a glTF file, buffer, or Redot scene. Thi
 
 All of the data in a glTF scene is stored in the :ref:`GLTFState<class_GLTFState>` class. GLTFDocument processes state objects, but does not contain any scene data itself. GLTFDocument has member variables to store export configuration settings such as the image format, but is otherwise stateless. Multiple scenes can be processed with the same settings using the same GLTFDocument object and different :ref:`GLTFState<class_GLTFState>` objects.
 
-GLTFDocument can be extended with arbitrary functionality by extending the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` class and registering it with GLTFDocument via :ref:`register_gltf_document_extension<class_GLTFDocument_method_register_gltf_document_extension>`. This allows for custom data to be imported and exported.
+GLTFDocument can be extended with arbitrary functionality by extending the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` class and registering it with GLTFDocument via :ref:`register_gltf_document_extension()<class_GLTFDocument_method_register_gltf_document_extension>`. This allows for custom data to be imported and exported.
 
 .. rst-class:: classref-introduction-group
 
@@ -46,13 +46,19 @@ Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                         | :ref:`image_format<class_GLTFDocument_property_image_format>`     | ``"PNG"`` |
-   +-----------------------------------------------------+-------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                           | :ref:`lossy_quality<class_GLTFDocument_property_lossy_quality>`   | ``0.75``  |
-   +-----------------------------------------------------+-------------------------------------------------------------------+-----------+
-   | :ref:`RootNodeMode<enum_GLTFDocument_RootNodeMode>` | :ref:`root_node_mode<class_GLTFDocument_property_root_node_mode>` | ``0``     |
-   +-----------------------------------------------------+-------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
+   | :ref:`String<class_String>`                             | :ref:`fallback_image_format<class_GLTFDocument_property_fallback_image_format>`   | ``"None"`` |
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`fallback_image_quality<class_GLTFDocument_property_fallback_image_quality>` | ``0.25``   |
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
+   | :ref:`String<class_String>`                             | :ref:`image_format<class_GLTFDocument_property_image_format>`                     | ``"PNG"``  |
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`lossy_quality<class_GLTFDocument_property_lossy_quality>`                   | ``0.75``   |
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
+   | :ref:`RootNodeMode<enum_GLTFDocument_RootNodeMode>`     | :ref:`root_node_mode<class_GLTFDocument_property_root_node_mode>`                 | ``0``      |
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
+   | :ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>` | :ref:`visibility_mode<class_GLTFDocument_property_visibility_mode>`               | ``0``      |
+   +---------------------------------------------------------+-----------------------------------------------------------------------------------+------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -125,6 +131,40 @@ Treat the Redot scene's root node as the root node of the glTF file, but do not 
 
 Treat the Redot scene's root node as the name of the glTF scene, and add all of its children as root nodes of the glTF file. This uses only vanilla glTF features. This avoids an extra root node, but only the name of the Redot scene's root node will be preserved, as it will not be saved as a node.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_GLTFDocument_VisibilityMode:
+
+.. rst-class:: classref-enumeration
+
+enum **VisibilityMode**: :ref:`🔗<enum_GLTFDocument_VisibilityMode>`
+
+.. _class_GLTFDocument_constant_VISIBILITY_MODE_INCLUDE_REQUIRED:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>` **VISIBILITY_MODE_INCLUDE_REQUIRED** = ``0``
+
+If the scene contains any non-visible nodes, include them, mark them as non-visible with ``KHR_node_visibility``, and require that importers respect their non-visibility. Downside: If the importer does not support ``KHR_node_visibility``, the file cannot be imported.
+
+.. _class_GLTFDocument_constant_VISIBILITY_MODE_INCLUDE_OPTIONAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>` **VISIBILITY_MODE_INCLUDE_OPTIONAL** = ``1``
+
+If the scene contains any non-visible nodes, include them, mark them as non-visible with ``KHR_node_visibility``, and do not impose any requirements on importers. Downside: If the importer does not support ``KHR_node_visibility``, invisible objects will be visible.
+
+.. _class_GLTFDocument_constant_VISIBILITY_MODE_EXCLUDE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>` **VISIBILITY_MODE_EXCLUDE** = ``2``
+
+If the scene contains any non-visible nodes, do not include them in the export. This is the same as the behavior in Redot 4.4 and earlier. Downside: Invisible nodes will not exist in the exported file.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -133,6 +173,42 @@ Treat the Redot scene's root node as the name of the glTF scene, and add all of 
 
 Property Descriptions
 ---------------------
+
+.. _class_GLTFDocument_property_fallback_image_format:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **fallback_image_format** = ``"None"`` :ref:`🔗<class_GLTFDocument_property_fallback_image_format>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_fallback_image_format**\ (\ value\: :ref:`String<class_String>`\ )
+- :ref:`String<class_String>` **get_fallback_image_format**\ (\ )
+
+The user-friendly name of the fallback image format. This is used when exporting the glTF file, including writing to a file and writing to a byte array.
+
+This property may only be one of "None", "PNG", or "JPEG", and is only used when the :ref:`image_format<class_GLTFDocument_property_image_format>` is not one of "None", "PNG", or "JPEG". If having multiple extension image formats is desired, that can be done using a :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` class - this property only covers the use case of providing a base glTF fallback image when using a custom image format.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GLTFDocument_property_fallback_image_quality:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **fallback_image_quality** = ``0.25`` :ref:`🔗<class_GLTFDocument_property_fallback_image_quality>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_fallback_image_quality**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_fallback_image_quality**\ (\ )
+
+The quality of the fallback image, if any. For PNG files, this downscales the image on both dimensions by this factor. For JPEG files, this is the lossy quality of the image. A low value is recommended, since including multiple high quality images in a glTF file defeats the file size gains of using a more efficient image format.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_GLTFDocument_property_image_format:
 
@@ -147,7 +223,7 @@ Property Descriptions
 
 The user-friendly name of the export image format. This is used when exporting the glTF file, including writing to a file and writing to a byte array.
 
-By default, Redot allows the following options: "None", "PNG", "JPEG", "Lossless WebP", and "Lossy WebP". Support for more image formats can be added in :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes.
+By default, Redot allows the following options: "None", "PNG", "JPEG", "Lossless WebP", and "Lossy WebP". Support for more image formats can be added in :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes. A single extension class can provide multiple options for the specific format to use, or even an option that uses multiple formats at once.
 
 .. rst-class:: classref-item-separator
 
@@ -181,9 +257,26 @@ If :ref:`image_format<class_GLTFDocument_property_image_format>` is a lossy imag
 - |void| **set_root_node_mode**\ (\ value\: :ref:`RootNodeMode<enum_GLTFDocument_RootNodeMode>`\ )
 - :ref:`RootNodeMode<enum_GLTFDocument_RootNodeMode>` **get_root_node_mode**\ (\ )
 
-How to process the root node during export. See :ref:`RootNodeMode<enum_GLTFDocument_RootNodeMode>` for details. The default and recommended value is :ref:`ROOT_NODE_MODE_SINGLE_ROOT<class_GLTFDocument_constant_ROOT_NODE_MODE_SINGLE_ROOT>`.
+How to process the root node during export. The default and recommended value is :ref:`ROOT_NODE_MODE_SINGLE_ROOT<class_GLTFDocument_constant_ROOT_NODE_MODE_SINGLE_ROOT>`.
 
 \ **Note:** Regardless of how the glTF file is exported, when importing, the root node type and name can be overridden in the scene import settings tab.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GLTFDocument_property_visibility_mode:
+
+.. rst-class:: classref-property
+
+:ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>` **visibility_mode** = ``0`` :ref:`🔗<class_GLTFDocument_property_visibility_mode>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_visibility_mode**\ (\ value\: :ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>`\ )
+- :ref:`VisibilityMode<enum_GLTFDocument_VisibilityMode>` **get_visibility_mode**\ (\ )
+
+How to deal with node visibility during export. This setting does nothing if all nodes are visible. The default and recommended value is :ref:`VISIBILITY_MODE_INCLUDE_REQUIRED<class_GLTFDocument_constant_VISIBILITY_MODE_INCLUDE_REQUIRED>`, which uses the ``KHR_node_visibility`` extension.
 
 .. rst-class:: classref-section-separator
 
@@ -202,7 +295,7 @@ Method Descriptions
 
 Takes a :ref:`PackedByteArray<class_PackedByteArray>` defining a glTF and imports the data to the given :ref:`GLTFState<class_GLTFState>` object through the ``state`` parameter.
 
-\ **Note:** The ``base_path`` tells :ref:`append_from_buffer<class_GLTFDocument_method_append_from_buffer>` where to find dependencies and can be empty.
+\ **Note:** The ``base_path`` tells :ref:`append_from_buffer()<class_GLTFDocument_method_append_from_buffer>` where to find dependencies and can be empty.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +309,7 @@ Takes a :ref:`PackedByteArray<class_PackedByteArray>` defining a glTF and import
 
 Takes a path to a glTF file and imports the data at that file path to the given :ref:`GLTFState<class_GLTFState>` object through the ``state`` parameter.
 
-\ **Note:** The ``base_path`` tells :ref:`append_from_file<class_GLTFDocument_method_append_from_file>` where to find dependencies and can be empty.
+\ **Note:** The ``base_path`` tells :ref:`append_from_file()<class_GLTFDocument_method_append_from_file>` where to find dependencies and can be empty.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +333,7 @@ Takes a Redot Engine scene node and exports it and its descendants to the given 
 
 :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>` **export_object_model_property**\ (\ state\: :ref:`GLTFState<class_GLTFState>`, node_path\: :ref:`NodePath<class_NodePath>`, godot_node\: :ref:`Node<class_Node>`, gltf_node_index\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_GLTFDocument_method_export_object_model_property>`
 
-Determines a mapping between the given Redot ``node_path`` and the corresponding glTF Object Model JSON pointer(s) in the generated glTF file. The details of this mapping are returned in a :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>` object. Additional mappings can be supplied via the :ref:`GLTFDocumentExtension._import_object_model_property<class_GLTFDocumentExtension_private_method__import_object_model_property>` callback method.
+Determines a mapping between the given Redot ``node_path`` and the corresponding glTF Object Model JSON pointer(s) in the generated glTF file. The details of this mapping are returned in a :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>` object. Additional mappings can be supplied via the :ref:`GLTFDocumentExtension._import_object_model_property()<class_GLTFDocumentExtension_private_method__import_object_model_property>` callback method.
 
 .. rst-class:: classref-item-separator
 
@@ -292,7 +385,7 @@ Returns a list of all support glTF extensions, including extensions supported di
 
 :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>` **import_object_model_property**\ (\ state\: :ref:`GLTFState<class_GLTFState>`, json_pointer\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_GLTFDocument_method_import_object_model_property>`
 
-Determines a mapping between the given glTF Object Model ``json_pointer`` and the corresponding Redot node path(s) in the generated Redot scene. The details of this mapping are returned in a :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>` object. Additional mappings can be supplied via the :ref:`GLTFDocumentExtension._export_object_model_property<class_GLTFDocumentExtension_private_method__export_object_model_property>` callback method.
+Determines a mapping between the given glTF Object Model ``json_pointer`` and the corresponding Redot node path(s) in the generated Redot scene. The details of this mapping are returned in a :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>` object. Additional mappings can be supplied via the :ref:`GLTFDocumentExtension._export_object_model_property()<class_GLTFDocumentExtension_private_method__export_object_model_property>` callback method.
 
 .. rst-class:: classref-item-separator
 
@@ -335,6 +428,7 @@ Takes a :ref:`GLTFState<class_GLTFState>` object through the ``state`` parameter
 \ **Note:** The extension of the glTF file determines if it is a .glb binary file or a .gltf text file.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
