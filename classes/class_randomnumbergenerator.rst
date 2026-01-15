@@ -102,7 +102,7 @@ Initializes the random number generator state based on the given seed value. A g
 
 \ **Note:** Setting this property produces a side effect of changing the internal :ref:`state<class_RandomNumberGenerator_property_state>`, so make sure to initialize the seed *before* modifying the :ref:`state<class_RandomNumberGenerator_property_state>`:
 
-\ **Note:** The default value of this property is pseudo-random, and changes when calling :ref:`randomize<class_RandomNumberGenerator_method_randomize>`. The ``0`` value documented here is a placeholder, and not the actual default seed.
+\ **Note:** The default value of this property is pseudo-random, and changes when calling :ref:`randomize()<class_RandomNumberGenerator_method_randomize>`. The ``0`` value documented here is a placeholder, and not the actual default seed.
 
 ::
 
@@ -134,11 +134,11 @@ The current state of the random number generator. Save and restore this property
     var saved_state = rng.state # Store current state.
     print(rng.randf()) # Advance internal state.
     rng.state = saved_state # Restore the state.
-    print(rng.randf()) # Prints the same value as in previous.
+    print(rng.randf()) # Prints the same value as previously.
 
 \ **Note:** Do not set state to arbitrary values, since the random number generator requires the state to have certain qualities to behave properly. It should only be set to values that came from the state property itself. To initialize the random number generator with arbitrary input, use :ref:`seed<class_RandomNumberGenerator_property_seed>` instead.
 
-\ **Note:** The default value of this property is pseudo-random, and changes when calling :ref:`randomize<class_RandomNumberGenerator_method_randomize>`. The ``0`` value documented here is a placeholder, and not the actual default seed.
+\ **Note:** The default value of this property is pseudo-random, and changes when calling :ref:`randomize()<class_RandomNumberGenerator_method_randomize>`. The ``0`` value documented here is a placeholder, and not the actual default state.
 
 .. rst-class:: classref-section-separator
 
@@ -163,10 +163,10 @@ Returns a random index with non-uniform weights. Prints an error and returns ``-
  .. code-tab:: gdscript
 
     var rng = RandomNumberGenerator.new()
-    
+
     var my_array = ["one", "two", "three", "four"]
     var weights = PackedFloat32Array([0.5, 1, 1, 2])
-    
+
     # Prints one of the four elements in `my_array`.
     # It is more likely to print "four", and less likely to print "one".
     print(my_array[rng.rand_weighted(weights)])
@@ -248,6 +248,7 @@ Returns a pseudo-random 32-bit signed integer between ``from`` and ``to`` (inclu
 Sets up a time-based seed for this **RandomNumberGenerator** instance. Unlike the :ref:`@GlobalScope<class_@GlobalScope>` random number generation functions, different **RandomNumberGenerator** instances can use different seeds.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

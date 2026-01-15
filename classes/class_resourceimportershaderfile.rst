@@ -12,7 +12,7 @@ ResourceImporterShaderFile
 
 **Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports native GLSL shaders (not Godot Shaders) as a :ref:`RDShaderFile<class_RDShaderFile>`.
+Imports native GLSL shaders (not Godot Shaders) as an :ref:`RDShaderFile<class_RDShaderFile>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -22,6 +22,7 @@ Description
 This imports native GLSL shaders as :ref:`RDShaderFile<class_RDShaderFile>` resources, for use with low-level :ref:`RenderingDevice<class_RenderingDevice>` operations. This importer does *not* handle ``.gdshader`` files.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

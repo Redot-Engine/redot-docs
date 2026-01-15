@@ -275,7 +275,7 @@ The culling mask that describes which :ref:`VisualInstance3D.layers<class_Visual
 
 \ **Note:** Since the :ref:`cull_mask<class_Camera3D_property_cull_mask>` allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren't exposed in the editor. Setting :ref:`cull_mask<class_Camera3D_property_cull_mask>` using a script allows you to toggle those reserved layers, which can be useful for editor plugins.
 
-To adjust :ref:`cull_mask<class_Camera3D_property_cull_mask>` more easily using a script, use :ref:`get_cull_mask_value<class_Camera3D_method_get_cull_mask_value>` and :ref:`set_cull_mask_value<class_Camera3D_method_set_cull_mask_value>`.
+To adjust :ref:`cull_mask<class_Camera3D_property_cull_mask>` more easily using a script, use :ref:`get_cull_mask_value()<class_Camera3D_method_get_cull_mask_value>` and :ref:`set_cull_mask_value()<class_Camera3D_method_set_cull_mask_value>`.
 
 \ **Note:** :ref:`VoxelGI<class_VoxelGI>`, SDFGI and :ref:`LightmapGI<class_LightmapGI>` will always take all layers into account to determine what contributes to global illumination. If this is an issue, set :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` to :ref:`GeometryInstance3D.GI_MODE_DISABLED<class_GeometryInstance3D_constant_GI_MODE_DISABLED>` for meshes and :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` to :ref:`Light3D.BAKE_DISABLED<class_Light3D_constant_BAKE_DISABLED>` for lights to exclude them from global illumination.
 
@@ -313,7 +313,9 @@ If multiple cameras are in the scene, one will always be made current. For examp
 - |void| **set_doppler_tracking**\ (\ value\: :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>`\ )
 - :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` **get_doppler_tracking**\ (\ )
 
-If not :ref:`DOPPLER_TRACKING_DISABLED<class_Camera3D_constant_DOPPLER_TRACKING_DISABLED>`, this camera will simulate the `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ for objects changed in particular ``_process`` methods. See :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` for possible values.
+If not :ref:`DOPPLER_TRACKING_DISABLED<class_Camera3D_constant_DOPPLER_TRACKING_DISABLED>`, this camera will simulate the `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ for objects changed in particular ``_process`` methods.
+
+\ **Note:** The Doppler effect will only be heard on :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>`\ s if :ref:`AudioStreamPlayer3D.doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` is not set to :ref:`AudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -706,7 +708,9 @@ Sets the camera projection to frustum mode (see :ref:`PROJECTION_FRUSTUM<class_C
 
 |void| **set_orthogonal**\ (\ size\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Camera3D_method_set_orthogonal>`
 
-Sets the camera projection to orthogonal mode (see :ref:`PROJECTION_ORTHOGONAL<class_Camera3D_constant_PROJECTION_ORTHOGONAL>`), by specifying a ``size``, and the ``z_near`` and ``z_far`` clip planes in world space units. (As a hint, 2D games often use this projection, with values specified in pixels.)
+Sets the camera projection to orthogonal mode (see :ref:`PROJECTION_ORTHOGONAL<class_Camera3D_constant_PROJECTION_ORTHOGONAL>`), by specifying a ``size``, and the ``z_near`` and ``z_far`` clip planes in world space units.
+
+As a hint, 3D games that look 2D often use this projection, with ``size`` specified in pixels.
 
 .. rst-class:: classref-item-separator
 
@@ -732,7 +736,7 @@ Sets the camera projection to perspective mode (see :ref:`PROJECTION_PERSPECTIVE
 
 Returns the 2D coordinate in the :ref:`Viewport<class_Viewport>` rectangle that maps to the given 3D point in world space.
 
-\ **Note:** When using this to position GUI elements over a 3D viewport, use :ref:`is_position_behind<class_Camera3D_method_is_position_behind>` to prevent them from appearing if the 3D point is behind the camera:
+\ **Note:** When using this to position GUI elements over a 3D viewport, use :ref:`is_position_behind()<class_Camera3D_method_is_position_behind>` to prevent them from appearing if the 3D point is behind the camera:
 
 ::
 
@@ -742,6 +746,7 @@ Returns the 2D coordinate in the :ref:`Viewport<class_Viewport>` rectangle that 
     control.position = get_viewport().get_camera_3d().unproject_position(global_transform.origin)
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

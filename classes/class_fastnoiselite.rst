@@ -104,7 +104,7 @@ A lattice of points are assigned random values then interpolated based on neighb
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_VALUE_CUBIC** = ``4``
 
-Similar to Value noise, but slower. Has more variance in peaks and valleys.
+Similar to value noise (:ref:`TYPE_VALUE<class_FastNoiseLite_constant_TYPE_VALUE>`), but slower. Has more variance in peaks and valleys.
 
 Cubic noise can be used to avoid certain artifacts when using value noise to create a bumpmap. In general, you should always use this mode if the value noise is being used for a heightmap or bumpmap.
 
@@ -378,7 +378,7 @@ Property Descriptions
 - |void| **set_cellular_distance_function**\ (\ value\: :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>`\ )
 - :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` **get_cellular_distance_function**\ (\ )
 
-Determines how the distance to the nearest/second-nearest point is computed. See :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` for options.
+Determines how the distance to the nearest/second-nearest point is computed.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Maximum distance a point can move off of its grid position. Set to ``0`` for an 
 - |void| **set_cellular_return_type**\ (\ value\: :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>`\ )
 - :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **get_cellular_return_type**\ (\ )
 
-Return type from cellular noise calculations. See :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>`.
+Return type from cellular noise calculations.
 
 .. rst-class:: classref-item-separator
 
@@ -482,7 +482,7 @@ A low value places more emphasis on the lower frequency base layers, while a hig
 - |void| **set_domain_warp_fractal_lacunarity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_domain_warp_fractal_lacunarity**\ (\ )
 
-Octave lacunarity of the fractal noise which warps the space. Increasing this value results in higher octaves producing noise with finer details and a rougher appearance.
+The change in frequency between octaves, also known as "lacunarity", of the fractal noise which warps the space. Increasing this value results in higher octaves, producing noise with finer details and a rougher appearance.
 
 .. rst-class:: classref-item-separator
 
@@ -516,7 +516,7 @@ The number of noise layers that are sampled to get the final value for the fract
 - |void| **set_domain_warp_fractal_type**\ (\ value\: :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>`\ )
 - :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>` **get_domain_warp_fractal_type**\ (\ )
 
-The method for combining octaves into a fractal which is used to warp the space. See :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>`.
+The method for combining octaves into a fractal which is used to warp the space.
 
 .. rst-class:: classref-item-separator
 
@@ -550,7 +550,7 @@ Frequency of the noise which warps the space. Low frequency results in smooth no
 - |void| **set_domain_warp_type**\ (\ value\: :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>`\ )
 - :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>` **get_domain_warp_type**\ (\ )
 
-Sets the warp algorithm. See :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>`.
+The warp algorithm.
 
 .. rst-class:: classref-item-separator
 
@@ -637,7 +637,7 @@ Sets the strength of the fractal ping pong type.
 - |void| **set_fractal_type**\ (\ value\: :ref:`FractalType<enum_FastNoiseLite_FractalType>`\ )
 - :ref:`FractalType<enum_FastNoiseLite_FractalType>` **get_fractal_type**\ (\ )
 
-The method for combining octaves into a fractal. See :ref:`FractalType<enum_FastNoiseLite_FractalType>`.
+The method for combining octaves into a fractal.
 
 .. rst-class:: classref-item-separator
 
@@ -688,7 +688,7 @@ The frequency for all noise types. Low frequency results in smooth noise while h
 - |void| **set_noise_type**\ (\ value\: :ref:`NoiseType<enum_FastNoiseLite_NoiseType>`\ )
 - :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **get_noise_type**\ (\ )
 
-The noise algorithm used. See :ref:`NoiseType<enum_FastNoiseLite_NoiseType>`.
+The noise algorithm used.
 
 .. rst-class:: classref-item-separator
 
@@ -725,6 +725,7 @@ Translate the noise input coordinates by the given :ref:`Vector3<class_Vector3>`
 The random number seed for all noise types.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

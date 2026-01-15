@@ -158,7 +158,7 @@ If ``true``, :ref:`value<class_Range_property_value>` may be less than :ref:`min
 - |void| **set_exp_ratio**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ratio_exp**\ (\ )
 
-If ``true``, and :ref:`min_value<class_Range_property_min_value>` is greater than 0, :ref:`value<class_Range_property_value>` will be represented exponentially rather than linearly.
+If ``true``, and :ref:`min_value<class_Range_property_min_value>` is greater or equal to ``0``, :ref:`value<class_Range_property_value>` will be represented exponentially rather than linearly.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ If ``true``, :ref:`value<class_Range_property_value>` will always be rounded to 
 - |void| **set_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_step**\ (\ )
 
-If greater than 0, :ref:`value<class_Range_property_value>` will always be rounded to a multiple of this property's value. If :ref:`rounded<class_Range_property_rounded>` is also ``true``, :ref:`value<class_Range_property_value>` will first be rounded to a multiple of this property's value, then rounded to the nearest integer.
+If greater than 0, :ref:`value<class_Range_property_value>` will always be rounded to a multiple of this property's value above :ref:`min_value<class_Range_property_min_value>`. For example, if :ref:`min_value<class_Range_property_min_value>` is ``0.1`` and step is 0.2, then :ref:`value<class_Range_property_value>` is limited to ``0.1``, ``0.3``, ``0.5``, and so on. If :ref:`rounded<class_Range_property_rounded>` is also ``true``, :ref:`value<class_Range_property_value>` will first be rounded to a multiple of this property's value, then rounded to the nearest integer.
 
 .. rst-class:: classref-item-separator
 
@@ -277,7 +277,7 @@ If greater than 0, :ref:`value<class_Range_property_value>` will always be round
 - |void| **set_value**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_value**\ (\ )
 
-Range's current value. Changing this property (even via code) will trigger :ref:`value_changed<class_Range_signal_value_changed>` signal. Use :ref:`set_value_no_signal<class_Range_method_set_value_no_signal>` if you want to avoid it.
+Range's current value. Changing this property (even via code) will trigger :ref:`value_changed<class_Range_signal_value_changed>` signal. Use :ref:`set_value_no_signal()<class_Range_method_set_value_no_signal>` if you want to avoid it.
 
 .. rst-class:: classref-section-separator
 
@@ -333,6 +333,7 @@ Binds two **Range**\ s together along with any ranges previously grouped with ei
 Stops the **Range** from sharing its member variables with any other.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
