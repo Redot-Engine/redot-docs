@@ -111,7 +111,7 @@ Property Descriptions
 
 If ``true``, on receiving a request to play an animation from the start, the first frame is not drawn, but only processed, and playback starts from the next frame.
 
-See also the notes of :ref:`AnimationPlayer.play<class_AnimationPlayer_method_play>`.
+See also the notes of :ref:`AnimationPlayer.play()<class_AnimationPlayer_method_play>`.
 
 .. rst-class:: classref-item-separator
 
@@ -147,7 +147,7 @@ Animation to use as an output. It is one of the animations provided by :ref:`Ani
 
 If :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` is ``true``, override the loop settings of the original :ref:`Animation<class_Animation>` resource with the value.
 
-\ **Note:** If the :ref:`Animation.loop_mode<class_Animation_property_loop_mode>` isn't set to looping, the :ref:`Animation.track_set_interpolation_loop_wrap<class_Animation_method_track_set_interpolation_loop_wrap>` option will not be respected. If you cannot get the expected behavior, consider duplicating the :ref:`Animation<class_Animation>` resource and changing the loop settings.
+\ **Note:** If the :ref:`Animation.loop_mode<class_Animation_property_loop_mode>` isn't set to looping, the :ref:`Animation.track_set_interpolation_loop_wrap()<class_Animation_method_track_set_interpolation_loop_wrap>` option will not be respected. If you cannot get the expected behavior, consider duplicating the :ref:`Animation<class_Animation>` resource and changing the loop settings.
 
 .. rst-class:: classref-item-separator
 
@@ -241,6 +241,7 @@ If :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_ti
 If ``true``, :ref:`AnimationNode<class_AnimationNode>` provides an animation based on the :ref:`Animation<class_Animation>` resource with some parameters adjusted.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

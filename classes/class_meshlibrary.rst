@@ -117,7 +117,7 @@ Clears the library.
 
 Creates a new item in the library with the given ID.
 
-You can get an unused ID from :ref:`get_last_unused_item_id<class_MeshLibrary_method_get_last_unused_item_id>`.
+You can get an unused ID from :ref:`get_last_unused_item_id()<class_MeshLibrary_method_get_last_unused_item_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Returns the item's mesh.
 
 :ref:`ShadowCastingSetting<enum_RenderingServer_ShadowCastingSetting>` **get_item_mesh_cast_shadow**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshLibrary_method_get_item_mesh_cast_shadow>`
 
-Returns the item's shadow casting mode. See :ref:`ShadowCastingSetting<enum_RenderingServer_ShadowCastingSetting>` for possible values.
+Returns the item's shadow casting mode.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Returns the transform applied to the item's navigation mesh.
 
 :ref:`Texture2D<class_Texture2D>` **get_item_preview**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshLibrary_method_get_item_preview>`
 
-When running in the editor, returns a generated item preview (a 3D rendering in isometric perspective). When used in a running project, returns the manually-defined item preview which can be set using :ref:`set_item_preview<class_MeshLibrary_method_set_item_preview>`. Returns an empty :ref:`Texture2D<class_Texture2D>` if no preview was manually set in a running project.
+When running in the editor, returns a generated item preview (a 3D rendering in isometric perspective). When used in a running project, returns the manually-defined item preview which can be set using :ref:`set_item_preview()<class_MeshLibrary_method_set_item_preview>`. Returns an empty :ref:`Texture2D<class_Texture2D>` if no preview was manually set in a running project.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ Sets the item's mesh.
 
 |void| **set_item_mesh_cast_shadow**\ (\ id\: :ref:`int<class_int>`, shadow_casting_setting\: :ref:`ShadowCastingSetting<enum_RenderingServer_ShadowCastingSetting>`\ ) :ref:`🔗<class_MeshLibrary_method_set_item_mesh_cast_shadow>`
 
-Sets the item's shadow casting mode. See :ref:`ShadowCastingSetting<enum_RenderingServer_ShadowCastingSetting>` for possible values.
+Sets the item's shadow casting mode to ``shadow_casting_setting``.
 
 .. rst-class:: classref-item-separator
 
@@ -325,7 +325,7 @@ Sets the transform to apply to the item's mesh.
 
 Sets the item's name.
 
-This name is shown in the editor. It can also be used to look up the item later using :ref:`find_item_by_name<class_MeshLibrary_method_find_item_by_name>`.
+This name is shown in the editor. It can also be used to look up the item later using :ref:`find_item_by_name()<class_MeshLibrary_method_find_item_by_name>`.
 
 .. rst-class:: classref-item-separator
 
@@ -390,6 +390,7 @@ Sets an item's collision shapes.
 The array should consist of :ref:`Shape3D<class_Shape3D>` objects, each followed by a :ref:`Transform3D<class_Transform3D>` that will be applied to it. For shapes that should not have a transform, use :ref:`Transform3D.IDENTITY<class_Transform3D_constant_IDENTITY>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

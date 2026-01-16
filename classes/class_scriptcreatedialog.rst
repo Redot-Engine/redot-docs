@@ -19,7 +19,7 @@ Redot editor's popup dialog for creating new :ref:`Script<class_Script>` files.
 Description
 -----------
 
-The **ScriptCreateDialog** creates script files according to a given template for a given scripting language. The standard use is to configure its fields prior to calling one of the :ref:`Window.popup<class_Window_method_popup>` methods.
+The **ScriptCreateDialog** creates script files according to a given template for a given scripting language. The standard use is to configure its fields prior to calling one of the :ref:`Window.popup()<class_Window_method_popup>` methods.
 
 
 .. tabs::
@@ -107,6 +107,7 @@ Method Descriptions
 Prefills required fields to configure the ScriptCreateDialog for use.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

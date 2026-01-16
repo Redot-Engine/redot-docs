@@ -31,11 +31,13 @@ Properties
 .. table::
    :widths: auto
 
-   +---------------------------+-----------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`height<class_CapsuleShape2D_property_height>` | ``30.0`` |
-   +---------------------------+-----------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`radius<class_CapsuleShape2D_property_radius>` | ``10.0`` |
-   +---------------------------+-----------------------------------------------------+----------+
+   +---------------------------+-------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`height<class_CapsuleShape2D_property_height>`         | ``30.0`` |
+   +---------------------------+-------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`mid_height<class_CapsuleShape2D_property_mid_height>` |          |
+   +---------------------------+-------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`radius<class_CapsuleShape2D_property_radius>`         | ``10.0`` |
+   +---------------------------+-------------------------------------------------------------+----------+
 
 .. rst-class:: classref-section-separator
 
@@ -57,7 +59,26 @@ Property Descriptions
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The capsule's height.
+The capsule's full height, including the semicircles.
+
+\ **Note:** The :ref:`height<class_CapsuleShape2D_property_height>` of a capsule must be at least twice its :ref:`radius<class_CapsuleShape2D_property_radius>`. Otherwise, the capsule becomes a circle. If the :ref:`height<class_CapsuleShape2D_property_height>` is less than twice the :ref:`radius<class_CapsuleShape2D_property_radius>`, the properties adjust to a valid value.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_CapsuleShape2D_property_mid_height:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **mid_height** :ref:`🔗<class_CapsuleShape2D_property_mid_height>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_mid_height**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_mid_height**\ (\ )
+
+The capsule's height, excluding the semicircles. This is the height of the central rectangular part in the middle of the capsule, and is the distance between the centers of the two semicircles. This is a wrapper for :ref:`height<class_CapsuleShape2D_property_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +97,10 @@ The capsule's height.
 
 The capsule's radius.
 
+\ **Note:** The :ref:`radius<class_CapsuleShape2D_property_radius>` of a capsule cannot be greater than half of its :ref:`height<class_CapsuleShape2D_property_height>`. Otherwise, the capsule becomes a circle. If the :ref:`radius<class_CapsuleShape2D_property_radius>` is greater than half of the :ref:`height<class_CapsuleShape2D_property_height>`, the properties adjust to a valid value.
+
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -235,7 +235,7 @@ If set, this :ref:`Expression<class_Expression>` will be used to convert the pro
 - |void| **set_json_pointers**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\] **get_json_pointers**\ (\ )
 
-The glTF object model JSON pointers used to identify the property in the glTF object model. In most cases, there will be only one item in this array, but niche cases may require multiple pointers. The items are themselves arrays which represent the JSON pointer split into its components.
+The glTF object model JSON pointers used to identify the property in the glTF object model. In most cases, there will be only one item in this array, but specific cases may require multiple pointers. The items are themselves arrays which represent the JSON pointer split into its components.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ The glTF object model JSON pointers used to identify the property in the glTF ob
 - |void| **set_node_paths**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\] **get_node_paths**\ (\ )
 
-An array of :ref:`NodePath<class_NodePath>`\ s that point to a property, or multiple properties, in the Redot scene tree. On import, this will either be set by :ref:`GLTFDocument<class_GLTFDocument>`, or by a :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` class. For simple cases, use :ref:`append_path_to_property<class_GLTFObjectModelProperty_method_append_path_to_property>` to add properties to this array.
+An array of :ref:`NodePath<class_NodePath>`\ s that point to a property, or multiple properties, in the Redot scene tree. On import, this will either be set by :ref:`GLTFDocument<class_GLTFDocument>`, or by a :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` class. For simple cases, use :ref:`append_path_to_property()<class_GLTFObjectModelProperty_method_append_path_to_property>` to add properties to this array.
 
 In most cases :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` will only have one item, but in some cases a single glTF JSON pointer will map to multiple Redot properties. For example, a :ref:`GLTFCamera<class_GLTFCamera>` or :ref:`GLTFLight<class_GLTFLight>` used on multiple glTF nodes will be represented by multiple Redot nodes.
 
@@ -271,7 +271,7 @@ In most cases :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths
 - |void| **set_object_model_type**\ (\ value\: :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>`\ )
 - :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **get_object_model_type**\ (\ )
 
-The type of data stored in the glTF file as defined by the object model. This is a superset of the available accessor types, and determines the accessor type. See :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` for possible values.
+The type of data stored in the glTF file as defined by the object model. This is a superset of the available accessor types, and determines the accessor type.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ Method Descriptions
 
 |void| **append_node_path**\ (\ node_path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_GLTFObjectModelProperty_method_append_node_path>`
 
-Appends a :ref:`NodePath<class_NodePath>` to :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`. This can be used by :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes to define how a glTF object model property maps to a Redot property, or multiple Redot properties. Prefer using :ref:`append_path_to_property<class_GLTFObjectModelProperty_method_append_path_to_property>` for simple cases. Be sure to also call :ref:`set_types<class_GLTFObjectModelProperty_method_set_types>` once (the order does not matter).
+Appends a :ref:`NodePath<class_NodePath>` to :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`. This can be used by :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes to define how a glTF object model property maps to a Redot property, or multiple Redot properties. Prefer using :ref:`append_path_to_property()<class_GLTFObjectModelProperty_method_append_path_to_property>` for simple cases. Be sure to also call :ref:`set_types()<class_GLTFObjectModelProperty_method_set_types>` once (the order does not matter).
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ Appends a :ref:`NodePath<class_NodePath>` to :ref:`node_paths<class_GLTFObjectMo
 
 |void| **append_path_to_property**\ (\ node_path\: :ref:`NodePath<class_NodePath>`, prop_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GLTFObjectModelProperty_method_append_path_to_property>`
 
-High-level wrapper over :ref:`append_node_path<class_GLTFObjectModelProperty_method_append_node_path>` that handles the most common cases. It constructs a new :ref:`NodePath<class_NodePath>` using ``node_path`` as a base and appends ``prop_name`` to the subpath. Be sure to also call :ref:`set_types<class_GLTFObjectModelProperty_method_set_types>` once (the order does not matter).
+High-level wrapper over :ref:`append_node_path()<class_GLTFObjectModelProperty_method_append_node_path>` that handles the most common cases. It constructs a new :ref:`NodePath<class_NodePath>` using ``node_path`` as a base and appends ``prop_name`` to the subpath. Be sure to also call :ref:`set_types()<class_GLTFObjectModelProperty_method_set_types>` once (the order does not matter).
 
 .. rst-class:: classref-item-separator
 
@@ -368,6 +368,7 @@ Returns ``true`` if :ref:`node_paths<class_GLTFObjectModelProperty_property_node
 Sets the :ref:`variant_type<class_GLTFObjectModelProperty_property_variant_type>` and :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>` properties. This is a convenience method to set both properties at once, since they are almost always known at the same time. This method should be called once. Calling it again with the same values will have no effect.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

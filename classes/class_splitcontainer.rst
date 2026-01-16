@@ -55,6 +55,8 @@ Properties
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
    | :ref:`int<class_int>`                                           | :ref:`split_offset<class_SplitContainer_property_split_offset>`                                   | ``0``     |
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                         | :ref:`touch_dragger_enabled<class_SplitContainer_property_touch_dragger_enabled>`                 | ``false`` |
+   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
    | :ref:`bool<class_bool>`                                         | :ref:`vertical<class_SplitContainer_property_vertical>`                                           | ``false`` |
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------+
 
@@ -80,21 +82,33 @@ Theme Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`int<class_int>`             | :ref:`autohide<class_SplitContainer_theme_constant_autohide>`                             | ``1``  |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`int<class_int>`             | :ref:`minimum_grab_thickness<class_SplitContainer_theme_constant_minimum_grab_thickness>` | ``6``  |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`int<class_int>`             | :ref:`separation<class_SplitContainer_theme_constant_separation>`                         | ``12`` |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`grabber<class_SplitContainer_theme_icon_grabber>`                                   |        |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`h_grabber<class_SplitContainer_theme_icon_h_grabber>`                               |        |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`v_grabber<class_SplitContainer_theme_icon_v_grabber>`                               |        |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
-   | :ref:`StyleBox<class_StyleBox>`   | :ref:`split_bar_background<class_SplitContainer_theme_style_split_bar_background>`        |        |
-   +-----------------------------------+-------------------------------------------------------------------------------------------+--------+
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`touch_dragger_color<class_SplitContainer_theme_color_touch_dragger_color>`                 | ``Color(1, 1, 1, 0.3)`` |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`touch_dragger_hover_color<class_SplitContainer_theme_color_touch_dragger_hover_color>`     | ``Color(1, 1, 1, 0.6)`` |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`touch_dragger_pressed_color<class_SplitContainer_theme_color_touch_dragger_pressed_color>` | ``Color(1, 1, 1, 1)``   |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`             | :ref:`autohide<class_SplitContainer_theme_constant_autohide>`                                    | ``1``                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`             | :ref:`minimum_grab_thickness<class_SplitContainer_theme_constant_minimum_grab_thickness>`        | ``6``                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`             | :ref:`separation<class_SplitContainer_theme_constant_separation>`                                | ``12``                  |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`grabber<class_SplitContainer_theme_icon_grabber>`                                          |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`h_grabber<class_SplitContainer_theme_icon_h_grabber>`                                      |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`h_touch_dragger<class_SplitContainer_theme_icon_h_touch_dragger>`                          |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`touch_dragger<class_SplitContainer_theme_icon_touch_dragger>`                              |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`v_grabber<class_SplitContainer_theme_icon_v_grabber>`                                      |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`v_touch_dragger<class_SplitContainer_theme_icon_v_touch_dragger>`                          |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`split_bar_background<class_SplitContainer_theme_style_split_bar_background>`               |                         |
+   +-----------------------------------+--------------------------------------------------------------------------------------------------+-------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -287,7 +301,7 @@ Shifts the drag area in the axis of the container to prevent the drag area from 
 - |void| **set_dragger_visibility**\ (\ value\: :ref:`DraggerVisibility<enum_SplitContainer_DraggerVisibility>`\ )
 - :ref:`DraggerVisibility<enum_SplitContainer_DraggerVisibility>` **get_dragger_visibility**\ (\ )
 
-Determines the dragger's visibility. See :ref:`DraggerVisibility<enum_SplitContainer_DraggerVisibility>` for details. This property does not determine whether dragging is enabled or not. Use :ref:`dragging_enabled<class_SplitContainer_property_dragging_enabled>` for that.
+Determines the dragger's visibility. This property does not determine whether dragging is enabled or not. Use :ref:`dragging_enabled<class_SplitContainer_property_dragging_enabled>` for that.
 
 .. rst-class:: classref-item-separator
 
@@ -322,6 +336,23 @@ Enables or disables split dragging.
 - :ref:`int<class_int>` **get_split_offset**\ (\ )
 
 The initial offset of the splitting between the two :ref:`Control<class_Control>`\ s, with ``0`` being at the end of the first :ref:`Control<class_Control>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SplitContainer_property_touch_dragger_enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **touch_dragger_enabled** = ``false`` :ref:`🔗<class_SplitContainer_property_touch_dragger_enabled>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_touch_dragger_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_touch_dragger_enabled**\ (\ )
+
+If ``true``, a touch-friendly drag handle will be enabled for better usability on smaller screens. Unlike the standard grabber, this drag handle overlaps the **SplitContainer**'s children and does not affect their minimum separation. The standard grabber will no longer be drawn when this option is enabled.
 
 .. rst-class:: classref-item-separator
 
@@ -388,6 +419,42 @@ Returns the drag area :ref:`Control<class_Control>`. For example, you can move a
 Theme Property Descriptions
 ---------------------------
 
+.. _class_SplitContainer_theme_color_touch_dragger_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **touch_dragger_color** = ``Color(1, 1, 1, 0.3)`` :ref:`🔗<class_SplitContainer_theme_color_touch_dragger_color>`
+
+The color of the touch dragger.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SplitContainer_theme_color_touch_dragger_hover_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **touch_dragger_hover_color** = ``Color(1, 1, 1, 0.6)`` :ref:`🔗<class_SplitContainer_theme_color_touch_dragger_hover_color>`
+
+The color of the touch dragger when hovered.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SplitContainer_theme_color_touch_dragger_pressed_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **touch_dragger_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_SplitContainer_theme_color_touch_dragger_pressed_color>`
+
+The color of the touch dragger when pressed.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_SplitContainer_theme_constant_autohide:
 
 .. rst-class:: classref-themeproperty
@@ -432,7 +499,7 @@ The split bar thickness, i.e., the gap between the two children of the container
 
 :ref:`Texture2D<class_Texture2D>` **grabber** :ref:`🔗<class_SplitContainer_theme_icon_grabber>`
 
-The icon used for the grabber drawn in the middle area.
+The icon used for the grabber drawn in the middle area. This is only used in :ref:`HSplitContainer<class_HSplitContainer>` and :ref:`VSplitContainer<class_VSplitContainer>`. For **SplitContainer**, see :ref:`h_grabber<class_SplitContainer_theme_icon_h_grabber>` and :ref:`v_grabber<class_SplitContainer_theme_icon_v_grabber>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -450,6 +517,30 @@ The icon used for the grabber drawn in the middle area when :ref:`vertical<class
 
 ----
 
+.. _class_SplitContainer_theme_icon_h_touch_dragger:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **h_touch_dragger** :ref:`🔗<class_SplitContainer_theme_icon_h_touch_dragger>`
+
+The icon used for the drag handle when :ref:`touch_dragger_enabled<class_SplitContainer_property_touch_dragger_enabled>` is ``true`` and :ref:`vertical<class_SplitContainer_property_vertical>` is ``false``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SplitContainer_theme_icon_touch_dragger:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **touch_dragger** :ref:`🔗<class_SplitContainer_theme_icon_touch_dragger>`
+
+The icon used for the drag handle when :ref:`touch_dragger_enabled<class_SplitContainer_property_touch_dragger_enabled>` is ``true``. This is only used in :ref:`HSplitContainer<class_HSplitContainer>` and :ref:`VSplitContainer<class_VSplitContainer>`. For **SplitContainer**, see :ref:`h_touch_dragger<class_SplitContainer_theme_icon_h_touch_dragger>` and :ref:`v_touch_dragger<class_SplitContainer_theme_icon_v_touch_dragger>` instead.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_SplitContainer_theme_icon_v_grabber:
 
 .. rst-class:: classref-themeproperty
@@ -457,6 +548,18 @@ The icon used for the grabber drawn in the middle area when :ref:`vertical<class
 :ref:`Texture2D<class_Texture2D>` **v_grabber** :ref:`🔗<class_SplitContainer_theme_icon_v_grabber>`
 
 The icon used for the grabber drawn in the middle area when :ref:`vertical<class_SplitContainer_property_vertical>` is ``true``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SplitContainer_theme_icon_v_touch_dragger:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **v_touch_dragger** :ref:`🔗<class_SplitContainer_theme_icon_v_touch_dragger>`
+
+The icon used for the drag handle when :ref:`touch_dragger_enabled<class_SplitContainer_property_touch_dragger_enabled>` is ``true`` and :ref:`vertical<class_SplitContainer_property_vertical>` is ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -471,6 +574,7 @@ The icon used for the grabber drawn in the middle area when :ref:`vertical<class
 Determines the background of the split bar if its thickness is greater than zero.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

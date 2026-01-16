@@ -111,7 +111,11 @@ The angular velocity of the physics body, in radians per second. This is only us
 - |void| **set_body_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_body_type**\ (\ )
 
-The type of the body. When importing, this controls what type of :ref:`CollisionObject3D<class_CollisionObject3D>` node Redot should generate. Valid values are "static", "animatable", "character", "rigid", "vehicle", and "trigger". When exporting, this will be squashed down to one of "static", "kinematic", or "dynamic" motion types, or the "trigger" property.
+The type of the body.
+
+When importing, this controls what type of :ref:`CollisionObject3D<class_CollisionObject3D>` node Redot should generate. Valid values are ``"static"``, ``"animatable"``, ``"character"``, ``"rigid"``, ``"vehicle"``, and ``"trigger"``.
+
+When exporting, this will be squashed down to one of ``"static"``, ``"kinematic"``, or ``"dynamic"`` motion types, or the ``"trigger"`` property.
 
 .. rst-class:: classref-item-separator
 
@@ -275,6 +279,7 @@ Serializes this GLTFPhysicsBody instance into a :ref:`Dictionary<class_Dictionar
 Converts this GLTFPhysicsBody instance into a Redot :ref:`CollisionObject3D<class_CollisionObject3D>` node.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

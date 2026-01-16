@@ -12,14 +12,14 @@ PhysicsPointQueryParameters2D
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides parameters for :ref:`PhysicsDirectSpaceState2D.intersect_point<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
+Provides parameters for :ref:`PhysicsDirectSpaceState2D.intersect_point()<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
 
 .. rst-class:: classref-introduction-group
 
 Description
 -----------
 
-By changing various properties of this object, such as the point position, you can configure the parameters for :ref:`PhysicsDirectSpaceState2D.intersect_point<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
+By changing various properties of this object, such as the point position, you can configure the parameters for :ref:`PhysicsDirectSpaceState2D.intersect_point()<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -63,7 +63,7 @@ Property Descriptions
 - |void| **set_canvas_instance_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_canvas_instance_id**\ (\ )
 
-If different from ``0``, restricts the query to a specific canvas layer specified by its instance ID. See :ref:`Object.get_instance_id<class_Object_method_get_instance_id>`.
+If different from ``0``, restricts the query to a specific canvas layer specified by its instance ID. See :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
 
 If ``0``, restricts the query to the Viewport's default canvas layer.
 
@@ -133,7 +133,7 @@ The physics layers the query will detect (as a bitmask). By default, all collisi
 - |void| **set_exclude**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_exclude**\ (\ )
 
-The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject2D.get_rid<class_CollisionObject2D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject2D<class_CollisionObject2D>`-derived node.
+The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject2D.get_rid()<class_CollisionObject2D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject2D<class_CollisionObject2D>`-derived node.
 
 \ **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.
 
@@ -155,6 +155,7 @@ The list of object :ref:`RID<class_RID>`\ s that will be excluded from collision
 The position being queried for, in global coordinates.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

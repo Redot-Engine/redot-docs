@@ -23,7 +23,7 @@ A deformable 3D physics mesh. Used to create elastic or deformable objects such 
 
 Additionally, **SoftBody3D** is subject to wind forces defined in :ref:`Area3D<class_Area3D>` (see :ref:`Area3D.wind_source_path<class_Area3D_property_wind_source_path>`, :ref:`Area3D.wind_force_magnitude<class_Area3D_property_wind_force_magnitude>`, and :ref:`Area3D.wind_attenuation_factor<class_Area3D_property_wind_attenuation_factor>`).
 
-\ **Note:** There are many known bugs in **SoftBody3D**. Therefore, it's not recommended to use them for things that can affect gameplay (such as trampolines).
+\ **Note:** It's recommended to use Jolt Physics when using **SoftBody3D** instead of the default GodotPhysics3D, as Jolt Physics' soft body implementation is faster and more reliable. You can switch the physics engine using the :ref:`ProjectSettings.physics/3d/physics_engine<class_ProjectSettings_property_physics/3d/physics_engine>` project setting.
 
 .. rst-class:: classref-introduction-group
 
@@ -59,6 +59,8 @@ Properties
    +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
    | :ref:`bool<class_bool>`                         | :ref:`ray_pickable<class_SoftBody3D_property_ray_pickable>`                       | ``true``         |
    +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                       | :ref:`shrinking_factor<class_SoftBody3D_property_shrinking_factor>`               | ``0.0``          |
+   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
    | :ref:`int<class_int>`                           | :ref:`simulation_precision<class_SoftBody3D_property_simulation_precision>`       | ``5``            |
    +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
    | :ref:`float<class_float>`                       | :ref:`total_mass<class_SoftBody3D_property_total_mass>`                           | ``1.0``          |
@@ -74,6 +76,14 @@ Methods
 
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                 | :ref:`add_collision_exception_with<class_SoftBody3D_method_add_collision_exception_with>`\ (\ body\: :ref:`Node<class_Node>`\ )                                                                                                                          |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`apply_central_force<class_SoftBody3D_method_apply_central_force>`\ (\ force\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                                     |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`apply_central_impulse<class_SoftBody3D_method_apply_central_impulse>`\ (\ impulse\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                               |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`apply_force<class_SoftBody3D_method_apply_force>`\ (\ point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`apply_impulse<class_SoftBody3D_method_apply_impulse>`\ (\ point_index\: :ref:`int<class_int>`, impulse\: :ref:`Vector3<class_Vector3>`\ )                                                                                                          |
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`PhysicsBody3D<class_PhysicsBody3D>`\] | :ref:`get_collision_exceptions<class_SoftBody3D_method_get_collision_exceptions>`\ (\ )                                                                                                                                                                  |
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -204,7 +214,7 @@ The body's damping coefficient. Higher values will slow down the body more notic
 - |void| **set_disable_mode**\ (\ value\: :ref:`DisableMode<enum_SoftBody3D_DisableMode>`\ )
 - :ref:`DisableMode<enum_SoftBody3D_DisableMode>` **get_disable_mode**\ (\ )
 
-Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`. See :ref:`DisableMode<enum_SoftBody3D_DisableMode>` for more details about the different modes.
+Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -297,6 +307,25 @@ If ``true``, the **SoftBody3D** will respond to :ref:`RayCast3D<class_RayCast3D>
 
 ----
 
+.. _class_SoftBody3D_property_shrinking_factor:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **shrinking_factor** = ``0.0`` :ref:`🔗<class_SoftBody3D_property_shrinking_factor>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_shrinking_factor**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_shrinking_factor**\ (\ )
+
+Scales the rest lengths of **SoftBody3D**'s edge constraints. Positive values shrink the mesh, while negative values expand it. For example, a value of ``0.1`` shortens the edges of the mesh by 10%, while ``-0.1`` expands the edges by 10%.
+
+\ **Note:** :ref:`shrinking_factor<class_SoftBody3D_property_shrinking_factor>` is best used on surface meshes with pinned points.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_SoftBody3D_property_simulation_precision:
 
 .. rst-class:: classref-property
@@ -343,6 +372,58 @@ Method Descriptions
 |void| **add_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SoftBody3D_method_add_collision_exception_with>`
 
 Adds a body to the list of bodies that this body can't collide with.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SoftBody3D_method_apply_central_force:
+
+.. rst-class:: classref-method
+
+|void| **apply_central_force**\ (\ force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_central_force>`
+
+Distributes and applies a force to all points. A force is time dependent and meant to be applied every physics update.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SoftBody3D_method_apply_central_impulse:
+
+.. rst-class:: classref-method
+
+|void| **apply_central_impulse**\ (\ impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_central_impulse>`
+
+Distributes and applies an impulse to all points.
+
+An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SoftBody3D_method_apply_force:
+
+.. rst-class:: classref-method
+
+|void| **apply_force**\ (\ point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_force>`
+
+Applies a force to a point. A force is time dependent and meant to be applied every physics update.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SoftBody3D_method_apply_impulse:
+
+.. rst-class:: classref-method
+
+|void| **apply_impulse**\ (\ point_index\: :ref:`int<class_int>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_impulse>`
+
+Applies an impulse to a point.
+
+An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
 
 .. rst-class:: classref-item-separator
 
@@ -465,6 +546,7 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 Sets the pinned state of a surface vertex. When set to ``true``, the optional ``attachment_path`` can define a :ref:`Node3D<class_Node3D>` the pinned vertex will be attached to.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
