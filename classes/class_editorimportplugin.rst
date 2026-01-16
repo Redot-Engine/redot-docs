@@ -21,7 +21,7 @@ Description
 
 **EditorImportPlugin**\ s provide a way to extend the editor's resource import functionality. Use them to import resources from custom files or to provide alternatives to the editor's existing importers.
 
-EditorImportPlugins work by associating with specific file extensions and a resource type. See :ref:`_get_recognized_extensions<class_EditorImportPlugin_private_method__get_recognized_extensions>` and :ref:`_get_resource_type<class_EditorImportPlugin_private_method__get_resource_type>`. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the ``.godot/imported`` directory (see :ref:`ProjectSettings.application/config/use_hidden_project_data_directory<class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
+EditorImportPlugins work by associating with specific file extensions and a resource type. See :ref:`_get_recognized_extensions()<class_EditorImportPlugin_private_method__get_recognized_extensions>` and :ref:`_get_resource_type()<class_EditorImportPlugin_private_method__get_resource_type>`. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the ``.godot/imported`` directory (see :ref:`ProjectSettings.application/config/use_hidden_project_data_directory<class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
 
 Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` from a file with the extension ".special" or ".spec":
 
@@ -85,7 +85,7 @@ Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` fr
     
         public override string[] _GetRecognizedExtensions()
         {
-            return new string[] { "special", "spec" };
+            return ["special", "spec"];
         }
     
         public override string _GetSaveExtension()
@@ -110,14 +110,14 @@ Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` fr
     
         public override Godot.Collections.Array<Godot.Collections.Dictionary> _GetImportOptions(string path, int presetIndex)
         {
-            return new Godot.Collections.Array<Godot.Collections.Dictionary>
-            {
+            return
+            [
                 new Godot.Collections.Dictionary
                 {
                     { "name", "myOption" },
                     { "default_value", false },
-                }
-            };
+                },
+            ];
         }
     
         public override Error _Import(string sourceFile, string savePath, Godot.Collections.Dictionary options, Godot.Collections.Array<string> platformVariants, Godot.Collections.Array<string> genFiles)
@@ -137,7 +137,7 @@ Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` fr
 
 
 
-To use **EditorImportPlugin**, register it using the :ref:`EditorPlugin.add_import_plugin<class_EditorPlugin_method_add_import_plugin>` method first.
+To use **EditorImportPlugin**, register it using the :ref:`EditorPlugin.add_import_plugin()<class_EditorPlugin_method_add_import_plugin>` method first.
 
 .. rst-class:: classref-introduction-group
 
@@ -265,7 +265,7 @@ Gets the unique name of the importer.
 
 :ref:`bool<class_bool>` **_get_option_visibility**\ (\ path\: :ref:`String<class_String>`, option_name\: :ref:`StringName<class_StringName>`, options\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_option_visibility>`
 
-This method can be overridden to hide specific import options if conditions are met. This is mainly useful for hiding options that depend on others if one of them is disabled.
+Gets whether the import option specified by ``option_name`` should be visible in the Import dock. The default implementation always returns ``true``, making all options visible. This is mainly useful for hiding options that depend on others if one of them is disabled.
 
 
 .. tabs::
@@ -294,8 +294,6 @@ This method can be overridden to hide specific import options if conditions are 
 
 
 
-Returns ``true`` to make all options always visible.
-
 .. rst-class:: classref-item-separator
 
 ----
@@ -306,7 +304,7 @@ Returns ``true`` to make all options always visible.
 
 :ref:`int<class_int>` **_get_preset_count**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_preset_count>`
 
-Gets the number of initial presets defined by the plugin. Use :ref:`_get_import_options<class_EditorImportPlugin_private_method__get_import_options>` to get the default options for the preset and :ref:`_get_preset_name<class_EditorImportPlugin_private_method__get_preset_name>` to get the name of the preset.
+Gets the number of initial presets defined by the plugin. Use :ref:`_get_import_options()<class_EditorImportPlugin_private_method__get_import_options>` to get the default options for the preset and :ref:`_get_preset_name()<class_EditorImportPlugin_private_method__get_preset_name>` to get the name of the preset.
 
 .. rst-class:: classref-item-separator
 
@@ -390,7 +388,11 @@ Gets the name to display in the import window. You should choose this name as a 
 
 :ref:`Error<enum_@GlobalScope_Error>` **_import**\ (\ source_file\: :ref:`String<class_String>`, save_path\: :ref:`String<class_String>`, options\: :ref:`Dictionary<class_Dictionary>`, platform_variants\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\], gen_files\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\]\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__import>`
 
-Imports ``source_file`` into ``save_path`` with the import ``options`` specified. The ``platform_variants`` and ``gen_files`` arrays will be modified by this function.
+Imports ``source_file`` with the import ``options`` specified. Should return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the import is successful, other values indicate failure.
+
+The imported resource is expected to be saved to ``save_path + "." + _get_save_extension()``. If a different variant is preferred for a :doc:`feature tag <../tutorials/export/feature_tags>`, save the variant to ``save_path + "." + tag + "." + _get_save_extension()`` and add the feature tag to ``platform_variants``.
+
+If additional resource files are generated in the resource filesystem (``res://``), add their full path to ``gen_files`` so that the editor knows they depend on ``source_file``.
 
 This method must be overridden to do the actual importing work. See this class' description for an example of overriding this method.
 
@@ -404,7 +406,7 @@ This method must be overridden to do the actual importing work. See this class' 
 
 :ref:`Error<enum_@GlobalScope_Error>` **append_import_external_resource**\ (\ path\: :ref:`String<class_String>`, custom_options\: :ref:`Dictionary<class_Dictionary>` = {}, custom_importer\: :ref:`String<class_String>` = "", generator_parameters\: :ref:`Variant<class_Variant>` = null\ ) :ref:`🔗<class_EditorImportPlugin_method_append_import_external_resource>`
 
-This function can only be called during the :ref:`_import<class_EditorImportPlugin_private_method__import>` callback and it allows manually importing resources from it. This is useful when the imported file generates external resources that require importing (as example, images). Custom parameters for the ".import" file can be passed via the ``custom_options``. Additionally, in cases where multiple importers can handle a file, the ``custom_importer`` can be specified to force a specific one. This function performs a resource import and returns immediately with a success or error code. ``generator_parameters`` defines optional extra metadata which will be stored as ``generator_parameters`` in the ``remap`` section of the ``.import`` file, for example to store a md5 hash of the source data.
+This function can only be called during the :ref:`_import()<class_EditorImportPlugin_private_method__import>` callback and it allows manually importing resources from it. This is useful when the imported file generates external resources that require importing (as example, images). Custom parameters for the ".import" file can be passed via the ``custom_options``. Additionally, in cases where multiple importers can handle a file, the ``custom_importer`` can be specified to force a specific one. This function performs a resource import and returns immediately with a success or error code. ``generator_parameters`` defines optional extra metadata which will be stored as ``generator_parameters`` in the ``remap`` section of the ``.import`` file, for example to store a md5 hash of the source data.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

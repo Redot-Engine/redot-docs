@@ -10,6 +10,8 @@
 PackedDataContainerRef
 ======================
 
+**Deprecated:** Use :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` or :ref:`FileAccess.store_var()<class_FileAccess_method_store_var>` instead. To enable data compression, use :ref:`PackedByteArray.compress()<class_PackedByteArray_method_compress>` or :ref:`FileAccess.open_compressed()<class_FileAccess_method_open_compressed>`.
+
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 An internal class used by :ref:`PackedDataContainer<class_PackedDataContainer>` to pack nested arrays and dictionaries.
@@ -24,7 +26,7 @@ When packing nested containers using :ref:`PackedDataContainer<class_PackedDataC
 ::
 
     var packed = PackedDataContainer.new()
-    packed.pack([1, 2, 3, ["abc", "def"], 4, 5, 6])
+    packed.pack([1, 2, 3, ["nested1", "nested2"], 4, 5, 6])
     
     for element in packed:
         if element is PackedDataContainerRef:
@@ -32,16 +34,19 @@ When packing nested containers using :ref:`PackedDataContainer<class_PackedDataC
                 print("::", subelement)
         else:
             print(element)
-    
-    # Prints:
-    # 1
-    # 2
-    # 3
-    # ::abc
-    # ::def
-    # 4
-    # 5
-    # 6
+
+Prints:
+
+.. code:: text
+
+    1
+    2
+    3
+    ::nested1
+    ::nested2
+    4
+    5
+    6
 
 .. rst-class:: classref-reftable-group
 
@@ -70,7 +75,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_PackedDataContainerRef_method_size>`
 
-Returns the size of the packed container (see :ref:`Array.size<class_Array_method_size>` and :ref:`Dictionary.size<class_Dictionary_method_size>`).
+Returns the size of the packed container (see :ref:`Array.size()<class_Array_method_size>` and :ref:`Dictionary.size()<class_Dictionary_method_size>`).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
