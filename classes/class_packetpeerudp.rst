@@ -26,10 +26,10 @@ UDP packet peer. Can be used to send and receive raw UDP packets as well as :ref
 ::
 
     var peer = PacketPeerUDP.new()
-    
+
     # Optionally, you can select the local port used to send the packet.
     peer.bind(4444)
-    
+
     peer.set_dest_address("1.1.1.1", 4433)
     peer.put_packet("hello".to_utf8_buffer())
 
@@ -38,12 +38,12 @@ UDP packet peer. Can be used to send and receive raw UDP packets as well as :ref
 ::
 
     var peer
-    
+
     func _ready():
         peer = PacketPeerUDP.new()
         peer.bind(4433)
-    
-    
+
+
     func _process(_delta):
         if peer.get_available_packet_count() > 0:
             var array_bytes = peer.get_packet()
@@ -133,7 +133,7 @@ Closes the **PacketPeerUDP**'s underlying UDP socket.
 
 :ref:`Error<enum_@GlobalScope_Error>` **connect_to_host**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PacketPeerUDP_method_connect_to_host>`
 
-Calling this method connects this UDP peer to the given ``host``/``port`` pair. UDP is in reality connectionless, so this option only means that incoming packets from different addresses are automatically discarded, and that outgoing packets are always sent to the connected address (future calls to :ref:`set_dest_address<class_PacketPeerUDP_method_set_dest_address>` are not allowed). This method does not send any data to the remote peer, to do that, use :ref:`PacketPeer.put_var<class_PacketPeer_method_put_var>` or :ref:`PacketPeer.put_packet<class_PacketPeer_method_put_packet>` as usual. See also :ref:`UDPServer<class_UDPServer>`.
+Calling this method connects this UDP peer to the given ``host``/``port`` pair. UDP is in reality connectionless, so this option only means that incoming packets from different addresses are automatically discarded, and that outgoing packets are always sent to the connected address (future calls to :ref:`set_dest_address()<class_PacketPeerUDP_method_set_dest_address>` are not allowed). This method does not send any data to the remote peer, to do that, use :ref:`PacketPeer.put_var()<class_PacketPeer_method_put_var>` or :ref:`PacketPeer.put_packet()<class_PacketPeer_method_put_packet>` as usual. See also :ref:`UDPServer<class_UDPServer>`.
 
 \ **Note:** Connecting to the remote peer does not help to protect from malicious attacks like IP spoofing, etc. Think about using an encryption technique like TLS or DTLS if you feel like your application is transferring sensitive information.
 
@@ -159,7 +159,7 @@ Returns the local port to which this peer is bound.
 
 :ref:`String<class_String>` **get_packet_ip**\ (\ ) |const| :ref:`🔗<class_PacketPeerUDP_method_get_packet_ip>`
 
-Returns the IP of the remote peer that sent the last packet(that was received with :ref:`PacketPeer.get_packet<class_PacketPeer_method_get_packet>` or :ref:`PacketPeer.get_var<class_PacketPeer_method_get_var>`).
+Returns the IP of the remote peer that sent the last packet(that was received with :ref:`PacketPeer.get_packet()<class_PacketPeer_method_get_packet>` or :ref:`PacketPeer.get_var()<class_PacketPeer_method_get_var>`).
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ Returns the IP of the remote peer that sent the last packet(that was received wi
 
 :ref:`int<class_int>` **get_packet_port**\ (\ ) |const| :ref:`🔗<class_PacketPeerUDP_method_get_packet_port>`
 
-Returns the port of the remote peer that sent the last packet(that was received with :ref:`PacketPeer.get_packet<class_PacketPeer_method_get_packet>` or :ref:`PacketPeer.get_var<class_PacketPeer_method_get_var>`).
+Returns the port of the remote peer that sent the last packet(that was received with :ref:`PacketPeer.get_packet()<class_PacketPeer_method_get_packet>` or :ref:`PacketPeer.get_var()<class_PacketPeer_method_get_var>`).
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Returns whether this **PacketPeerUDP** is bound to an address and can receive pa
 
 :ref:`bool<class_bool>` **is_socket_connected**\ (\ ) |const| :ref:`🔗<class_PacketPeerUDP_method_is_socket_connected>`
 
-Returns ``true`` if the UDP socket is open and has been connected to a remote address. See :ref:`connect_to_host<class_PacketPeerUDP_method_connect_to_host>`.
+Returns ``true`` if the UDP socket is open and has been connected to a remote address. See :ref:`connect_to_host()<class_PacketPeerUDP_method_connect_to_host>`.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Returns ``true`` if the UDP socket is open and has been connected to a remote ad
 
 Joins the multicast group specified by ``multicast_address`` using the interface identified by ``interface_name``.
 
-You can join the same multicast group with multiple interfaces. Use :ref:`IP.get_local_interfaces<class_IP_method_get_local_interfaces>` to know which are available.
+You can join the same multicast group with multiple interfaces. Use :ref:`IP.get_local_interfaces()<class_IP_method_get_local_interfaces>` to know which are available.
 
 \ **Note:** Some Android devices might require the ``CHANGE_WIFI_MULTICAST_STATE`` permission for multicast to work.
 
@@ -251,7 +251,7 @@ Enable or disable sending of broadcast packets (e.g. ``set_dest_address("255.255
 
 Sets the destination address and port for sending packets and variables. A hostname will be resolved using DNS if needed.
 
-\ **Note:** :ref:`set_broadcast_enabled<class_PacketPeerUDP_method_set_broadcast_enabled>` must be enabled before sending packets to a broadcast address (e.g. ``255.255.255.255``).
+\ **Note:** :ref:`set_broadcast_enabled()<class_PacketPeerUDP_method_set_broadcast_enabled>` must be enabled before sending packets to a broadcast address (e.g. ``255.255.255.255``).
 
 .. rst-class:: classref-item-separator
 
@@ -263,9 +263,9 @@ Sets the destination address and port for sending packets and variables. A hostn
 
 :ref:`Error<enum_@GlobalScope_Error>` **wait**\ (\ ) :ref:`🔗<class_PacketPeerUDP_method_wait>`
 
-Waits for a packet to arrive on the bound address. See :ref:`bind<class_PacketPeerUDP_method_bind>`.
+Waits for a packet to arrive on the bound address. See :ref:`bind()<class_PacketPeerUDP_method_bind>`.
 
-\ **Note:** :ref:`wait<class_PacketPeerUDP_method_wait>` can't be interrupted once it has been called. This can be worked around by allowing the other party to send a specific "death pill" packet like this:
+\ **Note:** :ref:`wait()<class_PacketPeerUDP_method_wait>` can't be interrupted once it has been called. This can be worked around by allowing the other party to send a specific "death pill" packet like this:
 
 
 .. tabs::
@@ -276,7 +276,7 @@ Waits for a packet to arrive on the bound address. See :ref:`bind<class_PacketPe
     # Server
     socket.set_dest_address("127.0.0.1", 789)
     socket.put_packet("Time to stop".to_ascii_buffer())
-    
+
     # Client
     while socket.wait() == OK:
         var data = socket.get_packet().get_string_from_ascii()
@@ -289,7 +289,7 @@ Waits for a packet to arrive on the bound address. See :ref:`bind<class_PacketPe
     // Server
     socket.SetDestAddress("127.0.0.1", 789);
     socket.PutPacket("Time to stop".ToAsciiBuffer());
-    
+
     // Client
     while (socket.Wait() == OK)
     {
@@ -303,6 +303,7 @@ Waits for a packet to arrive on the bound address. See :ref:`bind<class_PacketPe
 
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

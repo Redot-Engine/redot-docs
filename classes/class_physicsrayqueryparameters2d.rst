@@ -12,14 +12,14 @@ PhysicsRayQueryParameters2D
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides parameters for :ref:`PhysicsDirectSpaceState2D.intersect_ray<class_PhysicsDirectSpaceState2D_method_intersect_ray>`.
+Provides parameters for :ref:`PhysicsDirectSpaceState2D.intersect_ray()<class_PhysicsDirectSpaceState2D_method_intersect_ray>`.
 
 .. rst-class:: classref-introduction-group
 
 Description
 -----------
 
-By changing various properties of this object, such as the ray position, you can configure the parameters for :ref:`PhysicsDirectSpaceState2D.intersect_ray<class_PhysicsDirectSpaceState2D_method_intersect_ray>`.
+By changing various properties of this object, such as the ray position, you can configure the parameters for :ref:`PhysicsDirectSpaceState2D.intersect_ray()<class_PhysicsDirectSpaceState2D_method_intersect_ray>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -128,7 +128,7 @@ The physics layers the query will detect (as a bitmask). By default, all collisi
 - |void| **set_exclude**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_exclude**\ (\ )
 
-The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject2D.get_rid<class_CollisionObject2D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject2D<class_CollisionObject2D>`-derived node.
+The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject2D.get_rid()<class_CollisionObject2D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject2D<class_CollisionObject2D>`-derived node.
 
 \ **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.
 
@@ -206,6 +206,7 @@ Returns a new, pre-configured **PhysicsRayQueryParameters2D** object. Use it to 
     var collision = get_world_2d().direct_space_state.intersect_ray(query)
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

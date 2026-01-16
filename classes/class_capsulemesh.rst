@@ -61,6 +61,8 @@ Property Descriptions
 
 Total height of the capsule mesh (including the hemispherical ends).
 
+\ **Note:** The :ref:`height<class_CapsuleMesh_property_height>` of a capsule must be at least twice its :ref:`radius<class_CapsuleMesh_property_radius>`. Otherwise, the capsule becomes a circle. If the :ref:`height<class_CapsuleMesh_property_height>` is less than twice the :ref:`radius<class_CapsuleMesh_property_radius>`, the properties adjust to a valid value.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -95,6 +97,8 @@ Number of radial segments on the capsule mesh.
 
 Radius of the capsule mesh.
 
+\ **Note:** The :ref:`radius<class_CapsuleMesh_property_radius>` of a capsule cannot be greater than half of its :ref:`height<class_CapsuleMesh_property_height>`. Otherwise, the capsule becomes a circle. If the :ref:`radius<class_CapsuleMesh_property_radius>` is greater than half of the :ref:`height<class_CapsuleMesh_property_height>`, the properties adjust to a valid value.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -113,6 +117,7 @@ Radius of the capsule mesh.
 Number of rings along the height of the capsule.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -57,6 +57,8 @@ Methods
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                      | :ref:`_get_stream_name<class_AudioStream_private_method__get_stream_name>`\ (\ ) |virtual| |const|           |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`_get_tags<class_AudioStream_private_method__get_tags>`\ (\ ) |virtual| |const|                         |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`_has_loop<class_AudioStream_private_method__has_loop>`\ (\ ) |virtual| |const|                         |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
    | :ref:`AudioStreamPlayback<class_AudioStreamPlayback>`            | :ref:`_instantiate_playback<class_AudioStream_private_method__instantiate_playback>`\ (\ ) |virtual| |const| |
@@ -148,7 +150,7 @@ Ideally, the returned value should be based off the stream's sample rate (:ref:`
 
 :ref:`float<class_float>` **_get_length**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStream_private_method__get_length>`
 
-Override this method to customize the returned value of :ref:`get_length<class_AudioStream_method_get_length>`. Should return the length of this audio stream, in seconds.
+Override this method to customize the returned value of :ref:`get_length()<class_AudioStream_method_get_length>`. Should return the length of this audio stream, in seconds.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +162,7 @@ Override this method to customize the returned value of :ref:`get_length<class_A
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_parameter_list**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStream_private_method__get_parameter_list>`
 
-Return the controllable parameters of this stream. This array contains dictionaries with a property info description format (see :ref:`Object.get_property_list<class_Object_method_get_property_list>`). Additionally, the default value for this parameter must be added tho each dictionary in "default_value" field.
+Return the controllable parameters of this stream. This array contains dictionaries with a property info description format (see :ref:`Object.get_property_list()<class_Object_method_get_property_list>`). Additionally, the default value for this parameter must be added tho each dictionary in "default_value" field.
 
 .. rst-class:: classref-item-separator
 
@@ -173,6 +175,20 @@ Return the controllable parameters of this stream. This array contains dictionar
 :ref:`String<class_String>` **_get_stream_name**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStream_private_method__get_stream_name>`
 
 Override this method to customize the name assigned to this audio stream. Unused by the engine.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_AudioStream_private_method__get_tags:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary<class_Dictionary>` **_get_tags**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStream_private_method__get_tags>`
+
+Override this method to customize the tags for this audio stream. Should return a :ref:`Dictionary<class_Dictionary>` of strings with the tag as the key and its content as the value.
+
+Commonly used tags include ``title``, ``artist``, ``album``, ``tracknumber``, and ``date``.
 
 .. rst-class:: classref-item-separator
 
@@ -196,7 +212,7 @@ Override this method to return ``true`` if this stream has a loop.
 
 :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` **_instantiate_playback**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStream_private_method__instantiate_playback>`
 
-Override this method to customize the returned value of :ref:`instantiate_playback<class_AudioStream_method_instantiate_playback>`. Should return a new :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` created when the stream is played (such as by an :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`).
+Override this method to customize the returned value of :ref:`instantiate_playback()<class_AudioStream_method_instantiate_playback>`. Should return a new :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` created when the stream is played (such as by an :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`).
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +224,7 @@ Override this method to customize the returned value of :ref:`instantiate_playba
 
 :ref:`bool<class_bool>` **_is_monophonic**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStream_private_method__is_monophonic>`
 
-Override this method to customize the returned value of :ref:`is_monophonic<class_AudioStream_method_is_monophonic>`. Should return ``true`` if this audio stream only supports one channel.
+Override this method to customize the returned value of :ref:`is_monophonic()<class_AudioStream_method_is_monophonic>`. Should return ``true`` if this audio stream only supports one channel.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +264,7 @@ Generates an :ref:`AudioSample<class_AudioSample>` based on the current stream.
 
 :ref:`float<class_float>` **get_length**\ (\ ) |const| :ref:`🔗<class_AudioStream_method_get_length>`
 
-Returns the length of the audio stream in seconds.
+Returns the length of the audio stream in seconds. If this stream is an :ref:`AudioStreamRandomizer<class_AudioStreamRandomizer>`, returns the length of the last played stream. If this stream has an indefinite length (such as for :ref:`AudioStreamGenerator<class_AudioStreamGenerator>` and :ref:`AudioStreamMicrophone<class_AudioStreamMicrophone>`), returns ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +276,7 @@ Returns the length of the audio stream in seconds.
 
 :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` **instantiate_playback**\ (\ ) :ref:`🔗<class_AudioStream_method_instantiate_playback>`
 
-Returns a newly created :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` intended to play this audio stream. Useful for when you want to extend :ref:`_instantiate_playback<class_AudioStream_private_method__instantiate_playback>` but call :ref:`instantiate_playback<class_AudioStream_method_instantiate_playback>` from an internally held AudioStream subresource. An example of this can be found in the source code for ``AudioStreamRandomPitch::instantiate_playback``.
+Returns a newly created :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` intended to play this audio stream. Useful for when you want to extend :ref:`_instantiate_playback()<class_AudioStream_private_method__instantiate_playback>` but call :ref:`instantiate_playback()<class_AudioStream_method_instantiate_playback>` from an internally held AudioStream subresource. An example of this can be found in the source code for ``AudioStreamRandomPitch::instantiate_playback``.
 
 .. rst-class:: classref-item-separator
 
@@ -287,6 +303,7 @@ Returns ``true`` if the stream is a collection of other streams, ``false`` other
 Returns ``true`` if this audio stream only supports one channel (*monophony*), or ``false`` if the audio stream supports two or more channels (*polyphony*).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

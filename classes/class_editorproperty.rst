@@ -29,27 +29,33 @@ Properties
 .. table::
    :widths: auto
 
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`checkable<class_EditorProperty_property_checkable>`               | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`checked<class_EditorProperty_property_checked>`                   | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`deletable<class_EditorProperty_property_deletable>`               | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`draw_warning<class_EditorProperty_property_draw_warning>`         | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`keying<class_EditorProperty_property_keying>`                     | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>` | :ref:`label<class_EditorProperty_property_label>`                       | ``""``    |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`   | :ref:`name_split_ratio<class_EditorProperty_property_name_split_ratio>` | ``0.5``   |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`read_only<class_EditorProperty_property_read_only>`               | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`selectable<class_EditorProperty_property_selectable>`             | ``true``  |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`use_folding<class_EditorProperty_property_use_folding>`           | ``false`` |
-   +-----------------------------+-------------------------------------------------------------------------+-----------+
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`checkable<class_EditorProperty_property_checkable>`               | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`checked<class_EditorProperty_property_checked>`                   | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`deletable<class_EditorProperty_property_deletable>`               | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`draw_background<class_EditorProperty_property_draw_background>`   | ``true``                                                            |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`draw_label<class_EditorProperty_property_draw_label>`             | ``true``                                                            |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`draw_warning<class_EditorProperty_property_draw_warning>`         | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`FocusMode<enum_Control_FocusMode>` | focus_mode                                                              | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`keying<class_EditorProperty_property_keying>`                     | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`String<class_String>`              | :ref:`label<class_EditorProperty_property_label>`                       | ``""``                                                              |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`float<class_float>`                | :ref:`name_split_ratio<class_EditorProperty_property_name_split_ratio>` | ``0.5``                                                             |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`read_only<class_EditorProperty_property_read_only>`               | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`selectable<class_EditorProperty_property_selectable>`             | ``true``                                                            |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`use_folding<class_EditorProperty_property_use_folding>`           | ``false``                                                           |
+   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -102,7 +108,7 @@ Signals
 
 **multiple_properties_changed**\ (\ properties\: :ref:`PackedStringArray<class_PackedStringArray>`, value\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_EditorProperty_signal_multiple_properties_changed>`
 
-Emit it if you want multiple properties modified at the same time. Do not use if added via :ref:`EditorInspectorPlugin._parse_property<class_EditorInspectorPlugin_private_method__parse_property>`.
+Emit it if you want multiple properties modified at the same time. Do not use if added via :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +144,7 @@ Emitted when the revertability (i.e., whether it has a non-default value and thu
 
 **property_changed**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`, field\: :ref:`StringName<class_StringName>`, changing\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_changed>`
 
-Do not emit this manually, use the :ref:`emit_changed<class_EditorProperty_method_emit_changed>` method instead.
+Do not emit this manually, use the :ref:`emit_changed()<class_EditorProperty_method_emit_changed>` method instead.
 
 .. rst-class:: classref-item-separator
 
@@ -199,6 +205,18 @@ Emit it if you want to add this value as an animation key (check for keying bein
 **property_keyed_with_value**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorProperty_signal_property_keyed_with_value>`
 
 Emit it if you want to key a property with a single value.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorProperty_signal_property_overridden:
+
+.. rst-class:: classref-signal
+
+**property_overridden**\ (\ ) :ref:`🔗<class_EditorProperty_signal_property_overridden>`
+
+Emitted when a setting override for the current project is requested.
 
 .. rst-class:: classref-item-separator
 
@@ -293,6 +311,40 @@ Used by the inspector, set to ``true`` when the property is checked.
 - :ref:`bool<class_bool>` **is_deletable**\ (\ )
 
 Used by the inspector, set to ``true`` when the property can be deleted by the user.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorProperty_property_draw_background:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **draw_background** = ``true`` :ref:`🔗<class_EditorProperty_property_draw_background>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_draw_background**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_draw_background**\ (\ )
+
+Used by the inspector, set to ``true`` when the property background is drawn.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorProperty_property_draw_label:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **draw_label** = ``true`` :ref:`🔗<class_EditorProperty_property_draw_label>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_draw_label**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_draw_label**\ (\ )
+
+Used by the inspector, set to ``true`` when the property label is drawn.
 
 .. rst-class:: classref-item-separator
 
@@ -488,7 +540,9 @@ If one or several properties have changed, this must be called. ``field`` is use
 
 :ref:`Object<class_Object>` **get_edited_object**\ (\ ) :ref:`🔗<class_EditorProperty_method_get_edited_object>`
 
-Gets the edited object.
+Returns the edited object.
+
+\ **Note:** This method could return ``null`` if the editor has not yet been associated with a property. However, in :ref:`_update_property()<class_EditorProperty_private_method__update_property>` and :ref:`_set_read_only()<class_EditorProperty_private_method__set_read_only>`, this value is *guaranteed* to be non-``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -500,7 +554,9 @@ Gets the edited object.
 
 :ref:`StringName<class_StringName>` **get_edited_property**\ (\ ) |const| :ref:`🔗<class_EditorProperty_method_get_edited_property>`
 
-Gets the edited property. If your editor is for a single property (added via :ref:`EditorInspectorPlugin._parse_property<class_EditorInspectorPlugin_private_method__parse_property>`), then this will return the property.
+Returns the edited property. If your editor is for a single property (added via :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`), then this will return the property.
+
+\ **Note:** This method could return ``null`` if the editor has not yet been associated with a property. However, in :ref:`_update_property()<class_EditorProperty_private_method__update_property>` and :ref:`_set_read_only()<class_EditorProperty_private_method__set_read_only>`, this value is *guaranteed* to be non-``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -536,7 +592,7 @@ Draw property as selected. Used by the inspector.
 
 |void| **set_bottom_editor**\ (\ editor\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorProperty_method_set_bottom_editor>`
 
-Puts the ``editor`` control below the property label. The control must be previously added using :ref:`Node.add_child<class_Node_method_add_child>`.
+Puts the ``editor`` control below the property label. The control must be previously added using :ref:`Node.add_child()<class_Node_method_add_child>`.
 
 .. rst-class:: classref-item-separator
 
@@ -572,9 +628,10 @@ Assigns object and property to edit.
 
 |void| **update_property**\ (\ ) :ref:`🔗<class_EditorProperty_method_update_property>`
 
-Forces refresh of the property display.
+Forces a refresh of the property display.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
