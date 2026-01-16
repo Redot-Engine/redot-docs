@@ -29,7 +29,7 @@ Maps are divided into regions, which are composed of navigation meshes. Together
 
 For two regions to be connected to each other, they must share a similar edge. An edge is considered connected to another if both of its two vertices are at a distance less than ``edge_connection_margin`` to the respective other edge's vertex.
 
-You may assign navigation layers to regions with :ref:`region_set_navigation_layers<class_NavigationServer3D_method_region_set_navigation_layers>`, which then can be checked upon when requesting a path with :ref:`map_get_path<class_NavigationServer3D_method_map_get_path>`. This can be used to allow or deny certain areas for some objects.
+You may assign navigation layers to regions with :ref:`region_set_navigation_layers()<class_NavigationServer3D_method_region_set_navigation_layers>`, which then can be checked upon when requesting a path with :ref:`map_get_path()<class_NavigationServer3D_method_map_get_path>`. This can be used to allow or deny certain areas for some objects.
 
 To use the collision avoidance system, you may use agents. You can set an agent's target velocity, then the servers will emit a callback with a modified velocity.
 
@@ -219,6 +219,8 @@ Methods
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>`                       | :ref:`map_get_up<class_NavigationServer3D_method_map_get_up>`\ (\ map\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                     |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`map_get_use_async_iterations<class_NavigationServer3D_method_map_get_use_async_iterations>`\ (\ map\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                 |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`map_get_use_edge_connections<class_NavigationServer3D_method_map_get_use_edge_connections>`\ (\ map\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                 |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`map_is_active<class_NavigationServer3D_method_map_is_active>`\ (\ map\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                               |
@@ -236,6 +238,8 @@ Methods
    | |void|                                              | :ref:`map_set_merge_rasterizer_cell_scale<class_NavigationServer3D_method_map_set_merge_rasterizer_cell_scale>`\ (\ map\: :ref:`RID<class_RID>`, scale\: :ref:`float<class_float>`\ )                                                                                                                                                                                        |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`map_set_up<class_NavigationServer3D_method_map_set_up>`\ (\ map\: :ref:`RID<class_RID>`, up\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                                                                                                                                         |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`map_set_use_async_iterations<class_NavigationServer3D_method_map_set_use_async_iterations>`\ (\ map\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                      |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`map_set_use_edge_connections<class_NavigationServer3D_method_map_set_use_edge_connections>`\ (\ map\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                      |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -288,6 +292,8 @@ Methods
    | |void|                                              | :ref:`region_bake_navigation_mesh<class_NavigationServer3D_method_region_bake_navigation_mesh>`\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`, root_node\: :ref:`Node<class_Node>`\ )                                                                                                                                                                    |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                               | :ref:`region_create<class_NavigationServer3D_method_region_create>`\ (\ )                                                                                                                                                                                                                                                                                                    |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AABB<class_AABB>`                             | :ref:`region_get_bounds<class_NavigationServer3D_method_region_get_bounds>`\ (\ region\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                    |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>`                       | :ref:`region_get_closest_point<class_NavigationServer3D_method_region_get_closest_point>`\ (\ region\: :ref:`RID<class_RID>`, to_point\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                            |
    +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -731,7 +737,7 @@ Returns ``true`` if the map got changed the previous frame.
 
 Sets the callback :ref:`Callable<class_Callable>` that gets called after each avoidance processing step for the ``agent``. The calculated ``safe_velocity`` will be dispatched with a signal to the object just before the physics calculations.
 
-\ **Note:** Created callbacks are always processed independently of the SceneTree state as long as the agent is on a navigation map and not freed. To disable the dispatch of a callback from an agent use :ref:`agent_set_avoidance_callback<class_NavigationServer3D_method_agent_set_avoidance_callback>` again with an empty :ref:`Callable<class_Callable>`.
+\ **Note:** Created callbacks are always processed independently of the SceneTree state as long as the agent is on a navigation map and not freed. To disable the dispatch of a callback from an agent use :ref:`agent_set_avoidance_callback()<class_NavigationServer3D_method_agent_set_avoidance_callback>` again with an empty :ref:`Callable<class_Callable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -929,7 +935,7 @@ If ``false`` the agent calculates avoidance velocities in 2D along the xz-axis i
 
 |void| **agent_set_velocity**\ (\ agent\: :ref:`RID<class_RID>`, velocity\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_NavigationServer3D_method_agent_set_velocity>`
 
-Sets ``velocity`` as the new wanted velocity for the specified ``agent``. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agent's and obstacles. When an agent is teleported to a new position use :ref:`agent_set_velocity_forced<class_NavigationServer3D_method_agent_set_velocity_forced>` as well to reset the internal simulation velocity.
+Sets ``velocity`` as the new wanted velocity for the specified ``agent``. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agent's and obstacles. When an agent is teleported to a new position use :ref:`agent_set_velocity_forced()<class_NavigationServer3D_method_agent_set_velocity_forced>` as well to reset the internal simulation velocity.
 
 .. rst-class:: classref-item-separator
 
@@ -1217,7 +1223,7 @@ Sets the navigation map :ref:`RID<class_RID>` for the link.
 
 |void| **link_set_navigation_layers**\ (\ link\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer3D_method_link_set_navigation_layers>`
 
-Set the links's navigation layers. This allows selecting links from a path request (when using :ref:`map_get_path<class_NavigationServer3D_method_map_get_path>`).
+Set the links's navigation layers. This allows selecting links from a path request (when using :ref:`map_get_path()<class_NavigationServer3D_method_map_get_path>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1501,6 +1507,18 @@ Returns the map's up direction.
 
 ----
 
+.. _class_NavigationServer3D_method_map_get_use_async_iterations:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **map_get_use_async_iterations**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer3D_method_map_get_use_async_iterations>`
+
+Returns ``true`` if the ``map`` synchronization uses an async process that runs on a background thread.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_NavigationServer3D_method_map_get_use_edge_connections:
 
 .. rst-class:: classref-method
@@ -1604,6 +1622,18 @@ Set the map's internal merge rasterizer cell scale used to control merging sensi
 |void| **map_set_up**\ (\ map\: :ref:`RID<class_RID>`, up\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_NavigationServer3D_method_map_set_up>`
 
 Sets the map up direction.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationServer3D_method_map_set_use_async_iterations:
+
+.. rst-class:: classref-method
+
+|void| **map_set_use_async_iterations**\ (\ map\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer3D_method_map_set_use_async_iterations>`
+
+If ``enabled`` is ``true`` the ``map`` synchronization uses an async process that runs on a background thread.
 
 .. rst-class:: classref-item-separator
 
@@ -1879,7 +1909,7 @@ Sets the outline vertices for the obstacle. If the vertices are winded in clockw
 
 |void| **parse_source_geometry_data**\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`, source_geometry_data\: :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`, root_node\: :ref:`Node<class_Node>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationServer3D_method_parse_source_geometry_data>`
 
-Parses the :ref:`SceneTree<class_SceneTree>` for source geometry according to the properties of ``navigation_mesh``. Updates the provided ``source_geometry_data`` resource with the resulting data. The resource can then be used to bake a navigation mesh with :ref:`bake_from_source_geometry_data<class_NavigationServer3D_method_bake_from_source_geometry_data>`. After the process is finished the optional ``callback`` will be called.
+Parses the :ref:`SceneTree<class_SceneTree>` for source geometry according to the properties of ``navigation_mesh``. Updates the provided ``source_geometry_data`` resource with the resulting data. The resource can then be used to bake a navigation mesh with :ref:`bake_from_source_geometry_data()<class_NavigationServer3D_method_bake_from_source_geometry_data>`. After the process is finished the optional ``callback`` will be called.
 
 \ **Note:** This function needs to run on the main thread or with a deferred call as the SceneTree is not thread-safe.
 
@@ -1907,7 +1937,7 @@ Queries a path in a given navigation map. Start and target position and other pa
 
 |void| **region_bake_navigation_mesh**\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`, root_node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_NavigationServer3D_method_region_bake_navigation_mesh>`
 
-**Deprecated:** This method is deprecated due to core threading changes. To upgrade existing code, first create a :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>` resource. Use this resource with :ref:`parse_source_geometry_data<class_NavigationServer3D_method_parse_source_geometry_data>` to parse the :ref:`SceneTree<class_SceneTree>` for nodes that should contribute to the navigation mesh baking. The :ref:`SceneTree<class_SceneTree>` parsing needs to happen on the main thread. After the parsing is finished use the resource with :ref:`bake_from_source_geometry_data<class_NavigationServer3D_method_bake_from_source_geometry_data>` to bake a navigation mesh.
+**Deprecated:** This method is deprecated due to core threading changes. To upgrade existing code, first create a :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>` resource. Use this resource with :ref:`parse_source_geometry_data()<class_NavigationServer3D_method_parse_source_geometry_data>` to parse the :ref:`SceneTree<class_SceneTree>` for nodes that should contribute to the navigation mesh baking. The :ref:`SceneTree<class_SceneTree>` parsing needs to happen on the main thread. After the parsing is finished use the resource with :ref:`bake_from_source_geometry_data()<class_NavigationServer3D_method_bake_from_source_geometry_data>` to bake a navigation mesh.
 
 Bakes the ``navigation_mesh`` with bake source geometry collected starting from the ``root_node``.
 
@@ -1922,6 +1952,18 @@ Bakes the ``navigation_mesh`` with bake source geometry collected starting from 
 :ref:`RID<class_RID>` **region_create**\ (\ ) :ref:`🔗<class_NavigationServer3D_method_region_create>`
 
 Creates a new region.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationServer3D_method_region_get_bounds:
+
+.. rst-class:: classref-method
+
+:ref:`AABB<class_AABB>` **region_get_bounds**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer3D_method_region_get_bounds>`
+
+Returns the axis-aligned bounding box for the ``region``'s transformed navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -1971,7 +2013,7 @@ If ``use_collision`` is ``true``, a closest point test is only done when the seg
 
 :ref:`Vector3<class_Vector3>` **region_get_connection_pathway_end**\ (\ region\: :ref:`RID<class_RID>`, connection\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationServer3D_method_region_get_connection_pathway_end>`
 
-Returns the ending point of a connection door. ``connection`` is an index between 0 and the return value of :ref:`region_get_connections_count<class_NavigationServer3D_method_region_get_connections_count>`.
+Returns the ending point of a connection door. ``connection`` is an index between 0 and the return value of :ref:`region_get_connections_count()<class_NavigationServer3D_method_region_get_connections_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1983,7 +2025,7 @@ Returns the ending point of a connection door. ``connection`` is an index betwee
 
 :ref:`Vector3<class_Vector3>` **region_get_connection_pathway_start**\ (\ region\: :ref:`RID<class_RID>`, connection\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationServer3D_method_region_get_connection_pathway_start>`
 
-Returns the starting point of a connection door. ``connection`` is an index between 0 and the return value of :ref:`region_get_connections_count<class_NavigationServer3D_method_region_get_connections_count>`.
+Returns the starting point of a connection door. ``connection`` is an index between 0 and the return value of :ref:`region_get_connections_count()<class_NavigationServer3D_method_region_get_connections_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2171,7 +2213,7 @@ Sets the map for the region.
 
 |void| **region_set_navigation_layers**\ (\ region\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer3D_method_region_set_navigation_layers>`
 
-Set the region's navigation layers. This allows selecting regions from a path request (when using :ref:`map_get_path<class_NavigationServer3D_method_map_get_path>`).
+Set the region's navigation layers. This allows selecting regions from a path request (when using :ref:`map_get_path()<class_NavigationServer3D_method_map_get_path>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2281,7 +2323,7 @@ Path simplification can be helpful to mitigate various path following issues tha
 
 :ref:`RID<class_RID>` **source_geometry_parser_create**\ (\ ) :ref:`🔗<class_NavigationServer3D_method_source_geometry_parser_create>`
 
-Creates a new source geometry parser. If a :ref:`Callable<class_Callable>` is set for the parser with :ref:`source_geometry_parser_set_callback<class_NavigationServer3D_method_source_geometry_parser_set_callback>` the callback will be called for every single node that gets parsed whenever :ref:`parse_source_geometry_data<class_NavigationServer3D_method_parse_source_geometry_data>` is used.
+Creates a new source geometry parser. If a :ref:`Callable<class_Callable>` is set for the parser with :ref:`source_geometry_parser_set_callback()<class_NavigationServer3D_method_source_geometry_parser_set_callback>` the callback will be called for every single node that gets parsed whenever :ref:`parse_source_geometry_data()<class_NavigationServer3D_method_parse_source_geometry_data>` is used.
 
 .. rst-class:: classref-item-separator
 
