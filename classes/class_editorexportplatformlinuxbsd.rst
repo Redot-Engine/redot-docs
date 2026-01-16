@@ -40,6 +40,8 @@ Properties
    +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`       | :ref:`debug/export_console_wrapper<class_EditorExportPlatformLinuxBSD_property_debug/export_console_wrapper>`         |
    +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`shader_baker/enabled<class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled>`                         |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/cleanup_script<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/cleanup_script>` |
    +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`     | :ref:`ssh_remote_deploy/enabled<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/enabled>`               |
@@ -76,9 +78,9 @@ Property Descriptions
 
 Application executable architecture.
 
-Supported architectures: ``x86_32``, ``x86_64``, ``arm64``, ``arm32``, ``rv64``, ``ppc64``, ``ppc32``, and ``loongarch64``.
+Supported architectures: ``x86_32``, ``x86_64``, ``arm64``, ``arm32``, ``rv64``, ``ppc64``, and ``loongarch64``.
 
-Official export templates include ``x86_32`` and ``x86_64`` binaries only.
+Official export templates include ``x86_32``, ``x86_64``, ``arm32``, and ``arm64`` binaries only.
 
 .. rst-class:: classref-item-separator
 
@@ -127,6 +129,18 @@ Path to the custom export template. If left empty, default template is used.
 :ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_debug/export_console_wrapper>`
 
 If ``true``, a console wrapper is exported alongside the main executable, which allows running the project with enabled console output.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled>`
+
+If ``true``, shaders will be compiled and embedded in the application. This option is only supported when using the Forward+ or Mobile renderers.
 
 .. rst-class:: classref-item-separator
 
@@ -257,6 +271,7 @@ If ``true``, project textures are exported in the ETC2/ASTC format.
 If ``true``, project textures are exported in the S3TC/BPTC format.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -164,7 +164,7 @@ Property Descriptions
 
 Gradient's colors as a :ref:`PackedColorArray<class_PackedColorArray>`.
 
-\ **Note:** Setting this property updates all colors at once. To update any color individually use :ref:`set_color<class_Gradient_method_set_color>`.
+\ **Note:** Setting this property updates all colors at once. To update any color individually use :ref:`set_color()<class_Gradient_method_set_color>`.
 
 **Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedColorArray<class_PackedColorArray>` for more details.
 
@@ -183,7 +183,7 @@ Gradient's colors as a :ref:`PackedColorArray<class_PackedColorArray>`.
 - |void| **set_interpolation_color_space**\ (\ value\: :ref:`ColorSpace<enum_Gradient_ColorSpace>`\ )
 - :ref:`ColorSpace<enum_Gradient_ColorSpace>` **get_interpolation_color_space**\ (\ )
 
-The color space used to interpolate between points of the gradient. It does not affect the returned colors, which will always be in sRGB space. See :ref:`ColorSpace<enum_Gradient_ColorSpace>` for available modes.
+The color space used to interpolate between points of the gradient. It does not affect the returned colors, which will always be in sRGB space.
 
 \ **Note:** This setting has no effect when :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>` is set to :ref:`GRADIENT_INTERPOLATE_CONSTANT<class_Gradient_constant_GRADIENT_INTERPOLATE_CONSTANT>`.
 
@@ -202,7 +202,7 @@ The color space used to interpolate between points of the gradient. It does not 
 - |void| **set_interpolation_mode**\ (\ value\: :ref:`InterpolationMode<enum_Gradient_InterpolationMode>`\ )
 - :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` **get_interpolation_mode**\ (\ )
 
-The algorithm used to interpolate between points of the gradient. See :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` for available modes.
+The algorithm used to interpolate between points of the gradient.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ The algorithm used to interpolate between points of the gradient. See :ref:`Inte
 
 Gradient's offsets as a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
-\ **Note:** Setting this property updates all offsets at once. To update any offset individually use :ref:`set_offset<class_Gradient_method_set_offset>`.
+\ **Note:** Setting this property updates all offsets at once. To update any offset individually use :ref:`set_offset()<class_Gradient_method_set_offset>`.
 
 **Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
 
@@ -314,7 +314,7 @@ Reverses/mirrors the gradient.
 
 :ref:`Color<class_Color>` **sample**\ (\ offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Gradient_method_sample>`
 
-Returns the interpolated color specified by ``offset``.
+Returns the interpolated color specified by ``offset``. ``offset`` should be between ``0.0`` and ``1.0`` (inclusive). Using a value lower than ``0.0`` will return the same color as ``0.0``, and using a value higher than ``1.0`` will return the same color as ``1.0``. If your input value is not within this range, consider using :ref:`@GlobalScope.remap()<class_@GlobalScope_method_remap>` on the input value with output values set to ``0.0`` and ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -341,6 +341,7 @@ Sets the color of the gradient color at index ``point``.
 Sets the offset for the gradient color at index ``point``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
