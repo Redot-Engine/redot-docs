@@ -21,7 +21,7 @@ Description
 
 The X509Certificate class represents an X509 certificate. Certificates can be loaded and saved like any other :ref:`Resource<class_Resource>`.
 
-They can be used as the server certificate in :ref:`StreamPeerTLS.accept_stream<class_StreamPeerTLS_method_accept_stream>` (along with the proper :ref:`CryptoKey<class_CryptoKey>`), and to specify the only certificate that should be accepted when connecting to a TLS server via :ref:`StreamPeerTLS.connect_to_stream<class_StreamPeerTLS_method_connect_to_stream>`.
+They can be used as the server certificate in :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>` (along with the proper :ref:`CryptoKey<class_CryptoKey>`), and to specify the only certificate that should be accepted when connecting to a TLS server via :ref:`StreamPeerTLS.connect_to_stream()<class_StreamPeerTLS_method_connect_to_stream>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -102,6 +102,7 @@ Saves a certificate to the given ``path`` (should be a "\*.crt" file).
 Returns a string representation of the certificate, or an empty string if the certificate is invalid.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -60,6 +60,8 @@ Properties
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`keep_rounding_remainders<class_SystemFont_property_keep_rounding_remainders>`                     | ``true``                |
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                         | :ref:`modulate_color_glyphs<class_SystemFont_property_modulate_color_glyphs>`                           | ``false``               |
+   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
    | :ref:`int<class_int>`                                           | :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>`                                     | ``16``                  |
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
    | :ref:`int<class_int>`                                           | :ref:`msdf_size<class_SystemFont_property_msdf_size>`                                                   | ``48``                  |
@@ -269,6 +271,23 @@ If set to ``true``, when aligning glyphs to the pixel boundaries rounding remain
 
 ----
 
+.. _class_SystemFont_property_modulate_color_glyphs:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **modulate_color_glyphs** = ``false`` :ref:`🔗<class_SystemFont_property_modulate_color_glyphs>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_modulate_color_glyphs**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_modulate_color_glyphs**\ (\ )
+
+If set to ``true``, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_SystemFont_property_msdf_pixel_range:
 
 .. rst-class:: classref-property
@@ -331,7 +350,7 @@ If set to ``true``, glyphs of all sizes are rendered using single multichannel s
 - |void| **set_oversampling**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_oversampling**\ (\ )
 
-Font oversampling factor, if set to ``0.0`` global oversampling factor is used instead.
+If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. This value doesn't override the ``oversampling`` parameter of ``draw_*`` methods.
 
 .. rst-class:: classref-item-separator
 
@@ -351,6 +370,7 @@ Font oversampling factor, if set to ``0.0`` global oversampling factor is used i
 Font glyph subpixel positioning mode. Subpixel positioning provides shaper text and better kerning for smaller font sizes, at the cost of memory usage and font rasterization speed. Use :ref:`TextServer.SUBPIXEL_POSITIONING_AUTO<class_TextServer_constant_SUBPIXEL_POSITIONING_AUTO>` to automatically enable it based on the font size.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -151,7 +151,7 @@ Property Descriptions
 
 If ``true`` and MSAA is enabled, this will trigger a color buffer resolve before the effect is run.
 
-\ **Note:** In :ref:`_render_callback<class_CompositorEffect_private_method__render_callback>`, to access the resolved buffer use:
+\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the resolved buffer use:
 
 ::
 
@@ -175,7 +175,7 @@ If ``true`` and MSAA is enabled, this will trigger a color buffer resolve before
 
 If ``true`` and MSAA is enabled, this will trigger a depth buffer resolve before the effect is run.
 
-\ **Note:** In :ref:`_render_callback<class_CompositorEffect_private_method__render_callback>`, to access the resolved buffer use:
+\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the resolved buffer use:
 
 ::
 
@@ -233,7 +233,7 @@ If ``true`` this rendering effect is applied to any viewport it is added to.
 
 If ``true`` this triggers motion vectors being calculated during the opaque render state.
 
-\ **Note:** In :ref:`_render_callback<class_CompositorEffect_private_method__render_callback>`, to access the motion vector buffer use:
+\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the motion vector buffer use:
 
 ::
 
@@ -257,7 +257,7 @@ If ``true`` this triggers motion vectors being calculated during the opaque rend
 
 If ``true`` this triggers normal and roughness data to be output during our depth pre-pass, only applicable for the Forward+ renderer.
 
-\ **Note:** In :ref:`_render_callback<class_CompositorEffect_private_method__render_callback>`, to access the roughness buffer use:
+\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the roughness buffer use:
 
 ::
 
@@ -312,6 +312,7 @@ Method Descriptions
 Implement this function with your custom rendering code. ``effect_callback_type`` should always match the effect callback type you've specified in :ref:`effect_callback_type<class_CompositorEffect_property_effect_callback_type>`. ``render_data`` provides access to the rendering state, it is only valid during rendering and should not be stored.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

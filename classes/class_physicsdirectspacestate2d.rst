@@ -23,6 +23,8 @@ Description
 
 Provides direct access to a physics space in the :ref:`PhysicsServer2D<class_PhysicsServer2D>`. It's used mainly to do queries against objects and areas residing in a given space.
 
+\ **Note:** This class is not meant to be instantiated directly. Use :ref:`World2D.direct_space_state<class_World2D_property_direct_space_state>` to get the world's physics 2D space state.
+
 .. rst-class:: classref-introduction-group
 
 Tutorials
@@ -73,7 +75,7 @@ Checks how far a :ref:`Shape2D<class_Shape2D>` can move without colliding. All t
 
 Returns an array with the safe and unsafe proportions (between 0 and 1) of the motion. The safe proportion is the maximum fraction of the motion that can be made without a collision. The unsafe proportion is the minimum fraction of the distance that must be moved for a collision. If no collision is detected a result of ``[1.0, 1.0]`` will be returned.
 
-\ **Note:** Any :ref:`Shape2D<class_Shape2D>`\ s that the shape is already colliding with e.g. inside of, will be ignored. Use :ref:`collide_shape<class_PhysicsDirectSpaceState2D_method_collide_shape>` to determine the :ref:`Shape2D<class_Shape2D>`\ s that the shape is already colliding with.
+\ **Note:** Any :ref:`Shape2D<class_Shape2D>`\ s that the shape is already colliding with e.g. inside of, will be ignored. Use :ref:`collide_shape()<class_PhysicsDirectSpaceState2D_method_collide_shape>` to determine the :ref:`Shape2D<class_Shape2D>`\ s that the shape is already colliding with.
 
 .. rst-class:: classref-item-separator
 
@@ -85,7 +87,7 @@ Returns an array with the safe and unsafe proportions (between 0 and 1) of the m
 
 :ref:`Array<class_Array>`\[:ref:`Vector2<class_Vector2>`\] **collide_shape**\ (\ parameters\: :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>`, max_results\: :ref:`int<class_int>` = 32\ ) :ref:`🔗<class_PhysicsDirectSpaceState2D_method_collide_shape>`
 
-Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>` object, against the space. The resulting array contains a list of points where the shape intersects another. Like with :ref:`intersect_shape<class_PhysicsDirectSpaceState2D_method_intersect_shape>`, the number of returned results can be limited to save processing time.
+Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>` object, against the space. The resulting array contains a list of points where the shape intersects another. Like with :ref:`intersect_shape()<class_PhysicsDirectSpaceState2D_method_intersect_shape>`, the number of returned results can be limited to save processing time.
 
 Returned points are a list of pairs of contact points. For each pair the first one is in the shape passed in :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>` object, second one is in the collided shape from the physics space.
 
@@ -99,21 +101,21 @@ Returned points are a list of pairs of contact points. For each pair the first o
 
 :ref:`Dictionary<class_Dictionary>` **get_rest_info**\ (\ parameters\: :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>`\ ) :ref:`🔗<class_PhysicsDirectSpaceState2D_method_get_rest_info>`
 
-Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>` object, against the space. If it collides with more than one shape, the nearest one is selected. If the shape did not intersect anything, then an empty dictionary is returned instead.
-
-\ **Note:** This method does not take into account the ``motion`` property of the object. The returned object is a dictionary containing the following fields:
+Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters2D<class_PhysicsShapeQueryParameters2D>` object, against the space. If it collides with more than one shape, the nearest one is selected. The returned object is a dictionary containing the following fields:
 
 \ ``collider_id``: The colliding object's ID.
 
 \ ``linear_velocity``: The colliding object's velocity :ref:`Vector2<class_Vector2>`. If the object is an :ref:`Area2D<class_Area2D>`, the result is ``(0, 0)``.
 
-\ ``normal``: The object's surface normal at the intersection point.
+\ ``normal``: The collision normal of the query shape at the intersection point, pointing away from the intersecting object.
 
 \ ``point``: The intersection point.
 
 \ ``rid``: The intersecting object's :ref:`RID<class_RID>`.
 
 \ ``shape``: The shape index of the colliding shape.
+
+If the shape did not intersect anything, then an empty dictionary is returned instead.
 
 .. rst-class:: classref-item-separator
 
@@ -188,6 +190,7 @@ Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryPara
 The number of intersections can be limited with the ``max_results`` parameter, to reduce the processing time.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

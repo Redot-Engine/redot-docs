@@ -21,7 +21,9 @@ Abstract base class for input events affected by modifier keys like :kbd:`Shift`
 Description
 -----------
 
-Stores information about mouse, keyboard, and touch gesture input events. This includes information about which modifier keys are pressed, such as :kbd:`Shift` or :kbd:`Alt`. See :ref:`Node._input<class_Node_private_method__input>`.
+Stores information about mouse, keyboard, and touch gesture input events. This includes information about which modifier keys are pressed, such as :kbd:`Shift` or :kbd:`Alt`. See :ref:`Node._input()<class_Node_private_method__input>`.
+
+\ **Note:** Modifier keys are considered modifiers only when used in combination with another key. As a result, their corresponding member variables, such as :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>`, will return ``false`` if the key is pressed on its own.
 
 .. rst-class:: classref-introduction-group
 
@@ -186,6 +188,7 @@ On macOS, returns ``true`` if :kbd:`Meta` (:kbd:`Cmd`) is pressed.
 On other platforms, returns ``true`` if :kbd:`Ctrl` is pressed.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

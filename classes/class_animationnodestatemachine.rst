@@ -76,6 +76,8 @@ Methods
    +---------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`AnimationNode<class_AnimationNode>`                                             | :ref:`get_node<class_AnimationNodeStateMachine_method_get_node>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                                   |
    +---------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\]                      | :ref:`get_node_list<class_AnimationNodeStateMachine_method_get_node_list>`\ (\ ) |const|                                                                                                                                                                                     |
+   +---------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`StringName<class_StringName>`                                                   | :ref:`get_node_name<class_AnimationNodeStateMachine_method_get_node_name>`\ (\ node\: :ref:`AnimationNode<class_AnimationNode>`\ ) |const|                                                                                                                                   |
    +---------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                                                         | :ref:`get_node_position<class_AnimationNodeStateMachine_method_get_node_position>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                 |
@@ -166,7 +168,7 @@ Property Descriptions
 - |void| **set_allow_transition_to_self**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_allow_transition_to_self**\ (\ )
 
-If ``true``, allows teleport to the self state with :ref:`AnimationNodeStateMachinePlayback.travel<class_AnimationNodeStateMachinePlayback_method_travel>`. When the reset option is enabled in :ref:`AnimationNodeStateMachinePlayback.travel<class_AnimationNodeStateMachinePlayback_method_travel>`, the animation is restarted. If ``false``, nothing happens on the teleportation to the self state.
+If ``true``, allows teleport to the self state with :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`. When the reset option is enabled in :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`, the animation is restarted. If ``false``, nothing happens on the teleportation to the self state.
 
 .. rst-class:: classref-item-separator
 
@@ -256,6 +258,18 @@ Returns the draw offset of the graph. Used for display in the editor.
 :ref:`AnimationNode<class_AnimationNode>` **get_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_node>`
 
 Returns the animation node with the given name.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_AnimationNodeStateMachine_method_get_node_list:
+
+.. rst-class:: classref-method
+
+:ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_node_list**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_node_list>`
+
+Returns a list containing the names of all animation nodes in this state machine.
 
 .. rst-class:: classref-item-separator
 
@@ -438,6 +452,7 @@ Sets the draw offset of the graph. Used for display in the editor.
 Sets the animation node's coordinates. Used for display in the editor.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
