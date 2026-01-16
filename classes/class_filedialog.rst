@@ -40,6 +40,8 @@ Properties
    +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | dialog_hide_on_ok                                                           | ``false`` (overrides :ref:`AcceptDialog<class_AcceptDialog_property_dialog_hide_on_ok>`) |
    +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+   | :ref:`DisplayMode<enum_FileDialog_DisplayMode>`   | :ref:`display_mode<class_FileDialog_property_display_mode>`                 | ``0``                                                                                    |
+   +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
    | :ref:`FileMode<enum_FileDialog_FileMode>`         | :ref:`file_mode<class_FileDialog_property_file_mode>`                       | ``4``                                                                                    |
    +---------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`filename_filter<class_FileDialog_property_filename_filter>`           | ``""``                                                                                   |
@@ -116,19 +118,37 @@ Theme Properties
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Color<class_Color>`         | :ref:`folder_icon_color<class_FileDialog_theme_color_folder_icon_color>`          | ``Color(1, 1, 1, 1)``    |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`             | :ref:`thumbnail_size<class_FileDialog_theme_constant_thumbnail_size>`             | ``64``                   |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`back_folder<class_FileDialog_theme_icon_back_folder>`                       |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`create_folder<class_FileDialog_theme_icon_create_folder>`                   |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`favorite<class_FileDialog_theme_icon_favorite>`                             |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`favorite_down<class_FileDialog_theme_icon_favorite_down>`                   |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`favorite_up<class_FileDialog_theme_icon_favorite_up>`                       |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`file<class_FileDialog_theme_icon_file>`                                     |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`file_thumbnail<class_FileDialog_theme_icon_file_thumbnail>`                 |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`folder<class_FileDialog_theme_icon_folder>`                                 |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`folder_thumbnail<class_FileDialog_theme_icon_folder_thumbnail>`             |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`forward_folder<class_FileDialog_theme_icon_forward_folder>`                 |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`list_mode<class_FileDialog_theme_icon_list_mode>`                           |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`parent_folder<class_FileDialog_theme_icon_parent_folder>`                   |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`reload<class_FileDialog_theme_icon_reload>`                                 |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`sort<class_FileDialog_theme_icon_sort>`                                     |                          |
+   +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`thumbnail_mode<class_FileDialog_theme_icon_thumbnail_mode>`                 |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`Texture2D<class_Texture2D>` | :ref:`toggle_filename_filter<class_FileDialog_theme_icon_toggle_filename_filter>` |                          |
    +-----------------------------------+-----------------------------------------------------------------------------------+--------------------------+
@@ -277,6 +297,32 @@ The dialog only allows accessing files under user data path (``user://``).
 
 The dialog allows accessing files on the whole file system.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_FileDialog_DisplayMode:
+
+.. rst-class:: classref-enumeration
+
+enum **DisplayMode**: :ref:`🔗<enum_FileDialog_DisplayMode>`
+
+.. _class_FileDialog_constant_DISPLAY_THUMBNAILS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`DisplayMode<enum_FileDialog_DisplayMode>` **DISPLAY_THUMBNAILS** = ``0``
+
+The dialog displays files as a grid of thumbnails. Use :ref:`thumbnail_size<class_FileDialog_theme_constant_thumbnail_size>` to adjust their size.
+
+.. _class_FileDialog_constant_DISPLAY_LIST:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`DisplayMode<enum_FileDialog_DisplayMode>` **DISPLAY_LIST** = ``1``
+
+The dialog displays files as a list of filenames.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -297,7 +343,7 @@ Property Descriptions
 - |void| **set_access**\ (\ value\: :ref:`Access<enum_FileDialog_Access>`\ )
 - :ref:`Access<enum_FileDialog_Access>` **get_access**\ (\ )
 
-The file system access scope. See :ref:`Access<enum_FileDialog_Access>` constants.
+The file system access scope.
 
 \ **Warning:** In Web builds, FileDialog cannot access the host file system. In sandboxed Linux and macOS environments, :ref:`use_native_dialog<class_FileDialog_property_use_native_dialog>` is automatically used to allow limited access to host file system.
 
@@ -358,6 +404,23 @@ The currently selected file path of the file dialog.
 
 ----
 
+.. _class_FileDialog_property_display_mode:
+
+.. rst-class:: classref-property
+
+:ref:`DisplayMode<enum_FileDialog_DisplayMode>` **display_mode** = ``0`` :ref:`🔗<class_FileDialog_property_display_mode>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_display_mode**\ (\ value\: :ref:`DisplayMode<enum_FileDialog_DisplayMode>`\ )
+- :ref:`DisplayMode<enum_FileDialog_DisplayMode>` **get_display_mode**\ (\ )
+
+Display mode of the dialog's file list.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileDialog_property_file_mode:
 
 .. rst-class:: classref-property
@@ -369,7 +432,7 @@ The currently selected file path of the file dialog.
 - |void| **set_file_mode**\ (\ value\: :ref:`FileMode<enum_FileDialog_FileMode>`\ )
 - :ref:`FileMode<enum_FileDialog_FileMode>` **get_file_mode**\ (\ )
 
-The dialog's open or save mode, which affects the selection behavior. See :ref:`FileMode<enum_FileDialog_FileMode>`.
+The dialog's open or save mode, which affects the selection behavior.
 
 .. rst-class:: classref-item-separator
 
@@ -405,9 +468,9 @@ See also :ref:`filters<class_FileDialog_property_filters>`, which should be used
 - |void| **set_filters**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_filters**\ (\ )
 
-The available file type filters. Each filter string in the array should be formatted like this: ``*.txt,*.doc;Text Files``. The description text of the filter is optional and can be omitted.
+The available file type filters. Each filter string in the array should be formatted like this: ``*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg``. The description text of the filter is optional and can be omitted. Both file extensions and MIME type should be always set.
 
-\ **Note:** For android native dialog, MIME types are used like this: ``image/*, application/pdf``.
+\ **Note:** Embedded file dialog and Windows file dialog support only file extensions, while Android, Linux, and macOS file dialogs also support MIME types.
 
 **Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
 
@@ -504,7 +567,7 @@ If ``true``, and if supported by the current :ref:`DisplayServer<class_DisplaySe
 
 \ **Note:** On Linux and macOS, sandboxed apps always use native dialogs to access the host file system.
 
-\ **Note:** On macOS, sandboxed apps will save security-scoped bookmarks to retain access to the opened folders across multiple sessions. Use :ref:`OS.get_granted_permissions<class_OS_method_get_granted_permissions>` to get a list of saved bookmarks.
+\ **Note:** On macOS, sandboxed apps will save security-scoped bookmarks to retain access to the opened folders across multiple sessions. Use :ref:`OS.get_granted_permissions()<class_OS_method_get_granted_permissions>` to get a list of saved bookmarks.
 
 \ **Note:** Native dialogs are isolated from the base process, file dialog properties can't be modified once the dialog is shown.
 
@@ -655,7 +718,7 @@ Returns the vertical box container of the dialog, custom controls can be added t
 
 \ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
 
-\ **Note:** Changes to this node are ignored by native file dialogs, use :ref:`add_option<class_FileDialog_method_add_option>` to add custom elements to the dialog instead.
+\ **Note:** Changes to this node are ignored by native file dialogs, use :ref:`add_option()<class_FileDialog_method_add_option>` to add custom elements to the dialog instead.
 
 .. rst-class:: classref-item-separator
 
@@ -752,6 +815,18 @@ The color modulation applied to the folder icon.
 
 ----
 
+.. _class_FileDialog_theme_constant_thumbnail_size:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`int<class_int>` **thumbnail_size** = ``64`` :ref:`🔗<class_FileDialog_theme_constant_thumbnail_size>`
+
+The size of thumbnail icons when :ref:`DISPLAY_THUMBNAILS<class_FileDialog_constant_DISPLAY_THUMBNAILS>` is enabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileDialog_theme_icon_back_folder:
 
 .. rst-class:: classref-themeproperty
@@ -776,6 +851,42 @@ Custom icon for the create folder button.
 
 ----
 
+.. _class_FileDialog_theme_icon_favorite:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **favorite** :ref:`🔗<class_FileDialog_theme_icon_favorite>`
+
+Custom icon for favorite folder button.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileDialog_theme_icon_favorite_down:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **favorite_down** :ref:`🔗<class_FileDialog_theme_icon_favorite_down>`
+
+Custom icon for button to move down a favorite entry.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileDialog_theme_icon_favorite_up:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **favorite_up** :ref:`🔗<class_FileDialog_theme_icon_favorite_up>`
+
+Custom icon for button to move up a favorite entry.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileDialog_theme_icon_file:
 
 .. rst-class:: classref-themeproperty
@@ -783,6 +894,18 @@ Custom icon for the create folder button.
 :ref:`Texture2D<class_Texture2D>` **file** :ref:`🔗<class_FileDialog_theme_icon_file>`
 
 Custom icon for files.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileDialog_theme_icon_file_thumbnail:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **file_thumbnail** :ref:`🔗<class_FileDialog_theme_icon_file_thumbnail>`
+
+Icon for files when in thumbnail mode.
 
 .. rst-class:: classref-item-separator
 
@@ -800,6 +923,18 @@ Custom icon for folders.
 
 ----
 
+.. _class_FileDialog_theme_icon_folder_thumbnail:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **folder_thumbnail** :ref:`🔗<class_FileDialog_theme_icon_folder_thumbnail>`
+
+Icon for folders when in thumbnail mode.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileDialog_theme_icon_forward_folder:
 
 .. rst-class:: classref-themeproperty
@@ -807,6 +942,18 @@ Custom icon for folders.
 :ref:`Texture2D<class_Texture2D>` **forward_folder** :ref:`🔗<class_FileDialog_theme_icon_forward_folder>`
 
 Custom icon for the forward arrow.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileDialog_theme_icon_list_mode:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **list_mode** :ref:`🔗<class_FileDialog_theme_icon_list_mode>`
+
+Icon for the button that enables list mode.
 
 .. rst-class:: classref-item-separator
 
@@ -836,6 +983,30 @@ Custom icon for the reload button.
 
 ----
 
+.. _class_FileDialog_theme_icon_sort:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **sort** :ref:`🔗<class_FileDialog_theme_icon_sort>`
+
+Custom icon for the sorting options menu.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileDialog_theme_icon_thumbnail_mode:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **thumbnail_mode** :ref:`🔗<class_FileDialog_theme_icon_thumbnail_mode>`
+
+Icon for the button that enables thumbnail mode.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileDialog_theme_icon_toggle_filename_filter:
 
 .. rst-class:: classref-themeproperty
@@ -857,6 +1028,7 @@ Custom icon for the toggle button for the filter for file names.
 Custom icon for the toggle hidden button.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

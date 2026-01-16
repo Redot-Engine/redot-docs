@@ -51,7 +51,7 @@ Redot tracks all scripting API variables within Variants. Without even realizing
 
 - C# is statically typed, but uses its own implementation of the Variant type in place of Redot's **Variant** class when it needs to represent a dynamic value. C# Variant can be assigned any compatible type implicitly but converting requires an explicit cast.
 
-The global :ref:`@GlobalScope.typeof<class_@GlobalScope_method_typeof>` function returns the enumerated value of the Variant type stored in the current variable (see :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`).
+The global :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>` function returns the enumerated value of the Variant type stored in the current variable (see :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`).
 
 
 .. tabs::
@@ -133,6 +133,7 @@ Tutorials
 - :doc:`Variant class introduction <../contributing/development/core_and_modules/variant_class>`
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

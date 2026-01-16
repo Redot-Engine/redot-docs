@@ -23,6 +23,13 @@ An implementation of the A\* algorithm, used to find the shortest path between t
 
 See :ref:`AStar3D<class_AStar3D>` for a more thorough explanation on how to use this class. **AStar2D** is a wrapper for :ref:`AStar3D<class_AStar3D>` that enforces 2D coordinates.
 
+.. rst-class:: classref-introduction-group
+
+Tutorials
+---------
+
+- `Grid-based Navigation with AStarGrid2D Demo <https://godotengine.org/asset-library/asset/2723>`__
+
 .. rst-class:: classref-reftable-group
 
 Methods
@@ -128,7 +135,7 @@ Note that this function is hidden in the default **AStar2D** class.
 
 Adds a new point at the given position with the given identifier. The ``id`` must be 0 or larger, and the ``weight_scale`` must be 0.0 or greater.
 
-The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost<class_AStar2D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point. Thus, all else being equal, the algorithm prefers points with lower ``weight_scale``\ s to form a path.
+The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost()<class_AStar2D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point. Thus, all else being equal, the algorithm prefers points with lower ``weight_scale``\ s to form a path.
 
 
 .. tabs::
@@ -337,7 +344,7 @@ If you change the 2nd point's weight to 3, then the result will be ``[1, 4, 3]``
 
 :ref:`int<class_int>` **get_point_capacity**\ (\ ) |const| :ref:`🔗<class_AStar2D_method_get_point_capacity>`
 
-Returns the capacity of the structure backing the points, useful in conjunction with :ref:`reserve_space<class_AStar2D_method_reserve_space>`.
+Returns the capacity of the structure backing the points, useful in conjunction with :ref:`reserve_space()<class_AStar2D_method_reserve_space>`.
 
 .. rst-class:: classref-item-separator
 
@@ -494,7 +501,7 @@ Removes the point associated with the given ``id`` from the points pool.
 
 |void| **reserve_space**\ (\ num_nodes\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AStar2D_method_reserve_space>`
 
-Reserves space internally for ``num_nodes`` points. Useful if you're adding a known large number of points at once, such as points on a grid. The new capacity must be greater or equal to the old capacity.
+Reserves space internally for ``num_nodes`` points. Useful if you're adding a known large number of points at once, such as points on a grid.
 
 .. rst-class:: classref-item-separator
 
@@ -530,9 +537,10 @@ Sets the ``position`` for the point with the given ``id``.
 
 |void| **set_point_weight_scale**\ (\ id\: :ref:`int<class_int>`, weight_scale\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AStar2D_method_set_point_weight_scale>`
 
-Sets the ``weight_scale`` for the point with the given ``id``. The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost<class_AStar2D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point.
+Sets the ``weight_scale`` for the point with the given ``id``. The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost()<class_AStar2D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

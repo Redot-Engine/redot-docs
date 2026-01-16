@@ -115,7 +115,7 @@ Returns the index of the selected :ref:`MeshLibrary<class_MeshLibrary>` item in 
 
 :ref:`AABB<class_AABB>` **get_selection**\ (\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_get_selection>`
 
-Returns the cell coordinate bounds of the current selection. Use :ref:`has_selection<class_GridMapEditorPlugin_method_has_selection>` to check if there is an active selection.
+Returns the cell coordinate bounds of the current selection. Use :ref:`has_selection()<class_GridMapEditorPlugin_method_has_selection>` to check if there is an active selection.
 
 .. rst-class:: classref-item-separator
 
@@ -156,6 +156,7 @@ Selects the :ref:`MeshLibrary<class_MeshLibrary>` item with the given index in t
 Selects the cells inside the given bounds from ``begin`` to ``end``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

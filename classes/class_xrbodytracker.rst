@@ -827,7 +827,7 @@ Method Descriptions
 
 |bitfield|\[:ref:`JointFlags<enum_XRBodyTracker_JointFlags>`\] **get_joint_flags**\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`\ ) |const| :ref:`🔗<class_XRBodyTracker_method_get_joint_flags>`
 
-Returns flags about the validity of the tracking data for the given body joint (see :ref:`JointFlags<enum_XRBodyTracker_JointFlags>`).
+Returns flags about the validity of the tracking data for the given body joint.
 
 .. rst-class:: classref-item-separator
 
@@ -866,6 +866,7 @@ Sets flags about the validity of the tracking data for the given body joint.
 Sets the transform for the given body joint.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -59,7 +59,7 @@ Property Descriptions
 - |void| **set_original_class**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_original_class**\ (\ )
 
-The name of the class this node was supposed to be (see :ref:`Object.get_class<class_Object_method_get_class>`).
+The name of the class this node was supposed to be (see :ref:`Object.get_class()<class_Object_method_get_class>`).
 
 .. rst-class:: classref-item-separator
 
@@ -96,6 +96,7 @@ Returns the path of the scene this node was instance of originally.
 If ``true``, allows new properties to be set along with existing ones. If ``false``, only existing properties' values can be set, and new properties cannot be added.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

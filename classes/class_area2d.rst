@@ -336,7 +336,7 @@ See :ref:`ProjectSettings.physics/2d/default_angular_damp<class_ProjectSettings_
 - |void| **set_angular_damp_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area2D_SpaceOverride>`\ )
 - :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **get_angular_damp_space_override_mode**\ (\ )
 
-Override mode for angular damping calculations within this area. See :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` for possible values.
+Override mode for angular damping calculations within this area.
 
 .. rst-class:: classref-item-separator
 
@@ -474,7 +474,7 @@ The above is true only when the unit distance is a positive number. When this is
 - |void| **set_gravity_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area2D_SpaceOverride>`\ )
 - :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **get_gravity_space_override_mode**\ (\ )
 
-Override mode for gravity calculations within this area. See :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` for possible values.
+Override mode for gravity calculations within this area.
 
 .. rst-class:: classref-item-separator
 
@@ -510,7 +510,7 @@ See :ref:`ProjectSettings.physics/2d/default_linear_damp<class_ProjectSettings_p
 - |void| **set_linear_damp_space_override_mode**\ (\ value\: :ref:`SpaceOverride<enum_Area2D_SpaceOverride>`\ )
 - :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` **get_linear_damp_space_override_mode**\ (\ )
 
-Override mode for linear damping calculations within this area. See :ref:`SpaceOverride<enum_Area2D_SpaceOverride>` for possible values.
+Override mode for linear damping calculations within this area.
 
 .. rst-class:: classref-item-separator
 
@@ -655,6 +655,7 @@ Returns ``true`` if the given physics body intersects or overlaps this **Area2D*
 The ``body`` argument can either be a :ref:`PhysicsBody2D<class_PhysicsBody2D>` or a :ref:`TileMap<class_TileMap>` instance. While TileMaps are not physics bodies themselves, they register their tiles with collision shapes as a virtual physics body.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

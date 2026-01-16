@@ -22,7 +22,7 @@ Overrides the location sounds are heard from.
 Description
 -----------
 
-Once added to the scene tree and enabled using :ref:`make_current<class_AudioListener3D_method_make_current>`, this node will override the location sounds are heard from. This can be used to listen from a location different from the :ref:`Camera3D<class_Camera3D>`.
+Once added to the scene tree and enabled using :ref:`make_current()<class_AudioListener3D_method_make_current>`, this node will override the location sounds are heard from. This can be used to listen from a location different from the :ref:`Camera3D<class_Camera3D>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -81,7 +81,7 @@ Returns the listener's global orthonormalized :ref:`Transform3D<class_Transform3
 
 :ref:`bool<class_bool>` **is_current**\ (\ ) |const| :ref:`🔗<class_AudioListener3D_method_is_current>`
 
-Returns ``true`` if the listener was made current using :ref:`make_current<class_AudioListener3D_method_make_current>`, ``false`` otherwise.
+Returns ``true`` if the listener was made current using :ref:`make_current()<class_AudioListener3D_method_make_current>`, ``false`` otherwise.
 
 \ **Note:** There may be more than one AudioListener3D marked as "current" in the scene tree, but only the one that was made current last will be used.
 
@@ -98,6 +98,7 @@ Returns ``true`` if the listener was made current using :ref:`make_current<class
 Enables the listener. This will override the current camera's listener.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -274,9 +274,9 @@ Active face index in the TrueType / OpenType collection file.
 
 Font OpenType variation coordinates. More info: `OpenType variation tags <https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg>`__.
 
-\ **Note:** This :ref:`Dictionary<class_Dictionary>` uses OpenType tags as keys. Variation axes can be identified both by tags (:ref:`int<class_int>`, e.g. ``0x77678674``) and names (:ref:`String<class_String>`, e.g. ``wght``). Some axes might be accessible by multiple names. For example, ``wght`` refers to the same axis as ``weight``. Tags on the other hand are unique. To convert between names and tags, use :ref:`TextServer.name_to_tag<class_TextServer_method_name_to_tag>` and :ref:`TextServer.tag_to_name<class_TextServer_method_tag_to_name>`.
+\ **Note:** This :ref:`Dictionary<class_Dictionary>` uses OpenType tags as keys. Variation axes can be identified both by tags (:ref:`int<class_int>`, e.g. ``0x77678674``) and names (:ref:`String<class_String>`, e.g. ``wght``). Some axes might be accessible by multiple names. For example, ``wght`` refers to the same axis as ``weight``. Tags on the other hand are unique. To convert between names and tags, use :ref:`TextServer.name_to_tag()<class_TextServer_method_name_to_tag>` and :ref:`TextServer.tag_to_name()<class_TextServer_method_tag_to_name>`.
 
-\ **Note:** To get available variation axes of a font, use :ref:`Font.get_supported_variation_list<class_Font_method_get_supported_variation_list>`.
+\ **Note:** To get available variation axes of a font, use :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -312,9 +312,10 @@ Method Descriptions
 
 |void| **set_spacing**\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontVariation_method_set_spacing>`
 
-Sets the spacing for ``spacing`` (see :ref:`SpacingType<enum_TextServer_SpacingType>`) to ``value`` in pixels (not relative to the font size).
+Sets the spacing for ``spacing`` to ``value`` in pixels (not relative to the font size).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
