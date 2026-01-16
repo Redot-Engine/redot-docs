@@ -21,7 +21,7 @@ Description
 
 MeshDataTool provides access to individual vertices in a :ref:`Mesh<class_Mesh>`. It allows users to read and edit vertex data of meshes. It also creates an array of faces and edges.
 
-To use MeshDataTool, load a mesh with :ref:`create_from_surface<class_MeshDataTool_method_create_from_surface>`. When you are finished editing the data commit the data to a mesh with :ref:`commit_to_surface<class_MeshDataTool_method_commit_to_surface>`.
+To use MeshDataTool, load a mesh with :ref:`create_from_surface()<class_MeshDataTool_method_create_from_surface>`. When you are finished editing the data commit the data to a mesh with :ref:`commit_to_surface()<class_MeshDataTool_method_commit_to_surface>`.
 
 Below is an example of how MeshDataTool may be used.
 
@@ -652,6 +652,7 @@ Sets the UV2 of the given vertex.
 Sets the bone weights of the given vertex.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

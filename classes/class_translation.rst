@@ -111,7 +111,7 @@ Method Descriptions
 
 :ref:`StringName<class_StringName>` **_get_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_Translation_private_method__get_message>`
 
-Virtual method to override :ref:`get_message<class_Translation_method_get_message>`.
+Virtual method to override :ref:`get_message()<class_Translation_method_get_message>`.
 
 .. rst-class:: classref-item-separator
 
@@ -123,7 +123,7 @@ Virtual method to override :ref:`get_message<class_Translation_method_get_messag
 
 :ref:`StringName<class_StringName>` **_get_plural_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, src_plural_message\: :ref:`StringName<class_StringName>`, n\: :ref:`int<class_int>`, context\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_Translation_private_method__get_plural_message>`
 
-Virtual method to override :ref:`get_plural_message<class_Translation_method_get_plural_message>`.
+Virtual method to override :ref:`get_plural_message()<class_Translation_method_get_plural_message>`.
 
 .. rst-class:: classref-item-separator
 
@@ -228,6 +228,7 @@ The number ``n`` is the number or quantity of the plural object. It will be used
 Returns all the messages (translated text).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

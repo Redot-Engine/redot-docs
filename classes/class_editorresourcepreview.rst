@@ -21,7 +21,7 @@ Description
 
 This node is used to generate previews for resources or files.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_resource_previewer<class_EditorInterface_method_get_resource_previewer>`.
+\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_resource_previewer()<class_EditorInterface_method_get_resource_previewer>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -130,6 +130,7 @@ Queue a resource file located at ``path`` for preview. Once the preview is ready
 Removes a custom preview generator.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

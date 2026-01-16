@@ -23,7 +23,7 @@ InputEventMIDI stores information about messages from `MIDI <https://en.wikipedi
 
 MIDI messages can be received over a 5-pin MIDI connector or over USB. If your device supports both be sure to check the settings in the device to see which output it is using.
 
-By default, Redot does not detect MIDI devices. You need to call :ref:`OS.open_midi_inputs<class_OS_method_open_midi_inputs>`, first. You can check which devices are detected with :ref:`OS.get_connected_midi_inputs<class_OS_method_get_connected_midi_inputs>`, and close the connection with :ref:`OS.close_midi_inputs<class_OS_method_close_midi_inputs>`.
+By default, Redot does not detect MIDI devices. You need to call :ref:`OS.open_midi_inputs()<class_OS_method_open_midi_inputs>`, first. You can check which devices are detected with :ref:`OS.get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>`, and close the connection with :ref:`OS.close_midi_inputs()<class_OS_method_close_midi_inputs>`.
 
 
 .. tabs::
@@ -33,11 +33,11 @@ By default, Redot does not detect MIDI devices. You need to call :ref:`OS.open_m
     func _ready():
         OS.open_midi_inputs()
         print(OS.get_connected_midi_inputs())
-    
+
     func _input(input_event):
         if input_event is InputEventMIDI:
             _print_midi_info(input_event)
-    
+
     func _print_midi_info(midi_event):
         print(midi_event)
         print("Channel ", midi_event.channel)
@@ -56,7 +56,7 @@ By default, Redot does not detect MIDI devices. You need to call :ref:`OS.open_m
         OS.OpenMidiInputs();
         GD.Print(OS.GetConnectedMidiInputs());
     }
-    
+
     public override void _Input(InputEvent inputEvent)
     {
         if (inputEvent is InputEventMidi midiEvent)
@@ -64,7 +64,7 @@ By default, Redot does not detect MIDI devices. You need to call :ref:`OS.open_m
             PrintMIDIInfo(midiEvent);
         }
     }
-    
+
     private void PrintMIDIInfo(InputEventMidi midiEvent)
     {
         GD.Print(midiEvent);
@@ -82,7 +82,7 @@ By default, Redot does not detect MIDI devices. You need to call :ref:`OS.open_m
 
 \ **Note:** Redot does not support MIDI output, so there is no way to emit MIDI messages from Redot. Only MIDI input is supported.
 
-\ **Note:** On the Web platform, using MIDI input requires a browser permission to be granted first. This permission request is performed when calling :ref:`OS.open_midi_inputs<class_OS_method_open_midi_inputs>`. MIDI input will not work until the user accepts the permission request.
+\ **Note:** On the Web platform, using MIDI input requires a browser permission to be granted first. This permission request is performed when calling :ref:`OS.open_midi_inputs()<class_OS_method_open_midi_inputs>`. MIDI input will not work until the user accepts the permission request.
 
 .. rst-class:: classref-introduction-group
 
@@ -280,6 +280,7 @@ The velocity of the MIDI message. This value ranges from ``0`` to ``127``. For a
                 print("Note pressed!")
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

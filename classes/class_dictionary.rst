@@ -29,16 +29,16 @@ Creating a dictionary:
  .. code-tab:: gdscript
 
     var my_dict = {} # Creates an empty dictionary.
-    
+
     var dict_variable_key = "Another key name"
     var dict_variable_value = "value2"
     var another_dict = {
         "Some key name": "value1",
         dict_variable_key: dict_variable_value,
     }
-    
-    var points_dict = {"White": 50, "Yellow": 75, "Orange": 100}
-    
+
+    var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
+
     # Alternative Lua-style syntax.
     # Doesn't require quotes around keys, but only string constants can be used as key names.
     # Additionally, key names must start with a letter or an underscore.
@@ -52,9 +52,9 @@ Creating a dictionary:
     var myDict = new Godot.Collections.Dictionary(); // Creates an empty dictionary.
     var pointsDict = new Godot.Collections.Dictionary
     {
-        {"White", 50},
-        {"Yellow", 75},
-        {"Orange", 100}
+        { "White", 50 },
+        { "Yellow", 75 },
+        { "Orange", 100 },
     };
 
 
@@ -67,7 +67,7 @@ You can access a dictionary's value by referencing its corresponding key. In the
  .. code-tab:: gdscript
 
     @export_enum("White", "Yellow", "Orange") var my_color: String
-    var points_dict = {"White": 50, "Yellow": 75, "Orange": 100}
+    var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
     func _ready():
         # We can't use dot syntax here as `my_color` is a variable.
         var points = points_dict[my_color]
@@ -78,11 +78,11 @@ You can access a dictionary's value by referencing its corresponding key. In the
     public string MyColor { get; set; }
     private Godot.Collections.Dictionary _pointsDict = new Godot.Collections.Dictionary
     {
-        {"White", 50},
-        {"Yellow", 75},
-        {"Orange", 100}
+        { "White", 50 },
+        { "Yellow", 75 },
+        { "Orange", 100 },
     };
-    
+
     public override void _Ready()
     {
         int points = (int)_pointsDict[MyColor];
@@ -107,7 +107,7 @@ Dictionaries can contain more complex data:
 
     var myDict = new Godot.Collections.Dictionary
     {
-        {"First Array", new Godot.Collections.Array{1, 2, 3, 4}}
+        { "First Array", new Godot.Collections.Array { 1, 2, 3, 4 } }
     };
 
 
@@ -119,16 +119,16 @@ To add a key to an existing dictionary, access it like an existing key and assig
 
  .. code-tab:: gdscript
 
-    var points_dict = {"White": 50, "Yellow": 75, "Orange": 100}
+    var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
     points_dict["Blue"] = 150 # Add "Blue" as a key and assign 150 as its value.
 
  .. code-tab:: csharp
 
     var pointsDict = new Godot.Collections.Dictionary
     {
-        {"White", 50},
-        {"Yellow", 75},
-        {"Orange", 100}
+        { "White", 50 },
+        { "Yellow", 75 },
+        { "Orange", 100 },
     };
     pointsDict["Blue"] = 150; // Add "Blue" as a key and assign 150 as its value.
 
@@ -148,7 +148,7 @@ Finally, dictionaries can contain different types of keys and values in the same
         "String Key": 5,
         4: [1, 2, 3],
         7: "Hello",
-        "sub_dict": {"sub_key": "Nested value"},
+        "sub_dict": { "sub_key": "Nested value" },
     }
 
  .. code-tab:: csharp
@@ -156,10 +156,10 @@ Finally, dictionaries can contain different types of keys and values in the same
     // This is a valid dictionary.
     // To access the string "Nested value" below, use `((Godot.Collections.Dictionary)myDict["sub_dict"])["sub_key"]`.
     var myDict = new Godot.Collections.Dictionary {
-        {"String Key", 5},
-        {4, new Godot.Collections.Array{1,2,3}},
-        {7, "Hello"},
-        {"sub_dict", new Godot.Collections.Dictionary{{"sub_key", "Nested value"}}}
+        { "String Key", 5 },
+        { 4, new Godot.Collections.Array { 1, 2, 3 } },
+        { 7, "Hello" },
+        { "sub_dict", new Godot.Collections.Dictionary { { "sub_key", "Nested value" } } },
     };
 
 
@@ -171,13 +171,13 @@ The keys of a dictionary can be iterated with the ``for`` keyword:
 
  .. code-tab:: gdscript
 
-    var groceries = {"Orange": 20, "Apple": 2, "Banana": 4}
+    var groceries = { "Orange": 20, "Apple": 2, "Banana": 4 }
     for fruit in groceries:
         var amount = groceries[fruit]
 
  .. code-tab:: csharp
 
-    var groceries = new Godot.Collections.Dictionary{{"Orange", 20}, {"Apple", 2}, {"Banana", 4}};
+    var groceries = new Godot.Collections.Dictionary { { "Orange", 20 }, { "Apple", 2 }, { "Banana", 4 } };
     foreach (var (fruit, amount) in groceries)
     {
         // `fruit` is the key, `amount` is the value.
@@ -185,7 +185,7 @@ The keys of a dictionary can be iterated with the ``for`` keyword:
 
 
 
-\ **Note:** Dictionaries are always passed by reference. To get a copy of a dictionary which can be modified independently of the original dictionary, use :ref:`duplicate<class_Dictionary_method_duplicate>`.
+\ **Note:** Dictionaries are always passed by reference. To get a copy of a dictionary which can be modified independently of the original dictionary, use :ref:`duplicate()<class_Dictionary_method_duplicate>`.
 
 \ **Note:** Erasing elements while iterating over dictionaries is **not** supported and will result in unpredictable behavior.
 
@@ -234,6 +234,8 @@ Methods
    | |void|                              | :ref:`clear<class_Dictionary_method_clear>`\ (\ )                                                                                                                        |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>` | :ref:`duplicate<class_Dictionary_method_duplicate>`\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const|                                                                |
+   +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`duplicate_deep<class_Dictionary_method_duplicate_deep>`\ (\ deep_subresources_mode\: :ref:`int<class_int>` = 1\ ) |const|                                          |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`             | :ref:`erase<class_Dictionary_method_erase>`\ (\ key\: :ref:`Variant<class_Variant>`\ )                                                                                   |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -347,7 +349,7 @@ Creates a typed dictionary from the ``base`` dictionary. A typed dictionary can 
 
 :ref:`Dictionary<class_Dictionary>` **Dictionary**\ (\ from\: :ref:`Dictionary<class_Dictionary>`\ )
 
-Returns the same dictionary as ``from``. If you need a copy of the dictionary, use :ref:`duplicate<class_Dictionary_method_duplicate>`.
+Returns the same dictionary as ``from``. If you need a copy of the dictionary, use :ref:`duplicate()<class_Dictionary_method_duplicate>`.
 
 .. rst-class:: classref-section-separator
 
@@ -388,7 +390,25 @@ Clears the dictionary, removing all entries from it.
 
 :ref:`Dictionary<class_Dictionary>` **duplicate**\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Dictionary_method_duplicate>`
 
-Creates and returns a new copy of the dictionary. If ``deep`` is ``true``, inner **Dictionary** and :ref:`Array<class_Array>` keys and values are also copied, recursively.
+Returns a new copy of the dictionary.
+
+By default, a **shallow** copy is returned: all nested :ref:`Array<class_Array>`, **Dictionary**, and :ref:`Resource<class_Resource>` keys and values are shared with the original dictionary. Modifying any of those in one dictionary will also affect them in the other.
+
+If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dictionaries are also duplicated (recursively). Any :ref:`Resource<class_Resource>` is still shared with the original dictionary, though.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Dictionary_method_duplicate_deep:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary<class_Dictionary>` **duplicate_deep**\ (\ deep_subresources_mode\: :ref:`int<class_int>` = 1\ ) |const| :ref:`🔗<class_Dictionary_method_duplicate_deep>`
+
+Duplicates this dictionary, deeply, like :ref:`duplicate()<class_Dictionary_method_duplicate>`\ ``(true)``, with extra control over how subresources are handled.
+
+\ ``deep_subresources_mode`` must be one of the values from :ref:`ResourceDeepDuplicateMode<enum_Resource_ResourceDeepDuplicateMode>`. By default, only internal resources will be duplicated (recursively).
 
 .. rst-class:: classref-item-separator
 
@@ -402,7 +422,7 @@ Creates and returns a new copy of the dictionary. If ``deep`` is ``true``, inner
 
 Removes the dictionary entry by key, if it exists. Returns ``true`` if the given ``key`` existed in the dictionary, otherwise ``false``.
 
-\ **Note:** Do not erase entries while iterating over the dictionary. You can iterate over the :ref:`keys<class_Dictionary_method_keys>` array instead.
+\ **Note:** Do not erase entries while iterating over the dictionary. You can iterate over the :ref:`keys()<class_Dictionary_method_keys>` array instead.
 
 .. rst-class:: classref-item-separator
 
@@ -416,7 +436,7 @@ Removes the dictionary entry by key, if it exists. Returns ``true`` if the given
 
 Finds and returns the first key whose associated value is equal to ``value``, or ``null`` if it is not found.
 
-\ **Note:** ``null`` is also a valid key. If inside the dictionary, :ref:`find_key<class_Dictionary_method_find_key>` may give misleading results.
+\ **Note:** ``null`` is also a valid key. If inside the dictionary, :ref:`find_key()<class_Dictionary_method_find_key>` may give misleading results.
 
 .. rst-class:: classref-item-separator
 
@@ -440,7 +460,7 @@ Returns the corresponding value for the given ``key`` in the dictionary. If the 
 
 :ref:`Variant<class_Variant>` **get_or_add**\ (\ key\: :ref:`Variant<class_Variant>`, default\: :ref:`Variant<class_Variant>` = null\ ) :ref:`🔗<class_Dictionary_method_get_or_add>`
 
-Gets a value and ensures the key is set. If the ``key`` exists in the dictionary, this behaves like :ref:`get<class_Dictionary_method_get>`. Otherwise, the ``default`` value is inserted into the dictionary and returned.
+Gets a value and ensures the key is set. If the ``key`` exists in the dictionary, this behaves like :ref:`get()<class_Dictionary_method_get>`. Otherwise, the ``default`` value is inserted into the dictionary and returned.
 
 .. rst-class:: classref-item-separator
 
@@ -452,7 +472,7 @@ Gets a value and ensures the key is set. If the ``key`` exists in the dictionary
 
 :ref:`int<class_int>` **get_typed_key_builtin**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_key_builtin>`
 
-Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary's keys as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the keys are not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed_key<class_Dictionary_method_is_typed_key>`.
+Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary's keys as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the keys are not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -464,7 +484,7 @@ Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary'
 
 :ref:`StringName<class_StringName>` **get_typed_key_class_name**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_key_class_name>`
 
-Returns the **built-in** class name of the typed dictionary's keys, if the built-in :ref:`Variant<class_Variant>` type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed_key<class_Dictionary_method_is_typed_key>` and :ref:`Object.get_class<class_Object_method_get_class>`.
+Returns the **built-in** class name of the typed dictionary's keys, if the built-in :ref:`Variant<class_Variant>` type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>` and :ref:`Object.get_class()<class_Object_method_get_class>`.
 
 .. rst-class:: classref-item-separator
 
@@ -476,7 +496,7 @@ Returns the **built-in** class name of the typed dictionary's keys, if the built
 
 :ref:`Variant<class_Variant>` **get_typed_key_script**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_key_script>`
 
-Returns the :ref:`Script<class_Script>` instance associated with this typed dictionary's keys, or ``null`` if it does not exist. See also :ref:`is_typed_key<class_Dictionary_method_is_typed_key>`.
+Returns the :ref:`Script<class_Script>` instance associated with this typed dictionary's keys, or ``null`` if it does not exist. See also :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -488,7 +508,7 @@ Returns the :ref:`Script<class_Script>` instance associated with this typed dict
 
 :ref:`int<class_int>` **get_typed_value_builtin**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_value_builtin>`
 
-Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary's values as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the values are not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed_value<class_Dictionary_method_is_typed_value>`.
+Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary's values as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the values are not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -500,7 +520,7 @@ Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary'
 
 :ref:`StringName<class_StringName>` **get_typed_value_class_name**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_value_class_name>`
 
-Returns the **built-in** class name of the typed dictionary's values, if the built-in :ref:`Variant<class_Variant>` type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed_value<class_Dictionary_method_is_typed_value>` and :ref:`Object.get_class<class_Object_method_get_class>`.
+Returns the **built-in** class name of the typed dictionary's values, if the built-in :ref:`Variant<class_Variant>` type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>` and :ref:`Object.get_class()<class_Object_method_get_class>`.
 
 .. rst-class:: classref-item-separator
 
@@ -512,7 +532,7 @@ Returns the **built-in** class name of the typed dictionary's values, if the bui
 
 :ref:`Variant<class_Variant>` **get_typed_value_script**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_value_script>`
 
-Returns the :ref:`Script<class_Script>` instance associated with this typed dictionary's values, or ``null`` if it does not exist. See also :ref:`is_typed_value<class_Dictionary_method_is_typed_value>`.
+Returns the :ref:`Script<class_Script>` instance associated with this typed dictionary's values, or ``null`` if it does not exist. See also :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -535,7 +555,7 @@ Returns ``true`` if the dictionary contains an entry with the given ``key``.
         "Redot" : 4,
         210 : null,
     }
-    
+
     print(my_dict.has("Redot")) # Prints true
     print(my_dict.has(210))     # Prints true
     print(my_dict.has(4))       # Prints false
@@ -547,7 +567,7 @@ Returns ``true`` if the dictionary contains an entry with the given ``key``.
         { "Redot", 4 },
         { 210, default },
     };
-    
+
     GD.Print(myDict.ContainsKey("Redot")); // Prints True
     GD.Print(myDict.ContainsKey(210));     // Prints True
     GD.Print(myDict.ContainsKey(4));       // Prints False
@@ -558,7 +578,7 @@ In GDScript, this is equivalent to the ``in`` operator:
 
 ::
 
-    if "Redot" in {"Redot": 4}:
+    if "Redot" in { "Redot": 4 }:
         print("The key is here!") # Will be printed.
 
 \ **Note:** This method returns ``true`` as long as the ``key`` exists, even if its corresponding value is ``null``.
@@ -577,7 +597,7 @@ Returns ``true`` if the dictionary contains all keys in the given ``keys`` array
 
 ::
 
-    var data = {"width" : 10, "height" : 20}
+    var data = { "width": 10, "height": 20 }
     data.has_all(["height", "width"]) # Returns true
 
 .. rst-class:: classref-item-separator
@@ -597,16 +617,16 @@ Returns a hashed 32-bit integer value representing the dictionary contents.
 
  .. code-tab:: gdscript
 
-    var dict1 = {"A": 10, "B": 2}
-    var dict2 = {"A": 10, "B": 2}
-    
+    var dict1 = { "A": 10, "B": 2 }
+    var dict2 = { "A": 10, "B": 2 }
+
     print(dict1.hash() == dict2.hash()) # Prints true
 
  .. code-tab:: csharp
 
-    var dict1 = new Godot.Collections.Dictionary{{"A", 10}, {"B", 2}};
-    var dict2 = new Godot.Collections.Dictionary{{"A", 10}, {"B", 2}};
-    
+    var dict1 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
+    var dict2 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
+
     // Godot.Collections.Dictionary has no Hash() method. Use GD.Hash() instead.
     GD.Print(GD.Hash(dict1) == GD.Hash(dict2)); // Prints True
 
@@ -626,7 +646,7 @@ Returns a hashed 32-bit integer value representing the dictionary contents.
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_empty>`
 
-Returns ``true`` if the dictionary is empty (its size is ``0``). See also :ref:`size<class_Dictionary_method_size>`.
+Returns ``true`` if the dictionary is empty (its size is ``0``). See also :ref:`size()<class_Dictionary_method_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -638,7 +658,7 @@ Returns ``true`` if the dictionary is empty (its size is ``0``). See also :ref:`
 
 :ref:`bool<class_bool>` **is_read_only**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_read_only>`
 
-Returns ``true`` if the dictionary is read-only. See :ref:`make_read_only<class_Dictionary_method_make_read_only>`. Dictionaries are automatically read-only if declared with ``const`` keyword.
+Returns ``true`` if the dictionary is read-only. See :ref:`make_read_only()<class_Dictionary_method_make_read_only>`. Dictionaries are automatically read-only if declared with ``const`` keyword.
 
 .. rst-class:: classref-item-separator
 
@@ -755,11 +775,11 @@ Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys 
 
     var dict = { "item": "sword", "quantity": 2 }
     var other_dict = { "quantity": 15, "color": "silver" }
-    
+
     # Overwriting of existing keys is disabled by default.
     dict.merge(other_dict)
     print(dict)  # { "item": "sword", "quantity": 2, "color": "silver" }
-    
+
     # With overwriting of existing keys enabled.
     dict.merge(other_dict, true)
     print(dict)  # { "item": "sword", "quantity": 15, "color": "silver" }
@@ -771,24 +791,24 @@ Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys 
         ["item"] = "sword",
         ["quantity"] = 2,
     };
-    
+
     var otherDict = new Godot.Collections.Dictionary
     {
         ["quantity"] = 15,
         ["color"] = "silver",
     };
-    
+
     // Overwriting of existing keys is disabled by default.
     dict.Merge(otherDict);
     GD.Print(dict); // { "item": "sword", "quantity": 2, "color": "silver" }
-    
+
     // With overwriting of existing keys enabled.
     dict.Merge(otherDict, true);
     GD.Print(dict); // { "item": "sword", "quantity": 15, "color": "silver" }
 
 
 
-\ **Note:** :ref:`merge<class_Dictionary_method_merge>` is *not* recursive. Nested dictionaries are considered as keys that can be overwritten or not depending on the value of ``overwrite``, but they will never be merged together.
+\ **Note:** :ref:`merge()<class_Dictionary_method_merge>` is *not* recursive. Nested dictionaries are considered as keys that can be overwritten or not depending on the value of ``overwrite``, but they will never be merged together.
 
 .. rst-class:: classref-item-separator
 
@@ -800,7 +820,7 @@ Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys 
 
 :ref:`Dictionary<class_Dictionary>` **merged**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`, overwrite\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Dictionary_method_merged>`
 
-Returns a copy of this dictionary merged with the other ``dictionary``. By default, duplicate keys are not copied over, unless ``overwrite`` is ``true``. See also :ref:`merge<class_Dictionary_method_merge>`.
+Returns a copy of this dictionary merged with the other ``dictionary``. By default, duplicate keys are not copied over, unless ``overwrite`` is ``true``. See also :ref:`merge()<class_Dictionary_method_merge>`.
 
 This method is useful for quickly making dictionaries with default values:
 
@@ -847,7 +867,7 @@ Sets the value of the element at the given ``key`` to the given ``value``. This 
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_size>`
 
-Returns the number of entries in the dictionary. Empty dictionaries (``{ }``) always return ``0``. See also :ref:`is_empty<class_Dictionary_method_is_empty>`.
+Returns the number of entries in the dictionary. Empty dictionaries (``{ }``) always return ``0``. See also :ref:`is_empty()<class_Dictionary_method_is_empty>`.
 
 .. rst-class:: classref-item-separator
 
@@ -859,7 +879,20 @@ Returns the number of entries in the dictionary. Empty dictionaries (``{ }``) al
 
 |void| **sort**\ (\ ) :ref:`🔗<class_Dictionary_method_sort>`
 
-Sorts the dictionary in-place by key. This can be used to ensure dictionaries with the same contents produce equivalent results when getting the :ref:`keys<class_Dictionary_method_keys>`, getting the :ref:`values<class_Dictionary_method_values>`, and converting to a string. This is also useful when wanting a JSON representation consistent with what is in memory, and useful for storing on a database that requires dictionaries to be sorted.
+Sorts the dictionary in ascending order, by key. The final order is dependent on the "less than" (``<``) comparison between keys.
+
+
+.. tabs::
+
+ .. code-tab:: gdscript
+
+    var numbers = { "c": 2, "a": 0, "b": 1 }
+    numbers.sort()
+    print(numbers) # Prints { "a": 0, "b": 1, "c": 2 }
+
+
+
+This method ensures that the dictionary's entries are ordered consistently when :ref:`keys()<class_Dictionary_method_keys>` or :ref:`values()<class_Dictionary_method_values>` are called, or when the dictionary needs to be converted to a string through :ref:`@GlobalScope.str()<class_@GlobalScope_method_str>` or :ref:`JSON.stringify()<class_JSON_method_stringify>`.
 
 .. rst-class:: classref-item-separator
 
@@ -914,9 +947,10 @@ Returns ``true`` if the two dictionaries contain the same keys and values. The o
 
 :ref:`Variant<class_Variant>` **operator []**\ (\ key\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Dictionary_operator_idx_Variant>`
 
-Returns the corresponding value for the given ``key`` in the dictionary. If the entry does not exist, fails and returns ``null``. For safe access, use :ref:`get<class_Dictionary_method_get>` or :ref:`has<class_Dictionary_method_has>`.
+Returns the corresponding value for the given ``key`` in the dictionary. If the entry does not exist, fails and returns ``null``. For safe access, use :ref:`get()<class_Dictionary_method_get>` or :ref:`has()<class_Dictionary_method_has>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

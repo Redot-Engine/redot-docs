@@ -23,7 +23,7 @@ Description
 
 **AnimatedTexture** is a resource format for frame-based animations, where multiple textures can be chained automatically with a predefined delay for each frame. Unlike :ref:`AnimationPlayer<class_AnimationPlayer>` or :ref:`AnimatedSprite2D<class_AnimatedSprite2D>`, it isn't a :ref:`Node<class_Node>`, but has the advantage of being usable anywhere a :ref:`Texture2D<class_Texture2D>` resource can be used, e.g. in a :ref:`TileSet<class_TileSet>`.
 
-The playback of the animation is controlled by the :ref:`speed_scale<class_AnimatedTexture_property_speed_scale>` property, as well as each frame's duration (see :ref:`set_frame_duration<class_AnimatedTexture_method_set_frame_duration>`). The animation loops, i.e. it will restart at frame 0 automatically after playing the last frame.
+The playback of the animation is controlled by the :ref:`speed_scale<class_AnimatedTexture_property_speed_scale>` property, as well as each frame's duration (see :ref:`set_frame_duration()<class_AnimatedTexture_method_set_frame_duration>`). The animation loops, i.e. it will restart at frame 0 automatically after playing the last frame.
 
 \ **AnimatedTexture** currently requires all frame textures to have the same size, otherwise the bigger ones will be cropped to match the smallest one.
 
@@ -61,15 +61,21 @@ Methods
 .. table::
    :widths: auto
 
-   +-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`         | :ref:`get_frame_duration<class_AnimatedTexture_method_get_frame_duration>`\ (\ frame\: :ref:`int<class_int>`\ ) |const|                                    |
-   +-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`get_frame_texture<class_AnimatedTexture_method_get_frame_texture>`\ (\ frame\: :ref:`int<class_int>`\ ) |const|                                      |
-   +-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                            | :ref:`set_frame_duration<class_AnimatedTexture_method_set_frame_duration>`\ (\ frame\: :ref:`int<class_int>`, duration\: :ref:`float<class_float>`\ )      |
-   +-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                            | :ref:`set_frame_texture<class_AnimatedTexture_method_set_frame_texture>`\ (\ frame\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ ) |
-   +-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AnimatedTexture<class_AnimatedTexture>` | :ref:`create_from_image_frames<class_AnimatedTexture_method_create_from_image_frames>`\ (\ image_frames\: :ref:`ImageFrames<class_ImageFrames>`\ ) |static| |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                     | :ref:`get_frame_duration<class_AnimatedTexture_method_get_frame_duration>`\ (\ frame\: :ref:`int<class_int>`\ ) |const|                                     |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`             | :ref:`get_frame_texture<class_AnimatedTexture_method_get_frame_texture>`\ (\ frame\: :ref:`int<class_int>`\ ) |const|                                       |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`ImageFrames<class_ImageFrames>`         | :ref:`make_image_frames<class_AnimatedTexture_method_make_image_frames>`\ (\ ) |const|                                                                      |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`set_frame_duration<class_AnimatedTexture_method_set_frame_duration>`\ (\ frame\: :ref:`int<class_int>`, duration\: :ref:`float<class_float>`\ )       |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`set_frame_texture<class_AnimatedTexture_method_set_frame_texture>`\ (\ frame\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )  |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`set_from_image_frames<class_AnimatedTexture_method_set_from_image_frames>`\ (\ image_frames\: :ref:`ImageFrames<class_ImageFrames>`\ )                |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -125,7 +131,7 @@ Sets the currently visible frame of the texture. Setting this frame while playin
 - |void| **set_frames**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_frames**\ (\ )
 
-Number of frames to use in the animation. While you can create the frames independently with :ref:`set_frame_texture<class_AnimatedTexture_method_set_frame_texture>`, you need to set this value for the animation to take new frames into account. The maximum number of frames is :ref:`MAX_FRAMES<class_AnimatedTexture_constant_MAX_FRAMES>`.
+Number of frames to use in the animation. While you can create the frames independently with :ref:`set_frame_texture()<class_AnimatedTexture_method_set_frame_texture>`, you need to set this value for the animation to take new frames into account. The maximum number of frames is :ref:`MAX_FRAMES<class_AnimatedTexture_constant_MAX_FRAMES>`.
 
 .. rst-class:: classref-item-separator
 
@@ -187,6 +193,18 @@ The animation speed is multiplied by this value. If set to a negative value, the
 Method Descriptions
 -------------------
 
+.. _class_AnimatedTexture_method_create_from_image_frames:
+
+.. rst-class:: classref-method
+
+:ref:`AnimatedTexture<class_AnimatedTexture>` **create_from_image_frames**\ (\ image_frames\: :ref:`ImageFrames<class_ImageFrames>`\ ) |static| :ref:`🔗<class_AnimatedTexture_method_create_from_image_frames>`
+
+Creates a new **AnimatedTexture** and initializes it by allocating and setting the data from an :ref:`ImageFrames<class_ImageFrames>`. This function will ignore all frames beyond :ref:`MAX_FRAMES<class_AnimatedTexture_constant_MAX_FRAMES>` - 1.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_AnimatedTexture_method_get_frame_duration:
 
 .. rst-class:: classref-method
@@ -206,6 +224,18 @@ Returns the given ``frame``'s duration, in seconds.
 :ref:`Texture2D<class_Texture2D>` **get_frame_texture**\ (\ frame\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimatedTexture_method_get_frame_texture>`
 
 Returns the given frame's :ref:`Texture2D<class_Texture2D>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_AnimatedTexture_method_make_image_frames:
+
+.. rst-class:: classref-method
+
+:ref:`ImageFrames<class_ImageFrames>` **make_image_frames**\ (\ ) |const| :ref:`🔗<class_AnimatedTexture_method_make_image_frames>`
+
+Creates a new :ref:`ImageFrames<class_ImageFrames>` object from contents.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +263,20 @@ Assigns a :ref:`Texture2D<class_Texture2D>` to the given frame. Frame IDs start 
 
 You can define any number of textures up to :ref:`MAX_FRAMES<class_AnimatedTexture_constant_MAX_FRAMES>`, but keep in mind that only frames from 0 to :ref:`frames<class_AnimatedTexture_property_frames>` - 1 will be part of the animation.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_AnimatedTexture_method_set_from_image_frames:
+
+.. rst-class:: classref-method
+
+|void| **set_from_image_frames**\ (\ image_frames\: :ref:`ImageFrames<class_ImageFrames>`\ ) :ref:`🔗<class_AnimatedTexture_method_set_from_image_frames>`
+
+Replaces the texture's data with a new :ref:`ImageFrames<class_ImageFrames>`. This function will ignore all frames beyond :ref:`MAX_FRAMES<class_AnimatedTexture_constant_MAX_FRAMES>` - 1.
+
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
