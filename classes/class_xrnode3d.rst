@@ -21,7 +21,7 @@ A 3D node that has its position automatically updated by the :ref:`XRServer<clas
 Description
 -----------
 
-This node can be bound to a specific pose of a :ref:`XRPositionalTracker<class_XRPositionalTracker>` and will automatically have its :ref:`Node3D.transform<class_Node3D_property_transform>` updated by the :ref:`XRServer<class_XRServer>`. Nodes of this type must be added as children of the :ref:`XROrigin3D<class_XROrigin3D>` node.
+This node can be bound to a specific pose of an :ref:`XRPositionalTracker<class_XRPositionalTracker>` and will automatically have its :ref:`Node3D.transform<class_Node3D_property_transform>` updated by the :ref:`XRServer<class_XRServer>`. Nodes of this type must be added as children of the :ref:`XROrigin3D<class_XROrigin3D>` node.
 
 .. rst-class:: classref-introduction-group
 
@@ -38,13 +38,15 @@ Properties
 .. table::
    :widths: auto
 
-   +-------------------------------------+---------------------------------------------------------------------+----------------+
-   | :ref:`StringName<class_StringName>` | :ref:`pose<class_XRNode3D_property_pose>`                           | ``&"default"`` |
-   +-------------------------------------+---------------------------------------------------------------------+----------------+
-   | :ref:`bool<class_bool>`             | :ref:`show_when_tracked<class_XRNode3D_property_show_when_tracked>` | ``false``      |
-   +-------------------------------------+---------------------------------------------------------------------+----------------+
-   | :ref:`StringName<class_StringName>` | :ref:`tracker<class_XRNode3D_property_tracker>`                     | ``&""``        |
-   +-------------------------------------+---------------------------------------------------------------------+----------------+
+   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                          | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                 | :ref:`pose<class_XRNode3D_property_pose>`                           | ``&"default"``                                                                |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                             | :ref:`show_when_tracked<class_XRNode3D_property_show_when_tracked>` | ``false``                                                                     |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                 | :ref:`tracker<class_XRNode3D_property_tracker>`                     | ``&""``                                                                       |
+   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -205,6 +207,7 @@ Triggers a haptic pulse on a device associated with this interface.
 \ ``delay_sec`` is a delay in seconds before the pulse is given.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

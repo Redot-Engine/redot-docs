@@ -53,6 +53,8 @@ Properties
    +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                  | :ref:`edit_alpha<class_ColorPicker_property_edit_alpha>`                   | ``true``              |
    +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`edit_intensity<class_ColorPicker_property_edit_intensity>`           | ``true``              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                  | :ref:`hex_visible<class_ColorPicker_property_hex_visible>`                 | ``true``              |
    +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
    | :ref:`Color<class_Color>`                                | :ref:`old_color<class_ColorPicker_property_old_color>`                     | ``Color(0, 0, 0, 1)`` |
@@ -96,51 +98,61 @@ Theme Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`             | :ref:`center_slider_grabbers<class_ColorPicker_theme_constant_center_slider_grabbers>` | ``1``   |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`             | :ref:`h_width<class_ColorPicker_theme_constant_h_width>`                               | ``30``  |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`             | :ref:`label_width<class_ColorPicker_theme_constant_label_width>`                       | ``10``  |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`             | :ref:`margin<class_ColorPicker_theme_constant_margin>`                                 | ``4``   |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`             | :ref:`sv_height<class_ColorPicker_theme_constant_sv_height>`                           | ``256`` |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`             | :ref:`sv_width<class_ColorPicker_theme_constant_sv_width>`                             | ``256`` |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`add_preset<class_ColorPicker_theme_icon_add_preset>`                             |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`bar_arrow<class_ColorPicker_theme_icon_bar_arrow>`                               |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`color_hue<class_ColorPicker_theme_icon_color_hue>`                               |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`color_okhsl_hue<class_ColorPicker_theme_icon_color_okhsl_hue>`                   |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`expanded_arrow<class_ColorPicker_theme_icon_expanded_arrow>`                     |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`folded_arrow<class_ColorPicker_theme_icon_folded_arrow>`                         |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`menu_option<class_ColorPicker_theme_icon_menu_option>`                           |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`overbright_indicator<class_ColorPicker_theme_icon_overbright_indicator>`         |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`picker_cursor<class_ColorPicker_theme_icon_picker_cursor>`                       |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`sample_bg<class_ColorPicker_theme_icon_sample_bg>`                               |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`sample_revert<class_ColorPicker_theme_icon_sample_revert>`                       |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`screen_picker<class_ColorPicker_theme_icon_screen_picker>`                       |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`shape_circle<class_ColorPicker_theme_icon_shape_circle>`                         |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`shape_rect<class_ColorPicker_theme_icon_shape_rect>`                             |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`shape_rect_wheel<class_ColorPicker_theme_icon_shape_rect_wheel>`                 |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`wheel_picker_cursor<class_ColorPicker_theme_icon_wheel_picker_cursor>`           |         |
-   +-----------------------------------+----------------------------------------------------------------------------------------+---------+
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`focused_not_editing_cursor_color<class_ColorPicker_theme_color_focused_not_editing_cursor_color>` | ``Color(1, 1, 1, 0.275)`` |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`int<class_int>`             | :ref:`center_slider_grabbers<class_ColorPicker_theme_constant_center_slider_grabbers>`                  | ``1``                     |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`int<class_int>`             | :ref:`h_width<class_ColorPicker_theme_constant_h_width>`                                                | ``30``                    |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`int<class_int>`             | :ref:`label_width<class_ColorPicker_theme_constant_label_width>`                                        | ``10``                    |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`int<class_int>`             | :ref:`margin<class_ColorPicker_theme_constant_margin>`                                                  | ``4``                     |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`int<class_int>`             | :ref:`sv_height<class_ColorPicker_theme_constant_sv_height>`                                            | ``256``                   |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`int<class_int>`             | :ref:`sv_width<class_ColorPicker_theme_constant_sv_width>`                                              | ``256``                   |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`add_preset<class_ColorPicker_theme_icon_add_preset>`                                              |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`bar_arrow<class_ColorPicker_theme_icon_bar_arrow>`                                                |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`color_hue<class_ColorPicker_theme_icon_color_hue>`                                                |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`color_script<class_ColorPicker_theme_icon_color_script>`                                          |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`expanded_arrow<class_ColorPicker_theme_icon_expanded_arrow>`                                      |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`folded_arrow<class_ColorPicker_theme_icon_folded_arrow>`                                          |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`menu_option<class_ColorPicker_theme_icon_menu_option>`                                            |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`overbright_indicator<class_ColorPicker_theme_icon_overbright_indicator>`                          |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`picker_cursor<class_ColorPicker_theme_icon_picker_cursor>`                                        |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`picker_cursor_bg<class_ColorPicker_theme_icon_picker_cursor_bg>`                                  |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`sample_bg<class_ColorPicker_theme_icon_sample_bg>`                                                |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`sample_revert<class_ColorPicker_theme_icon_sample_revert>`                                        |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`screen_picker<class_ColorPicker_theme_icon_screen_picker>`                                        |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`shape_circle<class_ColorPicker_theme_icon_shape_circle>`                                          |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`shape_rect<class_ColorPicker_theme_icon_shape_rect>`                                              |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`shape_rect_wheel<class_ColorPicker_theme_icon_shape_rect_wheel>`                                  |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`wheel_picker_cursor<class_ColorPicker_theme_icon_wheel_picker_cursor>`                            |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`picker_focus_circle<class_ColorPicker_theme_style_picker_focus_circle>`                           |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`picker_focus_rectangle<class_ColorPicker_theme_style_picker_focus_rectangle>`                     |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`sample_focus<class_ColorPicker_theme_style_sample_focus>`                                         |                           |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------+---------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -204,7 +216,7 @@ enum **ColorModeType**: :ref:`🔗<enum_ColorPicker_ColorModeType>`
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_RGB** = ``0``
 
-Allows editing the color with Red/Green/Blue sliders.
+Allows editing the color with Red/Green/Blue sliders in sRGB color space.
 
 .. _class_ColorPicker_constant_MODE_HSV:
 
@@ -220,7 +232,17 @@ Allows editing the color with Hue/Saturation/Value sliders.
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_RAW** = ``2``
 
-Allows the color R, G, B component values to go beyond 1.0, which can be used for certain special operations that require it (like tinting without darkening or rendering sprites in HDR).
+**Deprecated:** This is replaced by :ref:`MODE_LINEAR<class_ColorPicker_constant_MODE_LINEAR>`.
+
+
+
+.. _class_ColorPicker_constant_MODE_LINEAR:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_LINEAR** = ``2``
+
+Allows editing the color with Red/Green/Blue sliders in linear color space.
 
 .. _class_ColorPicker_constant_MODE_OKHSL:
 
@@ -284,6 +306,22 @@ HSL OK Color Model circle color space.
 
 The color space shape and the shape select button are hidden. Can't be selected from the shapes popup.
 
+.. _class_ColorPicker_constant_SHAPE_OK_HS_RECTANGLE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_OK_HS_RECTANGLE** = ``5``
+
+OKHSL Color Model rectangle with constant lightness.
+
+.. _class_ColorPicker_constant_SHAPE_OK_HL_RECTANGLE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_OK_HL_RECTANGLE** = ``6``
+
+OKHSL Color Model rectangle with constant saturation.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -338,7 +376,7 @@ The currently selected color.
 - |void| **set_color_mode**\ (\ value\: :ref:`ColorModeType<enum_ColorPicker_ColorModeType>`\ )
 - :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **get_color_mode**\ (\ )
 
-The currently selected color mode. See :ref:`ColorModeType<enum_ColorPicker_ColorModeType>`.
+The currently selected color mode.
 
 .. rst-class:: classref-item-separator
 
@@ -412,6 +450,23 @@ If ``true``, shows an alpha channel slider (opacity).
 
 ----
 
+.. _class_ColorPicker_property_edit_intensity:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **edit_intensity** = ``true`` :ref:`🔗<class_ColorPicker_property_edit_intensity>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_edit_intensity**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_editing_intensity**\ (\ )
+
+If ``true``, shows an intensity slider. The intensity is applied as follows: multiply the color by ``2 ** intensity`` in linear RGB space, and then convert it back to sRGB.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ColorPicker_property_hex_visible:
 
 .. rst-class:: classref-property
@@ -457,7 +512,7 @@ The currently stored old color. See also :ref:`display_old_color<class_ColorPick
 - |void| **set_picker_shape**\ (\ value\: :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>`\ )
 - :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **get_picker_shape**\ (\ )
 
-The shape of the color space view. See :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>`.
+The shape of the color space view.
 
 .. rst-class:: classref-item-separator
 
@@ -600,6 +655,18 @@ Returns the list of colors in the recent presets of the color picker.
 Theme Property Descriptions
 ---------------------------
 
+.. _class_ColorPicker_theme_color_focused_not_editing_cursor_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **focused_not_editing_cursor_color** = ``Color(1, 1, 1, 0.275)`` :ref:`🔗<class_ColorPicker_theme_color_focused_not_editing_cursor_color>`
+
+Color of rectangle or circle drawn when a picker shape part is focused but not editable via keyboard or joypad. Displayed *over* the picker shape, so a partially transparent color should be used to ensure the picker shape remains visible.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ColorPicker_theme_constant_center_slider_grabbers:
 
 .. rst-class:: classref-themeproperty
@@ -708,13 +775,13 @@ Custom texture for the hue selection slider on the right.
 
 ----
 
-.. _class_ColorPicker_theme_icon_color_okhsl_hue:
+.. _class_ColorPicker_theme_icon_color_script:
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **color_okhsl_hue** :ref:`🔗<class_ColorPicker_theme_icon_color_okhsl_hue>`
+:ref:`Texture2D<class_Texture2D>` **color_script** :ref:`🔗<class_ColorPicker_theme_icon_color_script>`
 
-Custom texture for the H slider in the OKHSL color mode.
+The icon for the button that switches color text to hexadecimal.
 
 .. rst-class:: classref-item-separator
 
@@ -775,6 +842,18 @@ The indicator used to signalize that the color value is outside the 0-1 range.
 :ref:`Texture2D<class_Texture2D>` **picker_cursor** :ref:`🔗<class_ColorPicker_theme_icon_picker_cursor>`
 
 The image displayed over the color box/circle (depending on the :ref:`picker_shape<class_ColorPicker_property_picker_shape>`), marking the currently selected color.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ColorPicker_theme_icon_picker_cursor_bg:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Texture2D<class_Texture2D>` **picker_cursor_bg** :ref:`🔗<class_ColorPicker_theme_icon_picker_cursor_bg>`
+
+The fill image displayed behind the picker cursor.
 
 .. rst-class:: classref-item-separator
 
@@ -860,7 +939,44 @@ The icon for rectangular wheel picker shapes.
 
 The image displayed over the color wheel (depending on the :ref:`picker_shape<class_ColorPicker_property_picker_shape>` being :ref:`SHAPE_HSV_WHEEL<class_ColorPicker_constant_SHAPE_HSV_WHEEL>`), marking the currently selected hue. This icon is rotated from the right side of the wheel.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ColorPicker_theme_style_picker_focus_circle:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`StyleBox<class_StyleBox>` **picker_focus_circle** :ref:`🔗<class_ColorPicker_theme_style_picker_focus_circle>`
+
+The :ref:`StyleBox<class_StyleBox>` used when the circle-shaped part of the picker is focused. Displayed *over* the picker shape, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the picker shape remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ColorPicker_theme_style_picker_focus_rectangle:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`StyleBox<class_StyleBox>` **picker_focus_rectangle** :ref:`🔗<class_ColorPicker_theme_style_picker_focus_rectangle>`
+
+The :ref:`StyleBox<class_StyleBox>` used when the rectangle-shaped part of the picker is focused. Displayed *over* the picker shape, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the picker shape remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ColorPicker_theme_style_sample_focus:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`StyleBox<class_StyleBox>` **sample_focus** :ref:`🔗<class_ColorPicker_theme_style_sample_focus>`
+
+The :ref:`StyleBox<class_StyleBox>` used for the old color sample part when it is focused. Displayed *over* the sample, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the picker shape remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -29,17 +29,17 @@ Properties
 .. table::
    :widths: auto
 
-   +---------------------------+---------------------------------------------------------------+--------------+
-   | :ref:`float<class_float>` | :ref:`bias<class_ConeTwistJoint3D_property_bias>`             | ``0.3``      |
-   +---------------------------+---------------------------------------------------------------+--------------+
-   | :ref:`float<class_float>` | :ref:`relaxation<class_ConeTwistJoint3D_property_relaxation>` | ``1.0``      |
-   +---------------------------+---------------------------------------------------------------+--------------+
-   | :ref:`float<class_float>` | :ref:`softness<class_ConeTwistJoint3D_property_softness>`     | ``0.8``      |
-   +---------------------------+---------------------------------------------------------------+--------------+
-   | :ref:`float<class_float>` | :ref:`swing_span<class_ConeTwistJoint3D_property_swing_span>` | ``0.785398`` |
-   +---------------------------+---------------------------------------------------------------+--------------+
-   | :ref:`float<class_float>` | :ref:`twist_span<class_ConeTwistJoint3D_property_twist_span>` | ``3.14159``  |
-   +---------------------------+---------------------------------------------------------------+--------------+
+   +---------------------------+---------------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`bias<class_ConeTwistJoint3D_property_bias>`             | ``0.3``       |
+   +---------------------------+---------------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`relaxation<class_ConeTwistJoint3D_property_relaxation>` | ``1.0``       |
+   +---------------------------+---------------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`softness<class_ConeTwistJoint3D_property_softness>`     | ``0.8``       |
+   +---------------------------+---------------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`swing_span<class_ConeTwistJoint3D_property_swing_span>` | ``0.7853982`` |
+   +---------------------------+---------------------------------------------------------------+---------------+
+   | :ref:`float<class_float>` | :ref:`twist_span<class_ConeTwistJoint3D_property_twist_span>` | ``3.1415927`` |
+   +---------------------------+---------------------------------------------------------------+---------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -194,7 +194,7 @@ The ease with which the joint starts to twist. If it's too low, it takes more fo
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **swing_span** = ``0.785398`` :ref:`🔗<class_ConeTwistJoint3D_property_swing_span>`
+:ref:`float<class_float>` **swing_span** = ``0.7853982`` :ref:`🔗<class_ConeTwistJoint3D_property_swing_span>`
 
 .. rst-class:: classref-property-setget
 
@@ -217,7 +217,7 @@ If below 0.05, this behavior is locked.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **twist_span** = ``3.14159`` :ref:`🔗<class_ConeTwistJoint3D_property_twist_span>`
+:ref:`float<class_float>` **twist_span** = ``3.1415927`` :ref:`🔗<class_ConeTwistJoint3D_property_twist_span>`
 
 .. rst-class:: classref-property-setget
 
@@ -258,6 +258,7 @@ Returns the value of the specified parameter.
 Sets the value of the specified parameter.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

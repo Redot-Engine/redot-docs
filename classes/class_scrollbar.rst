@@ -31,11 +31,13 @@ Properties
 .. table::
    :widths: auto
 
-   +---------------------------+----------------------------------------------------------+-------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`custom_step<class_ScrollBar_property_custom_step>` | ``-1.0``                                                    |
-   +---------------------------+----------------------------------------------------------+-------------------------------------------------------------+
-   | :ref:`float<class_float>` | step                                                     | ``0.0`` (overrides :ref:`Range<class_Range_property_step>`) |
-   +---------------------------+----------------------------------------------------------+-------------------------------------------------------------+
+   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`float<class_float>`                | :ref:`custom_step<class_ScrollBar_property_custom_step>` | ``-1.0``                                                            |
+   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`FocusMode<enum_Control_FocusMode>` | focus_mode                                               | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
+   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`float<class_float>`                | step                                                     | ``0.0`` (overrides :ref:`Range<class_Range_property_step>`)         |
+   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -246,6 +248,7 @@ Used as background of this **ScrollBar**.
 Used as background when the **ScrollBar** has the GUI focus.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
