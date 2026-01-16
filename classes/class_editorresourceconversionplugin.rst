@@ -29,13 +29,13 @@ Below shows an example of a basic plugin that will convert an :ref:`ImageTexture
  .. code-tab:: gdscript
 
     extends EditorResourceConversionPlugin
-    
+
     func _handles(resource: Resource):
         return resource is ImageTexture
-    
+
     func _converts_to():
         return "PortableCompressedTexture2D"
-    
+
     func _convert(itex: Resource):
         var ptex = PortableCompressedTexture2D.new()
         ptex.create_from_image(itex.get_image(), PortableCompressedTexture2D.COMPRESSION_MODE_LOSSLESS)
@@ -43,7 +43,7 @@ Below shows an example of a basic plugin that will convert an :ref:`ImageTexture
 
 
 
-To use an **EditorResourceConversionPlugin**, register it using the :ref:`EditorPlugin.add_resource_conversion_plugin<class_EditorPlugin_method_add_resource_conversion_plugin>` method first.
+To use an **EditorResourceConversionPlugin**, register it using the :ref:`EditorPlugin.add_resource_conversion_plugin()<class_EditorPlugin_method_add_resource_conversion_plugin>` method first.
 
 .. rst-class:: classref-reftable-group
 
@@ -76,7 +76,7 @@ Method Descriptions
 
 :ref:`Resource<class_Resource>` **_convert**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) |virtual| |const| :ref:`🔗<class_EditorResourceConversionPlugin_private_method__convert>`
 
-Takes an input :ref:`Resource<class_Resource>` and converts it to the type given in :ref:`_converts_to<class_EditorResourceConversionPlugin_private_method__converts_to>`. The returned :ref:`Resource<class_Resource>` is the result of the conversion, and the input :ref:`Resource<class_Resource>` remains unchanged.
+Takes an input :ref:`Resource<class_Resource>` and converts it to the type given in :ref:`_converts_to()<class_EditorResourceConversionPlugin_private_method__converts_to>`. The returned :ref:`Resource<class_Resource>` is the result of the conversion, and the input :ref:`Resource<class_Resource>` remains unchanged.
 
 .. rst-class:: classref-item-separator
 
@@ -103,6 +103,7 @@ Returns the class name of the target type of :ref:`Resource<class_Resource>` tha
 Called to determine whether a particular :ref:`Resource<class_Resource>` can be converted to the target resource type by this plugin.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

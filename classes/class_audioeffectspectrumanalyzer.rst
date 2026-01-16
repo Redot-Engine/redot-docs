@@ -21,7 +21,7 @@ Description
 
 This audio effect does not affect sound output, but can be used for real-time audio visualizations.
 
-This resource configures an :ref:`AudioEffectSpectrumAnalyzerInstance<class_AudioEffectSpectrumAnalyzerInstance>`, which performs the actual analysis at runtime. An instance can be obtained with :ref:`AudioServer.get_bus_effect_instance<class_AudioServer_method_get_bus_effect_instance>`.
+This resource configures an :ref:`AudioEffectSpectrumAnalyzerInstance<class_AudioEffectSpectrumAnalyzerInstance>`, which performs the actual analysis at runtime. An instance can be obtained with :ref:`AudioServer.get_bus_effect_instance()<class_AudioServer_method_get_bus_effect_instance>`.
 
 See also :ref:`AudioStreamGenerator<class_AudioStreamGenerator>` for procedurally generating sounds.
 
@@ -170,6 +170,7 @@ The size of the `Fast Fourier transform <https://en.wikipedia.org/wiki/Fast_Four
 	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

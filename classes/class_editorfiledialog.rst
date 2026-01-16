@@ -21,6 +21,8 @@ Description
 
 **EditorFileDialog** is an enhanced version of :ref:`FileDialog<class_FileDialog>` available only to editor plugins. Additional features include list of favorited/recent files and the ability to see files as thumbnails grid instead of list.
 
+Unlike :ref:`FileDialog<class_FileDialog>`, **EditorFileDialog** does not have a property for using native dialogs. Instead, native dialogs can be enabled globally via the :ref:`EditorSettings.interface/editor/use_native_file_dialogs<class_EditorSettings_property_interface/editor/use_native_file_dialogs>` editor setting. They are also enabled automatically when running in sandbox (e.g. on macOS).
+
 .. rst-class:: classref-reftable-group
 
 Properties
@@ -391,7 +393,7 @@ The view format in which the **EditorFileDialog** displays resources to the user
 - |void| **set_file_mode**\ (\ value\: :ref:`FileMode<enum_EditorFileDialog_FileMode>`\ )
 - :ref:`FileMode<enum_EditorFileDialog_FileMode>` **get_file_mode**\ (\ )
 
-The dialog's open or save mode, which affects the selection behavior. See :ref:`FileMode<enum_EditorFileDialog_FileMode>`.
+The dialog's open or save mode, which affects the selection behavior.
 
 .. rst-class:: classref-item-separator
 
@@ -461,7 +463,7 @@ Method Descriptions
 
 |void| **add_filter**\ (\ filter\: :ref:`String<class_String>`, description\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_EditorFileDialog_method_add_filter>`
 
-Adds a comma-delimited file name ``filter`` option to the **EditorFileDialog** with an optional ``description``, which restricts what files can be picked.
+Adds a comma-separated file name ``filter`` option to the **EditorFileDialog** with an optional ``description``, which restricts what files can be picked.
 
 A ``filter`` should be of the form ``"filename.extension"``, where filename and extension can be ``*`` to match any string. Filters starting with ``.`` (i.e. empty filenames) are not allowed.
 
@@ -678,6 +680,7 @@ Sets the name of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBox<c
 Sets the option values of the :ref:`OptionButton<class_OptionButton>` with index ``option``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

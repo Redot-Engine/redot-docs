@@ -12,14 +12,14 @@ RDShaderSPIRV
 
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-SPIR-V intermediate representation as part of a :ref:`RDShaderFile<class_RDShaderFile>` (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+SPIR-V intermediate representation as part of an :ref:`RDShaderFile<class_RDShaderFile>` (used by :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
 Description
 -----------
 
-**RDShaderSPIRV** represents a :ref:`RDShaderFile<class_RDShaderFile>`'s `SPIR-V <https://www.khronos.org/spir/>`__ code for various shader stages, as well as possible compilation error messages. SPIR-V is a low-level intermediate shader representation. This intermediate representation is not used directly by GPUs for rendering, but it can be compiled into binary shaders that GPUs can understand. Unlike compiled shaders, SPIR-V is portable across GPU models and driver versions.
+**RDShaderSPIRV** represents an :ref:`RDShaderFile<class_RDShaderFile>`'s `SPIR-V <https://www.khronos.org/spir/>`__ code for various shader stages, as well as possible compilation error messages. SPIR-V is a low-level intermediate shader representation. This intermediate representation is not used directly by GPUs for rendering, but it can be compiled into binary shaders that GPUs can understand. Unlike compiled shaders, SPIR-V is portable across GPU models and driver versions.
 
 This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
 
@@ -310,6 +310,7 @@ Sets the SPIR-V ``bytecode`` for the given shader ``stage``. Equivalent to setti
 Sets the compilation error message for the given shader ``stage`` to ``compile_error``. Equivalent to setting one of :ref:`compile_error_compute<class_RDShaderSPIRV_property_compile_error_compute>`, :ref:`compile_error_fragment<class_RDShaderSPIRV_property_compile_error_fragment>`, :ref:`compile_error_tesselation_control<class_RDShaderSPIRV_property_compile_error_tesselation_control>`, :ref:`compile_error_tesselation_evaluation<class_RDShaderSPIRV_property_compile_error_tesselation_evaluation>`, :ref:`compile_error_vertex<class_RDShaderSPIRV_property_compile_error_vertex>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

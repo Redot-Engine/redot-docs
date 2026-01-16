@@ -19,7 +19,7 @@ A custom effect for a :ref:`RichTextLabel<class_RichTextLabel>`.
 Description
 -----------
 
-A custom effect for a :ref:`RichTextLabel<class_RichTextLabel>`, which can be loaded in the :ref:`RichTextLabel<class_RichTextLabel>` inspector or using :ref:`RichTextLabel.install_effect<class_RichTextLabel_method_install_effect>`.
+A custom effect for a :ref:`RichTextLabel<class_RichTextLabel>`, which can be loaded in the :ref:`RichTextLabel<class_RichTextLabel>` inspector or using :ref:`RichTextLabel.install_effect()<class_RichTextLabel_method_install_effect>`.
 
 \ **Note:** For a **RichTextEffect** to be usable, a BBCode tag must be defined as a member variable called ``bbcode`` in the script.
 
@@ -79,6 +79,7 @@ Method Descriptions
 Override this method to modify properties in ``char_fx``. The method must return ``true`` if the character could be transformed successfully. If the method returns ``false``, it will skip transformation to avoid displaying broken text.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

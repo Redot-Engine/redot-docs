@@ -19,7 +19,7 @@ A horizontal menu bar that creates a menu for each :ref:`PopupMenu<class_PopupMe
 Description
 -----------
 
-A horizontal menu bar that creates a menu for each :ref:`PopupMenu<class_PopupMenu>` child. New items are created by adding :ref:`PopupMenu<class_PopupMenu>`\ s to this node. Item title is determined by :ref:`Window.title<class_Window_property_title>`, or node name if :ref:`Window.title<class_Window_property_title>` is empty. Item title can be overridden using :ref:`set_menu_title<class_MenuBar_method_set_menu_title>`.
+A horizontal menu bar that creates a menu for each :ref:`PopupMenu<class_PopupMenu>` child. New items are created by adding :ref:`PopupMenu<class_PopupMenu>`\ s to this node. Item title is determined by :ref:`Window.title<class_Window_property_title>`, or node name if :ref:`Window.title<class_Window_property_title>` is empty. Item title can be overridden using :ref:`set_menu_title()<class_MenuBar_method_set_menu_title>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -29,19 +29,21 @@ Properties
 .. table::
    :widths: auto
 
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                          | :ref:`flat<class_MenuBar_property_flat>`                             | ``false`` |
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                      | :ref:`language<class_MenuBar_property_language>`                     | ``""``    |
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                          | :ref:`prefer_global_menu<class_MenuBar_property_prefer_global_menu>` | ``true``  |
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                            | :ref:`start_index<class_MenuBar_property_start_index>`               | ``-1``    |
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                          | :ref:`switch_on_hover<class_MenuBar_property_switch_on_hover>`       | ``true``  |
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
-   | :ref:`TextDirection<enum_Control_TextDirection>` | :ref:`text_direction<class_MenuBar_property_text_direction>`         | ``0``     |
-   +--------------------------------------------------+----------------------------------------------------------------------+-----------+
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`flat<class_MenuBar_property_flat>`                             | ``false``                                                           |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`FocusMode<enum_Control_FocusMode>`         | focus_mode                                                           | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`String<class_String>`                      | :ref:`language<class_MenuBar_property_language>`                     | ``""``                                                              |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`prefer_global_menu<class_MenuBar_property_prefer_global_menu>` | ``true``                                                            |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`int<class_int>`                            | :ref:`start_index<class_MenuBar_property_start_index>`               | ``-1``                                                              |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`switch_on_hover<class_MenuBar_property_switch_on_hover>`       | ``true``                                                            |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`TextDirection<enum_Control_TextDirection>` | :ref:`text_direction<class_MenuBar_property_text_direction>`         | ``0``                                                               |
+   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -649,6 +651,7 @@ Default :ref:`StyleBox<class_StyleBox>` for the menu item (for right-to-left lay
 :ref:`StyleBox<class_StyleBox>` used when the menu item is being pressed (for right-to-left layouts).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
