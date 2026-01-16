@@ -61,6 +61,8 @@ Properties
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`Dictionary<class_Dictionary>` | :ref:`language_support<class_ResourceImporterDynamicFont_property_language_support>`                                     | ``{}``    |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`modulate_color_glyphs<class_ResourceImporterDynamicFont_property_modulate_color_glyphs>`                           | ``false`` |
+   +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`int<class_int>`               | :ref:`msdf_pixel_range<class_ResourceImporterDynamicFont_property_msdf_pixel_range>`                                     | ``8``     |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`int<class_int>`               | :ref:`msdf_size<class_ResourceImporterDynamicFont_property_msdf_size>`                                                   | ``48``    |
@@ -68,8 +70,6 @@ Properties
    | :ref:`bool<class_bool>`             | :ref:`multichannel_signed_distance_field<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>` | ``false`` |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`Dictionary<class_Dictionary>` | :ref:`opentype_features<class_ResourceImporterDynamicFont_property_opentype_features>`                                   | ``{}``    |
-   +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`           | :ref:`oversampling<class_ResourceImporterDynamicFont_property_oversampling>`                                             | ``0.0``   |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`Array<class_Array>`           | :ref:`preload<class_ResourceImporterDynamicFont_property_preload>`                                                       | ``[]``    |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------+
@@ -223,6 +223,18 @@ Override the list of languages supported by this font. If left empty, this is su
 
 ----
 
+.. _class_ResourceImporterDynamicFont_property_modulate_color_glyphs:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **modulate_color_glyphs** = ``false`` :ref:`🔗<class_ResourceImporterDynamicFont_property_modulate_color_glyphs>`
+
+If set to ``true``, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ResourceImporterDynamicFont_property_msdf_pixel_range:
 
 .. rst-class:: classref-property
@@ -268,18 +280,6 @@ MSDF font rendering can be combined with :ref:`generate_mipmaps<class_ResourceIm
 :ref:`Dictionary<class_Dictionary>` **opentype_features** = ``{}`` :ref:`🔗<class_ResourceImporterDynamicFont_property_opentype_features>`
 
 The OpenType features to enable, disable or set a value for this font. This can be used to enable optional features provided by the font, such as ligatures or alternative glyphs. The list of supported OpenType features varies on a per-font basis.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ResourceImporterDynamicFont_property_oversampling:
-
-.. rst-class:: classref-property
-
-:ref:`float<class_float>` **oversampling** = ``0.0`` :ref:`🔗<class_ResourceImporterDynamicFont_property_oversampling>`
-
-If set to a value greater than ``0.0``, overrides the oversampling factor for the font. This can be used to render the font at a higher or lower resolution than intended without affecting its physical size. In most cases, this should be left at ``0.0``.
 
 .. rst-class:: classref-item-separator
 
