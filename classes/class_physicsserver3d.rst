@@ -304,6 +304,14 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`soft_body_add_collision_exception<class_PhysicsServer3D_method_soft_body_add_collision_exception>`\ (\ body\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>`\ )                                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                            | :ref:`soft_body_apply_central_force<class_PhysicsServer3D_method_soft_body_apply_central_force>`\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                         |
+   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                            | :ref:`soft_body_apply_central_impulse<class_PhysicsServer3D_method_soft_body_apply_central_impulse>`\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                   |
+   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                            | :ref:`soft_body_apply_point_force<class_PhysicsServer3D_method_soft_body_apply_point_force>`\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ )                                                                                        |
+   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                            | :ref:`soft_body_apply_point_impulse<class_PhysicsServer3D_method_soft_body_apply_point_impulse>`\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, impulse\: :ref:`Vector3<class_Vector3>`\ )                                                                                  |
+   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`soft_body_create<class_PhysicsServer3D_method_soft_body_create>`\ (\ )                                                                                                                                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`AABB<class_AABB>`                                           | :ref:`soft_body_get_bounds<class_PhysicsServer3D_method_soft_body_get_bounds>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                          |
@@ -321,6 +329,8 @@ Methods
    | :ref:`Vector3<class_Vector3>`                                     | :ref:`soft_body_get_point_global_position<class_PhysicsServer3D_method_soft_body_get_point_global_position>`\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`\ ) |const|                                                                                                       |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                         | :ref:`soft_body_get_pressure_coefficient<class_PhysicsServer3D_method_soft_body_get_pressure_coefficient>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                              |
+   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                         | :ref:`soft_body_get_shrinking_factor<class_PhysicsServer3D_method_soft_body_get_shrinking_factor>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`soft_body_get_simulation_precision<class_PhysicsServer3D_method_soft_body_get_simulation_precision>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -355,6 +365,8 @@ Methods
    | |void|                                                            | :ref:`soft_body_set_pressure_coefficient<class_PhysicsServer3D_method_soft_body_set_pressure_coefficient>`\ (\ body\: :ref:`RID<class_RID>`, pressure_coefficient\: :ref:`float<class_float>`\ )                                                                                                    |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`soft_body_set_ray_pickable<class_PhysicsServer3D_method_soft_body_set_ray_pickable>`\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ )                                                                                                                                    |
+   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                            | :ref:`soft_body_set_shrinking_factor<class_PhysicsServer3D_method_soft_body_set_shrinking_factor>`\ (\ body\: :ref:`RID<class_RID>`, shrinking_factor\: :ref:`float<class_float>`\ )                                                                                                                |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`soft_body_set_simulation_precision<class_PhysicsServer3D_method_soft_body_set_simulation_precision>`\ (\ body\: :ref:`RID<class_RID>`, simulation_precision\: :ref:`int<class_int>`\ )                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1893,7 +1905,7 @@ Removes all shapes from an area. It does not delete the shapes, so they can be r
 
 Creates a 3D area object in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. The default settings for the created area include a collision layer and mask set to ``1``, and ``monitorable`` set to ``false``.
 
-Use :ref:`area_add_shape<class_PhysicsServer3D_method_area_add_shape>` to add shapes to it, use :ref:`area_set_transform<class_PhysicsServer3D_method_area_set_transform>` to set its transform, and use :ref:`area_set_space<class_PhysicsServer3D_method_area_set_space>` to add the area to a space. If you want the area to be detectable use :ref:`area_set_monitorable<class_PhysicsServer3D_method_area_set_monitorable>`.
+Use :ref:`area_add_shape()<class_PhysicsServer3D_method_area_add_shape>` to add shapes to it, use :ref:`area_set_transform()<class_PhysicsServer3D_method_area_set_transform>` to set its transform, and use :ref:`area_set_space()<class_PhysicsServer3D_method_area_set_space>` to add the area to a space. If you want the area to be detectable use :ref:`area_set_monitorable()<class_PhysicsServer3D_method_area_set_monitorable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2211,7 +2223,7 @@ Adds a body to the list of bodies exempt from collisions.
 
 Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with ``body_set_constant_force(body, Vector3(0, 0, 0))``.
 
-This is equivalent to using :ref:`body_add_constant_force<class_PhysicsServer3D_method_body_add_constant_force>` at the body's center of mass.
+This is equivalent to using :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` at the body's center of mass.
 
 .. rst-class:: classref-item-separator
 
@@ -2263,7 +2275,7 @@ Adds a shape to the body, along with a transform matrix. Shapes are usually refe
 
 Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.
 
-This is equivalent to using :ref:`body_apply_force<class_PhysicsServer3D_method_body_apply_force>` at the body's center of mass.
+This is equivalent to using :ref:`body_apply_force()<class_PhysicsServer3D_method_body_apply_force>` at the body's center of mass.
 
 .. rst-class:: classref-item-separator
 
@@ -2279,7 +2291,7 @@ Applies a directional impulse without affecting rotation.
 
 An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
 
-This is equivalent to using :ref:`body_apply_impulse<class_PhysicsServer3D_method_body_apply_impulse>` at the body's center of mass.
+This is equivalent to using :ref:`body_apply_impulse()<class_PhysicsServer3D_method_body_apply_impulse>` at the body's center of mass.
 
 .. rst-class:: classref-item-separator
 
@@ -2373,7 +2385,7 @@ Removes all shapes from a body.
 
 Creates a 3D body object in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. The default settings for the created area include a collision layer and mask set to ``1``, and body mode set to :ref:`BODY_MODE_RIGID<class_PhysicsServer3D_constant_BODY_MODE_RIGID>`.
 
-Use :ref:`body_add_shape<class_PhysicsServer3D_method_body_add_shape>` to add shapes to it, use :ref:`body_set_state<class_PhysicsServer3D_method_body_set_state>` to set its transform, and use :ref:`body_set_space<class_PhysicsServer3D_method_body_set_space>` to add the body to a space.
+Use :ref:`body_add_shape()<class_PhysicsServer3D_method_body_add_shape>` to add shapes to it, use :ref:`body_set_state()<class_PhysicsServer3D_method_body_set_state>` to set its transform, and use :ref:`body_set_space()<class_PhysicsServer3D_method_body_set_space>` to add the body to a space.
 
 .. rst-class:: classref-item-separator
 
@@ -2423,7 +2435,7 @@ Returns the body's collision priority.
 
 Returns the body's total constant positional forces applied during each physics update.
 
-See :ref:`body_add_constant_force<class_PhysicsServer3D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force<class_PhysicsServer3D_method_body_add_constant_central_force>`.
+See :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force()<class_PhysicsServer3D_method_body_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2437,7 +2449,7 @@ See :ref:`body_add_constant_force<class_PhysicsServer3D_method_body_add_constant
 
 Returns the body's total constant rotational forces applied during each physics update.
 
-See :ref:`body_add_constant_torque<class_PhysicsServer3D_method_body_add_constant_torque>`.
+See :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2461,7 +2473,7 @@ Returns the :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>` of t
 
 :ref:`int<class_int>` **body_get_max_contacts_reported**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_max_contacts_reported>`
 
-Returns the maximum contacts that can be reported. See :ref:`body_set_max_contacts_reported<class_PhysicsServer3D_method_body_set_max_contacts_reported>`.
+Returns the maximum contacts that can be reported. See :ref:`body_set_max_contacts_reported()<class_PhysicsServer3D_method_body_set_max_contacts_reported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2595,7 +2607,7 @@ If ``true``, the continuous collision detection mode is enabled.
 
 :ref:`bool<class_bool>` **body_is_omitting_force_integration**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_is_omitting_force_integration>`
 
-Returns ``true`` if the body is omitting the standard force integration. See :ref:`body_set_omit_force_integration<class_PhysicsServer3D_method_body_set_omit_force_integration>`.
+Returns ``true`` if the body is omitting the standard force integration. See :ref:`body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2633,7 +2645,7 @@ Removes a shape from a body. The shape is not deleted, so it can be reused after
 
 |void| **body_reset_mass_properties**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_reset_mass_properties>`
 
-Restores the default inertia and center of mass based on shapes to cancel any custom values previously set using :ref:`body_set_param<class_PhysicsServer3D_method_body_set_param>`.
+Restores the default inertia and center of mass based on shapes to cancel any custom values previously set using :ref:`body_set_param()<class_PhysicsServer3D_method_body_set_param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2709,7 +2721,7 @@ Sets the body's collision priority.
 
 Sets the body's total constant positional forces applied during each physics update.
 
-See :ref:`body_add_constant_force<class_PhysicsServer3D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force<class_PhysicsServer3D_method_body_add_constant_central_force>`.
+See :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force()<class_PhysicsServer3D_method_body_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2723,7 +2735,7 @@ See :ref:`body_add_constant_force<class_PhysicsServer3D_method_body_add_constant
 
 Sets the body's total constant rotational forces applied during each physics update.
 
-See :ref:`body_add_constant_torque<class_PhysicsServer3D_method_body_add_constant_torque>`.
+See :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2751,7 +2763,7 @@ Continuous collision detection tries to predict where a moving body will collide
 
 Sets the body's custom force integration callback function to ``callable``. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback.
 
-The function ``callable`` will be called every physics tick, before the standard force integration (see :ref:`body_set_omit_force_integration<class_PhysicsServer3D_method_body_set_omit_force_integration>`). It can be used for example to update the body's linear and angular velocity based on contact with other bodies.
+The function ``callable`` will be called every physics tick, before the standard force integration (see :ref:`body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`). It can be used for example to update the body's linear and angular velocity based on contact with other bodies.
 
 If ``userdata`` is not ``null``, the function ``callable`` must take the following two parameters:
 
@@ -2795,7 +2807,7 @@ Sets the body mode, from one of the :ref:`BodyMode<enum_PhysicsServer3D_BodyMode
 
 |void| **body_set_omit_force_integration**\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_omit_force_integration>`
 
-Sets whether the body omits the standard force integration. If ``enable`` is ``true``, the body will not automatically use applied forces, torques, and damping to update the body's linear and angular velocity. In this case, :ref:`body_set_force_integration_callback<class_PhysicsServer3D_method_body_set_force_integration_callback>` can be used to manually update the linear and angular velocity instead.
+Sets whether the body omits the standard force integration. If ``enable`` is ``true``, the body will not automatically use applied forces, torques, and damping to update the body's linear and angular velocity. In this case, :ref:`body_set_force_integration_callback()<class_PhysicsServer3D_method_body_set_force_integration_callback>` can be used to manually update the linear and angular velocity instead.
 
 This method is called when the property :ref:`RigidBody3D.custom_integrator<class_RigidBody3D_property_custom_integrator>` is set.
 
@@ -2871,7 +2883,7 @@ Sets the transform matrix for a body shape.
 
 |void| **body_set_space**\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_space>`
 
-Assigns a space to the body (see :ref:`space_create<class_PhysicsServer3D_method_space_create>`).
+Assigns a space to the body (see :ref:`space_create()<class_PhysicsServer3D_method_space_create>`).
 
 .. rst-class:: classref-item-separator
 
@@ -3257,7 +3269,7 @@ Returns whether the bodies attached to the :ref:`Joint3D<class_Joint3D>` will co
 
 |void| **joint_make_generic_6dof**\ (\ joint\: :ref:`RID<class_RID>`, body_A\: :ref:`RID<class_RID>`, local_ref_A\: :ref:`Transform3D<class_Transform3D>`, body_B\: :ref:`RID<class_RID>`, local_ref_B\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_PhysicsServer3D_method_joint_make_generic_6dof>`
 
-Make the joint a generic six degrees of freedom (6DOF) joint. Use :ref:`generic_6dof_joint_set_flag<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>` and :ref:`generic_6dof_joint_set_param<class_PhysicsServer3D_method_generic_6dof_joint_set_param>` to set the joint's flags and parameters respectively.
+Make the joint a generic six degrees of freedom (6DOF) joint. Use :ref:`generic_6dof_joint_set_flag()<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>` and :ref:`generic_6dof_joint_set_param()<class_PhysicsServer3D_method_generic_6dof_joint_set_param>` to set the joint's flags and parameters respectively.
 
 .. rst-class:: classref-item-separator
 
@@ -3459,7 +3471,7 @@ Returns the type of shape (see :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` 
 
 |void| **shape_set_data**\ (\ shape\: :ref:`RID<class_RID>`, data\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer3D_method_shape_set_data>`
 
-Sets the shape data that defines its shape and size. The data to be passed depends on the kind of shape created :ref:`shape_get_type<class_PhysicsServer3D_method_shape_get_type>`.
+Sets the shape data that defines its shape and size. The data to be passed depends on the kind of shape created :ref:`shape_get_type()<class_PhysicsServer3D_method_shape_get_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3510,6 +3522,58 @@ Gets a slider_joint parameter (see :ref:`SliderJointParam<enum_PhysicsServer3D_S
 |void| **soft_body_add_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_add_collision_exception>`
 
 Adds the given body to the list of bodies exempt from collisions.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PhysicsServer3D_method_soft_body_apply_central_force:
+
+.. rst-class:: classref-method
+
+|void| **soft_body_apply_central_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_central_force>`
+
+Distributes and applies a force to all points. A force is time dependent and meant to be applied every physics update.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PhysicsServer3D_method_soft_body_apply_central_impulse:
+
+.. rst-class:: classref-method
+
+|void| **soft_body_apply_central_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_central_impulse>`
+
+Distributes and applies an impulse to all points.
+
+An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PhysicsServer3D_method_soft_body_apply_point_force:
+
+.. rst-class:: classref-method
+
+|void| **soft_body_apply_point_force**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_point_force>`
+
+Applies a force to a point. A force is time dependent and meant to be applied every physics update.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PhysicsServer3D_method_soft_body_apply_point_impulse:
+
+.. rst-class:: classref-method
+
+|void| **soft_body_apply_point_impulse**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_point_impulse>`
+
+Applies an impulse to a point.
+
+An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
 
 .. rst-class:: classref-item-separator
 
@@ -3623,6 +3687,18 @@ Returns the pressure coefficient of the given soft body.
 
 ----
 
+.. _class_PhysicsServer3D_method_soft_body_get_shrinking_factor:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **soft_body_get_shrinking_factor**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_shrinking_factor>`
+
+Returns the shrinking factor of the given soft body.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_PhysicsServer3D_method_soft_body_get_simulation_precision:
 
 .. rst-class:: classref-method
@@ -3705,7 +3781,7 @@ Moves the given soft body point to a position in global coordinates.
 
 Pins or unpins the given soft body point based on the value of ``pin``.
 
-\ **Note:** Pinning a point effectively makes it kinematic, preventing it from being affected by forces, but you can still move it using :ref:`soft_body_move_point<class_PhysicsServer3D_method_soft_body_move_point>`.
+\ **Note:** Pinning a point effectively makes it kinematic, preventing it from being affected by forces, but you can still move it using :ref:`soft_body_move_point()<class_PhysicsServer3D_method_soft_body_move_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3833,6 +3909,18 @@ Sets whether the given soft body will be pickable when using object picking.
 
 ----
 
+.. _class_PhysicsServer3D_method_soft_body_set_shrinking_factor:
+
+.. rst-class:: classref-method
+
+|void| **soft_body_set_shrinking_factor**\ (\ body\: :ref:`RID<class_RID>`, shrinking_factor\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_shrinking_factor>`
+
+Sets the shrinking factor of the given soft body.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_PhysicsServer3D_method_soft_body_set_simulation_precision:
 
 .. rst-class:: classref-method
@@ -3851,7 +3939,7 @@ Sets the simulation precision of the given soft body. Increasing this value will
 
 |void| **soft_body_set_space**\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_space>`
 
-Assigns a space to the given soft body (see :ref:`space_create<class_PhysicsServer3D_method_space_create>`).
+Assigns a space to the given soft body (see :ref:`space_create()<class_PhysicsServer3D_method_space_create>`).
 
 .. rst-class:: classref-item-separator
 
@@ -3913,7 +4001,7 @@ Requests that the physics server updates the rendering server with the latest po
 
 :ref:`RID<class_RID>` **space_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_space_create>`
 
-Creates a space. A space is a collection of parameters for the physics engine that can be assigned to an area or a body. It can be assigned to an area with :ref:`area_set_space<class_PhysicsServer3D_method_area_set_space>`, or to a body with :ref:`body_set_space<class_PhysicsServer3D_method_body_set_space>`.
+Creates a space. A space is a collection of parameters for the physics engine that can be assigned to an area or a body. It can be assigned to an area with :ref:`area_set_space()<class_PhysicsServer3D_method_area_set_space>`, or to a body with :ref:`body_set_space()<class_PhysicsServer3D_method_body_set_space>`.
 
 .. rst-class:: classref-item-separator
 

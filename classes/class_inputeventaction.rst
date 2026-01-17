@@ -21,7 +21,7 @@ Description
 
 Contains a generic action which can be targeted from several types of inputs. Actions and their events can be set in the **Input Map** tab in **Project > Project Settings**, or with the :ref:`InputMap<class_InputMap>` class.
 
-\ **Note:** Unlike the other :ref:`InputEvent<class_InputEvent>` subclasses which map to unique physical events, this virtual one is not emitted by the engine. This class is useful to emit actions manually with :ref:`Input.parse_input_event<class_Input_method_parse_input_event>`, which are then received in :ref:`Node._input<class_Node_private_method__input>`. To check if a physical event matches an action from the Input Map, use :ref:`InputEvent.is_action<class_InputEvent_method_is_action>` and :ref:`InputEvent.is_action_pressed<class_InputEvent_method_is_action_pressed>`.
+\ **Note:** Unlike the other :ref:`InputEvent<class_InputEvent>` subclasses which map to unique physical events, this virtual one is not emitted by the engine. This class is useful to emit actions manually with :ref:`Input.parse_input_event()<class_Input_method_parse_input_event>`, which are then received in :ref:`Node._input()<class_Node_private_method__input>`. To check if a physical event matches an action from the Input Map, use :ref:`InputEvent.is_action()<class_InputEvent_method_is_action>` and :ref:`InputEvent.is_action_pressed()<class_InputEvent_method_is_action_pressed>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -72,7 +72,7 @@ Property Descriptions
 - |void| **set_action**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_action**\ (\ )
 
-The action's name. Actions are accessed via this :ref:`String<class_String>`.
+The action's name. This is usually the name of an existing action in the :ref:`InputMap<class_InputMap>` which you want this custom event to match.
 
 .. rst-class:: classref-item-separator
 
