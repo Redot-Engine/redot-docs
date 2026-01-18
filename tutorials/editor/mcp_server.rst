@@ -70,18 +70,28 @@ Cursor
 Junie (JetBrains)
 ~~~~~~~~~~~~~~~~~
 
-1.  Open your project in a JetBrains IDE (IntelliJ IDEA, PyCharm, etc.) with the Junie plugin installed.
-2.  Go to **Settings/Preferences** > **Tools** > **Model Context Protocol**.
-3.  Click the **+** button to add a new server definition.
-4.  Configure the server:
-    *   **Name**: ``redot``
-    *   **Type**: ``stdio``
-    *   **Command**: The full path to your Redot binary (e.g., ``/path/to/redot.linuxbsd.editor.x86_64``).
-    *   **Arguments**: Add the following arguments (space-separated or as individual entries):
-        
-        ``--headless --mcp-server --path /path/to/your/project``
+1.  In your JetBrains IDE settings (**Ctrl+Alt+S**), go to **Tools** > **Junie** > **MCP Settings**.
+2.  Click the **Add** button on the toolbar (or the link to edit configuration). This opens the ``mcp.json`` file.
+3.  Add the Redot server configuration under the ``mcpServers`` key:
 
-5.  Click **Apply** and **OK**. Junie will start the server.
+.. code-block:: json
+
+    {
+        "mcpServers": {
+            "redot": {
+                "command": "/path/to/redot.linuxbsd.editor.x86_64",
+                "args": [
+                    "--headless",
+                    "--mcp-server",
+                    "--path",
+                    "/absolute/path/to/your/project"
+                ],
+                "enabled": true
+            }
+        }
+    }
+
+4.  Save the file. Junie will reload the configuration and start the server.
 
 Example Prompts
 ---------------
