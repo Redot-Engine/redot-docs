@@ -55,17 +55,27 @@ OpenCode
 Cursor
 ~~~~~~
 
-1.  Open **Cursor**.
-2.  Go to **Settings** > **General** > **MCP Servers**.
-3.  Click **Add new MCP server**.
-4.  Fill in the details:
-    *   **Name**: ``redot``
-    *   **Type**: ``command``
-    *   **Command**: Enter the full command string:
-        
-        ``/path/to/redot --headless --mcp-server --path /path/to/project``
+1.  Navigate to your project root directory.
+2.  Create a folder named ``.cursor`` and inside it, create a file named ``mcp.json`` with the following configuration:
 
-5.  Click **Save**. The status indicator should turn green if the connection is successful.
+.. code-block:: json
+
+    {
+      "mcpServers": {
+        "redot": {
+          "command": "/path/to/redot.linuxbsd.editor.x86_64",
+          "args": [
+            "--headless",
+            "--mcp-server",
+            "--path",
+            "/absolute/path/to/your/project"
+          ],
+          "enabled": true
+        }
+      }
+    }
+
+3.  Restart Cursor or reload the window. The MCP server will start automatically.
 
 Junie (JetBrains)
 ~~~~~~~~~~~~~~~~~
