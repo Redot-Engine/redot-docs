@@ -15,29 +15,32 @@ This integration provides AI agents with "eyes and hands" inside the engine, ena
 Enabling the Server
 -------------------
 
-The MCP server is built into the standard Redot editor binary but runs in a headless mode. To start it, launch the engine with the ``--mcp-server`` flag.
+The MCP server is built into the standard Redot editor binary but runs in a headless mode. To start it manually (for testing), launch the engine with the ``--mcp-server`` flag.
 
 .. code-block:: shell
 
     ./redot --headless --mcp-server --path /path/to/your/project
 
-Configuration
--------------
+Step-by-Step Setup Guide
+------------------------
 
-Most AI clients require a configuration file to know how to launch the MCP server.
+To use Redot with your AI coding assistant, you need to register the MCP server in your editor's configuration.
 
-Using standard binary
-~~~~~~~~~~~~~~~~~~~~~
+OpenCode
+~~~~~~~~
 
-If you have downloaded a standard binary (e.g., from the Redot website):
+1.  Open your project in **OpenCode**.
+2.  Create or edit the ``opencode.json`` file in the root of your workspace.
+3.  Add the ``mcp`` configuration block as shown below:
 
 .. code-block:: json
 
     {
-      "mcpServers": {
+      "mcp": {
         "redot": {
-          "command": "/path/to/redot.linuxbsd.editor.x86_64",
-          "args": [
+          "type": "local",
+          "command": [
+            "/absolute/path/to/redot.linuxbsd.editor.x86_64",
             "--headless",
             "--mcp-server",
             "--path",
@@ -47,6 +50,28 @@ If you have downloaded a standard binary (e.g., from the Redot website):
         }
       }
     }
+
+4.  Save the file. OpenCode will automatically start the server.
+
+Cursor
+~~~~~~
+
+1.  Open **Cursor**.
+2.  Go to **Settings** > **General** > **MCP Servers**.
+3.  Click **Add new MCP server**.
+4.  Fill in the details:
+    *   **Name**: ``redot``
+    *   **Type**: ``command``
+    *   **Command**: Enter the full command string:
+        
+        ``/path/to/redot --headless --mcp-server --path /path/to/project``
+
+5.  Click **Save**. The status indicator should turn green if the connection is successful.
+
+Configuration Reference
+-----------------------
+
+For advanced users or different environments (like Nix), use these configurations.
 
 Using Nix
 ~~~~~~~~~
