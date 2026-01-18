@@ -29,9 +29,8 @@ To use Redot with your AI coding assistant, you need to register the MCP server 
 OpenCode
 ~~~~~~~~
 
-1.  Open your project in **OpenCode**.
-2.  Create or edit the ``opencode.json`` file in the root of your workspace.
-3.  Add the ``mcp`` configuration block as shown below:
+1.  Navigate to your project root directory.
+2.  Create a file named ``opencode.json`` with the following configuration:
 
 .. code-block:: json
 
@@ -51,7 +50,7 @@ OpenCode
       }
     }
 
-4.  Save the file. OpenCode will automatically start the server.
+3.  Open the folder in **OpenCode**. The editor will detect the configuration and start the MCP server automatically.
 
 Cursor
 ~~~~~~
@@ -67,6 +66,26 @@ Cursor
         ``/path/to/redot --headless --mcp-server --path /path/to/project``
 
 5.  Click **Save**. The status indicator should turn green if the connection is successful.
+
+Example Prompts
+---------------
+
+Once connected, you can ask your AI assistant to perform complex tasks. Here are a few examples of what it can do:
+
+**1. Scene Construction**
+    *"Create a new main menu scene with a 'Start Game' button and a 'Settings' button. Save it as `res://scenes/MainMenu.tscn`."*
+    
+    *   **Action**: The AI uses ``redot_scene_action`` to create the scene, add ``Button`` nodes, and save the file.
+
+**2. Gameplay Testing**
+    *"Launch the game, wait for it to load, then find and click the 'Start Game' button."*
+    
+    *   **Action**: The AI uses ``redot_project_config:run``, then ``redot_game_control:inspect_live`` to find the button's coordinates, and finally ``redot_game_control:click`` to press it.
+
+**3. Script Analysis**
+    *"Check `Player.gd` for any syntax errors and explain what the `_physics_process` function does."*
+    
+    *   **Action**: The AI uses ``redot_code_intel:validate`` to check syntax and ``redot_code_intel:get_symbols`` to analyze the code structure.
 
 Configuration Reference
 -----------------------
