@@ -19,7 +19,9 @@ Base script that can be used to add extension functions to the editor.
 Description
 -----------
 
-Scripts extending this class and implementing its :ref:`_run<class_EditorScript_private_method__run>` method can be executed from the Script Editor's **File > Run** menu option (or by pressing :kbd:`Ctrl + Shift + X`) while the editor is running. This is useful for adding custom in-editor functionality to Redot. For more complex additions, consider using :ref:`EditorPlugin<class_EditorPlugin>`\ s instead.
+Scripts extending this class and implementing its :ref:`_run()<class_EditorScript_private_method__run>` method can be executed from the Script Editor's **File > Run** menu option (or by pressing :kbd:`Ctrl + Shift + X`) while the editor is running. This is useful for adding custom in-editor functionality to Redot. For more complex additions, consider using :ref:`EditorPlugin<class_EditorPlugin>`\ s instead.
+
+If a script extending this class also has a global class name, it will be included in the editor's command palette.
 
 \ **Note:** Extending scripts need to have ``tool`` mode enabled.
 
@@ -32,14 +34,14 @@ Scripts extending this class and implementing its :ref:`_run<class_EditorScript_
 
     @tool
     extends EditorScript
-    
+
     func _run():
         print("Hello from the Redot Editor!")
 
  .. code-tab:: csharp
 
     using Godot;
-    
+
     [Tool]
     public partial class HelloEditor : EditorScript
     {
@@ -50,8 +52,6 @@ Scripts extending this class and implementing its :ref:`_run<class_EditorScript_
     }
 
 
-
-\ **Note:** The script is run in the Editor context, which means the output is visible in the console window started with the Editor (stdout) instead of the usual Redot **Output** dock.
 
 \ **Note:** EditorScript is :ref:`RefCounted<class_RefCounted>`, meaning it is destroyed when nothing references it. This can cause errors during asynchronous operations if there are no references to the script.
 
@@ -64,7 +64,7 @@ Methods
    :widths: auto
 
    +-----------------------------------------------+-----------------------------------------------------------------------------------------------------+
-   | |void|                                        | :ref:`_run<class_EditorScript_private_method__run>`\ (\ ) |virtual|                                 |
+   | |void|                                        | :ref:`_run<class_EditorScript_private_method__run>`\ (\ ) |virtual| |required|                      |
    +-----------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | |void|                                        | :ref:`add_root_node<class_EditorScript_method_add_root_node>`\ (\ node\: :ref:`Node<class_Node>`\ ) |
    +-----------------------------------------------+-----------------------------------------------------------------------------------------------------+
@@ -86,7 +86,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-|void| **_run**\ (\ ) |virtual| :ref:`🔗<class_EditorScript_private_method__run>`
+|void| **_run**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorScript_private_method__run>`
 
 This method is executed by the Editor when **File > Run** is used.
 
@@ -126,9 +126,10 @@ Returns the :ref:`EditorInterface<class_EditorInterface>` singleton instance.
 
 :ref:`Node<class_Node>` **get_scene**\ (\ ) |const| :ref:`🔗<class_EditorScript_method_get_scene>`
 
-Returns the edited (current) scene's root :ref:`Node<class_Node>`. Equivalent of :ref:`EditorInterface.get_edited_scene_root<class_EditorInterface_method_get_edited_scene_root>`.
+Returns the edited (current) scene's root :ref:`Node<class_Node>`. Equivalent of :ref:`EditorInterface.get_edited_scene_root()<class_EditorInterface_method_get_edited_scene_root>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

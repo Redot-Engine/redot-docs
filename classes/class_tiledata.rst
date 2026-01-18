@@ -19,7 +19,7 @@ Settings for a single tile in a :ref:`TileSet<class_TileSet>`.
 Description
 -----------
 
-**TileData** object represents a single tile in a :ref:`TileSet<class_TileSet>`. It is usually edited using the tileset editor, but it can be modified at runtime using :ref:`TileMap._tile_data_runtime_update<class_TileMap_private_method__tile_data_runtime_update>`.
+**TileData** object represents a single tile in a :ref:`TileSet<class_TileSet>`. It is usually edited using the tileset editor, but it can be modified at runtime using :ref:`TileMapLayer._tile_data_runtime_update()<class_TileMapLayer_private_method__tile_data_runtime_update>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -89,6 +89,8 @@ Methods
    | :ref:`int<class_int>`                               | :ref:`get_occluder_polygons_count<class_TileData_method_get_occluder_polygons_count>`\ (\ layer_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                           |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`get_terrain_peering_bit<class_TileData_method_get_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                                       |
+   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`has_custom_data<class_TileData_method_has_custom_data>`\ (\ layer_name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                           |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`is_collision_polygon_one_way<class_TileData_method_is_collision_polygon_one_way>`\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) |const|                                                                                                                  |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -332,7 +334,7 @@ Vertical point of the tile used for determining y-sorted order.
 - |void| **set_z_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_z_index**\ (\ )
 
-Ordering index of this tile, relative to :ref:`TileMap<class_TileMap>`.
+Ordering index of this tile, relative to :ref:`TileMapLayer<class_TileMapLayer>`.
 
 .. rst-class:: classref-section-separator
 
@@ -433,7 +435,7 @@ Returns the constant linear velocity applied to objects colliding with this tile
 
 :ref:`Variant<class_Variant>` **get_custom_data**\ (\ layer_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TileData_method_get_custom_data>`
 
-Returns the custom data value for custom data layer named ``layer_name``.
+Returns the custom data value for custom data layer named ``layer_name``. To check if a custom data layer exists, use :ref:`has_custom_data()<class_TileData_method_has_custom_data>`.
 
 .. rst-class:: classref-item-separator
 
@@ -471,7 +473,7 @@ Returns the navigation polygon of the tile for the TileSet navigation layer with
 
 :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` **get_occluder**\ (\ layer_id\: :ref:`int<class_int>`, flip_h\: :ref:`bool<class_bool>` = false, flip_v\: :ref:`bool<class_bool>` = false, transpose\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileData_method_get_occluder>`
 
-**Deprecated:** Use :ref:`get_occluder_polygon<class_TileData_method_get_occluder_polygon>` instead.
+**Deprecated:** Use :ref:`get_occluder_polygon()<class_TileData_method_get_occluder_polygon>` instead.
 
 Returns the occluder polygon of the tile for the TileSet occlusion layer with index ``layer_id``.
 
@@ -513,7 +515,19 @@ Returns the number of occluder polygons of the tile in the TileSet occlusion lay
 
 :ref:`int<class_int>` **get_terrain_peering_bit**\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const| :ref:`🔗<class_TileData_method_get_terrain_peering_bit>`
 
-Returns the tile's terrain bit for the given ``peering_bit`` direction. To check that a direction is valid, use :ref:`is_valid_terrain_peering_bit<class_TileData_method_is_valid_terrain_peering_bit>`.
+Returns the tile's terrain bit for the given ``peering_bit`` direction. To check that a direction is valid, use :ref:`is_valid_terrain_peering_bit()<class_TileData_method_is_valid_terrain_peering_bit>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TileData_method_has_custom_data:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **has_custom_data**\ (\ layer_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TileData_method_has_custom_data>`
+
+Returns whether there exists a custom data layer named ``layer_name``.
 
 .. rst-class:: classref-item-separator
 
@@ -681,7 +695,7 @@ Sets the navigation polygon for the TileSet navigation layer with index ``layer_
 
 |void| **set_occluder**\ (\ layer_id\: :ref:`int<class_int>`, occluder_polygon\: :ref:`OccluderPolygon2D<class_OccluderPolygon2D>`\ ) :ref:`🔗<class_TileData_method_set_occluder>`
 
-**Deprecated:** Use :ref:`set_occluder_polygon<class_TileData_method_set_occluder_polygon>` instead.
+**Deprecated:** Use :ref:`set_occluder_polygon()<class_TileData_method_set_occluder_polygon>` instead.
 
 Sets the occluder for the TileSet occlusion layer with index ``layer_id``.
 
@@ -719,9 +733,10 @@ Sets the occluder polygon count in the TileSet occlusion layer with index ``laye
 
 |void| **set_terrain_peering_bit**\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`, terrain\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_set_terrain_peering_bit>`
 
-Sets the tile's terrain bit for the given ``peering_bit`` direction. To check that a direction is valid, use :ref:`is_valid_terrain_peering_bit<class_TileData_method_is_valid_terrain_peering_bit>`.
+Sets the tile's terrain bit for the given ``peering_bit`` direction. To check that a direction is valid, use :ref:`is_valid_terrain_peering_bit()<class_TileData_method_is_valid_terrain_peering_bit>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

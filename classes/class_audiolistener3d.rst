@@ -22,7 +22,19 @@ Overrides the location sounds are heard from.
 Description
 -----------
 
-Once added to the scene tree and enabled using :ref:`make_current<class_AudioListener3D_method_make_current>`, this node will override the location sounds are heard from. This can be used to listen from a location different from the :ref:`Camera3D<class_Camera3D>`.
+Once added to the scene tree and enabled using :ref:`make_current()<class_AudioListener3D_method_make_current>`, this node will override the location sounds are heard from. This can be used to listen from a location different from the :ref:`Camera3D<class_Camera3D>`.
+
+.. rst-class:: classref-reftable-group
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +--------------------------------------------------------------+--------------------------------------------------------------------------+-------+
+   | :ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>` | :ref:`doppler_tracking<class_AudioListener3D_property_doppler_tracking>` | ``0`` |
+   +--------------------------------------------------------------+--------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-reftable-group
 
@@ -41,6 +53,69 @@ Methods
    +---------------------------------------+--------------------------------------------------------------------------------------------------+
    | |void|                                | :ref:`make_current<class_AudioListener3D_method_make_current>`\ (\ )                             |
    +---------------------------------------+--------------------------------------------------------------------------------------------------+
+
+.. rst-class:: classref-section-separator
+
+----
+
+.. rst-class:: classref-descriptions-group
+
+Enumerations
+------------
+
+.. _enum_AudioListener3D_DopplerTracking:
+
+.. rst-class:: classref-enumeration
+
+enum **DopplerTracking**: :ref:`🔗<enum_AudioListener3D_DopplerTracking>`
+
+.. _class_AudioListener3D_constant_DOPPLER_TRACKING_DISABLED:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>` **DOPPLER_TRACKING_DISABLED** = ``0``
+
+Disables `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ simulation (default).
+
+.. _class_AudioListener3D_constant_DOPPLER_TRACKING_IDLE_STEP:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>` **DOPPLER_TRACKING_IDLE_STEP** = ``1``
+
+Simulate `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ by tracking positions of objects that are changed in ``_process``. Changes in the relative velocity of this listener compared to those objects affect how audio is perceived (changing the audio's :ref:`AudioStreamPlayer3D.pitch_scale<class_AudioStreamPlayer3D_property_pitch_scale>`).
+
+.. _class_AudioListener3D_constant_DOPPLER_TRACKING_PHYSICS_STEP:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>` **DOPPLER_TRACKING_PHYSICS_STEP** = ``2``
+
+Simulate `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ by tracking positions of objects that are changed in ``_physics_process``. Changes in the relative velocity of this listener compared to those objects affect how audio is perceived (changing the audio's :ref:`AudioStreamPlayer3D.pitch_scale<class_AudioStreamPlayer3D_property_pitch_scale>`).
+
+.. rst-class:: classref-section-separator
+
+----
+
+.. rst-class:: classref-descriptions-group
+
+Property Descriptions
+---------------------
+
+.. _class_AudioListener3D_property_doppler_tracking:
+
+.. rst-class:: classref-property
+
+:ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>` **doppler_tracking** = ``0`` :ref:`🔗<class_AudioListener3D_property_doppler_tracking>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_doppler_tracking**\ (\ value\: :ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>`\ )
+- :ref:`DopplerTracking<enum_AudioListener3D_DopplerTracking>` **get_doppler_tracking**\ (\ )
+
+If not :ref:`DOPPLER_TRACKING_DISABLED<class_AudioListener3D_constant_DOPPLER_TRACKING_DISABLED>`, this listener will simulate the `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ for objects changed in particular ``_process`` methods.
+
+\ **Note:** The Doppler effect will only be heard on :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>`\ s if :ref:`AudioStreamPlayer3D.doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` is not set to :ref:`AudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>`.
 
 .. rst-class:: classref-section-separator
 
@@ -81,7 +156,7 @@ Returns the listener's global orthonormalized :ref:`Transform3D<class_Transform3
 
 :ref:`bool<class_bool>` **is_current**\ (\ ) |const| :ref:`🔗<class_AudioListener3D_method_is_current>`
 
-Returns ``true`` if the listener was made current using :ref:`make_current<class_AudioListener3D_method_make_current>`, ``false`` otherwise.
+Returns ``true`` if the listener was made current using :ref:`make_current()<class_AudioListener3D_method_make_current>`, ``false`` otherwise.
 
 \ **Note:** There may be more than one AudioListener3D marked as "current" in the scene tree, but only the one that was made current last will be used.
 
@@ -98,6 +173,7 @@ Returns ``true`` if the listener was made current using :ref:`make_current<class
 Enables the listener. This will override the current camera's listener.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

@@ -25,7 +25,9 @@ A 3D agent used to pathfind to a position while avoiding static and dynamic obst
 
 Dynamic obstacles are avoided using RVO collision avoidance. Avoidance is computed before physics, so the pathfinding information can be used safely in the physics step.
 
-\ **Note:** After setting the :ref:`target_position<class_NavigationAgent3D_property_target_position>` property, the :ref:`get_next_path_position<class_NavigationAgent3D_method_get_next_path_position>` method must be used once every physics frame to update the internal path logic of the navigation agent. The vector position it returns should be used as the next movement position for the agent's parent node.
+\ **Note:** After setting the :ref:`target_position<class_NavigationAgent3D_property_target_position>` property, the :ref:`get_next_path_position()<class_NavigationAgent3D_method_get_next_path_position>` method must be used once every physics frame to update the internal path logic of the navigation agent. The vector position it returns should be used as the next movement position for the agent's parent node.
+
+\ **Note:** Several methods of this class, such as :ref:`get_next_path_position()<class_NavigationAgent3D_method_get_next_path_position>`, can trigger a new path calculation. Calling these in your callback to an agent's signal, such as :ref:`waypoint_reached<class_NavigationAgent3D_signal_waypoint_reached>`, can cause infinite recursion. It is recommended to call these methods in the physics step or, alternatively, delay their call until the end of the frame (see :ref:`Object.call_deferred()<class_Object_method_call_deferred>` or :ref:`Object.CONNECT_DEFERRED<class_Object_constant_CONNECT_DEFERRED>`).
 
 .. rst-class:: classref-introduction-group
 
@@ -81,6 +83,14 @@ Properties
    +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`PathPostProcessing<enum_NavigationPathQueryParameters3D_PathPostProcessing>`             | :ref:`path_postprocessing<class_NavigationAgent3D_property_path_postprocessing>`                   | ``0``                 |
    +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                                                      | :ref:`path_return_max_length<class_NavigationAgent3D_property_path_return_max_length>`             | ``0.0``               |
+   +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                                                      | :ref:`path_return_max_radius<class_NavigationAgent3D_property_path_return_max_radius>`             | ``0.0``               |
+   +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                                                      | :ref:`path_search_max_distance<class_NavigationAgent3D_property_path_search_max_distance>`         | ``0.0``               |
+   +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                                                          | :ref:`path_search_max_polygons<class_NavigationAgent3D_property_path_search_max_polygons>`         | ``4096``              |
+   +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`PathfindingAlgorithm<enum_NavigationPathQueryParameters3D_PathfindingAlgorithm>`         | :ref:`pathfinding_algorithm<class_NavigationAgent3D_property_pathfinding_algorithm>`               | ``0``                 |
    +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`float<class_float>`                                                                      | :ref:`radius<class_NavigationAgent3D_property_radius>`                                             | ``0.5``               |
@@ -130,6 +140,8 @@ Methods
    | :ref:`RID<class_RID>`                                                 | :ref:`get_navigation_map<class_NavigationAgent3D_method_get_navigation_map>`\ (\ ) |const|                                                                                |
    +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>`                                         | :ref:`get_next_path_position<class_NavigationAgent3D_method_get_next_path_position>`\ (\ )                                                                                |
+   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                             | :ref:`get_path_length<class_NavigationAgent3D_method_get_path_length>`\ (\ ) |const|                                                                                      |
    +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                                 | :ref:`get_rid<class_NavigationAgent3D_method_get_rid>`\ (\ ) |const|                                                                                                      |
    +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -227,7 +239,7 @@ Signals that the agent reached the target, i.e. the agent moved within :ref:`tar
 
 This signal will be emitted just before :ref:`navigation_finished<class_NavigationAgent3D_signal_navigation_finished>` when the target is reachable.
 
-It may not always be possible to reach the target but it should always be possible to reach the final position. See :ref:`get_final_position<class_NavigationAgent3D_method_get_final_position>`.
+It may not always be possible to reach the target but it should always be possible to reach the final position. See :ref:`get_final_position()<class_NavigationAgent3D_method_get_final_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -595,6 +607,76 @@ The path postprocessing applied to the raw path corridor found by the :ref:`path
 
 ----
 
+.. _class_NavigationAgent3D_property_path_return_max_length:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **path_return_max_length** = ``0.0`` :ref:`🔗<class_NavigationAgent3D_property_path_return_max_length>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_path_return_max_length**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_path_return_max_length**\ (\ )
+
+The maximum allowed length of the returned path in world units. A path will be clipped when going over this length.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationAgent3D_property_path_return_max_radius:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **path_return_max_radius** = ``0.0`` :ref:`🔗<class_NavigationAgent3D_property_path_return_max_radius>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_path_return_max_radius**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_path_return_max_radius**\ (\ )
+
+The maximum allowed radius in world units that the returned path can be from the path start. The path will be clipped when going over this radius. Compared to :ref:`path_return_max_length<class_NavigationAgent3D_property_path_return_max_length>`, this allows the agent to go that much further, if they need to walk around a corner.
+
+\ **Note:** This will perform a sphere clip considering only the actual navigation mesh path points with the first path position being the sphere's center.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationAgent3D_property_path_search_max_distance:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **path_search_max_distance** = ``0.0`` :ref:`🔗<class_NavigationAgent3D_property_path_search_max_distance>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_path_search_max_distance**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_path_search_max_distance**\ (\ )
+
+The maximum distance a searched polygon can be away from the start polygon before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of ``0`` or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationAgent3D_property_path_search_max_polygons:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **path_search_max_polygons** = ``4096`` :ref:`🔗<class_NavigationAgent3D_property_path_search_max_polygons>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_path_search_max_polygons**\ (\ value\: :ref:`int<class_int>`\ )
+- :ref:`int<class_int>` **get_path_search_max_polygons**\ (\ )
+
+The maximum number of polygons that are searched before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of ``0`` or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_NavigationAgent3D_property_pathfinding_algorithm:
 
 .. rst-class:: classref-property
@@ -678,7 +760,7 @@ Path simplification can be helpful to mitigate various path following issues tha
 - |void| **set_target_desired_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_target_desired_distance**\ (\ )
 
-The distance threshold before the target is considered to be reached. On reaching the target, :ref:`target_reached<class_NavigationAgent3D_signal_target_reached>` is emitted and navigation ends (see :ref:`is_navigation_finished<class_NavigationAgent3D_method_is_navigation_finished>` and :ref:`navigation_finished<class_NavigationAgent3D_signal_navigation_finished>`).
+The distance threshold before the target is considered to be reached. On reaching the target, :ref:`target_reached<class_NavigationAgent3D_signal_target_reached>` is emitted and navigation ends (see :ref:`is_navigation_finished()<class_NavigationAgent3D_method_is_navigation_finished>` and :ref:`navigation_finished<class_NavigationAgent3D_signal_navigation_finished>`).
 
 You can make navigation end early by setting this property to a value greater than :ref:`path_desired_distance<class_NavigationAgent3D_property_path_desired_distance>` (navigation will end before reaching the last waypoint).
 
@@ -769,7 +851,7 @@ If ``false``, the agent calculates avoidance velocities in 2D along the x and z-
 - |void| **set_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_velocity**\ (\ )
 
-Sets the new wanted velocity for the agent. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agents and obstacles. When an agent is teleported to a new position, use :ref:`set_velocity_forced<class_NavigationAgent3D_method_set_velocity_forced>` as well to reset the internal simulation velocity.
+Sets the new wanted velocity for the agent. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agents and obstacles. When an agent is teleported to a new position, use :ref:`set_velocity_forced()<class_NavigationAgent3D_method_set_velocity_forced>` as well to reset the internal simulation velocity.
 
 .. rst-class:: classref-section-separator
 
@@ -822,7 +904,7 @@ Returns whether or not the specified mask of the :ref:`avoidance_mask<class_Navi
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_current_navigation_path**\ (\ ) |const| :ref:`🔗<class_NavigationAgent3D_method_get_current_navigation_path>`
 
-Returns this agent's current path from start to finish in global coordinates. The path only updates when the target position is changed or the agent requires a repath. The path array is not intended to be used in direct path movement as the agent has its own internal path logic that would get corrupted by changing the path array manually. Use the intended :ref:`get_next_path_position<class_NavigationAgent3D_method_get_next_path_position>` once every physics frame to receive the next path point for the agents movement as this function also updates the internal path logic.
+Returns this agent's current path from start to finish in global coordinates. The path only updates when the target position is changed or the agent requires a repath. The path array is not intended to be used in direct path movement as the agent has its own internal path logic that would get corrupted by changing the path array manually. Use the intended :ref:`get_next_path_position()<class_NavigationAgent3D_method_get_next_path_position>` once every physics frame to receive the next path point for the agents movement as this function also updates the internal path logic.
 
 .. rst-class:: classref-item-separator
 
@@ -882,7 +964,7 @@ Returns whether or not the specified layer of the :ref:`navigation_layers<class_
 
 :ref:`RID<class_RID>` **get_navigation_map**\ (\ ) |const| :ref:`🔗<class_NavigationAgent3D_method_get_navigation_map>`
 
-Returns the :ref:`RID<class_RID>` of the navigation map for this NavigationAgent node. This function returns always the map set on the NavigationAgent node and not the map of the abstract agent on the NavigationServer. If the agent map is changed directly with the NavigationServer API the NavigationAgent node will not be aware of the map change. Use :ref:`set_navigation_map<class_NavigationAgent3D_method_set_navigation_map>` to change the navigation map for the NavigationAgent and also update the agent on the NavigationServer.
+Returns the :ref:`RID<class_RID>` of the navigation map for this NavigationAgent node. This function returns always the map set on the NavigationAgent node and not the map of the abstract agent on the NavigationServer. If the agent map is changed directly with the NavigationServer API the NavigationAgent node will not be aware of the map change. Use :ref:`set_navigation_map()<class_NavigationAgent3D_method_set_navigation_map>` to change the navigation map for the NavigationAgent and also update the agent on the NavigationServer.
 
 .. rst-class:: classref-item-separator
 
@@ -895,6 +977,18 @@ Returns the :ref:`RID<class_RID>` of the navigation map for this NavigationAgent
 :ref:`Vector3<class_Vector3>` **get_next_path_position**\ (\ ) :ref:`🔗<class_NavigationAgent3D_method_get_next_path_position>`
 
 Returns the next position in global coordinates that can be moved to, making sure that there are no static objects in the way. If the agent does not have a navigation path, it will return the position of the agent's parent. The use of this function once every physics frame is required to update the internal path logic of the NavigationAgent.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationAgent3D_method_get_path_length:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **get_path_length**\ (\ ) |const| :ref:`🔗<class_NavigationAgent3D_method_get_path_length>`
+
+Returns the length of the currently calculated path. The returned value is ``0.0``, if the path is still calculating or no calculation has been requested yet.
 
 .. rst-class:: classref-item-separator
 
@@ -920,7 +1014,7 @@ Returns the :ref:`RID<class_RID>` of this agent on the :ref:`NavigationServer3D<
 
 Returns ``true`` if the agent's navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached.
 
-\ **Note:** While ``true`` prefer to stop calling update functions like :ref:`get_next_path_position<class_NavigationAgent3D_method_get_next_path_position>`. This avoids jittering the standing agent due to calling repeated path updates.
+\ **Note:** While ``true`` prefer to stop calling update functions like :ref:`get_next_path_position()<class_NavigationAgent3D_method_get_next_path_position>`. This avoids jittering the standing agent due to calling repeated path updates.
 
 .. rst-class:: classref-item-separator
 
@@ -932,7 +1026,7 @@ Returns ``true`` if the agent's navigation has finished. If the target is reacha
 
 :ref:`bool<class_bool>` **is_target_reachable**\ (\ ) :ref:`🔗<class_NavigationAgent3D_method_is_target_reachable>`
 
-Returns ``true`` if :ref:`get_final_position<class_NavigationAgent3D_method_get_final_position>` is within :ref:`target_desired_distance<class_NavigationAgent3D_property_target_desired_distance>` of the :ref:`target_position<class_NavigationAgent3D_property_target_position>`.
+Returns ``true`` if :ref:`get_final_position()<class_NavigationAgent3D_method_get_final_position>` is within :ref:`target_desired_distance<class_NavigationAgent3D_property_target_desired_distance>` of the :ref:`target_position<class_NavigationAgent3D_property_target_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -944,7 +1038,7 @@ Returns ``true`` if :ref:`get_final_position<class_NavigationAgent3D_method_get_
 
 :ref:`bool<class_bool>` **is_target_reached**\ (\ ) |const| :ref:`🔗<class_NavigationAgent3D_method_is_target_reached>`
 
-Returns ``true`` if the agent reached the target, i.e. the agent moved within :ref:`target_desired_distance<class_NavigationAgent3D_property_target_desired_distance>` of the :ref:`target_position<class_NavigationAgent3D_property_target_position>`. It may not always be possible to reach the target but it should always be possible to reach the final position. See :ref:`get_final_position<class_NavigationAgent3D_method_get_final_position>`.
+Returns ``true`` if the agent reached the target, i.e. the agent moved within :ref:`target_desired_distance<class_NavigationAgent3D_property_target_desired_distance>` of the :ref:`target_position<class_NavigationAgent3D_property_target_position>`. It may not always be possible to reach the target but it should always be possible to reach the final position. See :ref:`get_final_position()<class_NavigationAgent3D_method_get_final_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1007,6 +1101,7 @@ Sets the :ref:`RID<class_RID>` of the navigation map this NavigationAgent node s
 Replaces the internal velocity in the collision avoidance simulation with ``velocity``. When an agent is teleported to a new position this function should be used in the same frame. If called frequently this function can get agents stuck.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`

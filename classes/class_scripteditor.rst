@@ -21,7 +21,7 @@ Description
 
 Redot editor's script editor.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_script_editor<class_EditorInterface_method_get_script_editor>`.
+\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_script_editor()<class_EditorInterface_method_get_script_editor>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -31,6 +31,8 @@ Methods
 .. table::
    :widths: auto
 
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                       | :ref:`clear_docs_from_script<class_ScriptEditor_method_clear_docs_from_script>`\ (\ script\: :ref:`Script<class_Script>`\ )                                                             |
    +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>`                            | :ref:`get_breakpoints<class_ScriptEditor_method_get_breakpoints>`\ (\ )                                                                                                                 |
    +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -92,6 +94,20 @@ Emitted when editor is about to close the active script. Argument is a :ref:`Scr
 
 Method Descriptions
 -------------------
+
+.. _class_ScriptEditor_method_clear_docs_from_script:
+
+.. rst-class:: classref-method
+
+|void| **clear_docs_from_script**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptEditor_method_clear_docs_from_script>`
+
+Removes the documentation for the given ``script``.
+
+\ **Note:** This should be called whenever the script is changed to keep the open documentation state up to date.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_ScriptEditor_method_get_breakpoints:
 
@@ -246,11 +262,12 @@ Unregisters the :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` fr
 
 |void| **update_docs_from_script**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptEditor_method_update_docs_from_script>`
 
-Updates the documentation for the given ``script`` if the script's documentation is currently open.
+Updates the documentation for the given ``script``.
 
 \ **Note:** This should be called whenever the script is changed to keep the open documentation state up to date.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
+.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
