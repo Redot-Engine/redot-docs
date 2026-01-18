@@ -30,7 +30,7 @@ OpenCode
 ~~~~~~~~
 
 1.  Navigate to your project root directory.
-2.  Create a file named ``opencode.json`` with the following configuration:
+2.  Create a folder named ``.opencode`` and inside it, create a file named ``opencode.json`` with the following configuration:
 
 .. code-block:: json
 
