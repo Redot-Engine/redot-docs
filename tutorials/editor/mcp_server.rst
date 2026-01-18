@@ -90,20 +90,23 @@ Once connected, you can ask your AI assistant to perform complex tasks. Here are
 Configuration Reference
 -----------------------
 
-For advanced users or different environments (like Nix), use these configurations.
+For standard usage, use the configuration below.
 
-Using Nix
-~~~~~~~~~
+Using standard binary
+~~~~~~~~~~~~~~~~~~~~~
 
-If you are developing inside a Nix environment, use the provided wrapper script ``redot-mcp.sh`` (located at the root of the engine repository) to ensure all libraries are correctly linked.
+If you have downloaded a standard binary (e.g., from the Redot website):
 
 .. code-block:: json
 
     {
       "mcpServers": {
         "redot": {
-          "command": "/path/to/redot-engine/redot-mcp.sh",
+          "command": "/path/to/redot.linuxbsd.editor.x86_64",
           "args": [
+            "--headless",
+            "--mcp-server",
+            "--path",
             "/absolute/path/to/your/project"
           ],
           "enabled": true
@@ -169,3 +172,27 @@ The engine repository includes a Python script to verify the MCP workflow end-to
     python3 modules/mcp/tests/verify_workflow.py \
       --binary ./bin/redot.linuxbsd.editor.x86_64 \
       --project /path/to/your/project
+
+For Engine Contributors
+-----------------------
+
+If you are compiling Redot from source (e.g., using Nix), you need a slightly different setup to ensure libraries are linked correctly.
+
+Using Nix (Development)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are developing inside a Nix environment, use the provided wrapper script ``redot-mcp.sh`` (located at the root of the engine repository).
+
+.. code-block:: json
+
+    {
+      "mcpServers": {
+        "redot": {
+          "command": "/path/to/redot-engine/redot-mcp.sh",
+          "args": [
+            "/absolute/path/to/your/project"
+          ],
+          "enabled": true
+        }
+      }
+    }
