@@ -67,6 +67,22 @@ Cursor
 
 5.  Click **Save**. The status indicator should turn green if the connection is successful.
 
+Junie (JetBrains)
+~~~~~~~~~~~~~~~~~
+
+1.  Open your project in a JetBrains IDE (IntelliJ IDEA, PyCharm, etc.) with the Junie plugin installed.
+2.  Go to **Settings/Preferences** > **Tools** > **Model Context Protocol**.
+3.  Click the **+** button to add a new server definition.
+4.  Configure the server:
+    *   **Name**: ``redot``
+    *   **Type**: ``stdio``
+    *   **Command**: The full path to your Redot binary (e.g., ``/path/to/redot.linuxbsd.editor.x86_64``).
+    *   **Arguments**: Add the following arguments (space-separated or as individual entries):
+        
+        ``--headless --mcp-server --path /path/to/your/project``
+
+5.  Click **Apply** and **OK**. Junie will start the server.
+
 Example Prompts
 ---------------
 
