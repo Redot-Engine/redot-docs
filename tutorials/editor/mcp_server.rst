@@ -56,6 +56,17 @@ OpenCode
 
 3.  Open the folder in **OpenCode**. The editor will detect the configuration and start the MCP server automatically.
 
+Claude Code (CLI)
+~~~~~~~~~~~~~~~~~
+
+To add Redot as a project-scoped tool for Claude Code, run the following command in your terminal from your project root:
+
+.. code-block:: shell
+
+    claude mcp add --transport stdio --scope project redot -- /absolute/path/to/redot --headless --mcp-server --path /absolute/path/to/your/project
+
+This command creates a ``.mcp.json`` file in your project directory.
+
 Cursor
 ~~~~~~
 
