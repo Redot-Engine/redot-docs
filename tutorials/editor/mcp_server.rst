@@ -24,6 +24,10 @@ The MCP server is built into the standard Redot editor binary but runs in a head
 Step-by-Step Setup Guide
 ------------------------
 
+.. note::
+
+    If you installed Redot via a package manager (like Flatpak, Snap, or your distribution's repo), you might not know the exact binary path. Run ``which redot`` in your terminal to find it. Use that path in the configurations below.
+
 To use Redot with your AI coding assistant, you need to register the MCP server in your editor's configuration.
 
 OpenCode
