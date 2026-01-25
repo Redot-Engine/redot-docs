@@ -81,6 +81,7 @@ like Visual Studio Code or Emacs.
 
    command_line_tutorial
    external_editor
+   mcp_server
 
 Managing editor features
 ------------------------
