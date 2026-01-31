@@ -73,6 +73,10 @@ Properties
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`JavaScriptBridge<class_JavaScriptBridge>`               | :ref:`JavaScriptBridge<class_@GlobalScope_property_JavaScriptBridge>`               |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`MCPBridge<class_MCPBridge>`                             | :ref:`MCPBridge<class_@GlobalScope_property_MCPBridge>`                             |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`MCPServer<class_MCPServer>`                             | :ref:`MCPServer<class_@GlobalScope_property_MCPServer>`                             |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`Marshalls<class_Marshalls>`                             | :ref:`Marshalls<class_@GlobalScope_property_Marshalls>`                             |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`NativeMenu<class_NativeMenu>`                           | :ref:`NativeMenu<class_@GlobalScope_property_NativeMenu>`                           |
@@ -5026,6 +5030,34 @@ The :ref:`JavaScriptBridge<class_JavaScriptBridge>` singleton.
 
 ----
 
+.. _class_@GlobalScope_property_MCPBridge:
+
+.. rst-class:: classref-property
+
+:ref:`MCPBridge<class_MCPBridge>` **MCPBridge** :ref:`🔗<class_@GlobalScope_property_MCPBridge>`
+
+.. container:: contribute
+
+	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_property_MCPServer:
+
+.. rst-class:: classref-property
+
+:ref:`MCPServer<class_MCPServer>` **MCPServer** :ref:`🔗<class_@GlobalScope_property_MCPServer>`
+
+.. container:: contribute
+
+	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_@GlobalScope_property_Marshalls:
 
 .. rst-class:: classref-property
@@ -5995,7 +6027,7 @@ Returns the :ref:`Object<class_Object>` that corresponds to ``instance_id``. All
     func _ready():
         var id = get_instance_id()
         var instance = instance_from_id(id)
-        print(instance.foo) # Prints "water"
+        print(instance.drink) # Prints "water"
 
  .. code-tab:: csharp
 
