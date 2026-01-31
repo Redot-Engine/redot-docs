@@ -12,6 +12,8 @@ JSONRPC
 
 **Inherits:** :ref:`Object<class_Object>`
 
+**Inherited By:** :ref:`MCPProtocol<class_MCPProtocol>`
+
 A helper to handle dictionaries which look like JSONRPC documents.
 
 .. rst-class:: classref-introduction-group
@@ -201,7 +203,7 @@ To add new supported methods extend the JSONRPC class and call :ref:`process_act
 
 .. container:: contribute
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. rst-class:: classref-item-separator
 

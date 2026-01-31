@@ -1460,7 +1460,7 @@ Font size of the item's text.
 
 :ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_ItemList_theme_style_focus>`
 
-The focused style for the **ItemList**, drawn on top of the background, but below everything else.
+The focused style for the **ItemList**, drawn on top of everything.
 
 .. rst-class:: classref-item-separator
 
