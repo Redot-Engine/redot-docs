@@ -1,0 +1,17 @@
+name = "redot-docs"
+compatibility_date = "2024-01-01"
+
+# Build settings
+[build]
+command = "FULL_RUN=1 bash build.sh"
+
+# The directory containing your static files
+[site]
+bucket = "output"
+
+# Environment variables
+[env.production]
+name = "redot-docs"
+
+[env.preview]
+name = "redot-docs-preview"
