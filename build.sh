@@ -91,3 +91,4 @@ fi
 
 echo ""
 echo "Build script finished successfully"
+echo "Build completed at $(date)"
