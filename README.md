@@ -16,19 +16,59 @@ For mobile devices or e-readers, you can also download an ePub copy (updated eve
 [latest](https://download.redotengine.org/docs/redot-docs-epub-master.zip). Extract
 the ZIP archive then open the `RedotEngine.epub` file in an e-book reader application.
 
-## Migrating
+## Building Documentation
 
-We are transitioning from Godot to Redot. In this period, a temporary solution is available.
+### Quick Build (Local Development)
 
-```
-python migrate.py . _migrated True
+For local development, use the optimized build script:
+
+```bash
+# Full build (includes migration + Sphinx)
+FULL_RUN=1 ./build.sh
+
+# The output will be in output/html/en/latest/ (for master branch)
+# or output/html/en/<branch-name>/ (for other branches)
 ```
 
-After the docs are converted, you can build with
+**Build optimizations:**
+- `--exclude-classes`: Skips class reference migration (faster, these are auto-generated)
+- `-j auto`: Uses all available CPU cores for parallel builds
+- Branch mapping: `master` → `latest/`, other branches → `<branch-name>/`
 
+### Manual Build
+
+If you prefer manual control:
+
+```bash
+# 1. Migrate (optional - skip for faster builds, use --exclude-classes)
+python migrate.py --exclude-classes . _migrated
+
+# 2. Build with Sphinx (auto-detect CPU cores)
+sphinx-build -b html -j auto ./_migrated/ _build/html
 ```
-sphinx-build -b html ./_migrated/ _build/html
-```
+
+### Architecture
+
+**Simplified single-repo setup:**
+- Source: This repository (`Redot-Engine/redot-docs`)
+- Build: Cloudflare Pages runs `build.sh`
+- Output: `/output/html/en/<branch>/`
+- Serve: Cloudflare Pages serves directly from build output
+
+**Previous architecture (deprecated):**
+~Used two repositories: `redot-docs` (source) → builds → pushes to `redot-docs-live` (deployment)~
+
+### Cloudflare Pages Configuration
+
+**Build settings:**
+- Build command: `FULL_RUN=1 ./build.sh`
+- Output directory: `output`
+- Production branch: `master` (outputs to `html/en/latest/`)
+- Preview deployments: All other branches (outputs to `html/en/<branch>/`)
+
+**Environment variables:**
+- `FULL_RUN=1` - Required to enable full documentation build
+- `CF_PAGES` / `CF_PAGES_BRANCH` - Auto-set by Cloudflare Pages
 
 ## Theming
 
@@ -58,24 +98,31 @@ Here are some quick links to the areas you might be interested in:
 
 ### How to build with anaconda/miniconda
 
-```
-# 1) create env with Python 3.11
+**Recommended: Use the build script**
+```bash
+# Setup environment (one-time)
 conda create -n redot-docs python=3.11 -y
-
-# 2) activate it
 conda activate redot-docs
+pip install -r requirements.txt
 
-# 3) ensure pip is available (usually is)
-conda install pip -y
+# Build documentation
+FULL_RUN=1 ./build.sh
 
-# 4) from the repo root, install requirements via pip
-python -m pip install -r requirements.txt
+# Output: output/html/en/latest/
+```
 
-# 5) Migration
-python migrate.py . _migrated True
+**Manual build (if you need fine control):**
+```bash
+# 1) Setup environment
+conda create -n redot-docs python=3.11 -y
+conda activate redot-docs
+pip install -r requirements.txt
 
-# 6) build the docs
-sphinx-build -b html ./_migrated/ _build/html
+# 2) Migrate (use --exclude-classes for faster builds)
+python migrate.py --exclude-classes . _migrated
+
+# 3) Build with Sphinx (auto-detect CPU cores)
+sphinx-build -b html -j auto ./_migrated/ _build/html
 ```
 
 ## License
