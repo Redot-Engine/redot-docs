@@ -41,23 +41,33 @@ echo "Output: html/en/$buildDir"
 echo "Date: $(date)"
 echo "========================================"
 
-# Clean and prepare temp directories
+# Clean and prepare directories
+# Skip migration if _migrated exists (for faster rebuilds)
 echo ""
 echo "[1/4] Preparing build directories..."
-rm -rf "$migrateDir" "$sphinxDir"
-mkdir -p "$migrateDir" "$sphinxDir"
+rm -rf "$sphinxDir"
+mkdir -p "$sphinxDir"
 
 # Full build (only if FULL_RUN is set)
 if [ -n "$FULL_RUN" ]; then
-    echo ""
-    echo "[2/4] Migrating Godot to Redot (with --exclude-classes)..."
-    python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+    # Check if migration is needed
+    if [ -d "$migrateDir" ] && [ -f "$migrateDir/index.rst" ]; then
+        echo ""
+        echo "[2/4] Using existing migrated files (skipping migration)..."
+    else
+        echo ""
+        echo "[2/4] Migrating Godot to Redot (with --exclude-classes)..."
+        rm -rf "$migrateDir"
+        mkdir -p "$migrateDir"
+        python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+    fi
     
     echo ""
     echo "[3/4] Building HTML documentation with Sphinx..."
-    echo "Using auto-detected parallel jobs (-j auto)"
+    # Use -j 4 for consistent performance on Cloudflare Pages
+    # (auto can detect too many slow cores)
     sphinx-build -b html \
-        -j auto \
+        -j 4 \
         --color \
         "$migrateDir" \
         "$sphinxDir"
