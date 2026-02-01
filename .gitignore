@@ -54,4 +54,5 @@ _build/
 _migrated/
 _sphinx/
 _repo/
+output/
 *.log

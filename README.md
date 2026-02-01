@@ -49,26 +49,41 @@ sphinx-build -b html -j auto ./_migrated/ _build/html
 
 ### Architecture
 
-**Simplified single-repo setup:**
+**GitHub Actions + Cloudflare Pages (Current):**
 - Source: This repository (`Redot-Engine/redot-docs`)
-- Build: Cloudflare Pages runs `build.sh`
+- Build: GitHub Actions runs `build.sh` (2-hour timeout vs Cloudflare's 20 minutes)
+- Deploy: Built output pushed to Cloudflare Pages
 - Output: `/output/html/en/<branch>/`
-- Serve: Cloudflare Pages serves directly from build output
+- Serve: Cloudflare Pages serves the built documentation
 
-**Previous architecture (deprecated):**
-~Used two repositories: `redot-docs` (source) → builds → pushes to `redot-docs-live` (deployment)~
+**Previous architectures (deprecated):**
+1. ~Two repos: `redot-docs` (source) → builds → pushes to `redot-docs-live` (deployment)~
+2. ~Direct Cloudflare Pages build (hit 20-minute timeout limit)~
 
-### Cloudflare Pages Configuration
+### GitHub Actions Workflow
 
-**Build settings:**
-- Build command: `FULL_RUN=1 ./build.sh`
-- Output directory: `output`
-- Production branch: `master` (outputs to `html/en/latest/`)
-- Preview deployments: All other branches (outputs to `html/en/<branch>/`)
+The repository includes an automated workflow (`.github/workflows/build-and-deploy.yml`) that:
 
-**Environment variables:**
-- `FULL_RUN=1` - Required to enable full documentation build
-- `CF_PAGES` / `CF_PAGES_BRANCH` - Auto-set by Cloudflare Pages
+1. **Builds on every push** to `master` or `optimize-build-simplify`
+2. **Runs on GitHub Actions** with a 2-hour timeout (vs Cloudflare's 20-minute limit)
+3. **Deploys automatically** to Cloudflare Pages using the official Cloudflare action
+
+**Setup required:**
+
+Add these secrets to your GitHub repository (Settings → Secrets and variables → Actions):
+- `CLOUDFLARE_ACCOUNT_ID` - Your Cloudflare account ID
+- `CLOUDFLARE_API_TOKEN` - API token with Cloudflare Pages:Edit permission
+
+**How it works:**
+```
+Push to branch → GitHub Actions builds (30 min) → Deploys to Cloudflare Pages
+```
+
+**Benefits:**
+- No 20-minute timeout limit
+- Python dependencies cached between builds
+- Automatic deployment on every push
+- Works for both production (master) and preview branches
 
 ## Theming
 
