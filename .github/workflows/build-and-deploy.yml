@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120  # 2 hours - plenty of time for the build
+    timeout-minutes: 120
     
     steps:
       - name: Checkout repository
@@ -32,6 +32,22 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Cache migrated files
+        uses: actions/cache@v4
+        id: cache-migrated
+        with:
+          path: _migrated
+          key: migrated-${{ hashFiles('**/*.rst', 'conf.py', 'migrate.py') }}
+
+      - name: Cache Sphinx doctrees
+        uses: actions/cache@v4
+        with:
+          path: _sphinx/.doctrees
+          key: doctrees-${{ github.ref }}-${{ github.run_id }}
+          restore-keys: |
+            doctrees-${{ github.ref }}-
+            doctrees-
 
       - name: Build documentation
         run: |
@@ -50,7 +66,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    # Only deploy on push to master or optimize-build-simplify, not on PRs
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify')
     
     steps:
@@ -61,11 +76,8 @@ jobs:
           path: output/
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: redot-docs
-          directory: output
-          branch: ${{ github.ref_name }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy output --project-name=redot-docs --branch=${{ github.ref_name }}

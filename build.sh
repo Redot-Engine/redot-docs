@@ -64,10 +64,12 @@ if [ -n "$FULL_RUN" ]; then
     
     echo ""
     echo "[3/4] Building HTML documentation with Sphinx..."
-    # Use -j 4 for consistent performance on Cloudflare Pages
-    # (auto can detect too many slow cores)
+    # Use -j 4 for consistent performance
+    # Use -d for doctree caching (enables incremental builds)
+    mkdir -p "$sphinxDir/.doctrees"
     sphinx-build -b html \
         -j 4 \
+        -d "$sphinxDir/.doctrees" \
         --color \
         "$migrateDir" \
         "$sphinxDir"
