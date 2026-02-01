@@ -65,6 +65,7 @@ if [ -n "$FULL_RUN" ]; then
     echo ""
     echo "[4/4] Copying build output..."
     # Cloudflare Pages serves from /output
+    # Build triggered: $(date)
     outputDir="output/html/en/$buildDir"
     mkdir -p "$outputDir"
     cp -r "$sphinxDir"/* "$outputDir/"
