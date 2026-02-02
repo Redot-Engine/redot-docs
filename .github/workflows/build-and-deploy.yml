@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - optimize-build-simplify
+      - feature/versioning-setup
   pull_request:
     branches:
       - master
@@ -49,12 +50,67 @@ jobs:
             doctrees-${{ github.ref }}-
             doctrees-
 
-      - name: Build documentation
+      - name: Build documentation for version 4.3 (stable branch)
         run: |
+          git fetch origin stable:stable
+          git checkout stable
           export FULL_RUN=1
+          export BUILD_DIR="4.3"
           bash build.sh
         env:
           FULL_RUN: 1
+          BUILD_DIR: "4.3"
+
+      - name: Build documentation for version 4.4
+        run: |
+          git fetch origin 4.4:4.4
+          git checkout 4.4
+          export FULL_RUN=1
+          export BUILD_DIR="4.4"
+          bash build.sh
+        env:
+          FULL_RUN: 1
+          BUILD_DIR: "4.4"
+
+      - name: Build documentation for dev (current branch)
+        run: |
+          git checkout ${{ github.ref_name }}
+          export FULL_RUN=1
+          export BUILD_DIR="dev"
+          bash build.sh
+        env:
+          FULL_RUN: 1
+          BUILD_DIR: "dev"
+
+      - name: Create redirects
+        run: |
+          mkdir -p output/html/en
+          # Create stable redirect to 4.4 (latest stable)
+          cat > output/html/en/stable.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta http-equiv="refresh" content="0; url=4.4/">
+              <title>Redirecting to stable version</title>
+          </head>
+          <body>
+              <p>Redirecting to <a href="4.4/">stable version</a>...</p>
+          </body>
+          </html>
+          EOF
+          # Create latest redirect to dev
+          cat > output/html/en/latest.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta http-equiv="refresh" content="0; url=dev/">
+              <title>Redirecting to latest version</title>
+          </head>
+          <body>
+              <p>Redirecting to <a href="dev/">development version</a>...</p>
+          </body>
+          </html>
+          EOF
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -66,7 +122,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify')
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify' || github.ref == 'refs/heads/feature/versioning-setup')
     
     steps:
       - name: Download build artifact
@@ -75,17 +131,14 @@ jobs:
           name: redot-docs-build
           path: output/
 
-      - name: Determine deploy directory
+      - name: List built versions
         run: |
-          if [ "${{ github.ref_name }}" = "master" ]; then
-            echo "DEPLOY_DIR=output/html/en/latest" >> $GITHUB_ENV
-          else
-            echo "DEPLOY_DIR=output/html/en/${{ github.ref_name }}" >> $GITHUB_ENV
-          fi
+          echo "Built versions:"
+          ls -la output/html/en/
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ${{ env.DEPLOY_DIR }} --project-name=redot-docs --branch=${{ github.ref_name }}
+          command: pages deploy output/html/en --project-name=redot-docs --branch=${{ github.ref_name }}

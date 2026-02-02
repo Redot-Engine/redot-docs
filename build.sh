@@ -11,6 +11,7 @@
 #   FULL_RUN          - Set to enable full documentation build
 #   CF_PAGES          - Automatically set by Cloudflare Pages
 #   CF_PAGES_BRANCH   - Branch being built (set by Cloudflare Pages)
+#   BUILD_DIR         - Override the output directory name (e.g., "4.3", "4.4", "dev")
 
 set -e  # Exit on error
 
@@ -28,9 +29,19 @@ fi
 
 # Map branches to output directories
 # master -> latest, everything else -> branch name
-buildDir="$gitBranch"
-if [ "$gitBranch" = "master" ]; then
-    buildDir="latest"
+# Allow BUILD_DIR override for versioned builds
+if [ -n "$BUILD_DIR" ]; then
+    buildDir="$BUILD_DIR"
+elif [ -n "$CF_PAGES" ]; then
+    buildDir="${CF_PAGES_BRANCH:-master}"
+    if [ "$buildDir" = "master" ]; then
+        buildDir="latest"
+    fi
+else
+    buildDir="$gitBranch"
+    if [ "$buildDir" = "master" ]; then
+        buildDir="latest"
+    fi
 fi
 
 echo "========================================"
