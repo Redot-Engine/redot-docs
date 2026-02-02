@@ -54,8 +54,7 @@ jobs:
 
       - name: Build documentation for version 4.3 (stable branch)
         run: |
-          git fetch origin stable:stable
-          git checkout stable
+          git checkout origin/stable
           export FULL_RUN=1
           export BUILD_DIR="4.3"
           bash build.sh
@@ -65,8 +64,7 @@ jobs:
 
       - name: Build documentation for version 4.4
         run: |
-          git fetch origin 4.4:4.4
-          git checkout 4.4
+          git checkout origin/4.4
           export FULL_RUN=1
           export BUILD_DIR="4.4"
           bash build.sh
