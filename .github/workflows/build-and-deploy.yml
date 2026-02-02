@@ -75,9 +75,17 @@ jobs:
           name: redot-docs-build
           path: output/
 
+      - name: Determine deploy directory
+        run: |
+          if [ "${{ github.ref_name }}" = "master" ]; then
+            echo "DEPLOY_DIR=output/html/en/latest" >> $GITHUB_ENV
+          else
+            echo "DEPLOY_DIR=output/html/en/${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy output --project-name=redot-docs --branch=${{ github.ref_name }}
+          command: pages deploy ${{ env.DEPLOY_DIR }} --project-name=redot-docs --branch=${{ github.ref_name }}
