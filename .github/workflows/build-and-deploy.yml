@@ -54,7 +54,9 @@ jobs:
 
       - name: Build documentation for version 4.3 (stable branch)
         run: |
-          git checkout origin/stable
+          git remote add upstream https://github.com/Redot-Engine/redot-docs.git || true
+          git fetch upstream stable
+          git checkout upstream/stable
           export FULL_RUN=1
           export BUILD_DIR="4.3"
           bash build.sh
@@ -64,7 +66,9 @@ jobs:
 
       - name: Build documentation for version 4.4
         run: |
-          git checkout origin/4.4
+          git remote add upstream https://github.com/Redot-Engine/redot-docs.git || true
+          git fetch upstream 4.4
+          git checkout upstream/4.4
           export FULL_RUN=1
           export BUILD_DIR="4.4"
           bash build.sh
