@@ -1,0 +1,91 @@
+name: Build and Deploy Documentation
+
+on:
+  push:
+    branches:
+      - master
+      - optimize-build-simplify
+  pull_request:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Cache migrated files
+        uses: actions/cache@v4
+        id: cache-migrated
+        with:
+          path: _migrated
+          key: migrated-${{ hashFiles('**/*.rst', 'conf.py', 'migrate.py') }}
+
+      - name: Cache Sphinx doctrees
+        uses: actions/cache@v4
+        with:
+          path: _sphinx/.doctrees
+          key: doctrees-${{ github.ref }}-${{ github.run_id }}
+          restore-keys: |
+            doctrees-${{ github.ref }}-
+            doctrees-
+
+      - name: Build documentation
+        run: |
+          export FULL_RUN=1
+          bash build.sh
+        env:
+          FULL_RUN: 1
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: redot-docs-build
+          path: output/
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify')
+    
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: redot-docs-build
+          path: output/
+
+      - name: Determine deploy directory
+        run: |
+          if [ "${{ github.ref_name }}" = "master" ]; then
+            echo "DEPLOY_DIR=output/html/en/latest" >> $GITHUB_ENV
+          else
+            echo "DEPLOY_DIR=output/html/en/${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{ env.DEPLOY_DIR }} --project-name=redot-docs --branch=${{ github.ref_name }}

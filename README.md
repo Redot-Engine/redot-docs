@@ -16,19 +16,74 @@ For mobile devices or e-readers, you can also download an ePub copy (updated eve
 [latest](https://download.redotengine.org/docs/redot-docs-epub-master.zip). Extract
 the ZIP archive then open the `RedotEngine.epub` file in an e-book reader application.
 
-## Migrating
+## Building Documentation
 
-We are transitioning from Godot to Redot. In this period, a temporary solution is available.
+### Quick Build (Local Development)
 
-```
-python migrate.py . _migrated True
+For local development, use the optimized build script:
+
+```bash
+# Full build (includes migration + Sphinx)
+FULL_RUN=1 ./build.sh
+
+# The output will be in output/html/en/latest/ (for master branch)
+# or output/html/en/<branch-name>/ (for other branches)
 ```
 
-After the docs are converted, you can build with
+**Build optimizations:**
+- `--exclude-classes`: Skips class reference migration (faster, these are auto-generated)
+- `-j auto`: Uses all available CPU cores for parallel builds
+- Branch mapping: `master` → `latest/`, other branches → `<branch-name>/`
 
+### Manual Build
+
+If you prefer manual control:
+
+```bash
+# 1. Migrate (optional - skip for faster builds, use --exclude-classes)
+python migrate.py --exclude-classes . _migrated
+
+# 2. Build with Sphinx (auto-detect CPU cores)
+sphinx-build -b html -j auto ./_migrated/ _build/html
 ```
-sphinx-build -b html ./_migrated/ _build/html
+
+### Architecture
+
+**GitHub Actions + Cloudflare Pages (Current):**
+- Source: This repository (`Redot-Engine/redot-docs`)
+- Build: GitHub Actions runs `build.sh` (2-hour timeout vs Cloudflare's 20 minutes)
+- Deploy: Built output pushed to Cloudflare Pages
+- Output: `/output/html/en/<branch>/`
+- Serve: Cloudflare Pages serves the built documentation
+
+**Previous architectures (deprecated):**
+1. ~Two repos: `redot-docs` (source) → builds → pushes to `redot-docs-live` (deployment)~
+2. ~Direct Cloudflare Pages build (hit 20-minute timeout limit)~
+
+### GitHub Actions Workflow
+
+The repository includes an automated workflow (`.github/workflows/build-and-deploy.yml`) that:
+
+1. **Builds on every push** to `master` or `optimize-build-simplify`
+2. **Runs on GitHub Actions** with a 2-hour timeout (vs Cloudflare's 20-minute limit)
+3. **Deploys automatically** to Cloudflare Pages using the official Cloudflare action
+
+**Setup required:**
+
+Add these secrets to your GitHub repository (Settings → Secrets and variables → Actions):
+- `CLOUDFLARE_ACCOUNT_ID` - Your Cloudflare account ID
+- `CLOUDFLARE_API_TOKEN` - API token with Cloudflare Pages:Edit permission
+
+**How it works:**
 ```
+Push to branch → GitHub Actions builds (30 min) → Deploys to Cloudflare Pages
+```
+
+**Benefits:**
+- No 20-minute timeout limit
+- Python dependencies cached between builds
+- Automatic deployment on every push
+- Works for both production (master) and preview branches
 
 ## Theming
 
@@ -58,24 +113,31 @@ Here are some quick links to the areas you might be interested in:
 
 ### How to build with anaconda/miniconda
 
-```
-# 1) create env with Python 3.11
+**Recommended: Use the build script**
+```bash
+# Setup environment (one-time)
 conda create -n redot-docs python=3.11 -y
-
-# 2) activate it
 conda activate redot-docs
+pip install -r requirements.txt
 
-# 3) ensure pip is available (usually is)
-conda install pip -y
+# Build documentation
+FULL_RUN=1 ./build.sh
 
-# 4) from the repo root, install requirements via pip
-python -m pip install -r requirements.txt
+# Output: output/html/en/latest/
+```
 
-# 5) Migration
-python migrate.py . _migrated True
+**Manual build (if you need fine control):**
+```bash
+# 1) Setup environment
+conda create -n redot-docs python=3.11 -y
+conda activate redot-docs
+pip install -r requirements.txt
 
-# 6) build the docs
-sphinx-build -b html ./_migrated/ _build/html
+# 2) Migrate (use --exclude-classes for faster builds)
+python migrate.py --exclude-classes . _migrated
+
+# 3) Build with Sphinx (auto-detect CPU cores)
+sphinx-build -b html -j auto ./_migrated/ _build/html
 ```
 
 ## License

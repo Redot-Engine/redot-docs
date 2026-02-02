@@ -1,117 +1,107 @@
 #!/bin/bash
+#
+# Redot Documentation Build Script
+# Builds documentation and outputs to /output for Cloudflare Pages
+#
+# Usage:
+#   FULL_RUN=1 ./build.sh              # Full build
+#   ./build.sh                         # Skip build (for testing)
+#
+# Environment Variables:
+#   FULL_RUN          - Set to enable full documentation build
+#   CF_PAGES          - Automatically set by Cloudflare Pages
+#   CF_PAGES_BRANCH   - Branch being built (set by Cloudflare Pages)
 
-# Init env vars
-date=`date`
-workDir=`pwd`
-sshCommand="ssh -v" # Add -v, -vv, or -vvv for verbose debugging
+set -e  # Exit on error
 
-gitBranch=`git rev-parse --abbrev-ref HEAD`
-if [ -n "$CF_PAGES" ]
-then
-    echo "We are on Cloudflare Pages. Retrieve branch from env."
-    gitBranch=$CF_PAGES_BRANCH
-fi
-
-liveDir=$gitBranch
-if [ $gitBranch == "master" ]
-then
-    liveDir="latest"
-fi
-gitCommitMessage="branch $gitBranch on $date, will deploy to $liveDir"
-redotDocsLiveBranch=${1:-develop}
-
+# Configuration
 inputDir="."
 migrateDir="_migrated"
 sphinxDir="_sphinx"
-repoDir="_repo"
 
-liveRoot="redot-docs-live"
-liveRepo="git@github.com:Redot-Engine/$liveRoot.git"
-buildDir="html/en/$liveDir" # TODO: implement i18n support
-
-# Report vars and intention
-echo "Building $gitCommitMessage"
-echo "Live branch: $redotDocsLiveBranch"
-echo "Live root: $liveRoot, live repo: $liveRepo, build dir: $buildDir, report dir: $reportDir"
-echo "Temp dirs: $migrateDir, $sphinxDir, $repoDir"
-
-echo "Delete temp dirs"
-rm -rf $migrateDir
-rm -rf $sphinxDir
-rm -rf $repoDir
-
-mkdir -p $migrateDir
-mkdir -p $sphinxDir
-if [ -n "$FULL_RUN" ]
-then
-    echo "Migrate Godot to Redot"
-    python migrate.py $inputDir $migrateDir
-
-    echo "Translate to html"
-    sphinx-build -b html -j 4 $migrateDir $sphinxDir
+# Determine output directory based on branch
+gitBranch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "master")
+if [ -n "$CF_PAGES" ]; then
+    echo "Building on Cloudflare Pages"
+    gitBranch="${CF_PAGES_BRANCH:-master}"
 fi
 
-echo "DUMMY FILE FOR TESTING: $date" > $sphinxDir/test.html
+# Map branches to output directories
+# master -> latest, everything else -> branch name
+buildDir="$gitBranch"
+if [ "$gitBranch" = "master" ]; then
+    buildDir="latest"
+fi
 
-echo "Cloning $liveRepo $repoDir"
-git clone $liveRepo $repoDir
+echo "========================================"
+echo "Redot Documentation Build"
+echo "========================================"
+echo "Branch: $gitBranch"
+echo "Output: html/en/$buildDir"
+echo "Date: $(date)"
+echo "========================================"
 
-cd $repoDir
-echo "Checking out $redotDocsLiveBranch"
-git checkout $redotDocsLiveBranch
+# Clean and prepare directories
+# Skip migration if _migrated exists (for faster rebuilds)
+echo ""
+echo "[1/4] Preparing build directories..."
+rm -rf "$sphinxDir"
+mkdir -p "$sphinxDir"
 
-git config core.sshCommand "$sshCommand"
-echo "Using ssh command: $sshCommand"
-
-if [ -n "$CF_PAGES" ]
-then
-    echo "We are on Cloudflare Pages. Setting custom ssh key and method"
-    # HACK: Remove annoying https redirect. I presume this was used by Cloudflare
-    echo "Remove Cloudflare redirect."
-    insteadof=`git config --list | grep insteadof`
-    remove=`echo $insteadof | cut -d "=" -f 1`
-    git config --global --unset $remove
-
-    mkdir ~/.ssh
-    echo "$BUILD_SSH_KEY" > ~/.ssh/id_ed25519
-    echo "$BUILD_SSH_KEY_PUB" > ~/.ssh/id_ed25519.pub
-    echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
-
-    chmod 0600 ~/.ssh/id_ed25519
-    chmod 0600 ~/.ssh/id_ed25519.pub
-    chmod 0644 ~/.ssh/known_hosts
-    chmod 0755 ~/.ssh
+# Full build (only if FULL_RUN is set)
+if [ -n "$FULL_RUN" ]; then
+    # Check if migration is needed
+    if [ -d "$migrateDir" ] && [ -f "$migrateDir/index.rst" ]; then
+        echo ""
+        echo "[2/4] Using existing migrated files (skipping migration)..."
+    else
+        echo ""
+        echo "[2/4] Migrating Godot to Redot (with --exclude-classes)..."
+        rm -rf "$migrateDir"
+        mkdir -p "$migrateDir"
+        python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+    fi
     
-    # Init git
-    git remote set-url origin git@github.com:Redot-Engine/redot-docs-live.git
-
-    echo "Setting credentials"
-    git config user.email "noreply_pages_bot@cloudflare.com"
-    git config user.name "Redot Docs Build Worker"
+    echo ""
+    echo "[3/4] Building HTML documentation with Sphinx..."
+    # Use -j 4 for consistent performance
+    # Use -d for doctree caching (enables incremental builds)
+    mkdir -p "$sphinxDir/.doctrees"
+    sphinx-build -b html \
+        -j 4 \
+        -d "$sphinxDir/.doctrees" \
+        --color \
+        "$migrateDir" \
+        "$sphinxDir"
+    
+    echo ""
+    echo "[4/4] Copying build output..."
+    # Cloudflare Pages serves from /output
+    # Build triggered: $(date)
+    outputDir="output/html/en/$buildDir"
+    mkdir -p "$outputDir"
+    cp -r "$sphinxDir"/* "$outputDir/"
+    
+    echo ""
+    echo "========================================"
+    echo "Build Complete!"
+    echo "Output: $outputDir"
+    echo "========================================"
+else
+    echo ""
+    echo "[2/4] Skipping migration and build (FULL_RUN not set)"
+    echo ""
+    echo "[3/4] Creating placeholder output..."
+    mkdir -p "output/html/en/$buildDir"
+    echo "Build skipped. Set FULL_RUN=1 to build documentation." > "output/html/en/$buildDir/index.html"
+    echo ""
+    echo "[4/4] Done (placeholder only)"
+    echo ""
+    echo "========================================"
+    echo "Build Skipped (FULL_RUN not set)"
+    echo "========================================"
 fi
-echo "### SSH CONFIG VALUES ###"
-ls -la ~/.ssh
-cat ~/.ssh/known_hosts
-echo "### SSH TEST ###"
-ssh -T -vv git@ssh.github.com
-echo "### GIT CONFIG VALUES ###"
-git config core.pager cat
-git config --list
 
-echo "Copying generated content to repository"
-echo "mkdir -p $buildDir"
-mkdir -p $buildDir
-echo "cp -r ../$sphinxDir/* $buildDir"
-cp -r ../$sphinxDir/* $buildDir
-
-echo "Commit and push to $redotDocsLiveBranch, with message $gitCommitMessage"
-git add .
-git commit --message "$gitCommitMessage"
-git push --force
-
-# Create some output so Cloudflare is happy
-cd ..
-mkdir -p ./output
-echo "Build finished. Commit message: $gitCommitMessage" > ./output/index.html
-
-echo "Done. Made by @Craptain"
+echo ""
+echo "Build script finished successfully"
+echo "Build completed at $(date)"
