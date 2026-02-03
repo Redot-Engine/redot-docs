@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - optimize-build-simplify
+      - 26.1
       - feature/versioning-setup
   pull_request:
     branches:
@@ -16,18 +16,9 @@ concurrency:
 
 jobs:
   build:
-    name: Build docs (${{ matrix.version }})
+    name: Build docs (26.1)
     runs-on: ubuntu-latest
     timeout-minutes: 120
-    strategy:
-      matrix:
-        include:
-          - version: "4.3"
-            branch: "upstream/stable"
-          - version: "4.4"
-            branch: "upstream/4.4"
-          - version: "dev"
-            branch: "current"
     
     steps:
       - name: Checkout repository
@@ -51,102 +42,54 @@ jobs:
         id: cache-migrated
         with:
           path: _migrated
-          key: migrated-${{ matrix.version }}-${{ hashFiles('**/*.rst', 'conf.py', 'migrate.py') }}
+          key: migrated-26.1-${{ hashFiles('**/*.rst', 'conf.py', 'migrate.py') }}
 
       - name: Cache Sphinx doctrees
         uses: actions/cache@v4
         with:
           path: _sphinx/.doctrees
-          key: doctrees-${{ matrix.version }}-${{ github.run_id }}
+          key: doctrees-26.1-${{ github.run_id }}
           restore-keys: |
-            doctrees-${{ matrix.version }}-
+            doctrees-26.1-
             doctrees-
 
-      - name: Build documentation for ${{ matrix.version }}
+      - name: Build documentation for 26.1
         run: |
-          set -x  # Enable debug mode
-          
-          # Save our updated build.sh and versions.html
-          cp build.sh /tmp/build-with-versions.sh
-          cp _templates/versions.html /tmp/versions-template.html
-          chmod +x /tmp/build-with-versions.sh
-          
-          if [ "${{ matrix.branch }}" != "current" ]; then
-            echo "Setting up upstream remote..."
-            git remote add upstream https://github.com/Redot-Engine/redot-docs.git 2>/dev/null || true
-            echo "Fetching upstream..."
-            git fetch upstream
-            echo "Checking out ${{ matrix.branch }}..."
-            git checkout ${{ matrix.branch }}
-            echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
-            echo "Current commit: $(git rev-parse HEAD)"
-            # Restore build.sh and versions.html with proper version selector
-            cp /tmp/build-with-versions.sh build.sh
-            cp /tmp/versions-template.html _templates/versions.html
-            # Do NOT copy conf.py - upstream branches have their own version settings
-          fi
-          
-          echo "Building with BUILD_DIR=${{ matrix.version }}"
+          # Build from current branch (26.1)
           export FULL_RUN=1
-          export BUILD_DIR="${{ matrix.version }}"
-          bash -x build.sh
+          export BUILD_DIR="."
+          bash build.sh
         env:
           FULL_RUN: 1
-          BUILD_DIR: ${{ matrix.version }}
+          BUILD_DIR: "."
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: docs-${{ matrix.version }}
-          path: output/html/en/${{ matrix.version }}
+          name: redot-docs-26.1
+          path: output/html/en/.
           retention-days: 1
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify' || github.ref == 'refs/heads/feature/versioning-setup')
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/26.1' || github.ref == 'refs/heads/feature/versioning-setup')
     
     steps:
-      - name: Download all build artifacts
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          path: output/html/en/
-          pattern: docs-*
-          merge-multiple: false
+          name: redot-docs-26.1
+          path: .
 
-      - name: Organize artifacts
+      - name: List built files
         run: |
-          # Move artifacts from docs-X directories to version directories
-          for dir in output/html/en/docs-*; do
-            version=$(basename "$dir" | sed 's/docs-//')
-            mv "$dir" "output/html/en/$version"
-          done
-
-      - name: Create redirects
-        run: |
-          mkdir -p output/html/en
-          # Create root index.html that redirects to 4.4 (default version)
-          cat > output/html/en/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-              <meta http-equiv="refresh" content="0; url=/4.4/">
-              <title>Redot Documentation</title>
-          </head>
-          <body>
-              <p>Redirecting to <a href="/4.4/">Redot 4.4 documentation</a>...</p>
-          </body>
-          </html>
-          EOF
-
-      - name: List built versions
-        run: |
-          echo "Built versions:"
-          ls -la output/html/en/
+          echo "Built files:"
+          ls -la
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy output/html/en --project-name=redot-docs --branch=${{ github.ref_name }}
+          command: pages deploy . --project-name=redot-docs --branch=main
