@@ -124,7 +124,7 @@ jobs:
       - name: Create redirects
         run: |
           mkdir -p output/html/en
-          # Create root index.html that redirects to stable
+          # Create root index.html that redirects to 4.4 (default version)
           cat > output/html/en/index.html << 'EOF'
           <!DOCTYPE html>
           <html>
@@ -133,33 +133,7 @@ jobs:
               <title>Redot Documentation</title>
           </head>
           <body>
-              <p>Redirecting to <a href="/4.4/">stable documentation</a>...</p>
-          </body>
-          </html>
-          EOF
-          # Create stable redirect to 4.4 (latest stable)
-          cat > output/html/en/stable.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-              <meta http-equiv="refresh" content="0; url=/4.4/">
-              <title>Redirecting to stable version</title>
-          </head>
-          <body>
-              <p>Redirecting to <a href="/4.4/">stable version</a>...</p>
-          </body>
-          </html>
-          EOF
-          # Create latest redirect to dev
-          cat > output/html/en/latest.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-              <meta http-equiv="refresh" content="0; url=/dev/">
-              <title>Redirecting to latest version</title>
-          </head>
-          <body>
-              <p>Redirecting to <a href="/dev/">development version</a>...</p>
+              <p>Redirecting to <a href="/4.4/">Redot 4.4 documentation</a>...</p>
           </body>
           </html>
           EOF

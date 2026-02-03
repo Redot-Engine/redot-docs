@@ -200,10 +200,7 @@ html_context = {
     "godot_versions": [
         ("4.3", "/4.3/"),
         ("4.4", "/4.4/"),
-        ("26.1", "/26.1/"),
         ("dev", "/dev/"),
-        ("stable", "/stable/"),
-        ("latest", "/latest/"),
     ],
 }
 
