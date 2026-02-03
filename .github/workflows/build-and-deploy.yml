@@ -111,11 +111,11 @@ jobs:
           <!DOCTYPE html>
           <html>
           <head>
-              <meta http-equiv="refresh" content="0; url=4.4/">
+              <meta http-equiv="refresh" content="0; url=/4.4/">
               <title>Redot Documentation</title>
           </head>
           <body>
-              <p>Redirecting to <a href="4.4/">stable documentation</a>...</p>
+              <p>Redirecting to <a href="/4.4/">stable documentation</a>...</p>
           </body>
           </html>
           EOF
@@ -124,11 +124,11 @@ jobs:
           <!DOCTYPE html>
           <html>
           <head>
-              <meta http-equiv="refresh" content="0; url=4.4/">
+              <meta http-equiv="refresh" content="0; url=/4.4/">
               <title>Redirecting to stable version</title>
           </head>
           <body>
-              <p>Redirecting to <a href="4.4/">stable version</a>...</p>
+              <p>Redirecting to <a href="/4.4/">stable version</a>...</p>
           </body>
           </html>
           EOF
@@ -137,11 +137,11 @@ jobs:
           <!DOCTYPE html>
           <html>
           <head>
-              <meta http-equiv="refresh" content="0; url=dev/">
+              <meta http-equiv="refresh" content="0; url=/dev/">
               <title>Redirecting to latest version</title>
           </head>
           <body>
-              <p>Redirecting to <a href="dev/">development version</a>...</p>
+              <p>Redirecting to <a href="/dev/">development version</a>...</p>
           </body>
           </html>
           EOF
