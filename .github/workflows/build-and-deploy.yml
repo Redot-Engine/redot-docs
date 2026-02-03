@@ -63,20 +63,31 @@ jobs:
 
       - name: Build documentation for ${{ matrix.version }}
         run: |
-          # Save our updated build.sh that supports BUILD_DIR
+          set -x  # Enable debug mode
+          
+          # Save our updated build.sh and conf.py that support BUILD_DIR
           cp build.sh /tmp/build-with-versions.sh
+          cp conf.py /tmp/conf-with-versions.py
           chmod +x /tmp/build-with-versions.sh
           
           if [ "${{ matrix.branch }}" != "current" ]; then
+            echo "Setting up upstream remote..."
             git remote add upstream https://github.com/Redot-Engine/redot-docs.git 2>/dev/null || true
+            echo "Fetching upstream..."
             git fetch upstream
+            echo "Checking out ${{ matrix.branch }}..."
             git checkout ${{ matrix.branch }}
-            # Restore our updated build.sh (upstream branches don't have BUILD_DIR support)
+            echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
+            echo "Current commit: $(git rev-parse HEAD)"
+            # Restore our updated build.sh and conf.py (upstream branches don't have BUILD_DIR support)
             cp /tmp/build-with-versions.sh build.sh
+            cp /tmp/conf-with-versions.py conf.py
           fi
+          
+          echo "Building with BUILD_DIR=${{ matrix.version }}"
           export FULL_RUN=1
           export BUILD_DIR="${{ matrix.version }}"
-          bash build.sh
+          bash -x build.sh
         env:
           FULL_RUN: 1
           BUILD_DIR: ${{ matrix.version }}
