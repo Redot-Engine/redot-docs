@@ -26,8 +26,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout 26.1 branch
+      - name: Save build script and checkout 26.1
         run: |
+          # Save the updated build.sh from feature branch
+          cp build.sh /tmp/build-with-versions.sh
+          chmod +x /tmp/build-with-versions.sh
+          # Now checkout 26.1 branch
           git fetch origin 26.1
           git checkout origin/26.1
 
@@ -58,17 +62,12 @@ jobs:
             doctrees-26.1-
             doctrees-
 
-      - name: Checkout 26.1 branch
-        run: |
-          git fetch origin 26.1
-          git checkout origin/26.1
-
       - name: Build documentation for 26.1
         run: |
-          # Build from 26.1 branch
+          # Use the saved build.sh which supports BUILD_DIR
           export FULL_RUN=1
           export BUILD_DIR="26.1"
-          bash build.sh
+          /tmp/build-with-versions.sh
         env:
           FULL_RUN: 1
           BUILD_DIR: "26.1"
