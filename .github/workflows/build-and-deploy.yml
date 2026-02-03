@@ -18,12 +18,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    strategy:
+      matrix:
+        include:
+          - version: "4.3"
+            branch: "upstream/stable"
+          - version: "4.4"
+            branch: "upstream/4.4"
+          - version: "dev"
+            branch: "current"
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all branches for multi-version builds
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,50 +50,58 @@ jobs:
         id: cache-migrated
         with:
           path: _migrated
-          key: migrated-${{ hashFiles('**/*.rst', 'conf.py', 'migrate.py') }}
+          key: migrated-${{ matrix.version }}-${{ hashFiles('**/*.rst', 'conf.py', 'migrate.py') }}
 
       - name: Cache Sphinx doctrees
         uses: actions/cache@v4
         with:
           path: _sphinx/.doctrees
-          key: doctrees-${{ github.ref }}-${{ github.run_id }}
+          key: doctrees-${{ matrix.version }}-${{ github.run_id }}
           restore-keys: |
-            doctrees-${{ github.ref }}-
+            doctrees-${{ matrix.version }}-
             doctrees-
 
-      - name: Build documentation for version 4.3 (stable branch)
+      - name: Build documentation for ${{ matrix.version }}
         run: |
-          git remote add upstream https://github.com/Redot-Engine/redot-docs.git || true
-          git fetch upstream stable
-          git checkout upstream/stable
+          if [ "${{ matrix.branch }}" != "current" ]; then
+            git remote add upstream https://github.com/Redot-Engine/redot-docs.git 2>/dev/null || true
+            git fetch upstream
+            git checkout ${{ matrix.branch }}
+          fi
           export FULL_RUN=1
-          export BUILD_DIR="4.3"
+          export BUILD_DIR="${{ matrix.version }}"
           bash build.sh
         env:
           FULL_RUN: 1
-          BUILD_DIR: "4.3"
+          BUILD_DIR: ${{ matrix.version }}
 
-      - name: Build documentation for version 4.4
-        run: |
-          git remote add upstream https://github.com/Redot-Engine/redot-docs.git || true
-          git fetch upstream 4.4
-          git checkout upstream/4.4
-          export FULL_RUN=1
-          export BUILD_DIR="4.4"
-          bash build.sh
-        env:
-          FULL_RUN: 1
-          BUILD_DIR: "4.4"
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-${{ matrix.version }}
+          path: output/html/en/${{ matrix.version }}
+          retention-days: 1
 
-      - name: Build documentation for dev (current branch)
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify' || github.ref == 'refs/heads/feature/versioning-setup')
+    
+    steps:
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: output/html/en/
+          pattern: docs-*
+          merge-multiple: false
+
+      - name: Organize artifacts
         run: |
-          git checkout ${{ github.ref_name }}
-          export FULL_RUN=1
-          export BUILD_DIR="dev"
-          bash build.sh
-        env:
-          FULL_RUN: 1
-          BUILD_DIR: "dev"
+          # Move artifacts from docs-X directories to version directories
+          for dir in output/html/en/docs-*; do
+            version=$(basename "$dir" | sed 's/docs-//')
+            mv "$dir" "output/html/en/$version"
+          done
 
       - name: Create redirects
         run: |
@@ -128,25 +145,6 @@ jobs:
           </body>
           </html>
           EOF
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: redot-docs-build
-          path: output/
-          retention-days: 1
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/optimize-build-simplify' || github.ref == 'refs/heads/feature/versioning-setup')
-    
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: redot-docs-build
-          path: output/
 
       - name: List built versions
         run: |
