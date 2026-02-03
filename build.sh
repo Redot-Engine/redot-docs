@@ -70,7 +70,12 @@ if [ -n "$FULL_RUN" ]; then
         echo "[2/4] Migrating Godot to Redot (with --exclude-classes)..."
         rm -rf "$migrateDir"
         mkdir -p "$migrateDir"
-        python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+        # Check if migrate.py supports --exclude-classes flag
+        if python migrate.py --help | grep -q "exclude-classes"; then
+            python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+        else
+            python migrate.py "$inputDir" "$migrateDir"
+        fi
     fi
     
     echo ""
