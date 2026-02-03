@@ -26,14 +26,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Save build script and checkout 26.1
+      - name: Save build script and checkout master with 26.1 config
         run: |
           # Save the updated build.sh from feature branch
           cp build.sh /tmp/build-with-versions.sh
           chmod +x /tmp/build-with-versions.sh
-          # Now checkout 26.1 branch
+          # Fetch 26.1 branch to get its config
           git fetch origin 26.1
-          git checkout origin/26.1
+          # Save 26.1 conf.py
+          git show origin/26.1:conf.py > /tmp/conf-26.1.py
+          # Now checkout master (has all latest docs including MCP)
+          git fetch upstream master
+          git checkout upstream/master
+          # Copy 26.1 conf.py to override master version
+          cp /tmp/conf-26.1.py conf.py
 
       - name: Set up Python
         uses: actions/setup-python@v5
