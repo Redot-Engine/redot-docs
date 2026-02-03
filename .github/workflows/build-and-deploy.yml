@@ -89,6 +89,19 @@ jobs:
       - name: Create redirects
         run: |
           mkdir -p output/html/en
+          # Create root index.html that redirects to stable
+          cat > output/html/en/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta http-equiv="refresh" content="0; url=4.4/">
+              <title>Redot Documentation</title>
+          </head>
+          <body>
+              <p>Redirecting to <a href="4.4/">stable documentation</a>...</p>
+          </body>
+          </html>
+          EOF
           # Create stable redirect to 4.4 (latest stable)
           cat > output/html/en/stable.html << 'EOF'
           <!DOCTYPE html>
