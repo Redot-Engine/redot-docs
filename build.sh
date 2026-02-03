@@ -70,10 +70,13 @@ if [ -n "$FULL_RUN" ]; then
         echo "[2/4] Migrating Godot to Redot (with --exclude-classes)..."
         rm -rf "$migrateDir"
         mkdir -p "$migrateDir"
-        # Check if migrate.py supports --exclude-classes flag
-        if python migrate.py --help | grep -q "exclude-classes"; then
+        # Check if we're building from upstream branch (doesn't support --exclude-classes)
+        # by checking if BUILD_DIR is set (our feature branch sets it, upstream builds won't)
+        if [ -n "$BUILD_DIR" ] && [ "$gitBranch" != "HEAD" ]; then
+            # Our branch with new migrate.py - use --exclude-classes
             python migrate.py --exclude-classes "$inputDir" "$migrateDir"
         else
+            # Upstream branch - old migrate.py, don't use --exclude-classes
             python migrate.py "$inputDir" "$migrateDir"
         fi
     fi
