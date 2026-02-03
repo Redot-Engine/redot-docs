@@ -1,7 +1,7 @@
 {# Add rst-badge after rst-versions for small badge style. #}
-{% set display_version = version -%}
+{% set display_version = godot_version -%}
 {% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}
-{% set listed_versions = ({"stable":"#", "latest":"#"}).items() -%}
+{% set listed_versions = godot_versions -%}
 
 {% if READTHEDOCS and current_version %}
   {% set display_version = current_version -%}
