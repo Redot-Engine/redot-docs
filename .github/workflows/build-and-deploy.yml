@@ -26,6 +26,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Checkout 26.1 branch
+        run: |
+          git fetch origin 26.1
+          git checkout origin/26.1
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -53,9 +58,14 @@ jobs:
             doctrees-26.1-
             doctrees-
 
+      - name: Checkout 26.1 branch
+        run: |
+          git fetch origin 26.1
+          git checkout origin/26.1
+
       - name: Build documentation for 26.1
         run: |
-          # Build from current branch (26.1)
+          # Build from 26.1 branch
           export FULL_RUN=1
           export BUILD_DIR="26.1"
           bash build.sh
