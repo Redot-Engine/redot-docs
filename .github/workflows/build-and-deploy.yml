@@ -80,9 +80,9 @@ jobs:
             git checkout ${{ matrix.branch }}
             echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
             echo "Current commit: $(git rev-parse HEAD)"
-            # Restore our updated build.sh and conf.py (upstream branches don't have BUILD_DIR support)
+            # Restore only build.sh - keep upstream's conf.py for correct version settings
             cp /tmp/build-with-versions.sh build.sh
-            cp /tmp/conf-with-versions.py conf.py
+            # Do NOT copy conf.py - upstream branches have their own version settings
           fi
           
           echo "Building with BUILD_DIR=${{ matrix.version }}"
