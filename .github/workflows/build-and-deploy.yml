@@ -57,17 +57,22 @@ jobs:
         run: |
           # Build from current branch (26.1)
           export FULL_RUN=1
-          export BUILD_DIR="."
+          export BUILD_DIR="26.1"
           bash build.sh
         env:
           FULL_RUN: 1
-          BUILD_DIR: "."
+          BUILD_DIR: "26.1"
+
+      - name: Copy build to root structure
+        run: |
+          mkdir -p ./dist
+          cp -r output/html/en/26.1/* ./dist/
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: redot-docs-26.1
-          path: output/html/en/.
+          path: ./dist
           retention-days: 1
 
   deploy:
