@@ -1,7 +1,12 @@
 {# Add rst-badge after rst-versions for small badge style. #}
 {% set display_version = godot_version -%}
 {% set listed_languages = ({"en":"#", "de":"#", "es":"#", "fr":"#"}).items() -%}
-{% set listed_versions = godot_versions -%}
+{% if godot_versions is defined %}
+  {% set listed_versions = godot_versions -%}
+{% else %}
+  {# Fallback for branches that don't define godot_versions #}
+  {% set listed_versions = [("4.3", "/4.3/"), ("4.4", "/4.4/"), ("dev", "/dev/")] -%}
+{% endif %}
 
 {% if READTHEDOCS and current_version %}
   {% set display_version = current_version -%}
