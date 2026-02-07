@@ -23,6 +23,8 @@ Object that holds the project-independent editor settings. These settings are ge
 
 Property names use slash delimiters to distinguish sections. Setting values can be of any :ref:`Variant<class_Variant>` type. It's recommended to use ``snake_case`` for editor settings to be consistent with the Redot editor itself.
 
+Editor settings are saved automatically when changed.
+
 Accessing the settings can be done using the following methods, such as:
 
 
@@ -2457,7 +2459,7 @@ The modulate color to use for "past" frames displayed in the animation editor's 
 
 .. container:: contribute
 
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. rst-class:: classref-item-separator
 
@@ -2471,7 +2473,7 @@ The modulate color to use for "past" frames displayed in the animation editor's 
 
 .. container:: contribute
 
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. rst-class:: classref-item-separator
 
@@ -2485,7 +2487,7 @@ The modulate color to use for "past" frames displayed in the animation editor's 
 
 .. container:: contribute
 
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. rst-class:: classref-item-separator
 
@@ -2499,7 +2501,7 @@ The modulate color to use for "past" frames displayed in the animation editor's 
 
 .. container:: contribute
 
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. rst-class:: classref-item-separator
 
@@ -3606,7 +3608,7 @@ Tab style of editor docks.
 
 The language to use for the editor interface.
 
-Translations are provided by the community. If you spot a mistake, :doc:`contribute to editor translations on Weblate! <../contributing/documentation/editor_and_docs_localization>`
+Translations are provided by the community. If you spot a mistake, `contribute to editor translations on Weblate! <https://contributing.godotengine.org/en/latest/documentation/translation/index.html>`__
 
 .. rst-class:: classref-item-separator
 
