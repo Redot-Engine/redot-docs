@@ -835,6 +835,9 @@ Other objects
     class_logger
     class_mainloop
     class_marshalls
+    class_mcpbridge
+    class_mcpprotocol
+    class_mcpserver
     class_meshconvexdecompositionsettings
     class_meshdatatool
     class_methodtweener
@@ -966,6 +969,7 @@ Other objects
     class_scriptlanguageextension
     class_semaphore
     class_shaderincludedb
+    class_signalsmith
     class_skinreference
     class_streampeer
     class_streampeerbuffer
