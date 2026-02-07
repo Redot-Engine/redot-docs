@@ -72,8 +72,6 @@ Methods
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`                                        | :ref:`get_godot_compatible_version_info<class_Engine_method_get_godot_compatible_version_info>`\ (\ ) |const|                                               |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                        | :ref:`get_godot_donor_info<class_Engine_method_get_godot_donor_info>`\ (\ ) |const|                                                                         |
-   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`                                        | :ref:`get_license_info<class_Engine_method_get_license_info>`\ (\ ) |const|                                                                                 |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                                | :ref:`get_license_text<class_Engine_method_get_license_text>`\ (\ ) |const|                                                                                 |
@@ -358,11 +356,7 @@ Every :ref:`Dictionary<class_Dictionary>` contains a ``name`` identifier, and a 
 
 Returns a :ref:`Dictionary<class_Dictionary>` of categorized donor names. Each entry is an :ref:`Array<class_Array>` of strings:
 
-{``platinum_sponsors``, ``gold_sponsors``, ``silver_sponsors``, ``bronze_sponsors``, ``mini_sponsors``, ``gold_donors``, ``silver_donors``, ``bronze_donors``}
-
-See also :ref:`get_godot_donor_info()<class_Engine_method_get_godot_donor_info>` for Godot's donor info.
-
-\ **Warning:** All donor names are empty. This currently maintained for compatibility with Redot.
+{``donors``}
 
 .. rst-class:: classref-item-separator
 
@@ -458,22 +452,6 @@ The ``hex`` value is encoded as follows, from left to right: one byte for the ma
 
 
 See also :ref:`get_version_info()<class_Engine_method_get_version_info>` for Redot's version info.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_Engine_method_get_godot_donor_info:
-
-.. rst-class:: classref-method
-
-:ref:`Dictionary<class_Dictionary>` **get_godot_donor_info**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_godot_donor_info>`
-
-Returns a :ref:`Dictionary<class_Dictionary>` of categorized donor names for Godot. Each entry is an :ref:`Array<class_Array>` of strings:
-
-{``platinum_sponsors``, ``gold_sponsors``, ``silver_sponsors``, ``bronze_sponsors``, ``mini_sponsors``, ``gold_donors``, ``silver_donors``, ``bronze_donors``}
-
-See also :ref:`get_donor_info()<class_Engine_method_get_donor_info>` for Redot's donor info.
 
 .. rst-class:: classref-item-separator
 
