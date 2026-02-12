@@ -190,17 +190,15 @@ html_context = {
     "godot_title_prefix": "" if on_rtd else "(DEV) ",
     # Set this to `True` when in the `latest` branch to clearly indicate to the reader
     # that they are not reading the `stable` documentation.
-    "godot_is_latest": True,
-    "godot_version": "dev",
+    "godot_is_latest": False,
+    "godot_version": "26.1",
     # Enables a banner that displays the up-to-date status of each article.
     "godot_show_article_status": True,
     # Display user-contributed notes at the bottom of pages that don't have `:allow_comments: False` at the top.
     "godot_show_article_comments": on_rtd and not is_i18n,
     # Available documentation versions for the version selector
     "godot_versions": [
-        ("4.3", "/4.3/"),
-        ("4.4", "/4.4/"),
-        ("dev", "/dev/"),
+        ("26.1", "/"),
     ],
 }
 
