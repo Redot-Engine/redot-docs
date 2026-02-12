@@ -183,19 +183,23 @@ html_context = {
     "github_version": "master",  # Version
     "conf_py_path": "/",  # Path in the checkout to the docs root
     "godot_docs_title": supported_languages[language],
-    "godot_docs_basepath": "https://docs.godotengine.org/",
+    "godot_docs_basepath": "https://docs.redotengine.org/",
     "godot_docs_suffix": ".html",
     # Distinguish local development website from production website.
     # This prevents people from looking for changes on the production website after making local changes :)
     "godot_title_prefix": "" if on_rtd else "(DEV) ",
     # Set this to `True` when in the `latest` branch to clearly indicate to the reader
     # that they are not reading the `stable` documentation.
-    "godot_is_latest": True,
+    "godot_is_latest": False,
     "godot_version": "26.1",
     # Enables a banner that displays the up-to-date status of each article.
     "godot_show_article_status": True,
     # Display user-contributed notes at the bottom of pages that don't have `:allow_comments: False` at the top.
     "godot_show_article_comments": on_rtd and not is_i18n,
+    # Available documentation versions for the version selector
+    "godot_versions": [
+        ("26.1", "/"),
+    ],
 }
 
 html_logo = "img/docs_logo.svg"
