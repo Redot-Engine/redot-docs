@@ -11,6 +11,7 @@
 #   FULL_RUN          - Set to enable full documentation build
 #   CF_PAGES          - Automatically set by Cloudflare Pages
 #   CF_PAGES_BRANCH   - Branch being built (set by Cloudflare Pages)
+#   BUILD_DIR         - Override the output directory name (e.g., "4.3", "4.4", "dev")
 
 set -e  # Exit on error
 
@@ -28,9 +29,19 @@ fi
 
 # Map branches to output directories
 # master -> latest, everything else -> branch name
-buildDir="$gitBranch"
-if [ "$gitBranch" = "master" ]; then
-    buildDir="latest"
+# Allow BUILD_DIR override for versioned builds
+if [ -n "$BUILD_DIR" ]; then
+    buildDir="$BUILD_DIR"
+elif [ -n "$CF_PAGES" ]; then
+    buildDir="${CF_PAGES_BRANCH:-master}"
+    if [ "$buildDir" = "master" ]; then
+        buildDir="latest"
+    fi
+else
+    buildDir="$gitBranch"
+    if [ "$buildDir" = "master" ]; then
+        buildDir="latest"
+    fi
 fi
 
 echo "========================================"
@@ -59,7 +70,15 @@ if [ -n "$FULL_RUN" ]; then
         echo "[2/4] Migrating Godot to Redot (with --exclude-classes)..."
         rm -rf "$migrateDir"
         mkdir -p "$migrateDir"
-        python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+        # Check if we're building from upstream branch (doesn't support --exclude-classes)
+        # by checking if BUILD_DIR is set (our feature branch sets it, upstream builds won't)
+        if [ -n "$BUILD_DIR" ] && [ "$gitBranch" != "HEAD" ]; then
+            # Our branch with new migrate.py - use --exclude-classes
+            python migrate.py --exclude-classes "$inputDir" "$migrateDir"
+        else
+            # Upstream branch - old migrate.py, don't use --exclude-classes
+            python migrate.py "$inputDir" "$migrateDir"
+        fi
     fi
     
     echo ""

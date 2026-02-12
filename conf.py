@@ -59,13 +59,11 @@ on_rtd = os.environ.get("READTHEDOCS", None) == "True"
 # This makes it easier to test the custom 404 page by loading `/404.html`
 # on a local web server.
 if not on_rtd:
-    notfound_urls_prefix = ''
+    notfound_urls_prefix = ""
 
 # Specify the site name for the Open Graph extension.
 ogp_site_name = "Godot Engine documentation"
-ogp_social_cards = {
-    "enable": False
-}
+ogp_social_cards = {"enable": False}
 
 if not os.getenv("SPHINX_NO_GDSCRIPT"):
     extensions.append("gdscript")
@@ -84,9 +82,7 @@ master_doc = "index"
 
 # General information about the project
 project = "Godot Engine"
-copyright = (
-    "2024-present by the Redot community, modified from an original work by Juan Linietsky, Ariel Manzur and the G-dot community (CC BY 3.0)"
-)
+copyright = "2024-present by the Redot community, modified from an original work by Juan Linietsky, Ariel Manzur and the G-dot community (CC BY 3.0)"
 author = "the Redot community, modified from an original work by Juan Linietsky, Ariel Manzur and the G-dot community"
 
 # Version info for the project, acts as replacement for |version| and |release|
@@ -177,7 +173,7 @@ html_theme_options = {
     "flyout_display": "attached",
 }
 
-html_title = supported_languages[language] % ( "(" + version + ")" )
+html_title = supported_languages[language] % ("(" + version + ")")
 
 # Edit on GitHub options: https://docs.readthedocs.io/en/latest/guides/edit-source-links-sphinx.html
 html_context = {
@@ -187,7 +183,7 @@ html_context = {
     "github_version": "master",  # Version
     "conf_py_path": "/",  # Path in the checkout to the docs root
     "godot_docs_title": supported_languages[language],
-    "godot_docs_basepath": "https://docs.godotengine.org/",
+    "godot_docs_basepath": "https://docs.redotengine.org/",
     "godot_docs_suffix": ".html",
     # Distinguish local development website from production website.
     # This prevents people from looking for changes on the production website after making local changes :)
@@ -195,11 +191,17 @@ html_context = {
     # Set this to `True` when in the `latest` branch to clearly indicate to the reader
     # that they are not reading the `stable` documentation.
     "godot_is_latest": True,
-    "godot_version": "4.4",
+    "godot_version": "dev",
     # Enables a banner that displays the up-to-date status of each article.
     "godot_show_article_status": True,
     # Display user-contributed notes at the bottom of pages that don't have `:allow_comments: False` at the top.
     "godot_show_article_comments": on_rtd and not is_i18n,
+    # Available documentation versions for the version selector
+    "godot_versions": [
+        ("4.3", "/4.3/"),
+        ("4.4", "/4.4/"),
+        ("dev", "/dev/"),
+    ],
 }
 
 html_logo = "img/docs_logo.svg"
@@ -289,6 +291,7 @@ def godot_get_image_filename_for_language(filename, env):
     path = os.path.abspath(os.path.join("../images/", os.path.relpath(path, cwd)))
     return path
 
+
 sphinx.util.i18n.get_image_filename_for_language = godot_get_image_filename_for_language
 
 # Similar story for the localized class reference, it's out of tree and there doesn't
@@ -305,4 +308,4 @@ if is_i18n and os.path.exists("../classes/" + language):
     os.symlink("../classes/" + language, "classes")
 
 # Needed so the table of contents is created for EPUB
-epub_tocscope = 'includehidden'
+epub_tocscope = "includehidden"
