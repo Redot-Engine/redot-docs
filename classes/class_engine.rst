@@ -356,7 +356,7 @@ Every :ref:`Dictionary<class_Dictionary>` contains a ``name`` identifier, and a 
 
 Returns a :ref:`Dictionary<class_Dictionary>` of categorized donor names. Each entry is an :ref:`Array<class_Array>` of strings:
 
-{``donors``}
+\ ``donors``
 
 .. rst-class:: classref-item-separator
 
