@@ -969,8 +969,8 @@ Other objects
     class_scriptlanguageextension
     class_semaphore
     class_shaderincludedb
-    class_signalsmith
     class_skinreference
+    class_soundsmith
     class_streampeer
     class_streampeerbuffer
     class_streampeerextension
