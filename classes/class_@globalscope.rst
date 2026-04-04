@@ -227,7 +227,7 @@ Methods
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                         | :ref:`is_zero_approx<class_@GlobalScope_method_is_zero_approx>`\ (\ x\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                      |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                   | :ref:`lerp<class_@GlobalScope_method_lerp>`\ (\ from\: :ref:`Variant<class_Variant>`, to\: :ref:`Variant<class_Variant>`, weight\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                                                       |
+   | :ref:`Variant<class_Variant>`                   | :ref:`lerp<class_@GlobalScope_method_lerp>`\ (\ from\: :ref:`Variant<class_Variant>`, to\: :ref:`Variant<class_Variant>`, weight\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                           |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                       | :ref:`lerp_angle<class_@GlobalScope_method_lerp_angle>`\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                       |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -294,6 +294,8 @@ Methods
    | |void|                                          | :ref:`randomize<class_@GlobalScope_method_randomize>`\ (\ )                                                                                                                                                                                                                                                                                                                               |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                       | :ref:`remap<class_@GlobalScope_method_remap>`\ (\ value\: :ref:`float<class_float>`, istart\: :ref:`float<class_float>`, istop\: :ref:`float<class_float>`, ostart\: :ref:`float<class_float>`, ostop\: :ref:`float<class_float>`\ )                                                                                                                                                      |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`remap_default<class_@GlobalScope_method_remap_default>`\ (\ value\: :ref:`float<class_float>`, istart\: :ref:`float<class_float>`, istop\: :ref:`float<class_float>`, ostart\: :ref:`float<class_float>`, ostop\: :ref:`float<class_float>`, default_value\: :ref:`float<class_float>`\ )                                                                                           |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                           | :ref:`rid_allocate_id<class_@GlobalScope_method_rid_allocate_id>`\ (\ )                                                                                                                                                                                                                                                                                                                   |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -6199,7 +6201,7 @@ This function is faster than using :ref:`is_equal_approx()<class_@GlobalScope_me
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **lerp**\ (\ from\: :ref:`Variant<class_Variant>`, to\: :ref:`Variant<class_Variant>`, weight\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_lerp>`
+:ref:`Variant<class_Variant>` **lerp**\ (\ from\: :ref:`Variant<class_Variant>`, to\: :ref:`Variant<class_Variant>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_lerp>`
 
 Linearly interpolates between two values by the factor defined in ``weight``. To perform interpolation, ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). However, values outside this range are allowed and can be used to perform *extrapolation*. If this is not desired, use :ref:`clampf()<class_@GlobalScope_method_clampf>` to limit ``weight``.
 
@@ -6949,7 +6951,26 @@ Maps a ``value`` from range ``[istart, istop]`` to ``[ostart, ostop]``. See also
 
 For complex use cases where multiple ranges are needed, consider using :ref:`Curve<class_Curve>` or :ref:`Gradient<class_Gradient>` instead.
 
-\ **Note:** If ``istart == istop``, the return value is undefined (most likely NaN, INF, or -INF).
+\ **Note:** If ``istart == istop``, the return value is undefined (most likely NaN, INF, or -INF). See also :ref:`remap_default()<class_@GlobalScope_method_remap_default>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_method_remap_default:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **remap_default**\ (\ value\: :ref:`float<class_float>`, istart\: :ref:`float<class_float>`, istop\: :ref:`float<class_float>`, ostart\: :ref:`float<class_float>`, ostop\: :ref:`float<class_float>`, default_value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_remap_default>`
+
+Maps a ``value`` from range ``[istart, istop]`` to ``[ostart, ostop]`` and returns ``default_value`` if :ref:`remap()<class_@GlobalScope_method_remap>` would've returned ``INF`` or ``NAN``. See also :ref:`remap()<class_@GlobalScope_method_remap>`, :ref:`lerp()<class_@GlobalScope_method_lerp>` and :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>`. If ``value`` is outside ``[istart, istop]``, then the resulting value will also be outside ``[ostart, ostop]``. If this is not desired, use :ref:`clamp()<class_@GlobalScope_method_clamp>` on the result of this function.
+
+::
+
+    remap_default(75, 0, 100, -1, 1, 3) # Returns 0.5
+    remap_default(75, 0, 0, -1, 1, 3) # Returns 3.0
+
+For complex use cases where multiple ranges are needed, consider using :ref:`Curve<class_Curve>` or :ref:`Gradient<class_Gradient>` instead.
 
 .. rst-class:: classref-item-separator
 
