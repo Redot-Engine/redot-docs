@@ -1,0 +1,16 @@
+[variables]
+    NODE_ENV = 'production'
+
+[phases.setup]
+    nixPkgs = ['nodejs_20', 'npm'] # Pins your Node version
+
+[phases.install]
+    cmds = ['npm install']
+
+[phases.build]
+    cmds = ['npm run build']
+
+[start]
+    # Docusaurus builds to the /build directory. 
+    # This command serves the static files on port 3000.
+    cmd = 'npx serve build -p $PORT --host 0.0.0.0'
