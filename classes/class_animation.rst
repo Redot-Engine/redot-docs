@@ -364,6 +364,14 @@ Linear interpolation.
 
 Cubic interpolation. This looks smoother than linear interpolation, but is more expensive to interpolate. Stick to :ref:`INTERPOLATION_LINEAR<class_Animation_constant_INTERPOLATION_LINEAR>` for complex 3D animations imported from external software, even if it requires using a higher animation framerate in return.
 
+.. _class_Animation_constant_INTERPOLATION_CUBIC_MONOTONIC:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`InterpolationType<enum_Animation_InterpolationType>` **INTERPOLATION_CUBIC_MONOTONIC** = ``5``
+
+Monotonic Cubic interpolation. This is an alternate version of :ref:`INTERPOLATION_CUBIC<class_Animation_constant_INTERPOLATION_CUBIC>` that ensures no overshooting of key points.
+
 .. _class_Animation_constant_INTERPOLATION_LINEAR_ANGLE:
 
 .. rst-class:: classref-enumeration-constant
@@ -383,6 +391,14 @@ Linear interpolation with shortest path rotation.
 Cubic interpolation with shortest path rotation.
 
 \ **Note:** The result value is always normalized and may not match the key value.
+
+.. _class_Animation_constant_INTERPOLATION_CUBIC_MONOTONIC_ANGLE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`InterpolationType<enum_Animation_InterpolationType>` **INTERPOLATION_CUBIC_MONOTONIC_ANGLE** = ``6``
+
+Monotonic Cubic interpolation with shortest path rotation.
 
 .. rst-class:: classref-item-separator
 
