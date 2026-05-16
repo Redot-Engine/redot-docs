@@ -619,7 +619,20 @@ Generates a baked mesh that represents all meshes in the assigned :ref:`MeshLibr
 
 :ref:`Vector3<class_Vector3>` **map_to_local**\ (\ map_position\: :ref:`Vector3i<class_Vector3i>`\ ) |const| :ref:`🔗<class_GridMap_method_map_to_local>`
 
-Returns the position of a grid cell in the GridMap's local coordinate space. To convert the returned value into global coordinates, use :ref:`Node3D.to_global()<class_Node3D_method_to_global>`. See also :ref:`local_to_map()<class_GridMap_method_local_to_map>`.
+Returns the position of a grid cell in the GridMap's local coordinate space. The returned position, for each axis, is either cell center or the cell edge closer to negative infinity, based on the values of :ref:`cell_center_x<class_GridMap_property_cell_center_x>`, :ref:`cell_center_y<class_GridMap_property_cell_center_y>`, :ref:`cell_center_z<class_GridMap_property_cell_center_z>`. To convert the returned value into global coordinates, use :ref:`Node3D.to_global()<class_Node3D_method_to_global>`. See also :ref:`local_to_map()<class_GridMap_method_local_to_map>`.
+
+::
+
+    # All examples for: cell_size = Vector3(2.0, 3.0, 4.0)
+
+    # cell_center_x = true, cell_center_y = true, cell_center_z = true
+    map_to_local(Vector3i(0, 0, 0)) # Returns Vector3(1.0, 1.5, 2.0)
+
+    # cell_center_x = false, cell_center_y = false, cell_center_z = false
+    map_to_local(Vector3i(0, 0, 0)) # Returns Vector3(0.0, 0.0, 0.0)
+
+    # cell_center_x = true, cell_center_y = false, cell_center_z = true
+    map_to_local(Vector3i(0, 0, 0)) # Returns Vector3(1.0, 0.0, 2.0)
 
 .. rst-class:: classref-item-separator
 
