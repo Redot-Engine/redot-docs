@@ -57,6 +57,8 @@ Properties
    +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                  | :ref:`hex_visible<class_ColorPicker_property_hex_visible>`                 | ``true``              |
    +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                | :ref:`intensity<class_ColorPicker_property_intensity>`                     | ``0.0``               |
+   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
    | :ref:`Color<class_Color>`                                | :ref:`old_color<class_ColorPicker_property_old_color>`                     | ``Color(0, 0, 0, 1)`` |
    +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
    | :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` | :ref:`picker_shape<class_ColorPicker_property_picker_shape>`               | ``0``                 |
@@ -479,6 +481,25 @@ If ``true``, shows an intensity slider. The intensity is applied as follows: mul
 - :ref:`bool<class_bool>` **is_hex_visible**\ (\ )
 
 If ``true``, the hex color code input field is visible.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ColorPicker_property_intensity:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **intensity** = ``0.0`` :ref:`🔗<class_ColorPicker_property_intensity>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_intensity**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_intensity**\ (\ )
+
+The currently selected intensity.
+
+Note: ``set_intensity`` clamps the value in the range ``[-10.0, 10.0]``
 
 .. rst-class:: classref-item-separator
 
