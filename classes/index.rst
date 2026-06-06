@@ -50,6 +50,7 @@ Nodes
     class_bone2d
     class_boneattachment3d
     class_boneconstraint3d
+    class_bonetwistdisperser3d
     class_boxcontainer
     class_button
     class_camera2d
@@ -58,7 +59,9 @@ Nodes
     class_canvasitem
     class_canvaslayer
     class_canvasmodulate
+    class_ccdik3d
     class_centercontainer
+    class_chainik3d
     class_characterbody2d
     class_characterbody3d
     class_checkbox
@@ -105,6 +108,7 @@ Nodes
     class_editorscriptpicker
     class_editorspinslider
     class_editortoaster
+    class_fabrik3d
     class_filedialog
     class_filesystemdock
     class_flowcontainer
@@ -139,9 +143,12 @@ Nodes
     class_hslider
     class_hsplitcontainer
     class_httprequest
+    class_ikmodifier3d
     class_importermeshinstance3d
     class_instanceplaceholder
     class_itemlist
+    class_iterateik3d
+    class_jacobianik3d
     class_joint2d
     class_joint3d
     class_label
@@ -151,6 +158,7 @@ Nodes
     class_lightmapgi
     class_lightmapprobe
     class_lightoccluder2d
+    class_limitangularvelocitymodifier3d
     class_line2d
     class_lineedit
     class_linkbutton
@@ -245,6 +253,7 @@ Nodes
     class_sliderjoint3d
     class_softbody3d
     class_spinbox
+    class_splineik3d
     class_splitcontainer
     class_spotlight3d
     class_springarm3d
@@ -272,6 +281,7 @@ Nodes
     class_timer
     class_touchscreenbutton
     class_tree
+    class_twoboneik3d
     class_vboxcontainer
     class_vehiclebody3d
     class_vehiclewheel3d
@@ -479,6 +489,8 @@ Resources
     class_inputeventscreentouch
     class_inputeventshortcut
     class_inputeventwithmodifiers
+    class_jointlimitation3d
+    class_jointlimitationcone3d
     class_json
     class_labelsettings
     class_lightmapgidata
@@ -969,8 +981,8 @@ Other objects
     class_scriptlanguageextension
     class_semaphore
     class_shaderincludedb
-    class_signalsmith
     class_skinreference
+    class_soundsmith
     class_streampeer
     class_streampeerbuffer
     class_streampeerextension
