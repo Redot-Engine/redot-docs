@@ -113,6 +113,8 @@ Methods
    :widths: auto
 
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`   | :ref:`apply_intensity<class_Color_method_apply_intensity>`\ (\ intensity\: :ref:`float<class_float>`\ ) |const|                                                                                         |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`   | :ref:`blend<class_Color_method_blend>`\ (\ over\: :ref:`Color<class_Color>`\ ) |const|                                                                                                                  |
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`   | :ref:`clamp<class_Color_method_clamp>`\ (\ min\: :ref:`Color<class_Color>` = Color(0, 0, 0, 0), max\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1)\ ) |const|                                          |
@@ -1680,6 +1682,22 @@ Constructs a **Color** from RGBA values, typically between 0.0 and 1.0.
 
 Method Descriptions
 -------------------
+
+.. _class_Color_method_apply_intensity:
+
+.. rst-class:: classref-method
+
+:ref:`Color<class_Color>` **apply_intensity**\ (\ intensity\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Color_method_apply_intensity>`
+
+Adjusts the color's intensity by multiplying the RGB components with a factor derived from the given intensity.
+
+The factor is calculated as 2 raised to the power of the provided intensity value.
+
+The adjusted RGB values are clamped to the range ``0.0`` and ``1.0``.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_Color_method_blend:
 
