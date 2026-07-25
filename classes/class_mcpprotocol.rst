@@ -12,9 +12,14 @@ MCPProtocol
 
 **Inherits:** :ref:`JSONRPC<class_JSONRPC>` **<** :ref:`Object<class_Object>`
 
-.. container:: contribute
+MCP JSON-RPC protocol handler: capability negotiation, tool listing, and dispatch.
 
-	There is currently no description for this class. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+.. rst-class:: classref-introduction-group
+
+Description
+-----------
+
+Implements the Model Context Protocol request layer on top of the JSONRPC class. Handles the ``initialize`` handshake with version negotiation, the ``notifications/initialized`` lifecycle event, ``ping``, ``tools/list``, and ``tools/call``. Tool execution is delegated to the internal MCPTools class. The operation phase is gated until the ``initialized`` notification is received, per spec.
 
 .. rst-class:: classref-reftable-group
 
@@ -43,9 +48,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_initialized**\ (\ ) |const| :ref:`🔗<class_MCPProtocol_method_is_initialized>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+Returns ``true`` after the client has sent the ``notifications/initialized`` handshake message, marking the start of the operation phase.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

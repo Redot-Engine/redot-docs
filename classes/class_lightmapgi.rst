@@ -94,6 +94,18 @@ Properties
    | :ref:`bool<class_bool>`                                   | :ref:`use_texture_for_bounces<class_LightmapGI_property_use_texture_for_bounces>`     | ``true``              |
    +-----------------------------------------------------------+---------------------------------------------------------------------------------------+-----------------------+
 
+.. rst-class:: classref-reftable-group
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`BakeError<enum_LightmapGI_BakeError>` | :ref:`bake<class_LightmapGI_method_bake>`\ (\ from_node\: :ref:`Node<class_Node>`, image_data_path\: :ref:`String<class_String>` = ""\ ) |
+   +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -747,6 +759,27 @@ If ``true``, uses a GPU-based denoising algorithm on the generated lightmap. Thi
 If ``true``, a texture with the lighting information will be generated to speed up the generation of indirect lighting at the cost of some accuracy. The geometry might exhibit extra light leak artifacts when using low resolution lightmaps or UVs that stretch the lightmap significantly across surfaces. Leave :ref:`use_texture_for_bounces<class_LightmapGI_property_use_texture_for_bounces>` at its default value of ``true`` if unsure.
 
 \ **Note:** :ref:`use_texture_for_bounces<class_LightmapGI_property_use_texture_for_bounces>` only has an effect if :ref:`bounces<class_LightmapGI_property_bounces>` is set to a value greater than or equal to ``1``.
+
+.. rst-class:: classref-section-separator
+
+----
+
+.. rst-class:: classref-descriptions-group
+
+Method Descriptions
+-------------------
+
+.. _class_LightmapGI_method_bake:
+
+.. rst-class:: classref-method
+
+:ref:`BakeError<enum_LightmapGI_BakeError>` **bake**\ (\ from_node\: :ref:`Node<class_Node>`, image_data_path\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_LightmapGI_method_bake>`
+
+Bakes lightmaps (requires meshes to have UV2 unwrapped) for ``from_node`` and its children to ``image_data_path``. ``image_data_path`` must end with an ``.exr`` or ``.lmbake`` file extension. If ``from_node`` is ``null``, lightmaps are baked from the **LightmapGI** node's parent. Baking lightmaps can take from a few seconds to several dozen minutes depending on the GPU speed and quality settings chosen.
+
+\ **Note:** :ref:`bake()<class_LightmapGI_method_bake>` only works within the editor, and when running a project from the editor. :ref:`bake()<class_LightmapGI_method_bake>` will do nothing when called in a project exported in either debug or release mode. This limitation is in place to reduce the binary size of exported projects. You can :doc:`compile custom export templates <../contributing/development/compiling/index>` with the ``module_lightmapper_rd_enabled=yes module_xatlas_unwrap_enabled=yes`` SCons options to remove this limitation.
+
+\ **Additional Note:** Baking lightmaps from a headless editor instance is not supported. If you attempt to bake lightmaps in this manner, baking will fail.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
