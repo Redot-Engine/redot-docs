@@ -12,9 +12,14 @@ MCPServer
 
 **Inherits:** :ref:`Object<class_Object>`
 
-.. container:: contribute
+Stdio-based MCP (Model Context Protocol) server for AI agent integration.
 
-	There is currently no description for this class. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+.. rst-class:: classref-introduction-group
+
+Description
+-----------
+
+The MCP server exposes the running Redot project to AI coding assistants over a JSON-RPC stdio transport. It is started with the ``--mcp-server`` command-line flag, which implies headless mode. The server reads newline-delimited JSON-RPC requests on stdin and writes responses to stdout. A TCP bridge (:ref:`MCPBridge<class_MCPBridge>`) is used to forward tool calls (screenshots, input, tree inspection) to a separately launched game process. See `the MCP specification <https://modelcontextprotocol.io/>`__ for protocol details.
 
 .. rst-class:: classref-reftable-group
 
@@ -47,9 +52,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_running**\ (\ ) |const| :ref:`🔗<class_MCPServer_method_is_running>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+Returns ``true`` while the server loop is processing requests.
 
 .. rst-class:: classref-item-separator
 
@@ -61,9 +64,7 @@ Method Descriptions
 
 |void| **start**\ (\ ) :ref:`🔗<class_MCPServer_method_start>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+Starts the blocking server loop. Reads requests from stdin and dispatches them to the registered protocol handlers. Returns when the input stream is closed or :ref:`stop()<class_MCPServer_method_stop>` is requested.
 
 .. rst-class:: classref-item-separator
 
@@ -75,9 +76,7 @@ Method Descriptions
 
 |void| **stop**\ (\ ) :ref:`🔗<class_MCPServer_method_stop>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+Signals the server loop to stop and wakes the stdin poll.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
