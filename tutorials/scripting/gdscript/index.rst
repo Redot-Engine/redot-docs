@@ -13,6 +13,7 @@ GDScript
    gdscript_documentation_comments
    gdscript_styleguide
    static_typing
+   gdscript_nullable_types
    warning_system
    gdscript_format_string
 
