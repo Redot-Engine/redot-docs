@@ -121,6 +121,8 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`get_processor_name<class_OS_method_get_processor_name>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                 |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`get_real_path<class_OS_method_get_real_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_restart_on_exit_arguments<class_OS_method_get_restart_on_exit_arguments>`\ (\ ) |const|                                                                                                                                                                                                                                                                                           |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`get_static_memory_peak_usage<class_OS_method_get_static_memory_peak_usage>`\ (\ ) |const|                                                                                                                                                                                                                                                                                             |
@@ -1196,6 +1198,22 @@ Returns the number of *logical* CPU cores available on the host machine. On CPUs
 Returns the full name of the CPU model on the host machine (e.g. ``"Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz"``).
 
 \ **Note:** This method is only implemented on Windows, macOS, Linux and iOS. On Android and Web, :ref:`get_processor_name()<class_OS_method_get_processor_name>` returns an empty string.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_OS_method_get_real_path:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **get_real_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_get_real_path>`
+
+Normalizes a given path, removing consecutive double-slash path separators, converts relative path logic to absolute, and resolves all symbolic links.
+
+\ **Note:** On Windows, if a path passed to the function contains backwards slashes for any path separators, those are replaced with forward slashes.
+
+\ **Note:** If the function failed for any reason, max path byte limit exceeded, the original input string with forward slash separators is returned.
 
 .. rst-class:: classref-item-separator
 

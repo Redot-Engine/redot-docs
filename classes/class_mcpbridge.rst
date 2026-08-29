@@ -12,9 +12,14 @@ MCPBridge
 
 **Inherits:** :ref:`Object<class_Object>`
 
-.. container:: contribute
+TCP bridge relaying commands between the MCP server and a running game process.
 
-	There is currently no description for this class. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+.. rst-class:: classref-introduction-group
+
+Description
+-----------
+
+**MCPBridge** is a bidirectional TCP relay. On the server (headless) side it listens on an ephemeral loopback port and sends commands produced by MCP tools. On the game side (started with the ``--mcp-bridge-port`` flag) it connects back to that port, receives commands, executes them against the live scene tree/viewport, and returns results. The bridge is single-connection and automatically replaces a stale peer when a new game process connects.
 
 .. rst-class:: classref-reftable-group
 
@@ -43,9 +48,7 @@ Method Descriptions
 
 |void| **update**\ (\ ) :ref:`🔗<class_MCPBridge_method_update>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+Pumps the bridge: on the host side it accepts pending connections; on the game side it reads incoming commands, dispatches them, and writes responses. Called each frame from the main loop (game side) or the server's bridge thread (host side).
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

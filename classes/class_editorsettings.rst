@@ -227,6 +227,8 @@ Properties
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/gridmap_grid<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/gridmap_grid>`                                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/ik_chain<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/ik_chain>`                                                                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/instantiated<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/instantiated>`                                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`editors/3d_gizmos/gizmo_colors/joint<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/joint>`                                                                                                   |
@@ -784,6 +786,8 @@ Properties
    | :ref:`String<class_String>`                       | :ref:`text_editor/external/exec_flags<class_EditorSettings_property_text_editor/external/exec_flags>`                                                                                                             |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`text_editor/external/exec_path<class_EditorSettings_property_text_editor/external/exec_path>`                                                                                                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`text_editor/external/prefer_tabs_in_external_editor<class_EditorSettings_property_text_editor/external/prefer_tabs_in_external_editor>`                                                                     |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`text_editor/external/use_external_editor<class_EditorSettings_property_text_editor/external/use_external_editor>`                                                                                           |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -2046,6 +2050,18 @@ The 3D editor gizmo color for :ref:`FogVolume<class_FogVolume>` nodes.
 :ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/gridmap_grid** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/gridmap_grid>`
 
 The 3D editor gizmo color for the :ref:`GridMap<class_GridMap>` grid.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/ik_chain:
+
+.. rst-class:: classref-property
+
+:ref:`Color<class_Color>` **editors/3d_gizmos/gizmo_colors/ik_chain** :ref:`🔗<class_EditorSettings_property_editors/3d_gizmos/gizmo_colors/ik_chain>`
+
+The 3D editor gizmo color for the :ref:`IKModifier3D<class_IKModifier3D>` guides.
 
 .. rst-class:: classref-item-separator
 
@@ -5663,6 +5679,20 @@ The command-line arguments to pass to the external text editor that is run when 
 :ref:`String<class_String>` **text_editor/external/exec_path** :ref:`🔗<class_EditorSettings_property_text_editor/external/exec_path>`
 
 The path to the text editor executable used to edit text files if :ref:`text_editor/external/use_external_editor<class_EditorSettings_property_text_editor/external/use_external_editor>` is ``true``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_text_editor/external/prefer_tabs_in_external_editor:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **text_editor/external/prefer_tabs_in_external_editor** :ref:`🔗<class_EditorSettings_property_text_editor/external/prefer_tabs_in_external_editor>`
+
+If set, this will instruct the editor to attempt to reopen previously open scripts as tabs in a single instance of the external editor,
+
+by passing them in as command line args instead of trying to launch a single instance for each script file.
 
 .. rst-class:: classref-item-separator
 
