@@ -205,6 +205,10 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/exclude_addons<class_ProjectSettings_property_debug/gdscript/warnings/exclude_addons>`                                                                                       | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/experimental_struct<class_ProjectSettings_property_debug/gdscript/warnings/experimental_struct>`                                                                             | ``1``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/experimental_trait<class_ProjectSettings_property_debug/gdscript/warnings/experimental_trait>`                                                                               | ``1``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/get_node_default_without_onready<class_ProjectSettings_property_debug/gdscript/warnings/get_node_default_without_onready>`                                                   | ``2``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/incompatible_ternary<class_ProjectSettings_property_debug/gdscript/warnings/incompatible_ternary>`                                                                           | ``1``                                                                                                    |
@@ -241,6 +245,10 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/shadowed_variable_base_class<class_ProjectSettings_property_debug/gdscript/warnings/shadowed_variable_base_class>`                                                           | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/show_experimental_struct_warning<class_ProjectSettings_property_debug/gdscript/warnings/show_experimental_struct_warning>`                                                   | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`debug/gdscript/warnings/show_experimental_trait_warning<class_ProjectSettings_property_debug/gdscript/warnings/show_experimental_trait_warning>`                                                     | ``true``                                                                                                 |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/standalone_expression<class_ProjectSettings_property_debug/gdscript/warnings/standalone_expression>`                                                                         | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/standalone_ternary<class_ProjectSettings_property_debug/gdscript/warnings/standalone_ternary>`                                                                               | ``1``                                                                                                    |
@@ -261,6 +269,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unsafe_method_access<class_ProjectSettings_property_debug/gdscript/warnings/unsafe_method_access>`                                                                           | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unsafe_nullable_access<class_ProjectSettings_property_debug/gdscript/warnings/unsafe_nullable_access>`                                                                       | ``1``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unsafe_property_access<class_ProjectSettings_property_debug/gdscript/warnings/unsafe_property_access>`                                                                       | ``0``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unsafe_void_return<class_ProjectSettings_property_debug/gdscript/warnings/unsafe_void_return>`                                                                               | ``1``                                                                                                    |
@@ -274,6 +284,8 @@ Properties
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unused_private_class_variable<class_ProjectSettings_property_debug/gdscript/warnings/unused_private_class_variable>`                                                         | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unused_signal<class_ProjectSettings_property_debug/gdscript/warnings/unused_signal>`                                                                                         | ``1``                                                                                                    |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unused_static_overriding_trait<class_ProjectSettings_property_debug/gdscript/warnings/unused_static_overriding_trait>`                                                       | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/unused_variable<class_ProjectSettings_property_debug/gdscript/warnings/unused_variable>`                                                                                     | ``1``                                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -457,7 +469,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`display/window/dpi/allow_hidpi<class_ProjectSettings_property_display/window/dpi/allow_hidpi>`                                                                                                       | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`display/window/energy_saving/keep_screen_on<class_ProjectSettings_property_display/window/energy_saving/keep_screen_on>`                                                                             | ``true``                                                                                                 |
+   | :ref:`bool<class_bool>`                           | :ref:`display/window/energy_saving/keep_screen_on<class_ProjectSettings_property_display/window/energy_saving/keep_screen_on>`                                                                             | ``false``                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`display/window/frame_pacing/android/enable_frame_pacing<class_ProjectSettings_property_display/window/frame_pacing/android/enable_frame_pacing>`                                                     | ``true``                                                                                                 |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -3008,6 +3020,30 @@ If ``true``, scripts in the ``res://addons`` folder will not generate warnings.
 
 ----
 
+.. _class_ProjectSettings_property_debug/gdscript/warnings/experimental_struct:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **debug/gdscript/warnings/experimental_struct** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/experimental_struct>`
+
+When set to ``warn`` or ``error``, produces a warning or an error respectively when a ``struct`` is declared. Structs are an experimental feature and their syntax and behavior may change in future releases.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/gdscript/warnings/experimental_trait:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **debug/gdscript/warnings/experimental_trait** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/experimental_trait>`
+
+When set to ``warn`` or ``error``, produces a warning or an error respectively when using traits, as they are still experimental and may be subject to changes in future releases.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_debug/gdscript/warnings/get_node_default_without_onready:
 
 .. rst-class:: classref-property
@@ -3226,6 +3262,30 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 ----
 
+.. _class_ProjectSettings_property_debug/gdscript/warnings/show_experimental_struct_warning:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/gdscript/warnings/show_experimental_struct_warning** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/show_experimental_struct_warning>`
+
+When set to ``true``, the editor will generate warnings when using structs, as they are still experimental and may be subject to changes in future releases.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/gdscript/warnings/show_experimental_trait_warning:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **debug/gdscript/warnings/show_experimental_trait_warning** = ``true`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/show_experimental_trait_warning>`
+
+When set to ``true``, the editor will generate warnings when using traits, as they are still experimental and may be subject to changes in future releases.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_debug/gdscript/warnings/standalone_expression:
 
 .. rst-class:: classref-property
@@ -3346,6 +3406,18 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 ----
 
+.. _class_ProjectSettings_property_debug/gdscript/warnings/unsafe_nullable_access:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **debug/gdscript/warnings/unsafe_nullable_access** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/unsafe_nullable_access>`
+
+When set to ``warn`` or ``error``, produces a warning or an error respectively when a value of a nullable type (e.g. ``int?``) is used where it may be ``null`` — such as in an operator, subscript, method or property access, or ``for`` loop, or when passed, returned, or assigned to a non-nullable type — without first checking it against ``null``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_debug/gdscript/warnings/unsafe_property_access:
 
 .. rst-class:: classref-property
@@ -3427,6 +3499,18 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 :ref:`int<class_int>` **debug/gdscript/warnings/unused_signal** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/unused_signal>`
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when a signal is declared but never explicitly used in the class.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/gdscript/warnings/unused_static_overriding_trait:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **debug/gdscript/warnings/unused_static_overriding_trait** = ``1`` :ref:`🔗<class_ProjectSettings_property_debug/gdscript/warnings/unused_static_overriding_trait>`
+
+When set to ``warn`` or ``error``, produces a warning or an error respectively when an overridden static member from a trait is not declared with the ``static`` keyword.
 
 .. rst-class:: classref-item-separator
 
@@ -4538,7 +4622,7 @@ If ``true``, allows HiDPI display on Windows, macOS, Android, iOS and Web. If ``
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **display/window/energy_saving/keep_screen_on** = ``true`` :ref:`🔗<class_ProjectSettings_property_display/window/energy_saving/keep_screen_on>`
+:ref:`bool<class_bool>` **display/window/energy_saving/keep_screen_on** = ``false`` :ref:`🔗<class_ProjectSettings_property_display/window/energy_saving/keep_screen_on>`
 
 If ``true``, keeps the screen on (even in case of inactivity), so the screensaver does not take over. Works on desktop and mobile platforms.
 

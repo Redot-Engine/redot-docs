@@ -49,6 +49,8 @@ Properties
    +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                                       | :ref:`limit_end<class_Parallax2D_property_limit_end>`                       | ``Vector2(10000000, 10000000)``                                               |
    +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                       | :ref:`manual_scroll<class_Parallax2D_property_manual_scroll>`               | ``Vector2(0, 0)``                                                             |
+   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
    | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                  | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
    +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                                       | :ref:`repeat_size<class_Parallax2D_property_repeat_size>`                   | ``Vector2(0, 0)``                                                             |
@@ -151,6 +153,23 @@ Top-left limits for scrolling to begin. If the camera is outside of this limit, 
 - :ref:`Vector2<class_Vector2>` **get_limit_end**\ (\ )
 
 Bottom-right limits for scrolling to end. If the camera is outside of this limit, the **Parallax2D** will stop scrolling. Must be higher than :ref:`limit_begin<class_Parallax2D_property_limit_begin>` and the viewport size combined to work.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Parallax2D_property_manual_scroll:
+
+.. rst-class:: classref-property
+
+:ref:`Vector2<class_Vector2>` **manual_scroll** = ``Vector2(0, 0)`` :ref:`🔗<class_Parallax2D_property_manual_scroll>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_manual_scroll**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
+- :ref:`Vector2<class_Vector2>` **get_manual_scroll**\ (\ )
+
+Manual scroll offset applied to this **Parallax2D**, in pixels. This property exposes programmatic infinite scroll behavior outside :ref:`autoscroll<class_Parallax2D_property_autoscroll>`.
 
 .. rst-class:: classref-item-separator
 

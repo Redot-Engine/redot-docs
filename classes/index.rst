@@ -50,6 +50,7 @@ Nodes
     class_bone2d
     class_boneattachment3d
     class_boneconstraint3d
+    class_bonetwistdisperser3d
     class_boxcontainer
     class_button
     class_camera2d
@@ -58,7 +59,9 @@ Nodes
     class_canvasitem
     class_canvaslayer
     class_canvasmodulate
+    class_ccdik3d
     class_centercontainer
+    class_chainik3d
     class_characterbody2d
     class_characterbody3d
     class_checkbox
@@ -105,6 +108,7 @@ Nodes
     class_editorscriptpicker
     class_editorspinslider
     class_editortoaster
+    class_fabrik3d
     class_filedialog
     class_filesystemdock
     class_flowcontainer
@@ -139,9 +143,12 @@ Nodes
     class_hslider
     class_hsplitcontainer
     class_httprequest
+    class_ikmodifier3d
     class_importermeshinstance3d
     class_instanceplaceholder
     class_itemlist
+    class_iterateik3d
+    class_jacobianik3d
     class_joint2d
     class_joint3d
     class_label
@@ -151,6 +158,7 @@ Nodes
     class_lightmapgi
     class_lightmapprobe
     class_lightoccluder2d
+    class_limitangularvelocitymodifier3d
     class_line2d
     class_lineedit
     class_linkbutton
@@ -163,6 +171,7 @@ Nodes
     class_meshinstance2d
     class_meshinstance3d
     class_missingnode
+    class_mode7sprite2d
     class_modifierbonetarget3d
     class_multimeshinstance2d
     class_multimeshinstance3d
@@ -245,6 +254,7 @@ Nodes
     class_sliderjoint3d
     class_softbody3d
     class_spinbox
+    class_splineik3d
     class_splitcontainer
     class_spotlight3d
     class_springarm3d
@@ -272,6 +282,7 @@ Nodes
     class_timer
     class_touchscreenbutton
     class_tree
+    class_twoboneik3d
     class_vboxcontainer
     class_vehiclebody3d
     class_vehiclewheel3d
@@ -290,6 +301,7 @@ Nodes
     class_vsplitcontainer
     class_window
     class_worldenvironment
+    class_worldscape3d
     class_xranchor3d
     class_xrbodymodifier3d
     class_xrcamera3d
@@ -479,6 +491,8 @@ Resources
     class_inputeventscreentouch
     class_inputeventshortcut
     class_inputeventwithmodifiers
+    class_jointlimitation3d
+    class_jointlimitationcone3d
     class_json
     class_labelsettings
     class_lightmapgidata
@@ -487,6 +501,7 @@ Resources
     class_meshlibrary
     class_meshtexture
     class_missingresource
+    class_mode7scanlineoverride
     class_multimesh
     class_navigationmesh
     class_navigationmeshsourcegeometrydata2d
@@ -720,6 +735,12 @@ Resources
     class_world3d
     class_worldboundaryshape2d
     class_worldboundaryshape3d
+    class_worldscape3dassetresource
+    class_worldscape3dassets
+    class_worldscape3dmaterial
+    class_worldscape3dmeshasset
+    class_worldscape3dregion
+    class_worldscape3dtextureasset
     class_x509certificate
 
 Other objects
@@ -969,8 +990,8 @@ Other objects
     class_scriptlanguageextension
     class_semaphore
     class_shaderincludedb
-    class_signalsmith
     class_skinreference
+    class_soundsmith
     class_streampeer
     class_streampeerbuffer
     class_streampeerextension
@@ -1014,6 +1035,10 @@ Other objects
     class_websocketpeer
     class_webxrinterface
     class_workerthreadpool
+    class_worldscape3dcollision
+    class_worldscape3ddata
+    class_worldscape3deditor
+    class_worldscape3dinstancer
     class_xmlparser
     class_xrbodytracker
     class_xrcontrollertracker
@@ -1132,6 +1157,7 @@ Variant types
     class_signal
     class_string
     class_stringname
+    class_struct
     class_transform2d
     class_transform3d
     class_vector2
