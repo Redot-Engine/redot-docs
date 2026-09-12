@@ -12,6 +12,8 @@ Sprite2D
 
 **Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
+**Inherited By:** :ref:`Mode7Sprite2D<class_Mode7Sprite2D>`
+
 General-purpose sprite node.
 
 .. rst-class:: classref-introduction-group

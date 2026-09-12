@@ -12,7 +12,7 @@ SkeletonModifier3D
 
 **Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`BoneConstraint3D<class_BoneConstraint3D>`, :ref:`LookAtModifier3D<class_LookAtModifier3D>`, :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>`, :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>`, :ref:`RetargetModifier3D<class_RetargetModifier3D>`, :ref:`SkeletonIK3D<class_SkeletonIK3D>`, :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, :ref:`XRBodyModifier3D<class_XRBodyModifier3D>`, :ref:`XRHandModifier3D<class_XRHandModifier3D>`
+**Inherited By:** :ref:`BoneConstraint3D<class_BoneConstraint3D>`, :ref:`BoneTwistDisperser3D<class_BoneTwistDisperser3D>`, :ref:`IKModifier3D<class_IKModifier3D>`, :ref:`LimitAngularVelocityModifier3D<class_LimitAngularVelocityModifier3D>`, :ref:`LookAtModifier3D<class_LookAtModifier3D>`, :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>`, :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>`, :ref:`RetargetModifier3D<class_RetargetModifier3D>`, :ref:`SkeletonIK3D<class_SkeletonIK3D>`, :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, :ref:`XRBodyModifier3D<class_XRBodyModifier3D>`, :ref:`XRHandModifier3D<class_XRHandModifier3D>`
 
 A node that may modify a Skeleton3D's bones.
 
@@ -150,6 +150,196 @@ Enumerated value for the +Z axis.
 
 Enumerated value for the -Z axis.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_SkeletonModifier3D_BoneDirection:
+
+.. rst-class:: classref-enumeration
+
+enum **BoneDirection**: :ref:`🔗<enum_SkeletonModifier3D_BoneDirection>`
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_PLUS_X:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_PLUS_X** = ``0``
+
+Enumerated value for the +X axis.
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_MINUS_X:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_MINUS_X** = ``1``
+
+Enumerated value for the -X axis.
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_PLUS_Y:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_PLUS_Y** = ``2``
+
+Enumerated value for the +Y axis.
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_MINUS_Y:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_MINUS_Y** = ``3``
+
+Enumerated value for the -Y axis.
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_PLUS_Z:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_PLUS_Z** = ``4``
+
+Enumerated value for the +Z axis.
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_MINUS_Z:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_MINUS_Z** = ``5``
+
+Enumerated value for the -Z axis.
+
+.. _class_SkeletonModifier3D_constant_BONE_DIRECTION_FROM_PARENT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_FROM_PARENT** = ``6``
+
+Enumerated value for the axis from a parent bone to the child bone.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_SkeletonModifier3D_SecondaryDirection:
+
+.. rst-class:: classref-enumeration
+
+enum **SecondaryDirection**: :ref:`🔗<enum_SkeletonModifier3D_SecondaryDirection>`
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_NONE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_NONE** = ``0``
+
+Enumerated value for the case when the axis is undefined.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_PLUS_X:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_PLUS_X** = ``1``
+
+Enumerated value for the +X axis.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_MINUS_X:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_MINUS_X** = ``2``
+
+Enumerated value for the -X axis.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_PLUS_Y:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_PLUS_Y** = ``3``
+
+Enumerated value for the +Y axis.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_MINUS_Y:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_MINUS_Y** = ``4``
+
+Enumerated value for the -Y axis.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_PLUS_Z:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_PLUS_Z** = ``5``
+
+Enumerated value for the +Z axis.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_MINUS_Z:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_MINUS_Z** = ``6``
+
+Enumerated value for the -Z axis.
+
+.. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_CUSTOM:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_CUSTOM** = ``7``
+
+Enumerated value for an optional axis.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_SkeletonModifier3D_RotationAxis:
+
+.. rst-class:: classref-enumeration
+
+enum **RotationAxis**: :ref:`🔗<enum_SkeletonModifier3D_RotationAxis>`
+
+.. _class_SkeletonModifier3D_constant_ROTATION_AXIS_X:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_X** = ``0``
+
+Enumerated value for the rotation of the X axis.
+
+.. _class_SkeletonModifier3D_constant_ROTATION_AXIS_Y:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_Y** = ``1``
+
+Enumerated value for the rotation of the Y axis.
+
+.. _class_SkeletonModifier3D_constant_ROTATION_AXIS_Z:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_Z** = ``2``
+
+Enumerated value for the rotation of the Z axis.
+
+.. _class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_ALL** = ``3``
+
+Enumerated value for the unconstrained rotation.
+
+.. _class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_CUSTOM** = ``4``
+
+Enumerated value for an optional rotation axis.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -227,6 +417,8 @@ Override this virtual method to implement a custom skeleton modifier. You should
 \ :ref:`_process_modification_with_delta()<class_SkeletonModifier3D_private_method__process_modification_with_delta>` must not apply :ref:`influence<class_SkeletonModifier3D_property_influence>` to bone poses because the :ref:`Skeleton3D<class_Skeleton3D>` automatically applies influence to all bone poses set by the modifier.
 
 \ ``delta`` is passed from parent :ref:`Skeleton3D<class_Skeleton3D>`. See also :ref:`Skeleton3D.advance()<class_Skeleton3D_method_advance>`.
+
+\ **Note:** This method may be called outside :ref:`Node._process()<class_Node_private_method__process>` and :ref:`Node._physics_process()<class_Node_private_method__physics_process>` with ``delta`` is ``0.0``, since the modification should be processed immediately after initialization of the :ref:`Skeleton3D<class_Skeleton3D>`.
 
 .. rst-class:: classref-item-separator
 

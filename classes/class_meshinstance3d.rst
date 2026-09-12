@@ -87,6 +87,10 @@ Methods
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                     | :ref:`get_surface_override_material_count<class_MeshInstance3D_method_get_surface_override_material_count>`\ (\ ) |const|                                                                                      |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`       | :ref:`intersect_ray<class_MeshInstance3D_method_intersect_ray>`\ (\ origin\: :ref:`Vector3<class_Vector3>`, dir\: :ref:`Vector3<class_Vector3>`, include_uv\: :ref:`bool<class_bool>` = false\ ) |const|       |
+   +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`       | :ref:`intersect_segment<class_MeshInstance3D_method_intersect_segment>`\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`, include_uv\: :ref:`bool<class_bool>` = false\ ) |const|  |
+   +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                    | :ref:`set_blend_shape_value<class_MeshInstance3D_method_set_blend_shape_value>`\ (\ blend_shape_idx\: :ref:`int<class_int>`, value\: :ref:`float<class_float>`\ )                                              |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                    | :ref:`set_surface_override_material<class_MeshInstance3D_method_set_surface_override_material>`\ (\ surface\: :ref:`int<class_int>`, material\: :ref:`Material<class_Material>`\ )                             |
@@ -320,6 +324,46 @@ Returns the override :ref:`Material<class_Material>` for the specified ``surface
 :ref:`int<class_int>` **get_surface_override_material_count**\ (\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_surface_override_material_count>`
 
 Returns the number of surface override materials. This is equivalent to :ref:`Mesh.get_surface_count()<class_Mesh_method_get_surface_count>`. See also :ref:`get_surface_override_material()<class_MeshInstance3D_method_get_surface_override_material>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_MeshInstance3D_method_intersect_ray:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary<class_Dictionary>` **intersect_ray**\ (\ origin\: :ref:`Vector3<class_Vector3>`, dir\: :ref:`Vector3<class_Vector3>`, include_uv\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_MeshInstance3D_method_intersect_ray>`
+
+Performs a ray intersection test against the visual mesh.
+
+Returns a :ref:`Dictionary<class_Dictionary>` with the following keys: ``success``, ``position``, ``normal``, ``surface_index``, ``face_index``, and ``material``.
+
+The keys ``surface_index`` and ``face_index`` are indices into their respective mesh data, ``position`` and ``normal`` returns the position the mesh was intersected at and the normal of the intersected face, and ``material`` is the material of the intersected face.
+
+If ``include_uv`` is ``true``, then the UV and UV2 of the face at the intersected point is calculated and returned as the keys ``uv`` and ``uv2``.
+
+If the key ``success`` is true, then the ray intersected the mesh.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_MeshInstance3D_method_intersect_segment:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary<class_Dictionary>` **intersect_segment**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`, include_uv\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_MeshInstance3D_method_intersect_segment>`
+
+Performs a line segment intersection test against the visual mesh.
+
+Returns a :ref:`Dictionary<class_Dictionary>` with the following keys: ``success``, ``position``, ``normal``, ``surface_index``, ``face_index``, and ``material``.
+
+The keys ``surface_index`` and ``face_index`` are indices into their respective mesh data, ``position`` and ``normal`` returns the position the mesh was intersected at and the normal of the intersected face, and ``material`` is the material of the intersected face.
+
+If ``include_uv`` is ``true``, then the UV and UV2 of the face at the intersected point is calculated and returned as the keys ``uv`` and ``uv2``.
+
+If the key ``success`` is true, then the segment intersected the mesh.
 
 .. rst-class:: classref-item-separator
 
