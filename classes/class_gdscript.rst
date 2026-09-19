@@ -25,6 +25,33 @@ Calling :ref:`new()<class_GDScript_method_new>` creates a new instance of the sc
 
 If you are looking for GDScript's built-in functions, see :ref:`@GDScript<class_@GDScript>` instead.
 
+\ **Nullable static types:** By default, a statically-typed value cannot be ``null``. Writing ``?`` after a type hint makes the value *nullable*, allowing it to hold ``null`` in addition to values of the base type. Untyped values and :ref:`Variant<class_Variant>` can already hold ``null``, so :ref:`Variant<class_Variant>` is always nullable and does not take the ``?`` suffix. The suffix is allowed on variables, members, parameters, and return types:
+
+::
+
+    var health: int?             # An int or null; uninitialized nullable values start as null.
+    var player_name: String? = null
+
+    func find_target() -> Node?: # May return null.
+        return null
+
+The ``?`` suffix works on built-in value types (``int?``, ``String?``, ``Vector2?``, and so on), enums (including nested enums such as ``Vector2.Axis?``), objects (such as ``Node?``), and collections, where the collection itself is nullable (``Array?``, ``Array[int]?``, ``Dictionary[String, int]?``). It is **not** allowed on :ref:`Variant<class_Variant>` (already nullable), on ``void``, or on element types: ``Array[int?]`` is rejected; write ``Array[int]?`` instead.
+
+After a ``null`` check, the analyzer narrows the value to its non-nullable type, so it can be used safely:
+
+::
+
+    func take(v: int?) -> int:
+        if v == null:
+            return -1
+        return v + 1 # v is known to be non-null here.
+
+Narrowing is recognized for ``==`` and ``!=`` ``null`` guards — including ``else`` branches, ``while`` conditions, and ``and``/``or`` expressions — and is kept when the value is reassigned to a non-null value. It is not recognized after reassigning a nullable value, or across ``break`` and ``continue`` guards.
+
+Using a nullable value of a **non-object built-in type** (such as ``int?``, ``Array?``, or ``Dictionary?``) directly (in an operator, subscript, property access, or ``for`` loop), or transferring *any* nullable value to a non-nullable target (assigning, returning, or passing it as an argument), raises the ``UNSAFE_NULLABLE_ACCESS`` warning. Set its severity with :ref:`ProjectSettings.debug/gdscript/warnings/unsafe_nullable_access<class_ProjectSettings_property_debug/gdscript/warnings/unsafe_nullable_access>`, or silence a single line with :ref:`@GDScript.@warning_ignore<class_@GDScript_annotation_@warning_ignore>`.
+
+Enforcement depends on the type. For non-object built-in types and enums, a ``null`` reaching a non-nullable value raises a runtime error. Object references keep GDScript's existing behavior — they may hold ``null`` whether or not the type uses ``?`` — so on object types ``?`` only enables narrowing and the transfer warning. Accessing a member or calling a method directly on a nullable object or enum is not flagged, but it still fails at runtime if the value is actually ``null``, so narrow with a ``null`` check first.
+
 .. rst-class:: classref-introduction-group
 
 Tutorials
