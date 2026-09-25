@@ -1,3 +1,14 @@
+# Archived and Moved
+
+This repo served as a fork of the original Godot documentation for Redot.
+
+The contents of this repo have been migrated to a custom ASP.Net solution located here: https://github.com/Redot-Engine/Redot-Documentation
+
+Please direct all issues and PRs regarding the Redot Documentation there.
+
+---
+
+
 # Redot Engine documentation
 
 This repository contains the source files of [Redot Engine](https://redotengine.org)'s documentation, in reStructuredText markup language (reST).
